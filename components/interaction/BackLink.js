@@ -7,7 +7,7 @@ const BackLink = ({ children, href = '/', className = '' }) => {
 
   return (
     <Link href={href}>
-      <a className={`govuk-back-link ${finalClassName}`}>{children}</a>
+      <a className={`govuk-back-link no-js-hide ${finalClassName}`}>{children}</a>
     </Link>
   )
 }
