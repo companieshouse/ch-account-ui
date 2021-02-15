@@ -22,7 +22,7 @@ const ErrorSummary = ({ type = 'h1', title = 'No title!', errors = [], children,
         {errors.length > 0 && <ul className="govuk-list govuk-error-summary__list">
           {errors.map((error, index) => (
             <li key={index}>
-              {Boolean(error.anchor) === true && <a href={error.anchor}>{error.label}</a>}
+              {Boolean(error.anchor) === true && <a href={`#${error.anchor}`}>{error.label}</a>}
               {Boolean(error.anchor) === false && error.label}
             </li>
           ))}
