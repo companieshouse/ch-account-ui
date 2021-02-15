@@ -1,11 +1,14 @@
 import React from 'react'
+import Link from 'next/link'
 
 const BackLink = ({ children, href = '/', className = '' }) => {
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
 
   return (
-    <a href={href} className={`govuk-back-link ${finalClassName}`}>{children}</a>
+    <Link href={href}>
+      <a className={`govuk-back-link ${finalClassName}`}>{children}</a>
+    </Link>
   )
 }
 
