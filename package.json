@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "BASE_PATH=/ch-next-ui/out next build && next export",
+    "build": "next build && next export && node update-static-asset-urls.js",
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem"
   },
   "dependencies": {
     "@forgerock/javascript-sdk": "^2.2.0",
+    "cross-env": "^7.0.3",
     "govuk-frontend": "^3.10.2",
     "next": "10.0.6",
     "react": "17.0.1",
@@ -28,6 +29,8 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^24.0.0",
     "http-server": "^0.12.3",
+    "replace-in-files": "^3.0.0",
+    "replace-in-files-cli": "^1.0.0",
     "sass": "^1.32.6"
   },
   "peerDependencies": {
