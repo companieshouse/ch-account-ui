@@ -1,65 +1,49 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from 'react'
+import Button from '../components/interaction/Button'
+import HeadingText from '../components/typeography/HeadingText'
+import BodyText from '../components/typeography/BodyText'
+import List from '../components/typeography/List'
+import ListItem from '../components/typeography/ListItem'
+import InsetText from '../components/typeography/InsetText'
+import Row from '../components/layout/Row'
+import Column from '../components/layout/Column'
+import Main from '../components/layout/Main'
+import WidthContainer from '../components/layout/WidthContainer'
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <WidthContainer>
+      <Main>
+        <Row>
+          <Column type='two-thirds'>
+            <HeadingText type="h1" size="xl">Companies House account</HeadingText>
+            <BodyText>A Companies House account allows you to:</BodyText>
+            <List type="bullet">
+              <ListItem>find and update company information and file for your company online</ListItem>
+              <ListItem>authorise people who can update information and file documents for your company</ListItem>
+            </List>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+            <InsetText>You&apos;ll need to provide an email address and verify that you have access to it to create a Companies House account.</InsetText>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+            <BodyText>Registering takes around 5 minutes</BodyText>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+            <Row>
+              <Column type='one-half'>
+                <HeadingText type="h2" size="s">I do not have a Companies House account</HeadingText>
+                <BodyText>To file for your company online and update the company information you&apos;ll need to set up an online account.</BodyText>
+                <Button renderAs="link" href="/register/provide-contact-details" label="Create an account" hasStartIcon={true} />
+              </Column>
+              <Column type='one-half'>
+                <HeadingText type="h2" size="s">I already have a Companies House account</HeadingText>
+                <BodyText>View, update and file for a company online byu signing in to your existing account.</BodyText>
+                <Button renderAs="link" href="/login" label="Sign in" hasStartIcon={true} />
+              </Column>
+            </Row>
+          </Column>
+        </Row>
+      </Main>
+    </WidthContainer>
   )
 }
+
+export default Home
