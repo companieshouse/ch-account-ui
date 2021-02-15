@@ -1,0 +1,12 @@
+@import "../../node_modules/govuk-frontend/govuk/all";
+
+.no-js-hide {
+  display: none;
+}
+
+.js-enabled {
+  .no-js-hide {
+    display: inherit;
+  }
+}
+
