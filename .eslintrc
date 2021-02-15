@@ -1,0 +1,10 @@
+{
+	"plugins": [
+		"jsx-a11y"
+	],
+	"extends": [
+		"eslint-config-standard",
+		"plugin:react/recommended",
+		"plugin:jsx-a11y/recommended"
+	]
+}
