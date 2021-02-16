@@ -11,43 +11,52 @@ import InputField from '../../../components/interaction/InputField'
 import FormGroup from '../../../components/interaction/FormGroup'
 import BackLink from '../../../components/interaction/BackLink'
 import Button from '../../../components/interaction/Button'
+import List from '../../../components/typeography/List'
+import ListItem from '../../../components/typeography/ListItem'
+import Details from '../../../components/interaction/Details'
+import LinkText from '../../../components/interaction/LinkText'
+import HeadingCount from '../../../services/HeadingCount'
 
-const RegisterEmailVerification = ({ formAction = '/register', onSubmit, errors = [] }) => {
+const RegisterEmailVerification = ({ formAction = '/api/v1.0/register', onSubmit, errors = [], userDetails = { fullName: '', emailAddress: 'test@user.com' } }) => {
+  const { emailAddress } = userDetails
+  const headingCount = new HeadingCount()
+
+  React.useEffect(() => {
+    headingCount.reset()
+  })
+
   return (
     <WidthContainer>
-      <BackLink href="/">Back</BackLink>
+      <BackLink>Back</BackLink>
       <Main>
         <Row>
           <Column type='two-thirds'>
             <form action={formAction} onSubmit={onSubmit} method="post">
-              <input type="hidden" name="step" value="1" />
-              {errors.length === 0 && <HeadingText type="h1">What are your contact details?</HeadingText>}
+              <input type="hidden" name="step" value="2" />
+              {errors.length === 0 && <HeadingText headingCount={headingCount}>Verify your email address</HeadingText>}
               {errors.length > 0 && <>
-                <ErrorSummary type="h1" title="There is a problem" errors={errors}/>
-                <HeadingText type="h2">What are your contact details?</HeadingText>
+                <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
+                <HeadingText headingCount={headingCount}>Verify your email address</HeadingText>
               </>}
 
               <BodyText>
-                We will send you an email that contains a verification link. This will verify that
-                you have access to the email address you give us and will make your account more secure.
+                We&apos;ve sent an email to {emailAddress} that contains a verification link.
               </BodyText>
 
-              <InsetText>
-                For your security, we may ask you to verify your details again when you
-                sign back in to your Companies House account.
-              </InsetText>
+              <List type='number'>
+                <ListItem>Open the email.</ListItem>
+                <ListItem>Select the verification link in the email.</ListItem>
+              </List>
 
-              <FormGroup errors={errors} groupIds={['fullName']}>
-                <InputField id="fullName" type="text" label="Full name" errors={errors} />
-              </FormGroup>
+              <BodyText weight="bold">
+                This page will update automatically when you select the link.
+              </BodyText>
 
-              <FormGroup errors={errors} groupIds={['username']}>
-                <InputField id="email" type="text" autoComplete="email" label="Email address" errors={errors} />
-              </FormGroup>
-
-              <Button type="submit" className="govuk-button" data-module="govuk-button">
-                Continue
-              </Button>
+              <Details label='I have not received an email'>
+                <p>The email may take a few minutes to arrive. Its subject line is &apos;Verify your email address - Companies House&apos;.</p>
+                <p>Check your junk folder. If it still has not arrived, <LinkText>you can ask us to send you another email</LinkText>.</p>
+                <p>If you have given us the wrong email address you <LinkText href='/register/provide-contact-details'>can give us a different email address</LinkText>.</p>
+              </Details>
             </form>
           </Column>
         </Row>
