@@ -2,9 +2,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../services/HeadingCount'
 
-const HeadingText = ({ type = '', label = '', size = 'xl', children, className = '', headingCount }) => {
+const HeadingText = ({ type = '', label = '', size = 'xl', caption, children, className = '', headingCount, weight = 'bold' }) => {
   const [tag, setTag] = React.useState(type)
   const classes = [className]
+
+  if (weight === 'regular') classes.push('govuk-!-font-weight-regular')
+  if (weight === 'bold') classes.push('govuk-!-font-weight-bold')
+
   const finalClassName = classes.join(' ').trim()
 
   if (headingCount) {
@@ -19,7 +23,10 @@ const HeadingText = ({ type = '', label = '', size = 'xl', children, className =
   const HeadingTag = `${tag}`
 
   return (
-    <HeadingTag className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}</HeadingTag>
+    <>
+      {Boolean(caption) === true && <span className="govuk-caption-xl">{caption}</span>}
+      <HeadingTag className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}</HeadingTag>
+    </>
   )
 }
 
@@ -31,12 +38,15 @@ HeadingText.propTypes = {
   headingCount: PropTypes.instanceOf(HeadingCount),
   label: PropTypes.string,
   size: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  caption: PropTypes.string,
+  weight: PropTypes.string
 }
 
 HeadingText.defaultProps = {
   className: '',
   label: '',
   size: 'xl',
-  type: ''
+  type: '',
+  weight: 'bold'
 }
