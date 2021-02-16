@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
 const Details = ({ className = '', children, label = '' }) => {
@@ -20,3 +21,14 @@ const Details = ({ className = '', children, label = '' }) => {
 }
 
 export default Details
+
+Details.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.string,
+  label: PropTypes.string
+}
+
+Details.defaultProps = {
+  className: '',
+  label: ''
+}
