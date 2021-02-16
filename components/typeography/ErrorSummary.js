@@ -1,12 +1,24 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import HeadingCount from '../../services/HeadingCount'
 
-const ErrorSummary = ({ type = 'h1', title = 'No title!', errors = [], children, className = '' }) => {
+const ErrorSummary = ({ type = '', title = 'No title!', errors = [], children, className = '', headingCount }) => {
   if (errors.length === 0 && !children) return null
 
+  const [tag, setTag] = React.useState(type)
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
-  const HeadingTag = `${type}`
+
+  if (headingCount) {
+    React.useEffect(() => {
+      headingCount.use()
+      setTag(`h${headingCount.count}`)
+    })
+  }
+
+  if (!tag) return null
+
+  const HeadingTag = `${tag}`
 
   return (
     <div className={`govuk-error-summary ${finalClassName}`}
@@ -37,14 +49,19 @@ export default ErrorSummary
 
 ErrorSummary.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.shape({
-    anchor: PropTypes.string,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    anchor: PropTypes.string
   })),
-  title: PropTypes.string
+  headingCount: PropTypes.instanceOf(HeadingCount),
+  title: PropTypes.string,
+  type: PropTypes.string
 }
 
 ErrorSummary.defaultProps = {
+  className: '',
   errors: [],
-  title: 'No title!'
+  title: 'No title!',
+  type: ''
 }
