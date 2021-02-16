@@ -12,7 +12,7 @@ import InsetText from '../../components/typeography/InsetText'
 import HeadingCount from '../../services/HeadingCount'
 
 const LoginFirstTime = ({
-  errors = [{ label: 'Foo', anchor: 'bar' }], userDetails = {
+  errors = [], userDetails = {
     fullName: '',
     emailAddress: 'test@user.com'
   }
