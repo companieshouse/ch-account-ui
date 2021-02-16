@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
-const ListItem = ({ type = 'text', children, className = '' }) => {
+const ListItem = ({ children, className = '' }) => {
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
 
@@ -10,3 +11,12 @@ const ListItem = ({ type = 'text', children, className = '' }) => {
 }
 
 export default ListItem
+
+ListItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string
+}
+
+ListItem.defaultProps = {
+  className: ''
+}
