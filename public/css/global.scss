@@ -1,12 +1,8 @@
 @import "../../node_modules/govuk-frontend/govuk/all";
 
-.no-js-hide {
-  display: none;
-}
-
-.js-enabled {
+.js-disabled {
   .no-js-hide {
-    display: inherit;
+    display: none;
   }
 }
 
