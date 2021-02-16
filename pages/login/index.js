@@ -11,19 +11,26 @@ import InputField from '../../components/interaction/InputField'
 import BodyText from '../../components/typeography/BodyText'
 import Button from '../../components/interaction/Button'
 import LinkText from '../../components/interaction/LinkText'
+import HeadingCount from '../../services/HeadingCount'
 
-const Login = ({ formAction = '/loin', onSubmit, errors = [{ label: 'Enter your email address', anchor: 'username' }] }) => {
+const Login = ({ formAction = '/api/v1.0/login', onSubmit, errors = [] }) => {
+  const headingCount = new HeadingCount()
+
+  React.useEffect(() => {
+    headingCount.reset()
+  })
+
   return (
     <WidthContainer>
-      <BackLink href="/">Back</BackLink>
+      <BackLink>Back</BackLink>
       <Main>
         <Row>
           <Column type='two-thirds'>
             <form action={formAction} onSubmit={onSubmit} method="post">
-              {errors.length === 0 && <HeadingText type="h1">Sign in to your Companies House account</HeadingText>}
+              {errors.length === 0 && <HeadingText headingCount={headingCount}>Sign in to your Companies House account</HeadingText>}
               {errors.length > 0 && <>
-                <ErrorSummary type="h1" title="There is a problem" errors={errors}/>
-                <HeadingText type="h2">Sign in to your Companies House account</HeadingText>
+                <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
+                <HeadingText headingCount={headingCount}>Sign in to your Companies House account</HeadingText>
               </>}
 
               <FormGroup errors={errors} groupIds={['username']}>
