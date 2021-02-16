@@ -6064,12 +6064,8 @@ x:-moz-any-link {
   }
 }
 
-.no-js-hide {
+.js-disabled .no-js-hide {
   display: none;
-}
-
-.js-enabled .no-js-hide {
-  display: inherit;
 }
 
 /*# sourceMappingURL=global.css.map */
