@@ -11,20 +11,27 @@ import InputField from '../../../components/interaction/InputField'
 import FormGroup from '../../../components/interaction/FormGroup'
 import BackLink from '../../../components/interaction/BackLink'
 import Button from '../../../components/interaction/Button'
+import HeadingCount from '../../../services/HeadingCount'
 
-const RegisterContactDetails = ({ formAction = '/register', onSubmit, errors = [] }) => {
+const RegisterContactDetails = ({ formAction = '/api/v1.0/register', onSubmit, errors = [] }) => {
+  const headingCount = new HeadingCount()
+
+  React.useEffect(() => {
+    headingCount.reset()
+  })
+
   return (
     <WidthContainer>
-      <BackLink href="/">Back</BackLink>
+      <BackLink>Back</BackLink>
       <Main>
         <Row>
           <Column type='two-thirds'>
             <form action={formAction} onSubmit={onSubmit} method="post">
               <input type="hidden" name="step" value="1" />
-              {errors.length === 0 && <HeadingText type="h1">What are your contact details?</HeadingText>}
+              {errors.length === 0 && <HeadingText headingCount={headingCount}>What are your contact details?</HeadingText>}
               {errors.length > 0 && <>
-                <ErrorSummary type="h1" title="There is a problem" errors={errors}/>
-                <HeadingText type="h2">What are your contact details?</HeadingText>
+                <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
+                <HeadingText headingCount={headingCount}>What are your contact details?</HeadingText>
               </>}
 
               <BodyText>
