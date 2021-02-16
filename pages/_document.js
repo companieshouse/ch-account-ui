@@ -28,7 +28,7 @@ class MyDocument extends Document {
           <link rel="stylesheet" href={`${BASE_PATH}/css/global.css`}/>
         </head>
         <Head/>
-        <body className="govuk-template__body app-body-class">
+        <body className="govuk-template__body app-body-class js-disabled">
         <Main/>
         <NextScript/>
         <script src={`${BASE_PATH}/js/sa11y.js`}/>
