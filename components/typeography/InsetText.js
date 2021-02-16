@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
 const InsetText = ({ children, className = '' }) => {
@@ -12,3 +13,12 @@ const InsetText = ({ children, className = '' }) => {
 }
 
 export default InsetText
+
+InsetText.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string
+}
+
+InsetText.defaultProps = {
+  className: ''
+}
