@@ -8,7 +8,7 @@ import {
   FORGEROCK_TREE_LOGIN
 } from './environment'
 
-export const login = (loginDetails) => {
+export const login = ({ username, password }) => {
   return new Promise((resolve, reject) => {
     Config.set({
       clientId: FORGEROCK_CLIENT_ID,
@@ -17,9 +17,10 @@ export const login = (loginDetails) => {
       scope: FORGEROCK_SCOPE,
       serverConfig: {
         baseUrl: FORGEROCK_AM,
-        timeout: 10000
+        timeout: 30000
       },
-      tree: FORGEROCK_TREE_LOGIN
+      tree: FORGEROCK_TREE_LOGIN,
+      support: 'modern'
     })
 
     const handleFatalError = (err) => {
@@ -59,8 +60,8 @@ export const login = (loginDetails) => {
       const nameCallback = step.getCallbackOfType('NameCallback')
       const passwordCallback = step.getCallbackOfType('PasswordCallback')
 
-      nameCallback.setName(loginDetails.username)
-      passwordCallback.setPassword(loginDetails.password)
+      nameCallback.setName(username)
+      passwordCallback.setPassword(password)
 
       nextStep(step)
     }
