@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getFieldError } from '../../services/errors'
+import { getFieldError } from '../../../services/errors'
 
 const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '' }) => {
   const classes = [className]

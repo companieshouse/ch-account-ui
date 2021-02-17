@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getFieldError } from '../../services/errors'
+import { getFieldError } from '../../../services/errors'
 
 const FormGroup = ({ children, className = '', errors = [], groupIds = [] }) => {
   const classes = [className]
