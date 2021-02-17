@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import HeadingCount from '../../services/HeadingCount'
+import HeadingCount from '../../../services/HeadingCount'
 
 const ErrorSummary = ({ type = '', title = 'No title!', errors = [], children, className = '', headingCount }) => {
   if (errors.length === 0 && !children) return null

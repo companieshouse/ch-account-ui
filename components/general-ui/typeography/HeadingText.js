@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import HeadingCount from '../../services/HeadingCount'
+import HeadingCount from '../../../services/HeadingCount'
 
 const HeadingText = ({ type = '', label = '', size = 'xl', caption, children, className = '', headingCount, weight = 'bold' }) => {
   const [tag, setTag] = React.useState(type)

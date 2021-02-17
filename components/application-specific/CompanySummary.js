@@ -1,4 +1,4 @@
-import HeadingText from '../typeography/HeadingText'
+import HeadingText from '../general-ui/typeography/HeadingText'
 import React from 'react'
 
 const CompanySummary = ({
