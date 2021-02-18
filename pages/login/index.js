@@ -48,7 +48,7 @@ const Login = () => {
   }
 
   return (
-    <LoginIndexView onSubmit={onLoginSubmit} errors={errors} />
+    <LoginIndexView onSubmit={onLoginSubmit} errors={errors} headingCount={headingCount} />
   )
 }
 
