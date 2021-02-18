@@ -29,7 +29,7 @@ const LoginFirstTime = ({
       <BackLink>Back</BackLink>
       <Main>
         <Row>
-          <Column type='two-thirds'>
+          <Column width='two-thirds'>
             {errors.length === 0 && <HeadingText headingCount={headingCount}>You have create a Companies House account</HeadingText>}
             {errors.length > 0 && <>
               <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>

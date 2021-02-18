@@ -36,7 +36,7 @@ const Home = () => {
               <Column width='one-half'>
                 <HeadingText type="h2" size="s">I already have a Companies House account</HeadingText>
                 <BodyText>View, update and file for a company online byu signing in to your existing account.</BodyText>
-                <Button renderAs="link" href="/login" label="Sign in" hasStartIcon={true} />
+                <Button renderAs="link" href="/account/login" label="Sign in" hasStartIcon={true} />
               </Column>
             </Row>
           </Column>
