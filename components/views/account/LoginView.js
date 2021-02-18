@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import WidthContainer from '../../../components/general-ui/layout/WidthContainer'
-import BackLink from '../../../components/general-ui/interaction/BackLink'
-import Main from '../../../components/general-ui/layout/Main'
-import Column from '../../../components/general-ui/layout/Column'
-import Row from '../../../components/general-ui/layout/Row'
-import ErrorSummary from '../../../components/general-ui/typeography/ErrorSummary'
-import HeadingText from '../../../components/general-ui/typeography/HeadingText'
-import BodyText from '../../../components/general-ui/typeography/BodyText'
-import Button from '../../../components/general-ui/interaction/Button'
-import LinkText from '../../../components/general-ui/interaction/LinkText'
+import WidthContainer from '../../general-ui/layout/WidthContainer'
+import BackLink from '../../general-ui/interaction/BackLink'
+import Main from '../../general-ui/layout/Main'
+import Column from '../../general-ui/layout/Column'
+import Row from '../../general-ui/layout/Row'
+import ErrorSummary from '../../general-ui/typeography/ErrorSummary'
+import HeadingText from '../../general-ui/typeography/HeadingText'
+import BodyText from '../../general-ui/typeography/BodyText'
+import Button from '../../general-ui/interaction/Button'
+import LinkText from '../../general-ui/interaction/LinkText'
 import NameCallback from '../../forgerock-ui/NameCallback'
 import PasswordCallback from '../../forgerock-ui/PasswordCallback'
 import HeadingCount from '../../../services/HeadingCount'
 
-const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiElements = [], headingCount }) => {
+const LoginView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiElements = [], headingCount }) => {
   return (
     <WidthContainer>
       <BackLink>Back</BackLink>
       <Main>
         <Row>
-          <Column type='two-thirds'>
+          <Column width='two-thirds'>
             <form action={formAction} onSubmit={onSubmit} method="post">
               {errors.length === 0 &&
               <HeadingText headingCount={headingCount}>Sign in to your Companies House account</HeadingText>}
@@ -63,9 +63,9 @@ const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [],
   )
 }
 
-export default LoginIndexView
+export default LoginView
 
-LoginIndexView.propTypes = {
+LoginView.propTypes = {
   errors: PropTypes.array,
   formAction: PropTypes.string,
   onSubmit: PropTypes.func,
@@ -73,7 +73,7 @@ LoginIndexView.propTypes = {
   headingCount: PropTypes.instanceOf(HeadingCount)
 }
 
-LoginIndexView.defaultProps = {
+LoginView.defaultProps = {
   errors: [],
   formAction: '/api/v1.0/login',
   uiElements: []
