@@ -25,7 +25,7 @@ const RegisterContactDetails = ({ formAction = '/api/v1.0/register', onSubmit, e
       <BackLink>Back</BackLink>
       <Main>
         <Row>
-          <Column type='two-thirds'>
+          <Column width='two-thirds'>
             <form action={formAction} onSubmit={onSubmit} method="post">
               <input type="hidden" name="step" value="1" />
               {errors.length === 0 && <HeadingText headingCount={headingCount}>What are your contact details?</HeadingText>}
