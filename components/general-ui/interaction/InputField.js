@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 
-const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '' }) => {
+const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -24,6 +24,7 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
              id={id}
              name={id}
              type={type}
+             autoComplete={autoComplete}
              aria-describedby={Boolean(error) && `${id}-error`}
       />
     </React.Fragment>
@@ -43,7 +44,8 @@ InputField.propTypes = {
   hint: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  autoComplete: PropTypes.string
 }
 
 InputField.defaultProps = {
