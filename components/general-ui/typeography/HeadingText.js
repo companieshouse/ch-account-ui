@@ -15,7 +15,7 @@ const HeadingText = ({ type = '', label = '', size = 'xl', caption, children, cl
     React.useEffect(() => {
       headingCount.use()
       setTag(`h${headingCount.count}`)
-    })
+    }, [])
   }
 
   if (!tag) return null
