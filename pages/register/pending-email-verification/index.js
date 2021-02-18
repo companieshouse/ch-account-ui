@@ -26,7 +26,7 @@ const RegisterEmailVerification = ({ formAction = '/api/v1.0/register', onSubmit
       <BackLink>Back</BackLink>
       <Main>
         <Row>
-          <Column type='two-thirds'>
+          <Column width='two-thirds'>
             <form action={formAction} onSubmit={onSubmit} method="post">
               <input type="hidden" name="step" value="2" />
               {errors.length === 0 && <HeadingText headingCount={headingCount}>Verify your email address</HeadingText>}
