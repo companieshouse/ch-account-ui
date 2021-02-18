@@ -49,7 +49,7 @@ const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = 
             {companies.map((company) => <CompanySummary key={company} company={company} headingCount={headingCount} />)}
 
             <Button type="link" className="govuk-button" data-module="govuk-button">
-              Add a company
+              Add another company
             </Button>
           </Column>
         </Row>
