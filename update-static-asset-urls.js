@@ -3,7 +3,7 @@ const BASE_PATH = process.env.BASE_PATH || ''
 
 const options = {
   files: [
-    './out/_next/static/css/*.css'
+    './out/css/*.css'
   ],
 
   // See more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
