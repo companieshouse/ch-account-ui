@@ -4,6 +4,7 @@ class HeadingCount {
   }
 
   use () {
+    if (this.count > 50) return
     this.count++
   }
 
