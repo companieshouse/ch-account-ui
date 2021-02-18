@@ -1,11 +1,12 @@
 import React from 'react'
 
-const Column = ({ children, type = 'full', className = '' }) => {
+const Column = ({ children, width = 'full', className = '' }) => {
   const classes = [className]
 
-  if (type === 'full') classes.push('full')
-  if (type === 'one-half') classes.push('one-half')
-  if (type === 'two-thirds') classes.push('two-thirds')
+  if (width === 'full') classes.push('full')
+  if (width === 'one-half') classes.push('one-half')
+  if (width === 'one-third') classes.push('one-third')
+  if (width === 'two-thirds') classes.push('two-thirds')
 
   const finalClassName = classes.join(' ').trim()
 
