@@ -50,7 +50,7 @@ const RegisterEmailVerification = ({ formAction = '/api/v1.0/register', onSubmit
 
               <Details label='I have not received an email'>
                 <p>The email may take a few minutes to arrive. Its subject line is &apos;Verify your email address - Companies House&apos;.</p>
-                <p>Check your junk folder. If it still has not arrived, <LinkText>you can ask us to send you another email</LinkText>.</p>
+                <p>Check your junk folder. If it still has not arrived, <LinkText href='https://gov.uk'>you can ask us to send you another email</LinkText>.</p>
                 <p>If you have given us the wrong email address you <LinkText href='/register/provide-contact-details'>can give us a different email address</LinkText>.</p>
               </Details>
             </form>
