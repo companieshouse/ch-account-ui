@@ -14,16 +14,18 @@ import ListItem from '../../../components/general-ui/typeography/ListItem'
 import LinkText from '../../../components/general-ui/interaction/LinkText'
 import CompanySummary from '../../../components/application-specific/CompanySummary'
 import HeadingCount from '../../../services/HeadingCount'
+import AccountLinks from '../../application-specific/AccountLinks'
+import SectionBreak from '../../general-ui/typeography/SectionBreak'
 
-const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = [] }) => {
+const HomeView = ({ headingCount, errors = [], userDetails = {}, companies = [] }) => {
   const { fullName } = userDetails
 
   return (
     <WidthContainer>
-      <BackLink>Back</BackLink>
+      <AccountLinks userDetails={userDetails} />
       <Main>
         <Row>
-          <Column type='full'>
+          <Column width='full'>
             {errors.length === 0 && <HeadingText headingCount={headingCount} size="l" caption='Home'>{fullName}</HeadingText>}
             {errors.length > 0 && <>
               <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
@@ -31,7 +33,7 @@ const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = 
             </>}
 
             <HeadingText headingCount={headingCount} size="s">Your companies</HeadingText>
-            <hr className="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
+            <SectionBreak />
 
             {companies.length === 0 && <>
               <HeadingText headingCount={headingCount} size="m">You have not added any companies to this account</HeadingText>
@@ -58,16 +60,16 @@ const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = 
   )
 }
 
-export default AccountHome
+export default HomeView
 
-AccountHome.propTypes = {
+HomeView.propTypes = {
   companies: PropTypes.array,
   errors: PropTypes.array,
   headingCount: PropTypes.instanceOf(HeadingCount),
   userDetails: PropTypes.object
 }
 
-AccountHome.defaultProps = {
+HomeView.defaultProps = {
   companies: [],
   errors: [],
   userDetails: {}

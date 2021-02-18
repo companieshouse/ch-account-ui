@@ -1,6 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
-import LoginIndexView from '../../components/views/login/IndexView'
+import LoginView from '../../components/views/account/LoginView'
 import { loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 
@@ -58,7 +58,7 @@ const Login = () => {
     headingCount.reset()
     loginFlow({
       onSuccess: (loginData) => {
-        Router.push('/account/home/')
+        Router.push('/account/home')
       },
       onFailure: (err) => {
         const message = err?.payload?.message || 'Login failure'
@@ -104,7 +104,7 @@ const Login = () => {
   }
 
   return (
-    <LoginIndexView onSubmit={onLoginSubmit} errors={errors} headingCount={headingCount} uiElements={uiElements}/>
+    <LoginView onSubmit={onLoginSubmit} errors={errors} headingCount={headingCount} uiElements={uiElements}/>
   )
 }
 

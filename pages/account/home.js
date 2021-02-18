@@ -1,8 +1,8 @@
 import React from 'react'
-import AccountHomeView from '../../components/views/account/Home'
+import HomeView from '../../components/views/account/HomeView'
 import HeadingCount from '../../services/HeadingCount'
 
-const AccountHome = () => {
+const Home = () => {
   const headingCount = new HeadingCount()
 
   React.useEffect(() => {
@@ -30,8 +30,8 @@ const AccountHome = () => {
   }
 
   return (
-    <AccountHomeView headingCount={headingCount} errors={data.errors} companies={data.companies} userDetails={data.userDetails} />
+    <HomeView headingCount={headingCount} errors={data.errors} companies={data.companies} userDetails={data.userDetails} />
   )
 }
 
-export default AccountHome
+export default Home
