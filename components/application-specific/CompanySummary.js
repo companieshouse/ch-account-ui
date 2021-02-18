@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import HeadingText from '../general-ui/typeography/HeadingText'
 import React from 'react'
 import Column from '../general-ui/layout/Column'
@@ -12,6 +13,7 @@ import TBody from '../general-ui/layout/TBody'
 import Td from '../general-ui/layout/Td'
 import Tag from '../general-ui/typeography/Tag'
 import Button from '../general-ui/interaction/Button'
+import HeadingCount from '../../services/HeadingCount'
 
 const CompanySummary = ({
   headingCount,
@@ -58,3 +60,12 @@ const CompanySummary = ({
 }
 
 export default CompanySummary
+
+CompanySummary.propTypes = {
+  company: PropTypes.object,
+  headingCount: PropTypes.instanceOf(HeadingCount)
+}
+
+CompanySummary.defaultProps = {
+  company: {}
+}
