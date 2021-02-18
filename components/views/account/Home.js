@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import WidthContainer from '../../../components/general-ui/layout/WidthContainer'
 import BackLink from '../../../components/general-ui/interaction/BackLink'
@@ -12,6 +13,7 @@ import List from '../../../components/general-ui/typeography/List'
 import ListItem from '../../../components/general-ui/typeography/ListItem'
 import LinkText from '../../../components/general-ui/interaction/LinkText'
 import CompanySummary from '../../../components/application-specific/CompanySummary'
+import HeadingCount from '../../../services/HeadingCount'
 
 const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = [] }) => {
   const { fullName } = userDetails
@@ -57,3 +59,16 @@ const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = 
 }
 
 export default AccountHome
+
+AccountHome.propTypes = {
+  companies: PropTypes.array,
+  errors: PropTypes.array,
+  headingCount: PropTypes.instanceOf(HeadingCount),
+  userDetails: PropTypes.object
+}
+
+AccountHome.defaultProps = {
+  companies: [],
+  errors: [],
+  userDetails: {}
+}
