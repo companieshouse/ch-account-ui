@@ -1,4 +1,4 @@
-import { Config, FRAuth, TokenManager, StepType } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, TokenManager, StepType, SessionManager } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
@@ -75,6 +75,24 @@ export const loginFlow = ({
 
   // Start the login process
   nextStep()
+}
+
+export const logoutFlow = ({
+  onSuccess,
+  onFailure
+}) => {
+  Config.set({
+    clientId: FORGEROCK_CLIENT_ID,
+    realmPath: FORGEROCK_REALM,
+    redirectUri: FORGEROCK_REDIRECT,
+    scope: FORGEROCK_SCOPE,
+    serverConfig: {
+      baseUrl: FORGEROCK_AM,
+      timeout: 30000
+    }
+  })
+
+  SessionManager.logout().then(onSuccess).catch(onFailure)
 }
 
 export const getCallbackElementData = (callbackData, matchFunc) => {
