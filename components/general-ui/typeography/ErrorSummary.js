@@ -13,7 +13,7 @@ const ErrorSummary = ({ type = '', title = 'No title!', errors = [], children, c
     React.useEffect(() => {
       headingCount.use()
       setTag(`h${headingCount.count}`)
-    })
+    }, [])
   }
 
   if (!tag) return null
