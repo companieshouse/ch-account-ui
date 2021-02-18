@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import Row from '../general-ui/layout/Row'
 import LinkText from '../general-ui/interaction/LinkText'
 import Column from '../general-ui/layout/Column'
 import SectionBreak from '../general-ui/typeography/SectionBreak'
-import BodyText from '../general-ui/typeography/BodyText'
 import SpanText from '../general-ui/typeography/SpanText'
 
 const AccountLinks = ({ userDetails = {} }) => {
@@ -33,3 +33,11 @@ const AccountLinks = ({ userDetails = {} }) => {
 }
 
 export default AccountLinks
+
+AccountLinks.propTypes = {
+  userDetails: PropTypes.object
+}
+
+AccountLinks.defaultProps = {
+  userDetails: {}
+}
