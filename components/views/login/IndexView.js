@@ -12,8 +12,11 @@ import InputField from '../../../components/general-ui/interaction/InputField'
 import BodyText from '../../../components/general-ui/typeography/BodyText'
 import Button from '../../../components/general-ui/interaction/Button'
 import LinkText from '../../../components/general-ui/interaction/LinkText'
+import NameCallback from '../../forgerock-ui/NameCallback'
+import { getCallbackElementData } from '../../../services/forgerock'
+import PasswordCallback from '../../forgerock-ui/PasswordCallback'
 
-const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], headingCount }) => {
+const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiElements = [], headingCount }) => {
   return (
     <WidthContainer>
       <BackLink>Back</BackLink>
@@ -28,13 +31,19 @@ const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [],
                 <HeadingText headingCount={headingCount}>Sign in to your Companies House account</HeadingText>
               </>}
 
-              <FormGroup errors={errors} groupIds={['username']}>
-                <InputField id="username" type="text" autoComplete="email" label="Email address" errors={errors}/>
-              </FormGroup>
+              {uiElements.map((uiElement) => {
+                console.log('Processing ui element', uiElement)
+                switch (uiElement.type) {
+                  case 'NameCallback':
+                    return <NameCallback uiElement={uiElement} errors={errors} />
 
-              <FormGroup errors={errors} groupIds={['password']}>
-                <InputField id="password" type="password" label="Password" autoComplete="current-password" errors={errors}/>
-              </FormGroup>
+                  case 'PasswordCallback':
+                    return <PasswordCallback uiElement={uiElement} errors={errors} />
+
+                  default:
+                    return null
+                }
+              })}
 
               <Button type="submit" className="govuk-button" data-module="govuk-button">
                 Sign in
