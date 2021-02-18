@@ -1,18 +1,23 @@
 import React from 'react'
+import Router from 'next/router'
 import LoginIndexView from '../../components/views/login/IndexView'
-import { login, loginFlow } from '../../services/forgerock'
+import { loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 
-const step1 = [{
-  type: 'NameCallback',
-  output: [{ name: 'prompt', value: 'User Name' }],
-  input: [{ name: 'IDToken1', value: '' }],
-  _id: 0
+/* const step1 = [{
+  payload: {
+    type: 'NameCallback',
+    output: [{ name: 'prompt', value: 'User Name' }],
+    input: [{ name: 'IDToken1', value: '' }],
+    _id: 0
+  }
 }, {
-  type: 'PasswordCallback',
-  output: [{ name: 'prompt', value: 'Password' }],
-  input: [{ name: 'IDToken2', value: '' }],
-  _id: 1
+  payload: {
+    type: 'PasswordCallback',
+    output: [{ name: 'prompt', value: 'Password' }],
+    input: [{ name: 'IDToken2', value: '' }],
+    _id: 1
+  }
 }]
 
 const step2 = [{
@@ -41,69 +46,61 @@ const step2 = [{
     input: [{ name: 'IDToken2', value: false }, { name: 'IDToken2validateOnly', value: false }],
     _id: 3
   }
-}]
+}] */
 
 const Login = () => {
-  const [uiElements, setUiElements] = React.useState(step1)
+  const [errors, setErrors] = React.useState([])
+  const [uiElements, setUiElements] = React.useState([])
+  const [submitData, setSubmitData] = React.useState(() => {})
   const headingCount = new HeadingCount()
 
   React.useEffect(() => {
     headingCount.reset()
-  })
+    loginFlow({
+      onSuccess: (loginData) => {
+        Router.push('/account/home/')
+      },
+      onFailure: (err) => {
+        const message = err?.payload?.message || 'Login failure'
+        const reason = err?.payload?.reason || 'Unknown'
+        const newErrors = []
 
-  const [errors, setErrors] = React.useState([])
+        switch (reason) {
+          case 'Unauthorised':
+            newErrors.push({
+              label: message,
+              anchor: 'IDToken1'
+            })
+            break
 
-  const submitData = loginFlow({
-    onSuccess: () => {},
-    onFailure: () => {},
-    onUpdateUi: (step) => {
+          default:
+            newErrors.push({
+              label: message,
+              anchor: 'IDToken1'
+            })
+            break
+        }
 
-    }
-  })
+        setErrors(newErrors)
+      },
+      onUpdateUi: (step, submitDataFunc) => {
+        setUiElements(step.callbacks)
+        setSubmitData(() => submitDataFunc)
+      }
+    })
+  }, [])
 
   const onLoginSubmit = (evt) => {
     evt.preventDefault()
-
     setErrors([])
 
     // Convert UI element values to JSON key/value pairs
-    console.log('Form elements', Object.entries(evt.target.elements), evt.target.elements)
     const formData = Object.entries(evt.target.elements).reduce((obj, [key, element]) => {
       obj[key] = element.value
       return obj
     }, {})
-    console.log('formData', formData)
-    const username = evt.target.elements.username.value
-    const password = evt.target.elements.password.value
 
-    // Submit the data to the auth flow tree
-    // submitData(formData)
-
-    login({ username, password }).then((response) => {
-      console.log('Response', response)
-    }).catch((err) => {
-      const message = err?.payload?.message || 'Login failure'
-      const reason = err?.payload?.reason || 'Unknown'
-      const newErrors = []
-
-      switch (reason) {
-        case 'Unauthorised':
-          newErrors.push({
-            label: message,
-            anchor: 'username'
-          })
-          break
-
-        default:
-          newErrors.push({
-            label: message,
-            anchor: 'username'
-          })
-          break
-      }
-
-      setErrors(newErrors)
-    })
+    submitData(formData)
   }
 
   return (
