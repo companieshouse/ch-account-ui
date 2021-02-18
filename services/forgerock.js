@@ -84,3 +84,23 @@ export const login = ({ username, password }) => {
     nextStep()
   })
 }
+
+export const loginFlow = () => {
+  const submitData = () => {}
+  return submitData
+}
+
+export const getCallbackElementData = (callbackData, matchFunc) => {
+  const { input, output } = callbackData
+
+  for (let i = 0; i < output.length; i++) {
+    if (matchFunc(output[i], i) === true) {
+      return {
+        input: input[i],
+        output: output[i]
+      }
+    }
+  }
+
+  return null
+}
