@@ -8,35 +8,13 @@ import ErrorSummary from '../../../components/general-ui/typeography/ErrorSummar
 import HeadingText from '../../../components/general-ui/typeography/HeadingText'
 import BodyText from '../../../components/general-ui/typeography/BodyText'
 import Button from '../../../components/general-ui/interaction/Button'
-import HeadingCount from '../../../services/HeadingCount'
 import List from '../../../components/general-ui/typeography/List'
 import ListItem from '../../../components/general-ui/typeography/ListItem'
 import LinkText from '../../../components/general-ui/interaction/LinkText'
 import CompanySummary from '../../../components/application-specific/CompanySummary'
 
-const AccountHome = ({
-  errors = [], userDetails = {
-    fullName: 'Test User',
-    emailAddress: 'test@user.com'
-  },
-  companies = [{
-    name: 'Test Company',
-    number: '0123456789',
-    address: '2nd Floor Red House, 17 London Road, London, SA73 8PH',
-    personsAuthorisedToFile: [{
-      name: 'Test User',
-      emailAddress: 'test@user.com',
-      permissions: ['FILE_ACCOUNTS', 'FILE_CONFIRMATION_STATEMENTS', 'MAKE_CHANGES_TO_THE_COMPANY'],
-      canAuthOthers: true
-    }]
-  }]
-}) => {
+const AccountHome = ({ headingCount, errors = [], userDetails = {}, companies = [] }) => {
   const { fullName } = userDetails
-  const headingCount = new HeadingCount()
-
-  React.useEffect(() => {
-    headingCount.reset()
-  })
 
   return (
     <WidthContainer>
