@@ -7,7 +7,7 @@ const AccountHome = () => {
 
   React.useEffect(() => {
     headingCount.reset()
-  })
+  }, [])
 
   const data = {
     errors: [],
