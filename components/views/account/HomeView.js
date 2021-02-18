@@ -48,7 +48,7 @@ const HomeView = ({ headingCount, errors = [], userDetails = {}, companies = [] 
               </List>
             </>}
             {companies.map((company) => <CompanySummary key={company} company={company} headingCount={headingCount} />)}
-
+            <SectionBreak />
             <Button type="link" className="govuk-button" data-module="govuk-button">
               Add another company
             </Button>
