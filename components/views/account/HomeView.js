@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import WidthContainer from '../../../components/general-ui/layout/WidthContainer'
-import BackLink from '../../../components/general-ui/interaction/BackLink'
 import Main from '../../../components/general-ui/layout/Main'
 import Column from '../../../components/general-ui/layout/Column'
 import Row from '../../../components/general-ui/layout/Row'
