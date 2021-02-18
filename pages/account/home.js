@@ -23,7 +23,8 @@ const AccountHome = () => {
         name: 'Test User',
         emailAddress: 'test@user.com',
         permissions: ['FILE_ACCOUNTS', 'FILE_CONFIRMATION_STATEMENTS', 'MAKE_CHANGES_TO_THE_COMPANY'],
-        canAuthOthers: true
+        canAuthOthers: true,
+        status: 'Confirmed'
       }]
     }]
   }
