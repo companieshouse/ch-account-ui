@@ -19,33 +19,47 @@ export const login = ({ username, password }) => {
         baseUrl: FORGEROCK_AM,
         timeout: 30000
       },
-      tree: FORGEROCK_TREE_LOGIN,
-      support: 'modern'
+      tree: FORGEROCK_TREE_LOGIN
     })
 
     const handleFatalError = (err) => {
+      console.log('ForgeRock fatal error', err)
       reject(err)
     }
 
     const nextStep = (step) => {
+      console.log('ForgeRock calling next step', step)
       FRAuth.next(step).then(handleStep).catch(handleFatalError)
     }
 
     const handleStep = (step) => {
       if (step.type === StepType.LoginSuccess) {
+        console.log('ForgeRock login success', step)
+        console.log('ForgeRock getting session token...')
         const sessionToken = step.getSessionToken()
         TokenManager.getTokens({ forceRenew: false }).then((tokens) => {
-          return [tokens, UserManager.getCurrentUser()]
+          console.log('ForgeRock getTokens returned', tokens)
+          console.log('ForgeRock getting current user...')
+          return Promise.all([tokens, UserManager.getCurrentUser()])
         }).then(([tokens, user]) => {
+          console.log('ForgeRock getCurrentUser returned', user)
+          console.log('Resolving login() promise', {
+            sessionToken,
+            tokens,
+            user
+          })
           return resolve({
             sessionToken,
             tokens,
             user
           })
         })
+
+        return
       }
 
       if (step.type === StepType.LoginFailure) {
+        console.log('ForgeRock login failure', step)
         return reject(step)
       }
 
