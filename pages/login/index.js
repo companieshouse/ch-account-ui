@@ -1,9 +1,17 @@
 import React from 'react'
 import LoginIndexView from '../../components/views/login/IndexView'
 import { login } from '../../services/forgerock'
+import HeadingCount from '../../services/HeadingCount'
 
 const Login = () => {
+  const headingCount = new HeadingCount()
+
+  React.useEffect(() => {
+    headingCount.reset()
+  })
+
   const [errors, setErrors] = React.useState([])
+
   const onLoginSubmit = (evt) => {
     evt.preventDefault()
 
