@@ -1,4 +1,4 @@
-import { Config, FRAuth, TokenManager, StepType, SessionManager } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, TokenManager, StepType, SessionManager, UserManager } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
@@ -42,10 +42,19 @@ export const loginFlow = ({
       const sessionToken = step.getSessionToken()
 
       TokenManager.getTokens({ forceRenew: true }).then((tokens) => {
+        return Promise.all([tokens, UserManager.getCurrentUser()])
+      }).then(([tokens, currentUser]) => {
         console.log('ForgeRock getTokens returned', tokens)
+        console.log('Resolving promise with', {
+          sessionToken,
+          tokens,
+          currentUser
+        })
+
         return onSuccess({
           sessionToken,
-          tokens
+          tokens,
+          currentUser
         })
       })
 
