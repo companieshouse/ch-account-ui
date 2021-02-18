@@ -12,15 +12,8 @@ import InputField from '../../../components/general-ui/interaction/InputField'
 import BodyText from '../../../components/general-ui/typeography/BodyText'
 import Button from '../../../components/general-ui/interaction/Button'
 import LinkText from '../../../components/general-ui/interaction/LinkText'
-import HeadingCount from '../../../services/HeadingCount'
 
-const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [] }) => {
-  const headingCount = new HeadingCount()
-
-  React.useEffect(() => {
-    headingCount.reset()
-  })
-
+const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], headingCount }) => {
   return (
     <WidthContainer>
       <BackLink>Back</BackLink>
@@ -40,7 +33,7 @@ const LoginIndexView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [] 
               </FormGroup>
 
               <FormGroup errors={errors} groupIds={['password']}>
-                <InputField id="password" type="password" label="Password" errors={errors}/>
+                <InputField id="password" type="password" label="Password" autoComplete="current-password" errors={errors}/>
               </FormGroup>
 
               <Button type="submit" className="govuk-button" data-module="govuk-button">
