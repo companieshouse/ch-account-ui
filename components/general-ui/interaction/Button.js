@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 
-const Button = ({ renderAs = 'button', type = 'button', onClick, label = '', href = '#', children, className = '', hasStartIcon = false }) => {
+const Button = ({ renderAs = 'button', type = 'button', onClick, label = '', href = '#', children, className = '', hasStartIcon = false, testId }) => {
   const classes = [className]
 
   if (hasStartIcon === true) classes.push('govuk-button--start')
@@ -15,7 +15,9 @@ const Button = ({ renderAs = 'button', type = 'button', onClick, label = '', hre
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/interactive-supports-focus */}
         <a role="button" draggable="false" onClick={onClick} onKeyUp={(evt) => evt.key === 'enter' && onClick(evt)}
            className={`govuk-button ${finalClassName}`}
-           data-module="govuk-button">
+           data-module="govuk-button"
+           data-test-id={testId}
+        >
           {label}
           {children}
           {hasStartIcon === true &&
@@ -50,7 +52,8 @@ Button.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func,
   renderAs: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  testId: PropTypes.string.isRequired
 }
 
 Button.defaultProps = {
