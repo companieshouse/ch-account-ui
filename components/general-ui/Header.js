@@ -8,7 +8,7 @@ const Header = () => {
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
           <Link href={'/'}>
-            <a className="govuk-header__link govuk-header__link--homepage" data-test-id="headerHomeLink">
+            <a className="govuk-header__link govuk-header__link--homepage" data-test-id="headerLogoHomeLink">
               <span className="govuk-header__logotype">
                 <svg aria-hidden="true" focusable="false" className="govuk-header__logotype-crown"
                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 97" height="30" width="36">
@@ -30,7 +30,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="govuk-header__content">
-          <LinkText href="/" className="govuk-header__link govuk-header__link--service-name">
+          <LinkText href="/" className="govuk-header__link govuk-header__link--service-name" testId="headerTitleHomeLink">
             Companies House account
           </LinkText>
         </div>

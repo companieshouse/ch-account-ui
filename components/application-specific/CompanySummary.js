@@ -51,8 +51,8 @@ const CompanySummary = ({
           </Table>
         </Column>
         <Column width="one-third">
-          <Button renderAs="link" href={`/account/company/${number}/file`}>File for this company</Button>
-          <Button renderAs="link" href={`/account/company/${number}/add-authorised-person`}>Add an authorised person</Button>
+          <Button renderAs="link" href={`/account/company/${number}/file`} testId={`fileForCompanyButton_${number}`}>File for this company</Button>
+          <Button renderAs="link" href={`/account/company/${number}/add-authorised-person`} testId={`addAuthorisedPersonButton_${number}`}>Add an authorised person</Button>
         </Column>
       </Row>
     </div>

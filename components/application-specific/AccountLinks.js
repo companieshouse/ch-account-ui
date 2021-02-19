@@ -13,17 +13,17 @@ const AccountLinks = ({ userDetails = {} }) => {
       <Row className="govuk-!-margin-top-4">
         <Column width='two-thirds'>
           <Row>
-            <LinkText href={'/account/home'} className="govuk-!-margin-right-4">Home</LinkText>
-            <LinkText href={'/account/home'} className="govuk-!-margin-right-4">Your details</LinkText>
-            <LinkText href={'/account/home'} className="govuk-!-margin-right-4">Manage account</LinkText>
-            <LinkText href={'/account/home'} className="govuk-!-margin-right-4">Messages</LinkText>
-            <LinkText href={'/account/home'} className="govuk-!-margin-right-4">Companies you follow</LinkText>
+            <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountHomeLink">Home</LinkText>
+            <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountYourDetailsLink">Your details</LinkText>
+            <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountManageAccountLink">Manage account</LinkText>
+            <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountMessagesLink">Messages</LinkText>
+            <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountCompaniesYouFollowLink">Companies you follow</LinkText>
           </Row>
         </Column>
         <Column width='one-third' className="alignRight">
           <Row>
-            <SpanText className="govuk-!-margin-right-4 govuk-body-s">{emailAddress}</SpanText>
-            <LinkText href={'/account/logout'}>Sign out</LinkText>
+            <SpanText className="govuk-!-margin-right-4 govuk-body-s" testId="accountEmailAddressText">{emailAddress}</SpanText>
+            <LinkText href={'/account/logout'} testId="accountSignOutLink">Sign out</LinkText>
           </Row>
         </Column>
       </Row>

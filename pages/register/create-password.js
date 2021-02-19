@@ -23,7 +23,7 @@ const RegisterCreatePassword = ({ formAction = '/api/v1.0/register', onSubmit, e
 
   return (
     <WidthContainer>
-      <BackLink>Back</BackLink>
+      <BackLink testId="backLink">Back</BackLink>
       <Main>
         <Row>
           <Column width='two-thirds'>
@@ -40,14 +40,30 @@ const RegisterCreatePassword = ({ formAction = '/api/v1.0/register', onSubmit, e
               </InsetText>
 
               <FormGroup errors={errors} groupIds={['password']}>
-                <InputField fixedWidth={10} id="password" type="password" label="Enter password" errors={errors} hint="This must be at least 8 characters long" />
+                <InputField
+                  fixedWidth={10}
+                  id="password"
+                  type="password"
+                  label="Enter password"
+                  errors={errors}
+                  hint="This must be at least 8 characters long"
+                  testId="passwordInputField"
+                />
               </FormGroup>
 
               <FormGroup errors={errors} groupIds={['confirmPassword']}>
-                <InputField fixedWidth={10} id="confirmPassword" type="password" label="Confirm password" errors={errors} hint="This must be at least 8 characters long" />
+                <InputField
+                  fixedWidth={10}
+                  id="confirmPassword"
+                  type="password"
+                  label="Confirm password"
+                  errors={errors}
+                  hint="This must be at least 8 characters long"
+                  testId="confirmPasswordInputField"
+                />
               </FormGroup>
 
-              <Button type="submit" className="govuk-button" data-module="govuk-button">
+              <Button type="submit" className="govuk-button" data-module="govuk-button" testId="submitButton">
                 Create and continue
               </Button>
             </form>

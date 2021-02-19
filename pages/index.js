@@ -31,12 +31,12 @@ const Home = () => {
               <Column width='one-half'>
                 <HeadingText type="h2" size="s">I do not have a Companies House account</HeadingText>
                 <BodyText>To file for your company online and update the company information you&apos;ll need to set up an online account.</BodyText>
-                <Button renderAs="link" href="/register/provide-contact-details" label="Create an account" hasStartIcon={true} />
+                <Button renderAs="link" href="/register/provide-contact-details" label="Create an account" hasStartIcon={true} testId="createAnAccountButton" />
               </Column>
               <Column width='one-half'>
                 <HeadingText type="h2" size="s">I already have a Companies House account</HeadingText>
                 <BodyText>View, update and file for a company online byu signing in to your existing account.</BodyText>
-                <Button renderAs="link" href="/account/login" label="Sign in" hasStartIcon={true} />
+                <Button renderAs="link" href="/account/login" label="Sign in" hasStartIcon={true} testId="signInButton" />
               </Column>
             </Row>
           </Column>

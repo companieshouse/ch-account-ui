@@ -44,12 +44,12 @@ const HomeView = ({ headingCount, errors = [], userDetails = {}, companies = [] 
               </BodyText>
               <List>
                 <ListItem>the company number</ListItem>
-                <ListItem>the company <LinkText href="https://www.gov.uk/guidance/company-authentication-codes-for-online-filing">authentication code</LinkText></ListItem>
+                <ListItem>the company <LinkText href="https://www.gov.uk/guidance/company-authentication-codes-for-online-filing" testId="authenticationCodeLink">authentication code</LinkText></ListItem>
               </List>
             </>}
             {companies.map((company) => <CompanySummary key={company} company={company} headingCount={headingCount} />)}
             <SectionBreak />
-            <Button type="link" className="govuk-button" data-module="govuk-button">
+            <Button type="link" className="govuk-button" data-module="govuk-button" testId="addAnotherCompanyButton">
               Add another company
             </Button>
           </Column>

@@ -13,7 +13,7 @@ const PasswordCallback = ({ errors, uiElement }) => {
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="password" autoComplete="current-password" label={label} errors={errors}/>
+      <InputField id={id} type="password" autoComplete="current-password" label={label} errors={errors} testId="passwordInputField" />
     </FormGroup>
   )
 }
