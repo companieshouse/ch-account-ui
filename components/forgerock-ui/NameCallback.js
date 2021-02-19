@@ -2,6 +2,7 @@ import React from 'react'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { getCallbackElementData } from '../../services/forgerock'
+import Button from '../general-ui/interaction/Button'
 
 const NameCallback = ({ errors, uiElement }) => {
   const elementData = getCallbackElementData(uiElement, (outputItem) => outputItem.name === 'prompt')
@@ -13,7 +14,7 @@ const NameCallback = ({ errors, uiElement }) => {
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="text" autoComplete="email" label={label} errors={errors}/>
+      <InputField id={id} type="text" autoComplete="email" label={label} errors={errors} testId="usernameInputField" />
     </FormGroup>
   )
 }

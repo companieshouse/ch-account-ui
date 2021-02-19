@@ -17,7 +17,7 @@ import HeadingCount from '../../../services/HeadingCount'
 const LoginView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiElements = [], headingCount }) => {
   return (
     <WidthContainer>
-      <BackLink>Back</BackLink>
+      <BackLink testId="backLink">Back</BackLink>
       <Main>
         <Row>
           <Column width='two-thirds'>
@@ -44,16 +44,16 @@ const LoginView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiEl
                 }
               })}
 
-              <Button type="submit" className="govuk-button" data-module="govuk-button">
+              <Button type="submit" className="govuk-button" data-module="govuk-button" testId="signInButton">
                 Sign in
               </Button>
 
               <BodyText>
-                <LinkText href="/register/provide-contact-details">Register a new account</LinkText>
+                <LinkText href="/register/provide-contact-details" testId="registerNewAccountLink">Register a new account</LinkText>
               </BodyText>
 
               <BodyText>
-                <LinkText href="/password-recovery/request">I&apos;ve forgotten my password</LinkText>
+                <LinkText href="/password-recovery/request" testId="forgottenMyPasswordLink">I&apos;ve forgotten my password</LinkText>
               </BodyText>
             </form>
           </Column>

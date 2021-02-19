@@ -22,7 +22,7 @@ const RegisterContactDetails = ({ formAction = '/api/v1.0/register', onSubmit, e
 
   return (
     <WidthContainer>
-      <BackLink>Back</BackLink>
+      <BackLink testId="backLink">Back</BackLink>
       <Main>
         <Row>
           <Column width='two-thirds'>
@@ -45,14 +45,14 @@ const RegisterContactDetails = ({ formAction = '/api/v1.0/register', onSubmit, e
               </InsetText>
 
               <FormGroup errors={errors} groupIds={['fullName']}>
-                <InputField id="fullName" type="text" label="Full name" errors={errors} />
+                <InputField id="fullName" type="text" label="Full name" errors={errors} testId="fullNameInputField" />
               </FormGroup>
 
               <FormGroup errors={errors} groupIds={['username']}>
-                <InputField id="email" type="text" autoComplete="email" label="Email address" errors={errors} />
+                <InputField id="email" type="text" autoComplete="email" label="Email address" errors={errors} testId="emailAddressInputField" />
               </FormGroup>
 
-              <Button type="submit" className="govuk-button" data-module="govuk-button">
+              <Button type="submit" className="govuk-button" data-module="govuk-button" testId="submitButton">
                 Continue
               </Button>
             </form>

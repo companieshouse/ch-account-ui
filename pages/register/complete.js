@@ -26,7 +26,7 @@ const LoginFirstTime = ({
 
   return (
     <WidthContainer>
-      <BackLink>Back</BackLink>
+      <BackLink testId="backLink">Back</BackLink>
       <Main>
         <Row>
           <Column width='two-thirds'>
@@ -48,7 +48,7 @@ const LoginFirstTime = ({
               can also authorise people to file for a company.
             </BodyText>
 
-            <Button href={'/account/home'} type="link" className="govuk-button" data-module="govuk-button">
+            <Button href={'/account/home'} type="link" className="govuk-button" data-module="govuk-button" testId="viewYourAccountButton">
               View your account
             </Button>
           </Column>
