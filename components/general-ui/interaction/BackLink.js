@@ -2,25 +2,26 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 
-const BackLink = ({ children, href = '', className = '', testId }) => {
+const BackLink = ({ children, href = '', className = '', testId, onClick }) => {
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
 
   if (href) {
     return (
       <Link href={href}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a className={`govuk-back-link no-js-hide ${finalClassName}`} data-test-id={testId}>{children}</a>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events */}
+        <a tabIndex="-1" role="link" className={`govuk-back-link no-js-hide ${finalClassName}`} onClick={onClick} data-testid={testId}>{children}</a>
       </Link>
     )
   }
 
   return (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <a href="#" onClick={() => {
+    <a href="#" onClick={(...args) => {
+      if (onClick) return onClick(...args)
       window.history.back()
       return false
-    }} className={`govuk-back-link no-js-hide ${finalClassName}`} data-test-id={testId}>{children}</a>
+    }} className={`govuk-back-link no-js-hide ${finalClassName}`} data-testid={testId}>{children}</a>
   )
 }
 
@@ -30,7 +31,8 @@ BackLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   href: PropTypes.string,
-  testId: PropTypes.string.isRequired
+  testId: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 }
 
 BackLink.defaultProps = {
