@@ -7,7 +7,8 @@
     "build": "next build && next export && node update-static-asset-urls.js",
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
-    "test": "jest"
+    "test": "jest --coverage",
+    "sonar": "sonar-scanner"
   },
   "dependencies": {
     "@forgerock/javascript-sdk": "^2.2.0",
@@ -39,7 +40,8 @@
     "jest-dom": "^4.0.0",
     "replace-in-files": "^3.0.0",
     "replace-in-files-cli": "^1.0.0",
-    "sass": "^1.32.6"
+    "sass": "^1.32.6",
+    "sonarqube-scanner": "^2.8.0"
   },
   "peerDependencies": {
     "eslint-config-standard": "^16.0.2",
