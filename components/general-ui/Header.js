@@ -8,7 +8,7 @@ const Header = () => {
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
           <Link href={'/'}>
-            <a className="govuk-header__link govuk-header__link--homepage" data-test-id="headerLogoHomeLink">
+            <a className="govuk-header__link govuk-header__link--homepage" data-testid="headerLogoHomeLink">
               <span className="govuk-header__logotype">
                 <svg aria-hidden="true" focusable="false" className="govuk-header__logotype-crown"
                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 97" height="30" width="36">

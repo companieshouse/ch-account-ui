@@ -26,7 +26,7 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
              type={type}
              autoComplete={autoComplete}
              aria-describedby={Boolean(error) && `${id}-error`}
-             data-test-id={testId}
+             data-testid={testId}
       />
     </React.Fragment>
   )

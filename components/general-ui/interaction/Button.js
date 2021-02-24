@@ -16,7 +16,7 @@ const Button = ({ renderAs = 'button', type = 'button', onClick, label = '', hre
         <a role="button" draggable="false" onClick={onClick} onKeyUp={(evt) => evt.key === 'enter' && onClick(evt)}
            className={`govuk-button ${finalClassName}`}
            data-module="govuk-button"
-           data-test-id={testId}
+           data-testid={testId}
         >
           {label}
           {children}

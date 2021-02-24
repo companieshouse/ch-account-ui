@@ -9,7 +9,7 @@ const LinkText = ({ children, href, className = '', testId }) => {
   return (
     <Link href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className={`govuk-link ${finalClassName}`} data-test-id={testId}>{children}</a>
+      <a className={`govuk-link ${finalClassName}`} data-testid={testId}>{children}</a>
     </Link>
   )
 }
