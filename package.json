@@ -1,0 +1,55 @@
+{
+  "name": "ch-next-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build && next export && node update-static-asset-urls.js",
+    "start": "next start",
+    "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@forgerock/javascript-sdk": "^2.2.0",
+    "cross-env": "^7.0.3",
+    "govuk-frontend": "^3.11.0",
+    "next": "10.0.6",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.29.6",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.9",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-unicorn": "^24.0.0",
+    "http-server": "^0.12.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "jest-dom": "^4.0.0",
+    "replace-in-files": "^3.0.0",
+    "replace-in-files-cli": "^1.0.0",
+    "sass": "^1.32.6"
+  },
+  "peerDependencies": {
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-es": "^4.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.9",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-unicorn": "^24.0.0"
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../node_modules/govuk-frontend/govuk/all";
+
+.js-disabled {
+  .no-js-hide {
+    display: none;
+  }
+}
+
+.companySummary {
+  background-color: govuk-colour("light-grey");
+}
+
+.alignRight {
+  text-align: right;
+}
