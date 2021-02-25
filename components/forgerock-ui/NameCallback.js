@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { getCallbackElementData } from '../../services/forgerock'
-import Button from '../general-ui/interaction/Button'
 
-const NameCallback = ({ errors, uiElement }) => {
-  const elementData = getCallbackElementData(uiElement, (outputItem) => outputItem.name === 'prompt')
+const NameCallback = ({ errors = [], element }) => {
+  const elementData = getCallbackElementData(element, (outputItem) => outputItem.name === 'prompt')
 
   if (!elementData) return null
 
@@ -20,3 +20,12 @@ const NameCallback = ({ errors, uiElement }) => {
 }
 
 export default NameCallback
+
+NameCallback.propTypes = {
+  element: PropTypes.object.isRequired,
+  errors: PropTypes.array
+}
+
+NameCallback.defaultProps = {
+  errors: []
+}

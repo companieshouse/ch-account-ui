@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { getCallbackElementData } from '../../services/forgerock'
 
-const PasswordCallback = ({ errors, uiElement }) => {
-  const elementData = getCallbackElementData(uiElement, (outputItem) => outputItem.name === 'prompt')
+const PasswordCallback = ({ errors = [], element }) => {
+  const elementData = getCallbackElementData(element, (outputItem) => outputItem.name === 'prompt')
 
   if (!elementData) return null
 
@@ -19,3 +20,12 @@ const PasswordCallback = ({ errors, uiElement }) => {
 }
 
 export default PasswordCallback
+
+PasswordCallback.propTypes = {
+  element: PropTypes.object.isRequired,
+  errors: PropTypes.array
+}
+
+PasswordCallback.defaultProps = {
+  errors: []
+}
