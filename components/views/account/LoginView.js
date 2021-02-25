@@ -13,6 +13,8 @@ import LinkText from '../../general-ui/interaction/LinkText'
 import NameCallback from '../../forgerock-ui/NameCallback'
 import PasswordCallback from '../../forgerock-ui/PasswordCallback'
 import HeadingCount from '../../../services/HeadingCount'
+import { CallbackType } from '../../../services/forgerock'
+import DisplayUiElements from '../../forgerock-ui/DisplayUiElements'
 
 const LoginView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiElements = [], headingCount }) => {
   return (
@@ -29,20 +31,7 @@ const LoginView = ({ formAction = '/api/v1.0/login', onSubmit, errors = [], uiEl
                 <HeadingText headingCount={headingCount}>Sign in to your Companies House account</HeadingText>
               </>}
 
-              {uiElements.map((uiElementPayload, index) => {
-                const uiElement = uiElementPayload.payload
-                console.log('Processing ui element', uiElement)
-                switch (uiElement.type) {
-                  case 'NameCallback':
-                    return <NameCallback key={index} uiElement={uiElement} errors={errors} />
-
-                  case 'PasswordCallback':
-                    return <PasswordCallback key={index} uiElement={uiElement} errors={errors} />
-
-                  default:
-                    return null
-                }
-              })}
+              <DisplayUiElements elements={uiElements} errors={errors} />
 
               <Button type="submit" className="govuk-button" data-module="govuk-button" testId="signInButton">
                 Sign in
