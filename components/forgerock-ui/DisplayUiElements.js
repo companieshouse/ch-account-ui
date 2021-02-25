@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { CallbackType } from '../../services/forgerock'
 import NameCallback from './NameCallback'
@@ -25,3 +26,13 @@ const DisplayUiElements = ({ elements = [], errors = [] }) => {
 }
 
 export default DisplayUiElements
+
+DisplayUiElements.propTypes = {
+  elements: PropTypes.array,
+  errors: PropTypes.array
+}
+
+DisplayUiElements.defaultProps = {
+  elements: [],
+  errors: []
+}
