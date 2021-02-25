@@ -2,6 +2,7 @@ locals {
   domain_name = "${var.service_name}.amido.${var.route53_zone}"
 }
 
+# CloudFront certificates must be in us-east-1
 resource "aws_acm_certificate" "domain" {
   provider                  = aws.us_east_1
   domain_name               = "amido.${var.route53_zone}"
