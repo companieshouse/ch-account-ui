@@ -7,6 +7,7 @@ import {
   FORGEROCK_SCOPE,
   FORGEROCK_TREE_LOGIN
 } from './environment'
+export { CallbackType } from '@forgerock/javascript-sdk'
 
 export const loginFlow = ({
   onSuccess,
