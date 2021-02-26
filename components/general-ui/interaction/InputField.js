@@ -37,7 +37,9 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
 export default InputField
 
 InputField.propTypes = {
+  autoComplete: PropTypes.string,
   className: PropTypes.string,
+  defaultValue: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     anchor: PropTypes.string
@@ -47,17 +49,19 @@ InputField.propTypes = {
   hint: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.string,
-  autoComplete: PropTypes.string,
-  testId: PropTypes.string.isRequired
+  required: PropTypes.bool,
+  testId: PropTypes.string.isRequired,
+  type: PropTypes.string
 }
 
 InputField.defaultProps = {
   className: '',
+  defaultValue: '',
   errors: [],
   fixedWidth: '',
   fluidWidth: '',
   hint: '',
   label: '',
+  required: false,
   type: 'text'
 }
