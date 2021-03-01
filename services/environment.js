@@ -7,5 +7,6 @@ export const FORGEROCK_CLIENT_ID = process.env.FORGEROCK_CLIENT_ID || 'ForgeRock
 export const FORGEROCK_REDIRECT = process.env.FORGEROCK_REDIRECT || 'http://localhost:3000/account/home/'
 
 export const FORGEROCK_TREE_LOGIN = 'Login'
+export const FORGEROCK_TREE_REGISTER = 'CHRegistration'
 
 console.log(`Running as environment: ${ENVIRONMENT}`)
