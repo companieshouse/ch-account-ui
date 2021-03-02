@@ -6,6 +6,10 @@ import BodyText from './typeography/BodyText'
 import LinkText from './interaction/LinkText'
 import DisplayUiElements from '../forgerock-ui/DisplayUiElements'
 import PageHeading from './typeography/PageHeading'
+import List from './typeography/List'
+import InsetText from './typeography/InsetText'
+import Details from './typeography/Details'
+import TemplateText from './typeography/TemplateText'
 
 const featureMap = {
   Button,
@@ -13,7 +17,11 @@ const featureMap = {
   BodyText,
   LinkText,
   DisplayUiElements,
-  PageHeading
+  PageHeading,
+  List,
+  InsetText,
+  Details,
+  TemplateText
 }
 
 const UiFeatures = (props) => {
@@ -30,7 +38,7 @@ const UiFeatures = (props) => {
         const FeatureClass = featureMap[feature.feature]
 
         if (!FeatureClass) {
-          return <div key={`${uiStage}_${feature.feature}_${index}`}>Unknown feature &quot;{feature.feature}&quot;</div>
+          return <div key={`${uiStage}_${feature.feature}_${index}`}>Unknown feature &quot;{feature.feature}&quot; - please open ./components/general-ui/UiFeatures and add the {feature.feature} component to the featureMap object to enable rendering this feature.</div>
         }
 
         return <FeatureClass key={`${uiStage}_${feature.feature}_${index}`} {...otherProps} {...feature.props}>{feature.children}</FeatureClass>
