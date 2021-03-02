@@ -1,26 +1,28 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const transform = (translationString, data) => {
+const transform = (translationString, data = {}) => {
   let finalTranslation = translationString
 
-  if (translationString && translationString.indexOf('${')) {
-    // Break out the data requests and render the data in place of tokens
-    const regexp = /\${([\s\S]+?)}/g
-    let matches
+  if (!translationString || translationString.indexOf('${') === -1) return finalTranslation
 
-    while ((matches = regexp.exec(translationString))) {
-      const matchString = matches[0]
-      const dataPath = matches[1]
+  // Break out the data requests and render the data in place of tokens
+  const regexp = /\${([\s\S]+?)}/g
+  let matches
 
-      finalTranslation = finalTranslation.replace(matchString, data[dataPath])
-    }
+  while ((matches = regexp.exec(translationString))) {
+    const matchString = matches[0]
+    const dataPath = matches[1]
+
+    finalTranslation = finalTranslation.replace(matchString, data[dataPath])
   }
+
+  return finalTranslation
 }
 
 const TemplateText = (props) => {
   const { children, template = '', renderFeatures } = props
-  const transformedText = transform(template)
+  const transformedText = transform(template, props)
 
   return (
     <>
