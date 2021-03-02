@@ -12,7 +12,8 @@ export const forgerockFlow = ({
   onSuccess,
   onFailure,
   onUpdateUi,
-  journeyName
+  journeyName,
+  stepOptions
 }) => {
   Config.set({
     clientId: FORGEROCK_CLIENT_ID,
@@ -31,9 +32,9 @@ export const forgerockFlow = ({
     onFailure(err)
   }
 
-  const nextStep = (step) => {
-    console.log('ForgeRock calling next step', step)
-    FRAuth.next(step).then(handleStep).catch(handleFatalError)
+  const nextStep = (step, stepOptions) => {
+    console.log('ForgeRock calling next step', step, stepOptions)
+    FRAuth.next(step, stepOptions).then(handleStep).catch(handleFatalError)
   }
 
   const handleStep = (step) => {
@@ -85,7 +86,7 @@ export const forgerockFlow = ({
   }
 
   // Start the login process
-  nextStep()
+  nextStep(undefined, stepOptions)
 }
 
 export const loginFlow = ({
