@@ -25,11 +25,13 @@ List.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   type: PropTypes.string,
-  renderFeatures: PropTypes.func
+  renderFeatures: PropTypes.func,
+  items: PropTypes.array
 }
 
 List.defaultProps = {
   className: '',
   type: 'bullet',
-  renderFeatures: () => { return null }
+  renderFeatures: () => { return null },
+  items: []
 }
