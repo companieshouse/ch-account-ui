@@ -11,6 +11,7 @@ import InsetText from './typeography/InsetText'
 import Details from './typeography/Details'
 import TemplateText from './typeography/TemplateText'
 import SpanText from './typeography/SpanText'
+import NotificationBanner from './typeography/NotificationBanner'
 
 const featureMap = {
   Button,
@@ -23,7 +24,8 @@ const featureMap = {
   List,
   InsetText,
   Details,
-  TemplateText
+  TemplateText,
+  NotificationBanner
 }
 
 const UiFeatures = (props) => {
