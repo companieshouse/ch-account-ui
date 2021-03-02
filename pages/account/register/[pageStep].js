@@ -21,22 +21,51 @@ const findCustomStage = (step) => {
   return ''
 }
 
+const findCustomPageProps = (step) => {
+  for (let i = 0; i < step.payload.callbacks.length; i++) {
+    const callback = step.payload.callbacks[i]
+
+    if (!callback) continue
+    if (callback.type !== 'HiddenValueCallback') continue
+    if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
+
+    try {
+      const customPropsObject = JSON.parse(callback.output.find((output) => output.name === 'value')?.value || '')
+      return customPropsObject
+    } catch (err) {
+      return {
+        apiError: {
+          errors: [{
+            error: 'JSONParseError',
+            message: "API returned invalid JSON string in 'pagePropsJSON' callback data: " + err
+          }]
+        }
+      }
+    }
+  }
+
+  return ''
+}
+
 const RegisterContactDetails = () => {
   const router = useRouter()
   const [errors, setErrors] = React.useState([])
+  const [customPageProps, setCustomPageProps] = React.useState({})
   const [uiStage, setUiStage] = React.useState('')
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { pageStep = '', service = '', token } = router.query || ''
+  const { pageStep = '', service = '', token, overrideStage = '' } = router.query || ''
 
   let journeyName = ''
 
   React.useEffect(() => {
     headingCount.reset()
     if (!pageStep) return
+
+    setErrors([])
 
     const stepOptions = {
       query: {
@@ -75,11 +104,28 @@ const RegisterContactDetails = () => {
         setErrors(newErrors)
       },
       onUpdateUi: (step, submitDataFunc) => {
+        const stepCustomPageProps = findCustomPageProps(step)
         const stage = step.payload.stage || findCustomStage(step)
         step.payload.stage = stage
 
+        if (stepCustomPageProps) {
+          if (stepCustomPageProps.apiError) {
+            // Transform the apiError structure to the app's errors array structure
+            const apiErrorsAsAppErrors = stepCustomPageProps.apiError.errors.map((errorItem) => ({
+              label: errorItem.message
+            }))
+
+            // Update the errors for the page
+            setErrors((currentErrorsArray) => {
+              return [...currentErrorsArray, ...apiErrorsAsAppErrors]
+            })
+          }
+          setCustomPageProps(stepCustomPageProps)
+          console.log('CUSTOM PAGE PROPS', stepCustomPageProps)
+        }
+
         setUiStage(stage)
-        setUiFeatures(getStageFeatures('en', stage))
+        setUiFeatures(getStageFeatures('en', overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
@@ -107,14 +153,17 @@ const RegisterContactDetails = () => {
   if (!pageStep) return null
 
   if (pageStep === 'verify' && service && token) {
-    console.log('Register verify')
     journeyName = service
   } else {
     journeyName = FORGEROCK_TREE_REGISTER
   }
 
+  if (pageStep === '_restart') {
+    router.replace('/account/register/_start/')
+  }
+
   return (
-    <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} />
+    <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} {...customPageProps} />
   )
 }
 
