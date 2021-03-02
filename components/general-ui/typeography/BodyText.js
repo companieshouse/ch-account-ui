@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const BodyText = ({ children, hint = false, className = '', weight = 'regular' }) => {
+const BodyText = (props) => {
+  const { children, hint = false, className = '', weight = 'regular', renderFeatures } = props
   const classes = [className]
 
   if (hint === true) classes.push('govuk-hint')
@@ -10,7 +11,10 @@ const BodyText = ({ children, hint = false, className = '', weight = 'regular' }
   const finalClassName = classes.join(' ').trim()
 
   return (
-    <p className={`govuk-body ${finalClassName}`}>{children}</p>
+    <p className={`govuk-body ${finalClassName}`}>
+      {children}
+      {renderFeatures(props)}
+    </p>
   )
 }
 
@@ -20,11 +24,13 @@ BodyText.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   hint: PropTypes.bool,
-  weight: PropTypes.string
+  weight: PropTypes.string,
+  renderFeatures: PropTypes.func
 }
 
 BodyText.defaultProps = {
   className: '',
   hint: false,
-  weight: 'regular'
+  weight: 'regular',
+  renderFeatures: () => { return null }
 }
