@@ -23,22 +23,32 @@ const findCustomStage = (step) => {
 
 const RegisterContactDetails = () => {
   const router = useRouter()
-
-  const { pageStep } = router.query || ''
-
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
-  const [submitData, setSubmitData] = React.useState(() => {})
+  const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
+
+  const { pageStep = '', service = '', token } = router.query || ''
+
+  let journeyName = ''
 
   React.useEffect(() => {
     headingCount.reset()
+    if (!pageStep) return
+
+    const stepOptions = {
+      query: {
+        token
+      }
+    }
+
+    console.log('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
-      journeyName: FORGEROCK_TREE_REGISTER,
+      journeyName,
+      stepOptions,
       onSuccess: (loginData) => {
-        debugger
         Router.push('/account/home')
       },
       onFailure: (err) => {
@@ -72,16 +82,9 @@ const RegisterContactDetails = () => {
         setUiFeatures(getStageFeatures('en', stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
-
-        /* if (pageStep === '_start') {
-          // Replace the url rather than push to it
-          router.replace(`/account/register/${stage}`, undefined, { shallow: true })
-        } else {
-          router.push(`/account/register/${stage}`, undefined, { shallow: true })
-        } */
       }
     })
-  }, [])
+  }, [pageStep])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -98,6 +101,16 @@ const RegisterContactDetails = () => {
 
   const renderFeatures = (props) => {
     return <UiFeatures {...props} />
+  }
+
+  // Check if the router has been initialised yet
+  if (!pageStep) return null
+
+  if (pageStep === 'verify' && service && token) {
+    console.log('Register verify')
+    journeyName = service
+  } else {
+    journeyName = FORGEROCK_TREE_REGISTER
   }
 
   return (
