@@ -4,30 +4,33 @@ import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { getCallbackElementData } from '../../services/forgerock'
 
-const NameCallback = ({ errors = [], element, customElementProps = {} }) => {
+const StringAttributeInputCallback = ({ errors = [], element, customElementProps = {} }) => {
   const elementData = getCallbackElementData(element)
 
   if (!elementData) return null
 
   const id = elementData.fieldId
   const label = elementData.label
+  const testId = elementData.testId
+  const currentValue = elementData.value
+  const required = elementData.required
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="text" autoComplete="email" label={label} errors={errors} testId="usernameInputField" {...customElementProps} />
+      <InputField id={id} type="text" label={label} errors={errors} testId={testId} defaultValue={currentValue} required={required} {...customElementProps} />
     </FormGroup>
   )
 }
 
-export default NameCallback
+export default StringAttributeInputCallback
 
-NameCallback.propTypes = {
+StringAttributeInputCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
   errors: PropTypes.array
 }
 
-NameCallback.defaultProps = {
+StringAttributeInputCallback.defaultProps = {
   customElementProps: {},
   errors: []
 }
