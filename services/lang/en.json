@@ -1,0 +1,132 @@
+{
+  "LOGIN_1": [
+    {
+      "feature": "PageHeading",
+      "children": "Sign in to your Companies House account"
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "Button",
+      "children": "Sign in",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [{
+          "feature": "LinkText",
+          "children": "Register a new account",
+          "props": {
+            "href": "/account/register/_start",
+            "testId": "registerNewAccountLink"
+          }
+        }]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [{
+          "feature": "LinkText",
+          "children": "I've forgotten my password",
+          "props": {
+            "href": "/password-recovery/request",
+            "testId": "forgottenMyPasswordLink"
+          }
+        }]
+      }
+    }
+  ],
+
+  "REGISTRATION_1": [
+    {
+      "feature": "PageHeading",
+      "children": "Create a Companies House account"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "type": "email",
+            "autocomplete": "email"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [{
+          "feature": "LinkText",
+          "children": "If you already have an account, you can sign in",
+          "props": {
+            "href": "/account/login",
+            "testId": "loginExistingAccountLink"
+          }
+        }]
+      }
+    }
+  ],
+
+  "REGISTRATION_2": [
+    {
+      "feature": "PageHeading",
+      "children": "Enter your details"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "type": "text",
+            "autocomplete": "given-name"
+          },
+          "IDToken2": {
+            "type": "text",
+            "autocomplete": "last-name"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+
+  "REGISTRATION_3": [
+    {
+      "feature": "PageHeading",
+      "children": "Verify your email address"
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ]
+}
