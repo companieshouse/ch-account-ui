@@ -1,4 +1,4 @@
-import { Config, FRAuth, TokenManager, StepType, SessionManager, UserManager } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, FRUser, TokenManager, StepType, SessionManager, UserManager } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
@@ -182,27 +182,6 @@ export const logoutFlow = ({
       timeout: 30000
     }
   })
-
-  SessionManager.logout().then(onSuccess).catch(onFailure)
-}
-
-export const getCallbackElementData = (callbackData) => {
-  const { input, output } = callbackData
-
-  // Find the field id
-  const fieldId = input[0].name
-  const label = output.find((outputItem) => outputItem.name === 'prompt')?.value || ''
-  const value = output.find((outputItem) => outputItem.name === 'value')?.value || ''
-  const required = output.find((outputItem) => outputItem.name === 'required')?.value || false
-  const testId = output.find((outputItem) => outputItem.name === 'name')?.value || 'unknownFieldName'
-
-  return {
-    fieldId,
-    label,
-    value,
-    required,
-    testId,
-    input,
-    output
-  }
+  FRUser.logout().then(onSuccess).catch(onFailure)
+  // SessionManager.logout().then(onSuccess).catch(onFailure)
 }
