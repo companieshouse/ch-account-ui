@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 
-const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false }) => {
+const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -29,6 +29,7 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
              data-testid={testId}
              defaultValue={defaultValue}
              required={required}
+             {...otherProps}
       />
     </React.Fragment>
   )
