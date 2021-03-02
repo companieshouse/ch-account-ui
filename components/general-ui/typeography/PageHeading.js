@@ -3,7 +3,8 @@ import React from 'react'
 import HeadingText from './HeadingText'
 import ErrorSummary from './ErrorSummary'
 
-const PageHeading = ({ headingCount, errors = [], children }) => {
+const PageHeading = (props) => {
+  const { headingCount, errors = [], children, renderFeatures } = props
   if (errors.length === 0) {
     return <HeadingText headingCount={headingCount}>{children}</HeadingText>
   }
@@ -11,7 +12,7 @@ const PageHeading = ({ headingCount, errors = [], children }) => {
   return (
     <>
       <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
-      <HeadingText headingCount={headingCount}>{children}</HeadingText>
+      <HeadingText headingCount={headingCount}>{children}{renderFeatures(props)}</HeadingText>
     </>
   )
 }
@@ -21,9 +22,11 @@ export default PageHeading
 PageHeading.propTypes = {
   children: PropTypes.node,
   errors: PropTypes.array,
-  headingCount: PropTypes.object
+  headingCount: PropTypes.object,
+  renderFeatures: PropTypes.func
 }
 
 PageHeading.defaultProps = {
-  errors: []
+  errors: [],
+  renderFeatures: () => { return null }
 }

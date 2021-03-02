@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 
-const HeadingText = ({ type = '', label = '', size = 'xl', caption, children, className = '', headingCount, weight = 'bold' }) => {
+const HeadingText = (props) => {
+  const { type = '', label = '', size = 'xl', caption, children, className = '', headingCount, weight = 'bold', renderFeatures } = props
   const [tag, setTag] = React.useState(type)
   const classes = [className]
 
@@ -25,7 +26,7 @@ const HeadingText = ({ type = '', label = '', size = 'xl', caption, children, cl
   return (
     <>
       {Boolean(caption) === true && <span className="govuk-caption-xl">{caption}</span>}
-      <HeadingTag className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}</HeadingTag>
+      <HeadingTag className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}{renderFeatures(props)}</HeadingTag>
     </>
   )
 }
@@ -40,7 +41,8 @@ HeadingText.propTypes = {
   size: PropTypes.string,
   type: PropTypes.string,
   caption: PropTypes.string,
-  weight: PropTypes.string
+  weight: PropTypes.string,
+  renderFeatures: PropTypes.func
 }
 
 HeadingText.defaultProps = {
@@ -48,5 +50,6 @@ HeadingText.defaultProps = {
   label: '',
   size: 'xl',
   type: '',
-  weight: 'bold'
+  weight: 'bold',
+  renderFeatures: () => { return null }
 }
