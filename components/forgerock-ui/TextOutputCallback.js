@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getCallbackElementData } from '../../services/forgerock'
 import BodyText from '../general-ui/typeography/BodyText'
 
 const TextOutputCallback = ({ element, customElementProps = {} }) => {
-  const elementData = getCallbackElementData(element)
-
-  if (!elementData) return null
-
-  const currentValue = elementData.value
+  const currentValue = element.getMessage()
 
   return (
     <BodyText {...customElementProps}>{currentValue}</BodyText>

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { CallbackType, getCallbackElementData } from '../../services/forgerock'
+import { CallbackType } from '../../services/forgerock'
 import NameCallback from './NameCallback'
 import PasswordCallback from './PasswordCallback'
 import StringAttributeInputCallback from './StringAttributeInputCallback'
@@ -9,13 +9,10 @@ import TextOutputCallback from './TextOutputCallback'
 const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
   return (
     <>
-    {uiElements.map((elementPayload, index) => {
-      const element = elementPayload.payload
-      const elementData = getCallbackElementData(element)
+    {uiElements.map((element, index) => {
+      let fieldId
 
-      const customElementProps = elementProps[elementData.fieldId]
-
-      switch (element.type) {
+      switch (element.payload.type) {
         case CallbackType.NameCallback:
           return <NameCallback key={index} element={element} errors={errors} />
 
@@ -23,10 +20,12 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
           return <PasswordCallback key={index} element={element} errors={errors} />
 
         case CallbackType.StringAttributeInputCallback:
-          return <StringAttributeInputCallback key={index} element={element} errors={errors} customElementProps={customElementProps} />
+          fieldId = element.payload.input[0].name
+          return <StringAttributeInputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
         case CallbackType.TextOutputCallback:
-          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={customElementProps} />
+          fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
+          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
         default:
           return null
