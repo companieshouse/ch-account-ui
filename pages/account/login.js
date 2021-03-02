@@ -1,62 +1,24 @@
 import React from 'react'
 import Router from 'next/router'
-import LoginView from '../../components/views/account/LoginView'
 import { loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-
-/* const step1 = [{
-  payload: {
-    type: 'NameCallback',
-    output: [{ name: 'prompt', value: 'User Name' }],
-    input: [{ name: 'IDToken1', value: '' }],
-    _id: 0
-  }
-}, {
-  payload: {
-    type: 'PasswordCallback',
-    output: [{ name: 'prompt', value: 'Password' }],
-    input: [{ name: 'IDToken2', value: '' }],
-    _id: 1
-  }
-}]
-
-const step2 = [{
-  payload: {
-    type: 'BooleanAttributeInputCallback',
-    output: [{ name: 'name', value: 'preferences/updates' }, {
-      name: 'prompt',
-      value: 'Send me news and updates'
-    }, { name: 'required', value: false }, { name: 'policies', value: {} }, {
-      name: 'failedPolicies',
-      value: []
-    }, { name: 'validateOnly', value: false }, { name: 'value', value: false }],
-    input: [{ name: 'IDToken1', value: false }, { name: 'IDToken1validateOnly', value: false }],
-    _id: 2
-  }
-}, {
-  payload: {
-    type: 'BooleanAttributeInputCallback',
-    output: [{ name: 'name', value: 'preferences/marketing' }, {
-      name: 'prompt',
-      value: 'Send me special offers and services'
-    }, { name: 'required', value: false }, { name: 'policies', value: {} }, {
-      name: 'failedPolicies',
-      value: []
-    }, { name: 'validateOnly', value: false }, { name: 'value', value: false }],
-    input: [{ name: 'IDToken2', value: false }, { name: 'IDToken2validateOnly', value: false }],
-    _id: 3
-  }
-}] */
+import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import { getStageFeatures } from '../../services/translate'
+import UiFeatures from '../../components/general-ui/UiFeatures'
+import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 
 const Login = () => {
   const [errors, setErrors] = React.useState([])
+  const [uiStage, setUiStage] = React.useState('')
+  const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
-  const [submitData, setSubmitData] = React.useState(() => {})
+  const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
   React.useEffect(() => {
     headingCount.reset()
     loginFlow({
+      journeyName: FORGEROCK_TREE_LOGIN,
       onSuccess: (loginData) => {
         Router.push('/account/home')
       },
@@ -84,13 +46,15 @@ const Login = () => {
         setErrors(newErrors)
       },
       onUpdateUi: (step, submitDataFunc) => {
+        setUiStage(step.payload.stage)
+        setUiFeatures(getStageFeatures('en', step.payload.stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
     })
   }, [])
 
-  const onLoginSubmit = (evt) => {
+  const onSubmit = (evt) => {
     evt.preventDefault()
     setErrors([])
 
@@ -103,8 +67,12 @@ const Login = () => {
     submitData(formData)
   }
 
+  const renderFeatures = (props) => {
+    return <UiFeatures {...props} />
+  }
+
   return (
-    <LoginView onSubmit={onLoginSubmit} errors={errors} headingCount={headingCount} uiElements={uiElements}/>
+    <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} />
   )
 }
 
