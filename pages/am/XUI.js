@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router'
+import { serialize } from '../../services/queryString'
 
 /**
  Handler that accepts url query params and routes to the correct page accordingly.
  **/
 const XUI = () => {
   const router = useRouter()
-  const { authIndexType, authIndexValue, service, token } = router.query
+  const { authIndexType, authIndexValue, service } = router.query
 
   switch (service) {
     case 'CHVerifyReg':
-      router.replace(`/account/register/verify/?token=${token}&service=${service}`)
+      router.replace(`/account/register/verify/?${serialize(router.query)}`)
       break
 
     default:
