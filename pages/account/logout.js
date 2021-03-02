@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import Router from 'next/router'
 import LogoutView from '../../components/views/account/LogoutView'
@@ -8,20 +9,24 @@ const Logout = () => {
   const [errors, setErrors] = React.useState([])
   const headingCount = new HeadingCount()
 
-  React.useEffect(() => {
-    headingCount.reset()
+  const doLogout = () => {
     logoutFlow({
       onSuccess: (loginData) => {
         Router.push('/account/login')
       },
-      onFailure: () => {
-        const newErrors = [{
+      onFailure: (err) => {
+        setErrors([{
           label: 'Authentication service error'
-        }]
-
-        setErrors(newErrors)
+        }, {
+          label: err
+        }])
       }
     })
+  }
+
+  React.useEffect(() => {
+    headingCount.reset()
+    doLogout()
   }, [])
 
   return (
@@ -30,3 +35,11 @@ const Logout = () => {
 }
 
 export default Logout
+
+Logout.propTypes = {
+  errors: PropTypes.array
+}
+
+Logout.defaultProps = {
+  errors: []
+}
