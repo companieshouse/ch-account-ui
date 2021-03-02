@@ -1,21 +1,32 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { CallbackType } from '../../services/forgerock'
+import { CallbackType, getCallbackElementData } from '../../services/forgerock'
 import NameCallback from './NameCallback'
 import PasswordCallback from './PasswordCallback'
+import StringAttributeInputCallback from './StringAttributeInputCallback'
+import TextOutputCallback from './TextOutputCallback'
 
-const DisplayUiElements = ({ elements = [], errors = [] }) => {
+const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
   return (
     <>
-    {elements.map((elementPayload, index) => {
+    {uiElements.map((elementPayload, index) => {
       const element = elementPayload.payload
-      console.log('Processing ui element', element)
+      const elementData = getCallbackElementData(element)
+
+      const customElementProps = elementProps[elementData.fieldId]
+
       switch (element.type) {
         case CallbackType.NameCallback:
           return <NameCallback key={index} element={element} errors={errors} />
 
         case CallbackType.PasswordCallback:
           return <PasswordCallback key={index} element={element} errors={errors} />
+
+        case CallbackType.StringAttributeInputCallback:
+          return <StringAttributeInputCallback key={index} element={element} errors={errors} customElementProps={customElementProps} />
+
+        case CallbackType.TextOutputCallback:
+          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={customElementProps} />
 
         default:
           return null
@@ -28,11 +39,15 @@ const DisplayUiElements = ({ elements = [], errors = [] }) => {
 export default DisplayUiElements
 
 DisplayUiElements.propTypes = {
-  elements: PropTypes.array,
-  errors: PropTypes.array
+  elementProps: PropTypes.object,
+  errors: PropTypes.array,
+  stage: PropTypes.string,
+  uiElements: PropTypes.array
 }
 
 DisplayUiElements.defaultProps = {
-  elements: [],
-  errors: []
+  elementProps: {},
+  errors: [],
+  stage: '',
+  uiElements: []
 }
