@@ -9,7 +9,7 @@ import Row from '../../components/general-ui/layout/Row'
 import BackLink from '../../components/general-ui/interaction/BackLink'
 import List from '../../components/general-ui/typeography/List'
 import ListItem from '../../components/general-ui/typeography/ListItem'
-import Details from '../../components/general-ui/interaction/Details'
+import Details from '../../components/general-ui/typeography/Details'
 import LinkText from '../../components/general-ui/interaction/LinkText'
 import HeadingCount from '../../services/HeadingCount'
 
