@@ -70,7 +70,7 @@ export const forgerockFlow = ({
     }
 
     console.log('Stepping', step)
-    onUpdateUi(step, (formData) => {
+    onUpdateUi(step, (formData, stepOptions) => {
       // Fill in the step input data from form data
       step.callbacks.forEach((callback) => {
         const payload = callback?.payload
@@ -81,7 +81,7 @@ export const forgerockFlow = ({
         })
       })
 
-      nextStep(step)
+      nextStep(step, stepOptions)
     })
   }
 
