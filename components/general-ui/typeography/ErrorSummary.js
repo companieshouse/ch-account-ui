@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 
-const ErrorSummary = ({ type = '', title = 'No title!', errors = [], children, className = '', headingCount }) => {
+const ErrorSummary = (props) => {
+  const { type = '', title = 'No title!', errors = [], children, className = '', headingCount, renderFeatures } = props
   if (errors.length === 0 && !children) return null
 
   const [tag, setTag] = React.useState(type)
@@ -40,6 +41,7 @@ const ErrorSummary = ({ type = '', title = 'No title!', errors = [], children, c
           ))}
         </ul>}
         {children}
+        {renderFeatures(props)}
       </div>
     </div>
   )
@@ -50,11 +52,9 @@ export default ErrorSummary
 ErrorSummary.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  errors: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    anchor: PropTypes.string
-  })),
+  errors: PropTypes.array,
   headingCount: PropTypes.instanceOf(HeadingCount),
+  renderFeatures: PropTypes.func,
   title: PropTypes.string,
   type: PropTypes.string
 }
@@ -62,6 +62,7 @@ ErrorSummary.propTypes = {
 ErrorSummary.defaultProps = {
   className: '',
   errors: [],
+  renderFeatures: () => { return null },
   title: 'No title!',
   type: ''
 }

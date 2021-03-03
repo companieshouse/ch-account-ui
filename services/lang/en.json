@@ -1,0 +1,328 @@
+{
+  "LOGIN_1": [
+    {
+      "feature": "PageHeading",
+      "children": "Sign in to your Companies House account"
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "Button",
+      "children": "Sign in",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "Register a new account",
+            "props": {
+              "href": "/account/register/_start",
+              "testId": "registerNewAccountLink"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "I've forgotten my password",
+            "props": {
+              "href": "/password-recovery/request",
+              "testId": "forgottenMyPasswordLink"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "REGISTRATION_1": [
+    {
+      "feature": "PageHeading",
+      "children": "Create a Companies House account"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "type": "email",
+            "autoComplete": "email"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "If you already have an account, you can sign in",
+            "props": {
+              "href": "/account/login",
+              "testId": "loginExistingAccountLink"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "REGISTRATION_2": [
+    {
+      "feature": "PageHeading",
+      "children": "Enter your details"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "type": "text",
+            "autoComplete": "given-name"
+          },
+          "IDToken2": {
+            "type": "text",
+            "autoComplete": "family-name"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "REGISTRATION_3": [
+    {
+      "feature": "PageHeading",
+      "children": "Verify your email address"
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "We've sent an email to "
+          },
+          {
+            "feature": "SpanText",
+            "props": {
+              "weight": "bold",
+              "uiFeatures": [
+                {
+                  "feature": "TemplateText",
+                  "props": {
+                    "template": "${email}"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "feature": "SpanText",
+            "children": " which contains a verification link."
+          }
+        ]
+      }
+    },
+    {
+      "feature": "List",
+      "props": {
+        "type": "number",
+        "items": [
+          "Open the email.",
+          "Select the verification link in the email."
+        ]
+      }
+    },
+    {
+      "feature": "InsetText",
+      "children": "The verification link will expire if you do not verify your email address within 7 days."
+    },
+    {
+      "feature": "BodyText",
+      "children": "This page will update automatically when you select the link.",
+      "props": {
+        "weight": "bold"
+      }
+    },
+    {
+      "feature": "Details",
+      "children": "We need some text copy for this section as it is not specified what should be here in the prototype images.",
+      "props": {
+        "summary": "I have not received an email"
+      }
+    }
+  ],
+  "REGISTRATION_4": [
+    {
+      "feature": "PageHeading",
+      "children": "Create a password"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "type": "password",
+            "autoComplete": "password"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Details",
+      "children": "We need some text copy for this section as it is not specified what should be here in the prototype images.",
+      "props": {
+        "summary": "Help with creating a password"
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "REGISTRATION_5": [
+    {
+      "feature": "PageHeading",
+      "children": "Email address verified"
+    },
+    {
+      "feature": "InsetText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "You have successfully verified the email address "
+          },
+          {
+            "feature": "SpanText",
+            "props": {
+              "weight": "bold",
+              "uiFeatures": [
+                {
+                  "feature": "TemplateText",
+                  "props": {
+                    "template": "${email}"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "You can now close this page and return the previous webpage to view your account, or "
+          },
+          {
+            "feature": "LinkText",
+            "children": "go directly to your account",
+            "props": {
+              "href": "/account/home/",
+              "testId": "goToAccountHomeLink"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "REGISTRATION_ERROR": [
+    {
+      "feature": "PageHeading",
+      "children": "Registration failed"
+    },
+    {
+      "feature": "BodyText",
+      "children": "An error occurred during the registration process. To continue, please click the link below and start the registration process again with a different email address."
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "Click here to try a different email address",
+            "props": {
+              "href": "/account/register/_restart/",
+              "testId": "startRegistrationAgainLink"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "GENERIC_ERROR": [
+    {
+      "feature": "PageHeading",
+      "children": "Server error"
+    },
+    {
+      "feature": "BodyText",
+      "children": "We are very sorry, an unexpected error occurred on the server. Please try again later."
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "Click here to sign in",
+            "props": {
+              "href": "/account/login/",
+              "testId": "loginExistingAccountLink"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "Register a new account",
+            "props": {
+              "href": "/account/register/_start/",
+              "testId": "registerNewAccountLink"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

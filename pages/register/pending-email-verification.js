@@ -9,7 +9,7 @@ import Row from '../../components/general-ui/layout/Row'
 import BackLink from '../../components/general-ui/interaction/BackLink'
 import List from '../../components/general-ui/typeography/List'
 import ListItem from '../../components/general-ui/typeography/ListItem'
-import Details from '../../components/general-ui/interaction/Details'
+import Details from '../../components/general-ui/typeography/Details'
 import LinkText from '../../components/general-ui/interaction/LinkText'
 import HeadingCount from '../../services/HeadingCount'
 
@@ -51,7 +51,7 @@ const RegisterEmailVerification = ({ formAction = '/api/v1.0/register', onSubmit
               <Details label='I have not received an email'>
                 <p>The email may take a few minutes to arrive. Its subject line is &apos;Verify your email address - Companies House&apos;.</p>
                 <p>Check your junk folder. If it still has not arrived, <LinkText href='https://gov.uk' testId="sendAnotherEmailLink">you can ask us to send you another email</LinkText>.</p>
-                <p>If you have given us the wrong email address you <LinkText href='/register/provide-contact-details' testId="giveUsDifferentEmailAddressLink">can give us a different email address</LinkText>.</p>
+                <p>If you have given us the wrong email address you <LinkText href='/account/register/details/' testId="giveUsDifferentEmailAddressLink">can give us a different email address</LinkText>.</p>
               </Details>
             </form>
           </Column>

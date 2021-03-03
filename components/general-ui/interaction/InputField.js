@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 
-const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId }) => {
+const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -27,6 +27,9 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
              autoComplete={autoComplete}
              aria-describedby={Boolean(error) && `${id}-error`}
              data-testid={testId}
+             defaultValue={defaultValue}
+             required={required}
+             {...otherProps}
       />
     </React.Fragment>
   )
@@ -35,7 +38,9 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
 export default InputField
 
 InputField.propTypes = {
+  autoComplete: PropTypes.string,
   className: PropTypes.string,
+  defaultValue: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     anchor: PropTypes.string
@@ -45,17 +50,19 @@ InputField.propTypes = {
   hint: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.string,
-  autoComplete: PropTypes.string,
-  testId: PropTypes.string.isRequired
+  required: PropTypes.bool,
+  testId: PropTypes.string.isRequired,
+  type: PropTypes.string
 }
 
 InputField.defaultProps = {
   className: '',
+  defaultValue: '',
   errors: [],
   fixedWidth: '',
   fluidWidth: '',
   hint: '',
   label: '',
+  required: false,
   type: 'text'
 }
