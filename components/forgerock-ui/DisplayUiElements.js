@@ -5,6 +5,7 @@ import NameCallback from './NameCallback'
 import PasswordCallback from './PasswordCallback'
 import StringAttributeInputCallback from './StringAttributeInputCallback'
 import TextOutputCallback from './TextOutputCallback'
+import ValidatedCreatePasswordCallback from './ValidatedCreatePasswordCallback'
 
 const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
   return (
@@ -22,6 +23,10 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
         case CallbackType.StringAttributeInputCallback:
           fieldId = element.payload.input[0].name
           return <StringAttributeInputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
+
+        case CallbackType.ValidatedCreatePasswordCallback:
+          fieldId = element.payload.input[0].name
+          return <ValidatedCreatePasswordCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
         case CallbackType.TextOutputCallback:
           fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
