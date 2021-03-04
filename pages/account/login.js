@@ -1,5 +1,5 @@
 import React from 'react'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
@@ -8,6 +8,7 @@ import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 
 const Login = () => {
+  const router = useRouter()
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
   const [uiFeatures, setUiFeatures] = React.useState([])
@@ -15,11 +16,17 @@ const Login = () => {
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
+  const { goto } = router.query
+
   React.useEffect(() => {
     headingCount.reset()
     loginFlow({
       journeyName: FORGEROCK_TREE_LOGIN,
       onSuccess: (loginData) => {
+        if (goto) {
+          return Router.push(goto)
+        }
+
         Router.push('/account/home')
       },
       onFailure: (err) => {
@@ -52,7 +59,7 @@ const Login = () => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [])
+  }, [goto])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
