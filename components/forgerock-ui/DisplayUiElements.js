@@ -6,6 +6,7 @@ import PasswordCallback from './PasswordCallback'
 import StringAttributeInputCallback from './StringAttributeInputCallback'
 import TextOutputCallback from './TextOutputCallback'
 import ValidatedCreatePasswordCallback from './ValidatedCreatePasswordCallback'
+import ChoiceCallback from './ChoiceCallback'
 
 const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
   return (
@@ -31,6 +32,10 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
         case CallbackType.TextOutputCallback:
           fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
           return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
+
+        case CallbackType.ChoiceCallback:
+          fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
+          return <ChoiceCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
         default:
           return null
