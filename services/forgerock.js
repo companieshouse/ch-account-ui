@@ -1,4 +1,4 @@
-import { Config, FRAuth, FRUser, TokenManager, StepType, SessionManager, UserManager } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, FRUser, TokenManager, StepType, UserManager } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,

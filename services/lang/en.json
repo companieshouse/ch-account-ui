@@ -172,7 +172,7 @@
     },
     {
       "feature": "Details",
-      "children": "We need some text copy for this section as it is not specified what should be here in the prototype images.",
+      "children": "TR** copy goes here",
       "props": {
         "summary": "I have not received an email"
       }
@@ -319,6 +319,290 @@
             "props": {
               "href": "/account/register/_start/",
               "testId": "registerNewAccountLink"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "RESET_PASSWORD_1": [
+    {
+      "feature": "PageHeading",
+      "children": "Enter your email address"
+    },
+    {
+      "feature": "BodyText",
+      "children": "Enter the email address you used to create your Companies House account. We'll send you a link so you can reset your password."
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "type": "email",
+            "autoComplete": "email"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Send Link",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "RESET_PASSWORD_2": [
+    {
+      "feature": "PageHeading",
+      "children": "How do you want to confirm it's you?"
+    },
+    {
+      "feature": "BodyText",
+      "children": "Before you can make changes to your account, we need to confirm it's you. This helps us keep your account secure."
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "RESET_PASSWORD_3": [
+    {
+      "feature": "PageHeading",
+      "children": "Check your phone"
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "We've sent you a text message with a security code to "
+          },
+          {
+            "feature": "SpanText",
+            "props": {
+              "weight": "bold",
+              "uiFeatures": [
+                {
+                  "feature": "TemplateText",
+                  "props": {
+                    "template": "${phoneNumber}"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "feature": "SpanText",
+            "children": "."
+          }
+        ]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "children": "It may take a few minutes to arrive."
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "I have not received a text message",
+        "uiFeatures": [{
+          "feature": "BodyText",
+          "children": "The text message may take a few minutes to arrive."
+        }, {
+          "feature": "BodyText",
+          "props": {
+            "uiFeatures": [
+              {
+                "feature": "SpanText",
+                "children": "If it still has not arrived, you can "
+              },
+              {
+                "feature": "LinkText",
+                "children": "ask us to send you another text message",
+                "props": {
+                  "href": "/password-recover/_restart/",
+                  "testId": "restartPasswordRecoveryLink"
+                }
+              },
+              {
+                "feature": "SpanText",
+                "children": "."
+              }
+            ]
+          }
+        }]
+      }
+    }
+  ],
+  "RESET_PASSWORD_4": [
+    {
+      "feature": "PageHeading",
+      "children": "Reset your password"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "hint": "This must be at least 8 characters long and hard to guess."
+          }
+        }
+      }
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "Help with creating your password",
+        "uiFeatures": [{
+          "feature": "BodyText",
+          "children": "TR** copy goes here."
+        }]
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Reset password",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "RESET_PASSWORD_6": [
+    {
+      "feature": "PageHeading",
+      "children": "Check your emails"
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "We've sent an email to "
+          },
+          {
+            "feature": "SpanText",
+            "props": {
+              "weight": "bold",
+              "uiFeatures": [
+                {
+                  "feature": "TemplateText",
+                  "props": {
+                    "template": "${email}"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "feature": "SpanText",
+            "children": " which contains link to reset your password."
+          }
+        ]
+      }
+    },
+    {
+      "feature": "InsetText",
+      "children": "The link will expire in 6 hours."
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "I have not received an email",
+        "uiFeatures": [{
+          "feature": "BodyText",
+          "children": "The email may take a few minutes to arrive. Its subject link is 'Reset your password - Companies House account'."
+        }, {
+          "feature": "BodyText",
+          "props": {
+            "uiFeatures": [
+              {
+                "feature": "SpanText",
+                "children": "Check your junk folder. If it still has not arrived, you can "
+              },
+              {
+                "feature": "LinkText",
+                "children": "ask us to send you another email",
+                "props": {
+                  "href": "/password-recover/_restart/",
+                  "testId": "restartPasswordRecoveryLink"
+                }
+              },
+              {
+                "feature": "SpanText",
+                "children": "."
+              }
+            ]
+          }
+        }, {
+          "feature": "BodyText",
+          "props": {
+            "uiFeatures": [
+              {
+                "feature": "SpanText",
+                "children": "If you have given us the wrong email address, you can "
+              },
+              {
+                "feature": "LinkText",
+                "children": "give us a different email address",
+                "props": {
+                  "href": "/password-recover/_restart/",
+                  "testId": "restartPasswordRecoveryLink"
+                }
+              },
+              {
+                "feature": "SpanText",
+                "children": "."
+              }
+            ]
+          }
+        }]
+      }
+    }
+  ],
+  "RESET_PASSWORD_ERROR": [
+    {
+      "feature": "PageHeading",
+      "children": "Unable to find account with those details"
+    },
+    {
+      "feature": "BodyText",
+      "children": "We were unable to find an account with those details."
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "LinkText",
+            "children": "Give us a different account username",
+            "props": {
+              "href": "/password-recovery/_restart/",
+              "testId": "restartPasswordRecoveryLink"
             }
           }
         ]
