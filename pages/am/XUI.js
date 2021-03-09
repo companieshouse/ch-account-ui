@@ -11,7 +11,11 @@ const XUI = () => {
   switch (service) {
     case 'CHVerifyReg':
       router.replace(`/account/register/verify/?${serialize(router.query)}`)
-      break
+      return null
+
+    case 'CHResetPassword':
+      router.replace(`/password-recovery/verify/?${serialize(router.query)}`)
+      return null
 
     default:
       break
