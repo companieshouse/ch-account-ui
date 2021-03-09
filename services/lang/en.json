@@ -172,7 +172,7 @@
     },
     {
       "feature": "Details",
-      "children": "We need some text copy for this section as it is not specified what should be here in the prototype images.",
+      "children": "TR** copy goes here",
       "props": {
         "summary": "I have not received an email"
       }
@@ -396,7 +396,7 @@
                 {
                   "feature": "TemplateText",
                   "props": {
-                    "template": "${phone}"
+                    "template": "${phoneNumber}"
                   }
                 }
               ]
@@ -478,7 +478,7 @@
         "summary": "Help with creating your password",
         "uiFeatures": [{
           "feature": "BodyText",
-          "children": "TR** MISSING TEXT."
+          "children": "TR** copy goes here."
         }]
       }
     },
