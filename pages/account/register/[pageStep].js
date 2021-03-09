@@ -177,7 +177,6 @@ const RegisterContactDetails = () => {
 
   // Check if the router has been initialised yet
   if (!pageStep) return null
-  if (!journeyName) return null
 
   return (
     <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} {...customPageProps} />
