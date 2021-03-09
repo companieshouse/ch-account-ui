@@ -47,6 +47,21 @@ const findCustomPageProps = (step) => {
   return ''
 }
 
+export const getStaticPaths = async () => {
+  return {
+    paths: [
+      { params: { pageStep: '_start' } },
+      { params: { pageStep: '_restart' } },
+      { params: { pageStep: 'request' } }
+    ],
+    fallback: false
+  }
+}
+
+export const getStaticProps = async () => {
+  return { props: {} }
+}
+
 const ResetPassword = () => {
   const router = useRouter()
   const [errors, setErrors] = React.useState([])
@@ -64,6 +79,17 @@ const ResetPassword = () => {
   React.useEffect(() => {
     headingCount.reset()
     if (!pageStep) return
+
+    if (pageStep === '_restart') {
+      router.replace('/password-recovery/request/')
+      return
+    }
+
+    if (pageStep === 'verify' && service && token) {
+      journeyName = service
+    } else {
+      journeyName = FORGEROCK_TREE_FMP
+    }
 
     setErrors([])
 
@@ -151,16 +177,6 @@ const ResetPassword = () => {
 
   // Check if the router has been initialised yet
   if (!pageStep) return null
-
-  if (pageStep === 'verify' && service && token) {
-    journeyName = service
-  } else {
-    journeyName = FORGEROCK_TREE_FMP
-  }
-
-  if (pageStep === '_restart') {
-    router.replace('/password-recovery/_start/')
-  }
 
   return (
     <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} {...customPageProps} />
