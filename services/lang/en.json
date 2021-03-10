@@ -1,11 +1,26 @@
 {
   "LOGIN_1": [
     {
+      "feature": "BrowserTitle",
+      "children": "Sign in to Companies House account"
+    },
+    {
       "feature": "PageHeading",
       "children": "Sign in to your Companies House account"
     },
     {
-      "feature": "DisplayUiElements"
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": "Email Address",
+            "hint": "You cannot use your WebFiling details to sign in. You must sign in to or create a Companies House account."
+          },
+          "IDToken2": {
+            "label": "Password"
+          }
+        }
+      }
     },
     {
       "feature": "Button",
