@@ -9,7 +9,7 @@ const PasswordCallback = ({ errors = [], element, customElementProps = {} }) => 
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="password" autoComplete="current-password" label={label} errors={errors} testId="passwordInputField" required {...customElementProps} />
+      <InputField id={id} type="password" autoComplete="current-password" label={label} errors={errors} testId="passwordInputField" {...customElementProps} />
     </FormGroup>
   )
 }

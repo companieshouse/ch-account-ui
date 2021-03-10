@@ -9,7 +9,7 @@ const NameCallback = ({ errors = [], element, customElementProps = {} }) => {
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="text" autoComplete="email" label={label} errors={errors} testId="usernameInputField" required {...customElementProps} />
+      <InputField id={id} type="text" autoComplete="email" label={label} errors={errors} testId="usernameInputField" {...customElementProps} />
     </FormGroup>
   )
 }
