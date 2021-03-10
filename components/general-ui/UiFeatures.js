@@ -14,6 +14,7 @@ import SpanText from './typeography/SpanText'
 import NotificationBanner from './typeography/NotificationBanner'
 import RadioGroup from './interaction/RadioGroup'
 import Redirect from '../application-specific/Redirect'
+import BrowserTitle from '../application-specific/BrowserTitle'
 
 const featureMap = {
   Button,
@@ -29,7 +30,8 @@ const featureMap = {
   TemplateText,
   NotificationBanner,
   RadioGroup,
-  Redirect
+  Redirect,
+  BrowserTitle
 }
 
 const UiFeatures = (props) => {
