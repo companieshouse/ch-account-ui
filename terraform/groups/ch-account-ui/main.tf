@@ -11,7 +11,7 @@ resource "aws_acm_certificate" "domain" {
 }
 
 resource "aws_s3_bucket" "website" {
-  bucket        = var.service_name
+  bucket        = local.fqdn
   acl           = "public-read"
   policy        = data.aws_iam_policy_document.website.json
   force_destroy = true
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "website" {
       type        = "AWS"
     }
     resources = [
-      "arn:aws:s3:::${var.service_name}/*"
+      "arn:aws:s3:::${local.fqdn}/*"
     ]
   }
 }
