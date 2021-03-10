@@ -2,11 +2,25 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingText from './HeadingText'
 import ErrorSummary from './ErrorSummary'
+import NotificationBanner from './NotificationBanner'
 
 const PageHeading = (props) => {
-  const { headingCount, errors = [], children, renderFeatures } = props
+  const { headingCount, errors = [], children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren = null } = props
+
   if (errors.length === 0) {
-    return <HeadingText headingCount={headingCount}>{children}</HeadingText>
+    return (
+      <>
+        {Boolean(notifyType) && <NotificationBanner
+          headingCount={headingCount}
+          heading={notifyHeading}
+          title={notifyTitle}
+          type={notifyType}
+        >
+          {notifyChildren}
+        </NotificationBanner>}
+        <HeadingText headingCount={headingCount}>{children}</HeadingText>
+      </>
+    )
   }
 
   return (
