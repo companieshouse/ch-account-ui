@@ -1,51 +1,11 @@
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
-import { forgerockFlow } from '../../../services/forgerock'
+import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import { FORGEROCK_TREE_REGISTER } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
-
-const findCustomStage = (step) => {
-  for (let i = 0; i < step.payload.callbacks.length; i++) {
-    const callback = step.payload.callbacks[i]
-
-    if (!callback) continue
-    if (callback.type !== 'HiddenValueCallback') continue
-    if (!callback.output.find((output) => output.name === 'id' && output.value === 'stage')) continue
-
-    return callback.output.find((output) => output.name === 'value')?.value || ''
-  }
-
-  return ''
-}
-
-const findCustomPageProps = (step) => {
-  for (let i = 0; i < step.payload.callbacks.length; i++) {
-    const callback = step.payload.callbacks[i]
-
-    if (!callback) continue
-    if (callback.type !== 'HiddenValueCallback') continue
-    if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
-
-    try {
-      const customPropsObject = JSON.parse(callback.output.find((output) => output.name === 'value')?.value || '')
-      return customPropsObject
-    } catch (err) {
-      return {
-        apiError: {
-          errors: [{
-            error: 'JSONParseError',
-            message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
-          }]
-        }
-      }
-    }
-  }
-
-  return ''
-}
 
 export const getStaticPaths = async () => {
   return {
@@ -153,10 +113,9 @@ const RegisterContactDetails = () => {
               return [...currentErrorsArray, ...apiErrorsAsAppErrors]
             })
           }
-          setCustomPageProps(stepCustomPageProps)
-          console.log('CUSTOM PAGE PROPS', stepCustomPageProps)
         }
 
+        setCustomPageProps(stepCustomPageProps)
         setUiStage(stage)
         setUiFeatures(getStageFeatures('en', overrideStage || stage))
         setUiElements(step.callbacks)

@@ -1,6 +1,6 @@
 import React from 'react'
 import Router, { useRouter } from 'next/router'
-import { loginFlow } from '../../services/forgerock'
+import { findCustomPageProps, loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
@@ -9,6 +9,7 @@ import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 
 const Login = () => {
   const router = useRouter()
+  const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
   const [uiFeatures, setUiFeatures] = React.useState([])
@@ -54,6 +55,23 @@ const Login = () => {
         setErrors(newErrors)
       },
       onUpdateUi: (step, submitDataFunc) => {
+        const stepCustomPageProps = findCustomPageProps(step)
+
+        if (stepCustomPageProps) {
+          if (stepCustomPageProps.apiError) {
+            // Transform the apiError structure to the app's errors array structure
+            const apiErrorsAsAppErrors = stepCustomPageProps.apiError.errors.map((errorItem) => ({
+              label: errorItem.message
+            }))
+
+            // Update the errors for the page
+            setErrors((currentErrorsArray) => {
+              return [...currentErrorsArray, ...apiErrorsAsAppErrors]
+            })
+          }
+        }
+
+        setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)
         setUiFeatures(getStageFeatures('en', step.payload.stage))
         setUiElements(step.callbacks)
@@ -92,6 +110,7 @@ const Login = () => {
       notifyHeading={notifyHeading}
       notifyTitle={notifyTitle}
       notifyChildren={notifyChildren}
+      {...customPageProps}
     />
   )
 }
