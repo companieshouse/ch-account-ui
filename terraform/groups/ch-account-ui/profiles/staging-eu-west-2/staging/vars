@@ -1,0 +1,3 @@
+environment = "staging"
+domain_name = "company-information.service.gov.uk"
+create_route53_record = false
