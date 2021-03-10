@@ -39,6 +39,7 @@ export const forgerockFlow = ({
 
   const handleStep = (step) => {
     console.log('Forgerock step, handleStep(step) got', step)
+
     if (step.type === StepType.LoginSuccess) {
       console.log('ForgeRock login success', step)
       console.log('ForgeRock getting session token...')

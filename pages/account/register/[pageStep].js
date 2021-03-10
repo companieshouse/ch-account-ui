@@ -37,7 +37,7 @@ const findCustomPageProps = (step) => {
         apiError: {
           errors: [{
             error: 'JSONParseError',
-            message: "API returned invalid JSON string in 'pagePropsJSON' callback data: " + err
+            message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
           }]
         }
       }
@@ -72,7 +72,8 @@ const RegisterContactDetails = () => {
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { pageStep = '', service = '', token, overrideStage = '' } = router.query || ''
+  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
+  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   let journeyName = ''
 
@@ -128,6 +129,12 @@ const RegisterContactDetails = () => {
         }
 
         setErrors(newErrors)
+
+        if (!uiStage) {
+          setUiStage('GENERIC_ERROR')
+        }
+
+        setUiFeatures(getStageFeatures('en', overrideStage || 'GENERIC_ERROR'))
       },
       onUpdateUi: (step, submitDataFunc) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -156,7 +163,7 @@ const RegisterContactDetails = () => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep])
+  }, [pageStep, service, token])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -179,7 +186,20 @@ const RegisterContactDetails = () => {
   if (!pageStep) return null
 
   return (
-    <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} {...customPageProps} />
+    <FeatureDynamicView
+      renderFeatures={renderFeatures}
+      onSubmit={onSubmit}
+      errors={errors}
+      headingCount={headingCount}
+      uiFeatures={uiFeatures}
+      uiElements={uiElements}
+      uiStage={uiStage}
+      notifyType={notifyType}
+      notifyHeading={notifyHeading}
+      notifyTitle={notifyTitle}
+      notifyChildren={notifyChildren}
+      {...customPageProps}
+    />
   )
 }
 

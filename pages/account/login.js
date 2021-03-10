@@ -17,6 +17,7 @@ const Login = () => {
   const headingCount = new HeadingCount()
 
   const { goto } = router.query
+  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   React.useEffect(() => {
     headingCount.reset()
@@ -79,7 +80,19 @@ const Login = () => {
   }
 
   return (
-    <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} />
+    <FeatureDynamicView
+      renderFeatures={renderFeatures}
+      onSubmit={onSubmit}
+      errors={errors}
+      headingCount={headingCount}
+      uiFeatures={uiFeatures}
+      uiElements={uiElements}
+      uiStage={uiStage}
+      notifyType={notifyType}
+      notifyHeading={notifyHeading}
+      notifyTitle={notifyTitle}
+      notifyChildren={notifyChildren}
+    />
   )
 }
 

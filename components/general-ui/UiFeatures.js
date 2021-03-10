@@ -13,6 +13,7 @@ import TemplateText from './typeography/TemplateText'
 import SpanText from './typeography/SpanText'
 import NotificationBanner from './typeography/NotificationBanner'
 import RadioGroup from './interaction/RadioGroup'
+import Redirect from '../application-specific/Redirect'
 
 const featureMap = {
   Button,
@@ -27,7 +28,8 @@ const featureMap = {
   Details,
   TemplateText,
   NotificationBanner,
-  RadioGroup
+  RadioGroup,
+  Redirect
 }
 
 const UiFeatures = (props) => {

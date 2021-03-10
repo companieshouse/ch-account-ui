@@ -491,6 +491,14 @@
       }
     }
   ],
+  "RESET_PASSWORD_5": [
+    {
+      "feature": "Redirect",
+      "props": {
+        "url": "/account/login/?notifyTitle=Success&notifyHeading=You've successfully reset your password&notifyType=success"
+      }
+    }
+  ],
   "RESET_PASSWORD_6": [
     {
       "feature": "PageHeading",

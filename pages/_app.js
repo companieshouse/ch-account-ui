@@ -9,7 +9,7 @@ function MyApp ({ Component, pageProps }) {
       document.body.className = document.body.className ? document.body.className + ' js-enabled' : 'js-enabled'
       initAll()
     })
-  })
+  }, [])
 
   return (<>
     <Header />
