@@ -10,7 +10,7 @@ const ValidatedCreatePasswordCallback = ({ errors = [], element, customElementPr
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type={isEchoOn === true ? 'text' : 'password'} autoComplete="current-password" label={label} errors={errors} testId="passwordInputField" required {...customElementProps} />
+      <InputField id={id} type={isEchoOn === true ? 'text' : 'password'} autoComplete="current-password" label={label} errors={errors} testId="passwordInputField" {...customElementProps} />
     </FormGroup>
   )
 }
