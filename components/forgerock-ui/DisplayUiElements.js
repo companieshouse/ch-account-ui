@@ -33,9 +33,9 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
           fieldId = element.payload.input[0].name
           return <ValidatedCreatePasswordCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
-        case CallbackType.TextOutputCallback:
+          /* case CallbackType.TextOutputCallback:
           fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
-          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
+          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} /> */
 
         case CallbackType.ChoiceCallback:
           fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
