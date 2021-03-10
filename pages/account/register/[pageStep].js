@@ -47,6 +47,21 @@ const findCustomPageProps = (step) => {
   return ''
 }
 
+export const getStaticPaths = async () => {
+  return {
+    paths: [
+      { params: { pageStep: '_start' } },
+      { params: { pageStep: '_restart' } },
+      { params: { pageStep: 'verify' } }
+    ],
+    fallback: false
+  }
+}
+
+export const getStaticProps = async () => {
+  return { props: {} }
+}
+
 const RegisterContactDetails = () => {
   const router = useRouter()
   const [errors, setErrors] = React.useState([])
@@ -64,6 +79,17 @@ const RegisterContactDetails = () => {
   React.useEffect(() => {
     headingCount.reset()
     if (!pageStep) return
+
+    if (pageStep === '_restart') {
+      router.replace('/account/register/_start/')
+      return
+    }
+
+    if (pageStep === 'verify' && service && token) {
+      journeyName = service
+    } else {
+      journeyName = FORGEROCK_TREE_REGISTER
+    }
 
     setErrors([])
 
@@ -151,16 +177,6 @@ const RegisterContactDetails = () => {
 
   // Check if the router has been initialised yet
   if (!pageStep) return null
-
-  if (pageStep === 'verify' && service && token) {
-    journeyName = service
-  } else {
-    journeyName = FORGEROCK_TREE_REGISTER
-  }
-
-  if (pageStep === '_restart') {
-    router.replace('/account/register/_start/')
-  }
 
   return (
     <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} {...customPageProps} />
