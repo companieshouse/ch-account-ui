@@ -5,7 +5,7 @@ import InputField from '../general-ui/interaction/InputField'
 
 const ValidatedCreatePasswordCallback = ({ errors = [], element, customElementProps = {} }) => {
   const id = element.payload.input[0].name
-  const label = element.getPrompt()
+  const label = customElementProps.prompt || element.getPrompt()
   const isEchoOn = element.getOutputValue('echoOn')
 
   return (

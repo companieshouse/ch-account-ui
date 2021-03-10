@@ -6,7 +6,7 @@ import InputField from '../general-ui/interaction/InputField'
 
 const StringAttributeInputCallback = ({ errors = [], element, customElementProps = {} }) => {
   const id = element.payload.input[0].name
-  const label = element.getPrompt()
+  const label = customElementProps.prompt || element.getPrompt()
   const testId = element.getName() || 'unknownFieldName'
   const currentValue = element.getOutputValue('value')
   const required = element.isRequired() || false
