@@ -1,3 +1,7 @@
+locals {
+  fqdn = "${var.service_name}.${var.domain_name}"
+}
+
 # CloudFront certificates must be in us-east-1
 resource "aws_acm_certificate" "domain" {
   provider                  = aws.us_east_1
@@ -40,7 +44,7 @@ data "aws_route53_zone" "domain" {
 
 resource "aws_route53_record" "website" {
   count   = var.create_route53_record ? 1 : 0
-  name    = var.domain_name
+  name    = local.fqdn
   zone_id = data.aws_route53_zone.domain.0.id
   type    = "A"
   alias {
@@ -53,7 +57,7 @@ resource "aws_route53_record" "website" {
 resource "aws_cloudfront_distribution" "website" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = [var.domain_name]
+  aliases             = [local.fqdn]
 
   origin {
     custom_origin_config {
