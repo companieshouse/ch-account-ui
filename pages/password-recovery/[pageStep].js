@@ -73,7 +73,8 @@ const ResetPassword = () => {
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { pageStep = '', service = '', token, overrideStage = '' } = router.query || ''
+  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
+  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   let journeyName = ''
 
@@ -86,7 +87,11 @@ const ResetPassword = () => {
       return
     }
 
-    if (pageStep === 'verify' && service && token) {
+    if (pageStep === 'verify') {
+      // Wait for service and token to become available via the router
+      if (!service || !token) return
+
+      // Now set the journey name
       journeyName = service
     } else {
       journeyName = FORGEROCK_TREE_FMP
@@ -100,7 +105,7 @@ const ResetPassword = () => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
+    console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
       stepOptions,
@@ -108,7 +113,7 @@ const ResetPassword = () => {
         Router.push('/account/home')
       },
       onFailure: (err) => {
-        const message = err?.payload?.message || 'Registration failure'
+        const message = err?.payload?.message || 'Reset password failure'
         const reason = err?.payload?.reason || 'Unknown'
         const newErrors = []
 
@@ -129,6 +134,12 @@ const ResetPassword = () => {
         }
 
         setErrors(newErrors)
+
+        if (!uiStage) {
+          setUiStage('GENERIC_ERROR')
+        }
+
+        setUiFeatures(getStageFeatures('en', overrideStage || 'GENERIC_ERROR'))
       },
       onUpdateUi: (step, submitDataFunc) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -148,7 +159,6 @@ const ResetPassword = () => {
             })
           }
           setCustomPageProps(stepCustomPageProps)
-          console.log('CUSTOM PAGE PROPS', stepCustomPageProps)
         }
 
         setUiStage(stage)
@@ -157,7 +167,7 @@ const ResetPassword = () => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep])
+  }, [pageStep, service, token])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -180,7 +190,20 @@ const ResetPassword = () => {
   if (!pageStep) return null
 
   return (
-    <FeatureDynamicView renderFeatures={renderFeatures} onSubmit={onSubmit} errors={errors} headingCount={headingCount} uiFeatures={uiFeatures} uiElements={uiElements} uiStage={uiStage} {...customPageProps} />
+    <FeatureDynamicView
+      renderFeatures={renderFeatures}
+      onSubmit={onSubmit}
+      errors={errors}
+      headingCount={headingCount}
+      uiFeatures={uiFeatures}
+      uiElements={uiElements}
+      uiStage={uiStage}
+      notifyType={notifyType}
+      notifyHeading={notifyHeading}
+      notifyTitle={notifyTitle}
+      notifyChildren={notifyChildren}
+      {...customPageProps}
+    />
   )
 }
 
