@@ -7,6 +7,7 @@ import StringAttributeInputCallback from './StringAttributeInputCallback'
 import TextOutputCallback from './TextOutputCallback'
 import ValidatedCreatePasswordCallback from './ValidatedCreatePasswordCallback'
 import ChoiceCallback from './ChoiceCallback'
+import HiddenValueCallback from './HiddenValueCallback'
 
 const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
   return (
@@ -15,6 +16,9 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
       let fieldId
 
       switch (element.payload.type) {
+        case CallbackType.HiddenValueCallback:
+          return <HiddenValueCallback key={index} element={element} errors={errors} />
+
         case CallbackType.NameCallback:
           return <NameCallback key={index} element={element} errors={errors} />
 

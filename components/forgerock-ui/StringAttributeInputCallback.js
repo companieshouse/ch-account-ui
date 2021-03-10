@@ -5,8 +5,6 @@ import InputField from '../general-ui/interaction/InputField'
 // import { getCallbackElementData } from '../../services/forgerock'
 
 const StringAttributeInputCallback = ({ errors = [], element, customElementProps = {} }) => {
-  console.log('StringAttributeInputCallback', customElementProps)
-
   const id = element.payload.input[0].name
   const label = element.getPrompt()
   const testId = element.getName() || 'unknownFieldName'
