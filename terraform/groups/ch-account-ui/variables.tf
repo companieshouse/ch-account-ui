@@ -17,4 +17,15 @@ variable "service_name" {
 variable "route53_zone" {
   type        = string
   description = "The Route53 hosted zone to use for DNS records"
+  default     = "N/A"
+}
+
+variable "create_route53_record" {
+  type        = bool
+  description = "Sould a Route53 record be created"
+}
+
+variable "domain_name" {
+  type = string
+  description = "The domain name to use for the application"
 }

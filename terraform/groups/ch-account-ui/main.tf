@@ -1,17 +1,13 @@
-locals {
-  domain_name = "${var.service_name}.amido.${var.route53_zone}"
-}
-
 # CloudFront certificates must be in us-east-1
 resource "aws_acm_certificate" "domain" {
   provider                  = aws.us_east_1
-  domain_name               = "amido.${var.route53_zone}"
-  subject_alternative_names = ["*.amido.${var.route53_zone}"]
+  domain_name               = var.domain_name
+  subject_alternative_names = ["*.${var.domain_name}"]
   validation_method         = "DNS"
 }
 
 resource "aws_s3_bucket" "website" {
-  bucket        = local.domain_name
+  bucket        = var.service_name
   acl           = "public-read"
   policy        = data.aws_iam_policy_document.website.json
   force_destroy = true
@@ -32,18 +28,20 @@ data "aws_iam_policy_document" "website" {
       type        = "AWS"
     }
     resources = [
-      "arn:aws:s3:::${local.domain_name}/*"
+      "arn:aws:s3:::${var.service_name}/*"
     ]
   }
 }
 
 data "aws_route53_zone" "domain" {
-  name = var.route53_zone
+  count = var.create_route53_record ? 1 : 0
+  name  = var.route53_zone
 }
 
 resource "aws_route53_record" "website" {
-  name    = local.domain_name
-  zone_id = data.aws_route53_zone.domain.id
+  count   = var.create_route53_record ? 1 : 0
+  name    = var.domain_name
+  zone_id = data.aws_route53_zone.domain.0.id
   type    = "A"
   alias {
     name                   = aws_cloudfront_distribution.website.domain_name
@@ -55,7 +53,7 @@ resource "aws_route53_record" "website" {
 resource "aws_cloudfront_distribution" "website" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = [local.domain_name]
+  aliases             = [var.domain_name]
 
   origin {
     custom_origin_config {
