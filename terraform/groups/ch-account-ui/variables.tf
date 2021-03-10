@@ -22,10 +22,10 @@ variable "route53_zone" {
 
 variable "create_route53_record" {
   type        = bool
-  description = "Sould a Route53 record be created"
+  description = "Should a Route53 record be created"
 }
 
 variable "domain_name" {
-  type = string
+  type        = string
   description = "The domain name to use for the application"
 }
