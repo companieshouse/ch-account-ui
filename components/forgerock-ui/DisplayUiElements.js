@@ -20,10 +20,12 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
           return <HiddenValueCallback key={index} element={element} errors={errors} />
 
         case CallbackType.NameCallback:
-          return <NameCallback key={index} element={element} errors={errors} />
+          fieldId = element.payload.input[0].name
+          return <NameCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
         case CallbackType.PasswordCallback:
-          return <PasswordCallback key={index} element={element} errors={errors} />
+          fieldId = element.payload.input[0].name
+          return <PasswordCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
         case CallbackType.StringAttributeInputCallback:
           fieldId = element.payload.input[0].name
@@ -33,9 +35,9 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
           fieldId = element.payload.input[0].name
           return <ValidatedCreatePasswordCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
 
-        case CallbackType.TextOutputCallback:
+          /* case CallbackType.TextOutputCallback:
           fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
-          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} />
+          return <TextOutputCallback key={index} element={element} errors={errors} customElementProps={elementProps[fieldId]} /> */
 
         case CallbackType.ChoiceCallback:
           fieldId = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`

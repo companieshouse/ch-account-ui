@@ -186,3 +186,43 @@ export const logoutFlow = ({
   FRUser.logout().then(onSuccess).catch(onFailure)
   // SessionManager.logout().then(onSuccess).catch(onFailure)
 }
+
+export const findCustomStage = (step) => {
+  for (let i = 0; i < step.payload.callbacks.length; i++) {
+    const callback = step.payload.callbacks[i]
+
+    if (!callback) continue
+    if (callback.type !== 'HiddenValueCallback') continue
+    if (!callback.output.find((output) => output.name === 'id' && output.value === 'stage')) continue
+
+    return callback.output.find((output) => output.name === 'value')?.value || ''
+  }
+
+  return ''
+}
+
+export const findCustomPageProps = (step) => {
+  for (let i = 0; i < step.payload.callbacks.length; i++) {
+    const callback = step.payload.callbacks[i]
+
+    if (!callback) continue
+    if (callback.type !== 'HiddenValueCallback') continue
+    if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
+
+    try {
+      const customPropsObject = JSON.parse(callback.output.find((output) => output.name === 'value')?.value || '')
+      return customPropsObject
+    } catch (err) {
+      return {
+        apiError: {
+          errors: [{
+            error: 'JSONParseError',
+            message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
+          }]
+        }
+      }
+    }
+  }
+
+  return {}
+}

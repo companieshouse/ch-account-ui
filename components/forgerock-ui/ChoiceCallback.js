@@ -4,7 +4,7 @@ import RadioGroup from '../general-ui/interaction/RadioGroup'
 
 const ChoiceCallback = ({ element, customElementProps = {} }) => {
   const id = element.payload.input[0].name
-  const label = element.getPrompt()
+  const label = customElementProps.prompt || element.getPrompt()
   const testId = (element && element.getName && element.getName()) || `${id}_testId`
   const choices = element.getOutputValue('choices')
   const defaultValue = element.getOutputValue('defaultChoice')
