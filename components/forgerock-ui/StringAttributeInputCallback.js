@@ -9,11 +9,10 @@ const StringAttributeInputCallback = ({ errors = [], element, customElementProps
   const label = customElementProps.prompt || element.getPrompt()
   const testId = element.getName() || 'unknownFieldName'
   const currentValue = element.getOutputValue('value')
-  const required = element.isRequired() || false
 
   return (
     <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="text" label={label} errors={errors} testId={testId} defaultValue={currentValue} required={required} {...customElementProps} />
+      <InputField id={id} type="text" label={label} errors={errors} testId={testId} defaultValue={currentValue} {...customElementProps} />
     </FormGroup>
   )
 }
