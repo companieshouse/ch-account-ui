@@ -20,9 +20,12 @@ const FeatureDynamicView = (props) => {
       <Main>
         <Row>
           <Column width='two-thirds'>
-            <form action={formAction} onSubmit={onSubmit} method="post">
+            {Boolean(formAction) === true && <form action={formAction} onSubmit={onSubmit} method="post">
               {renderFeatures(props)}
-            </form>
+            </form>}
+            {Boolean(formAction) === false && <>
+              {renderFeatures(props)}
+            </>}
           </Column>
         </Row>
       </Main>
