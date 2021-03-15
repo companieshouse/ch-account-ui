@@ -9,14 +9,18 @@ import Row from '../components/general-ui/layout/Row'
 import Column from '../components/general-ui/layout/Column'
 import Main from '../components/general-ui/layout/Main'
 import WidthContainer from '../components/general-ui/layout/WidthContainer'
+import withLang from '../services/lang/withLang'
+import { translate } from '../services/translate'
+import LanguageSwitcher from '../components/application-specific/LanguageSwitcher'
 
-const Home = () => {
+const Index = ({ lang }) => {
   return (
     <WidthContainer>
+      <LanguageSwitcher />
       <Main>
         <Row>
           <Column width='two-thirds'>
-            <HeadingText type="h1" size="xl">Companies House account</HeadingText>
+            <HeadingText type="h1" size="xl">{translate(lang, 'companiesHouseAccount')}</HeadingText>
             <BodyText>A Companies House account allows you to:</BodyText>
             <List type="bullet">
               <ListItem>find and update company information and file for your company online</ListItem>
@@ -46,4 +50,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default withLang(Index)
