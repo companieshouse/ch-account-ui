@@ -37,10 +37,15 @@ PageHeading.propTypes = {
   children: PropTypes.node,
   errors: PropTypes.array,
   headingCount: PropTypes.object,
+  notifyChildren: PropTypes.node,
+  notifyHeading: PropTypes.string,
+  notifyTitle: PropTypes.string,
+  notifyType: PropTypes.string,
   renderFeatures: PropTypes.func
 }
 
 PageHeading.defaultProps = {
   errors: [],
+  notifyChildren: null,
   renderFeatures: () => { return null }
 }
