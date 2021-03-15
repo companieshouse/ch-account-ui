@@ -9,6 +9,7 @@ import HeadingCount from '../../services/HeadingCount'
 
 const FeatureDynamicView = (props) => {
   const {
+    width = 'two-thirds',
     formAction = '',
     onSubmit,
     renderFeatures
@@ -19,7 +20,7 @@ const FeatureDynamicView = (props) => {
       <BackLink testId="backLink">Back</BackLink>
       <Main>
         <Row>
-          <Column width='two-thirds'>
+          <Column width={width}>
             {Boolean(formAction) === true && <form action={formAction} onSubmit={onSubmit} method="post">
               {renderFeatures(props)}
             </form>}
@@ -38,16 +39,18 @@ export default FeatureDynamicView
 FeatureDynamicView.propTypes = {
   errors: PropTypes.array,
   formAction: PropTypes.string,
+  headingCount: PropTypes.instanceOf(HeadingCount),
   onSubmit: PropTypes.func,
   renderFeatures: PropTypes.func.isRequired,
   uiElements: PropTypes.array,
   uiFeatures: PropTypes.array,
-  headingCount: PropTypes.instanceOf(HeadingCount)
+  width: PropTypes.string
 }
 
 FeatureDynamicView.defaultProps = {
   errors: [],
   formAction: '',
   uiElements: [],
-  uiFeatures: []
+  uiFeatures: [],
+  width: 'two-thirds'
 }
