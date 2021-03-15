@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/general-ui/Header'
 import Footer from '../components/general-ui/Footer'
+import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
 function MyApp ({ Component, pageProps }) {
   React.useEffect(() => {
@@ -12,6 +13,7 @@ function MyApp ({ Component, pageProps }) {
   }, [])
 
   return (<>
+    <CookieBanners />
     <Header />
     <Component {...pageProps} />
     <Footer />
