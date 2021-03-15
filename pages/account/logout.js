@@ -10,8 +10,9 @@ import PageHeading from '../../components/general-ui/typeography/PageHeading'
 import BodyText from '../../components/general-ui/typeography/BodyText'
 import LinkText from '../../components/general-ui/interaction/LinkText'
 import WidthContainer from '../../components/general-ui/layout/WidthContainer'
+import withLang from '../../services/lang/withLang'
 
-const Logout = () => {
+const Logout = ({ lang }) => {
   const [errors, setErrors] = React.useState([])
   const headingCount = new HeadingCount()
 
@@ -51,7 +52,7 @@ const Logout = () => {
   )
 }
 
-export default Logout
+export default withLang(Logout)
 
 Logout.propTypes = {
   errors: PropTypes.array

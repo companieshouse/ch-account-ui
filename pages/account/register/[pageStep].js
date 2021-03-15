@@ -6,6 +6,7 @@ import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
+import withLang from '../../../services/lang/withLang'
 
 export const getStaticPaths = async () => {
   return {
@@ -22,7 +23,7 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const RegisterContactDetails = () => {
+const RegisterContactDetails = ({ lang }) => {
   const router = useRouter()
   const [errors, setErrors] = React.useState([])
   const [customPageProps, setCustomPageProps] = React.useState({})
@@ -94,7 +95,7 @@ const RegisterContactDetails = () => {
           setUiStage('GENERIC_ERROR')
         }
 
-        setUiFeatures(getStageFeatures('en', overrideStage || 'GENERIC_ERROR'))
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'GENERIC_ERROR'))
       },
       onUpdateUi: (step, submitDataFunc) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -117,7 +118,7 @@ const RegisterContactDetails = () => {
 
         setCustomPageProps(stepCustomPageProps)
         setUiStage(stage)
-        setUiFeatures(getStageFeatures('en', overrideStage || stage))
+        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
@@ -162,4 +163,4 @@ const RegisterContactDetails = () => {
   )
 }
 
-export default RegisterContactDetails
+export default withLang(RegisterContactDetails)

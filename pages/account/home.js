@@ -44,15 +44,10 @@ const Home = ({ errors, lang }) => {
 
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
-  const uiFeatures = getStageFeatures('en', uiStage)
 
   React.useEffect(() => {
     headingCount.reset()
   }, [])
-
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
 
   return (
     <WidthContainer>
