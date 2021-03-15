@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
+import NoScript from '../components/general-ui/NoScript'
 
 class MyDocument extends Document {
   static async getInitialProps (ctx) {
@@ -27,11 +28,12 @@ class MyDocument extends Document {
 
           <link rel="stylesheet" href={`${BASE_PATH}/css/global.css`}/>
         </head>
-        <Head/>
+        <Head />
         <body className="govuk-template__body app-body-class js-disabled">
-        <Main/>
-        <NextScript/>
-        <script src={`${BASE_PATH}/js/sa11y.js`}/>
+          <NoScript />
+          <Main/>
+          <NextScript/>
+          <script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`}/>
         </body>
       </Html>
     )
