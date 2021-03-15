@@ -15,6 +15,16 @@ import NotificationBanner from './typeography/NotificationBanner'
 import RadioGroup from './interaction/RadioGroup'
 import Redirect from '../application-specific/Redirect'
 import BrowserTitle from '../application-specific/BrowserTitle'
+import Row from './layout/Row'
+import Column from './layout/Column'
+import Main from './layout/Main'
+import Table from './layout/Table'
+import TBody from './layout/TBody'
+import Td from './layout/Td'
+import Th from './layout/Th'
+import THead from './layout/THead'
+import Tr from './layout/Tr'
+import WidthContainer from './layout/WidthContainer'
 
 const featureMap = {
   Button,
@@ -31,7 +41,17 @@ const featureMap = {
   NotificationBanner,
   RadioGroup,
   Redirect,
-  BrowserTitle
+  BrowserTitle,
+  Row,
+  Column,
+  Main,
+  Table,
+  TBody,
+  Td,
+  Th,
+  THead,
+  Tr,
+  WidthContainer
 }
 
 const UiFeatures = (props) => {
