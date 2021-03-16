@@ -136,6 +136,9 @@
       "children": "Verify your email address"
     },
     {
+      "feature": "DisplayUiElements"
+    },
+    {
       "feature": "BodyText",
       "props": {
         "uiFeatures": [

@@ -6,8 +6,9 @@ import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
+import withLang from '../../services/lang/withLang'
 
-const Login = () => {
+const Login = ({ lang }) => {
   const router = useRouter()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
@@ -18,7 +19,7 @@ const Login = () => {
   const headingCount = new HeadingCount()
 
   const { goto } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
+  const { notifyType, notifyHeading, notifyTitle, notifyChildren, overrideStage = '' } = router.query
 
   React.useEffect(() => {
     headingCount.reset()
@@ -53,6 +54,12 @@ const Login = () => {
         }
 
         setErrors(newErrors)
+
+        if (!uiStage) {
+          setUiStage('GENERIC_ERROR')
+        }
+
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'GENERIC_ERROR'))
       },
       onUpdateUi: (step, submitDataFunc) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -73,7 +80,7 @@ const Login = () => {
 
         setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)
-        setUiFeatures(getStageFeatures('en', step.payload.stage))
+        setUiFeatures(getStageFeatures(lang, overrideStage || step.payload.stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
@@ -115,4 +122,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withLang(Login)

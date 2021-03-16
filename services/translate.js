@@ -1,18 +1,28 @@
-import en from './lang/en.json'
+import enFeatures from './lang/en/features.json'
+import enTokens from './lang/en/tokens.json'
 
-const langPacks = {
-  en
+import cyFeatures from './lang/cy/features.json'
+import cyTokens from './lang/cy/tokens.json'
+
+const features = {
+  en: enFeatures,
+  cy: cyFeatures
+}
+
+const tokens = {
+  en: enTokens,
+  cy: cyTokens
 }
 
 export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
-  if (!langPacks[lang]) {
+  if (!features[lang]) {
     return [{
       feature: 'BodyText',
-      children: `Cannot find langPack for lang "${lang}".`
+      children: `Cannot find features for lang "${lang}".`
     }]
   }
 
-  if (!stage || !langPacks[lang][stage]) {
+  if (!stage || !features[lang][stage]) {
     return [{
       feature: 'BodyText',
       children: `Cannot find stage data for lang "${lang}" and stage "${stage}".  Either the journey page node has not been given a stage name or you are not correctly passing the stage name to the getStageFeatures(lang, stage, featureName) function!`
@@ -20,15 +30,27 @@ export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
   }
 
   if (!featureName) {
-    return langPacks[lang][stage]
+    return features[lang][stage]
   }
 
-  if (!langPacks[lang][stage][featureName]) {
+  if (!features[lang][stage][featureName]) {
     return [{
       feature: 'BodyText',
       children: `No feature data for lang "${lang}", stage "${stage}" and featureName "${featureName}". Please check your stage data to ensure you have defined a feature with this name!`
     }]
   }
 
-  return langPacks[lang][stage][featureName]
+  return features[lang][stage][featureName]
+}
+
+export const translate = (lang = '', token = '') => {
+  if (!tokens[lang]) {
+    return `Cannot find tokens for lang "${lang}"`
+  }
+
+  if (!tokens[lang][token]) {
+    return `No token data for lang "${lang}" and token "${token}". Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with this name!`
+  }
+
+  return tokens[lang][token]
 }

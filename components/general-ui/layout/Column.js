@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
-const Column = ({ children, width = 'full', className = '' }) => {
+const Column = (props) => {
+  const { children, width = 'full', className = '', renderFeatures } = props
   const classes = [className]
 
   if (width === 'full') classes.push('govuk-grid-column-full')
@@ -13,8 +15,22 @@ const Column = ({ children, width = 'full', className = '' }) => {
   return (
     <div className={finalClassName}>
       {children}
+      {renderFeatures(props)}
     </div>
   )
 }
 
 export default Column
+
+Column.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  renderFeatures: PropTypes.func,
+  width: PropTypes.string
+}
+
+Column.defaultProps = {
+  className: '',
+  renderFeatures: () => { return null },
+  width: 'full'
+}
