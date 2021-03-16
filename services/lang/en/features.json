@@ -523,6 +523,9 @@
       "children": "Check your emails"
     },
     {
+      "feature": "DisplayUiElements"
+    },
+    {
       "feature": "BodyText",
       "props": {
         "uiFeatures": [
