@@ -2,13 +2,15 @@ import React from 'react'
 import Router, { useRouter } from 'next/router'
 import { findCustomPageProps, loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import { CH_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import withLang from '../../services/lang/withLang'
+import { useCookies } from 'react-cookie'
 
 const Login = ({ lang }) => {
+  const [, setCookie] = useCookies()
   const router = useRouter()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
@@ -26,6 +28,9 @@ const Login = ({ lang }) => {
     loginFlow({
       journeyName: FORGEROCK_TREE_LOGIN,
       onSuccess: (loginData) => {
+        // Set auth cookie
+        setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
+
         if (goto) {
           return Router.push(goto)
         }

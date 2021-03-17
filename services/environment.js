@@ -12,4 +12,6 @@ export const FORGEROCK_TREE_REGISTER_VERIFY = process.env.FORGEROCK_TREE_REGISTE
 export const FORGEROCK_TREE_FMP = process.env.FORGEROCK_TREE_FMP || 'CHResetPassword'
 export const FORGEROCK_TREE_FMP_VERIFY = process.env.FORGEROCK_TREE_FMP_VERIFY || 'CHResetPassword'
 
+export const CH_COOKIE_NAME = process.env.CH_COOKIE_NAME || '_ch_identity'
+
 console.log(`Running as environment: ${ENVIRONMENT}`)
