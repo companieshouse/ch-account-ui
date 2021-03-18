@@ -11,14 +11,18 @@ import BodyText from '../../components/general-ui/typeography/BodyText'
 import LinkText from '../../components/general-ui/interaction/LinkText'
 import WidthContainer from '../../components/general-ui/layout/WidthContainer'
 import withLang from '../../services/lang/withLang'
+import { CH_COOKIE_NAME } from '../../services/environment'
+import { useCookies } from 'react-cookie'
 
 const Logout = ({ lang }) => {
+  const [, , removeCookie] = useCookies()
   const [errors, setErrors] = React.useState([])
   const headingCount = new HeadingCount()
 
   const doLogout = () => {
     logoutFlow({
       onSuccess: () => {
+        removeCookie(CH_COOKIE_NAME, { path: '/' })
         Router.push('/account/login')
       },
       onFailure: (err) => {
