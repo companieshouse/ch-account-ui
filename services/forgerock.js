@@ -8,11 +8,61 @@ import {
 } from './environment'
 export { CallbackType } from '@forgerock/javascript-sdk'
 
+const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
+  const errors = []
+  const fieldsWithErrors = []
+
+  if (!step) return errors
+
+  if (step.type === StepType.LoginFailure) {
+    errors.push({
+      errData: step, // Add the errData key to pass along the original error info
+      token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`
+    })
+  }
+
+  // Scan the step callbacks for failedPolicies data
+  step.callbacks.forEach((callback) => {
+    const payload = callback?.payload
+    const inputs = payload?.input || []
+    const outputs = payload?.output || []
+
+    const fieldName = (outputs.find((output) => output.name === 'name') || {}).name || ''
+    if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
+
+    const failedPolicies = outputs.find((output) => output.name === 'failedPolicies')
+
+    // Loop the failed policies
+    failedPolicies?.value?.forEach((failedPolicy) => {
+      if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
+      try {
+        const json = JSON.parse(failedPolicy)
+
+        if (!json || !json.policyRequirement) return
+
+        errors.push({
+          errData: json,
+          token: `${journeyNamespace}_${json.policyRequirement}`,
+          anchor: (inputs && inputs[0] && inputs[0].name) || undefined,
+          fieldName
+        })
+
+        fieldsWithErrors.push(fieldName)
+      } catch (err) {
+        // Couldn't parse JSON
+      }
+    })
+  })
+
+  return errors
+}
+
 export const forgerockFlow = ({
   onSuccess,
   onFailure,
   onUpdateUi,
   journeyName,
+  journeyNamespace,
   stepOptions
 }) => {
   Config.set({
@@ -29,7 +79,11 @@ export const forgerockFlow = ({
 
   const handleFatalError = (err) => {
     console.log('ForgeRock fatal error', err)
-    onFailure(err)
+    onFailure(err, [{
+      errData: err, // Add the errData key to pass along the original error info
+      token: 'ERROR_UNKNOWN', // We don't know the error
+      stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
+    }])
   }
 
   const nextStep = (step, stepOptions) => {
@@ -39,6 +93,12 @@ export const forgerockFlow = ({
 
   const handleStep = (step) => {
     console.log('Forgerock step, handleStep(step) got', step)
+
+    // Find any validation errors and convert them to an errors array
+    // that our front-end can use. This normalises the errors across
+    // different calls and steps etc to ensure we don't have to manually
+    // code different error handling methods for different pages.
+    const errors = normaliseErrors(step, journeyNamespace)
 
     if (step.type === StepType.LoginSuccess) {
       console.log('ForgeRock login success', step)
@@ -83,7 +143,7 @@ export const forgerockFlow = ({
       })
 
       nextStep(step, stepOptions)
-    })
+    }, errors)
   }
 
   // Start the login process
@@ -210,7 +270,14 @@ export const findCustomPageProps = (step) => {
     if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
 
     try {
-      const customPropsObject = JSON.parse(callback.output.find((output) => output.name === 'value')?.value || '')
+      const jsonString = callback.output.find((output) => output.name === 'value')?.value || ''
+
+      if (!jsonString) {
+        console.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
+        continue
+      }
+
+      const customPropsObject = JSON.parse(jsonString)
       return customPropsObject
     } catch (err) {
       return {

@@ -3,7 +3,7 @@ import Router, { useRouter } from 'next/router'
 import { findCustomPageProps, loginFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
-import { getStageFeatures } from '../../services/translate'
+import { getStageFeatures, translate } from '../../services/translate'
 import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import withLang from '../../services/lang/withLang'
@@ -27,6 +27,7 @@ const Login = ({ lang }) => {
     headingCount.reset()
     loginFlow({
       journeyName: FORGEROCK_TREE_LOGIN,
+      journeyNamespace: 'LOGIN',
       onSuccess: (loginData) => {
         // Set auth cookie
         setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
@@ -38,8 +39,8 @@ const Login = ({ lang }) => {
         Router.push('/account/home')
       },
       onFailure: (err) => {
-        const message = err?.payload?.message || 'Login failure'
-        const reason = err?.payload?.reason || 'Unknown'
+        const message = translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
+        const reason = err?.payload?.reason || translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
         const newErrors = []
 
         switch (reason) {
@@ -60,13 +61,9 @@ const Login = ({ lang }) => {
 
         setErrors(newErrors)
 
-        if (!uiStage) {
-          setUiStage('GENERIC_ERROR')
-        }
-
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'GENERIC_ERROR'))
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'LOGIN_1'))
       },
-      onUpdateUi: (step, submitDataFunc) => {
+      onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
 
         if (stepCustomPageProps) {
@@ -76,12 +73,14 @@ const Login = ({ lang }) => {
               label: errorItem.message
             }))
 
-            // Update the errors for the page
-            setErrors((currentErrorsArray) => {
-              return [...currentErrorsArray, ...apiErrorsAsAppErrors]
-            })
+            stepErrors.push(...apiErrorsAsAppErrors)
           }
         }
+
+        // Update the errors for the page
+        setErrors((currentErrorsArray) => {
+          return [...currentErrorsArray, ...stepErrors]
+        })
 
         setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)

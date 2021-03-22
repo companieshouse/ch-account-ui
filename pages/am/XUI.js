@@ -8,6 +8,15 @@ import {
 
 /**
  Handler that accepts url query params and routes to the correct page accordingly.
+ This page gets loaded when a user clicks a link from an email that they've been
+ sent from our API. The idea here is to take the params / query that the URL contains
+ and correctly route the user to the page that handles what the link was for. For
+ instance, when the user requests a password reset, they get sent an email with a
+ link. That link goes to /XUI?blahBlahBlah and includes token they need to validate
+ their password reset. As you can see below, we redirect them to
+ /account/register/verify with the query params following the redirect as well.
+
+ If you want to handle links and redirect, here is the place to put that logic!
  **/
 const XUI = () => {
   const router = useRouter()

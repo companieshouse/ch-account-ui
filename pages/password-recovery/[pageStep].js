@@ -69,6 +69,7 @@ const ResetPassword = ({ lang }) => {
     console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
+      journeyNamespace: 'RESET_PASSWORD',
       stepOptions,
       onSuccess: (loginData) => {
         Router.push('/account/home')
@@ -102,7 +103,7 @@ const ResetPassword = ({ lang }) => {
 
         setUiFeatures(getStageFeatures(lang, overrideStage || 'GENERIC_ERROR'))
       },
-      onUpdateUi: (step, submitDataFunc) => {
+      onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
         const stage = step.payload.stage || findCustomStage(step)
         step.payload.stage = stage
@@ -114,12 +115,14 @@ const ResetPassword = ({ lang }) => {
               label: errorItem.message
             }))
 
-            // Update the errors for the page
-            setErrors((currentErrorsArray) => {
-              return [...currentErrorsArray, ...apiErrorsAsAppErrors]
-            })
+            stepErrors.push(...apiErrorsAsAppErrors)
           }
         }
+
+        // Update the errors for the page
+        setErrors((currentErrorsArray) => {
+          return [...currentErrorsArray, ...stepErrors]
+        })
 
         setCustomPageProps(stepCustomPageProps)
         setUiStage(stage)

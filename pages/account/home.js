@@ -55,7 +55,7 @@ const Home = ({ errors, lang }) => {
       <Main>
         <Row>
           <Column width='full'>
-            {errors.length === 0 && <HeadingText headingCount={headingCount} size="l" caption={translate(lang, 'home')}>{userDetails.fullName}</HeadingText>}
+            {errors.length === 0 && <HeadingText headingCount={headingCount} size="l" caption={translate(lang, 'LABEL_HOME')}>{userDetails.fullName}</HeadingText>}
             {errors.length > 0 && <>
               <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
               <HeadingText headingCount={headingCount} size="l" caption='Home'>{userDetails.fullName}</HeadingText>

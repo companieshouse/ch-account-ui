@@ -20,7 +20,7 @@ const Index = ({ lang }) => {
       <Main>
         <Row>
           <Column width='two-thirds'>
-            <HeadingText type="h1" size="xl">{translate(lang, 'companiesHouseAccount')}</HeadingText>
+            <HeadingText type="h1" size="xl">{translate(lang, 'LABEL_COMPANIES_HOUSE_ACCOUNT')}</HeadingText>
             <BodyText>A Companies House account allows you to:</BodyText>
             <List type="bullet">
               <ListItem>find and update company information and file for your company online</ListItem>
