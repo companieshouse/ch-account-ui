@@ -25,6 +25,7 @@ import Th from './layout/Th'
 import THead from './layout/THead'
 import Tr from './layout/Tr'
 import WidthContainer from './layout/WidthContainer'
+import SummaryList from './typeography/SummaryList'
 
 const featureMap = {
   Button,
@@ -51,7 +52,8 @@ const featureMap = {
   Th,
   THead,
   Tr,
-  WidthContainer
+  WidthContainer,
+  SummaryList
 }
 
 const UiFeatures = (props) => {
