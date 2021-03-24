@@ -5,8 +5,9 @@ const Table = (props) => {
   const { caption, children, renderFeatures } = props
   return (
     <table className="govuk-table">
-      <caption className="govuk-table__caption govuk-table__caption--m">{caption}{renderFeatures(props)}</caption>
+      <caption className="govuk-table__caption govuk-table__caption--m">{caption}</caption>
       {children}
+      {renderFeatures(props)}
     </table>
   )
 }
