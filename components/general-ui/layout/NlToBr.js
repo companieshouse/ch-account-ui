@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const NlToBr = (props) => {
-  const { content } = props
+  const { content = '' } = props
   const contentArr = content.split('\n')
 
   return (
