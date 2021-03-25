@@ -27,6 +27,7 @@ import Tr from './layout/Tr'
 import WidthContainer from './layout/WidthContainer'
 import SummaryList from './typeography/SummaryList'
 import NlToBr from './layout/NlToBr'
+import Fragment from './typeography/Fragment'
 
 const featureMap = {
   Button,
@@ -55,7 +56,8 @@ const featureMap = {
   Tr,
   WidthContainer,
   SummaryList,
-  NlToBr
+  NlToBr,
+  Fragment
 }
 
 const UiFeatures = (props) => {
