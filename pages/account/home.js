@@ -32,7 +32,7 @@ const Home = ({ errors, lang }) => {
   const [companies, setCompanies] = React.useState([{
     name: 'Test Company',
     number: '0123456789',
-    address: '2nd Floor Red House, 17 London Road, London, SA73 8PH',
+    address: '2nd Floor\nRed House\n17 London Road\nLondon\nSA73 8PH',
     personsAuthorisedToFile: [{
       name: 'Test User',
       emailAddress: 'test@user.com',
@@ -47,7 +47,7 @@ const Home = ({ errors, lang }) => {
 
   React.useEffect(() => {
     headingCount.reset()
-  }, [])
+  }, [notifyType, notifyHeading, notifyTitle, notifyChildren])
 
   return (
     <WidthContainer>

@@ -89,7 +89,7 @@ const Login = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [goto])
+  }, [goto, overrideStage])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
