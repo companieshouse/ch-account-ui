@@ -126,7 +126,7 @@ const RegisterContactDetails = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, service, token])
+  }, [pageStep, overrideStage, service, token])
 
   const onSubmit = (evt) => {
     evt.preventDefault()

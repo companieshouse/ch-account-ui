@@ -1,46 +1,72 @@
 import React from 'react'
+import HeadingCount from '../../../services/HeadingCount'
+import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
+import { FORGEROCK_TREE_REQUEST_AUTH_CODE } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
-import { findCustomPageProps, loginFlow } from '../../services/forgerock'
-import HeadingCount from '../../services/HeadingCount'
-import { CH_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
-import { getStageFeatures, translate } from '../../services/translate'
-import UiFeatures from '../../components/general-ui/UiFeatures'
-import FeatureDynamicView from '../../components/views/FeatureDynamicView'
-import withLang from '../../services/lang/withLang'
-import { useCookies } from 'react-cookie'
+import { getStageFeatures, translate } from '../../../services/translate'
+import UiFeatures from '../../../components/general-ui/UiFeatures'
+import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
+import withLang from '../../../services/lang/withLang'
 
-const Login = ({ lang }) => {
-  const [, setCookie] = useCookies()
+export const getStaticPaths = async () => {
+  return {
+    paths: [
+      { params: { pageStep: '_start' } },
+      { params: { pageStep: '_restart' } }
+    ],
+    fallback: false
+  }
+}
+
+export const getStaticProps = async () => {
+  return { props: {} }
+}
+
+const RequestAuthCode = ({ lang }) => {
   const router = useRouter()
-  const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
+  const [customPageProps, setCustomPageProps] = React.useState({})
   const [uiStage, setUiStage] = React.useState('')
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { goto } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren, overrideStage = '' } = router.query
+  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
+  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
+
+  let journeyName = ''
 
   React.useEffect(() => {
     headingCount.reset()
-    loginFlow({
-      journeyName: FORGEROCK_TREE_LOGIN,
-      journeyNamespace: 'LOGIN',
+    if (!pageStep) return
+
+    if (pageStep === '_restart') {
+      router.replace('/account/request-auth-code/_start/')
+      return
+    }
+
+    journeyName = FORGEROCK_TREE_REQUEST_AUTH_CODE
+
+    setErrors([])
+
+    const stepOptions = {
+      query: {
+        token
+      }
+    }
+
+    console.log('Staring FR journey', journeyName, stepOptions)
+    forgerockFlow({
+      journeyName,
+      journeyNamespace: 'REQUEST_AUTHENTICATION_CODE',
+      stepOptions,
       onSuccess: (loginData) => {
-        // Set auth cookie
-        setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
-
-        if (goto) {
-          return Router.push(goto)
-        }
-
         Router.push('/account/home')
       },
       onFailure: (err) => {
-        const message = translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
-        const reason = err?.payload?.reason || translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
+        const message = translate(lang, 'ERROR_UNKNOWN')
+        const reason = err?.payload?.reason || translate(lang, 'ERROR_UNKNOWN')
         const newErrors = []
 
         switch (reason) {
@@ -61,10 +87,16 @@ const Login = ({ lang }) => {
 
         setErrors(newErrors)
 
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'LOGIN_1'))
+        if (!uiStage) {
+          // setUiStage('GENERIC_ERROR')
+        }
+
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'REQUEST_AUTHENTICATION_CODE_1'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
+        const stage = step.payload.stage || findCustomStage(step)
+        step.payload.stage = stage
 
         if (stepCustomPageProps) {
           if (stepCustomPageProps.apiError) {
@@ -83,13 +115,13 @@ const Login = ({ lang }) => {
         })
 
         setCustomPageProps(stepCustomPageProps)
-        setUiStage(step.payload.stage)
-        setUiFeatures(getStageFeatures(lang, overrideStage || step.payload.stage))
+        setUiStage(stage)
+        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [goto, overrideStage])
+  }, [pageStep, overrideStage, service, token])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -108,8 +140,12 @@ const Login = ({ lang }) => {
     return <UiFeatures {...props} />
   }
 
+  // Check if the router has been initialised yet
+  if (!pageStep) return null
+
   return (
     <FeatureDynamicView
+      width='full-width'
       renderFeatures={renderFeatures}
       onSubmit={onSubmit}
       errors={errors}
@@ -126,4 +162,4 @@ const Login = ({ lang }) => {
   )
 }
 
-export default withLang(Login)
+export default withLang(RequestAuthCode)

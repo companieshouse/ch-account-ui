@@ -637,5 +637,269 @@
         ]
       }
     }
+  ],
+  "ASSOCIATE_USER_WITH_COMPANY_1": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Tell us the company number"
+    },
+    {
+      "feature": "PageHeading",
+      "children": "What is the company number?"
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "hint": "Enter the number of the company you would like to add to your Companies House account"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "Help with my company number",
+        "uiFeatures": [{
+          "feature": "BodyText",
+          "props": {
+            "uiFeatures": [
+              {
+                "feature": "SpanText",
+                "children": "You can find this by searching for the company on the "
+              },
+              {
+                "feature": "LinkText",
+                "children": "Companies House register (opens in a new tab)",
+                "props": {
+                  "href": "https://find-and-update.company-information.service.gov.uk",
+                  "testId": "companiesHouseRegisterLink"
+                }
+              },
+              {
+                "feature": "SpanText",
+                "children": "."
+              }
+            ]
+          }
+        }]
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "ASSOCIATE_USER_WITH_COMPANY_2": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Enter the company authentication code"
+    },
+    {
+      "feature": "PageHeading",
+      "children": "Confirm this is the correct company"
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "HeadingText",
+      "props": {
+        "size": "l",
+        "uiFeatures": [{
+          "feature": "TemplateText",
+          "props": {
+            "template": "${companyName}"
+          }
+        }]
+      }
+    },
+    {
+      "feature": "SummaryList",
+      "props": {
+        "listItems": [{
+          "label": "Company number",
+          "uiFeatures": [{
+            "feature": "TemplateText",
+            "props": {
+              "template": "${companyNumber}"
+            }
+          }]
+        }, {
+          "label": "Status",
+          "uiFeatures": [{
+            "feature": "TemplateText",
+            "props": {
+              "template": "${companyStatus}"
+            }
+          }]
+        }, {
+          "label": "Incorporation date",
+          "uiFeatures": [{
+            "feature": "TemplateText",
+            "props": {
+              "template": "${companyIncorporationDate}"
+            }
+          }]
+        }, {
+          "label": "Company type",
+          "uiFeatures": [{
+            "feature": "TemplateText",
+            "props": {
+              "template": "${companyType}"
+            }
+          }]
+        }, {
+          "label": "Registered office address",
+          "uiFeatures": [{
+            "feature": "NlToBr",
+            "props": {
+              "uiFeatures": [{
+                "feature": "TemplateText",
+                "props": {
+                  "template": "${companyAddress}2nd Floor\n17 London Road\nLondon\nSA73 8PH"
+                }
+              }]
+            }
+          }]
+        }]
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Confirm and continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "ASSOCIATE_USER_WITH_COMPANY_3": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Provide the company auth code"
+    },
+    {
+      "feature": "PageHeading",
+      "children": "Enter the company authentication code"
+    },
+    {
+      "feature": "InsetText",
+      "children": "After you've entered the authentication code for this company, you will no longer need it for most online filings. Keep the code in a safe place because you may need it for certain filings in the future."
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": "Authentication code"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "Help with authentication code",
+        "uiFeatures": [
+          {
+            "feature": "BodyText",
+            "children": "This is a 6 character code issued by us to each company. The code is used to authorise online filings."
+          },
+          {
+            "feature": "LinkText",
+            "children": "Request an authentication code",
+            "props": {
+              "href": "/account/request-auth-code/_start/?companyNumber=${}",
+              "testId": "requestAuthCodeLink"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "REQUEST_AUTHENTICATION_CODE_1": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Requesting an authentication code"
+    },
+    {
+      "feature": "PageHeading",
+      "children": "Do you want us to send the authentication code to the registered office address?"
+    },
+    {
+      "feature": "DisplayUiElements"
+    },
+    {
+      "feature": "BodyText",
+      "children": "We'll send the authentication code by post to:"
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "weight": "bold",
+        "uiFeatures": [{
+          "feature": "NlToBr",
+          "props": {
+            "content": "37 London Road\nLondon\nSE3 6GI"
+          }
+        }]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "children": "It can take up to 5 days to arrive."
+    },
+    {
+      "feature": "Button",
+      "children": "Send the authentication code",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Cancel",
+      "props": {
+        "secondary": true,
+        "className": "marginLeft",
+        "renderAs": "link",
+        "href": "/account/associate/",
+        "type": "button",
+        "testId": "cancelButton"
+      }
+    }
+  ],
+  "REQUEST_AUTHENTICATION_CODE_2": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Authentication code requested"
+    },
+    {
+      "feature": "NotificationBanner",
+      "props": {
+        "type": "success",
+        "title": "Success",
+        "heading": "The authentication code for FLOWERS LIMITED will be posted to the registered office address."
+      },
+      "children": "It usually takes up to 5 days to arrive."
+    },
+    {
+      "feature": "DisplayUiElements"
+    }
   ]
 }

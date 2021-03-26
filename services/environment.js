@@ -11,6 +11,8 @@ export const FORGEROCK_TREE_REGISTER = process.env.FORGEROCK_TREE_REGISTER || 'C
 export const FORGEROCK_TREE_REGISTER_VERIFY = process.env.FORGEROCK_TREE_REGISTER_VERIFY || 'CHVerifyReg'
 export const FORGEROCK_TREE_FMP = process.env.FORGEROCK_TREE_FMP || 'CHResetPassword'
 export const FORGEROCK_TREE_FMP_VERIFY = process.env.FORGEROCK_TREE_FMP_VERIFY || 'CHResetPassword'
+export const FORGEROCK_TREE_ASSOCIATE_USER_WITH_COMPANY = process.env.FORGEROCK_TREE_ASSOCIATE_USER_WITH_COMPANY || 'AssociateUser'
+export const FORGEROCK_TREE_REQUEST_AUTH_CODE = process.env.FORGEROCK_TREE_REQUEST_AUTH_CODE || 'RequestAuthCode'
 
 export const CH_COOKIE_NAME = process.env.CH_COOKIE_NAME || '_ch_identity'
 

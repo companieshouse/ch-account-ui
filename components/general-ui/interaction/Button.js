@@ -2,9 +2,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 
-const Button = ({ renderAs = 'button', type = 'button', onClick, label = '', href = '#', children, className = '', hasStartIcon = false, testId }) => {
+const Button = ({ warning = false, secondary = false, renderAs = 'button', type = 'button', onClick, label = '', href = '#', children, className = '', hasStartIcon = false, testId }) => {
   const classes = [className]
 
+  if (warning === true) classes.push('govuk-button--warning')
+  if (secondary === true) classes.push('govuk-button--secondary')
   if (hasStartIcon === true) classes.push('govuk-button--start')
 
   const finalClassName = classes.join(' ').trim()
@@ -53,7 +55,9 @@ Button.propTypes = {
   onClick: PropTypes.func,
   renderAs: PropTypes.string,
   type: PropTypes.string,
-  testId: PropTypes.string.isRequired
+  testId: PropTypes.string.isRequired,
+  secondary: PropTypes.bool,
+  warning: PropTypes.bool
 }
 
 Button.defaultProps = {
@@ -62,5 +66,7 @@ Button.defaultProps = {
   href: '#',
   label: '',
   renderAs: 'button',
-  type: 'submit'
+  type: 'submit',
+  secondary: false,
+  warning: false
 }

@@ -6400,4 +6400,8 @@ x:-moz-any-link {
   text-align: right;
 }
 
+.marginLeft {
+  margin-left: 10px;
+}
+
 /*# sourceMappingURL=global.css.map */
