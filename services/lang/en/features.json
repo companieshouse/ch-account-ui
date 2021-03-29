@@ -901,5 +901,34 @@
     {
       "feature": "DisplayUiElements"
     }
-  ]
+  ],
+  "HOME_OVERVIEW": [{
+    "feature": "BrowserTitle",
+    "children": "Companies House account"
+  }, {
+    "feature": "HeadingText",
+    "children": "Home",
+    "props": {
+      "size": "l",
+      "uiFeatures": [{
+        "feature": "Caption",
+        "children": "Hannah Salt",
+        "props": {
+          "size": "xl"
+        }
+      }]
+    }
+  },{
+    "feature": "SectionBreak"
+  },{
+    "feature": "HeadingText",
+    "children": "Overview",
+    "props": {
+      "size": "m"
+    }
+  }, {
+    "feature": "AccountOverview"
+  }, {
+    "feature": "AccountServices"
+  }]
 }
