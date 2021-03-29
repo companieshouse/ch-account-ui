@@ -928,6 +928,14 @@
     }
   }, {
     "feature": "AccountOverview"
+  },{
+    "feature": "SectionBreak"
+  },{
+    "feature": "HeadingText",
+    "children": "Services",
+    "props": {
+      "size": "m"
+    }
   }, {
     "feature": "AccountServices"
   }]

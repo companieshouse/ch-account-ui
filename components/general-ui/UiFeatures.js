@@ -31,6 +31,7 @@ import Fragment from './typeography/Fragment'
 import AccountOverview from '../application-specific/AccountOverview'
 import Caption from './typeography/Caption'
 import SectionBreak from './typeography/SectionBreak'
+import AccountServices from '../application-specific/AccountServices'
 
 const featureMap = {
   Button,
@@ -62,6 +63,7 @@ const featureMap = {
   NlToBr,
   Fragment,
   AccountOverview,
+  AccountServices,
   Caption,
   SectionBreak
 }

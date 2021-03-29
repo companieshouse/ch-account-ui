@@ -1,24 +1,26 @@
 import React from 'react'
 import HeadingText from '../general-ui/typeography/HeadingText'
 import BodyText from '../general-ui/typeography/BodyText'
+import LinkText from '../general-ui/interaction/LinkText'
 
-const AccountOverview = () => {
+const AccountServices = () => {
   return (
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-one-third block">
         <HeadingText type="h2" size="m">0</HeadingText>
-        <HeadingText type="h3" size="m">Your companies</HeadingText>
-        <BodyText>View and manage your companies and the people authorised top file n behalf of a company.</BodyText>
+        <HeadingText type="h3" size="m">Search the register</HeadingText>
+        <BodyText>Search for company information on the Companies House register.</BodyText>
       </div>
       <div className="govuk-grid-column-one-third block">
         <HeadingText type="h2" size="m">0</HeadingText>
-        <HeadingText type="h3" size="m">Your companies</HeadingText>
-        <BodyText>View and manage your companies and the people authorised top file n behalf of a company.</BodyText>
+        <HeadingText type="h3" size="m">Follow a company</HeadingText>
+        <BodyText>Receive email alerts about a company&apos;s activity.</BodyText>
       </div>
       <div className="govuk-grid-column-one-third block">
         <HeadingText type="h2" size="m">0</HeadingText>
-        <HeadingText type="h3" size="m">Your companies</HeadingText>
-        <BodyText>View and manage your companies and the people authorised top file n behalf of a company.</BodyText>
+        <HeadingText type="h3" size="m">File accounts</HeadingText>
+        <BodyText>File abridged or full accounts.</BodyText>
+        <BodyText><LinkText href="https://www.google.com" testId="fileYourAccountsLink">File your accounts</LinkText>.</BodyText>
       </div>
       <style jsx>{`
         .block {
@@ -33,4 +35,4 @@ const AccountOverview = () => {
   )
 }
 
-export default AccountOverview
+export default AccountServices
