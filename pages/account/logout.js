@@ -13,7 +13,7 @@ import WidthContainer from '../../components/general-ui/layout/WidthContainer'
 import withLang from '../../services/lang/withLang'
 import { CH_COOKIE_NAME } from '../../services/environment'
 import { useCookies } from 'react-cookie'
-import { errorsPropType } from '../../services/propTypes'
+import { translate } from '../../services/translate'
 
 const Logout = ({ lang }) => {
   const [, , removeCookie] = useCookies()
@@ -28,7 +28,7 @@ const Logout = ({ lang }) => {
       },
       onFailure: (err) => {
         setErrors([{
-          label: 'Authentication service error'
+          label: translate(lang, 'LOGOUT_SERVICE_ERROR')
         }, {
           label: err
         }])
@@ -60,9 +60,5 @@ const Logout = ({ lang }) => {
 export default withLang(Logout)
 
 Logout.propTypes = {
-  errors: errorsPropType
-}
-
-Logout.defaultProps = {
-  errors: []
+  lang: PropTypes.string
 }

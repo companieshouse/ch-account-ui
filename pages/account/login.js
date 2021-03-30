@@ -4,7 +4,7 @@ import Router, { useRouter } from 'next/router'
 import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
-import { getStageFeatures, translate } from '../../services/translate'
+import { getStageFeatures } from '../../services/translate'
 import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import withLang from '../../services/lang/withLang'
@@ -39,8 +39,7 @@ const Login = ({ lang }) => {
 
         Router.push('/account/home')
       },
-      // eslint-disable-next-line node/handle-callback-err
-      onFailure: (err, newErrors = []) => {
+      onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
         setUiFeatures(getStageFeatures(lang, overrideStage || 'LOGIN_1'))
       },
