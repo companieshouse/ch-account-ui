@@ -5,6 +5,7 @@ import {
   FORGEROCK_TREE_FMP_VERIFY,
   FORGEROCK_TREE_REGISTER_VERIFY
 } from '../../services/environment'
+import React from 'react'
 
 /**
  Handler that accepts url query params and routes to the correct page accordingly.
@@ -54,7 +55,9 @@ const XUI = () => {
       break
   }
 
-  return null
+  return (
+    <div>Internal application error, request not understood</div>
+  )
 }
 
 export default XUI
