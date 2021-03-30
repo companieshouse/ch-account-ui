@@ -1,3 +1,4 @@
+import React from 'react'
 import { useRouter } from 'next/router'
 import { serialize } from '../../services/queryString'
 import {
@@ -5,7 +6,6 @@ import {
   FORGEROCK_TREE_FMP_VERIFY,
   FORGEROCK_TREE_REGISTER_VERIFY
 } from '../../services/environment'
-import React from 'react'
 
 /**
  Handler that accepts url query params and routes to the correct page accordingly.
