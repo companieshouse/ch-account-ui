@@ -927,7 +927,73 @@
       "size": "m"
     }
   }, {
-    "feature": "AccountOverview"
+    "feature": "InfoBlocks",
+    "props": {
+      "uiFeatures": [{
+        "feature": "InfoBlock",
+        "props": {
+          "count": "0",
+          "uiFeatures": [{
+            "feature": "HeadingText",
+            "props": {
+              "size": "m",
+              "uiFeatures": [{
+                "feature": "LinkText",
+                "children": "Your companies",
+                "props": {
+                  "href": "https://www.google.com"
+                }
+              }]
+            }
+          },{
+            "feature": "BodyText",
+            "children": "View and manage your companies and the people authorised to file on behalf of a company."
+          }]
+        }
+      }, {
+        "feature": "InfoBlock",
+        "props": {
+          "count": "0",
+          "uiFeatures": [{
+            "feature": "HeadingText",
+            "props": {
+              "size": "m",
+              "uiFeatures": [{
+                "feature": "LinkText",
+                "children": "Companies you follow",
+                "props": {
+                  "href": "https://www.google.com"
+                }
+              }]
+            }
+          },{
+            "feature": "BodyText",
+            "children": "To receive notifications about a company, search for a company on the Companies House register and use the 'Follow a company' service."
+          }]
+        }
+      }, {
+        "feature": "InfoBlock",
+        "props": {
+          "count": "0",
+          "uiFeatures": [{
+            "feature": "HeadingText",
+            "props": {
+              "size": "m",
+              "uiFeatures": [{
+                "feature": "LinkText",
+                "children": "Notifications",
+                "props": {
+                  "href": "https://www.google.com"
+                }
+              }]
+            }
+          },{
+            "feature": "BodyText",
+            "children": "Requests for authorised people to file on behalf of a company will appear here."
+          }]
+        }
+      }]
+    }
   },{
     "feature": "SectionBreak"
   },{
@@ -937,6 +1003,72 @@
       "size": "m"
     }
   }, {
-    "feature": "AccountServices"
+    "feature": "InfoBlocks",
+    "props": {
+      "uiFeatures": [{
+        "feature": "InfoBlock",
+        "props": {
+          "count": "0",
+          "uiFeatures": [{
+            "feature": "HeadingText",
+            "props": {
+              "size": "m",
+              "uiFeatures": [{
+                "feature": "LinkText",
+                "children": "Search the register",
+                "props": {
+                  "href": "https://www.google.com"
+                }
+              }]
+            }
+          },{
+            "feature": "BodyText",
+            "children": "Search for company information on the Companies House register."
+          }]
+        }
+      }, {
+        "feature": "InfoBlock",
+        "props": {
+          "count": "0",
+          "uiFeatures": [{
+            "feature": "HeadingText",
+            "props": {
+              "size": "m",
+              "uiFeatures": [{
+                "feature": "LinkText",
+                "children": "Follow a company",
+                "props": {
+                  "href": "https://www.google.com"
+                }
+              }]
+            }
+          },{
+            "feature": "BodyText",
+            "children": "Receive email alerts about a company's activity."
+          }]
+        }
+      }, {
+        "feature": "InfoBlock",
+        "props": {
+          "count": "0",
+          "uiFeatures": [{
+            "feature": "HeadingText",
+            "props": {
+              "size": "m",
+              "uiFeatures": [{
+                "feature": "LinkText",
+                "children": "File accounts",
+                "props": {
+                  "href": "https://www.google.com"
+                }
+              }]
+            }
+          },{
+            "feature": "BodyText",
+            "children": "File abridged or full accounts."
+          }]
+        }
+      }]
+    }
   }]
 }
