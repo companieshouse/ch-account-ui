@@ -17,7 +17,8 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
   if (step.type === StepType.LoginFailure) {
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
-      token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`
+      token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`,
+      anchor: 'IDToken1'
     })
   }
 
