@@ -26,7 +26,14 @@ export const urlToQueryObj = (url = '') => {
   return finalObj
 }
 
-export const generateQueryUrl = (browserPath = '', queryData) => {
+/**
+ * Generates a URL from a path and queryData object that has
+ * serialised queryData into the path's query params.
+ * @param {String} browserPath The path to add query data to.
+ * @param {Object} queryData The query data to add to the path.
+ * @returns {String} The final query url.
+ */
+export const generateQueryUrl = (browserPath, queryData) => {
   let finalBrowserPath = browserPath
 
   if (queryData) {

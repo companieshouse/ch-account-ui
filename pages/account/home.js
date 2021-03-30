@@ -12,26 +12,7 @@ const Home = ({ errors, lang }) => {
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = new HeadingCount()
 
-  const [customPageProps, setCustomPageProps] = React.useState({})
-  const [uiFeatures, setUiFeatures] = React.useState(getStageFeatures(lang, uiStage))
-  const [uiElements, setUiElements] = React.useState([])
-  const [userDetails, setUserDetails] = React.useState({
-    fullName: 'Test User',
-    emailAddress: 'test@user.com'
-  })
-
-  const [companies, setCompanies] = React.useState([{
-    name: 'Test Company',
-    number: '0123456789',
-    address: '2nd Floor\nRed House\n17 London Road\nLondon\nSA73 8PH',
-    personsAuthorisedToFile: [{
-      name: 'Test User',
-      emailAddress: 'test@user.com',
-      permissions: ['FILE_ACCOUNTS', 'FILE_CONFIRMATION_STATEMENTS', 'MAKE_CHANGES_TO_THE_COMPANY'],
-      canAuthOthers: true,
-      status: 'Confirmed'
-    }]
-  }])
+  const uiFeatures = getStageFeatures(lang, uiStage)
 
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
@@ -53,13 +34,12 @@ const Home = ({ errors, lang }) => {
       errors={errors}
       headingCount={headingCount}
       uiFeatures={uiFeatures}
-      uiElements={uiElements}
+      uiElements={[]}
       uiStage={uiStage}
       notifyType={notifyType}
       notifyHeading={notifyHeading}
       notifyTitle={notifyTitle}
       notifyChildren={notifyChildren}
-      {...customPageProps}
     />
   )
 }
@@ -70,7 +50,8 @@ Home.propTypes = {
   companies: PropTypes.array,
   errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
-  userDetails: PropTypes.object
+  userDetails: PropTypes.object,
+  lang: PropTypes.string
 }
 
 Home.defaultProps = {

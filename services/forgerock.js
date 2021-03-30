@@ -17,7 +17,8 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
   if (step.type === StepType.LoginFailure) {
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
-      token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`
+      token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`,
+      anchor: 'IDToken1'
     })
   }
 
@@ -37,9 +38,9 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     // Loop the failed policies
     failedPolicies?.value?.forEach((failedPolicy) => {
       if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
+
       try {
         const json = JSON.parse(failedPolicy)
-
         if (!json || !json.policyRequirement) return
 
         errors.push({
@@ -51,7 +52,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
         fieldsWithErrors.push(fieldName)
       } catch (err) {
-        // Couldn't parse JSON
+        // Couldn't parse JSON - fail silently as this is an API issue
       }
     })
   })
@@ -88,9 +89,9 @@ export const forgerockFlow = ({
     }])
   }
 
-  const nextStep = (step, stepOptions) => {
-    console.log('ForgeRock calling next step', step, stepOptions)
-    FRAuth.next(step, stepOptions).then(handleStep).catch(handleFatalError)
+  const nextStep = (step, nextStepOptions) => {
+    console.log('ForgeRock calling next step', step, nextStepOptions)
+    FRAuth.next(step, nextStepOptions).then(handleStep).catch(handleFatalError)
   }
 
   const handleStep = (step) => {
@@ -129,11 +130,11 @@ export const forgerockFlow = ({
 
     if (step.type === StepType.LoginFailure) {
       console.log('ForgeRock login failure', step)
-      return onFailure(step)
+      return onFailure(step, errors)
     }
 
     console.log('Stepping', step)
-    onUpdateUi(step, (formData, stepOptions) => {
+    onUpdateUi(step, (formData, uiStepOptions) => {
       // Fill in the step input data from form data
       step.callbacks.forEach((callback) => {
         const payload = callback?.payload
@@ -144,91 +145,12 @@ export const forgerockFlow = ({
         })
       })
 
-      nextStep(step, stepOptions)
+      nextStep(step, uiStepOptions)
     }, errors)
   }
 
   // Start the login process
   nextStep(undefined, stepOptions)
-}
-
-export const loginFlow = ({
-  onSuccess,
-  onFailure,
-  onUpdateUi,
-  journeyName
-}) => {
-  Config.set({
-    clientId: FORGEROCK_CLIENT_ID,
-    realmPath: FORGEROCK_REALM,
-    redirectUri: FORGEROCK_REDIRECT,
-    scope: FORGEROCK_SCOPE,
-    serverConfig: {
-      baseUrl: FORGEROCK_AM,
-      timeout: 30000
-    },
-    tree: journeyName
-  })
-
-  const handleFatalError = (err) => {
-    console.log('ForgeRock fatal error', err)
-    onFailure(err)
-  }
-
-  const nextStep = (step) => {
-    console.log('ForgeRock calling next step', step)
-    FRAuth.next(step).then(handleStep).catch(handleFatalError)
-  }
-
-  const handleStep = (step) => {
-    if (step.type === StepType.LoginSuccess) {
-      console.log('ForgeRock login success', step)
-      console.log('ForgeRock getting session token...')
-      const sessionToken = step.getSessionToken()
-
-      TokenManager.getTokens({ forceRenew: true }).then((tokens) => {
-        return Promise.all([tokens, UserManager.getCurrentUser()])
-      }).then(([tokens, currentUser]) => {
-        console.log('ForgeRock getTokens returned', tokens)
-        console.log('Resolving promise with', {
-          sessionToken,
-          tokens,
-          currentUser
-        })
-
-        return onSuccess({
-          sessionToken,
-          tokens,
-          currentUser
-        })
-      })
-
-      return
-    }
-
-    if (step.type === StepType.LoginFailure) {
-      console.log('ForgeRock login failure', step)
-      return onFailure(step)
-    }
-
-    console.log('Stepping', step)
-    onUpdateUi(step, (formData) => {
-      // Fill in the step input data from form data
-      step.callbacks.forEach((callback) => {
-        const payload = callback?.payload
-        const inputs = payload?.input || []
-
-        inputs.forEach((input) => {
-          input.value = formData[input.name]
-        })
-      })
-
-      nextStep(step)
-    })
-  }
-
-  // Start the login process
-  nextStep()
 }
 
 export const logoutFlow = ({

@@ -1,12 +1,14 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
-import { FORGEROCK_TREE_REGISTER } from '../../../services/environment'
+import { CH_COOKIE_NAME, FORGEROCK_TREE_REGISTER } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import withLang from '../../../services/lang/withLang'
+import { useCookies } from 'react-cookie'
 
 export const getStaticPaths = async () => {
   return {
@@ -25,6 +27,7 @@ export const getStaticProps = async () => {
 
 const RegisterContactDetails = ({ lang }) => {
   const router = useRouter()
+  const [, setCookie] = useCookies()
   const [errors, setErrors] = React.useState([])
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [uiStage, setUiStage] = React.useState('')
@@ -67,29 +70,17 @@ const RegisterContactDetails = ({ lang }) => {
       journeyNamespace: 'REGISTRATION',
       stepOptions,
       onSuccess: (loginData) => {
-        Router.push('/account/home')
-      },
-      onFailure: (err) => {
-        const message = err?.payload?.message || 'Registration failure'
-        const reason = err?.payload?.reason || 'Unknown'
-        const newErrors = []
-
-        switch (reason) {
-          case 'Unauthorised':
-            newErrors.push({
-              label: message,
-              anchor: 'IDToken1'
-            })
-            break
-
-          default:
-            newErrors.push({
-              label: message,
-              anchor: 'IDToken1'
-            })
-            break
+        if (loginData?.tokens?.accessToken) {
+          // Set auth cookie
+          setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
         }
 
+        Router.push('/account/home')
+      },
+      onFailure: (errData, newErrors = []) => {
+        // We only get here if there was a fatal error signal from the forgerock client library
+        // all other errors are not considered a failure (such as incorrectly formatted inputs etc
+        // and are handled gracefully by the onUpdateUi function
         setErrors(newErrors)
 
         if (!uiStage) {
@@ -167,3 +158,7 @@ const RegisterContactDetails = ({ lang }) => {
 }
 
 export default withLang(RegisterContactDetails)
+
+RegisterContactDetails.propTypes = {
+  lang: PropTypes.string
+}

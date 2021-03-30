@@ -1,3 +1,4 @@
+import React from 'react'
 import { useRouter } from 'next/router'
 import { serialize } from '../../services/queryString'
 import {
@@ -38,23 +39,14 @@ const XUI = () => {
       break
   }
 
-  switch (authIndexType) {
-    case 'service':
-      switch (authIndexValue) {
-        case 'Login':
-          router.replace('/account/login')
-          break
-
-        default:
-          break
-      }
-      break
-
-    default:
-      break
+  if (authIndexType === 'service' && authIndexValue === 'Login') {
+    router.replace('/account/login')
+    return null
   }
 
-  return null
+  return (
+    <div>Internal application error, request not understood</div>
+  )
 }
 
 export default XUI

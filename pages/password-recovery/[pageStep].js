@@ -74,33 +74,11 @@ const ResetPassword = ({ lang }) => {
       onSuccess: (loginData) => {
         Router.push('/account/home')
       },
-      onFailure: (err) => {
-        const message = err?.payload?.message || 'Reset password failure'
-        const reason = err?.payload?.reason || 'Unknown'
-        const newErrors = []
-
-        switch (reason) {
-          case 'Unauthorised':
-            newErrors.push({
-              label: message,
-              anchor: 'IDToken1'
-            })
-            break
-
-          default:
-            newErrors.push({
-              label: message,
-              anchor: 'IDToken1'
-            })
-            break
-        }
-
+      onFailure: (errData, newErrors = []) => {
+        // We only get here if there was a fatal error signal from the forgerock client library
+        // all other errors are not considered a failure (such as incorrectly formatted inputs etc
+        // and are handled gracefully by the onUpdateUi function
         setErrors(newErrors)
-
-        if (!uiStage) {
-          setUiStage('GENERIC_ERROR')
-        }
-
         setUiFeatures(getStageFeatures(lang, overrideStage || 'GENERIC_ERROR'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {

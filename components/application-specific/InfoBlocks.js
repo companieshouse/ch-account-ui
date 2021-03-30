@@ -10,7 +10,7 @@ const InfoBlocks = (props) => {
 
   return (
     <div className={`govuk-grid-row ${finalClassName}`}>
-      {blocks.map(({ count, title, props, children }, index) => <InfoBlock key={index} count={count} title={title} {...props}>{children}</InfoBlock>)}
+      {blocks.map(({ count, title, props: blockProps, children: blockChildren }, index) => <InfoBlock key={index} count={count} title={title} {...blockProps}>{blockChildren}</InfoBlock>)}
       {children}
       {renderFeatures(props)}
     </div>
