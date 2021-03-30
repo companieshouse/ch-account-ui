@@ -89,9 +89,9 @@ export const forgerockFlow = ({
     }])
   }
 
-  const nextStep = (step, stepOptions) => {
-    console.log('ForgeRock calling next step', step, stepOptions)
-    FRAuth.next(step, stepOptions).then(handleStep).catch(handleFatalError)
+  const nextStep = (step, nextStepOptions) => {
+    console.log('ForgeRock calling next step', step, nextStepOptions)
+    FRAuth.next(step, nextStepOptions).then(handleStep).catch(handleFatalError)
   }
 
   const handleStep = (step) => {
@@ -134,7 +134,7 @@ export const forgerockFlow = ({
     }
 
     console.log('Stepping', step)
-    onUpdateUi(step, (formData, stepOptions) => {
+    onUpdateUi(step, (formData, uiStepOptions) => {
       // Fill in the step input data from form data
       step.callbacks.forEach((callback) => {
         const payload = callback?.payload
@@ -145,7 +145,7 @@ export const forgerockFlow = ({
         })
       })
 
-      nextStep(step, stepOptions)
+      nextStep(step, uiStepOptions)
     }, errors)
   }
 
