@@ -7,6 +7,7 @@ import StringAttributeInputCallback from './StringAttributeInputCallback'
 import ValidatedCreatePasswordCallback from './ValidatedCreatePasswordCallback'
 import ChoiceCallback from './ChoiceCallback'
 import HiddenValueCallback from './HiddenValueCallback'
+import { errorsPropType } from '../../services/propTypes'
 
 const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
   return (
@@ -50,7 +51,7 @@ export default DisplayUiElements
 
 DisplayUiElements.propTypes = {
   elementProps: PropTypes.object,
-  errors: PropTypes.array,
+  errors: errorsPropType,
   stage: PropTypes.string,
   uiElements: PropTypes.array
 }

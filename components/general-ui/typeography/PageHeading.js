@@ -3,6 +3,7 @@ import React from 'react'
 import HeadingText from './HeadingText'
 import ErrorSummary from './ErrorSummary'
 import NotificationBanner from './NotificationBanner'
+import { errorsPropType } from '../../../services/propTypes'
 
 const PageHeading = (props) => {
   const { headingCount, errors = [], children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren = null } = props
@@ -35,7 +36,7 @@ export default PageHeading
 
 PageHeading.propTypes = {
   children: PropTypes.node,
-  errors: PropTypes.array,
+  errors: errorsPropType,
   headingCount: PropTypes.object,
   notifyChildren: PropTypes.node,
   notifyHeading: PropTypes.string,

@@ -6,6 +6,7 @@ import UiFeatures from '../../components/general-ui/UiFeatures'
 import withLang from '../../services/lang/withLang'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../services/translate'
+import { errorsPropType } from '../../services/propTypes'
 
 const Home = ({ errors, lang }) => {
   const uiStage = 'HOME_OVERVIEW'
@@ -67,7 +68,7 @@ export default withLang(Home)
 
 Home.propTypes = {
   companies: PropTypes.array,
-  errors: PropTypes.array,
+  errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
   userDetails: PropTypes.object
 }

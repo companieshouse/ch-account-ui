@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
+import { errorsPropType } from '../../services/propTypes'
 
 const ValidatedCreatePasswordCallback = ({ errors = [], element, customElementProps = {} }) => {
   const id = element.payload.input[0].name
@@ -20,7 +21,7 @@ export default ValidatedCreatePasswordCallback
 ValidatedCreatePasswordCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
-  errors: PropTypes.array
+  errors: errorsPropType
 }
 
 ValidatedCreatePasswordCallback.defaultProps = {
