@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import Router, { useRouter } from 'next/router'
-import { findCustomPageProps, loginFlow } from '../../services/forgerock'
+import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures, translate } from '../../services/translate'
@@ -25,7 +26,7 @@ const Login = ({ lang }) => {
 
   React.useEffect(() => {
     headingCount.reset()
-    loginFlow({
+    forgerockFlow({
       journeyName: FORGEROCK_TREE_LOGIN,
       journeyNamespace: 'LOGIN',
       onSuccess: (loginData) => {
@@ -43,20 +44,16 @@ const Login = ({ lang }) => {
         const reason = err?.payload?.reason || translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
         const newErrors = []
 
-        switch (reason) {
-          case 'Unauthorised':
-            newErrors.push({
-              label: message,
-              anchor: 'IDToken1'
-            })
-            break
-
-          default:
-            newErrors.push({
-              label: message,
-              anchor: 'IDToken1'
-            })
-            break
+        if (reason === 'Unauthorised') {
+          newErrors.push({
+            label: message,
+            anchor: 'IDToken1'
+          })
+        } else {
+          newErrors.push({
+            label: message,
+            anchor: 'IDToken1'
+          })
         }
 
         setErrors(newErrors)
@@ -127,3 +124,7 @@ const Login = ({ lang }) => {
 }
 
 export default withLang(Login)
+
+Login.propTypes = {
+  lang: PropTypes.string
+}
