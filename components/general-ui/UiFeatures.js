@@ -32,6 +32,7 @@ import Caption from './typeography/Caption'
 import SectionBreak from './typeography/SectionBreak'
 import InfoBlocks from '../application-specific/InfoBlocks'
 import InfoBlock from '../application-specific/InfoBlock'
+import AccountLinks from '../application-specific/AccountLinks'
 
 const featureMap = {
   Button,
@@ -65,7 +66,8 @@ const featureMap = {
   Caption,
   SectionBreak,
   InfoBlocks,
-  InfoBlock
+  InfoBlock,
+  AccountLinks
 }
 
 const UiFeatures = (props) => {
