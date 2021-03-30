@@ -39,25 +39,9 @@ const Login = ({ lang }) => {
 
         Router.push('/account/home')
       },
-      onFailure: (err) => {
-        const message = translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
-        const reason = err?.payload?.reason || translate(lang, 'LOGIN_ERROR_LOGIN_FAILURE')
-        const newErrors = []
-
-        if (reason === 'Unauthorised') {
-          newErrors.push({
-            label: message,
-            anchor: 'IDToken1'
-          })
-        } else {
-          newErrors.push({
-            label: message,
-            anchor: 'IDToken1'
-          })
-        }
-
+      // eslint-disable-next-line node/handle-callback-err
+      onFailure: (err, newErrors = []) => {
         setErrors(newErrors)
-
         setUiFeatures(getStageFeatures(lang, overrideStage || 'LOGIN_1'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
