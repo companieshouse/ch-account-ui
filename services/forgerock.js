@@ -38,9 +38,9 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     // Loop the failed policies
     failedPolicies?.value?.forEach((failedPolicy) => {
       if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
+
       try {
         const json = JSON.parse(failedPolicy)
-
         if (!json || !json.policyRequirement) return
 
         errors.push({
@@ -52,7 +52,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
         fieldsWithErrors.push(fieldName)
       } catch (err) {
-        // Couldn't parse JSON
+        // Couldn't parse JSON - fail silently as this is an API issue
       }
     })
   })
