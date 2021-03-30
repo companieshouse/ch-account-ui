@@ -6404,4 +6404,8 @@ x:-moz-any-link {
   margin-left: 10px;
 }
 
+.noMargin {
+  margin: 0;
+}
+
 /*# sourceMappingURL=global.css.map */
