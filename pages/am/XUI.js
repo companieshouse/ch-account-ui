@@ -39,20 +39,9 @@ const XUI = () => {
       break
   }
 
-  switch (authIndexType) {
-    case 'service':
-      switch (authIndexValue) {
-        case 'Login':
-          router.replace('/account/login')
-          return null
-
-        default:
-          break
-      }
-      break
-
-    default:
-      break
+  if (authIndexType === 'service' && authIndexValue === 'Login') {
+    router.replace('/account/login')
+    return null
   }
 
   return (
