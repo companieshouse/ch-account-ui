@@ -13,6 +13,7 @@ import WidthContainer from '../../components/general-ui/layout/WidthContainer'
 import withLang from '../../services/lang/withLang'
 import { CH_COOKIE_NAME } from '../../services/environment'
 import { useCookies } from 'react-cookie'
+import { errorsPropType } from '../../services/propTypes'
 
 const Logout = ({ lang }) => {
   const [, , removeCookie] = useCookies()
@@ -59,7 +60,7 @@ const Logout = ({ lang }) => {
 export default withLang(Logout)
 
 Logout.propTypes = {
-  errors: PropTypes.array
+  errors: errorsPropType
 }
 
 Logout.defaultProps = {

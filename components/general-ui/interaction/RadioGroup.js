@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import HeadingText from '../typeography/HeadingText'
+import { errorsPropType } from '../../../services/propTypes'
 
 const RadioGroup = (props) => {
   const { hint = '', heading = '', options = [], children, id, className = '', headingCount, errors, testId } = props
@@ -43,10 +44,7 @@ export default RadioGroup
 RadioGroup.propTypes = {
   autoComplete: PropTypes.string,
   className: PropTypes.string,
-  errors: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    anchor: PropTypes.string
-  })),
+  errors: errorsPropType,
   fixedWidth: PropTypes.string,
   fluidWidth: PropTypes.string,
   hint: PropTypes.string,
