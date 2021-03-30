@@ -43,7 +43,7 @@ const XUI = () => {
       switch (authIndexValue) {
         case 'Login':
           router.replace('/account/login')
-          break
+          return null
 
         default:
           break
