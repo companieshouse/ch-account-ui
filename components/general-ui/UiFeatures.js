@@ -28,6 +28,10 @@ import WidthContainer from './layout/WidthContainer'
 import SummaryList from './typeography/SummaryList'
 import NlToBr from './layout/NlToBr'
 import Fragment from './typeography/Fragment'
+import Caption from './typeography/Caption'
+import SectionBreak from './typeography/SectionBreak'
+import InfoBlocks from '../application-specific/InfoBlocks'
+import InfoBlock from '../application-specific/InfoBlock'
 
 const featureMap = {
   Button,
@@ -57,7 +61,11 @@ const featureMap = {
   WidthContainer,
   SummaryList,
   NlToBr,
-  Fragment
+  Fragment,
+  Caption,
+  SectionBreak,
+  InfoBlocks,
+  InfoBlock
 }
 
 const UiFeatures = (props) => {
