@@ -6,10 +6,12 @@ import Main from '../general-ui/layout/Main'
 import Column from '../general-ui/layout/Column'
 import Row from '../general-ui/layout/Row'
 import HeadingCount from '../../services/HeadingCount'
+import LanguageSwitcher from '../application-specific/LanguageSwitcher'
 
 const FeatureDynamicView = (props) => {
   const {
     hasBackLink = true,
+    hasLanguageSwitcher = false,
     width = 'two-thirds',
     formAction = '',
     onSubmit,
@@ -18,11 +20,26 @@ const FeatureDynamicView = (props) => {
 
   return (
     <WidthContainer>
-      {hasBackLink === true && <BackLink testId="backLink">Back</BackLink>}
+      {(hasBackLink === true || hasLanguageSwitcher === true) && <Column width='full'>
+        <Row>
+          <Column width='two-thirds'>
+            {hasBackLink === true && <Row>
+              <BackLink testId="backLink">Back</BackLink>
+            </Row>}
+            {hasBackLink === false && <span>&nbsp;</span>}
+          </Column>
+          {hasLanguageSwitcher === true && <Column width='one-third' className="alignRight">
+            <Row>
+              <LanguageSwitcher />
+            </Row>
+          </Column>}
+        </Row>
+      </Column>}
       <Main>
         <Row>
           <Column width={width}>
-            {Boolean(formAction || onSubmit) === true && <form action={formAction} onSubmit={onSubmit} method="post" noValidate={true}>
+            {Boolean(formAction || onSubmit) === true &&
+            <form action={formAction} onSubmit={onSubmit} method="post" noValidate={true}>
               {renderFeatures(props)}
             </form>}
             {Boolean(formAction || onSubmit) === false && <>
@@ -46,7 +63,8 @@ FeatureDynamicView.propTypes = {
   uiElements: PropTypes.array,
   uiFeatures: PropTypes.array,
   width: PropTypes.string,
-  hasBackLink: PropTypes.bool
+  hasBackLink: PropTypes.bool,
+  hasLanguageSwitcher: PropTypes.bool
 }
 
 FeatureDynamicView.defaultProps = {
@@ -55,5 +73,6 @@ FeatureDynamicView.defaultProps = {
   uiElements: [],
   uiFeatures: [],
   width: 'two-thirds',
-  hasBackLink: true
+  hasBackLink: true,
+  hasLanguageSwitcher: false
 }

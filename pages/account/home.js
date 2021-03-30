@@ -47,6 +47,7 @@ const Home = ({ errors, lang }) => {
     <FeatureDynamicView
       width="full"
       hasBackLink={false}
+      hasLanguageSwitcher={true}
       renderFeatures={renderFeatures}
       errors={errors}
       headingCount={headingCount}
