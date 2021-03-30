@@ -49,7 +49,16 @@ export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
   return features[lang][stage][featureName]
 }
 
-export const translate = (lang = '', token = '', defaultErrorValue) => {
+/**
+ * Converts a token to the corresponding human-readable string for the
+ * given language.
+ * @param {String} lang The language to use when translating.
+ * @param {String} token The token to translate.
+ * @param {String} [defaultErrorValue] The error to provide if either the
+ * language or the token do not exist.
+ * @returns {String} The human-readable translated token string.
+ */
+export const translate = (lang, token, defaultErrorValue = undefined) => {
   if (!tokens[lang]) {
     return defaultErrorValue !== undefined ? defaultErrorValue : `Translation tokens missing for lang "${lang}". Please check /services/lang/${lang}/tokens.json to make sure the file exists!`
   }
