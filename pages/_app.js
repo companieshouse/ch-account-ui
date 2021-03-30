@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import Header from '../components/general-ui/Header'
 import Footer from '../components/general-ui/Footer'
@@ -22,3 +23,8 @@ function MyApp ({ Component, pageProps }) {
 }
 
 export default MyApp
+
+MyApp.propTypes = {
+  Component: PropTypes.any,
+  pageProps: PropTypes.any
+}
