@@ -61,6 +61,96 @@
       }
     }
   ],
+  "LOGIN_MFA": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Verify your mobile number"
+    },
+    {
+      "feature": "PageHeading",
+      "children": "Check your phone"
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "We've sent a text message with a security code to "
+          },
+          {
+            "feature": "SpanText",
+            "props": {
+              "weight": "bold",
+              "uiFeatures": [
+                {
+                  "feature": "TemplateText",
+                  "props": {
+                    "template": "${phoneNumber}"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "children": "It may take a few minutes to arrive."
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": "Security code",
+            "type": "number",
+            "autocomplete": "off"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "I have not received a text message",
+        "uiFeatures": [{
+          "feature": "BodyText",
+          "children": "The text message may take a few minutes to arrive."
+        },{
+          "feature": "BodyText",
+          "props": {
+            "uiFeatures": [
+              {
+                "feature": "SpanText",
+                "children": "If it does not arrive, you can "
+              },
+              {
+                "feature": "LinkText",
+                "children": "ask us to send you another text message",
+                "props": {
+                  "href": "/account/login/"
+                }
+              },
+              {
+                "feature": "SpanText",
+                "children": "."
+              }
+            ]
+          }
+        }]
+      }
+    }
+  ],
   "REGISTRATION_1": [
     {
       "feature": "BrowserTitle",
@@ -113,6 +203,96 @@
             }
           }
         ]
+      }
+    }
+  ],
+  "REGISTRATION_MFA": [
+    {
+      "feature": "BrowserTitle",
+      "children": "Verify your mobile number"
+    },
+    {
+      "feature": "PageHeading",
+      "children": "Check your phone"
+    },
+    {
+      "feature": "BodyText",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "SpanText",
+            "children": "We've sent a text message with a security code to "
+          },
+          {
+            "feature": "SpanText",
+            "props": {
+              "weight": "bold",
+              "uiFeatures": [
+                {
+                  "feature": "TemplateText",
+                  "props": {
+                    "template": "${phoneNumber}"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "feature": "BodyText",
+      "children": "It may take a few minutes to arrive."
+    },
+    {
+      "feature": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": "Security code",
+            "type": "number",
+            "autocomplete": "off"
+          }
+        }
+      }
+    },
+    {
+      "feature": "Button",
+      "children": "Continue",
+      "props": {
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "feature": "Details",
+      "props": {
+        "summary": "I have not received a text message",
+        "uiFeatures": [{
+          "feature": "BodyText",
+          "children": "The text message may take a few minutes to arrive."
+        },{
+          "feature": "BodyText",
+          "props": {
+            "uiFeatures": [
+              {
+                "feature": "SpanText",
+                "children": "If it does not arrive, you can "
+              },
+              {
+                "feature": "LinkText",
+                "children": "ask us to send you another text message",
+                "props": {
+                  "href": "/account/register/_restart/"
+                }
+              },
+              {
+                "feature": "SpanText",
+                "children": "."
+              }
+            ]
+          }
+        }]
       }
     }
   ],
