@@ -6,6 +6,7 @@ import Main from '../general-ui/layout/Main'
 import Column from '../general-ui/layout/Column'
 import Row from '../general-ui/layout/Row'
 import HeadingCount from '../../services/HeadingCount'
+import { errorsPropType } from '../../services/propTypes'
 
 const FeatureDynamicView = (props) => {
   const {
@@ -38,7 +39,7 @@ const FeatureDynamicView = (props) => {
 export default FeatureDynamicView
 
 FeatureDynamicView.propTypes = {
-  errors: PropTypes.array,
+  errors: errorsPropType,
   formAction: PropTypes.string,
   headingCount: PropTypes.instanceOf(HeadingCount),
   onSubmit: PropTypes.func,

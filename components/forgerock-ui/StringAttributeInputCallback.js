@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
+import { errorsPropType } from '../../services/propTypes'
 // import { getCallbackElementData } from '../../services/forgerock'
 
 const StringAttributeInputCallback = ({ errors = [], element, customElementProps = {} }) => {
@@ -22,7 +23,7 @@ export default StringAttributeInputCallback
 StringAttributeInputCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
-  errors: PropTypes.array
+  errors: errorsPropType
 }
 
 StringAttributeInputCallback.defaultProps = {

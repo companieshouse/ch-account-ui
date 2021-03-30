@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
+import { errorsPropType } from '../../../services/propTypes'
 
 const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, ...otherProps }) => {
   const classes = [className]
@@ -41,10 +42,7 @@ InputField.propTypes = {
   autoComplete: PropTypes.string,
   className: PropTypes.string,
   defaultValue: PropTypes.string,
-  errors: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    anchor: PropTypes.string
-  })),
+  errors: errorsPropType,
   fixedWidth: PropTypes.string,
   fluidWidth: PropTypes.string,
   hint: PropTypes.string,

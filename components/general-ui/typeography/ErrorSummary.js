@@ -3,6 +3,7 @@ import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import withLang from '../../../services/lang/withLang'
 import { translate } from '../../../services/translate'
+import { errorsPropType } from '../../../services/propTypes'
 
 const ErrorSummary = (props) => {
   const { lang, type = '', title = 'No title!', errors = [], children, className = '', headingCount, renderFeatures } = props
@@ -77,7 +78,7 @@ export default withLang(ErrorSummary)
 ErrorSummary.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  errors: PropTypes.array,
+  errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
   renderFeatures: PropTypes.func,
   title: PropTypes.string,
