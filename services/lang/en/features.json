@@ -1272,7 +1272,6 @@
           {
             "feature": "InfoBlock",
             "props": {
-              "count": "0",
               "uiFeatures": [
                 {
                   "feature": "HeadingText",
@@ -1301,7 +1300,6 @@
           {
             "feature": "InfoBlock",
             "props": {
-              "count": "0",
               "uiFeatures": [
                 {
                   "feature": "HeadingText",
@@ -1330,7 +1328,6 @@
           {
             "feature": "InfoBlock",
             "props": {
-              "count": "0",
               "uiFeatures": [
                 {
                   "feature": "HeadingText",
