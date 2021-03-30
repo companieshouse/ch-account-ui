@@ -29,7 +29,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     const inputs = payload?.input || []
     const outputs = payload?.output || []
 
-    const fieldName = (outputs.find((output) => output.name === 'name') || {}).name || ''
+    const fieldName = (outputs.find((output) => output.name === 'name') || {}).value || ''
     if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
 
     const failedPolicies = outputs.find((output) => output.name === 'failedPolicies')

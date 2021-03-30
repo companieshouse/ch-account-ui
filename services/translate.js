@@ -51,11 +51,11 @@ export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
 
 export const translate = (lang = '', token = '', defaultErrorValue) => {
   if (!tokens[lang]) {
-    return defaultErrorValue !== undefined ? defaultErrorValue : `Cannot find tokens for lang "${lang}"`
+    return defaultErrorValue !== undefined ? defaultErrorValue : `Translation tokens missing for lang "${lang}". Please check /services/lang/${lang}/tokens.json to make sure the file exists!`
   }
 
   if (tokens[lang][token] === undefined) {
-    return defaultErrorValue !== undefined ? defaultErrorValue : `No token data for lang "${lang}" and token "${token}". Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with this name!`
+    return defaultErrorValue !== undefined ? defaultErrorValue : `Translation text missing for lang "${lang}" and token "${token}". Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with this name!`
   }
 
   return tokens[lang][token]
