@@ -12,7 +12,7 @@ const HeadingText = (props) => {
 
   const finalClassName = classes.join(' ').trim()
 
-  if (headingCount) {
+  if (headingCount && !type) {
     React.useEffect(() => {
       headingCount.use()
       setTag(`h${headingCount.count}`)
