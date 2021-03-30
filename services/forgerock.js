@@ -21,6 +21,8 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     })
   }
 
+  if (!step.callbacks) return errors
+
   // Scan the step callbacks for failedPolicies data
   step.callbacks.forEach((callback) => {
     const payload = callback?.payload
