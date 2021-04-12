@@ -25,6 +25,7 @@ const ManageAccount = ({ errors, lang }) => {
   return (
     <FeatureDynamicView
       width="full"
+      titleLinkHref="/account/home"
       hasBackLink={false}
       hasLanguageSwitcher={false}
       hasLogoutLink={true}
@@ -44,6 +45,10 @@ const ManageAccount = ({ errors, lang }) => {
         errors={errors}
         uiElements={[]}
         uiStage={uiStage}
+        notifyType={notifyType}
+        notifyHeading={notifyHeading}
+        notifyTitle={notifyTitle}
+        notifyChildren={notifyChildren}
       />
     </FeatureDynamicView>
   )
