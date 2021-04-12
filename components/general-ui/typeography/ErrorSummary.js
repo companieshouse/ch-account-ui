@@ -33,7 +33,7 @@ const ErrorSummary = (props) => {
     if (!error.token) return
 
     // Try to resolve using most specific error to least specific
-    const tokensToTry = [`${error.token}(${error.fieldName})`, error.token]
+    const tokensToTry = [`${error.token}(${error.fieldName})`, `${error.token}(${error.anchor})`, error.token]
 
     error.label = tokensToTry.reduce((label, token) => {
       if (label) return label
