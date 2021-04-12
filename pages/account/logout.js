@@ -14,6 +14,7 @@ import withLang from '../../services/lang/withLang'
 import { CH_COOKIE_NAME } from '../../services/environment'
 import { useCookies } from 'react-cookie'
 import { translate } from '../../services/translate'
+import Header from '../../components/general-ui/Header'
 
 const Logout = ({ lang }) => {
   const [, , removeCookie] = useCookies()
@@ -42,18 +43,22 @@ const Logout = ({ lang }) => {
   }, [])
 
   return (
-    <WidthContainer>
-      <Main>
-        <Row>
-          <Column width='two-thirds'>
-            <PageHeading headingCount={headingCount} errors={errors}>Sign out of your Companies House account</PageHeading>
-            <BodyText>
-              <LinkText href={'/account/login'} testId='loginToAccountLink'>Sign in to your account</LinkText>
-            </BodyText>
-          </Column>
-        </Row>
-      </Main>
-    </WidthContainer>
+    <>
+      <Header/>
+      <WidthContainer>
+        <Main>
+          <Row>
+            <Column width='two-thirds'>
+              <PageHeading headingCount={headingCount} errors={errors}>Sign out of your Companies House
+                account</PageHeading>
+              <BodyText>
+                <LinkText href={'/account/login'} testId='loginToAccountLink'>Sign in to your account</LinkText>
+              </BodyText>
+            </Column>
+          </Row>
+        </Main>
+      </WidthContainer>
+    </>
   )
 }
 
