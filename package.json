@@ -8,7 +8,8 @@
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
     "test": "jest --coverage",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "eslint": "eslint ."
   },
   "dependencies": {
     "@forgerock/javascript-sdk": "^2.2.0",
