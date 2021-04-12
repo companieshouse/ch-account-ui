@@ -33,6 +33,7 @@ import SectionBreak from './typeography/SectionBreak'
 import InfoBlocks from '../application-specific/InfoBlocks'
 import InfoBlock from '../application-specific/InfoBlock'
 import AccountLinks from '../application-specific/AccountLinks'
+import SummaryListItem from './typeography/SummaryListItem'
 
 const featureMap = {
   Button,
@@ -67,7 +68,8 @@ const featureMap = {
   SectionBreak,
   InfoBlocks,
   InfoBlock,
-  AccountLinks
+  AccountLinks,
+  SummaryListItem
 }
 
 const UiFeatures = (props) => {
