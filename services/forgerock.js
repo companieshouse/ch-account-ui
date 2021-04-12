@@ -31,9 +31,9 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     customPageProps.errors.forEach((error) => {
       errors.push({
         errData: error,
-        token: error.token,
-        label: error.label,
-        anchor: error.token || undefined,
+        token: `${journeyNamespace}_${error.token}`,
+        label: !error.token ? error.label : undefined,
+        anchor: error.anchor || undefined,
         fieldName: error.fieldName
       })
     })
