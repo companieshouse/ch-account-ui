@@ -123,31 +123,34 @@
       "feature": "Details",
       "props": {
         "summary": "I have not received a text message",
-        "uiFeatures": [{
-          "feature": "BodyText",
-          "children": "The text message may take a few minutes to arrive."
-        },{
-          "feature": "BodyText",
-          "props": {
-            "uiFeatures": [
-              {
-                "feature": "SpanText",
-                "children": "If it does not arrive, you can "
-              },
-              {
-                "feature": "LinkText",
-                "children": "ask us to send you another text message",
-                "props": {
-                  "href": "/account/login/"
+        "uiFeatures": [
+          {
+            "feature": "BodyText",
+            "children": "The text message may take a few minutes to arrive."
+          },
+          {
+            "feature": "BodyText",
+            "props": {
+              "uiFeatures": [
+                {
+                  "feature": "SpanText",
+                  "children": "If it does not arrive, you can "
+                },
+                {
+                  "feature": "LinkText",
+                  "children": "ask us to send you another text message",
+                  "props": {
+                    "href": "/account/login/"
+                  }
+                },
+                {
+                  "feature": "SpanText",
+                  "children": "."
                 }
-              },
-              {
-                "feature": "SpanText",
-                "children": "."
-              }
-            ]
+              ]
+            }
           }
-        }]
+        ]
       }
     }
   ],
@@ -268,31 +271,34 @@
       "feature": "Details",
       "props": {
         "summary": "I have not received a text message",
-        "uiFeatures": [{
-          "feature": "BodyText",
-          "children": "The text message may take a few minutes to arrive."
-        },{
-          "feature": "BodyText",
-          "props": {
-            "uiFeatures": [
-              {
-                "feature": "SpanText",
-                "children": "If it does not arrive, you can "
-              },
-              {
-                "feature": "LinkText",
-                "children": "ask us to send you another text message",
-                "props": {
-                  "href": "/account/register/_restart/"
+        "uiFeatures": [
+          {
+            "feature": "BodyText",
+            "children": "The text message may take a few minutes to arrive."
+          },
+          {
+            "feature": "BodyText",
+            "props": {
+              "uiFeatures": [
+                {
+                  "feature": "SpanText",
+                  "children": "If it does not arrive, you can "
+                },
+                {
+                  "feature": "LinkText",
+                  "children": "ask us to send you another text message",
+                  "props": {
+                    "href": "/account/register/_restart/"
+                  }
+                },
+                {
+                  "feature": "SpanText",
+                  "children": "."
                 }
-              },
-              {
-                "feature": "SpanText",
-                "children": "."
-              }
-            ]
+              ]
+            }
           }
-        }]
+        ]
       }
     }
   ],
@@ -658,7 +664,7 @@
                   "feature": "LinkText",
                   "children": "ask us to send you another text message",
                   "props": {
-                    "href": "/password-recover/_restart/",
+                    "href": "/password-recovery/_restart/",
                     "testId": "restartPasswordRecoveryLink"
                   }
                 },
@@ -713,7 +719,7 @@
     {
       "feature": "Redirect",
       "props": {
-        "url": "/account/login/?notifyTitle=Success&notifyHeading=You've successfully reset your password&notifyType=success"
+        "url": "/account/login/?notifyTitle=Success&notifyHeading=You've successfully reset your password.&notifyType=success"
       }
     }
   ],
@@ -779,7 +785,7 @@
                   "feature": "LinkText",
                   "children": "ask us to send you another email",
                   "props": {
-                    "href": "/password-recover/_restart/",
+                    "href": "/password-recovery/_restart/",
                     "testId": "restartPasswordRecoveryLink"
                   }
                 },
@@ -802,7 +808,7 @@
                   "feature": "LinkText",
                   "children": "give us a different email address",
                   "props": {
-                    "href": "/password-recover/_restart/",
+                    "href": "/password-recovery/_restart/",
                     "testId": "restartPasswordRecoveryLink"
                   }
                 },
@@ -1136,118 +1142,28 @@
       "children": "Companies House account"
     },
     {
-      "feature": "HeadingText",
-      "children": "Home",
-      "props": {
-        "size": "l",
-        "uiFeatures": [
-          {
-            "feature": "Caption",
-            "children": "Hannah Salt",
-            "props": {
-              "size": "xl"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "feature": "SectionBreak"
-    },
-    {
-      "feature": "HeadingText",
-      "children": "Overview",
-      "props": {
-        "size": "m"
-      }
-    },
-    {
-      "feature": "InfoBlocks",
+      "feature": "Row",
       "props": {
         "uiFeatures": [
           {
-            "feature": "InfoBlock",
+            "feature": "Column",
             "props": {
-              "count": "0",
               "uiFeatures": [
                 {
                   "feature": "HeadingText",
+                  "children": "Home",
                   "props": {
-                    "type": "h3",
-                    "size": "m",
+                    "size": "l",
                     "uiFeatures": [
                       {
-                        "feature": "LinkText",
-                        "children": "Your companies",
+                        "feature": "Caption",
+                        "children": "Hannah Salt",
                         "props": {
-                          "href": "https://www.google.com",
-                          "testId": "yourCompaniesLink"
+                          "size": "xl"
                         }
                       }
                     ]
                   }
-                },
-                {
-                  "feature": "BodyText",
-                  "children": "View and manage your companies and the people authorised to file on behalf of a company."
-                }
-              ]
-            }
-          },
-          {
-            "feature": "InfoBlock",
-            "props": {
-              "count": "0",
-              "uiFeatures": [
-                {
-                  "feature": "HeadingText",
-                  "props": {
-                    "type": "h3",
-                    "size": "m",
-                    "uiFeatures": [
-                      {
-                        "feature": "LinkText",
-                        "children": "Companies you follow",
-                        "props": {
-                          "href": "https://www.google.com",
-                          "testId": "companiesYouFollowLink"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "feature": "BodyText",
-                  "children": "To receive notifications about a company, search for a company on the Companies House register and use the 'Follow a company' service."
-                }
-              ]
-            }
-          },
-          {
-            "feature": "InfoBlock",
-            "props": {
-              "count": "0",
-              "uiFeatures": [
-                {
-                  "feature": "HeadingText",
-                  "props": {
-                    "type": "h3",
-                    "size": "m",
-                    "uiFeatures": [
-                      {
-                        "feature": "LinkText",
-                        "children": "Notifications",
-                        "props": {
-                          "href": "https://www.google.com",
-                          "testId": "notificationsLink"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "feature": "BodyText",
-                  "children": "Requests for authorised people to file on behalf of a company will appear here."
                 }
               ]
             }
@@ -1256,104 +1172,428 @@
       }
     },
     {
-      "feature": "SectionBreak"
-    },
-    {
-      "feature": "HeadingText",
-      "children": "Services",
-      "props": {
-        "size": "m"
-      }
-    },
-    {
-      "feature": "InfoBlocks",
+      "feature": "Row",
       "props": {
         "uiFeatures": [
           {
-            "feature": "InfoBlock",
+            "feature": "Column",
             "props": {
               "uiFeatures": [
                 {
+                  "feature": "SectionBreak"
+                },
+                {
                   "feature": "HeadingText",
+                  "children": "Overview",
                   "props": {
-                    "type": "h3",
-                    "size": "m",
+                    "size": "m"
+                  }
+                },
+                {
+                  "feature": "Column",
+                  "props": {
                     "uiFeatures": [
                       {
-                        "feature": "LinkText",
-                        "children": "Search the register",
+                        "feature": "InfoBlocks",
                         "props": {
-                          "href": "https://www.google.com",
-                          "testId": "searchRegisterLink"
+                          "uiFeatures": [
+                            {
+                              "feature": "InfoBlock",
+                              "props": {
+                                "count": "0",
+                                "uiFeatures": [
+                                  {
+                                    "feature": "HeadingText",
+                                    "props": {
+                                      "type": "h3",
+                                      "size": "m",
+                                      "uiFeatures": [
+                                        {
+                                          "feature": "LinkText",
+                                          "children": "Your companies",
+                                          "props": {
+                                            "href": "https://www.google.com",
+                                            "testId": "yourCompaniesLink"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "feature": "BodyText",
+                                    "children": "View and manage your companies and the people authorised to file on behalf of a company."
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "feature": "InfoBlock",
+                              "props": {
+                                "count": "0",
+                                "uiFeatures": [
+                                  {
+                                    "feature": "HeadingText",
+                                    "props": {
+                                      "type": "h3",
+                                      "size": "m",
+                                      "uiFeatures": [
+                                        {
+                                          "feature": "LinkText",
+                                          "children": "Companies you follow",
+                                          "props": {
+                                            "href": "https://www.google.com",
+                                            "testId": "companiesYouFollowLink"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "feature": "BodyText",
+                                    "children": "To receive notifications about a company, search for a company on the Companies House register and use the 'Follow a company' service."
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "feature": "InfoBlock",
+                              "props": {
+                                "count": "0",
+                                "uiFeatures": [
+                                  {
+                                    "feature": "HeadingText",
+                                    "props": {
+                                      "type": "h3",
+                                      "size": "m",
+                                      "uiFeatures": [
+                                        {
+                                          "feature": "LinkText",
+                                          "children": "Notifications",
+                                          "props": {
+                                            "href": "https://www.google.com",
+                                            "testId": "notificationsLink"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "feature": "BodyText",
+                                    "children": "Requests for authorised people to file on behalf of a company will appear here."
+                                  }
+                                ]
+                              }
+                            }
+                          ]
                         }
                       }
                     ]
                   }
-                },
-                {
-                  "feature": "BodyText",
-                  "children": "Search for company information on the Companies House register."
-                }
-              ]
-            }
-          },
-          {
-            "feature": "InfoBlock",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "HeadingText",
-                  "props": {
-                    "type": "h3",
-                    "size": "m",
-                    "uiFeatures": [
-                      {
-                        "feature": "LinkText",
-                        "children": "Follow a company",
-                        "props": {
-                          "href": "https://www.google.com",
-                          "testId": "followCompanyLink"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "feature": "BodyText",
-                  "children": "Receive email alerts about a company's activity."
-                }
-              ]
-            }
-          },
-          {
-            "feature": "InfoBlock",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "HeadingText",
-                  "props": {
-                    "type": "h3",
-                    "size": "m",
-                    "uiFeatures": [
-                      {
-                        "feature": "LinkText",
-                        "children": "File accounts",
-                        "props": {
-                          "href": "https://www.google.com",
-                          "testId": "fileAccountsLink"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "feature": "BodyText",
-                  "children": "File abridged or full accounts."
                 }
               ]
             }
           }
         ]
+      }
+    },
+    {
+      "feature": "Row",
+      "props": {
+        "uiFeatures": [
+          {
+            "feature": "Column",
+            "props": {
+              "uiFeatures": [
+                {
+                  "feature": "SectionBreak"
+                },
+                {
+                  "feature": "HeadingText",
+                  "children": "Services",
+                  "props": {
+                    "size": "m"
+                  }
+                },
+                {
+                  "feature": "Column",
+                  "props": {
+                    "uiFeatures": [
+                      {
+                        "feature": "InfoBlocks",
+                        "props": {
+                          "uiFeatures": [
+                            {
+                              "feature": "InfoBlock",
+                              "props": {
+                                "uiFeatures": [
+                                  {
+                                    "feature": "HeadingText",
+                                    "props": {
+                                      "type": "h3",
+                                      "size": "m",
+                                      "uiFeatures": [
+                                        {
+                                          "feature": "LinkText",
+                                          "children": "Search the register",
+                                          "props": {
+                                            "href": "https://www.google.com",
+                                            "testId": "searchRegisterLink"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "feature": "BodyText",
+                                    "children": "Search for company information on the Companies House register."
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "feature": "InfoBlock",
+                              "props": {
+                                "uiFeatures": [
+                                  {
+                                    "feature": "HeadingText",
+                                    "props": {
+                                      "type": "h3",
+                                      "size": "m",
+                                      "uiFeatures": [
+                                        {
+                                          "feature": "LinkText",
+                                          "children": "Follow a company",
+                                          "props": {
+                                            "href": "https://www.google.com",
+                                            "testId": "followCompanyLink"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "feature": "BodyText",
+                                    "children": "Receive email alerts about a company's activity."
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "feature": "InfoBlock",
+                              "props": {
+                                "uiFeatures": [
+                                  {
+                                    "feature": "HeadingText",
+                                    "props": {
+                                      "type": "h3",
+                                      "size": "m",
+                                      "uiFeatures": [
+                                        {
+                                          "feature": "LinkText",
+                                          "children": "File accounts",
+                                          "props": {
+                                            "href": "https://www.google.com",
+                                            "testId": "fileAccountsLink"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "feature": "BodyText",
+                                    "children": "File abridged or full accounts."
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "HOME_MANAGE_ACCOUNT": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "children": "Companies House account"
+      }
+    },
+    {
+      "component": "HeadingText",
+      "props": {
+        "label": "Manage your account",
+        "size": "l"
+      },
+      "content": [
+        {
+          "component": "Caption",
+          "asProp": "children",
+          "props": {
+            "children": "Make changes to your details and account settings",
+            "size": "m"
+          }
+        }
+      ]
+    },
+    {
+      "component": "SummaryList",
+      "dynamicProps": true,
+      "props": {
+        "fullName": "Jane Doe",
+        "email": "jane.doe@gmail.com",
+        "mobileNumber": "+44 (0) 123 456 7890",
+        "companyAddress": "2nd Floor\n17 London Road\nLondon\nSA73 8PH",
+        "listItems": [
+          {
+            "label": "Full name",
+            "value": "${fullName}",
+            "action": {
+              "label": "Change",
+              "desc": "name",
+              "href": "https://www.google.com"
+            }
+          },
+          {
+            "label": "Email",
+            "value": "${email}",
+            "action": {
+              "label": "Change",
+              "desc": "email address",
+              "href": "https://www.google.com"
+            }
+          },
+          {
+            "label": "Password",
+            "value": "*************",
+            "action": {
+              "label": "Change",
+              "desc": "password",
+              "href": "/account/manage/change-password/_start"
+            }
+          },
+          {
+            "label": "Mobile number",
+            "value": "${mobileNumber}",
+            "action": {
+              "label": "Change",
+              "desc": "mobile number",
+              "href": "https://www.google.com"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "NO_SESSION_ERROR": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "children": "No longer logged in"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Session timeout"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "Your session has timed out, please log back in."
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Click here to log back in",
+            "href": "/account/login",
+            "testId": "loginExistingAccountLink"
+          }
+        }
+      ]
+    }
+  ],
+  "CHANGE_PASSWORD_1": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "children": "Change your password"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Change your password"
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken2": {
+            "label": "Enter your current password",
+            "suffix": null
+          },
+          "IDToken3": {
+            "label": "Enter a new password",
+            "hint": "This must be at least 8 characters long and hard to guess."
+          },
+          "IDToken4": {
+            "label": "Re-enter the new password"
+          }
+        }
+      }
+    },
+    {
+      "component": "Details",
+      "props": {
+        "summary": "Help with creating your password"
+      },
+      "content": [
+        {
+          "component": "Fragment",
+          "content": []
+        },
+        {
+          "component": "BodyText",
+          "props": {
+            "children": "You can use numbers, symbols and spaces."
+          }
+        },
+        {
+          "component": "BodyText",
+          "props": {
+            "children": "A good way to create a secure and memorable password is to use 3 random words."
+          }
+        }
+      ]
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Reset password",
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "CHANGE_PASSWORD_2": [
+    {
+      "component": "Redirect",
+      "props": {
+        "url": "/account/manage/?notifyTitle=Success&notifyHeading=You've successfully changed your password.&notifyType=success"
       }
     }
   ]
