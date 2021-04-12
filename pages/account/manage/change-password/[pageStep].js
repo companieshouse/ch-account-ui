@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
 import { FORGEROCK_TREE_CHANGE_PASSWORD } from '../../../../services/environment'
 import Router, { useRouter } from 'next/router'
-import { getStageFeatures, translate } from '../../../../services/translate'
-import UiFeatures from '../../../../components/general-ui/UiFeatures'
+import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
 import withLang from '../../../../services/lang/withLang'
 import componentMap from '../../../../services/componentMap'
@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const RequestAuthCode = ({ lang }) => {
+const ChangePassword = ({ lang }) => {
   const router = useRouter()
   const [errors, setErrors] = React.useState([])
   const [customPageProps, setCustomPageProps] = React.useState({})
@@ -144,4 +144,8 @@ const RequestAuthCode = ({ lang }) => {
   )
 }
 
-export default withLang(RequestAuthCode)
+export default withLang(ChangePassword)
+
+ChangePassword.propTypes = {
+  lang: PropTypes.string.isRequired
+}
