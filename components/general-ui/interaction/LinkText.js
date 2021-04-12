@@ -9,7 +9,7 @@ const LinkText = (props) => {
 
   return (
     <Link href={href}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <a onClick={onClick} className={`govuk-link ${finalClassName}`} data-testid={testId}>{children}{renderFeatures(props)}</a>
     </Link>
   )

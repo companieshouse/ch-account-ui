@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import NlToBr from '../layout/NlToBr'
 
 const SummaryList = (props) => {
   const { children, className = '', renderFeatures, listItems = [] } = props

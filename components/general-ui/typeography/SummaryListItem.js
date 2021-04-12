@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import NlToBr from '../layout/NlToBr'
 
 const SummaryListItem = (props) => {
-  const { children, renderFeatures, label, value, action } = props
+  const { renderFeatures, label, value, action } = props
 
   return (
     <div className="govuk-summary-list__row">
@@ -23,3 +24,10 @@ const SummaryListItem = (props) => {
 }
 
 export default SummaryListItem
+
+SummaryListItem.propTypes = {
+  action: PropTypes.object,
+  label: PropTypes.node,
+  renderFeatures: PropTypes.func,
+  value: PropTypes.node
+}

@@ -15,6 +15,7 @@ const Header = (props) => {
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
           <Link href={{ titleLinkHref }}>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className="govuk-header__link govuk-header__link--homepage" data-testid="headerLogoHomeLink">
               <span className="govuk-header__logotype">
                 <svg aria-hidden="true" focusable="false" className="govuk-header__logotype-crown"
