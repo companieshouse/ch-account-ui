@@ -18,18 +18,27 @@ export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
   if (!features[lang]) {
     return [{
       feature: 'BodyText',
+      component: 'BodyText',
+      props: {
+        children: `Cannot find features for lang "${lang}".`
+      },
       children: `Cannot find features for lang "${lang}".`
     }, {
-      feature: 'DisplayUiElements'
+      feature: 'DisplayUiElements',
+      component: 'DisplayUiElements'
     }]
   }
 
   if (!stage || !features[lang][stage]) {
     return [{
       feature: 'BodyText',
+      props: {
+        children: `Cannot find stage data for lang "${lang}" and stage "${stage}".  Either the journey page node has not been given a stage name or you are not correctly passing the stage name to the getStageFeatures(lang, stage, featureName) function!`
+      },
       children: `Cannot find stage data for lang "${lang}" and stage "${stage}".  Either the journey page node has not been given a stage name or you are not correctly passing the stage name to the getStageFeatures(lang, stage, featureName) function!`
     }, {
-      feature: 'DisplayUiElements'
+      feature: 'DisplayUiElements',
+      component: 'DisplayUiElements'
     }]
   }
 
@@ -40,9 +49,13 @@ export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
   if (!features[lang][stage][featureName]) {
     return [{
       feature: 'BodyText',
+      props: {
+        children: `No feature data for lang "${lang}", stage "${stage}" and featureName "${featureName}". Please check your stage data to ensure you have defined a feature with this name!`
+      },
       children: `No feature data for lang "${lang}", stage "${stage}" and featureName "${featureName}". Please check your stage data to ensure you have defined a feature with this name!`
     }, {
-      feature: 'DisplayUiElements'
+      feature: 'DisplayUiElements',
+      component: 'DisplayUiElements'
     }]
   }
 
