@@ -422,6 +422,11 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz"
   integrity sha512-CAEbWH7OIur6jEOzaai83jq3FmKmv4PmX1JYfs9IrYcGEVI/lyL1EXJGCj7eFVJ0bg5QR8LMxBlEtA+xKiLpFw==
 
+"@irrelon/path@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@irrelon/path/-/path-5.0.0.tgz#73188c2d0331b2628327a422d00c13031ae24d34"
+  integrity sha512-4wWLG7R0eSb8wio3oQVI3eWdCj2FO5ayDhBE3GyPlP3iPyDFZnk4+3GaCkfM/CxMnKoNPntr5IqJnLz4tdJSyA==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
@@ -4967,13 +4972,6 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-cookies@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/next-cookies/-/next-cookies-2.0.3.tgz#5a3eabcb6afa9b4d4ade69dfaaad749d16cd4a9a"
-  integrity sha512-YVCQzwZx+sz+KqLO4y9niHH9jjz6jajlEQbAKfsYVT6DOfngb/0k5l6vFK4rmpExVug96pGag8OBsdSRL9FZhQ==
-  dependencies:
-    universal-cookie "^4.0.2"
-
 next@10.0.6:
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.6.tgz"
@@ -7165,7 +7163,7 @@ union@~0.5.0:
   dependencies:
     qs "^6.4.0"
 
-universal-cookie@^4.0.0, universal-cookie@^4.0.2:
+universal-cookie@^4.0.0:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/universal-cookie/-/universal-cookie-4.0.4.tgz#06e8b3625bf9af049569ef97109b4bb226ad798d"
   integrity sha512-lbRVHoOMtItjWbM7TwDLdl8wug7izB0tq3/YVKhT/ahB4VDvWMyvnADfnJI8y6fSvsjh51Ix7lTGC6Tn4rMPhw==
