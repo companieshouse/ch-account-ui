@@ -24,6 +24,21 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
   if (!step.callbacks) return errors
 
+  const customPageProps = findCustomPageProps(step)
+
+  if (customPageProps.errors instanceof Array && customPageProps.errors.length > 0) {
+    // Custom page props has errors in it
+    customPageProps.errors.forEach((error) => {
+      errors.push({
+        errData: error,
+        token: error.token,
+        label: error.label,
+        anchor: error.token || undefined,
+        fieldName: error.fieldName
+      })
+    })
+  }
+
   // Scan the step callbacks for failedPolicies data
   step.callbacks.forEach((callback) => {
     const payload = callback?.payload
