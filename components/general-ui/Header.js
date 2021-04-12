@@ -1,14 +1,20 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import LinkText from './interaction/LinkText'
 import Link from 'next/link'
 
-const Header = () => {
+const Header = (props) => {
+  const {
+    hasLogoutLink = false,
+    titleLinkHref = '/'
+  } = props
+
   return (
     <header className="govuk-header " role="banner" data-module="govuk-header">
       <a href="#content" className="govuk-skip-link">Skip to main content</a>
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
-          <Link href={'/'}>
+          <Link href={{ titleLinkHref }}>
             <a className="govuk-header__link govuk-header__link--homepage" data-testid="headerLogoHomeLink">
               <span className="govuk-header__logotype">
                 <svg aria-hidden="true" focusable="false" className="govuk-header__logotype-crown"
@@ -31,9 +37,21 @@ const Header = () => {
           </Link>
         </div>
         <div className="govuk-header__content">
-          <LinkText href="/" className="govuk-header__link govuk-header__link--service-name" testId="headerTitleHomeLink">
+          <LinkText href={titleLinkHref} className="govuk-header__link govuk-header__link--service-name" testId="headerTitleHomeLink">
             Companies House account
           </LinkText>
+          {hasLogoutLink === true && <>
+            <button type="button" className="govuk-header__menu-button govuk-js-header-toggle"
+                    aria-controls="navigation" aria-label="Show or hide navigation menu">Menu
+            </button>
+            <nav className="floatRight">
+              <ul id="navigation" className="govuk-header__navigation " aria-label="Navigation menu">
+                <li className="govuk-header__navigation-item govuk-header__navigation-item--active">
+                  <LinkText testId={'accountLogoutLink'} href={'/account/logout'}>Sign out</LinkText>
+                </li>
+              </ul>
+            </nav>
+          </>}
         </div>
       </div>
     </header>
@@ -41,3 +59,13 @@ const Header = () => {
 }
 
 export default Header
+
+Header.propTypes = {
+  hasLogoutLink: PropTypes.bool,
+  titleLinkHref: PropTypes.string
+}
+
+Header.defaultProps = {
+  hasLogoutLink: false,
+  titleLinkHref: '/'
+}
