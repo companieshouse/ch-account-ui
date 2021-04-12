@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import Button from '../components/general-ui/interaction/Button'
 import HeadingText from '../components/general-ui/typeography/HeadingText'
@@ -55,3 +56,7 @@ const Index = ({ lang }) => {
 }
 
 export default withLang(Index)
+
+Index.propTypes = {
+  lang: PropTypes.string.isRequired
+}

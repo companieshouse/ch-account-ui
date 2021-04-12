@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
@@ -150,3 +151,7 @@ const ResetPassword = ({ lang }) => {
 }
 
 export default withLang(ResetPassword)
+
+ResetPassword.propTypes = {
+  lang: PropTypes.string.isRequired
+}

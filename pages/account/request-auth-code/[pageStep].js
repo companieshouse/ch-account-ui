@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
@@ -141,3 +142,7 @@ const RequestAuthCode = ({ lang }) => {
 }
 
 export default withLang(RequestAuthCode)
+
+RequestAuthCode.propTypes = {
+  lang: PropTypes.string.isRequired
+}

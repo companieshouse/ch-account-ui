@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
@@ -145,3 +146,7 @@ const AssociateUserAndCompany = ({ lang }) => {
 }
 
 export default withLang(AssociateUserAndCompany)
+
+AssociateUserAndCompany.propTypes = {
+  lang: PropTypes.string.isRequired
+}
