@@ -123,7 +123,7 @@ const RequestAuthCode = ({ lang }) => {
 
   return (
     <FeatureDynamicView
-      width='full-width'
+      width='full'
       renderFeatures={renderFeatures}
       onSubmit={onSubmit}
       errors={errors}
