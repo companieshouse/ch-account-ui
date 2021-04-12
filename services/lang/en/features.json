@@ -1427,10 +1427,9 @@
       }
     },
     {
-      "component": "HeadingText",
+      "component": "PageHeading",
       "props": {
-        "label": "Manage your account",
-        "size": "l"
+        "children": "Manage your account"
       },
       "content": [
         {
