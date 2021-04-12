@@ -28,8 +28,11 @@ const Home = ({ errors, lang }) => {
   return (
     <FeatureDynamicView
       width="full"
+      titleLinkHref="/account/home"
       hasBackLink={false}
-      hasLanguageSwitcher={true}
+      hasLanguageSwitcher={false}
+      hasLogoutLink={true}
+      hasAccountLinks={true}
       renderFeatures={renderFeatures}
       errors={errors}
       headingCount={headingCount}
