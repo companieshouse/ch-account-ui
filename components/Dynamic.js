@@ -2,6 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { get as pathGet, set as pathSet } from '@irrelon/path'
 
+const getDynamicValue = (props, templateString) => {
+  return pathGet(props, templateString.slice(2).slice(0, -1))
+}
+
 const processDynamicProps = (obj, props, visited = []) => {
   const finalObj = obj instanceof Array ? [] : {}
 
@@ -18,7 +22,7 @@ const processDynamicProps = (obj, props, visited = []) => {
     }
 
     if (fieldValueType === 'string' && fieldValue.substr(0, 2) === '${') {
-      finalObj[i] = pathGet(props, fieldValue.slice(2).slice(0, -1))
+      finalObj[i] = getDynamicValue(props, fieldValue)
       console.log('Getting dynamic data', fieldValue.slice(2).slice(0, -1), finalObj[i])
       continue
     }
@@ -80,14 +84,23 @@ const Dynamic = (props) => {
         const dynamicPropEntries = (typeof dynamicProps === 'object' && Object.entries(dynamicProps)) || []
         if (dynamicPropEntries.length) {
           dynamicPropEntries.forEach(([propName, subContentItem]) => {
-            // Scan for prop replacement markers
-            subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
+            // Check type of subContentItem
+            if (typeof subContentItem === 'string') {
+              // Direct prop replacement
+              const finalProps = { ...otherProps, ...props, ...otherItemProps }
+              pathSet(props, propName, getDynamicValue(finalProps, subContentItem))
+            } else if (typeof subContentItem === 'object') {
+              // Scan for prop replacement markers
+              subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
 
-            console.log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
+              console.log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
 
-            // Replace the labelled prop with this component
-            console.log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
-            pathSet(props, propName, <Dynamic componentMap={componentMap} content={[subContentItem]} {...otherProps} {...otherItemProps} />)
+              // Replace the labelled prop with this component
+              console.log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
+              pathSet(props, propName, <Dynamic componentMap={componentMap} content={[subContentItem]} {...otherProps} {...otherItemProps} />)
+            } else {
+              throw new Error(`Unrecognised dynamicProp value: ${JSON.stringify(subContentItem)}`)
+            }
           })
         }
 
