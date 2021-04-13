@@ -7,10 +7,11 @@ import SectionBreak from '../general-ui/typeography/SectionBreak'
 import SpanText from '../general-ui/typeography/SpanText'
 import { translate } from '../../services/translate'
 import withLang from '../../services/lang/withLang'
+import withProfile from '../../services/withProfile'
 
 const AccountLinks = (props) => {
-  const { lang, userDetails = {} } = props
-  const { emailAddress } = userDetails
+  const { lang, profile = {} } = props
+  const { email } = profile
 
   return (
     <Column width='full'>
@@ -26,7 +27,7 @@ const AccountLinks = (props) => {
         </Column>
         <Column width='one-third' className="alignRight">
           <Row>
-            <SpanText className="govuk-!-margin-right-4 govuk-body-s" testId="accountEmailAddressText">{emailAddress}</SpanText>
+            <SpanText className="govuk-!-margin-right-4 govuk-body-s" testId="accountEmailAddressText">{email}</SpanText>
           </Row>
         </Column>
       </Row>
@@ -35,13 +36,13 @@ const AccountLinks = (props) => {
   )
 }
 
-export default withLang(AccountLinks)
+export default withProfile(withLang(AccountLinks))
 
 AccountLinks.propTypes = {
-  userDetails: PropTypes.object,
+  profile: PropTypes.object,
   lang: PropTypes.string.isRequired
 }
 
 AccountLinks.defaultProps = {
-  userDetails: {}
+  profile: {}
 }

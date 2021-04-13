@@ -3,7 +3,7 @@ import React from 'react'
 import Router, { useRouter } from 'next/router'
 import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { CH_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
@@ -32,6 +32,7 @@ const Login = ({ lang }) => {
       onSuccess: (loginData) => {
         // Set auth cookie
         setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
+        setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
 
         if (goto) {
           return Router.push(goto)

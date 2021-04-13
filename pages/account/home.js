@@ -2,17 +2,19 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
-import UiFeatures from '../../components/general-ui/UiFeatures'
 import withLang from '../../services/lang/withLang'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
+import withProfile from '../../services/withProfile'
+import Dynamic from '../../components/Dynamic'
+import componentMap from '../../services/componentMap'
 
-const Home = ({ errors, lang }) => {
+const Home = ({ errors, lang, profile }) => {
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = new HeadingCount()
 
-  const uiFeatures = getStageFeatures(lang, uiStage)
+  const content = getStageFeatures(lang, uiStage)
 
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
@@ -20,10 +22,6 @@ const Home = ({ errors, lang }) => {
   React.useEffect(() => {
     headingCount.reset()
   }, [notifyType, notifyHeading, notifyTitle, notifyChildren])
-
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
 
   return (
     <FeatureDynamicView
@@ -33,21 +31,28 @@ const Home = ({ errors, lang }) => {
       hasLanguageSwitcher={false}
       hasLogoutLink={true}
       hasAccountLinks={true}
-      renderFeatures={renderFeatures}
       errors={errors}
       headingCount={headingCount}
-      uiFeatures={uiFeatures}
-      uiElements={[]}
       uiStage={uiStage}
       notifyType={notifyType}
       notifyHeading={notifyHeading}
       notifyTitle={notifyTitle}
       notifyChildren={notifyChildren}
-    />
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={content}
+        errors={errors}
+        uiElements={[]}
+        uiStage={uiStage}
+        profile={profile}
+      />
+    </FeatureDynamicView>
   )
 }
 
-export default withLang(Home)
+export default withProfile(withLang(Home))
 
 Home.propTypes = {
   companies: PropTypes.array,

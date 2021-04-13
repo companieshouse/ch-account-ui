@@ -29,5 +29,6 @@ InfoBlocks.propTypes = {
 
 InfoBlocks.defaultProps = {
   blocks: [],
-  className: ''
+  className: '',
+  renderFeatures: () => {}
 }
