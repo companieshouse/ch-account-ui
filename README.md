@@ -34,8 +34,9 @@ of that data exists in the data coming back from the server so we
 need some way of describing those extra elements based on the page
 we are rendering. Given that the server pages can be changed and
 updated, we wanted a way to respond to those changes without having
-to create a new corresponding react page. This is why the dynamic
-page / features system exists.
+to create a new corresponding react page or modifying an existing one
+when changes happen server-side. This is why the dynamic page /
+features system exists.
 
 ## Journeys and Stages
 On the server-side, there are page flows called journeys. Each journey
@@ -60,15 +61,19 @@ look something like this:
   ...
   "RESET_PASSWORD_1": [
     {
-      "feature": "PageHeading",
-      "children": "Enter your email address"
+      "component": "PageHeading",
+      "props": {
+        "children": "Enter your email address"
+      }
     },
     {
-      "feature": "BodyText",
-      "children": "Enter the email address you used to create your Companies House account. We'll send you a link so you can reset your password."
+      "component": "BodyText",
+      "props": {
+        "children": "Enter the email address you used to create your Companies House account. We'll send you a link so you can reset your password."
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
@@ -79,9 +84,9 @@ look something like this:
       }
     },
     {
-      "feature": "Button",
-      "children": "Send Link",
+      "component": "Button",
       "props": {
+        "children": "Send Link",
         "type": "submit",
         "testId": "submitButton"
       }
@@ -92,10 +97,10 @@ look something like this:
 ```
 
 When the page gets rendered, the app takes this data and renders
-the corresponding component or "feature". You can see that we can
-pass `props` and `children` to the component. These get spread
-into the component's props and what you provide here will override
-a prop if it clashes with one that is already being passed to the
+the corresponding component. You can see that we can pass `props`
+and `children` to the component. These get spread into the
+component's props and what you provide here will override a prop
+if it clashes with one that is already being passed to the
 component.
 
 ## DisplayUiElements
@@ -105,15 +110,14 @@ not include this feature in your stage data in `features.json` then
 no form elements the server sends will be rendered (including
 hidden ones).
 
-You'll notice in the `DisplayUiElements` feature (component), that
-we can also pass a prop called `elementProps`. This allows you
-to pass props to the specific form component that the server has
-told us to render. The props here are targeted by the ID of the
-field.
+You'll notice in the `DisplayUiElements` component we can also pass
+a prop called `elementProps`. This allows you to pass props to the
+specific form component that the server has told us to render. The
+props here are targeted by the ID of the field.
 
 ```json
 {
-  "feature": "DisplayUiElements",
+  "component": "DisplayUiElements",
   "props": {
     "elementProps": {
       "IDToken1": {
@@ -146,7 +150,7 @@ sent form field `IDToken1` you could add:
 
 ```json
 {
-  "feature": "DisplayUiElements",
+  "component": "DisplayUiElements",
   "props": {
     "elementProps": {
       "IDToken1": {
