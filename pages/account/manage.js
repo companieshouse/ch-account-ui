@@ -8,8 +8,9 @@ import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
+import withProfile from '../../services/withProfile'
 
-const ManageAccount = ({ errors, lang }) => {
+const ManageAccount = ({ errors, lang, profile }) => {
   const uiStage = 'HOME_MANAGE_ACCOUNT'
   const headingCount = new HeadingCount()
 
@@ -49,12 +50,13 @@ const ManageAccount = ({ errors, lang }) => {
         notifyHeading={notifyHeading}
         notifyTitle={notifyTitle}
         notifyChildren={notifyChildren}
+        profile={profile}
       />
     </FeatureDynamicView>
   )
 }
 
-export default withLang(ManageAccount)
+export default withProfile(withLang(ManageAccount))
 
 ManageAccount.propTypes = {
   companies: PropTypes.array,
