@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import NlToBr from '../layout/NlToBr'
 
 const SummaryList = (props) => {
   const { children, className = '', renderFeatures, listItems = [] } = props
@@ -12,14 +11,14 @@ const SummaryList = (props) => {
     <dl className={`govuk-summary-list ${finalClassName}`}>
       {listItems.map((listItem, index) => <div key={`${listItem.label}_${index}`} className="govuk-summary-list__row">
         <dt className="govuk-summary-list__key">
-          <NlToBr content={listItem.label} />
+          {listItem.label}
         </dt>
         <dd className="govuk-summary-list__value">
-          <NlToBr content={listItem.value} />
+          {listItem.value}{console.log('VALUE', listItem.value)}
         </dd>
         {listItem.action && <dd className="govuk-summary-list__actions">
           <a className="govuk-link" href={`${listItem.action.href}`}>
-            <NlToBr content={listItem.action.label} /><span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
+            {listItem.action.label}<span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
           </a>
         </dd>}
       </div>)}

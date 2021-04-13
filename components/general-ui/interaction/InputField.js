@@ -3,7 +3,7 @@ import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import { errorsPropType } from '../../../services/propTypes'
 
-const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, ...otherProps }) => {
+const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -21,17 +21,21 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
       {Boolean(error) && <span id={`${id}-error`} className="govuk-error-message">
         <span className="govuk-visually-hidden">Error:</span> {error.label}
       </span>}
-      <input className={`govuk-input ${Boolean(error) && 'govuk-input--error'} ${finalClassName}`}
-             id={id}
-             name={id}
-             type={type}
-             autoComplete={autoComplete}
-             aria-describedby={Boolean(error) && `${id}-error`}
-             data-testid={testId}
-             defaultValue={defaultValue}
-             required={required}
-             {...otherProps}
-      />
+      <div className="govuk-input__wrapper">
+        {Boolean(prefix) === true && <div className="govuk-input__prefix" aria-hidden="true">{prefix}</div>}
+        <input className={`govuk-input ${Boolean(error) && 'govuk-input--error'} ${finalClassName}`}
+               id={id}
+               name={id}
+               type={type}
+               autoComplete={autoComplete}
+               aria-describedby={Boolean(error) && `${id}-error`}
+               data-testid={testId}
+               defaultValue={defaultValue}
+               required={required}
+               {...otherProps}
+        />
+        {Boolean(suffix) === true && <div className="govuk-input__suffix" aria-hidden="true">{suffix}</div>}
+      </div>
     </React.Fragment>
   )
 }
@@ -50,7 +54,9 @@ InputField.propTypes = {
   label: PropTypes.string,
   required: PropTypes.bool,
   testId: PropTypes.string.isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
+  prefix: PropTypes.node,
+  suffix: PropTypes.node
 }
 
 InputField.defaultProps = {

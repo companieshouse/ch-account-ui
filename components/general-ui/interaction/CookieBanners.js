@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
 const CookieBanners = (props) => {
@@ -10,6 +11,7 @@ const CookieBanners = (props) => {
   } = props
 
   const start = () => {
+    // eslint-disable-next-line no-undef
     CookieConsent.start(onStart, onStop)
   }
 
@@ -115,3 +117,19 @@ const CookieBanners = (props) => {
 }
 
 export default CookieBanners
+
+CookieBanners.propTypes = {
+  onAcceptCookies: PropTypes.func,
+  onHideCookieBanners: PropTypes.func,
+  onRejectCookies: PropTypes.func,
+  onStart: PropTypes.func,
+  onStop: PropTypes.func
+}
+
+CookieBanners.defaultProps = {
+  onAcceptCookies: () => {},
+  onHideCookieBanners: () => {},
+  onRejectCookies: () => {},
+  onStart: () => {},
+  onStop: () => {}
+}

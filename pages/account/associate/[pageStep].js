@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import { FORGEROCK_TREE_ASSOCIATE_USER_WITH_COMPANY } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
-import { getStageFeatures, translate } from '../../../services/translate'
+import { getStageFeatures } from '../../../services/translate'
 import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import withLang from '../../../services/lang/withLang'
@@ -145,3 +146,7 @@ const AssociateUserAndCompany = ({ lang }) => {
 }
 
 export default withLang(AssociateUserAndCompany)
+
+AssociateUserAndCompany.propTypes = {
+  lang: PropTypes.string.isRequired
+}

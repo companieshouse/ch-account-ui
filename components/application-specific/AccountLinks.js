@@ -5,9 +5,13 @@ import LinkText from '../general-ui/interaction/LinkText'
 import Column from '../general-ui/layout/Column'
 import SectionBreak from '../general-ui/typeography/SectionBreak'
 import SpanText from '../general-ui/typeography/SpanText'
+import { translate } from '../../services/translate'
+import withLang from '../../services/lang/withLang'
 
-const AccountLinks = ({ userDetails = {} }) => {
+const AccountLinks = (props) => {
+  const { lang, userDetails = {} } = props
   const { emailAddress } = userDetails
+
   return (
     <Column width='full'>
       <Row className="govuk-!-margin-top-4">
@@ -15,7 +19,7 @@ const AccountLinks = ({ userDetails = {} }) => {
           <Row>
             <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountHomeLink">Home</LinkText>
             <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountYourDetailsLink">Your details</LinkText>
-            <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountManageAccountLink">Manage account</LinkText>
+            <LinkText href={'/account/manage'} className="govuk-!-margin-right-4" testId="accountManageAccountLink">{translate(lang, 'ACCOUNT_LINKS_MANAGE_ACCOUNT')}</LinkText>
             <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountMessagesLink">Messages</LinkText>
             <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountCompaniesYouFollowLink">Companies you follow</LinkText>
           </Row>
@@ -23,7 +27,6 @@ const AccountLinks = ({ userDetails = {} }) => {
         <Column width='one-third' className="alignRight">
           <Row>
             <SpanText className="govuk-!-margin-right-4 govuk-body-s" testId="accountEmailAddressText">{emailAddress}</SpanText>
-            <LinkText href={'/account/logout'} testId="accountSignOutLink">Sign out</LinkText>
           </Row>
         </Column>
       </Row>
@@ -32,10 +35,11 @@ const AccountLinks = ({ userDetails = {} }) => {
   )
 }
 
-export default AccountLinks
+export default withLang(AccountLinks)
 
 AccountLinks.propTypes = {
-  userDetails: PropTypes.object
+  userDetails: PropTypes.object,
+  lang: PropTypes.string.isRequired
 }
 
 AccountLinks.defaultProps = {

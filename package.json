@@ -8,16 +8,18 @@
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
     "test": "jest --coverage",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "eslint": "eslint ."
   },
   "dependencies": {
     "@forgerock/javascript-sdk": "^2.2.0",
+    "@irrelon/path": "^5.0.0",
     "cross-env": "^7.0.3",
     "govuk-frontend": "^3.11.0",
     "next": "10.0.6",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-cookie": "^4.0.3"
+    "react-cookie": "^4.0.3",
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.6",

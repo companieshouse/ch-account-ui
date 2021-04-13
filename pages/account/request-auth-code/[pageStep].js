@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import { FORGEROCK_TREE_REQUEST_AUTH_CODE } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
-import { getStageFeatures, translate } from '../../../services/translate'
+import { getStageFeatures } from '../../../services/translate'
 import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import withLang from '../../../services/lang/withLang'
@@ -123,7 +124,7 @@ const RequestAuthCode = ({ lang }) => {
 
   return (
     <FeatureDynamicView
-      width='full-width'
+      width='full'
       renderFeatures={renderFeatures}
       onSubmit={onSubmit}
       errors={errors}
@@ -141,3 +142,7 @@ const RequestAuthCode = ({ lang }) => {
 }
 
 export default withLang(RequestAuthCode)
+
+RequestAuthCode.propTypes = {
+  lang: PropTypes.string.isRequired
+}
