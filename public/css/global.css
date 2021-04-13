@@ -6408,4 +6408,20 @@ x:-moz-any-link {
   margin: 0;
 }
 
+.floatRight {
+  float: right;
+}
+
+.infoBlock {
+  padding: 2em;
+  height: 300px;
+  width: 310px;
+  margin-right: 10px;
+  background-color: #f3f2f1;
+}
+
+.infoBlock:last-child {
+  margin-right: 0;
+}
+
 /*# sourceMappingURL=global.css.map */

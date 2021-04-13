@@ -1,0 +1,5 @@
+/public/js/*
+public/js/*
+out/*
+.next/*
+*.test.js

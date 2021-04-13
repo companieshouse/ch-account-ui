@@ -461,7 +461,7 @@
                 "feature": "LinkText",
                 "children": "ask us to send you another text message",
                 "props": {
-                  "href": "/password-recover/_restart/",
+                  "href": "/password-recovery/_restart/",
                   "testId": "restartPasswordRecoveryLink"
                 }
               },
@@ -577,7 +577,7 @@
                 "feature": "LinkText",
                 "children": "ask us to send you another email",
                 "props": {
-                  "href": "/password-recover/_restart/",
+                  "href": "/password-recovery/_restart/",
                   "testId": "restartPasswordRecoveryLink"
                 }
               },
@@ -599,7 +599,7 @@
                 "feature": "LinkText",
                 "children": "give us a different email address",
                 "props": {
-                  "href": "/password-recover/_restart/",
+                  "href": "/password-recovery/_restart/",
                   "testId": "restartPasswordRecoveryLink"
                 }
               },

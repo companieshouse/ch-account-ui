@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import InfoBlock from './InfoBlock'
+import Row from '../general-ui/layout/Row'
 
 const InfoBlocks = (props) => {
   const { blocks = [], children, className = '', renderFeatures } = props
@@ -9,11 +10,11 @@ const InfoBlocks = (props) => {
   const finalClassName = classes.join(' ').trim()
 
   return (
-    <div className={`govuk-grid-row ${finalClassName}`}>
+    <Row className={finalClassName}>
       {blocks.map(({ count, title, props: blockProps, children: blockChildren }, index) => <InfoBlock key={index} count={count} title={title} {...blockProps}>{blockChildren}</InfoBlock>)}
       {children}
       {renderFeatures(props)}
-    </div>
+    </Row>
   )
 }
 
