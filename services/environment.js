@@ -16,5 +16,6 @@ export const FORGEROCK_TREE_REQUEST_AUTH_CODE = process.env.FORGEROCK_TREE_REQUE
 export const FORGEROCK_TREE_CHANGE_PASSWORD = process.env.FORGEROCK_TREE_CHANGE_PASSWORD || 'CHChangePassword'
 
 export const CH_COOKIE_NAME = process.env.CH_COOKIE_NAME || '_ch_identity'
+export const ID_COOKIE_NAME = process.env.ID_COOKIE_NAME || '_profile'
 
 console.log(`Running as environment: ${ENVIRONMENT}`)
