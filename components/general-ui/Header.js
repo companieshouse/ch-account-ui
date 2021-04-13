@@ -31,7 +31,7 @@ const Header = (props) => {
                   />
                 </svg>
                 <span className="govuk-header__logotype-text">
-                  GOV.UK
+                  &nbsp;GOV.UK
                 </span>
               </span>
             </a>
