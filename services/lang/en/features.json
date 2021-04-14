@@ -1490,9 +1490,7 @@
             "label": "Email",
             "value": "",
             "action": {
-              "label": "Change",
-              "desc": "email address",
-              "href": "https://www.google.com"
+              "label": ""
             }
           },
           {
