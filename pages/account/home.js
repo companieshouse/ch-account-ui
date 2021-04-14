@@ -58,12 +58,12 @@ Home.propTypes = {
   companies: PropTypes.array,
   errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
-  userDetails: PropTypes.object,
+  profile: PropTypes.object,
   lang: PropTypes.string
 }
 
 Home.defaultProps = {
   companies: [],
   errors: [],
-  userDetails: {}
+  profile: {}
 }
