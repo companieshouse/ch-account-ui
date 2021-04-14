@@ -5,14 +5,14 @@ import HeadingText from '../typeography/HeadingText'
 import { errorsPropType } from '../../../services/propTypes'
 
 const RadioGroup = (props) => {
-  const { hint = '', heading = '', options = [], children, id, className = '', headingCount, errors, testId } = props
+  const { hint = '', heading = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined } = props
   const classes = [className]
 
   const finalClassName = classes.join(' ').trim()
   const error = getFieldError(errors, id)
 
   return (
-    <div className={`govuk-form-group ${Boolean(error) && 'govuk-form-group--error'} ${finalClassName}`}>
+    <div className={`govuk-form-group ${Boolean(error || groupError) && 'govuk-form-group--error'} ${finalClassName}`}>
       <fieldset data-testid={testId} className="govuk-fieldset" aria-describedby={`${id}-hint ${id}-error`}>
         {Boolean(heading) && <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
           <HeadingText className="govuk-fieldset__heading" headingCount={headingCount}>

@@ -1,17 +1,23 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
 
-const NameCallback = ({ errors = [], element, customElementProps = {} }) => {
+const NameCallback = ({ errors = [], element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
 
   return (
-    <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="text" autoComplete="email" label={label} errors={errors} testId="usernameInputField" {...customElementProps} />
-    </FormGroup>
+    <InputField
+      id={id}
+      type="text"
+      autoComplete="email"
+      label={label}
+      errors={errors}
+      testId="usernameInputField"
+      groupError={groupError}
+      {...customElementProps}
+    />
   )
 }
 

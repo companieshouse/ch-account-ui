@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import RadioGroup from '../general-ui/interaction/RadioGroup'
 
-const ChoiceCallback = ({ element, customElementProps = {} }) => {
+const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
   const testId = (element && element.getName && element.getName()) || `${id}_testId`
@@ -24,6 +24,7 @@ const ChoiceCallback = ({ element, customElementProps = {} }) => {
         checked: isChecked(choice, index)
       }))}
       defaultValue={defaultValue}
+      groupError={groupError}
       {...customElementProps}
     />
   )

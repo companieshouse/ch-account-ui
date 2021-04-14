@@ -1,20 +1,25 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
-// import { getCallbackElementData } from '../../services/forgerock'
 
-const StringAttributeInputCallback = ({ errors = [], element, customElementProps = {} }) => {
+const StringAttributeInputCallback = ({ errors = [], element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
   const testId = element.getName() || 'unknownFieldName'
   const currentValue = element.getOutputValue('value')
 
   return (
-    <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type="text" label={label} errors={errors} testId={testId} defaultValue={currentValue} {...customElementProps} />
-    </FormGroup>
+    <InputField
+      id={id}
+      type="text"
+      label={label}
+      errors={errors}
+      testId={testId}
+      defaultValue={currentValue}
+      groupError={groupError}
+      {...customElementProps}
+    />
   )
 }
 
