@@ -34,7 +34,8 @@ export default ChoiceCallback
 
 ChoiceCallback.propTypes = {
   customElementProps: PropTypes.object,
-  element: PropTypes.object.isRequired
+  element: PropTypes.object.isRequired,
+  groupError: PropTypes.object
 }
 
 ChoiceCallback.defaultProps = {
