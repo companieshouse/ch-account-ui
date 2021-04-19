@@ -6424,4 +6424,11 @@ x:-moz-any-link {
   margin-right: 0;
 }
 
+.boxCard {
+  border-color: #b1b4b6;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2em;
+}
+
 /*# sourceMappingURL=global.css.map */
