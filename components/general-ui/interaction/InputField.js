@@ -5,7 +5,7 @@ import { errorsPropType } from '../../../services/propTypes'
 import withLang from '../../../services/lang/withLang'
 import { translate } from '../../../services/translate'
 
-const InputField = ({ lang, label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, groupError = undefined, ...otherProps }) => {
+const InputField = ({ lang, label = '', renderLabelAs = 'label', headingCount, type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, groupError = undefined, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -16,9 +16,14 @@ const InputField = ({ lang, label = '', type = 'text', id, className = '', error
 
   return (
     <React.Fragment>
-      <label className="govuk-label" htmlFor={id}>
+      {renderLabelAs === 'label' && <label className="govuk-label" htmlFor={id}>
         {label}
-      </label>
+      </label>}
+      {renderLabelAs === 'heading' && <h1 className="govuk-label-wrapper">
+        <label className="govuk-label govuk-label--xl" htmlFor={id}>
+          {label}
+        </label>
+      </h1>}
       {Boolean(hint) && <div id={`${id}-hint`} className="govuk-hint">{hint}</div>}
       {Boolean(error) && <span id={`${id}-error`} className="govuk-error-message">
         <span className="govuk-visually-hidden">{translate(lang, 'INPUT_ERROR_SCREEN_READER_PREFIX')}:</span> {error.label}
@@ -60,7 +65,9 @@ InputField.propTypes = {
   type: PropTypes.string,
   prefix: PropTypes.node,
   suffix: PropTypes.node,
-  groupError: PropTypes.object
+  groupError: PropTypes.object,
+  renderLabelAs: PropTypes.string,
+  headingCount: PropTypes.object
 }
 
 InputField.defaultProps = {

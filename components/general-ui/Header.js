@@ -47,8 +47,8 @@ const Header = (props) => {
             </button>
             <nav className="floatRight">
               <ul id="navigation" className="govuk-header__navigation " aria-label="Navigation menu">
-                <li className="govuk-header__navigation-item govuk-header__navigation-item--active">
-                  <LinkText testId={'accountLogoutLink'} href={'/account/logout'}>Sign out</LinkText>
+                <li className="govuk-header__navigation-item">
+                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={'/account/logout'}>Sign out</LinkText>
                 </li>
               </ul>
             </nav>

@@ -19,7 +19,10 @@ const HeadingText = (props) => {
     }, [])
   }
 
-  if (!tag) return null
+  if (!tag) {
+    console.warn("A HeadingText component was asked to render but didn't know what tag to use. Either pass a `headingCount` or a `type` prop.")
+    return null
+  }
 
   const HeadingTag = `${tag}`
 
