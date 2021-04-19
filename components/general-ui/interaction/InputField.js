@@ -2,8 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import { errorsPropType } from '../../../services/propTypes'
+import withLang from '../../../services/lang/withLang'
+import { translate } from '../../../services/translate'
 
-const InputField = ({ label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, ...otherProps }) => {
+const InputField = ({ lang, label = '', type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, groupError = undefined, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -19,11 +21,11 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
       </label>
       {Boolean(hint) && <div id={`${id}-hint`} className="govuk-hint">{hint}</div>}
       {Boolean(error) && <span id={`${id}-error`} className="govuk-error-message">
-        <span className="govuk-visually-hidden">Error:</span> {error.label}
+        <span className="govuk-visually-hidden">{translate(lang, 'INPUT_ERROR_SCREEN_READER_PREFIX')}:</span> {error.label}
       </span>}
       <div className="govuk-input__wrapper">
         {Boolean(prefix) === true && <div className="govuk-input__prefix" aria-hidden="true">{prefix}</div>}
-        <input className={`govuk-input ${Boolean(error) && 'govuk-input--error'} ${finalClassName}`}
+        <input className={`govuk-input ${Boolean(error || groupError) && 'govuk-input--error'} ${finalClassName}`}
                id={id}
                name={id}
                type={type}
@@ -40,9 +42,10 @@ const InputField = ({ label = '', type = 'text', id, className = '', errors = []
   )
 }
 
-export default InputField
+export default withLang(InputField)
 
 InputField.propTypes = {
+  lang: PropTypes.string.isRequired,
   autoComplete: PropTypes.string,
   className: PropTypes.string,
   defaultValue: PropTypes.string,
@@ -56,7 +59,8 @@ InputField.propTypes = {
   testId: PropTypes.string.isRequired,
   type: PropTypes.string,
   prefix: PropTypes.node,
-  suffix: PropTypes.node
+  suffix: PropTypes.node,
+  groupError: PropTypes.object
 }
 
 InputField.defaultProps = {

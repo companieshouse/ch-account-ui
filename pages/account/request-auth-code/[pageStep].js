@@ -34,7 +34,6 @@ const RequestAuthCode = ({ lang }) => {
   const headingCount = new HeadingCount()
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   let journeyName = ''
 
@@ -125,6 +124,7 @@ const RequestAuthCode = ({ lang }) => {
   return (
     <FeatureDynamicView
       width='full'
+      titleLinkHref="/account/home"
       renderFeatures={renderFeatures}
       onSubmit={onSubmit}
       errors={errors}
@@ -132,10 +132,7 @@ const RequestAuthCode = ({ lang }) => {
       uiFeatures={uiFeatures}
       uiElements={uiElements}
       uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
+      {...router.query}
       {...customPageProps}
     />
   )

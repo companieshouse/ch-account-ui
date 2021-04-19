@@ -2,12 +2,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
-import { FORGEROCK_TREE_ASSOCIATE_USER_WITH_COMPANY } from '../../../services/environment'
+import { FORGEROCK_TREE_COMPANY_ASSOCIATION } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
-import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import withLang from '../../../services/lang/withLang'
+import Dynamic from '../../../components/Dynamic'
+import componentMap from '../../../services/componentMap'
 
 export const getStaticPaths = async () => {
   return {
@@ -35,7 +36,6 @@ const AssociateUserAndCompany = ({ lang }) => {
   const headingCount = new HeadingCount()
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   let journeyName = ''
 
@@ -51,7 +51,7 @@ const AssociateUserAndCompany = ({ lang }) => {
     if (pageStep === 'verify' && service && token) {
       journeyName = service
     } else {
-      journeyName = FORGEROCK_TREE_ASSOCIATE_USER_WITH_COMPANY
+      journeyName = FORGEROCK_TREE_COMPANY_ASSOCIATION
     }
 
     setErrors([])
@@ -65,7 +65,7 @@ const AssociateUserAndCompany = ({ lang }) => {
     console.log('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
       journeyName,
-      journeyNamespace: 'ASSOCIATE_USER_WITH_COMPANY',
+      journeyNamespace: 'COMPANY_ASSOCIATION',
       stepOptions,
       onSuccess: () => {
         Router.push('/account/home')
@@ -75,7 +75,7 @@ const AssociateUserAndCompany = ({ lang }) => {
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
         // and are handled gracefully by the onUpdateUi function
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'ASSOCIATE_USER_WITH_COMPANY_1'))
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'NO_SESSION_ERROR'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -120,28 +120,29 @@ const AssociateUserAndCompany = ({ lang }) => {
     submitData(formData)
   }
 
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
-
   // Check if the router has been initialised yet
   if (!pageStep) return null
 
   return (
     <FeatureDynamicView
-      renderFeatures={renderFeatures}
+      width='two-thirds'
       onSubmit={onSubmit}
       errors={errors}
       headingCount={headingCount}
-      uiFeatures={uiFeatures}
-      uiElements={uiElements}
       uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
       {...customPageProps}
-    />
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={uiFeatures}
+        errors={errors}
+        uiElements={uiElements}
+        uiStage={uiStage}
+        {...router.query}
+        {...customPageProps}
+      />
+    </FeatureDynamicView>
   )
 }
 

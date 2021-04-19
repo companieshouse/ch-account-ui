@@ -14,7 +14,7 @@ const SummaryList = (props) => {
           {listItem.label}
         </dt>
         <dd className="govuk-summary-list__value">
-          {listItem.value}{console.log('VALUE', listItem.value)}
+          {listItem.value}
         </dd>
         {listItem.action && <dd className="govuk-summary-list__actions">
           <a className="govuk-link" href={`${listItem.action.href}`}>

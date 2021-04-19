@@ -10,12 +10,10 @@ import withProfile from '../../services/withProfile'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 
-const Home = ({ errors, lang, profile }) => {
-  const uiStage = 'HOME_OVERVIEW'
+const YourCompanies = ({ errors, lang, profile }) => {
+  const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = new HeadingCount()
-
   const content = getStageFeatures(lang, uiStage)
-
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
@@ -31,13 +29,6 @@ const Home = ({ errors, lang, profile }) => {
       hasLanguageSwitcher={false}
       hasLogoutLink={true}
       hasAccountLinks={true}
-      errors={errors}
-      headingCount={headingCount}
-      uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
     >
       <Dynamic
         componentMap={componentMap}
@@ -47,14 +38,15 @@ const Home = ({ errors, lang, profile }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
+        {...router.query}
       />
     </FeatureDynamicView>
   )
 }
 
-export default withProfile(withLang(Home))
+export default withProfile(withLang(YourCompanies))
 
-Home.propTypes = {
+YourCompanies.propTypes = {
   companies: PropTypes.array,
   errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
@@ -62,7 +54,7 @@ Home.propTypes = {
   lang: PropTypes.string
 }
 
-Home.defaultProps = {
+YourCompanies.defaultProps = {
   companies: [],
   errors: [],
   profile: {}

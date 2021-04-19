@@ -1,18 +1,24 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import FormGroup from '../general-ui/interaction/FormGroup'
 import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
 
-const ValidatedCreatePasswordCallback = ({ errors = [], element, customElementProps = {} }) => {
+const ValidatedCreatePasswordCallback = ({ errors = [], element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
   const isEchoOn = element.getOutputValue('echoOn')
 
   return (
-    <FormGroup errors={errors} groupIds={[id]}>
-      <InputField id={id} type={isEchoOn === true ? 'text' : 'password'} autoComplete="current-password" label={label} errors={errors} testId="passwordInputField" {...customElementProps} />
-    </FormGroup>
+    <InputField
+      id={id}
+      type={isEchoOn === true ? 'text' : 'password'}
+      autoComplete="current-password"
+      label={label}
+      errors={errors}
+      testId="passwordInputField"
+      groupError={groupError}
+      {...customElementProps}
+    />
   )
 }
 

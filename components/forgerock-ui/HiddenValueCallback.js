@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const HiddenValueCallback = ({ element, customElementProps = {} }) => {
-  console.log('StringAttributeInputCallback', element)
-
   const id = element.getOutputValue('id')
 
   if (id === 'pagePropsJSON') return null

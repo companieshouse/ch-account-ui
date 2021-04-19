@@ -31,7 +31,7 @@ const LanguageSwitcher = ({ lang, setLang }) => {
   )
 }
 
-export default withLang(LanguageSwitcher)
+export default withLang(LanguageSwitcher, { withSetter: true })
 
 LanguageSwitcher.propTypes = {
   lang: PropTypes.string.isRequired,
