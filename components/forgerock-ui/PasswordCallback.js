@@ -32,6 +32,7 @@ const PasswordCallback = ({ lang, errors = [], element, customElementProps = {},
 
             return false
           }}
+          style={{ padding: '1em' }}
         >
           {translate(lang, `PASSWORD_${showPassword ? 'HIDE' : 'SHOW'}`)}
         </LinkText>}
