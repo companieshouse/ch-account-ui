@@ -31,13 +31,6 @@ const ManageAccount = ({ errors, lang, profile }) => {
       hasLanguageSwitcher={false}
       hasLogoutLink={true}
       hasAccountLinks={true}
-      errors={errors}
-      headingCount={headingCount}
-      uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
     >
       <Dynamic
         componentMap={componentMap}
@@ -46,11 +39,8 @@ const ManageAccount = ({ errors, lang, profile }) => {
         errors={errors}
         uiElements={[]}
         uiStage={uiStage}
-        notifyType={notifyType}
-        notifyHeading={notifyHeading}
-        notifyTitle={notifyTitle}
-        notifyChildren={notifyChildren}
         profile={profile}
+        {...router.query}
       />
     </FeatureDynamicView>
   )
@@ -62,12 +52,12 @@ ManageAccount.propTypes = {
   companies: PropTypes.array,
   errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
-  userDetails: PropTypes.object,
+  profile: PropTypes.object,
   lang: PropTypes.string
 }
 
 ManageAccount.defaultProps = {
   companies: [],
   errors: [],
-  userDetails: {}
+  profile: {}
 }
