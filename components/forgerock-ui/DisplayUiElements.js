@@ -40,7 +40,7 @@ const getElement = ({ element, id, index, customProps = {} }, errors, groupError
   }
 }
 
-const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, errors = [] }) => {
+const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], headingCount }) => {
   let currentFormGroup
 
   return (
@@ -71,13 +71,21 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
           }
 
           // Add the current element to the form group
-          currentFormGroup.elements.push({ element, index, id, customProps })
+          currentFormGroup.elements.push({
+            element,
+            index,
+            id,
+            customProps: {
+              ...customProps,
+              headingCount
+            }
+          })
 
           // We don't render anything yet as this element needs to be part of a form group
           return null
         } else if (currentFormGroup) {
           // We've found an element that is not part of a form group and we have a
-          // currentFormGroup so output that current form group and then continue]
+          // currentFormGroup so output that current form group and then continue
           const groupIds = currentFormGroup.elements.map((formGroupElementData) => formGroupElementData.id)
           const error = groupIds.find((id) => getFieldError(errors, id))
 
@@ -102,7 +110,11 @@ const DisplayUiElements = ({ stage = '', uiElements = [], elementProps = {}, err
           return output
         }
 
-        return <FormGroup key={id} errors={errors} groupIds={[id]}>{getElement({ element, index, id, customProps }, errors)}</FormGroup>
+        const elementToRender = getElement({ element, index, id, customProps: { ...customProps, headingCount } }, errors)
+
+        if (!elementToRender) return null
+
+        return <FormGroup key={id} errors={errors} groupIds={[id]}>{elementToRender}</FormGroup>
       })}
     </>
   )
@@ -114,7 +126,8 @@ DisplayUiElements.propTypes = {
   elementProps: PropTypes.object,
   errors: errorsPropType,
   stage: PropTypes.string,
-  uiElements: PropTypes.array
+  uiElements: PropTypes.array,
+  headingCount: PropTypes.object
 }
 
 DisplayUiElements.defaultProps = {
