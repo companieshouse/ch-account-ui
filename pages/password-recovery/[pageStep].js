@@ -71,6 +71,7 @@ const ResetPassword = ({ lang }) => {
     forgerockFlow({
       journeyName,
       journeyNamespace: 'RESET_PASSWORD',
+      lang,
       stepOptions,
       onSuccess: (loginData) => {
         Router.push('/account/home')

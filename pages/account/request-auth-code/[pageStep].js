@@ -60,6 +60,7 @@ const RequestAuthCode = ({ lang }) => {
     forgerockFlow({
       journeyName,
       journeyNamespace: 'REQUEST_AUTHENTICATION_CODE',
+      lang,
       stepOptions,
       onSuccess: () => {
         Router.push('/account/home')
