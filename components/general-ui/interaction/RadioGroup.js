@@ -54,7 +54,8 @@ RadioGroup.propTypes = {
   testId: PropTypes.string.isRequired,
   headingCount: PropTypes.object,
   options: PropTypes.array,
-  children: PropTypes.node
+  children: PropTypes.node,
+  groupError: PropTypes.object
 }
 
 RadioGroup.defaultProps = {
