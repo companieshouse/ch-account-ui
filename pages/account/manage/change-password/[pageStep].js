@@ -35,7 +35,6 @@ const ChangePassword = ({ lang }) => {
   const headingCount = new HeadingCount()
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   let journeyName = ''
 
@@ -122,14 +121,11 @@ const ChangePassword = ({ lang }) => {
   return (
     <FeatureDynamicView
       width='two-thirds'
+      titleLinkHref="/account/home"
       onSubmit={onSubmit}
       errors={errors}
       headingCount={headingCount}
       uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
       {...customPageProps}
     >
       <Dynamic
@@ -139,6 +135,7 @@ const ChangePassword = ({ lang }) => {
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
+        {...router.query}
       />
     </FeatureDynamicView>
   )
