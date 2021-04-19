@@ -31,13 +31,6 @@ const Home = ({ errors, lang, profile }) => {
       hasLanguageSwitcher={false}
       hasLogoutLink={true}
       hasAccountLinks={true}
-      errors={errors}
-      headingCount={headingCount}
-      uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
     >
       <Dynamic
         componentMap={componentMap}
@@ -47,6 +40,7 @@ const Home = ({ errors, lang, profile }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
+        {...router.query}
       />
     </FeatureDynamicView>
   )
