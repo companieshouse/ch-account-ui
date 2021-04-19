@@ -14,25 +14,21 @@ const AccountLinks = (props) => {
   const { email } = profile
 
   return (
-    <Column width='full'>
-      <Row className="govuk-!-margin-top-4">
+    <>
+      <Row>
         <Column width='two-thirds'>
-          <Row>
             <LinkText href={'/account/home'} className="govuk-!-margin-right-4" testId="accountHomeLink">Home</LinkText>
             <LinkText href={'/account/your-companies'} className="govuk-!-margin-right-4" testId="accountYourCompaniesLink">Your companies</LinkText>
             <LinkText href={'/account/your-filings'} className="govuk-!-margin-right-4" testId="accountYourFilingsLink">Your filings</LinkText>
             <LinkText href={'/account/companies-you-follow'} className="govuk-!-margin-right-4" testId="accountCompaniesYouFollowLink">Companies you follow</LinkText>
             <LinkText href={'/account/manage'} className="govuk-!-margin-right-4" testId="accountManageAccountLink">{translate(lang, 'ACCOUNT_LINKS_MANAGE_ACCOUNT')}</LinkText>
-          </Row>
         </Column>
         <Column width='one-third' className="alignRight">
-          <Row>
-            <SpanText className="govuk-!-margin-right-4 govuk-body-s" testId="accountEmailAddressText">{email}</SpanText>
-          </Row>
+            <SpanText className="govuk-body-s" testId="accountEmailAddressText">{email}</SpanText>
         </Column>
       </Row>
-      <Row><SectionBreak/></Row>
-    </Column>
+      <SectionBreak/>
+    </>
   )
 }
 

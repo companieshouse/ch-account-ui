@@ -28,14 +28,10 @@ const FeatureDynamicView = (props) => {
   return (
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={titleLinkHref} />
-      <WidthContainer>
+      <WidthContainer style={{ paddingTop: '2ex' }}>
         {hasAccountLinks === true && <AccountLinks />}
-        {(hasBackLink === true || hasLanguageSwitcher === true) && <Column width='full'>
-          <Row>
+        {(hasBackLink === true || hasLanguageSwitcher === true) && <>
             <Column width='two-thirds'>
-              {hasBackLink === true && <Row>
-                <BackLink testId="backLink">Back</BackLink>
-              </Row>}
               {hasBackLink === false && <span>&nbsp;</span>}
             </Column>
             {hasLanguageSwitcher === true && <Column width='one-third' className="alignRight">
@@ -43,8 +39,10 @@ const FeatureDynamicView = (props) => {
                 <LanguageSwitcher />
               </Row>
             </Column>}
-          </Row>
-        </Column>}
+          </>}
+      </WidthContainer>
+      <WidthContainer>
+        {hasBackLink === true && <BackLink testId="backLink">Back</BackLink>}
         <Main className="govuk-main-wrapper--auto-spacing">
           <WidthContainer>
             <Row>
