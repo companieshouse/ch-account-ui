@@ -127,10 +127,10 @@ const AssociateUserAndCompany = ({ lang }) => {
     <FeatureDynamicView
       width='two-thirds'
       onSubmit={onSubmit}
-      errors={errors}
-      headingCount={headingCount}
-      uiStage={uiStage}
-      {...customPageProps}
+      hasBackLink={true}
+      hasAccountLinks={true}
+      hasLogoutLink={true}
+      titleLinkHref="/account/home"
     >
       <Dynamic
         componentMap={componentMap}
