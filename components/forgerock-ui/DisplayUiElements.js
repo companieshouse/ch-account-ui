@@ -7,11 +7,12 @@ import StringAttributeInputCallback from './StringAttributeInputCallback'
 import ValidatedCreatePasswordCallback from './ValidatedCreatePasswordCallback'
 import ChoiceCallback from './ChoiceCallback'
 import HiddenValueCallback from './HiddenValueCallback'
+import ConfirmationCallback from './ConfirmationCallback'
 import { errorsPropType } from '../../services/propTypes'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import { getFieldError } from '../../services/errors'
 
-const getElement = ({ element, id, index, customProps }, errors, groupError = undefined) => {
+const getElement = ({ element, id, index, customProps = {} }, errors, groupError = undefined) => {
   switch (element.payload.type) {
     case CallbackType.HiddenValueCallback:
       return <HiddenValueCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
@@ -30,6 +31,9 @@ const getElement = ({ element, id, index, customProps }, errors, groupError = un
 
     case CallbackType.ChoiceCallback:
       return <ChoiceCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+
+    case CallbackType.ConfirmationCallback:
+      return <ConfirmationCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     default:
       return null
