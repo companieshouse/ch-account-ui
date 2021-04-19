@@ -2,8 +2,22 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { get as pathGet, set as pathSet } from '@irrelon/path'
 
-const getDynamicValue = (props, templateString) => {
-  return pathGet(props, templateString.slice(2).slice(0, -1))
+const parseTemplateString = (data, templateString) => {
+  let finalValue = templateString
+
+  // Break out the data requests in the template string and
+  // render the data in place of tokens
+  const regexp = /\${([\s\S]+?)}/g
+  let matches
+
+  while ((matches = regexp.exec(templateString))) {
+    const matchString = matches[0]
+    const dataPath = matches[1]
+
+    finalValue = finalValue.replace(matchString, pathGet(data, dataPath))
+  }
+
+  return finalValue
 }
 
 const processDynamicProps = (obj, props, visited = []) => {
@@ -21,9 +35,8 @@ const processDynamicProps = (obj, props, visited = []) => {
       continue
     }
 
-    if (fieldValueType === 'string' && fieldValue.substr(0, 2) === '${') {
-      finalObj[i] = getDynamicValue(props, fieldValue)
-      console.log('Getting dynamic data', fieldValue.slice(2).slice(0, -1), finalObj[i])
+    if (fieldValueType === 'string' && fieldValue.indexOf('${') > -1) {
+      finalObj[i] = parseTemplateString(props, fieldValue)
       continue
     }
 
@@ -88,7 +101,13 @@ const Dynamic = (props) => {
             if (typeof subContentItem === 'string') {
               // Direct prop replacement
               const finalProps = { ...otherProps, ...props, ...otherItemProps }
-              pathSet(props, propName, getDynamicValue(finalProps, subContentItem))
+              console.log('Dynamic prop replacement', {
+                propName,
+                finalProps,
+                subContentItem,
+                newPropValue: parseTemplateString(finalProps, subContentItem)
+              })
+              pathSet(props, propName, parseTemplateString(finalProps, subContentItem))
             } else if (typeof subContentItem === 'object') {
               // Scan for prop replacement markers
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
