@@ -24,29 +24,6 @@ const ErrorSummary = (props) => {
 
   const HeadingTag = `${tag}`
 
-  // Resolve errors with tokens to labels
-  errors.forEach((error) => {
-    // Check if we already have a label to display
-    if (error.label) return
-
-    // Check if we don't have a token (so nothing to resolve)
-    if (!error.token) return
-
-    // Try to resolve using most specific error to least specific
-    const tokensToTry = [`${error.token}(${error.fieldName})`, `${error.token}(${error.anchor})`, error.token]
-
-    error.label = tokensToTry.reduce((label, token) => {
-      if (label) return label
-      label = translate(lang, token, '')
-
-      return label
-    }, '')
-
-    if (!error.label) {
-      error.label = `No token data for lang "${lang}" and tokens ${JSON.stringify(tokensToTry)}. Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with one of these names!`
-    }
-  })
-
   return (
     <div className={`govuk-error-summary ${finalClassName}`}
          aria-labelledby="error-summary-title"
