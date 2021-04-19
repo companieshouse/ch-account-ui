@@ -1,11 +1,22 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
-import HeadingText from '../typeography/HeadingText'
 import { errorsPropType } from '../../../services/propTypes'
+import HeadingText from '../typeography/HeadingText'
 
-const RadioGroup = (props) => {
-  const { hint = '', heading = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined } = props
+const CheckboxGroup = (props) => {
+  const {
+    hint = '',
+    heading = '',
+    options = [],
+    children,
+    id,
+    className = '',
+    headingCount,
+    errors,
+    testId,
+    groupError = undefined
+  } = props
   const classes = [className]
 
   const finalClassName = classes.join(' ').trim()
@@ -25,10 +36,18 @@ const RadioGroup = (props) => {
         {Boolean(error) && <span id={`${id}-error`} className="govuk-error-message">
           <span className="govuk-visually-hidden">Error:</span> {error.label}
         </span>}
-        <div className="govuk-radios govuk-radios--inline">
-          {options.map((option, index) => <div key={`${option.value}_${index}`} className="govuk-radios__item">
-            <input className="govuk-radios__input" id={`${id}_${index}`} name={id} type="radio" value={option.value} defaultChecked={option.checked} />
-            <label className="govuk-label govuk-radios__label" htmlFor={`${id}_${index}`}>
+        <div className="govuk-checkboxes">
+          {options.map((option, index) => <div key={`${option.value}_${index}`} className="govuk-checkboxes__item">
+            <input
+              className="govuk-checkboxes__input"
+              id={`${id}_${index}`}
+              name={id}
+              type="checkbox"
+              value={option.value}
+              defaultChecked={option.checked}
+              aria-describedby={`${id}-hint`}
+            />
+            <label className="govuk-label govuk-checkboxes__label" htmlFor={`${id}_${index}`}>
               {option.label}
             </label>
           </div>)}
@@ -39,9 +58,9 @@ const RadioGroup = (props) => {
   )
 }
 
-export default RadioGroup
+export default CheckboxGroup
 
-RadioGroup.propTypes = {
+CheckboxGroup.propTypes = {
   autoComplete: PropTypes.string,
   className: PropTypes.string,
   errors: errorsPropType,
@@ -58,7 +77,7 @@ RadioGroup.propTypes = {
   groupError: PropTypes.object
 }
 
-RadioGroup.defaultProps = {
+CheckboxGroup.defaultProps = {
   className: '',
   errors: [],
   fixedWidth: '',

@@ -14,7 +14,7 @@ const Header = (props) => {
       <a href="#content" className="govuk-skip-link">Skip to main content</a>
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">
-          <Link href={{ titleLinkHref }}>
+          <Link href={titleLinkHref }>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className="govuk-header__link govuk-header__link--homepage" data-testid="headerLogoHomeLink">
               <span className="govuk-header__logotype">

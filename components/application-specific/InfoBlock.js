@@ -3,6 +3,12 @@ import React from 'react'
 import HeadingText from '../general-ui/typeography/HeadingText'
 import Column from '../general-ui/layout/Column'
 
+/*
+  This component is a child component of InfoBlocks.js
+  and wouldn't normally be used alone. If you are looking
+  for a "card-like" box around some content, see BoxCard.js
+ */
+
 const InfoBlock = (props) => {
   const { countHeadingType = 'h2', titleHeadingType = 'h3', count = '', title = '', children, className = '', renderFeatures } = props
   const classes = [className]

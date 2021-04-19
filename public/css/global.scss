@@ -32,9 +32,16 @@
   height: 300px;
   width: 310px;
   margin-right: 10px;
-  background-color: #f3f2f1;
+  background-color: govuk-colour("light-grey");
 }
 
 .infoBlock:last-child {
   margin-right: 0;
+}
+
+.boxCard {
+  border-color: govuk-colour("mid-grey");
+  border-style: solid;
+  border-width: 1px;
+  padding: 2em;
 }

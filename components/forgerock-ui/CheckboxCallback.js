@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import RadioGroup from '../general-ui/interaction/RadioGroup'
+import CheckboxGroup from '../general-ui/interaction/CheckboxGroup'
 
-const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefined }) => {
+const CheckboxCallback = ({ element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
   const testId = (element && element.getName && element.getName()) || `${id}_testId`
-  const choices = element.getOutputValue('choices')
-  const defaultValue = element.getOutputValue('defaultChoice')
+  const choices = element.getOutputValue('options')
+  const defaultValue = element.getOutputValue('defaultOption')
 
   const isChecked = (choice, index) => {
     return (typeof defaultValue === 'number' && index === defaultValue) || choice === defaultValue
   }
 
   return (
-    <RadioGroup
+    <CheckboxGroup
       id={id}
       testId={testId}
       heading={label}
@@ -30,14 +30,14 @@ const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefin
   )
 }
 
-export default ChoiceCallback
+export default CheckboxCallback
 
-ChoiceCallback.propTypes = {
+CheckboxCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
   groupError: PropTypes.object
 }
 
-ChoiceCallback.defaultProps = {
+CheckboxCallback.defaultProps = {
   customElementProps: {}
 }

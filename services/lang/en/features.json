@@ -848,17 +848,21 @@
       }
     }
   ],
-  "ASSOCIATE_USER_WITH_COMPANY_1": [
+  "COMPANY_ASSOCIATION_1": [
     {
-      "feature": "BrowserTitle",
-      "children": "Tell us the company number"
+      "component": "BrowserTitle",
+      "props": {
+        "children": "Tell us the company number"
+      }
     },
     {
-      "feature": "PageHeading",
-      "children": "What is the company number?"
+      "component": "PageHeading",
+      "props": {
+        "children": "What is the company number?"
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
@@ -868,164 +872,170 @@
       }
     },
     {
-      "feature": "Details",
+      "component": "Details",
       "props": {
-        "summary": "Help with my company number",
-        "uiFeatures": [
-          {
-            "feature": "BodyText",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "SpanText",
-                  "children": "You can find this by searching for the company on the "
-                },
-                {
-                  "feature": "LinkText",
-                  "children": "Companies House register (opens in a new tab)",
-                  "props": {
-                    "href": "https://find-and-update.company-information.service.gov.uk",
-                    "testId": "companiesHouseRegisterLink"
-                  }
-                },
-                {
-                  "feature": "SpanText",
-                  "children": "."
-                }
-              ]
+        "summary": "Help with my company number"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
+          },
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "You can find this by searching for the company on the "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "Companies House register (opens in a new tab)",
+                "href": "https://find-and-update.company-information.service.gov.uk",
+                "target": "_blank",
+                "testId": "companiesHouseRegisterLink"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
             }
-          }
-        ]
-      }
+          ]
+        }
+      ]
     },
     {
-      "feature": "Button",
-      "children": "Continue",
+      "component": "Button",
       "props": {
+        "children": "Continue",
         "type": "submit",
         "testId": "submitButton"
       }
     }
   ],
-  "ASSOCIATE_USER_WITH_COMPANY_2": [
+  "COMPANY_ASSOCIATION_2": [
     {
-      "feature": "BrowserTitle",
-      "children": "Enter the company authentication code"
-    },
-    {
-      "feature": "PageHeading",
-      "children": "Confirm this is the correct company"
-    },
-    {
-      "feature": "DisplayUiElements"
-    },
-    {
-      "feature": "HeadingText",
+      "component": "BrowserTitle",
       "props": {
-        "size": "l",
-        "uiFeatures": [
-          {
-            "feature": "TemplateText",
-            "props": {
-              "template": "${companyName}"
-            }
-          }
-        ]
+        "children": "Confirm this is the correct company"
       }
     },
     {
-      "feature": "SummaryList",
+      "component": "PageHeading",
+      "props": {
+        "children": "Confirm this is the correct company"
+      }
+    },
+    {
+      "component": "HeadingText",
+      "props": {
+        "size": "l"
+      },
+      "content": [
+        {
+          "component": "TemplateText",
+          "asProp": "children",
+          "dynamicProps": {
+            "template": "${company.name}"
+          },
+          "props": {
+
+          }
+        }
+      ]
+    },
+    {
+      "component": "SummaryList",
+      "dynamicProps": {
+        "listItems.0.value": "${company.number}",
+        "listItems.1.value": "${company.status}",
+        "listItems.2.value": "${companyIncorporationDate}",
+        "listItems.3.value": "${company.type}",
+        "listItems.4.value": {
+          "component": "NlToBr",
+          "dynamicProps": {
+            "content": "${company.addressLine1}\n${company.addressLine2}\n${company.locality}\n${company.region}\n${company.postalCode}"
+          }
+        }
+      },
       "props": {
         "listItems": [
           {
             "label": "Company number",
-            "uiFeatures": [
-              {
-                "feature": "TemplateText",
-                "props": {
-                  "template": "${companyNumber}"
-                }
-              }
-            ]
+            "value": ""
           },
           {
             "label": "Status",
-            "uiFeatures": [
-              {
-                "feature": "TemplateText",
-                "props": {
-                  "template": "${companyStatus}"
-                }
-              }
-            ]
+            "value": ""
           },
           {
             "label": "Incorporation date",
-            "uiFeatures": [
-              {
-                "feature": "TemplateText",
-                "props": {
-                  "template": "${companyIncorporationDate}"
-                }
-              }
-            ]
+            "value": ""
           },
           {
             "label": "Company type",
-            "uiFeatures": [
-              {
-                "feature": "TemplateText",
-                "props": {
-                  "template": "${companyType}"
-                }
-              }
-            ]
+            "value": ""
           },
           {
             "label": "Registered office address",
-            "uiFeatures": [
-              {
-                "feature": "NlToBr",
-                "props": {
-                  "uiFeatures": [
-                    {
-                      "feature": "TemplateText",
-                      "props": {
-                        "template": "${companyAddress}2nd Floor\n17 London Road\nLondon\nSA73 8PH"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "value": ""
           }
         ]
       }
     },
     {
-      "feature": "Button",
-      "children": "Confirm and continue",
+      "component": "DisplayUiElements",
       "props": {
+        "elementProps": {
+          "IDToken4": {
+            "_hidden": true
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Confirm and continue",
         "type": "submit",
         "testId": "submitButton"
       }
+    },
+    {
+      "component": "BodyText",
+      "content": [{
+        "component": "LinkText",
+        "props": {
+          "children": "Choose a different company",
+          "href": "/account/associate/_restart"
+        }
+      }]
     }
   ],
-  "ASSOCIATE_USER_WITH_COMPANY_3": [
+  "COMPANY_ASSOCIATION_3": [
     {
-      "feature": "BrowserTitle",
-      "children": "Provide the company auth code"
+      "component": "BrowserTitle",
+      "props": {
+        "children": "Provide the company auth code"
+      }
     },
     {
-      "feature": "PageHeading",
-      "children": "Enter the company authentication code"
+      "component": "PageHeading",
+      "props": {
+        "children": "Enter the company authentication code"
+      }
     },
     {
-      "feature": "InsetText",
-      "children": "After you've entered the authentication code for this company, you will no longer need it for most online filings. Keep the code in a safe place because you may need it for certain filings in the future."
+      "component": "InsetText",
+      "props": {
+        "children": "After you've entered the authentication code for this company, you will no longer need it for most online filings. Keep the code in a safe place because you may need it for certain filings in the future."
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
@@ -1035,49 +1045,65 @@
       }
     },
     {
-      "feature": "Button",
-      "children": "Continue",
+      "component": "Button",
       "props": {
+        "children": "Continue",
         "type": "submit",
         "testId": "submitButton"
       }
     },
     {
-      "feature": "Details",
+      "component": "Details",
       "props": {
-        "summary": "Help with authentication code",
-        "uiFeatures": [
-          {
-            "feature": "BodyText",
+        "summary": "Help with authentication code"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
             "children": "This is a 6 character code issued by us to each company. The code is used to authorise online filings."
-          },
-          {
-            "feature": "LinkText",
-            "children": "Request an authentication code",
-            "props": {
-              "href": "/account/request-auth-code/_start/?companyNumber=${}",
-              "testId": "requestAuthCodeLink"
-            }
           }
-        ]
+        },
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Request an authentication code",
+            "href": "/account/request-auth-code/_start/?companyNumber=${}",
+            "testId": "requestAuthCodeLink"
+          }
+        }
+      ]
+    }
+  ],
+  "COMPANY_ASSOCIATION_4": [
+    {
+      "component": "Redirect",
+      "dynamicProps": {
+        "url": "/account/your-companies/?notifyTitle=Success&notifyHeading=${company.name} has been added to your account.&notifyType=success"
       }
     }
   ],
   "REQUEST_AUTHENTICATION_CODE_1": [
     {
       "feature": "BrowserTitle",
-      "children": "Requesting an authentication code"
+      "props": {
+        "children": "Requesting an authentication code"
+      }
     },
     {
       "feature": "PageHeading",
-      "children": "Do you want us to send the authentication code to the registered office address?"
+      "props": {
+        "children": "Do you want us to send the authentication code to the registered office address?"
+      }
     },
     {
       "feature": "DisplayUiElements"
     },
     {
       "feature": "BodyText",
-      "children": "We'll send the authentication code by post to:"
+      "props": {
+        "children": "We'll send the authentication code by post to:"
+      }
     },
     {
       "feature": "BodyText",
@@ -1095,7 +1121,9 @@
     },
     {
       "feature": "BodyText",
-      "children": "It can take up to 5 days to arrive."
+      "props": {
+        "children": "It can take up to 5 days to arrive."
+      }
     },
     {
       "feature": "Button",
@@ -1222,7 +1250,7 @@
                               "component": "LinkText",
                               "props": {
                                 "children": "Your companies",
-                                "href": "https://www.google.com",
+                                "href": "/account/your-companies",
                                 "testId": "yourCompaniesLink"
                               }
                             }
@@ -1309,13 +1337,11 @@
     {
       "component": "Row",
       "props": {
-
       },
       "content": [
         {
           "component": "Column",
           "props": {
-
           },
           "content": [
             {
@@ -1324,26 +1350,23 @@
             {
               "component": "HeadingText",
               "props": {
-              "children": "Services",
+                "children": "Services",
                 "size": "m"
               }
             },
             {
               "component": "Column",
               "props": {
-
               },
               "content": [
                 {
                   "component": "InfoBlocks",
                   "props": {
-
                   },
                   "content": [
                     {
                       "component": "InfoBlock",
                       "props": {
-
                       },
                       "content": [
                         {
@@ -1351,13 +1374,12 @@
                           "props": {
                             "type": "h3",
                             "size": "m"
-
                           },
                           "content": [
                             {
                               "component": "LinkText",
                               "props": {
-                              "children": "Search the register",
+                                "children": "Search the register",
                                 "href": "https://www.google.com",
                                 "testId": "searchRegisterLink"
                               }
@@ -1375,7 +1397,6 @@
                     {
                       "component": "InfoBlock",
                       "props": {
-
                       },
                       "content": [
                         {
@@ -1383,13 +1404,12 @@
                           "props": {
                             "type": "h3",
                             "size": "m"
-
                           },
                           "content": [
                             {
                               "component": "LinkText",
                               "props": {
-                              "children": "Follow a company",
+                                "children": "Follow a company",
                                 "href": "https://www.google.com",
                                 "testId": "followCompanyLink"
                               }
@@ -1407,7 +1427,6 @@
                     {
                       "component": "InfoBlock",
                       "props": {
-
                       },
                       "content": [
                         {
@@ -1415,13 +1434,12 @@
                           "props": {
                             "type": "h3",
                             "size": "m"
-
                           },
                           "content": [
                             {
                               "component": "LinkText",
                               "props": {
-                              "children": "File accounts",
+                                "children": "File accounts",
                                 "href": "https://www.google.com",
                                 "testId": "fileAccountsLink"
                               }
@@ -1490,9 +1508,7 @@
             "label": "Email",
             "value": "",
             "action": {
-              "label": "Change",
-              "desc": "email address",
-              "href": "https://www.google.com"
+              "label": ""
             }
           },
           {
@@ -1515,6 +1531,68 @@
           }
         ]
       }
+    }
+  ],
+  "HOME_YOUR_COMPANIES": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "children": "Companies House account"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Your companies"
+      },
+      "content": [
+        {
+          "component": "Caption",
+          "asProp": "children",
+          "props": {
+            "children": "View and manage companies and people authorised to file on behalf of a company",
+            "size": "m"
+          }
+        }
+      ]
+    },
+    {
+      "component": "SectionBreak"
+    },
+    {
+      "conditional": {
+        "prop": "${profile.companies.length}",
+        "operator": "gt",
+        "value": 0
+      },
+      "component": "BoxCard",
+      "content": [
+        {
+          "component": "HeadingText",
+          "props": {
+            "size": "m",
+            "children": "You have not added any companies to this account"
+          }
+        },
+        {
+          "component": "BodyText",
+          "props": {
+            "children": "If you want to file for a company, you'll need to add it to your account."
+          }
+        },
+        {
+          "component": "Button",
+          "props": {
+            "renderAs": "link",
+            "children": "Add a company",
+            "href": "/account/associate/_start",
+            "testId": "accountAssociateCompanyLink"
+          }
+        }
+      ]
+    },
+    {
+      "component": "SectionBreak"
     }
   ],
   "NO_SESSION_ERROR": [
@@ -1573,10 +1651,12 @@
           },
           "IDToken3": {
             "label": "Enter a new password",
-            "hint": "This must be at least 8 characters long and hard to guess."
+            "hint": "This must be at least 8 characters long and hard to guess.",
+            "formGroup": "newPassword"
           },
           "IDToken4": {
-            "label": "Re-enter the new password"
+            "label": "Re-enter the new password",
+            "formGroup": "newPassword"
           }
         }
       }

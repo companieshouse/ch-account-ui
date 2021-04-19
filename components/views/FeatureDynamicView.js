@@ -29,7 +29,7 @@ const FeatureDynamicView = (props) => {
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={titleLinkHref} />
       <WidthContainer>
-        {hasAccountLinks === true && <AccountLinks userDetails={{ emailAddress: 'hannah.salt@example.com' }} />}
+        {hasAccountLinks === true && <AccountLinks />}
         {(hasBackLink === true || hasLanguageSwitcher === true) && <Column width='full'>
           <Row>
             <Column width='two-thirds'>
