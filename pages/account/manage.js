@@ -25,7 +25,7 @@ const ManageAccount = ({ errors, lang, profile }) => {
 
   return (
     <FeatureDynamicView
-      width="full"
+      width="two-thirds"
       titleLinkHref="/account/home"
       hasBackLink={false}
       hasLanguageSwitcher={false}
