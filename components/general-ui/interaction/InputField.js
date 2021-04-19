@@ -59,7 +59,8 @@ InputField.propTypes = {
   testId: PropTypes.string.isRequired,
   type: PropTypes.string,
   prefix: PropTypes.node,
-  suffix: PropTypes.node
+  suffix: PropTypes.node,
+  groupError: PropTypes.object
 }
 
 InputField.defaultProps = {
