@@ -1,64 +1,66 @@
 {
   "LOGIN_1": [
     {
-      "feature": "BrowserTitle",
-      "children": "Sign in to Companies House account"
+      "component": "BrowserTitle",
+      "props": {
+        "children": "Sign in to Companies House account"
+      }
     },
     {
-      "feature": "PageHeading",
-      "children": "Sign in to your Companies House account"
+      "component": "PageHeading",
+      "props": {
+        "children": "Sign in to your Companies House account"
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
+            "formGroup": "usernameAndPassword",
             "label": "Email Address",
             "hint": "You cannot use your WebFiling details to sign in. You must sign in to or create a Companies House account."
           },
           "IDToken2": {
+            "formGroup": "usernameAndPassword",
             "label": "Password"
           }
         }
       }
     },
     {
-      "feature": "Button",
-      "children": "Sign in",
+      "component": "Button",
       "props": {
+      "children": "Sign in",
         "type": "submit",
         "testId": "submitButton"
       }
     },
     {
-      "feature": "BodyText",
-      "props": {
-        "uiFeatures": [
-          {
-            "feature": "LinkText",
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
             "children": "Register a new account",
-            "props": {
-              "href": "/account/register/_start",
-              "testId": "registerNewAccountLink"
-            }
+            "href": "/account/register/_start",
+            "testId": "registerNewAccountLink"
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "feature": "BodyText",
-      "props": {
-        "uiFeatures": [
-          {
-            "feature": "LinkText",
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
             "children": "I've forgotten my password",
-            "props": {
-              "href": "/password-recovery/request",
-              "testId": "forgottenMyPasswordLink"
-            }
+            "href": "/password-recovery/request",
+            "testId": "forgottenMyPasswordLink"
           }
-        ]
-      }
+        }
+      ]
     }
   ],
   "LOGIN_MFA": [
