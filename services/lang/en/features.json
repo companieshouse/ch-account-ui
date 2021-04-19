@@ -1612,6 +1612,16 @@
         "type": "submit",
         "testId": "submitButton"
       }
+    },
+    {
+      "component": "BodyText",
+      "content": [{
+        "component": "LinkText",
+        "props": {
+          "children": "Cancel",
+          "href": "/account/manage"
+        }
+      }]
     }
   ],
   "CHANGE_PASSWORD_2": [
