@@ -856,16 +856,13 @@
       }
     },
     {
-      "component": "PageHeading",
-      "props": {
-        "children": "What is the company number?"
-      }
-    },
-    {
       "component": "DisplayUiElements",
       "props": {
         "elementProps": {
-          "IDToken1": {
+          "IDToken2": {
+            "renderLabelAs": "heading",
+            "label": "What is the company number?",
+            "fixedWidth": "10",
             "hint": "Enter the number of the company you would like to add to your Companies House account"
           }
         }
@@ -1481,7 +1478,8 @@
           "asProp": "children",
           "props": {
             "children": "Make changes to your details and account settings",
-            "size": "m"
+            "size": "m",
+            "style": {"paddingTop": "0.5em"}
           }
         }
       ]
@@ -1551,7 +1549,8 @@
           "asProp": "children",
           "props": {
             "children": "View and manage companies and people authorised to file on behalf of a company",
-            "size": "m"
+            "size": "m",
+            "style": {"paddingTop": "0.5em"}
           }
         }
       ]
