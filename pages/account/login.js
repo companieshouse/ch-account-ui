@@ -5,10 +5,11 @@ import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
-import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import withLang from '../../services/lang/withLang'
 import { useCookies } from 'react-cookie'
+import componentMap from '../../services/componentMap'
+import Dynamic from '../../components/Dynamic'
 
 const Login = ({ lang }) => {
   const [, setCookie] = useCookies()
@@ -29,6 +30,7 @@ const Login = ({ lang }) => {
     forgerockFlow({
       journeyName: FORGEROCK_TREE_LOGIN,
       journeyNamespace: 'LOGIN',
+      lang,
       onSuccess: (loginData) => {
         // Set auth cookie
         setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
@@ -70,7 +72,7 @@ const Login = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [goto, overrideStage])
+  }, [goto, overrideStage, notifyType, notifyHeading, notifyTitle, notifyChildren])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -85,25 +87,21 @@ const Login = ({ lang }) => {
     submitData(formData)
   }
 
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
-
   return (
     <FeatureDynamicView
-      renderFeatures={renderFeatures}
       onSubmit={onSubmit}
-      errors={errors}
-      headingCount={headingCount}
-      uiFeatures={uiFeatures}
-      uiElements={uiElements}
-      uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
-      {...customPageProps}
-    />
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={uiFeatures}
+        errors={errors}
+        uiElements={uiElements}
+        uiStage={uiStage}
+        {...router.query}
+        {...customPageProps}
+      />
+    </FeatureDynamicView>
   )
 }
 

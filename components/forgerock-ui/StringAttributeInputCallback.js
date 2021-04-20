@@ -28,7 +28,8 @@ export default StringAttributeInputCallback
 StringAttributeInputCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
-  errors: errorsPropType
+  errors: errorsPropType,
+  groupError: PropTypes.object
 }
 
 StringAttributeInputCallback.defaultProps = {

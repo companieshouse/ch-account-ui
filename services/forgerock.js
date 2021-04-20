@@ -6,7 +6,35 @@ import {
   FORGEROCK_REDIRECT,
   FORGEROCK_SCOPE
 } from './environment'
+import { translate } from './translate'
 export { CallbackType } from '@forgerock/javascript-sdk'
+
+const translateErrors = (errors, lang) => {
+  // Resolve errors with tokens to labels
+  errors.forEach((error) => {
+    // Check if we already have a label to display
+    if (error.label) return
+
+    // Check if we don't have a token (so nothing to resolve)
+    if (!error.token) return
+
+    // Try to resolve using most specific error to least specific
+    const tokensToTry = [`${error.token}(${error.fieldName})`, `${error.token}(${error.anchor})`, error.token]
+
+    error.label = tokensToTry.reduce((label, token) => {
+      if (label) return label
+      label = translate(lang, token, '')
+
+      return label
+    }, '')
+
+    if (!error.label) {
+      error.label = `No token data for lang "${lang}" and tokens ${JSON.stringify(tokensToTry)}. Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with one of these names!`
+    }
+  })
+
+  return errors
+}
 
 const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
   const errors = []
@@ -81,8 +109,13 @@ export const forgerockFlow = ({
   onUpdateUi,
   journeyName,
   journeyNamespace,
-  stepOptions
+  stepOptions,
+  lang
 }) => {
+  if (!lang) {
+    console.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
+    return null
+  }
   Config.set({
     clientId: FORGEROCK_CLIENT_ID,
     realmPath: FORGEROCK_REALM,
@@ -116,7 +149,7 @@ export const forgerockFlow = ({
     // that our front-end can use. This normalises the errors across
     // different calls and steps etc to ensure we don't have to manually
     // code different error handling methods for different pages.
-    const errors = normaliseErrors(step, journeyNamespace)
+    const errors = translateErrors(normaliseErrors(step, journeyNamespace), lang)
 
     if (step.type === StepType.LoginSuccess) {
       console.log('ForgeRock login success', step)

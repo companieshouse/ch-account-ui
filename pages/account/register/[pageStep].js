@@ -67,6 +67,7 @@ const RegisterContactDetails = ({ lang }) => {
     forgerockFlow({
       journeyName,
       journeyNamespace: 'REGISTRATION',
+      lang,
       stepOptions,
       onSuccess: (loginData) => {
         if (loginData?.tokens?.accessToken) {

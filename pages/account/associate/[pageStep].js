@@ -66,6 +66,7 @@ const AssociateUserAndCompany = ({ lang }) => {
     forgerockFlow({
       journeyName,
       journeyNamespace: 'COMPANY_ASSOCIATION',
+      lang,
       stepOptions,
       onSuccess: () => {
         Router.push('/account/home')
