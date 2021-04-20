@@ -13,20 +13,24 @@ import { getAssociations } from '../../services/forgerock'
 import withAccessToken from '../../services/withAccessToken'
 
 const Home = ({ errors, lang, profile, accessToken }) => {
+  const [associationData, setAssociationData] = React.useState({ count: '0', companies: [] })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = new HeadingCount()
-
   const content = getStageFeatures(lang, uiStage)
-  let associationData
-  getAssociations(accessToken, profile.sub).then((response) => {
-    console.log('AssociationData', response)
-  })
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   React.useEffect(() => {
     headingCount.reset()
-  }, [notifyType, notifyHeading, notifyTitle, notifyChildren, associationData])
+
+    getAssociations(accessToken, profile.sub).then((response) => {
+      console.log('AssociationData', response)
+      setAssociationData({
+        count: response.count,
+        companies: response.companies
+      })
+    })
+  }, [notifyType, notifyHeading, notifyTitle, notifyChildren])
 
   return (
     <FeatureDynamicView
