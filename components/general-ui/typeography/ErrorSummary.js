@@ -2,12 +2,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import withLang from '../../../services/lang/withLang'
-import { translate } from '../../../services/translate'
 import { errorsPropType } from '../../../services/propTypes'
 
 const ErrorSummary = (props) => {
-  const { lang, type = '', title = 'No title!', errors = [], children, className = '', headingCount, renderFeatures } = props
-  if (errors.length === 0 && !children) return null
+  const { type = '', title = 'No title!', errors = [], children, className = '', headingCount, renderFeatures } = props
+  if (errors.length === 0) return null
 
   const [tag, setTag] = React.useState(type)
   const classes = [className]
