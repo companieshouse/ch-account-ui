@@ -74,7 +74,7 @@ const processDynamicProps = (obj, props, visited = []) => {
  */
 const Dynamic = (props) => {
   const { content = [], componentMap = {}, children, ...otherProps } = props
-  console.log('Dynamic: Rendering with props', props)
+  // console.log('Dynamic: Rendering with props', props)
   if (!content.length) {
     return <>{children}</>
   }
@@ -91,7 +91,54 @@ const Dynamic = (props) => {
           return <div key={`${component}_${index}`}>Unknown component &quot;{component}&quot; - please add the {component} component to the componentMap prop.</div>
         }
 
-        console.log('Dynamic: +++ Start', component)
+        // Check if the contentItem has a conditional
+        if (contentItem.conditional) {
+          const { prop, operator, value } = contentItem.conditional
+
+          // Get the conditional prop data
+          const propData = parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, prop)
+
+          switch (operator) {
+            case 'gt':
+              if (propData <= value) return null
+              break
+
+            case 'gte':
+              if (propData < value) return null
+              break
+
+            case 'lt':
+              if (propData >= value) return null
+              break
+
+            case 'lte':
+              if (propData > value) return null
+              break
+
+            case 'eeq':
+              if (propData !== value) return null
+              break
+
+            case 'eq':
+              // eslint-disable-next-line eqeqeq
+              if (propData != value) return null
+              break
+
+            case 'nee':
+              if (propData === value) return null
+              break
+
+            case 'ne':
+              // eslint-disable-next-line eqeqeq
+              if (propData == value) return null
+              break
+
+            default:
+              break
+          }
+        }
+
+        // console.log('Dynamic: +++ Start', component)
 
         // Check for prop replacement sub-content
         const dynamicPropEntries = (typeof dynamicProps === 'object' && Object.entries(dynamicProps)) || []
@@ -99,23 +146,16 @@ const Dynamic = (props) => {
           dynamicPropEntries.forEach(([propName, subContentItem]) => {
             // Check type of subContentItem
             if (typeof subContentItem === 'string') {
-              // Direct prop replacement
-              const finalProps = { ...otherProps, ...props, ...otherItemProps }
-              console.log('Dynamic prop replacement', {
-                propName,
-                finalProps,
-                subContentItem,
-                newPropValue: parseTemplateString(finalProps, subContentItem)
-              })
-              pathSet(props, propName, parseTemplateString(finalProps, subContentItem))
+              // Direct template string replacement
+              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem))
             } else if (typeof subContentItem === 'object') {
-              // Scan for prop replacement markers
+              // Scan for prop template strings in fields and values
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
 
-              console.log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
+              // console.log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
 
               // Replace the labelled prop with this component
-              console.log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
+              // console.log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
               pathSet(props, propName, <Dynamic componentMap={componentMap} content={[subContentItem]} {...otherProps} {...otherItemProps} />)
             } else {
               throw new Error(`Unrecognised dynamicProp value: ${JSON.stringify(subContentItem)}`)
@@ -123,8 +163,8 @@ const Dynamic = (props) => {
           })
         }
 
-        console.log('Dynamic: Rendering component', component, 'with props', props)
-        console.log('Dynamic: --- End', component)
+        // console.log('Dynamic: Rendering component', component, 'with props', props)
+        // console.log('Dynamic: --- End', component)
 
         return <ComponentClass key={`${component}_${index}`} {...otherProps} {...otherItemProps} {...props}>
           {props.children}
