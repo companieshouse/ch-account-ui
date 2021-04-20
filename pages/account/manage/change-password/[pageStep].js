@@ -61,6 +61,7 @@ const ChangePassword = ({ lang }) => {
     forgerockFlow({
       journeyName,
       journeyNamespace: 'CHANGE_PASSWORD',
+      lang,
       stepOptions,
       onSuccess: () => {
         Router.push('/account/manage')
