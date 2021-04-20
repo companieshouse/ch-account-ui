@@ -5,10 +5,7 @@ const Column = (props) => {
   const { children, width = 'full', className = '', renderFeatures } = props
   const classes = [className]
 
-  if (width === 'full') classes.push('govuk-grid-column-full')
-  if (width === 'one-half') classes.push('govuk-grid-column-one-half')
-  if (width === 'one-third') classes.push('govuk-grid-column-one-third')
-  if (width === 'two-thirds') classes.push('govuk-grid-column-two-thirds')
+  if (width) classes.push(`govuk-grid-column-${width}`)
 
   const finalClassName = classes.join(' ').trim()
 
