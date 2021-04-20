@@ -858,6 +858,12 @@
       }
     },
     {
+      "component": "ErrorSummary",
+      "props": {
+        "title": "There is a problem"
+      }
+    },
+    {
       "component": "DisplayUiElements",
       "props": {
         "elementProps": {
