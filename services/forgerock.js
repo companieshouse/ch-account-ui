@@ -289,8 +289,17 @@ export const getAssociations = async (accessToken, userId) => {
 
   if (res.headers.get('Content-Type').indexOf('application/json') > -1) {
     const body = await res.json()
+    let companies = []
+    let count = 0
+
+    if (status === 200) {
+      count = body.resultCount
+      companies = body.result
+    }
 
     return {
+      count,
+      companies,
       status,
       body,
       headers
