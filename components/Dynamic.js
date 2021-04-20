@@ -2,14 +2,32 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { get as pathGet, set as pathSet } from '@irrelon/path'
 
+const getTemplateDataValue = (data, templateString) => {
+  const regexp = /\${([\s\S]+?)}/g
+  const matches = regexp.exec(templateString)
+
+  if (!matches) return undefined
+
+  return pathGet(data, matches[1])
+}
+
 const parseTemplateString = (data, templateString) => {
   let finalValue = templateString
 
   // Break out the data requests in the template string and
   // render the data in place of tokens
   const regexp = /\${([\s\S]+?)}/g
+  const matchData = templateString.match(regexp)
   let matches
 
+  if (matchData !== null && matchData.length === 1) {
+    // Only one item in the template string, return the value proper
+    matches = regexp.exec(templateString)
+    return pathGet(data, matches[1])
+  }
+
+  // The template string contains more than one item, we have to
+  // return a string instead
   while ((matches = regexp.exec(templateString))) {
     const matchString = matches[0]
     const dataPath = matches[1]
@@ -46,15 +64,83 @@ const processDynamicProps = (obj, props, visited = []) => {
   return finalObj
 }
 
+const isConditionalSatisfied = (conditional, data) => {
+  const { prop, operator, value } = conditional
+
+  // Get the conditional prop data
+  const propData = getTemplateDataValue(data, prop)
+
+  switch (operator) {
+    case 'gt':
+      if (propData <= value) return false
+      break
+
+    case 'gte':
+      if (propData < value) return false
+      break
+
+    case 'lt':
+      if (propData >= value) return false
+      break
+
+    case 'lte':
+      if (propData > value) return false
+      break
+
+    case 'eeq':
+      if (propData !== value) return false
+      break
+
+    case 'eq':
+      // eslint-disable-next-line eqeqeq
+      if (propData != value) return false
+      break
+
+    case 'nee':
+      if (propData === value) return false
+      break
+
+    case 'ne':
+      // eslint-disable-next-line eqeqeq
+      if (propData == value) return false
+      break
+
+    default:
+      break
+  }
+
+  return true
+}
+
+const renderIterator = (contentItem, iterator, data) => {
+  const { prop, name, index } = iterator
+
+  // Get the iterator prop data (the array to iterate over)
+  const propData = getTemplateDataValue(data, prop)
+  if (!(propData instanceof Array)) return null
+
+  return <>
+    {propData.map((propDataItem, propDataIndex) =>
+      <Dynamic key={propDataIndex} {...data} content={[{
+        component: contentItem.component,
+        content: contentItem.content,
+        dynamicProps: contentItem.dynamicProps,
+        props: contentItem.props
+      }]} {...{ [index]: propDataIndex }} {...{ [name]: propDataItem }} />
+    )}
+  </>
+}
+
 /**
  * @typedef {Object} DynamicContentComponent
  * @property {string} component The component to render.
- * @property {string} [asProp] If provided, renders the output
- * of this component and passes it as the prop named in `asProp`
- * to the parent component.
+ * @property {Array<DynamicContentComponent>} [content] If provided,
+ * renders the content array of components as the children of this
+ * component.
  * @property {Object} props The props to pass to the react component.
- * @property {boolean} [dynamicProps=false] If true, scans the props
- * of this component and maps parent component prop values.
+ * @property {Object} [dynamicProps] If provided, replaces the props
+ * passed to the component with data dynamically read from passed in
+ * props.
  */
 
 /**
@@ -93,49 +179,14 @@ const Dynamic = (props) => {
 
         // Check if the contentItem has a conditional
         if (contentItem.conditional) {
-          const { prop, operator, value } = contentItem.conditional
+          if (!isConditionalSatisfied(contentItem.conditional, { ...otherProps, ...props, ...otherItemProps })) return null
+        }
 
-          // Get the conditional prop data
-          const propData = parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, prop)
-
-          switch (operator) {
-            case 'gt':
-              if (propData <= value) return null
-              break
-
-            case 'gte':
-              if (propData < value) return null
-              break
-
-            case 'lt':
-              if (propData >= value) return null
-              break
-
-            case 'lte':
-              if (propData > value) return null
-              break
-
-            case 'eeq':
-              if (propData !== value) return null
-              break
-
-            case 'eq':
-              // eslint-disable-next-line eqeqeq
-              if (propData != value) return null
-              break
-
-            case 'nee':
-              if (propData === value) return null
-              break
-
-            case 'ne':
-              // eslint-disable-next-line eqeqeq
-              if (propData == value) return null
-              break
-
-            default:
-              break
-          }
+        // Check if the contentItem has an iterator
+        if (contentItem.iterator) {
+          // We have to iterate over the array defined in iterator.prop
+          // and render the component for each item of the array
+          return renderIterator(contentItem, contentItem.iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
         }
 
         // console.log('Dynamic: +++ Start', component)
@@ -148,6 +199,9 @@ const Dynamic = (props) => {
             if (typeof subContentItem === 'string') {
               // Direct template string replacement
               pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem))
+            } else if (subContentItem instanceof Array) {
+              const arr = processDynamicProps(subContentItem, { ...otherProps, ...props, ...otherItemProps })
+              pathSet(props, propName, arr)
             } else if (typeof subContentItem === 'object') {
               // Scan for prop template strings in fields and values
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
