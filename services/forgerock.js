@@ -1,12 +1,14 @@
-import { Config, FRAuth, FRUser, TokenManager, StepType, UserManager } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager, HttpClient } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
   FORGEROCK_REALM,
   FORGEROCK_REDIRECT,
-  FORGEROCK_SCOPE
+  FORGEROCK_SCOPE,
+  FORGEROCK_USER_ENDPOINT
 } from './environment'
 import { translate } from './translate'
+
 export { CallbackType } from '@forgerock/javascript-sdk'
 
 const translateErrors = (errors, lang) => {
@@ -264,4 +266,36 @@ export const logoutFlow = ({
   })
   FRUser.logout().then(onSuccess).catch(onFailure)
   // SessionManager.logout().then(onSuccess).catch(onFailure)
+}
+
+export const getAssociations = async (accessToken, userId) => {
+  if (!userId) {
+    console.error('getAssociations(userId): No userId provided!')
+    return
+  }
+
+  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/isAuthorisedUserOf?_fields=&_queryFilter=true`
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    },
+    init: {
+      credentials: 'include'
+    }
+  })
+
+  const { status, headers } = res
+
+  if (res.headers.get('Content-Type').indexOf('application/json') > -1) {
+    const body = await res.json()
+
+    return {
+      status,
+      body,
+      headers
+    }
+  }
+
+  return res
 }
