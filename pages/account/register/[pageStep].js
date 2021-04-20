@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
-import { CH_COOKIE_NAME, FORGEROCK_TREE_REGISTER } from '../../../services/environment'
+import { CH_COOKIE_NAME, FORGEROCK_TREE_REGISTER, ID_COOKIE_NAME } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import UiFeatures from '../../../components/general-ui/UiFeatures'
@@ -72,6 +72,7 @@ const RegisterContactDetails = ({ lang }) => {
         if (loginData?.tokens?.accessToken) {
           // Set auth cookie
           setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
+          setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
         }
 
         Router.push('/account/home')
