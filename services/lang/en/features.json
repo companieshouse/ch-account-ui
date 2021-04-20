@@ -1194,7 +1194,8 @@
                   },
                   "props": {
                     "size": "xl"
-                  }
+                  },
+                  "style": {"paddingTop": "0.5em"}
                 }
               ]
             }
@@ -1234,8 +1235,11 @@
                   "content": [
                     {
                       "component": "InfoBlock",
+                      "dynamicProps": {
+                        "count": "${associationData.count}"
+                      },
                       "props": {
-                        "count": "0"
+                        "count": ""
                       },
                       "content": [
                         {
