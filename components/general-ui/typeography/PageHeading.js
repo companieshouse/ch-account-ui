@@ -44,7 +44,8 @@ PageHeading.propTypes = {
   notifyHeading: PropTypes.string,
   notifyTitle: PropTypes.string,
   notifyType: PropTypes.string,
-  renderFeatures: PropTypes.func
+  renderFeatures: PropTypes.func,
+  lang: PropTypes.string
 }
 
 PageHeading.defaultProps = {
