@@ -5,6 +5,11 @@
  * @property {string} [anchor] Optional link to an anchor
  * on the page, helping the user find the field with the
  * error. This must match an element id on the page.
+ * @property {string} [fieldName] Optional. Name of field for
+ * defining error token specificity.
+ * @property {string} [token] Optional. The token to use when
+ * outputting the error to the screen in the user's selected
+ * language.
  */
 
 /**
