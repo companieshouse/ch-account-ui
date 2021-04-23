@@ -1,7 +1,8 @@
-import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager, HttpClient } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
+  FORGEROCK_COMPANY_ENDPOINT,
   FORGEROCK_REALM,
   FORGEROCK_REDIRECT,
   FORGEROCK_SCOPE,
@@ -268,9 +269,50 @@ export const logoutFlow = ({
   // SessionManager.logout().then(onSuccess).catch(onFailure)
 }
 
-export const getAssociations = async (accessToken, userId) => {
+export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
+  if (!companyId) {
+    console.error('getUsersAssociatedWithCompany(accessToken, companyId): No userId provided!')
+    return
+  }
+
+  const url = `${FORGEROCK_COMPANY_ENDPOINT}${companyId}/authorisedUsers?_fields=&_queryFilter=true`
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    },
+    init: {
+      credentials: 'include'
+    }
+  })
+
+  const { status, headers } = res
+
+  if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
+    const body = await res.json()
+    let users = []
+    let count = 0
+
+    if (status === 200) {
+      count = body.resultCount
+      users = body.result || []
+    }
+
+    return {
+      count,
+      users,
+      status,
+      body,
+      headers
+    }
+  }
+
+  return res
+}
+
+export const getCompaniesAssociatedWithUser = async (accessToken, userId) => {
   if (!userId) {
-    console.error('getAssociations(userId): No userId provided!')
+    console.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
 
@@ -287,14 +329,23 @@ export const getAssociations = async (accessToken, userId) => {
 
   const { status, headers } = res
 
-  if (res.headers.get('Content-Type').indexOf('application/json') > -1) {
+  if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
     const body = await res.json()
     let companies = []
     let count = 0
 
     if (status === 200) {
       count = body.resultCount
-      companies = body.result
+      companies = body.result || []
+
+      // Loop each company and get reverse associations
+      await Promise.all(companies.map(async (company) => {
+        const {
+          users
+        } = await getUsersAssociatedWithCompany(accessToken, company._refResourceId)
+
+        company.users = users || []
+      }))
     }
 
     return {
