@@ -35,8 +35,10 @@ const CookieBanners = (props) => {
   }
 
   React.useEffect(() => {
+    if (typeof CookieConsent === 'undefined') return
     start()
-  }, [])
+    // eslint-disable-next-line no-undef
+  }, [typeof CookieConsent])
 
   return (
     <div id="cookie-banner" hidden>
