@@ -9,7 +9,7 @@ import { errorsPropType } from '../../services/propTypes'
 import withProfile from '../../services/withProfile'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
-import { getAssociations } from '../../services/forgerock'
+import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
 import withAccessToken from '../../services/withAccessToken'
 
 const Home = ({ errors, lang, profile, accessToken }) => {
@@ -23,7 +23,7 @@ const Home = ({ errors, lang, profile, accessToken }) => {
   React.useEffect(() => {
     headingCount.reset()
 
-    getAssociations(accessToken, profile.sub).then((response) => {
+    getCompaniesAssociatedWithUser(accessToken, profile.sub).then((response) => {
       console.log('AssociationData', response)
       setAssociationData({
         count: response.count,
