@@ -178,7 +178,15 @@ const Dynamic = (props) => {
   return (
     <>
       {content.map((contentItem, index) => {
-        const { component, content: itemContent, props = {}, dynamicProps, ...otherItemProps } = contentItem
+        const {
+          component,
+          content: itemContent,
+          props = {},
+          dynamicProps,
+          conditional,
+          iterator,
+          ...otherItemProps
+        } = contentItem
 
         if (!component) return <div>Content item does not include a `component` value! {JSON.stringify(contentItem)}</div>
         const ComponentClass = componentMap[component]
@@ -188,15 +196,15 @@ const Dynamic = (props) => {
         }
 
         // Check if the contentItem has a conditional
-        if (contentItem.conditional) {
-          if (!isConditionalSatisfied(contentItem.conditional, { ...otherProps, ...props, ...otherItemProps })) return null
+        if (conditional) {
+          if (!isConditionalSatisfied(conditional, { ...otherProps, ...props, ...otherItemProps })) return null
         }
 
         // Check if the contentItem has an iterator
-        if (contentItem.iterator) {
+        if (iterator) {
           // We have to iterate over the array defined in iterator.prop
           // and render the component for each item of the array
-          return renderIterator(contentItem, contentItem.iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
+          return renderIterator(contentItem, iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
         }
 
         // console.log('Dynamic: +++ Start', component)
