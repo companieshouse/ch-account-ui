@@ -36,6 +36,7 @@ import BoxCard from '../components/application-specific/BoxCard'
 import Br from '../components/general-ui/layout/Br'
 import ArrayJoin from '../components/general-ui/ArrayJoin'
 import ErrorSummary from '../components/general-ui/typeography/ErrorSummary'
+import Tag from '../components/general-ui/typeography/Tag'
 
 const componentMap = {
   Button,
@@ -75,7 +76,8 @@ const componentMap = {
   BoxCard,
   Br,
   ArrayJoin,
-  ErrorSummary
+  ErrorSummary,
+  Tag
 }
 
 export default componentMap

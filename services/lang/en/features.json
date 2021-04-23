@@ -1608,29 +1608,37 @@
         "operator": "eeq",
         "value": 0
       },
-      "component": "BoxCard",
+      "component": "Fragment",
       "content": [
         {
-          "component": "HeadingText",
-          "props": {
-            "size": "m",
-            "children": "You have not added any companies to this account"
-          }
+          "component": "BoxCard",
+          "content": [
+            {
+              "component": "HeadingText",
+              "props": {
+                "size": "m",
+                "children": "You have not added any companies to this account"
+              }
+            },
+            {
+              "component": "BodyText",
+              "props": {
+                "children": "If you want to file for a company, you'll need to add it to your account."
+              }
+            },
+            {
+              "component": "Button",
+              "props": {
+                "renderAs": "link",
+                "children": "Add a company",
+                "href": "/account/associate/_start",
+                "testId": "accountAssociateCompanyLink"
+              }
+            }
+          ]
         },
         {
-          "component": "BodyText",
-          "props": {
-            "children": "If you want to file for a company, you'll need to add it to your account."
-          }
-        },
-        {
-          "component": "Button",
-          "props": {
-            "renderAs": "link",
-            "children": "Add a company",
-            "href": "/account/associate/_start",
-            "testId": "accountAssociateCompanyLink"
-          }
+          "component": "SectionBreak"
         }
       ]
     },
@@ -1645,162 +1653,185 @@
         "name": "company",
         "index": "index"
       },
-      "component": "BoxCard",
+      "component": "Fragment",
       "dynamicProps": {
         "key": "${company._id}"
       },
       "content": [
         {
-          "component": "HeadingText",
-          "dynamicProps": {
-            "children": "${company.name}"
-          },
-          "props": {
-            "size": "m"
-          }
-        },
-        {
-          "component": "Row",
+          "component": "BoxCard",
+
           "content": [
             {
-              "component": "Column",
-              "props": {
-                "width": "three-quarters"
+              "component": "HeadingText",
+              "dynamicProps": {
+                "children": "${company.name}"
               },
+              "props": {
+                "size": "m"
+              }
+            },
+            {
+              "component": "Row",
               "content": [
                 {
-                  "component": "BodyText",
+                  "component": "Column",
                   "props": {
-                    "weight": "bold"
+                    "width": "three-quarters"
                   },
                   "content": [
                     {
-                      "component": "SpanText",
+                      "component": "BodyText",
                       "props": {
-                        "children": "Company number"
-                      }
-                    },
-                    {
-                      "component": "Br"
-                    },
-                    {
-                      "component": "Fragment",
-                      "dynamicProps": {
-                        "children": "${company.number}"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "component": "BodyText",
-                  "props": {
-                    "weight": "bold"
-                  },
-                  "content": [
-                    {
-                      "component": "SpanText",
-                      "props": {
-                        "children": "Correspondance address"
-                      }
-                    },
-                    {
-                      "component": "Br"
-                    },
-                    {
-                      "component": "Fragment",
-                      "dynamicProps": {
-                        "children": {
-                          "component": "ArrayJoin",
-                          "props": {
-                            "joinWith": ", ",
-                            "stripEmpty": true
-                          },
-                          "dynamicProps": {
-                            "arr": [
-                              "${company.addressLine1}",
-                              "${company.addressLine2}",
-                              "${company.locality}",
-                              "${company.region}",
-                              "${company.postalCode}"
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "component": "Row",
-                  "content": [
-                    {
-                      "component": "Column",
-                      "props": {
-                        "width": "full"
+                        "weight": "bold"
                       },
                       "content": [
                         {
-                          "component": "Table",
+                          "component": "SpanText",
+                          "props": {
+                            "children": "Company number"
+                          }
+                        },
+                        {
+                          "component": "Br"
+                        },
+                        {
+                          "component": "Fragment",
+                          "dynamicProps": {
+                            "children": "${company.number}"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "component": "BodyText",
+                      "props": {
+                        "weight": "bold"
+                      },
+                      "content": [
+                        {
+                          "component": "SpanText",
+                          "props": {
+                            "children": "Correspondance address"
+                          }
+                        },
+                        {
+                          "component": "Br"
+                        },
+                        {
+                          "component": "Fragment",
+                          "dynamicProps": {
+                            "children": {
+                              "component": "ArrayJoin",
+                              "props": {
+                                "joinWith": ", ",
+                                "stripEmpty": true
+                              },
+                              "dynamicProps": {
+                                "arr": [
+                                  "${company.addressLine1}",
+                                  "${company.addressLine2}",
+                                  "${company.locality}",
+                                  "${company.region}",
+                                  "${company.postalCode}"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "component": "Row",
+                      "content": [
+                        {
+                          "component": "Column",
+                          "props": {
+                            "width": "full"
+                          },
                           "content": [
                             {
-                              "component": "THead",
+                              "component": "Table",
                               "content": [
                                 {
-                                  "component": "Tr",
+                                  "component": "THead",
                                   "content": [
                                     {
-                                      "component": "Th",
-                                      "props": {
-                                        "children": "People authorised to file for this company"
-                                      }
-                                    },
+                                      "component": "Tr",
+                                      "content": [
+                                        {
+                                          "component": "Th",
+                                          "props": {
+                                            "children": "People authorised to file for this company"
+                                          }
+                                        },
+                                        {
+                                          "component": "Th",
+                                          "props": {
+                                            "children": "Status"
+                                          }
+                                        },
+                                        {
+                                          "component": "Th",
+                                          "props": {
+                                            "children": "View"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "component": "TBody",
+                                  "content": [
                                     {
-                                      "component": "Th",
-                                      "props": {
-                                        "children": "Status"
-                                      }
-                                    },
-                                    {
-                                      "component": "Th",
-                                      "props": {
-                                        "children": "View"
-                                      }
+                                      "component": "Tr",
+                                      "iterator": {
+                                        "prop": "${company.users}",
+                                        "name": "user",
+                                        "index": "index"
+                                      },
+                                      "content": [
+                                        {
+                                          "component": "Td",
+                                          "dynamicProps": {
+                                            "children": "${user.givenName}"
+                                          }
+                                        },
+                                        {
+                                          "component": "Td",
+                                          "content": [{
+                                            "component": "Tag",
+                                            "props": {
+                                              "colour": "green",
+                                              "children": "Confirmed"
+                                            }
+                                          }]
+                                        },
+                                        {
+                                          "component": "Td",
+                                          "content": [{
+                                            "component": "LinkText",
+                                            "props": {
+                                              "href": "/account/home",
+                                              "children": "View details",
+                                              "className": "govuk-link--no-visited-state"
+                                            }
+                                          }]
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
                               ]
                             },
                             {
-                              "component": "TBody",
-                              "content": [
-                                {
-                                  "component": "Tr",
-                                  "iterator": {
-                                    "prop": "${company.users}",
-                                    "name": "user",
-                                    "index": "index"
-                                  },
-                                  "content": [
-                                    {
-                                      "component": "Td",
-                                      "dynamicProps": {
-                                        "children": "${user.givenName}"
-                                      }
-                                    },
-                                    {
-                                      "component": "Td",
-                                      "props": {
-                                        "children": "Confirmed"
-                                      }
-                                    },
-                                    {
-                                      "component": "Td",
-                                      "props": {
-                                        "children": "View Details"
-                                      }
-                                    }
-                                  ]
-                                }
-                              ]
+                              "component": "LinkText",
+                              "props": {
+                                "href": "/account/home",
+                                "children": "Add person authorised to file for this company",
+                                "className": "govuk-link--no-visited-state"
+                              }
                             }
                           ]
                         }
@@ -1811,11 +1842,25 @@
               ]
             }
           ]
+        },
+        {
+          "component": "SectionBreak"
         }
       ]
     },
     {
-      "component": "SectionBreak"
+      "conditional": {
+        "prop": "${companies.length}",
+        "operator": "gt",
+        "value": 0
+      },
+      "component": "Button",
+      "props": {
+        "renderAs": "link",
+        "children": "Add a company",
+        "href": "/account/associate/_start",
+        "testId": "accountAssociateCompanyLink"
+      }
     }
   ],
   "NO_SESSION_ERROR": [
