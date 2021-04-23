@@ -14,6 +14,7 @@ import { getFieldError } from '../../services/errors'
 
 const getElement = ({ element, id, index, customProps = {} }, errors, groupError = undefined) => {
   console.log('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
+
   switch (element.payload.type) {
     case CallbackType.HiddenValueCallback:
       return <HiddenValueCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
@@ -93,6 +94,8 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
           }
 
           console.log('DisplayUiElements: Adding element', element.payload.type, 'to group', customProps.formGroup)
+          delete customProps.formGroup
+
           // Add the current element to the form group
           currentFormGroup.elements.push({
             element,
@@ -151,4 +154,9 @@ DisplayUiElements.defaultProps = {
   errors: [],
   stage: '',
   uiElements: []
+}
+
+CustomFormGroup.propTypes = {
+  currentFormGroup: PropTypes.object,
+  errors: PropTypes.array
 }
