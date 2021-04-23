@@ -2,6 +2,7 @@
 export const ENVIRONMENT = process.env.ENVIRONMENT || 'dev'
 export const FORGEROCK_AM = process.env.FORGEROCK_AM || 'https://openam-companieshouse-uk-dev.id.forgerock.io/am/'
 export const FORGEROCK_USER_ENDPOINT = process.env.FORGEROCK_USER_ENDPOINT || 'https://openam-companieshouse-uk-dev.id.forgerock.io/openidm/managed/alpha_user/'
+export const FORGEROCK_COMPANY_ENDPOINT = process.env.FORGEROCK_COMPANY_ENDPOINT || 'https://openam-companieshouse-uk-dev.id.forgerock.io/openidm/managed/Company/'
 export const FORGEROCK_REALM = process.env.FORGEROCK_REALM || '/alpha'
 export const FORGEROCK_SCOPE = process.env.FORGEROCK_SCOPE || 'openid email phone profile fr:idm:*'
 export const FORGEROCK_CLIENT_ID = process.env.FORGEROCK_CLIENT_ID || 'ForgeRockSDKClient'
