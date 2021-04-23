@@ -33,7 +33,10 @@ import InfoBlock from '../components/application-specific/InfoBlock'
 import AccountLinks from '../components/application-specific/AccountLinks'
 import SummaryListItem from '../components/general-ui/typeography/SummaryListItem'
 import BoxCard from '../components/application-specific/BoxCard'
+import Br from '../components/general-ui/layout/Br'
+import ArrayJoin from '../components/general-ui/ArrayJoin'
 import ErrorSummary from '../components/general-ui/typeography/ErrorSummary'
+import Tag from '../components/general-ui/typeography/Tag'
 
 const componentMap = {
   Button,
@@ -71,7 +74,10 @@ const componentMap = {
   AccountLinks,
   SummaryListItem,
   BoxCard,
-  ErrorSummary
+  Br,
+  ArrayJoin,
+  ErrorSummary,
+  Tag
 }
 
 export default componentMap

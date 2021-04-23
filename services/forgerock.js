@@ -1,12 +1,15 @@
-import { Config, FRAuth, FRUser, TokenManager, StepType, UserManager } from '@forgerock/javascript-sdk'
+import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
+  FORGEROCK_COMPANY_ENDPOINT,
   FORGEROCK_REALM,
   FORGEROCK_REDIRECT,
-  FORGEROCK_SCOPE
+  FORGEROCK_SCOPE,
+  FORGEROCK_USER_ENDPOINT
 } from './environment'
 import { translate } from './translate'
+
 export { CallbackType } from '@forgerock/javascript-sdk'
 
 const translateErrors = (errors, lang) => {
@@ -101,6 +104,53 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
   })
 
   return errors
+}
+
+export const findCustomStage = (step) => {
+  for (let i = 0; i < step.payload.callbacks.length; i++) {
+    const callback = step.payload.callbacks[i]
+
+    if (!callback) continue
+    if (callback.type !== 'HiddenValueCallback') continue
+    if (!callback.output.find((output) => output.name === 'id' && output.value === 'stage')) continue
+
+    return callback.output.find((output) => output.name === 'value')?.value || ''
+  }
+
+  return ''
+}
+
+export const findCustomPageProps = (step) => {
+  for (let i = 0; i < step.payload.callbacks.length; i++) {
+    const callback = step.payload.callbacks[i]
+
+    if (!callback) continue
+    if (callback.type !== 'HiddenValueCallback') continue
+    if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
+
+    try {
+      const jsonString = callback.output.find((output) => output.name === 'value')?.value || ''
+
+      if (!jsonString) {
+        console.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
+        continue
+      }
+
+      const customPropsObject = JSON.parse(jsonString)
+      return customPropsObject
+    } catch (err) {
+      return {
+        apiError: {
+          errors: [{
+            error: 'JSONParseError',
+            message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
+          }]
+        }
+      }
+    }
+  }
+
+  return {}
 }
 
 export const forgerockFlow = ({
@@ -219,49 +269,93 @@ export const logoutFlow = ({
   // SessionManager.logout().then(onSuccess).catch(onFailure)
 }
 
-export const findCustomStage = (step) => {
-  for (let i = 0; i < step.payload.callbacks.length; i++) {
-    const callback = step.payload.callbacks[i]
-
-    if (!callback) continue
-    if (callback.type !== 'HiddenValueCallback') continue
-    if (!callback.output.find((output) => output.name === 'id' && output.value === 'stage')) continue
-
-    return callback.output.find((output) => output.name === 'value')?.value || ''
+export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
+  if (!companyId) {
+    console.error('getUsersAssociatedWithCompany(accessToken, companyId): No userId provided!')
+    return
   }
 
-  return ''
-}
+  const url = `${FORGEROCK_COMPANY_ENDPOINT}${companyId}/authorisedUsers?_fields=&_queryFilter=true`
 
-export const findCustomPageProps = (step) => {
-  for (let i = 0; i < step.payload.callbacks.length; i++) {
-    const callback = step.payload.callbacks[i]
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    },
+    init: {
+      credentials: 'include'
+    }
+  })
 
-    if (!callback) continue
-    if (callback.type !== 'HiddenValueCallback') continue
-    if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
+  const { status, headers } = res
 
-    try {
-      const jsonString = callback.output.find((output) => output.name === 'value')?.value || ''
+  if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
+    const body = await res.json()
+    let users = []
+    let count = 0
 
-      if (!jsonString) {
-        console.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
-        continue
-      }
+    if (status === 200) {
+      count = body.resultCount
+      users = body.result || []
+    }
 
-      const customPropsObject = JSON.parse(jsonString)
-      return customPropsObject
-    } catch (err) {
-      return {
-        apiError: {
-          errors: [{
-            error: 'JSONParseError',
-            message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
-          }]
-        }
-      }
+    return {
+      count,
+      users,
+      status,
+      body,
+      headers
     }
   }
 
-  return {}
+  return res
+}
+
+export const getCompaniesAssociatedWithUser = async (accessToken, userId) => {
+  if (!userId) {
+    console.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
+    return
+  }
+
+  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/isAuthorisedUserOf?_fields=&_queryFilter=true`
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    },
+    init: {
+      credentials: 'include'
+    }
+  })
+
+  const { status, headers } = res
+
+  if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
+    const body = await res.json()
+    let companies = []
+    let count = 0
+
+    if (status === 200) {
+      count = body.resultCount
+      companies = body.result || []
+
+      // Loop each company and get reverse associations
+      await Promise.all(companies.map(async (company) => {
+        const {
+          users
+        } = await getUsersAssociatedWithCompany(accessToken, company._refResourceId)
+
+        company.users = users || []
+      }))
+    }
+
+    return {
+      count,
+      companies,
+      status,
+      body,
+      headers
+    }
+  }
+
+  return res
 }

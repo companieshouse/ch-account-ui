@@ -130,7 +130,7 @@ props here are targeted by the ID of the field.
 ```
 
 In the example above, we are saying that "when rendering the field
-with the ID `IDToken1` set the `type` and `autocomplete` props to 
+with the ID `IDToken1` set the `type` and `autoComplete` props to 
 `email`". If we open the `/components/general-ui/interaction/InputField.js`
 component, we can see that those props get used when rendering the
 `<input>` field.

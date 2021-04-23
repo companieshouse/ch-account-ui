@@ -9,8 +9,11 @@ import { errorsPropType } from '../../services/propTypes'
 import withProfile from '../../services/withProfile'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
+import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
+import withAccessToken from '../../services/withAccessToken'
 
-const YourCompanies = ({ errors, lang, profile }) => {
+const YourCompanies = ({ errors, lang, profile, accessToken }) => {
+  const [associationData, setAssociationData] = React.useState({ count: '0', companies: [] })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = new HeadingCount()
   const content = getStageFeatures(lang, uiStage)
@@ -19,6 +22,14 @@ const YourCompanies = ({ errors, lang, profile }) => {
 
   React.useEffect(() => {
     headingCount.reset()
+
+    getCompaniesAssociatedWithUser(accessToken, profile.sub).then((response) => {
+      console.log('AssociationData', response)
+      setAssociationData({
+        count: response.count,
+        companies: response.companies
+      })
+    })
   }, [notifyType, notifyHeading, notifyTitle, notifyChildren])
 
   return (
@@ -38,20 +49,22 @@ const YourCompanies = ({ errors, lang, profile }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
+        companies={associationData.companies}
         {...router.query}
       />
     </FeatureDynamicView>
   )
 }
 
-export default withProfile(withLang(YourCompanies))
+export default withAccessToken(withProfile(withLang(YourCompanies)))
 
 YourCompanies.propTypes = {
   companies: PropTypes.array,
   errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
   profile: PropTypes.object,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  accessToken: PropTypes.string
 }
 
 YourCompanies.defaultProps = {

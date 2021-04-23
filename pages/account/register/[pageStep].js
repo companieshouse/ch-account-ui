@@ -2,13 +2,14 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
-import { CH_COOKIE_NAME, FORGEROCK_TREE_REGISTER } from '../../../services/environment'
+import { CH_COOKIE_NAME, FORGEROCK_TREE_REGISTER, ID_COOKIE_NAME } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
-import UiFeatures from '../../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import withLang from '../../../services/lang/withLang'
 import { useCookies } from 'react-cookie'
+import Dynamic from '../../../components/Dynamic'
+import componentMap from '../../../services/componentMap'
 
 export const getStaticPaths = async () => {
   return {
@@ -73,6 +74,7 @@ const RegisterContactDetails = ({ lang }) => {
         if (loginData?.tokens?.accessToken) {
           // Set auth cookie
           setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
+          setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
         }
 
         Router.push('/account/home')
@@ -132,26 +134,26 @@ const RegisterContactDetails = ({ lang }) => {
     submitData(formData)
   }
 
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
-
   // Check if the router has been initialised yet
   if (!pageStep) return null
 
   return (
     <FeatureDynamicView
-      titleLinkHref="/account/home"
-      renderFeatures={renderFeatures}
       onSubmit={onSubmit}
       errors={errors}
       headingCount={headingCount}
-      uiFeatures={uiFeatures}
-      uiElements={uiElements}
-      uiStage={uiStage}
-      {...router.query}
-      {...customPageProps}
-    />
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={uiFeatures}
+        errors={errors}
+        uiElements={uiElements}
+        uiStage={uiStage}
+        {...customPageProps}
+        {...router.query}
+      />
+    </FeatureDynamicView>
   )
 }
 
