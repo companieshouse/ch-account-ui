@@ -4,9 +4,11 @@ import HeadingText from './HeadingText'
 import ErrorSummary from './ErrorSummary'
 import NotificationBanner from './NotificationBanner'
 import { errorsPropType } from '../../../services/propTypes'
+import { translate } from '../../../services/translate'
+import withLang from '../../../services/lang/withLang'
 
 const PageHeading = (props) => {
-  const { headingCount, errors = [], children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren = null } = props
+  const { lang, headingCount, errors = [], children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren = null } = props
 
   if (errors.length === 0) {
     return (
@@ -26,13 +28,13 @@ const PageHeading = (props) => {
 
   return (
     <>
-      <ErrorSummary headingCount={headingCount} title="There is a problem" errors={errors}/>
+      <ErrorSummary headingCount={headingCount} title={translate(lang, 'ERROR_SUMMARY_TITLE')} errors={errors} />
       <HeadingText headingCount={headingCount}>{children}{renderFeatures(props)}</HeadingText>
     </>
   )
 }
 
-export default PageHeading
+export default withLang(PageHeading)
 
 PageHeading.propTypes = {
   children: PropTypes.node,
@@ -42,7 +44,8 @@ PageHeading.propTypes = {
   notifyHeading: PropTypes.string,
   notifyTitle: PropTypes.string,
   notifyType: PropTypes.string,
-  renderFeatures: PropTypes.func
+  renderFeatures: PropTypes.func,
+  lang: PropTypes.string
 }
 
 PageHeading.defaultProps = {
