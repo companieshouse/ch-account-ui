@@ -65,51 +65,61 @@ const processDynamicProps = (obj, props, visited = []) => {
 }
 
 const isConditionalSatisfied = (conditional, data) => {
+  if (conditional instanceof Array) {
+    // This is an array of conditionals - implicit AND e.g.
+    // condition1 AND condition2 then true else false
+    return conditional.every((condition) => isConditionalSatisfied(condition, data))
+  }
+
   const { prop, operator, value } = conditional
 
   // Get the conditional prop data
   const propData = getTemplateDataValue(data, prop)
-
+  console.log('Running conditional', conditional, propData)
   switch (operator) {
     case 'gt':
-      if (propData <= value) return false
+      if (propData > value) return true
       break
 
     case 'gte':
-      if (propData < value) return false
+      if (propData >= value) return true
       break
 
     case 'lt':
-      if (propData >= value) return false
+      if (propData < value) return true
       break
 
     case 'lte':
-      if (propData > value) return false
+      if (propData <= value) return true
       break
 
     case 'eeq':
-      if (propData !== value) return false
+      if (propData === value) return true
       break
 
     case 'eq':
       // eslint-disable-next-line eqeqeq
-      if (propData != value) return false
+      if (propData == value) return true
       break
 
     case 'nee':
-      if (propData === value) return false
+      if (propData !== value) return true
       break
 
     case 'ne':
       // eslint-disable-next-line eqeqeq
-      if (propData == value) return false
+      if (propData != value) return true
+      break
+
+    case 'not':
+      if (!propData) return true
       break
 
     default:
       break
   }
-
-  return true
+  console.log('Returning false')
+  return false
 }
 
 const renderIterator = (contentItem, iterator, data) => {
