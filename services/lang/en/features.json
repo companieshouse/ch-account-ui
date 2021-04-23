@@ -1605,8 +1605,7 @@
     {
       "conditional": {
         "prop": "${companies.length}",
-        "operator": "eeq",
-        "value": 0
+        "operator": "not"
       },
       "component": "Fragment",
       "content": [
