@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
@@ -10,10 +10,11 @@ import withLang from '../../services/lang/withLang'
 import { useCookies } from 'react-cookie'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
+import withQueryParams from '../../services/withQueryParams'
 
-const Login = ({ lang }) => {
+const Login = ({ lang, queryParams }) => {
+  console.log('Query params is', queryParams)
   const [, setCookie] = useCookies()
-  const router = useRouter()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
@@ -22,8 +23,14 @@ const Login = ({ lang }) => {
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { goto } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren, overrideStage = '' } = router.query
+  const {
+    goto,
+    notifyType,
+    notifyHeading,
+    notifyTitle,
+    notifyChildren,
+    overrideStage = ''
+  } = queryParams
 
   React.useEffect(() => {
     headingCount.reset()
@@ -36,7 +43,7 @@ const Login = ({ lang }) => {
         setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
         setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
 
-        if (goto) {
+        if (queryParams.goto) {
           return Router.push(goto)
         }
 
@@ -98,15 +105,16 @@ const Login = ({ lang }) => {
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        {...router.query}
+        {...queryParams}
         {...customPageProps}
       />
     </FeatureDynamicView>
   )
 }
 
-export default withLang(Login)
+export default withQueryParams(withLang(Login))
 
 Login.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  queryParams: PropTypes.object
 }
