@@ -1055,16 +1055,19 @@
       }
     },
     {
-      "component": "PageHeading",
-      "props": {
-        "children": "Enter the company authentication code"
-      }
-    },
-    {
       "component": "DisplayUiElements",
+      "dynamicProps": {
+        "elementProps.IDToken2.caption": "${company.name}"
+      },
       "props": {
         "elementProps": {
-
+          "IDToken2": {
+            "renderLabelAs": "heading",
+            "caption": "",
+            "captionPosition": "above",
+            "label": "Enter the company authentication code",
+            "fixedWidth": "10"
+          }
         }
       }
     },
