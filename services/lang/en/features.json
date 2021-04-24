@@ -982,7 +982,7 @@
       "dynamicProps": {
         "listItems.0.value": "${company.number}",
         "listItems.1.value": "${company.status}",
-        "listItems.2.value": "${companyIncorporationDate}",
+        "listItems.2.value": "${company.creationDate}",
         "listItems.3.value": "${company.type}",
         "listItems.4.value": {
           "component": "NlToBr",
