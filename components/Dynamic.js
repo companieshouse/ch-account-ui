@@ -115,8 +115,6 @@ const Dynamic = (props) => {
     return <>{children}</>
   }
 
-  console.log('Dynamic rendering with props', otherProps)
-
   return (
     <>
       {content.map((contentItem, index) => {
@@ -149,7 +147,7 @@ const Dynamic = (props) => {
           return renderIterator(contentItem, iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
         }
 
-        // console.log('Dynamic: +++ Start', component)
+        // console.log('Dynamic: +++ Render component:', component)
 
         // Check for prop replacement sub-content
         const dynamicPropEntries = (typeof dynamicProps === 'object' && Object.entries(dynamicProps)) || []
@@ -158,10 +156,12 @@ const Dynamic = (props) => {
             // Check type of subContentItem
             if (typeof subContentItem === 'string') {
               // Direct template string replacement
-              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem))
+              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem, false, false))
+              // console.log(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
             } else if (subContentItem instanceof Array) {
               const arr = processDynamicProps(subContentItem, { ...otherProps, ...props, ...otherItemProps })
               pathSet(props, propName, arr)
+              // console.log(`Dynamic: Replacing prop "${propName}" with array-based new val`, props[propName], props)
             } else if (typeof subContentItem === 'object') {
               // Scan for prop template strings in fields and values
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
