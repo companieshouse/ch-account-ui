@@ -1061,12 +1061,6 @@
       }
     },
     {
-      "component": "InsetText",
-      "props": {
-        "children": "After you've entered the authentication code for this company, you will no longer need it for most online filings. Keep the code in a safe place because you may need it for certain filings in the future."
-      }
-    },
-    {
       "component": "DisplayUiElements",
       "props": {
         "elementProps": {
