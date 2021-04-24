@@ -1064,9 +1064,7 @@
       "component": "DisplayUiElements",
       "props": {
         "elementProps": {
-          "IDToken1": {
-            "label": "Authentication code"
-          }
+
         }
       }
     },
