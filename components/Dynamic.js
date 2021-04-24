@@ -1,68 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { get as pathGet, set as pathSet } from '@irrelon/path'
-
-const getTemplateDataValue = (data, templateString) => {
-  const regexp = /\${([\s\S]+?)}/g
-  const matches = regexp.exec(templateString)
-
-  if (!matches) return undefined
-
-  return pathGet(data, matches[1])
-}
-
-const parseTemplateString = (data, templateString) => {
-  let finalValue = templateString
-
-  // Break out the data requests in the template string and
-  // render the data in place of tokens
-  const regexp = /\${([\s\S]+?)}/g
-  const matchData = templateString.match(regexp)
-  let matches
-
-  if (matchData !== null && matchData.length === 1) {
-    // Only one item in the template string, return the value proper
-    matches = regexp.exec(templateString)
-    return pathGet(data, matches[1])
-  }
-
-  // The template string contains more than one item, we have to
-  // return a string instead
-  while ((matches = regexp.exec(templateString))) {
-    const matchString = matches[0]
-    const dataPath = matches[1]
-
-    finalValue = finalValue.replace(matchString, pathGet(data, dataPath))
-  }
-
-  return finalValue
-}
-
-const processDynamicProps = (obj, props, visited = []) => {
-  const finalObj = obj instanceof Array ? [] : {}
-
-  for (const i in obj) {
-    if (!Object.hasOwnProperty.call(obj, i)) continue
-    const fieldValue = obj[i]
-    const fieldValueType = typeof fieldValue
-
-    if (fieldValueType === 'object') {
-      if (visited.indexOf(fieldValue) > -1) continue
-      visited.push(fieldValue)
-      finalObj[i] = processDynamicProps(fieldValue, props, visited)
-      continue
-    }
-
-    if (fieldValueType === 'string' && fieldValue.indexOf('${') > -1) {
-      finalObj[i] = parseTemplateString(props, fieldValue)
-      continue
-    }
-
-    finalObj[i] = fieldValue
-  }
-
-  return finalObj
-}
+import { getTemplateDataValue, parseTemplateString, processDynamicProps } from '../services/template'
+import { set as pathSet } from '@irrelon/path'
+import withTransformedErrors from '../services/withTransformedErrors'
 
 const isConditionalSatisfied = (conditional, data) => {
   if (conditional instanceof Array) {
@@ -175,6 +115,8 @@ const Dynamic = (props) => {
     return <>{children}</>
   }
 
+  console.log('Dynamic rendering with props', otherProps)
+
   return (
     <>
       {content.map((contentItem, index) => {
@@ -253,7 +195,7 @@ const Dynamic = (props) => {
   )
 }
 
-export default Dynamic
+export default withTransformedErrors(Dynamic)
 
 Dynamic.propTypes = {
   children: PropTypes.any,
