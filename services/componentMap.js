@@ -37,6 +37,7 @@ import Br from '../components/general-ui/layout/Br'
 import ArrayJoin from '../components/general-ui/ArrayJoin'
 import ErrorSummary from '../components/general-ui/typeography/ErrorSummary'
 import Tag from '../components/general-ui/typeography/Tag'
+import ObfuscatePhoneNumber from '../components/application-specific/ObfuscatePhoneNumber'
 
 const componentMap = {
   Button,
@@ -77,7 +78,8 @@ const componentMap = {
   Br,
   ArrayJoin,
   ErrorSummary,
-  Tag
+  Tag,
+  ObfuscatePhoneNumber
 }
 
 export default componentMap
