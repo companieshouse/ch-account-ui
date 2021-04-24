@@ -247,17 +247,17 @@
         },
         {
           "component": "SpanText",
-          "props": {
-            "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "TemplateText",
+          "dynamicProps": {
+            "children": {
+              "component": "ObfuscatePhoneNumber",
               "props": {
-                "template": "${phoneNumber}"
+                "phoneNumber" :"${phoneNumber}"
               }
             }
-          ]
+          },
+          "props": {
+            "weight": "bold"
+          }
         }
       ]
     },
@@ -863,27 +863,29 @@
   ],
   "RESET_PASSWORD_ERROR": [
     {
-      "feature": "PageHeading",
-      "children": "Unable to find account with those details"
-    },
-    {
-      "feature": "BodyText",
-      "children": "We were unable to find an account with those details."
-    },
-    {
-      "feature": "BodyText",
+      "component": "PageHeading",
       "props": {
-        "uiFeatures": [
-          {
-            "feature": "LinkText",
-            "children": "Give us a different account username",
-            "props": {
-              "href": "/password-recovery/_restart/",
-              "testId": "restartPasswordRecoveryLink"
-            }
-          }
-        ]
+        "children": "Unable to find account with those details"
       }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "We were unable to find an account with those details."
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Give us a different account username",
+            "href": "/password-recovery/_restart/",
+            "testId": "restartPasswordRecoveryLink"
+          }
+        }
+      ]
     }
   ],
   "COMPANY_ASSOCIATION_1": [
