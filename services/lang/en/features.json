@@ -3,7 +3,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Sign in to Companies House account"
+        "title": "Sign in to Companies House account"
       }
     },
     {
@@ -66,7 +66,7 @@
   "LOGIN_MFA": [
     {
       "feature": "BrowserTitle",
-      "children": "Verify your mobile number"
+      "title": "Verify your mobile number"
     },
     {
       "feature": "PageHeading",
@@ -160,7 +160,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Create a Companies House account"
+        "title": "Create a Companies House account"
       }
     },
     {
@@ -217,7 +217,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Verify your mobile number"
+        "title": "Verify your mobile number"
       }
     },
     {
@@ -880,7 +880,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Tell us the company number"
+        "title": "Tell us the company number"
       }
     },
     {
@@ -951,7 +951,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Confirm this is the correct company"
+        "title": "Confirm this is the correct company"
       }
     },
     {
@@ -1051,7 +1051,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Provide the company auth code"
+        "title": "Provide the company auth code"
       }
     },
     {
@@ -1114,7 +1114,7 @@
     {
       "feature": "BrowserTitle",
       "props": {
-        "children": "Requesting an authentication code"
+        "title": "Requesting an authentication code"
       }
     },
     {
@@ -1176,7 +1176,7 @@
   "REQUEST_AUTHENTICATION_CODE_2": [
     {
       "feature": "BrowserTitle",
-      "children": "Authentication code requested"
+      "title": "Authentication code requested"
     },
     {
       "feature": "NotificationBanner",
@@ -1195,7 +1195,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Companies House account"
+        "title": "Companies House account"
       }
     },
     {
@@ -1500,7 +1500,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Companies House account"
+        "title": "Companies House account"
       }
     },
     {
@@ -1573,7 +1573,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Companies House account"
+        "title": "Companies House account"
       }
     },
     {
@@ -1585,7 +1585,7 @@
         {
           "component": "Caption",
           "props": {
-            "children": "View and manage companies and people authorised to file on behalf of a company",
+            "children": "View and manage the companies you have added to your account, and people authorised to file on behalf of a company.",
             "size": "m",
             "style": {
               "paddingTop": "0.5em"
@@ -1861,7 +1861,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "No longer logged in"
+        "title": "No longer logged in"
       }
     },
     {
@@ -1894,7 +1894,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "children": "Change your password"
+        "title": "Change your password"
       }
     },
     {

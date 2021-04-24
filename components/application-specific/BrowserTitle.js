@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const BrowserTitle = ({ children }) => {
+const BrowserTitle = ({ title }) => {
   React.useEffect(() => {
-    window.document.title = children
+    window.document.title = title
   }, [])
 
   return null
