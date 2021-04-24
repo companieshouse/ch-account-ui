@@ -65,44 +65,50 @@
   ],
   "LOGIN_MFA": [
     {
-      "feature": "BrowserTitle",
-      "title": "Verify your mobile number"
-    },
-    {
-      "feature": "PageHeading",
-      "children": "Check your phone"
-    },
-    {
-      "feature": "BodyText",
+      "component": "BrowserTitle",
       "props": {
-        "uiFeatures": [
-          {
-            "feature": "SpanText",
-            "children": "We've sent a text message with a security code to "
-          },
-          {
-            "feature": "SpanText",
-            "props": {
-              "weight": "bold",
-              "uiFeatures": [
-                {
-                  "feature": "TemplateText",
-                  "props": {
-                    "template": "${phoneNumber}"
-                  }
-                }
-              ]
-            }
-          }
-        ]
+        "title": "Verify your mobile number"
       }
     },
     {
-      "feature": "BodyText",
-      "children": "It may take a few minutes to arrive."
+      "component": "PageHeading",
+      "props": {
+        "children": "Check your phone"
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "We've sent a text message with a security code to "
+          }
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "weight": "bold"
+          },
+          "content": [
+            {
+              "component": "TemplateText",
+              "props": {
+                "template": "${phoneNumber}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "It may take a few minutes to arrive."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
@@ -114,46 +120,50 @@
       }
     },
     {
-      "feature": "Button",
-      "children": "Continue",
+      "component": "Button",
       "props": {
+        "children": "Continue",
         "type": "submit",
         "testId": "submitButton"
       }
     },
     {
-      "feature": "Details",
+      "component": "Details",
       "props": {
-        "summary": "I have not received a text message",
-        "uiFeatures": [
-          {
-            "feature": "BodyText",
+        "summary": "I have not received a text message"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
             "children": "The text message may take a few minutes to arrive."
-          },
-          {
-            "feature": "BodyText",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "SpanText",
-                  "children": "If it does not arrive, you can "
-                },
-                {
-                  "feature": "LinkText",
-                  "children": "ask us to send you another text message",
-                  "props": {
-                    "href": "/account/login/"
-                  }
-                },
-                {
-                  "feature": "SpanText",
-                  "children": "."
-                }
-              ]
-            }
           }
-        ]
-      }
+        },
+        {
+          "component": "BodyText",
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "If it does not arrive, you can "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "ask us to send you another text message",
+                "href": "/account/login/"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "REGISTRATION_1": [
