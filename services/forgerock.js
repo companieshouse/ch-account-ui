@@ -8,36 +8,9 @@ import {
   FORGEROCK_SCOPE,
   FORGEROCK_USER_ENDPOINT
 } from './environment'
-import { translate } from './translate'
+import { translateErrors } from './errors'
 
 export { CallbackType } from '@forgerock/javascript-sdk'
-
-const translateErrors = (errors, lang) => {
-  // Resolve errors with tokens to labels
-  errors.forEach((error) => {
-    // Check if we already have a label to display
-    if (error.label) return
-
-    // Check if we don't have a token (so nothing to resolve)
-    if (!error.token) return
-
-    // Try to resolve using most specific error to least specific
-    const tokensToTry = [`${error.token}(${error.fieldName})`, `${error.token}(${error.anchor})`, error.token]
-
-    error.label = tokensToTry.reduce((label, token) => {
-      if (label) return label
-      label = translate(lang, token, '')
-
-      return label
-    }, '')
-
-    if (!error.label) {
-      error.label = `No token data for lang "${lang}" and tokens ${JSON.stringify(tokensToTry)}. Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with one of these names!`
-    }
-  })
-
-  return errors
-}
 
 const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
   const errors = []
@@ -49,6 +22,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
       token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`,
+      tokenNoNamespace: 'ERROR_LOGIN_FAILURE',
       anchor: 'IDToken1'
     })
   }
@@ -62,6 +36,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     customPageProps.errors.forEach((error) => {
       errors.push({
         errData: error,
+        tokenNoNamespace: error.token,
         token: `${journeyNamespace}_${error.token}`,
         label: !error.token ? error.label : undefined,
         anchor: error.anchor || undefined,
@@ -91,6 +66,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
         errors.push({
           errData: json,
+          tokenNoNamespace: json.policyRequirement,
           token: `${journeyNamespace}_${json.policyRequirement}`,
           anchor: (inputs && inputs[0] && inputs[0].name) || undefined,
           fieldName

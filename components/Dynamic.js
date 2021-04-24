@@ -1,68 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { get as pathGet, set as pathSet } from '@irrelon/path'
-
-const getTemplateDataValue = (data, templateString) => {
-  const regexp = /\${([\s\S]+?)}/g
-  const matches = regexp.exec(templateString)
-
-  if (!matches) return undefined
-
-  return pathGet(data, matches[1])
-}
-
-const parseTemplateString = (data, templateString) => {
-  let finalValue = templateString
-
-  // Break out the data requests in the template string and
-  // render the data in place of tokens
-  const regexp = /\${([\s\S]+?)}/g
-  const matchData = templateString.match(regexp)
-  let matches
-
-  if (matchData !== null && matchData.length === 1) {
-    // Only one item in the template string, return the value proper
-    matches = regexp.exec(templateString)
-    return pathGet(data, matches[1])
-  }
-
-  // The template string contains more than one item, we have to
-  // return a string instead
-  while ((matches = regexp.exec(templateString))) {
-    const matchString = matches[0]
-    const dataPath = matches[1]
-
-    finalValue = finalValue.replace(matchString, pathGet(data, dataPath))
-  }
-
-  return finalValue
-}
-
-const processDynamicProps = (obj, props, visited = []) => {
-  const finalObj = obj instanceof Array ? [] : {}
-
-  for (const i in obj) {
-    if (!Object.hasOwnProperty.call(obj, i)) continue
-    const fieldValue = obj[i]
-    const fieldValueType = typeof fieldValue
-
-    if (fieldValueType === 'object') {
-      if (visited.indexOf(fieldValue) > -1) continue
-      visited.push(fieldValue)
-      finalObj[i] = processDynamicProps(fieldValue, props, visited)
-      continue
-    }
-
-    if (fieldValueType === 'string' && fieldValue.indexOf('${') > -1) {
-      finalObj[i] = parseTemplateString(props, fieldValue)
-      continue
-    }
-
-    finalObj[i] = fieldValue
-  }
-
-  return finalObj
-}
+import { getTemplateDataValue, parseTemplateString, processDynamicProps } from '../services/template'
+import { set as pathSet } from '@irrelon/path'
+import withTransformedErrors from '../services/withTransformedErrors'
 
 const isConditionalSatisfied = (conditional, data) => {
   if (conditional instanceof Array) {
@@ -178,7 +118,15 @@ const Dynamic = (props) => {
   return (
     <>
       {content.map((contentItem, index) => {
-        const { component, content: itemContent, props = {}, dynamicProps, ...otherItemProps } = contentItem
+        const {
+          component,
+          content: itemContent,
+          props = {},
+          dynamicProps,
+          conditional,
+          iterator,
+          ...otherItemProps
+        } = contentItem
 
         if (!component) return <div>Content item does not include a `component` value! {JSON.stringify(contentItem)}</div>
         const ComponentClass = componentMap[component]
@@ -188,18 +136,18 @@ const Dynamic = (props) => {
         }
 
         // Check if the contentItem has a conditional
-        if (contentItem.conditional) {
-          if (!isConditionalSatisfied(contentItem.conditional, { ...otherProps, ...props, ...otherItemProps })) return null
+        if (conditional) {
+          if (!isConditionalSatisfied(conditional, { ...otherProps, ...props, ...otherItemProps })) return null
         }
 
         // Check if the contentItem has an iterator
-        if (contentItem.iterator) {
+        if (iterator) {
           // We have to iterate over the array defined in iterator.prop
           // and render the component for each item of the array
-          return renderIterator(contentItem, contentItem.iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
+          return renderIterator(contentItem, iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
         }
 
-        // console.log('Dynamic: +++ Start', component)
+        // console.log('Dynamic: +++ Render component:', component)
 
         // Check for prop replacement sub-content
         const dynamicPropEntries = (typeof dynamicProps === 'object' && Object.entries(dynamicProps)) || []
@@ -208,10 +156,12 @@ const Dynamic = (props) => {
             // Check type of subContentItem
             if (typeof subContentItem === 'string') {
               // Direct template string replacement
-              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem))
+              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem, false, false))
+              // console.log(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
             } else if (subContentItem instanceof Array) {
               const arr = processDynamicProps(subContentItem, { ...otherProps, ...props, ...otherItemProps })
               pathSet(props, propName, arr)
+              // console.log(`Dynamic: Replacing prop "${propName}" with array-based new val`, props[propName], props)
             } else if (typeof subContentItem === 'object') {
               // Scan for prop template strings in fields and values
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
@@ -245,7 +195,7 @@ const Dynamic = (props) => {
   )
 }
 
-export default Dynamic
+export default withTransformedErrors(Dynamic)
 
 Dynamic.propTypes = {
   children: PropTypes.any,
