@@ -582,6 +582,33 @@
       }
     }
   ],
+  "LIMIT_EXCEEDED_ERROR": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Error occurred"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "You have reached the limit on the number of times an incorrect value can be tried."
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Click here to go home",
+            "href": "/account/home/",
+            "testId": "accountHomeLink"
+          }
+        }
+      ]
+    }
+  ],
   "RESET_PASSWORD_1": [
     {
       "feature": "PageHeading",
