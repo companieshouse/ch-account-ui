@@ -5,9 +5,10 @@ import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../servi
 import { FORGEROCK_TREE_FMP } from '../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../services/translate'
-import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import withLang from '../../services/lang/withLang'
+import Dynamic from '../../components/Dynamic'
+import componentMap from '../../services/componentMap'
 
 export const getStaticPaths = async () => {
   return {
@@ -35,8 +36,16 @@ const ResetPassword = ({ lang }) => {
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
+  const {
+    pageStep = '',
+    service = '',
+    token,
+    overrideStage = '',
+    notifyType,
+    notifyHeading,
+    notifyTitle,
+    notifyChildren
+  } = router.query
 
   let journeyName = ''
 
@@ -126,28 +135,34 @@ const ResetPassword = ({ lang }) => {
     submitData(formData)
   }
 
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
-
   // Check if the router has been initialised yet
   if (!pageStep) return null
 
   return (
     <FeatureDynamicView
-      renderFeatures={renderFeatures}
       onSubmit={onSubmit}
-      errors={errors}
       headingCount={headingCount}
-      uiFeatures={uiFeatures}
-      uiElements={uiElements}
-      uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
+      hasAccountLinks={false}
+      hasLogoutLink={false}
+      hasBackLink={false}
+      titleLinkHref="/home"
       {...customPageProps}
-    />
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={uiFeatures}
+        errors={errors}
+        uiElements={uiElements}
+        uiStage={uiStage}
+        {...router.query}
+        notifyType={notifyType}
+        notifyHeading={notifyHeading}
+        notifyTitle={notifyTitle}
+        notifyChildren={notifyChildren}
+        {...customPageProps}
+      />
+    </FeatureDynamicView>
   )
 }
 
