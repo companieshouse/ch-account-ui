@@ -2,7 +2,18 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 
-const Button = ({ warning = false, secondary = false, renderAs = 'button', type = 'button', onClick, label = '', href = '#', children, className = '', hasStartIcon = false, testId }) => {
+const Button = ({
+  warning = false,
+  secondary = false,
+  renderAs = 'button',
+  type,
+  onClick,
+  label = '',
+  href = '#',
+  children, className = '',
+  hasStartIcon = false,
+  testId
+}) => {
   const classes = [className]
 
   if (warning === true) classes.push('govuk-button--warning')
@@ -34,7 +45,7 @@ const Button = ({ warning = false, secondary = false, renderAs = 'button', type 
 
   if (renderAs === 'button') {
     return (
-      <button type={type} className={`govuk-button ${finalClassName}`} data-module="govuk-button">
+      <button type={type} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
         {label}
         {children}
       </button>
