@@ -93,8 +93,8 @@
           "content": [
             {
               "component": "ObfuscatePhoneNumber",
-              "props": {
-                "template": "${phoneNumber}"
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
               }
             }
           ]
@@ -247,17 +247,17 @@
         },
         {
           "component": "SpanText",
-          "dynamicProps": {
-            "children": {
-              "component": "ObfuscatePhoneNumber",
-              "props": {
-                "phoneNumber" :"${phoneNumber}"
-              }
-            }
-          },
           "props": {
             "weight": "bold"
-          }
+          },
+          "content": [
+            {
+              "component": "ObfuscatePhoneNumber",
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
+              }
+            }
+          ]
         }
       ]
     },
@@ -682,12 +682,17 @@
         },
         {
           "component": "SpanText",
-          "dynamicProps": {
-            "children": "${phoneNumber}"
-          },
           "props": {
             "weight": "bold"
-          }
+          },
+          "content": [
+            {
+              "component": "ObfuscatePhoneNumber",
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
+              }
+            }
+          ]
         },
         {
           "component": "SpanText",
@@ -825,17 +830,12 @@
         },
         {
           "component": "SpanText",
+          "dynamicProps": {
+            "children": "${email}"
+          },
           "props": {
             "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "ObfuscatePhoneNumber",
-              "props": {
-                "template": "${email}"
-              }
-            }
-          ]
+          }
         },
         {
           "component": "SpanText",
