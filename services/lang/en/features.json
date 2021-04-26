@@ -92,7 +92,7 @@
           },
           "content": [
             {
-              "component": "TemplateText",
+              "component": "ObfuscatePhoneNumber",
               "props": {
                 "template": "${phoneNumber}"
               }
@@ -680,7 +680,7 @@
                 {
                   "feature": "TemplateText",
                   "props": {
-                    "template": "${phoneNumber}"
+                    "phoneNumber": "${phoneNumber}"
                   }
                 }
               ]
@@ -810,7 +810,7 @@
               "weight": "bold",
               "uiFeatures": [
                 {
-                  "feature": "TemplateText",
+                  "feature": "ObfuscatePhoneNumber",
                   "props": {
                     "template": "${email}"
                   }
