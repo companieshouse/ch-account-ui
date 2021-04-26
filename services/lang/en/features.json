@@ -378,17 +378,12 @@
         },
         {
           "component": "SpanText",
+          "dynamicProps": {
+            "children": "${email}"
+          },
           "props": {
             "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "TemplateText",
-              "props": {
-                "template": "${email}"
-              }
-            }
-          ]
+          }
         },
         {
           "component": "SpanText",
@@ -481,17 +476,12 @@
         },
         {
           "component": "SpanText",
+          "dynamicProps": {
+            "children": "${email}"
+          },
           "props": {
             "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "TemplateText",
-              "props": {
-                "template": "${email}"
-              }
-            }
-          ]
+          }
         }
       ]
     },
@@ -692,17 +682,12 @@
         },
         {
           "component": "SpanText",
+          "dynamicProps": {
+            "children": "${phoneNumber}"
+          },
           "props": {
             "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "TemplateText",
-              "props": {
-                "phoneNumber": "${phoneNumber}"
-              }
-            }
-          ]
+          }
         },
         {
           "component": "SpanText",
