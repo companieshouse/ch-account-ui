@@ -145,7 +145,7 @@ const ResetPassword = ({ lang }) => {
       hasAccountLinks={false}
       hasLogoutLink={false}
       hasBackLink={false}
-      titleLinkHref="/home"
+      titleLinkHref="/"
       {...customPageProps}
     >
       <Dynamic
