@@ -94,7 +94,6 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
           }
 
           // console.log('DisplayUiElements: Adding element', element.payload.type, 'to group', customProps.formGroup)
-          delete customProps.formGroup
 
           // Add the current element to the form group
           currentFormGroup.elements.push({

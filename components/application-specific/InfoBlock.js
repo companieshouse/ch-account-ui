@@ -17,8 +17,8 @@ const InfoBlock = (props) => {
 
   return (
     <Column width="one-third" className={`infoBlock ${finalClassName}`}>
-      {Boolean(count) === true && <HeadingText type={countHeadingType} size="m">{count}</HeadingText>}
-      {Boolean(title) === true && <HeadingText type={titleHeadingType} size="m">{title}</HeadingText>}
+      {count !== '' && <HeadingText type={countHeadingType} size="m">{count}</HeadingText>}
+      {title !== '' && <HeadingText type={titleHeadingType} size="m">{title}</HeadingText>}
       {children}
       {renderFeatures(props)}
     </Column>

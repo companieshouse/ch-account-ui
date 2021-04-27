@@ -17,7 +17,7 @@ const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefin
     <RadioGroup
       id={id}
       testId={testId}
-      heading={label}
+      label={label}
       options={choices.map((choice, index) => ({
         label: choice,
         value: index,

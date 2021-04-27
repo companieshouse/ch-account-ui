@@ -13,7 +13,6 @@ import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../services/withQueryParams'
 
 const Login = ({ lang, queryParams }) => {
-  console.log('Query params is', queryParams)
   const [, setCookie] = useCookies()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])

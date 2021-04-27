@@ -113,6 +113,7 @@ export const findCustomPageProps = (step) => {
       }
 
       const customPropsObject = JSON.parse(jsonString)
+
       return customPropsObject
     } catch (err) {
       return {

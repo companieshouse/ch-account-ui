@@ -93,8 +93,8 @@
           "content": [
             {
               "component": "ObfuscatePhoneNumber",
-              "props": {
-                "template": "${phoneNumber}"
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
               }
             }
           ]
@@ -247,17 +247,17 @@
         },
         {
           "component": "SpanText",
-          "dynamicProps": {
-            "children": {
-              "component": "ObfuscatePhoneNumber",
-              "props": {
-                "phoneNumber" :"${phoneNumber}"
-              }
-            }
-          },
           "props": {
             "weight": "bold"
-          }
+          },
+          "content": [
+            {
+              "component": "ObfuscatePhoneNumber",
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
+              }
+            }
+          ]
         }
       ]
     },
@@ -378,17 +378,12 @@
         },
         {
           "component": "SpanText",
+          "dynamicProps": {
+            "children": "${email}"
+          },
           "props": {
             "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "TemplateText",
-              "props": {
-                "template": "${email}"
-              }
-            }
-          ]
+          }
         },
         {
           "component": "SpanText",
@@ -481,17 +476,12 @@
         },
         {
           "component": "SpanText",
+          "dynamicProps": {
+            "children": "${email}"
+          },
           "props": {
             "weight": "bold"
-          },
-          "content": [
-            {
-              "component": "TemplateText",
-              "props": {
-                "template": "${email}"
-              }
-            }
-          ]
+          }
         }
       ]
     },
@@ -544,42 +534,42 @@
   ],
   "GENERIC_ERROR": [
     {
-      "feature": "PageHeading",
-      "children": "Server error"
-    },
-    {
-      "feature": "BodyText",
-      "children": "We are very sorry, an unexpected error occurred on the server. Please try again later."
-    },
-    {
-      "feature": "BodyText",
+      "component": "PageHeading",
       "props": {
-        "uiFeatures": [
-          {
-            "feature": "LinkText",
+        "children": "Server error"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "We are very sorry, an unexpected error occurred on the server. Please try again later."
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
             "children": "Click here to sign in",
-            "props": {
-              "href": "/account/login/",
-              "testId": "loginExistingAccountLink"
-            }
+            "href": "/account/login/",
+            "testId": "loginExistingAccountLink"
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "feature": "BodyText",
-      "props": {
-        "uiFeatures": [
-          {
-            "feature": "LinkText",
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
             "children": "Register a new account",
-            "props": {
-              "href": "/account/register/_start/",
-              "testId": "registerNewAccountLink"
-            }
+            "href": "/account/register/_start/",
+            "testId": "registerNewAccountLink"
           }
-        ]
-      }
+        }
+      ]
     }
   ],
   "LIMIT_EXCEEDED_ERROR": [
@@ -611,15 +601,19 @@
   ],
   "RESET_PASSWORD_1": [
     {
-      "feature": "PageHeading",
-      "children": "Enter your email address"
+      "component": "PageHeading",
+      "props": {
+        "children": "Enter your email address"
+      }
     },
     {
-      "feature": "BodyText",
-      "children": "Enter the email address you used to create your Companies House account. We'll send you a link so you can reset your password."
+      "component": "BodyText",
+      "props": {
+        "children": "Enter the email address you used to create your Companies House account. We'll send you a link so you can reset your password."
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
@@ -630,9 +624,9 @@
       }
     },
     {
-      "feature": "Button",
-      "children": "Send Link",
+      "component": "Button",
       "props": {
+        "children": "Send Link",
         "type": "submit",
         "testId": "submitButton"
       }
@@ -640,20 +634,31 @@
   ],
   "RESET_PASSWORD_2": [
     {
-      "feature": "PageHeading",
-      "children": "How do you want to confirm it's you?"
-    },
-    {
-      "feature": "BodyText",
-      "children": "Before you can make changes to your account, we need to confirm it's you. This helps us keep your account secure."
-    },
-    {
-      "feature": "DisplayUiElements"
-    },
-    {
-      "feature": "Button",
-      "children": "Continue",
+      "component": "PageHeading",
       "props": {
+        "children": "How do you want to confirm it's you?"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "Before you can make changes to your account, we need to confirm it's you. This helps us keep your account secure."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": null
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Continue",
         "type": "submit",
         "testId": "submitButton"
       }
@@ -661,96 +666,108 @@
   ],
   "RESET_PASSWORD_3": [
     {
-      "feature": "PageHeading",
-      "children": "Check your phone"
-    },
-    {
-      "feature": "BodyText",
+      "component": "PageHeading",
       "props": {
-        "uiFeatures": [
-          {
-            "feature": "SpanText",
-            "children": "We've sent you a text message with a security code to "
-          },
-          {
-            "feature": "SpanText",
-            "props": {
-              "weight": "bold",
-              "uiFeatures": [
-                {
-                  "feature": "TemplateText",
-                  "props": {
-                    "phoneNumber": "${phoneNumber}"
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "feature": "SpanText",
-            "children": "."
-          }
-        ]
+        "children": "Check your phone"
       }
     },
     {
-      "feature": "BodyText",
-      "children": "It may take a few minutes to arrive."
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "We've sent you a text message with a security code to "
+          }
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "weight": "bold"
+          },
+          "content": [
+            {
+              "component": "ObfuscatePhoneNumber",
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
+              }
+            }
+          ]
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "."
+          }
+        }
+      ]
     },
     {
-      "feature": "DisplayUiElements"
-    },
-    {
-      "feature": "Button",
-      "children": "Continue",
+      "component": "BodyText",
       "props": {
+        "children": "It may take a few minutes to arrive."
+      }
+    },
+    {
+      "component": "DisplayUiElements"
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Continue",
         "type": "submit",
         "testId": "submitButton"
       }
     },
     {
-      "feature": "Details",
+      "component": "Details",
       "props": {
-        "summary": "I have not received a text message",
-        "uiFeatures": [
-          {
-            "feature": "BodyText",
+        "summary": "I have not received a text message"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
             "children": "The text message may take a few minutes to arrive."
-          },
-          {
-            "feature": "BodyText",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "SpanText",
-                  "children": "If it still has not arrived, you can "
-                },
-                {
-                  "feature": "LinkText",
-                  "children": "ask us to send you another text message",
-                  "props": {
-                    "href": "/password-recovery/_restart/",
-                    "testId": "restartPasswordRecoveryLink"
-                  }
-                },
-                {
-                  "feature": "SpanText",
-                  "children": "."
-                }
-              ]
-            }
           }
-        ]
-      }
+        },
+        {
+          "component": "BodyText",
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "If it still has not arrived, you can "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "ask us to send you another text message",
+                "href": "/password-recovery/_restart/",
+                "testId": "restartPasswordRecoveryLink"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "RESET_PASSWORD_4": [
     {
-      "feature": "PageHeading",
-      "children": "Reset your password"
+      "component": "PageHeading",
+      "props": {
+        "children": "Reset your password"
+      }
     },
     {
-      "feature": "DisplayUiElements",
+      "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken1": {
@@ -760,21 +777,23 @@
       }
     },
     {
-      "feature": "Details",
+      "component": "Details",
       "props": {
-        "summary": "Help with creating your password",
-        "uiFeatures": [
-          {
-            "feature": "BodyText",
+        "summary": "Help with creating your password"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
             "children": "TR** copy goes here."
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "feature": "Button",
-      "children": "Reset password",
+      "component": "Button",
       "props": {
+        "children": "Reset password",
         "type": "submit",
         "testId": "submitButton"
       }
@@ -782,7 +801,7 @@
   ],
   "RESET_PASSWORD_5": [
     {
-      "feature": "Redirect",
+      "component": "Redirect",
       "props": {
         "url": "/account/login/?notifyTitle=Success&notifyHeading=You've successfully reset your password.&notifyType=success"
       }
@@ -790,102 +809,113 @@
   ],
   "RESET_PASSWORD_6": [
     {
-      "feature": "PageHeading",
-      "children": "Check your emails"
-    },
-    {
-      "feature": "DisplayUiElements"
-    },
-    {
-      "feature": "BodyText",
+      "component": "PageHeading",
       "props": {
-        "uiFeatures": [
-          {
-            "feature": "SpanText",
+        "children": "Check your emails"
+      }
+    },
+    {
+      "component": "DisplayUiElements"
+    },
+    {
+      "component": "BodyText",
+      "props": {
+      },
+      "content": [
+        {
+          "component": "SpanText",
+          "props": {
             "children": "We've sent an email to "
+          }
+        },
+        {
+          "component": "SpanText",
+          "dynamicProps": {
+            "children": "${email}"
           },
-          {
-            "feature": "SpanText",
-            "props": {
-              "weight": "bold",
-              "uiFeatures": [
-                {
-                  "feature": "ObfuscatePhoneNumber",
-                  "props": {
-                    "template": "${email}"
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "feature": "SpanText",
+          "props": {
+            "weight": "bold"
+          }
+        },
+        {
+          "component": "SpanText",
+          "props": {
             "children": " which contains link to reset your password."
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "feature": "InsetText",
-      "children": "The link will expire in 6 hours."
-    },
-    {
-      "feature": "Details",
+      "component": "InsetText",
       "props": {
-        "summary": "I have not received an email",
-        "uiFeatures": [
-          {
-            "feature": "BodyText",
-            "children": "The email may take a few minutes to arrive. Its subject link is 'Reset your password - Companies House account'."
-          },
-          {
-            "feature": "BodyText",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "SpanText",
-                  "children": "Check your junk folder. If it still has not arrived, you can "
-                },
-                {
-                  "feature": "LinkText",
-                  "children": "ask us to send you another email",
-                  "props": {
-                    "href": "/password-recovery/_restart/",
-                    "testId": "restartPasswordRecoveryLink"
-                  }
-                },
-                {
-                  "feature": "SpanText",
-                  "children": "."
-                }
-              ]
-            }
-          },
-          {
-            "feature": "BodyText",
-            "props": {
-              "uiFeatures": [
-                {
-                  "feature": "SpanText",
-                  "children": "If you have given us the wrong email address, you can "
-                },
-                {
-                  "feature": "LinkText",
-                  "children": "give us a different email address",
-                  "props": {
-                    "href": "/password-recovery/_restart/",
-                    "testId": "restartPasswordRecoveryLink"
-                  }
-                },
-                {
-                  "feature": "SpanText",
-                  "children": "."
-                }
-              ]
-            }
-          }
-        ]
+        "children": "The link will expire in 6 hours."
       }
+    },
+    {
+      "component": "Details",
+      "props": {
+        "summary": "I have not received an email"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
+            "children": "The email may take a few minutes to arrive. Its subject link is 'Reset your password - Companies House account'."
+          }
+        },
+        {
+          "component": "BodyText",
+          "props": {
+          },
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "Check your junk folder. If it still has not arrived, you can "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "ask us to send you another email",
+                "href": "/password-recovery/_restart/",
+                "testId": "restartPasswordRecoveryLink"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
+            }
+          ]
+        },
+        {
+          "component": "BodyText",
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "If you have given us the wrong email address, you can "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "give us a different email address",
+                "href": "/password-recovery/_restart/",
+                "testId": "restartPasswordRecoveryLink"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "RESET_PASSWORD_ERROR": [
@@ -1001,20 +1031,12 @@
     },
     {
       "component": "HeadingText",
+      "dynamicProps": {
+        "children": "${company.name}"
+      },
       "props": {
         "size": "l"
-      },
-      "content": [
-        {
-          "component": "TemplateText",
-          "asProp": "children",
-          "dynamicProps": {
-            "template": "${company.name}"
-          },
-          "props": {
-          }
-        }
-      ]
+      }
     },
     {
       "component": "SummaryList",
@@ -1151,58 +1173,58 @@
   ],
   "REQUEST_AUTHENTICATION_CODE_1": [
     {
-      "feature": "BrowserTitle",
+      "component": "BrowserTitle",
       "props": {
         "title": "Requesting an authentication code"
       }
     },
     {
-      "feature": "PageHeading",
+      "component": "PageHeading",
       "props": {
         "children": "Do you want us to send the authentication code to the registered office address?"
       }
     },
     {
-      "feature": "DisplayUiElements"
+      "component": "DisplayUiElements"
     },
     {
-      "feature": "BodyText",
+      "component": "BodyText",
       "props": {
         "children": "We'll send the authentication code by post to:"
       }
     },
     {
-      "feature": "BodyText",
+      "component": "BodyText",
       "props": {
-        "weight": "bold",
-        "uiFeatures": [
-          {
-            "feature": "NlToBr",
-            "props": {
-              "content": "37 London Road\nLondon\nSE3 6GI"
-            }
+        "weight": "bold"
+      },
+      "content": [
+        {
+          "component": "NlToBr",
+          "props": {
+            "content": "37 London Road\nLondon\nSE3 6GI"
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "feature": "BodyText",
+      "component": "BodyText",
       "props": {
         "children": "It can take up to 5 days to arrive."
       }
     },
     {
-      "feature": "Button",
-      "children": "Send the authentication code",
+      "component": "Button",
       "props": {
+        "children": "Send the authentication code",
         "type": "submit",
         "testId": "submitButton"
       }
     },
     {
-      "feature": "Button",
-      "children": "Cancel",
+      "component": "Button",
       "props": {
+        "children": "Cancel",
         "secondary": true,
         "className": "marginLeft",
         "renderAs": "link",
@@ -1214,20 +1236,22 @@
   ],
   "REQUEST_AUTHENTICATION_CODE_2": [
     {
-      "feature": "BrowserTitle",
-      "title": "Authentication code requested"
+      "component": "BrowserTitle",
+      "props": {
+        "title": "Authentication code requested"
+      }
     },
     {
-      "feature": "NotificationBanner",
+      "component": "NotificationBanner",
       "props": {
         "type": "success",
         "title": "Success",
-        "heading": "The authentication code for FLOWERS LIMITED will be posted to the registered office address."
-      },
-      "children": "It usually takes up to 5 days to arrive."
+        "heading": "The authentication code for FLOWERS LIMITED will be posted to the registered office address.",
+        "children": "It usually takes up to 5 days to arrive."
+      }
     },
     {
-      "feature": "DisplayUiElements"
+      "component": "DisplayUiElements"
     }
   ],
   "HOME_OVERVIEW": [
@@ -1239,13 +1263,9 @@
     },
     {
       "component": "Row",
-      "props": {
-      },
       "content": [
         {
           "component": "Column",
-          "props": {
-          },
           "content": [
             {
               "component": "HeadingText",
@@ -1274,13 +1294,9 @@
     },
     {
       "component": "Row",
-      "props": {
-      },
       "content": [
         {
           "component": "Column",
-          "props": {
-          },
           "content": [
             {
               "component": "SectionBreak"
@@ -1294,13 +1310,9 @@
             },
             {
               "component": "Column",
-              "props": {
-              },
               "content": [
                 {
                   "component": "InfoBlocks",
-                  "props": {
-                  },
                   "content": [
                     {
                       "component": "InfoBlock",
@@ -1408,13 +1420,9 @@
     },
     {
       "component": "Row",
-      "props": {
-      },
       "content": [
         {
           "component": "Column",
-          "props": {
-          },
           "content": [
             {
               "component": "SectionBreak"
@@ -1428,18 +1436,12 @@
             },
             {
               "component": "Column",
-              "props": {
-              },
               "content": [
                 {
                   "component": "InfoBlocks",
-                  "props": {
-                  },
                   "content": [
                     {
                       "component": "InfoBlock",
-                      "props": {
-                      },
                       "content": [
                         {
                           "component": "HeadingText",
@@ -1468,8 +1470,6 @@
                     },
                     {
                       "component": "InfoBlock",
-                      "props": {
-                      },
                       "content": [
                         {
                           "component": "HeadingText",
@@ -1498,8 +1498,6 @@
                     },
                     {
                       "component": "InfoBlock",
-                      "props": {
-                      },
                       "content": [
                         {
                           "component": "HeadingText",
@@ -1550,7 +1548,6 @@
       "content": [
         {
           "component": "Caption",
-          "asProp": "children",
           "props": {
             "children": "Make changes to your details and account settings",
             "size": "m",
@@ -1745,7 +1742,7 @@
                         {
                           "component": "SpanText",
                           "props": {
-                            "children": "Correspondance address"
+                            "children": "Correspondence address"
                           }
                         },
                         {

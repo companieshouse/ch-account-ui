@@ -62,7 +62,7 @@ const AssociateUserAndCompany = ({ lang }) => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
+    console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'COMPANY_ASSOCIATION',

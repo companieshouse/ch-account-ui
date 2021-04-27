@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import HeadingCount from '../../services/HeadingCount'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
-import { FORGEROCK_TREE_FMP } from '../../services/environment'
 import Router, { useRouter } from 'next/router'
+import { findCustomPageProps, forgerockFlow, findCustomStage } from '../../services/forgerock'
+import HeadingCount from '../../services/HeadingCount'
+import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_FMP } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
-import UiFeatures from '../../components/general-ui/UiFeatures'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import withLang from '../../services/lang/withLang'
+import { useCookies } from 'react-cookie'
+import componentMap from '../../services/componentMap'
+import Dynamic from '../../components/Dynamic'
+import withQueryParams from '../../services/withQueryParams'
 
 export const getStaticPaths = async () => {
   return {
@@ -25,18 +28,27 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const ResetPassword = ({ lang }) => {
+const ResetPassword = ({ lang, queryParams }) => {
   const router = useRouter()
-  const [errors, setErrors] = React.useState([])
+  const [, setCookie] = useCookies()
   const [customPageProps, setCustomPageProps] = React.useState({})
+  const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = new HeadingCount()
 
-  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
+  const {
+    goto,
+    overrideStage = '',
+    service = '',
+    token
+  } = queryParams
+
+  const {
+    pageStep = ''
+  } = router.query
 
   let journeyName = ''
 
@@ -74,6 +86,14 @@ const ResetPassword = ({ lang }) => {
       lang,
       stepOptions,
       onSuccess: (loginData) => {
+        // Set auth cookie
+        setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
+        setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
+
+        if (queryParams.goto) {
+          return Router.push(goto)
+        }
+
         Router.push('/account/home')
       },
       onFailure: (errData, newErrors = []) => {
@@ -126,33 +146,39 @@ const ResetPassword = ({ lang }) => {
     submitData(formData)
   }
 
-  const renderFeatures = (props) => {
-    return <UiFeatures {...props} />
-  }
-
   // Check if the router has been initialised yet
-  if (!pageStep) return null
+  if (!pageStep) {
+    console.log('Not rendering yet, no pageStep has been defined!', pageStep)
+    return null
+  }
 
   return (
     <FeatureDynamicView
-      renderFeatures={renderFeatures}
       onSubmit={onSubmit}
-      errors={errors}
       headingCount={headingCount}
-      uiFeatures={uiFeatures}
-      uiElements={uiElements}
-      uiStage={uiStage}
-      notifyType={notifyType}
-      notifyHeading={notifyHeading}
-      notifyTitle={notifyTitle}
-      notifyChildren={notifyChildren}
-      {...customPageProps}
-    />
+      hasAccountLinks={false}
+      hasLogoutLink={false}
+      hasBackLink={false}
+      titleLinkHref="/"
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={uiFeatures}
+        errors={errors}
+        uiElements={uiElements}
+        uiStage={uiStage}
+        {...router.query}
+        {...queryParams}
+        {...customPageProps}
+      />
+    </FeatureDynamicView>
   )
 }
 
-export default withLang(ResetPassword)
+export default withQueryParams(withLang(ResetPassword))
 
 ResetPassword.propTypes = {
-  lang: PropTypes.string.isRequired
+  lang: PropTypes.string.isRequired,
+  queryParams: PropTypes.object
 }

@@ -4,6 +4,10 @@ import { getTemplateDataValue, parseTemplateString, processDynamicProps } from '
 import { set as pathSet } from '@irrelon/path'
 import withTransformedErrors from '../services/withTransformedErrors'
 
+const log = (...rest) => {
+  // console.log(...rest)
+}
+
 const isConditionalSatisfied = (conditional, data) => {
   if (conditional instanceof Array) {
     // This is an array of conditionals - implicit AND e.g.
@@ -110,7 +114,7 @@ const renderIterator = (contentItem, iterator, data) => {
  */
 const Dynamic = (props) => {
   const { content = [], componentMap = {}, children, ...otherProps } = props
-  // console.log('Dynamic: Rendering with props', props)
+  log('<Dynamic>: Rendering with props', props)
   if (!content.length) {
     return <>{children}</>
   }
@@ -147,7 +151,7 @@ const Dynamic = (props) => {
           return renderIterator(contentItem, iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
         }
 
-        // console.log('Dynamic: +++ Render component:', component)
+        log('Dynamic: +++ Render component:', component)
 
         // Check for prop replacement sub-content
         const dynamicPropEntries = (typeof dynamicProps === 'object' && Object.entries(dynamicProps)) || []
@@ -157,19 +161,19 @@ const Dynamic = (props) => {
             if (typeof subContentItem === 'string') {
               // Direct template string replacement
               pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem, false, false))
-              // console.log(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
+              log(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
             } else if (subContentItem instanceof Array) {
               const arr = processDynamicProps(subContentItem, { ...otherProps, ...props, ...otherItemProps })
               pathSet(props, propName, arr)
-              // console.log(`Dynamic: Replacing prop "${propName}" with array-based new val`, props[propName], props)
+              log(`Dynamic: Replacing prop "${propName}" with array-based new val`, props[propName], props)
             } else if (typeof subContentItem === 'object') {
               // Scan for prop template strings in fields and values
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
 
-              // console.log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
+              log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
 
               // Replace the labelled prop with this component
-              // console.log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
+              log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
               pathSet(props, propName, <Dynamic componentMap={componentMap} content={[subContentItem]} {...otherProps} {...otherItemProps} />)
             } else {
               throw new Error(`Unrecognised dynamicProp value: ${JSON.stringify(subContentItem)}`)
@@ -177,8 +181,8 @@ const Dynamic = (props) => {
           })
         }
 
-        // console.log('Dynamic: Rendering component', component, 'with props', props)
-        // console.log('Dynamic: --- End', component)
+        log('Dynamic: Rendering component', component, 'with props', props)
+        log('Dynamic: --- End', component)
 
         return <ComponentClass key={`${component}_${index}`} {...otherProps} {...otherItemProps} {...props}>
           {props.children}

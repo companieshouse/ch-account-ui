@@ -7,7 +7,7 @@ import HeadingText from '../typeography/HeadingText'
 const CheckboxGroup = (props) => {
   const {
     hint = '',
-    heading = '',
+    label = '',
     options = [],
     children,
     id,
@@ -25,9 +25,9 @@ const CheckboxGroup = (props) => {
   return (
     <div className={`govuk-form-group ${Boolean(error || groupError) && 'govuk-form-group--error'} ${finalClassName}`}>
       <fieldset data-testid={testId} className="govuk-fieldset" aria-describedby={`${id}-hint ${id}-error`}>
-        {Boolean(heading) && <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+        {Boolean(label) && <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
           <HeadingText className="govuk-fieldset__heading" headingCount={headingCount}>
-            {heading}
+            {label}
           </HeadingText>
         </legend>}
         <div id={`${id}-hint`} className="govuk-hint">
@@ -68,7 +68,7 @@ CheckboxGroup.propTypes = {
   fluidWidth: PropTypes.string,
   hint: PropTypes.string,
   id: PropTypes.string.isRequired,
-  heading: PropTypes.string,
+  label: PropTypes.string,
   required: PropTypes.bool,
   testId: PropTypes.string.isRequired,
   headingCount: PropTypes.object,
@@ -83,7 +83,7 @@ CheckboxGroup.defaultProps = {
   fixedWidth: '',
   fluidWidth: '',
   hint: '',
-  heading: '',
+  label: '',
   required: false,
   options: []
 }

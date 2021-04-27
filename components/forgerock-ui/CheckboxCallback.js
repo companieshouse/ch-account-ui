@@ -17,7 +17,7 @@ const CheckboxCallback = ({ element, customElementProps = {}, groupError = undef
     <CheckboxGroup
       id={id}
       testId={testId}
-      heading={label}
+      label={label}
       options={choices.map((choice, index) => ({
         label: choice,
         value: index,
