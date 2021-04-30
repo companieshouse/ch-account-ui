@@ -252,7 +252,7 @@ export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
     return
   }
 
-  const url = `${FORGEROCK_COMPANY_ENDPOINT}openidm/managed/alpha_organization/${companyId}/members?_queryFilter=true&_fields=userName,givenName`
+  const url = `${FORGEROCK_COMPANY_ENDPOINT}${companyId}/members?_queryFilter=true&_fields=userName,givenName`
 
   const res = await fetch(url, {
     headers: {
@@ -292,7 +292,7 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId) => {
     console.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
-  const url = `${FORGEROCK_USER_ENDPOINT}openidm/managed/alpha_user/${userId}/memberOfOrg?_queryFilter=true`
+  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=true`
 
   const res = await fetch(url, {
     headers: {
