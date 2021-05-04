@@ -8,7 +8,7 @@ import { axe } from 'jest-axe'
 const defaultProps = {
   id: 'CheckboxGroup',
   testId: 'CheckboxGroup',
-  heading: 'Test heading',
+  label: 'Test heading',
   headingCount: new HeadingCount(),
   options: [
     { checked: false, label: 'option1', value: 'option1' },
