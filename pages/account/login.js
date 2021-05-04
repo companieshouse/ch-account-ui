@@ -50,7 +50,7 @@ const Login = ({ lang, queryParams }) => {
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'LOGIN_1'))
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'CH_LOGIN_1'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -98,14 +98,14 @@ const Login = ({ lang, queryParams }) => {
       onSubmit={onSubmit}
     >
       <Dynamic
+        {...customPageProps}
+        {...queryParams}
         componentMap={componentMap}
         headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        {...queryParams}
-        {...customPageProps}
       />
     </FeatureDynamicView>
   )

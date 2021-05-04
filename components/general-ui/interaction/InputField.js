@@ -5,7 +5,7 @@ import { errorsPropType } from '../../../services/propTypes'
 import withLang from '../../../services/lang/withLang'
 import { translate } from '../../../services/translate'
 
-const InputField = ({ lang, label = '', renderLabelAs = 'label', caption, captionPosition = 'below', captionSize = 'xl', headingCount, type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, groupError = undefined, ...otherProps }) => {
+const InputField = ({ lang, label = '', renderLabelAs = 'label', caption, captionPosition = 'below', captionSize = 'xl', headingCount, type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, groupError = undefined, formGroup, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
