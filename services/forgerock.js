@@ -292,7 +292,8 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId) => {
     console.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
-  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=true`
+  const queryFields = 'users,name,number,addressLine1,addressLine2,locality,region,postalCode'
+  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=true&_fields=${queryFields}`
 
   const res = await fetch(url, {
     headers: {
