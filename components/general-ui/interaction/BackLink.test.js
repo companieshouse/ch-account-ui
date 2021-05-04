@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent} from '@testing-library/react'
 import BackLink from './BackLink'
 
 describe('BackLink', () => {
@@ -11,5 +11,14 @@ describe('BackLink', () => {
     expect(testElement).toBeInTheDocument()
     expect(testElement).toHaveAttribute('href', '/#linkTest')
     expect(testElement).toHaveTextContent('Back Link Test')
+  })
+
+  it('Renders a anchor, calls onClick handler', () => {
+    const onClick = jest.fn()
+    render(<BackLink testId="backLink" onClick={onClick}>Back Link Test</BackLink>)
+
+    const testElement = screen.getByTestId('backLink')
+    fireEvent.click(testElement)
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })

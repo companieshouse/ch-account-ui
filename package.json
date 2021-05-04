@@ -40,6 +40,7 @@
     "http-server": "^0.12.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "jest-axe": "^4.1.0",
     "jest-dom": "^4.0.0",
     "replace-in-files": "^3.0.0",
     "replace-in-files-cli": "^1.0.0",
