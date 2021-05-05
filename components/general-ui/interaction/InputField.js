@@ -37,7 +37,7 @@ const InputField = ({ lang, label = '', renderLabelAs = 'label', caption, captio
                name={id}
                type={type}
                autoComplete={autoComplete}
-               aria-describedby={Boolean(error) && `${id}-error`}
+               aria-describedby={error && `${id}-error`}
                data-testid={testId}
                defaultValue={defaultValue}
                required={required}
