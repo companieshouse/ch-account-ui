@@ -18,6 +18,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
   if (!step) return errors
 
+  // TODO Move logic to the specific page handlers
   if (step.type === StepType.LoginFailure) {
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
