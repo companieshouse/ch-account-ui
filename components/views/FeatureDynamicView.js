@@ -28,7 +28,7 @@ const FeatureDynamicView = (props) => {
   return (
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={titleLinkHref} />
-      <WidthContainer style={{ paddingTop: '2ex' }}>
+      <WidthContainer style={{ paddingTop: '20px' }}>
         {hasAccountLinks === true && <AccountLinks />}
         {(hasBackLink === true || hasLanguageSwitcher === true) && <>
             <Column width='two-thirds'>
