@@ -15,12 +15,16 @@
   "dependencies": {
     "@forgerock/javascript-sdk": "^2.2.0",
     "@irrelon/path": "^5.0.0",
+    "core-js": "^3.12.0",
     "cross-env": "^7.0.3",
+    "fast-text-encoding": "^1.0.3",
     "govuk-frontend": "^3.11.0",
-    "next": "10.0.6",
+    "next": "^10.2.0",
+    "next-transpile-modules": "^7.0.0",
     "react": "17.0.1",
     "react-cookie": "^4.0.3",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.6",
@@ -39,6 +43,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^24.0.0",
     "http-server": "^0.12.3",
+    "husky": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-axe": "^4.1.0",
@@ -46,8 +51,7 @@
     "replace-in-files": "^3.0.0",
     "replace-in-files-cli": "^1.0.0",
     "sass": "^1.32.6",
-    "sonarqube-scanner": "^2.8.0",
-    "husky": "^6.0.0"
+    "sonarqube-scanner": "^2.8.0"
   },
   "peerDependencies": {
     "eslint-config-standard": "^16.0.2",

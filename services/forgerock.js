@@ -1,4 +1,5 @@
-import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager } from '@forgerock/javascript-sdk'
+import './forgerock-polyfills'
+import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager, CallbackType } from '@forgerock/javascript-sdk'
 import {
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
@@ -10,7 +11,7 @@ import {
 } from './environment'
 import { translateErrors } from './errors'
 
-export { CallbackType } from '@forgerock/javascript-sdk'
+export { CallbackType }
 
 const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
   const errors = []
