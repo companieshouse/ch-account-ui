@@ -1281,9 +1281,6 @@
                   },
                   "props": {
                     "size": "xl"
-                  },
-                  "style": {
-                    "paddingTop": "0.5em"
                   }
                 }
               ]
