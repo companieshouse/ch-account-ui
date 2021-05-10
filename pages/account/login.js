@@ -11,6 +11,7 @@ import { useCookies } from 'react-cookie'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../services/withQueryParams'
+import { serializeForm } from '../../services/formData'
 
 const Login = ({ lang, queryParams }) => {
   const [, setCookie] = useCookies()
@@ -84,12 +85,7 @@ const Login = ({ lang, queryParams }) => {
     evt.preventDefault()
     setErrors([])
 
-    // Convert UI element values to JSON key/value pairs
-    const formData = Object.entries(evt.target.elements).reduce((obj, [key, element]) => {
-      obj[key] = element.value
-      return obj
-    }, {})
-
+    const formData = serializeForm(evt.target.elements)
     submitData(formData)
   }
 
