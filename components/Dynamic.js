@@ -55,6 +55,10 @@ const isConditionalSatisfied = (conditional, data) => {
       if (propData != value) return true
       break
 
+    case 'is':
+      if (propData) return true
+      break
+
     case 'not':
       if (!propData) return true
       break

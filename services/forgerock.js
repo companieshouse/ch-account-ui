@@ -254,7 +254,8 @@ export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
     return
   }
 
-  const url = `${FORGEROCK_COMPANY_ENDPOINT}${companyId}/members?_queryFilter=true&_fields=userName,givenName`
+  const queryFields = 'userName,givenName,mail'
+  const url = `${FORGEROCK_COMPANY_ENDPOINT}${companyId}/members?_queryFilter=true&_fields=${queryFields}`
 
   const res = await fetch(url, {
     headers: {
