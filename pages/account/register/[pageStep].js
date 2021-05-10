@@ -10,6 +10,7 @@ import withLang from '../../../services/lang/withLang'
 import { useCookies } from 'react-cookie'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
+import { serializeForm } from '../../../services/formData'
 
 export const getStaticPaths = async () => {
   return {
@@ -125,12 +126,7 @@ const RegisterContactDetails = ({ lang }) => {
     evt.preventDefault()
     setErrors([])
 
-    // Convert UI element values to JSON key/value pairs
-    const formData = Object.entries(evt.target.elements).reduce((obj, [key, element]) => {
-      obj[key] = element.value
-      return obj
-    }, {})
-
+    const formData = serializeForm(evt.target.elements)
     submitData(formData)
   }
 

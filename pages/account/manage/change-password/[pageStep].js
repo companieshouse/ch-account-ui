@@ -9,6 +9,7 @@ import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
 import withLang from '../../../../services/lang/withLang'
 import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
+import { serializeForm } from '../../../../services/formData'
 
 export const getStaticPaths = async () => {
   return {
@@ -107,12 +108,7 @@ const ChangePassword = ({ lang }) => {
     evt.preventDefault()
     setErrors([])
 
-    // Convert UI element values to JSON key/value pairs
-    const formData = Object.entries(evt.target.elements).reduce((obj, [key, element]) => {
-      obj[key] = element.value
-      return obj
-    }, {})
-
+    const formData = serializeForm(evt.target.elements)
     submitData(formData)
   }
 
