@@ -1820,9 +1820,23 @@
                                       },
                                       "content": [
                                         {
+                                          "conditional": {
+                                            "prop": "${user.givenName}",
+                                            "operator": "is"
+                                          },
                                           "component": "Td",
                                           "dynamicProps": {
                                             "children": "${user.givenName}"
+                                          }
+                                        },
+                                        {
+                                          "conditional": {
+                                            "prop": "${user.givenName}",
+                                            "operator": "not"
+                                          },
+                                          "component": "Td",
+                                          "dynamicProps": {
+                                            "children": "${user.mail}"
                                           }
                                         },
                                         {
