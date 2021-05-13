@@ -1,8 +1,8 @@
 // These settings default to dev environment values if no value is present
 export const ENVIRONMENT = process.env.ENVIRONMENT || 'dev'
-export const FORGEROCK_AM = process.env.FORGEROCK_AM || 'https://identity.amido.aws.chdev.org/am/'
-export const FORGEROCK_USER_ENDPOINT = process.env.FORGEROCK_USER_ENDPOINT || 'https://identity.amido.aws.chdev.org/openidm/managed/alpha_user/'
-export const FORGEROCK_COMPANY_ENDPOINT = process.env.FORGEROCK_COMPANY_ENDPOINT || 'https://identity.amido.aws.chdev.org/openidm/managed/alpha_organization/'
+export const FORGEROCK_AM = process.env.FORGEROCK_AM || 'https://idam.amido.aws.chdev.org/am/'
+export const FORGEROCK_USER_ENDPOINT = process.env.FORGEROCK_USER_ENDPOINT || 'https://idam.amido.aws.chdev.org/openidm/managed/alpha_user/'
+export const FORGEROCK_COMPANY_ENDPOINT = process.env.FORGEROCK_COMPANY_ENDPOINT || 'https://idam.amido.aws.chdev.org/openidm/managed/alpha_organization/'
 export const FORGEROCK_REALM = process.env.FORGEROCK_REALM || '/alpha'
 export const FORGEROCK_SCOPE = process.env.FORGEROCK_SCOPE || 'openid email phone profile fr:idm:*'
 export const FORGEROCK_CLIENT_ID = process.env.FORGEROCK_CLIENT_ID || 'ForgeRockSDKClient'
