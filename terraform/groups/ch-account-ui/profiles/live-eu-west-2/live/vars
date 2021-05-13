@@ -2,4 +2,3 @@ environment = "live"
 domain_name = "company-information.service.gov.uk"
 create_route53_record = true
 route53_zone = "company-information.service.gov.uk"
-service_name = "amido-ui"

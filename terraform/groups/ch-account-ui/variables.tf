@@ -11,7 +11,7 @@ variable "environment" {
 variable "service_name" {
   type        = string
   description = "The service name to be used when creating AWS resources"
-  default     = "ch-account-ui"
+  default     = "idam-ui"
 }
 
 variable "route53_zone" {
