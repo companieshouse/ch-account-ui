@@ -11,6 +11,15 @@ import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
 import withAccessToken from '../../services/withAccessToken'
+import withQueryParams from '../../services/withQueryParams'
+import { generateQueryUrl } from '../../services/queryString'
+
+export const extendCompaniesData = (companiesData) => {
+  return companiesData.map((company) => {
+    const authorisePath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name })
+    return { ...company, authorisePath }
+  })
+}
 
 const YourCompanies = ({ errors, lang, profile, accessToken }) => {
   const [associationData, setAssociationData] = React.useState({ count: '0', companies: [] })
@@ -27,7 +36,7 @@ const YourCompanies = ({ errors, lang, profile, accessToken }) => {
       console.log('AssociationData', response)
       setAssociationData({
         count: response.count,
-        companies: response.companies
+        companies: extendCompaniesData(response.companies)
       })
     })
   }, [notifyType, notifyHeading, notifyTitle, notifyChildren])
@@ -56,7 +65,7 @@ const YourCompanies = ({ errors, lang, profile, accessToken }) => {
   )
 }
 
-export default withAccessToken(withProfile(withLang(YourCompanies)))
+export default withAccessToken(withProfile(withQueryParams(withLang(YourCompanies))))
 
 YourCompanies.propTypes = {
   companies: PropTypes.array,

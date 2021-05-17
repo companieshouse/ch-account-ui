@@ -14,6 +14,7 @@ export const FORGEROCK_TREE_REGISTER_VERIFY = process.env.FORGEROCK_TREE_REGISTE
 export const FORGEROCK_TREE_FMP = process.env.FORGEROCK_TREE_FMP || 'CHResetPassword'
 export const FORGEROCK_TREE_FMP_VERIFY = process.env.FORGEROCK_TREE_FMP_VERIFY || 'CHResetPassword'
 export const FORGEROCK_TREE_COMPANY_ASSOCIATION = process.env.FORGEROCK_TREE_COMPANY_ASSOCIATION || 'CHCompanyAssociation'
+export const FORGEROCK_TREE_INVITE_USER = process.env.FORGEROCK_TREE_INVITE_USER || 'CHInviteUser'
 export const FORGEROCK_TREE_REQUEST_AUTH_CODE = process.env.FORGEROCK_TREE_REQUEST_AUTH_CODE || 'RequestAuthCode'
 export const FORGEROCK_TREE_CHANGE_PASSWORD = process.env.FORGEROCK_TREE_CHANGE_PASSWORD || 'CHChangePassword'
 

@@ -1610,6 +1610,19 @@
       }
     },
     {
+      "conditional": {
+        "prop": "${notifyToken}",
+        "operator": "is",
+        "value": "authSuccess"
+      },
+      "component": "NotificationBanner",
+      "dynamicProps": {
+        "type": "success",
+        "title": "Success",
+        "heading": "An email request has been sent to ${invitedUser} to be authorised to file online for ${companyName}"
+      }
+    },
+    {
       "component": "PageHeading",
       "props": {
         "children": "Your companies"
@@ -1840,12 +1853,32 @@
                                           }
                                         },
                                         {
+                                          "conditional": {
+                                            "prop": "${user._refProperties.membershipStatus}",
+                                            "operator": "eeq",
+                                            "value": "confirmed"
+                                          },
+                                          "component": "Td",
+                                          "content": [{
+                                            "component": "Tag",
+                                            "dynamicProps": {
+                                              "colour": "green",
+                                              "children": "Confirmed"
+                                            }
+                                          }]
+                                        },
+                                        {
+                                          "conditional": {
+                                            "prop": "${user._refProperties.membershipStatus}",
+                                            "operator": "nee",
+                                            "value": "confirmed"
+                                          },
                                           "component": "Td",
                                           "content": [{
                                             "component": "Tag",
                                             "props": {
-                                              "colour": "green",
-                                              "children": "Confirmed"
+                                              "colour": "yellow",
+                                              "children": "Pending"
                                             }
                                           }]
                                         },
@@ -1868,9 +1901,9 @@
                             },
                             {
                               "component": "LinkText",
-                              "props": {
-                                "href": "/account/home",
-                                "children": "Add person authorised to file for this company",
+                              "dynamicProps": {
+                                "href": "${company.authorisePath}",
+                                "children": "Authorise a person to file online for this company",
                                 "className": "govuk-link--no-visited-state"
                               }
                             }
@@ -2021,6 +2054,91 @@
       "props": {
         "url": "/account/manage/?notifyTitle=Success&notifyHeading=You've successfully changed your password.&notifyType=success"
       }
+    }
+  ],
+  "INVITE_USER_1": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "title": "Authorised person's details"
+      }
+    },
+    {
+      "component": "Caption",
+      "dynamicProps": {
+        "children": "${companyName}"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "What are the authorised person's details?"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "Tell us the details of the person you want to authorise to file online for this company."
+      }
+    },
+    {
+      "component": "InsetText",
+      "props": {
+        "children": "You can change who is authorised to file at any time."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken2": {
+            "formGroup": "nameAndEmail",
+            "label": "Full name (optional)"
+          },
+          "IDToken3": {
+            "formGroup": "nameAndEmail",
+            "label": "Email address",
+            "hint": "We'll send an email that contains a request link."
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Send email request",
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "INVITE_USER_2": [
+    {
+      "component": "Redirect",
+      "dynamicProps": {
+        "url": "${authoriseSuccessPath}"
+      }
+    }
+  ],
+  "INVITE_USER_ERROR": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Unable to invite user"
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Please try again",
+            "href": "/account/your-companies",
+            "testId": "yourCompaniesLink"
+          }
+        }
+      ]
     }
   ]
 }
