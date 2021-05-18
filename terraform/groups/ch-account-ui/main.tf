@@ -8,6 +8,8 @@ resource "aws_acm_certificate" "domain" {
   domain_name               = var.domain_name
   subject_alternative_names = ["*.${var.domain_name}"]
   validation_method         = "DNS"
+
+  tags = local.common_tags
 }
 
 resource "aws_s3_bucket" "website" {
@@ -15,9 +17,12 @@ resource "aws_s3_bucket" "website" {
   acl           = "public-read"
   policy        = data.aws_iam_policy_document.website.json
   force_destroy = true
+
   website {
     index_document = "index.html"
   }
+
+  tags = local.common_tags
 }
 
 data "aws_iam_policy_document" "website" {
@@ -47,6 +52,7 @@ resource "aws_route53_record" "website" {
   name    = local.fqdn
   zone_id = data.aws_route53_zone.domain.0.id
   type    = "A"
+
   alias {
     name                   = aws_cloudfront_distribution.website.domain_name
     zone_id                = aws_cloudfront_distribution.website.hosted_zone_id
@@ -99,4 +105,6 @@ resource "aws_cloudfront_distribution" "website" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }
+
+  tags = local.common_tags
 }
