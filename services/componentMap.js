@@ -1,4 +1,5 @@
 import Button from '../components/general-ui/interaction/Button'
+import ButtonGroup from '../components/general-ui/interaction/ButtonGroup'
 import HeadingText from '../components/general-ui/typeography/HeadingText'
 import BodyText from '../components/general-ui/typeography/BodyText'
 import SpanText from '../components/general-ui/typeography/SpanText'
@@ -41,6 +42,7 @@ import ObfuscatePhoneNumber from '../components/application-specific/ObfuscatePh
 
 const componentMap = {
   Button,
+  ButtonGroup,
   HeadingText,
   BodyText,
   SpanText,

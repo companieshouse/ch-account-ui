@@ -136,6 +136,7 @@ export const forgerockFlow = ({
   onSuccess,
   onFailure,
   onUpdateUi,
+  onUpdateUser,
   journeyName,
   journeyNamespace,
   stepOptions,
@@ -203,6 +204,12 @@ export const forgerockFlow = ({
       })
 
       return
+    }
+
+    if (onUpdateUser) {
+      UserManager.getCurrentUser().then((user) => {
+        onUpdateUser(user)
+      })
     }
 
     if (step.type === StepType.LoginFailure) {

@@ -17,6 +17,7 @@ export const FORGEROCK_TREE_COMPANY_ASSOCIATION = process.env.FORGEROCK_TREE_COM
 export const FORGEROCK_TREE_INVITE_USER = process.env.FORGEROCK_TREE_INVITE_USER || 'CHInviteUser'
 export const FORGEROCK_TREE_REQUEST_AUTH_CODE = process.env.FORGEROCK_TREE_REQUEST_AUTH_CODE || 'RequestAuthCode'
 export const FORGEROCK_TREE_CHANGE_PASSWORD = process.env.FORGEROCK_TREE_CHANGE_PASSWORD || 'CHChangePassword'
+export const FORGEROCK_TREE_CHANGE_PHONE_NUMBER = process.env.FORGEROCK_TREE_CHANGE_PHONE_NUMBER || 'CHChangePhoneNumber'
 
 export const CH_COOKIE_NAME = process.env.CH_COOKIE_NAME || '_ch_identity'
 export const ID_COOKIE_NAME = process.env.ID_COOKIE_NAME || '_profile'
