@@ -102,7 +102,7 @@ const InviteUser = ({ lang }) => {
     evt.preventDefault()
     setErrors([])
 
-    const formData = serializeForm(evt.target.elements)
+    const formData = serializeForm(evt.target)
     const stepOptions = getStepOptions()
     submitData(formData, stepOptions)
   }
