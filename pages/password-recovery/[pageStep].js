@@ -138,7 +138,7 @@ const ResetPassword = ({ lang, queryParams }) => {
     evt.preventDefault()
     setErrors([])
 
-    const formData = serializeForm(evt.target.elements)
+    const formData = serializeForm(evt.target)
     submitData(formData)
   }
 
