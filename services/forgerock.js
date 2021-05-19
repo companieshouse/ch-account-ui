@@ -326,10 +326,14 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
     const body = await res.json()
     let companies = []
     let count = 0
+    let pendingCount = 0
+    let pendingCompanies = []
 
     if (status === 200) {
       count = body.resultCount
       companies = body.result || []
+      pendingCompanies = companies.filter((company) => company._refProperties.membershipStatus === 'pending')
+      pendingCount = pendingCompanies.length
 
       // Loop each company and get reverse associations
       await Promise.all(companies.map(async (company) => {
@@ -344,6 +348,8 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
     return {
       count,
       companies,
+      pendingCount,
+      pendingCompanies,
       status,
       body,
       headers

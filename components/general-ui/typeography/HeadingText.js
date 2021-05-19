@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useRef } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 
 const HeadingText = (props) => {
-  const { type, label, size, caption, children, className, headingCount, weight, renderFeatures } = props
+  const { type, label, size, caption, children, className, headingCount, weight, renderFeatures, anchor } = props
+  const headingEl = useRef(null)
+
   const [tag, setTag] = React.useState(type)
   const classes = [className]
 
@@ -11,6 +13,16 @@ const HeadingText = (props) => {
   if (weight === 'bold') classes.push('govuk-!-font-weight-bold')
 
   const finalClassName = classes.join(' ').trim()
+
+  React.useEffect(() => {
+    if (anchor && headingEl.current) {
+      const hash = window.location.hash.replace('#', '')
+      if (hash === anchor) {
+        headingEl.current.scrollIntoView({ behavior: 'smooth' })
+        headingEl.current.focus()
+      }
+    }
+  })
 
   React.useEffect(() => {
     if (headingCount && !type) {
@@ -29,7 +41,7 @@ const HeadingText = (props) => {
   return (
     <>
       {Boolean(caption) === true && <span className="govuk-caption-xl">{caption}</span>}
-      <HeadingTag className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}{renderFeatures(props)}</HeadingTag>
+      <HeadingTag ref={headingEl} className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}{renderFeatures(props)}</HeadingTag>
     </>
   )
 }
@@ -37,6 +49,7 @@ const HeadingText = (props) => {
 export default HeadingText
 
 HeadingText.propTypes = {
+  anchor: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   headingCount: PropTypes.instanceOf(HeadingCount),

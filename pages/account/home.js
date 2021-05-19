@@ -23,11 +23,13 @@ const Home = ({ errors, lang }) => {
 
   React.useEffect(() => {
     headingCount.reset()
+
     if (accessToken && sub) {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
         console.log('AssociationData', response)
         setAssociationData({
           count: response.count,
+          pendingCount: response.pendingCount,
           companies: response.companies
         })
       })
