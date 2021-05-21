@@ -1540,7 +1540,7 @@
     {
       "conditional": {
         "prop": "${notifyToken}",
-        "operator": "is",
+        "operator": "eeq",
         "value": "changeNumberSuccess"
       },
       "component": "NotificationBanner",
@@ -1548,6 +1548,19 @@
         "type": "success",
         "title": "Success",
         "heading": "You've successfully updated your mobile number."
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${notifyToken}",
+        "operator": "eeq",
+        "value": "changeNameSuccess"
+      },
+      "component": "NotificationBanner",
+      "dynamicProps": {
+        "type": "success",
+        "title": "Success",
+        "heading": "You've successfully updated your name."
       }
     },
     {
@@ -1583,7 +1596,7 @@
             "action": {
               "label": "Change",
               "desc": "name",
-              "href": "https://www.google.com"
+              "href": "/account/manage/change-name/_start"
             }
           },
           {
@@ -2069,6 +2082,85 @@
       }
     }
   ],
+  "CHANGE_NAME_1": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "title": "Change your name"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Change your name"
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "SpanText",
+          "dynamicProps": {
+            "children": "The name currently shown in your Companies House account is "
+          }
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "weight": "bold"
+          },
+          "dynamicProps": {
+            "children": "${profileName}."
+          }
+        },
+        {
+          "component": "SpanText",
+          "dynamicProps": {
+            "children": "."
+          }
+        }
+      ]
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken2": {
+            "label": "Enter new full name",
+            "autoComplete": "off"
+          }
+        }
+      }
+    },
+    {
+      "component": "ButtonGroup",
+      "content": [
+        {
+          "component": "Button",
+          "props": {
+            "children": "Change name",
+            "type": "submit",
+            "testId": "submitButton"
+          }
+        },
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Cancel",
+            "href": "/account/manage"
+          }
+        }
+      ]
+    }
+  ],
+  "CHANGE_NAME_2": [
+    {
+      "component": "Redirect",
+      "dynamicProps": {
+        "url": "${changeSuccessPath}"
+      }
+    }
+  ],
   "UPDATE_PHONE_1": [
     {
       "component": "BrowserTitle",
@@ -2129,21 +2221,21 @@
     {
       "component": "ButtonGroup",
       "content": [
-          {
-            "component": "Button",
-            "props": {
-              "children": "Continue",
-              "type": "submit",
-              "testId": "submitButton"
-            }
-          },
-          {
-            "component": "LinkText",
-            "props": {
-              "children": "Cancel",
-              "href": "/account/manage"
-            }
+        {
+          "component": "Button",
+          "props": {
+            "children": "Continue",
+            "type": "submit",
+            "testId": "submitButton"
           }
+        },
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Cancel",
+            "href": "/account/manage"
+          }
+        }
       ]
     }
   ],
