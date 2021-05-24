@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
-import { FORGEROCK_TREE_CHANGE_PHONE_NUMBER, ID_COOKIE_NAME } from '../../../../services/environment'
+import { FORGEROCK_TREE_CHANGE_NAME, ID_COOKIE_NAME } from '../../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
@@ -28,7 +28,7 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const ChangeNumber = ({ lang, profile }) => {
+const ChangeName = ({ lang, profile }) => {
   const router = useRouter()
   const [, setCookie] = useCookies()
   const [errors, setErrors] = React.useState([])
@@ -48,11 +48,11 @@ const ChangeNumber = ({ lang, profile }) => {
     if (!pageStep) return
 
     if (pageStep === '_restart') {
-      router.replace('/account/manage/change-phone-number/_start/')
+      router.replace('/account/manage/change-name/_start/')
       return
     }
 
-    journeyName = FORGEROCK_TREE_CHANGE_PHONE_NUMBER
+    journeyName = FORGEROCK_TREE_CHANGE_NAME
 
     setErrors([])
 
@@ -62,10 +62,9 @@ const ChangeNumber = ({ lang, profile }) => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
       journeyName,
-      journeyNamespace: 'UPDATE_PHONE',
+      journeyNamespace: 'CHANGE_NAME',
       lang,
       stepOptions,
       onUpdateUser: (currentUser) => {
@@ -76,7 +75,7 @@ const ChangeNumber = ({ lang, profile }) => {
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
         // and are handled gracefully by the onUpdateUi function
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'CHANGE_PASSWORD_1'))
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'CHANGE_NAME_1'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -94,12 +93,12 @@ const ChangeNumber = ({ lang, profile }) => {
           }
         }
 
-        if (profile?.phone_number) {
-          stepCustomPageProps.profilePhoneNumber = profile.phone_number
+        if (profile?.given_name) {
+          stepCustomPageProps.profileName = profile.given_name
         }
 
         stepCustomPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
-          notifyToken: 'changeNumberSuccess'
+          notifyToken: 'changeNameSuccess'
         })
 
         // Update the errors for the page
@@ -147,9 +146,9 @@ const ChangeNumber = ({ lang, profile }) => {
   )
 }
 
-export default withProfile(withLang(ChangeNumber))
+export default withProfile(withLang(ChangeName))
 
-ChangeNumber.propTypes = {
+ChangeName.propTypes = {
   lang: PropTypes.string.isRequired,
   profile: PropTypes.object.isRequired
 }
