@@ -92,6 +92,15 @@ resource "aws_cloudfront_distribution" "website" {
         forward = "all"
       }
     }
+
+    dynamic "lambda_function_association" {
+      for_each = var.enable_auth ? [1] : []
+      content {
+        event_type   = "viewer-request"
+        lambda_arn   = aws_lambda_function.auth.0.qualified_arn
+        include_body = true
+      }
+    }
   }
 
   restrictions {

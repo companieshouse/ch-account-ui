@@ -108,3 +108,5 @@ fabric.properties
 # Terraform
 .terraform
 *tfplan
+local.auto.tfvars
+terraform/**/*.zip

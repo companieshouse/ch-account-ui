@@ -2,3 +2,4 @@ environment = "development"
 domain_name = "amido.aws.chdev.org"
 create_route53_record = true
 route53_zone = "aws.chdev.org"
+enable_auth = false
