@@ -29,3 +29,14 @@ variable "domain_name" {
   type        = string
   description = "The domain name to use for the application"
 }
+
+variable "enable_auth" {
+  type        = bool
+  description = "Should Basic Auth be enabled on the UI"
+}
+
+variable "auth_password" {
+  type        = string
+  description = "Basic Auth password"
+  default     = "N/A"
+}
