@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Button from './interaction/Button'
+import ButtonGroup from './interaction/ButtonGroup'
 import HeadingText from './typeography/HeadingText'
 import BodyText from './typeography/BodyText'
 import LinkText from './interaction/LinkText'
@@ -37,6 +38,7 @@ import SummaryListItem from './typeography/SummaryListItem'
 
 const featureMap = {
   Button,
+  ButtonGroup,
   HeadingText,
   BodyText,
   SpanText,

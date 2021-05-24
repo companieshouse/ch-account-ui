@@ -9,6 +9,7 @@ import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import withProfile from '../../services/withProfile'
+import withQueryParams from '../../services/withQueryParams'
 
 const ManageAccount = ({ errors, lang, profile }) => {
   const uiStage = 'HOME_MANAGE_ACCOUNT'
@@ -46,7 +47,7 @@ const ManageAccount = ({ errors, lang, profile }) => {
   )
 }
 
-export default withProfile(withLang(ManageAccount))
+export default withQueryParams(withProfile(withLang(ManageAccount)))
 
 ManageAccount.propTypes = {
   companies: PropTypes.array,

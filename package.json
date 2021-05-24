@@ -48,6 +48,7 @@
     "jest": "^26.6.3",
     "jest-axe": "^4.1.0",
     "jest-dom": "^4.0.0",
+    "prop-types": "^15.7.2",
     "replace-in-files": "^3.0.0",
     "sass": "^1.32.6",
     "sonarqube-scanner": "^2.8.0"
