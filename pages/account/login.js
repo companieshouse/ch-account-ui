@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import Router from 'next/router'
 import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
-import withLang from '../../services/lang/withLang'
+import WithLang from '../../services/lang/WithLang'
 import { useCookies } from 'react-cookie'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
-import withQueryParams from '../../services/withQueryParams'
+import withQueryParams from '../../components/providers/WithQueryParams'
 import { serializeForm } from '../../services/formData'
 
 const Login = ({ lang, queryParams }) => {
@@ -21,7 +21,7 @@ const Login = ({ lang, queryParams }) => {
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const {
     goto,
@@ -43,7 +43,7 @@ const Login = ({ lang, queryParams }) => {
         setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
         setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
 
-        if (queryParams.goto) {
+        if (goto) {
           return Router.push(goto)
         }
 
@@ -79,7 +79,7 @@ const Login = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [goto, overrideStage, notifyType, notifyHeading, notifyTitle, notifyChildren])
+  }, [overrideStage, notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount, lang, goto, setCookie])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -107,7 +107,7 @@ const Login = ({ lang, queryParams }) => {
   )
 }
 
-export default withQueryParams(withLang(Login))
+export default withQueryParams(WithLang(Login))
 
 Login.propTypes = {
   lang: PropTypes.string,

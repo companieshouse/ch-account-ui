@@ -5,8 +5,6 @@ const Redirect = (props) => {
   const { url, as, options, type = 'push' } = props
   const router = useRouter()
 
-  if (!url) return null
-
   React.useEffect(() => {
     if (type === 'push') {
       router.push(url, as, options)
@@ -14,7 +12,9 @@ const Redirect = (props) => {
     }
 
     router.replace(url, as, options)
-  }, [])
+  })
+
+  if (!url) return null
 
   return null
 }

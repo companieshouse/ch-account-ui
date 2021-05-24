@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import { CH_COOKIE_NAME, FORGEROCK_TREE_REGISTER, ID_COOKIE_NAME } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
-import withLang from '../../../services/lang/withLang'
+import WithLang from '../../../services/lang/WithLang'
 import { useCookies } from 'react-cookie'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
@@ -36,13 +36,13 @@ const RegisterContactDetails = ({ lang }) => {
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
 
-  let journeyName = ''
-
   React.useEffect(() => {
+    let journeyName = ''
+
     headingCount.reset()
     if (!pageStep) return
 
@@ -120,7 +120,7 @@ const RegisterContactDetails = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token])
+  }, [pageStep, overrideStage, service, token, headingCount, lang, router, setCookie, uiStage])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -153,7 +153,7 @@ const RegisterContactDetails = ({ lang }) => {
   )
 }
 
-export default withLang(RegisterContactDetails)
+export default WithLang(RegisterContactDetails)
 
 RegisterContactDetails.propTypes = {
   lang: PropTypes.string

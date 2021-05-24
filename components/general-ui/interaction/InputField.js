@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import { errorsPropType } from '../../../services/propTypes'
-import withLang from '../../../services/lang/withLang'
+import WithLang from '../../../services/lang/WithLang'
 import { translate } from '../../../services/translate'
 
-const InputField = ({ lang, label = '', renderLabelAs = 'label', caption, captionPosition = 'below', captionSize = 'xl', headingCount, type = 'text', id, className = '', errors = [], hint = '', fixedWidth = '', fluidWidth = '', autoComplete, testId, defaultValue = '', required = false, prefix, suffix, groupError = undefined, formGroup, ...otherProps }) => {
+const InputField = ({ lang, label, renderLabelAs, caption, captionPosition, captionSize, headingCount, type, id, className, errors, hint, fixedWidth, fluidWidth, autoComplete, testId, defaultValue, required, prefix, suffix, groupError, formGroup, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -49,7 +49,7 @@ const InputField = ({ lang, label = '', renderLabelAs = 'label', caption, captio
   )
 }
 
-export default withLang(InputField)
+export default WithLang(InputField)
 
 InputField.propTypes = {
   autoComplete: PropTypes.string,
@@ -61,7 +61,8 @@ InputField.propTypes = {
   errors: errorsPropType,
   fixedWidth: PropTypes.string,
   fluidWidth: PropTypes.string,
-  groupError: PropTypes.object,
+  formGroup: PropTypes.string,
+  groupError: PropTypes.string,
   headingCount: PropTypes.object,
   hint: PropTypes.string,
   id: PropTypes.string.isRequired,
@@ -83,7 +84,6 @@ InputField.defaultProps = {
   errors: [],
   fixedWidth: '',
   fluidWidth: '',
-  groupError: undefined,
   hint: '',
   label: '',
   renderLabelAs: 'label',

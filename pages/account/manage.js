@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
-import withLang from '../../services/lang/withLang'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
-import withProfile from '../../services/withProfile'
-import withQueryParams from '../../services/withQueryParams'
+import WithLang from '../../services/lang/WithLang'
+import WithQueryParams from '../../components/providers/WithQueryParams'
+import WithProfile from '../../components/providers/WithProfile'
 
 const ManageAccount = ({ errors, lang, profile }) => {
   const uiStage = 'HOME_MANAGE_ACCOUNT'
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const content = getStageFeatures(lang, uiStage)
 
@@ -22,7 +22,7 @@ const ManageAccount = ({ errors, lang, profile }) => {
 
   React.useEffect(() => {
     headingCount.reset()
-  }, [notifyType, notifyHeading, notifyTitle, notifyChildren])
+  }, [notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount])
 
   return (
     <FeatureDynamicView
@@ -47,7 +47,7 @@ const ManageAccount = ({ errors, lang, profile }) => {
   )
 }
 
-export default withQueryParams(withProfile(withLang(ManageAccount)))
+export default WithQueryParams(WithProfile(WithLang(ManageAccount)))
 
 ManageAccount.propTypes = {
   companies: PropTypes.array,

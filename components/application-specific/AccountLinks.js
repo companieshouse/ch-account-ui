@@ -6,8 +6,8 @@ import Column from '../general-ui/layout/Column'
 import SectionBreak from '../general-ui/typeography/SectionBreak'
 import SpanText from '../general-ui/typeography/SpanText'
 import { translate } from '../../services/translate'
-import withLang from '../../services/lang/withLang'
-import withProfile from '../../services/withProfile'
+import WithLang from '../../services/lang/WithLang'
+import WithProfile from '../providers/WithProfile'
 
 const AccountLinks = (props) => {
   const { lang, profile = {} } = props
@@ -32,7 +32,7 @@ const AccountLinks = (props) => {
   )
 }
 
-export default withProfile(withLang(AccountLinks))
+export default WithProfile(WithLang(AccountLinks))
 
 AccountLinks.propTypes = {
   profile: PropTypes.object,

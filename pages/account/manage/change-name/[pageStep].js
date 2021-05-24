@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
 import { FORGEROCK_TREE_CHANGE_NAME, ID_COOKIE_NAME } from '../../../../services/environment'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
-import withLang from '../../../../services/lang/withLang'
-import withProfile from '../../../../services/withProfile'
 import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
 import { serializeForm } from '../../../../services/formData'
 import { generateQueryUrl } from '../../../../services/queryString'
 import { useCookies } from 'react-cookie'
+import WithLang from '../../../../services/lang/withLang'
+import WithProfile from '../../../../components/providers/WithProfile'
 
 export const getStaticPaths = async () => {
   return {
@@ -37,13 +37,13 @@ const ChangeName = ({ lang, profile }) => {
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
+  const givenName = profile?.given_name
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
 
-  let journeyName = ''
-
   React.useEffect(() => {
+    const journeyName = FORGEROCK_TREE_CHANGE_NAME
     headingCount.reset()
     if (!pageStep) return
 
@@ -51,8 +51,6 @@ const ChangeName = ({ lang, profile }) => {
       router.replace('/account/manage/change-name/_start/')
       return
     }
-
-    journeyName = FORGEROCK_TREE_CHANGE_NAME
 
     setErrors([])
 
@@ -93,8 +91,8 @@ const ChangeName = ({ lang, profile }) => {
           }
         }
 
-        if (profile?.given_name) {
-          stepCustomPageProps.profileName = profile.given_name
+        if (givenName) {
+          stepCustomPageProps.profileName = givenName
         }
 
         stepCustomPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
@@ -113,7 +111,7 @@ const ChangeName = ({ lang, profile }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token])
+  }, [pageStep, overrideStage, service, token, givenName, headingCount, lang, setCookie, router])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -146,7 +144,7 @@ const ChangeName = ({ lang, profile }) => {
   )
 }
 
-export default withProfile(withLang(ChangeName))
+export default WithProfile(WithLang(ChangeName))
 
 ChangeName.propTypes = {
   lang: PropTypes.string.isRequired,

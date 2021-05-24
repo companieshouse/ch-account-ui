@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState, useMemo } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import { FORGEROCK_TREE_COMPANY_ASSOCIATION } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
-import withLang from '../../../services/lang/withLang'
+import WithLang from '../../../services/lang/WithLang'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { serializeForm } from '../../../services/formData'
@@ -28,19 +28,19 @@ export const getStaticProps = async () => {
 
 const AssociateUserAndCompany = ({ lang }) => {
   const router = useRouter()
-  const [errors, setErrors] = React.useState([])
-  const [customPageProps, setCustomPageProps] = React.useState({})
-  const [uiStage, setUiStage] = React.useState('')
-  const [uiFeatures, setUiFeatures] = React.useState([])
-  const [uiElements, setUiElements] = React.useState([])
-  const [submitData, setSubmitData] = React.useState((formData) => {})
-  const headingCount = new HeadingCount()
+  const [errors, setErrors] = useState([])
+  const [customPageProps, setCustomPageProps] = useState({})
+  const [uiStage, setUiStage] = useState('')
+  const [uiFeatures, setUiFeatures] = useState([])
+  const [uiElements, setUiElements] = useState([])
+  const [submitData, setSubmitData] = useState((formData) => {})
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
 
-  let journeyName = ''
-
   React.useEffect(() => {
+    let journeyName = ''
+
     headingCount.reset()
     if (!pageStep) return
 
@@ -107,7 +107,7 @@ const AssociateUserAndCompany = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token])
+  }, [pageStep, overrideStage, service, token, headingCount, lang, router])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -143,7 +143,7 @@ const AssociateUserAndCompany = ({ lang }) => {
   )
 }
 
-export default withLang(AssociateUserAndCompany)
+export default WithLang(AssociateUserAndCompany)
 
 AssociateUserAndCompany.propTypes = {
   lang: PropTypes.string.isRequired

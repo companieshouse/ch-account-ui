@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import withLang from '../../services/lang/withLang'
+import WithLang from '../../services/lang/WithLang'
 
 const LanguageSwitcher = ({ lang, setLang }) => {
   return (
@@ -31,7 +31,7 @@ const LanguageSwitcher = ({ lang, setLang }) => {
   )
 }
 
-export default withLang(LanguageSwitcher, { withSetter: true })
+export default WithLang(LanguageSwitcher, { withSetter: true })
 
 LanguageSwitcher.propTypes = {
   lang: PropTypes.string.isRequired,

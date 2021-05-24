@@ -1,3 +1,5 @@
+
+/* global CookieConsent */
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -10,35 +12,29 @@ const CookieBanners = (props) => {
     onHideCookieBanners = () => {}
   } = props
 
-  const start = () => {
-    // eslint-disable-next-line no-undef
-    CookieConsent.start(onStart, onStop)
-  }
-
   const acceptCookies = () => {
     // Tell the consent library the user accepted cookies
-    // eslint-disable-next-line no-undef
     CookieConsent.acceptCookies(onAcceptCookies, 'full-journey')
-
-    // Start analytics?
   }
 
   const rejectCookies = () => {
-    // eslint-disable-next-line no-undef
     CookieConsent.rejectCookies(onRejectCookies, 'full-journey')
   }
 
   const hideCookieBanners = () => {
-    // eslint-disable-next-line no-undef
     CookieConsent.hideCookieBanners()
     onHideCookieBanners()
   }
 
+  const cookieConsentAvailable = typeof CookieConsent !== 'undefined'
+
   React.useEffect(() => {
-    if (typeof CookieConsent === 'undefined') return
+    const start = () => {
+      CookieConsent.start(onStart, onStop)
+    }
+    if (!cookieConsentAvailable) return
     start()
-    // eslint-disable-next-line no-undef
-  }, [typeof CookieConsent])
+  }, [onStart, onStop, cookieConsentAvailable])
 
   return (
     <div id="cookie-banner" hidden>

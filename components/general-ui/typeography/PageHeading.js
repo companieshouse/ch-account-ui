@@ -5,7 +5,7 @@ import ErrorSummary from './ErrorSummary'
 import NotificationBanner from './NotificationBanner'
 import { errorsPropType } from '../../../services/propTypes'
 import { translate } from '../../../services/translate'
-import withLang from '../../../services/lang/withLang'
+import WithLang from '../../../services/lang/WithLang'
 
 const PageHeading = (props) => {
   const { lang, headingCount, errors = [], children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren = null } = props
@@ -34,7 +34,7 @@ const PageHeading = (props) => {
   )
 }
 
-export default withLang(PageHeading)
+export default WithLang(PageHeading)
 
 PageHeading.propTypes = {
   children: PropTypes.node,
