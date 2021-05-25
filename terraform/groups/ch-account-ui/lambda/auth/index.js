@@ -1,5 +1,7 @@
 const aws = require('aws-sdk')
-const ssm = new aws.SSM()
+const ssm = new aws.SSM({
+  region: 'us-east-1'
+})
 
 exports.handler = async (event, context, callback) => {
   try {
@@ -8,9 +10,10 @@ exports.handler = async (event, context, callback) => {
 
     const username = 'ch-account-ui'
     const passwordParams = {
-      Name: `${context.functionName}-password`,
+      Name: `${context.functionName.replace('us-east-1.', '')}-password`,
       WithDecryption: true
     }
+
     const secret = await ssm.getParameter(passwordParams).promise()
     const password = secret.Parameter.Value
 
@@ -21,7 +24,7 @@ exports.handler = async (event, context, callback) => {
 
     if (
       typeof headers.authorization == 'undefined' ||
-      headers.authorization[0].value != basicAuthentication
+      headers.authorization[0].value != basicAuthHeader
     ) {
       const body = 'Unauthorized'
       const response = {
