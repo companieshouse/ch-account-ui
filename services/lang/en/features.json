@@ -1642,9 +1642,13 @@
         "value": "authSuccess"
       },
       "component": "NotificationBanner",
-      "dynamicProps": {
+      "props": {
         "type": "success",
         "title": "Success",
+        "testId": "notification-banner-auth-success"
+      },
+      "dynamicProps": {
+        "notifyId": "${notifyId}",
         "heading": "An email request has been sent to ${invitedUser} to be authorised to file online for ${companyName}"
       }
     },
