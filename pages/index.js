@@ -10,7 +10,7 @@ import Row from '../components/general-ui/layout/Row'
 import Column from '../components/general-ui/layout/Column'
 import Main from '../components/general-ui/layout/Main'
 import WidthContainer from '../components/general-ui/layout/WidthContainer'
-import withLang from '../services/lang/withLang'
+import WithLang from '../services/lang/WithLang'
 import { translate } from '../services/translate'
 import LanguageSwitcher from '../components/application-specific/LanguageSwitcher'
 import Header from '../components/general-ui/Header'
@@ -55,7 +55,7 @@ const Index = ({ lang }) => {
   )
 }
 
-export default withLang(Index)
+export default WithLang(Index)
 
 Index.propTypes = {
   lang: PropTypes.string.isRequired

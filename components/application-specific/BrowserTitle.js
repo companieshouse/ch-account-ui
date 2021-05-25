@@ -4,7 +4,7 @@ import React from 'react'
 const BrowserTitle = ({ title }) => {
   React.useEffect(() => {
     window.document.title = title
-  }, [])
+  })
 
   return null
 }

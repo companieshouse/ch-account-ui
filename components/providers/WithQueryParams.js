@@ -8,9 +8,9 @@ import React from 'react'
  * @param {function(*): *} WrappedComponent
  * @returns {function(*): *}
  */
-const withQueryParams = (WrappedComponent) => function withQueryParams (props) {
+const WithQueryParams = (WrappedComponent) => function WithQueryParams (props) {
   const queryParams = typeof window !== 'undefined' ? querystring.parse(window.location.search.slice(1)) : {}
   return <WrappedComponent {...props} queryParams={queryParams} />
 }
 
-export default withQueryParams
+export default WithQueryParams

@@ -3,7 +3,7 @@ import React from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 
 const HeadingText = (props) => {
-  const { type = '', label = '', size = 'xl', caption, children, className = '', headingCount, weight = 'bold', renderFeatures } = props
+  const { type, label, size, caption, children, className, headingCount, weight, renderFeatures } = props
   const [tag, setTag] = React.useState(type)
   const classes = [className]
 
@@ -12,12 +12,12 @@ const HeadingText = (props) => {
 
   const finalClassName = classes.join(' ').trim()
 
-  if (headingCount && !type) {
-    React.useEffect(() => {
+  React.useEffect(() => {
+    if (headingCount && !type) {
       headingCount.use()
       setTag(`h${headingCount.count}`)
-    }, [])
-  }
+    }
+  }, [headingCount, type])
 
   if (!tag) {
     console.warn("A HeadingText component was asked to render but didn't know what tag to use. Either pass a `headingCount` or a `type` prop.")

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getTemplateDataValue, parseTemplateString, processDynamicProps } from '../services/template'
 import { set as pathSet } from '@irrelon/path'
-import withTransformedErrors from '../services/withTransformedErrors'
+import WithTransformedErrors from './providers/WithTransformedErrors'
 
 const log = (...rest) => {
   // console.log(...rest)
@@ -203,7 +203,7 @@ const Dynamic = (props) => {
   )
 }
 
-export default withTransformedErrors(Dynamic)
+export default WithTransformedErrors(Dynamic)
 
 Dynamic.propTypes = {
   children: PropTypes.any,

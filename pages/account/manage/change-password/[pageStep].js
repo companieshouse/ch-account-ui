@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
 import { FORGEROCK_TREE_CHANGE_PASSWORD } from '../../../../services/environment'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
-import withLang from '../../../../services/lang/withLang'
+import WithLang from '../../../../services/lang/WithLang'
 import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
 import { serializeForm } from '../../../../services/formData'
@@ -33,13 +33,13 @@ const ChangePassword = ({ lang }) => {
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
 
-  let journeyName = ''
-
   React.useEffect(() => {
+    const journeyName = FORGEROCK_TREE_CHANGE_PASSWORD
+
     headingCount.reset()
     if (!pageStep) return
 
@@ -47,8 +47,6 @@ const ChangePassword = ({ lang }) => {
       router.replace('/account/manage/change-password/_start/')
       return
     }
-
-    journeyName = FORGEROCK_TREE_CHANGE_PASSWORD
 
     setErrors([])
 
@@ -64,9 +62,6 @@ const ChangePassword = ({ lang }) => {
       journeyNamespace: 'CHANGE_PASSWORD',
       lang,
       stepOptions,
-      onSuccess: () => {
-        Router.push('/account/manage')
-      },
       onFailure: (errData, newErrors = []) => {
         // We only get here if there was a fatal error signal from the forgerock client library
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
@@ -102,7 +97,7 @@ const ChangePassword = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token])
+  }, [pageStep, overrideStage, service, token, headingCount, lang, router])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -138,7 +133,7 @@ const ChangePassword = ({ lang }) => {
   )
 }
 
-export default withLang(ChangePassword)
+export default WithLang(ChangePassword)
 
 ChangePassword.propTypes = {
   lang: PropTypes.string.isRequired

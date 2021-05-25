@@ -10,7 +10,7 @@ import PageHeading from '../../components/general-ui/typeography/PageHeading'
 import BodyText from '../../components/general-ui/typeography/BodyText'
 import LinkText from '../../components/general-ui/interaction/LinkText'
 import WidthContainer from '../../components/general-ui/layout/WidthContainer'
-import withLang from '../../services/lang/withLang'
+import WithLang from '../../services/lang/WithLang'
 import { CH_COOKIE_NAME, ID_COOKIE_NAME } from '../../services/environment'
 import { useCookies } from 'react-cookie'
 import { translate } from '../../services/translate'
@@ -41,7 +41,7 @@ const Logout = ({ lang }) => {
   React.useEffect(() => {
     headingCount.reset()
     doLogout()
-  }, [])
+  })
 
   return (
     <>
@@ -63,7 +63,7 @@ const Logout = ({ lang }) => {
   )
 }
 
-export default withLang(Logout)
+export default WithLang(Logout)
 
 Logout.propTypes = {
   lang: PropTypes.string

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useCallback, useState, useMemo } from 'react'
 import { FORGEROCK_TREE_INVITE_USER } from '../../../services/environment'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import Router, { useRouter } from 'next/router'
@@ -7,10 +7,10 @@ import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
-import withLang from '../../../services/lang/withLang'
+import WithLang from '../../../services/lang/WithLang'
 import HeadingCount from '../../../services/HeadingCount'
 import { serializeForm } from '../../../services/formData'
-import withAccessToken from '../../../services/withAccessToken'
+import WithAccessToken from '../../../components/providers/WithAccessToken'
 import { generateQueryUrl } from '../../../services/queryString'
 
 export const getStaticPaths = async () => {
@@ -35,11 +35,11 @@ const InviteUser = ({ lang }) => {
   const [customPageProps, setCustomPageProps] = useState({})
   const [submitData, setSubmitData] = useState((formData, stepOptions) => {})
   const { pageStep = '', service = '', token, overrideStage = '', companyNumber } = router.query
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
-  const getStepOptions = () => ({
+  const getStepOptions = useCallback(() => ({
     query: { companyNumber: companyNumber, token }
-  })
+  }), [companyNumber, token])
 
   React.useEffect(() => {
     headingCount.reset()
@@ -96,7 +96,7 @@ const InviteUser = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token])
+  }, [pageStep, overrideStage, service, token, getStepOptions, headingCount, lang])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -134,4 +134,4 @@ InviteUser.propTypes = {
   lang: PropTypes.string
 }
 
-export default withAccessToken(withLang(InviteUser))
+export default WithAccessToken(WithLang(InviteUser))

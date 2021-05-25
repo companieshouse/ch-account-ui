@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
 import { FORGEROCK_TREE_CHANGE_PHONE_NUMBER, ID_COOKIE_NAME } from '../../../../services/environment'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
-import withLang from '../../../../services/lang/withLang'
-import withProfile from '../../../../services/withProfile'
 import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
 import { serializeForm } from '../../../../services/formData'
 import { generateQueryUrl } from '../../../../services/queryString'
 import { useCookies } from 'react-cookie'
+import WithLang from '../../../../services/lang/WithLang'
+import WithProfile from '../../../../components/providers/WithProfile'
 
 export const getStaticPaths = async () => {
   return {
@@ -37,11 +37,11 @@ const ChangeNumber = ({ lang, profile }) => {
   const [uiFeatures, setUiFeatures] = React.useState([])
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
-  const headingCount = new HeadingCount()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
 
-  let journeyName = ''
+  const profilePhoneNumber = profile?.phone_number
 
   React.useEffect(() => {
     headingCount.reset()
@@ -52,7 +52,7 @@ const ChangeNumber = ({ lang, profile }) => {
       return
     }
 
-    journeyName = FORGEROCK_TREE_CHANGE_PHONE_NUMBER
+    const journeyName = FORGEROCK_TREE_CHANGE_PHONE_NUMBER
 
     setErrors([])
 
@@ -94,8 +94,8 @@ const ChangeNumber = ({ lang, profile }) => {
           }
         }
 
-        if (profile?.phone_number) {
-          stepCustomPageProps.profilePhoneNumber = profile.phone_number
+        if (profilePhoneNumber) {
+          stepCustomPageProps.profilePhoneNumber = profilePhoneNumber
         }
 
         stepCustomPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
@@ -114,7 +114,7 @@ const ChangeNumber = ({ lang, profile }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token])
+  }, [pageStep, overrideStage, service, token, headingCount, lang, profilePhoneNumber, router, setCookie])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -147,7 +147,7 @@ const ChangeNumber = ({ lang, profile }) => {
   )
 }
 
-export default withProfile(withLang(ChangeNumber))
+export default WithProfile(WithLang(ChangeNumber))
 
 ChangeNumber.propTypes = {
   lang: PropTypes.string.isRequired,

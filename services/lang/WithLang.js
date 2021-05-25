@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCookies } from 'react-cookie'
 
-const withLang = (WrappedComponent, options = { withSetter: false }) => function withLang (props) {
+const WithLang = (WrappedComponent, options = { withSetter: false }) => function WithLang (props) {
   const [cookies, setCookie] = useCookies(['lang'])
   const { lang = 'en' } = cookies
 
@@ -18,4 +18,4 @@ const withLang = (WrappedComponent, options = { withSetter: false }) => function
   return <WrappedComponent {...props} {...langProps} />
 }
 
-export default withLang
+export default WithLang

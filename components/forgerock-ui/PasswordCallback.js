@@ -4,9 +4,9 @@ import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
 import LinkText from '../general-ui/interaction/LinkText'
 import { translate } from '../../services/translate'
-import withLang from '../../services/lang/withLang'
+import WithLang from '../../services/lang/WithLang'
 
-const PasswordCallback = ({ lang, errors = [], element, customElementProps = {}, hasShowPasswordSuffix = true, groupError = undefined }) => {
+const PasswordCallback = ({ lang, errors, element, customElementProps, hasShowPasswordSuffix, groupError }) => {
   const [showPassword, setShowPassword] = React.useState(false)
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
@@ -40,14 +40,15 @@ const PasswordCallback = ({ lang, errors = [], element, customElementProps = {},
   )
 }
 
-export default withLang(PasswordCallback)
+export default WithLang(PasswordCallback)
 
 PasswordCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
   hasShowPasswordSuffix: PropTypes.bool,
   lang: PropTypes.string.isRequired,
-  errors: errorsPropType
+  errors: errorsPropType,
+  groupError: PropTypes.string
 }
 
 PasswordCallback.defaultProps = {

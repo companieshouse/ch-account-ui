@@ -3,7 +3,7 @@ import React from 'react'
 import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
 
-const ValidatedCreatePasswordCallback = ({ errors = [], element, customElementProps = {}, groupError = undefined }) => {
+const ValidatedCreatePasswordCallback = ({ errors, element, customElementProps, groupError }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
   const isEchoOn = element.getOutputValue('echoOn')
@@ -27,7 +27,8 @@ export default ValidatedCreatePasswordCallback
 ValidatedCreatePasswordCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
-  errors: errorsPropType
+  errors: errorsPropType,
+  groupError: PropTypes.string
 }
 
 ValidatedCreatePasswordCallback.defaultProps = {
