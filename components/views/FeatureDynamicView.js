@@ -13,13 +13,13 @@ import AccountLinks from '../application-specific/AccountLinks'
 
 const FeatureDynamicView = (props) => {
   const {
-    hasBackLink = true,
-    hasLanguageSwitcher = false,
-    hasLogoutLink = false,
-    hasAccountLinks = false,
+    hasBackLink,
+    hasLanguageSwitcher,
+    hasLogoutLink,
+    hasAccountLinks,
     titleLinkHref,
-    width = 'two-thirds',
-    formAction = '',
+    width,
+    formAction,
     onSubmit,
     renderFeatures,
     children
