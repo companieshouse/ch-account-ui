@@ -11,7 +11,7 @@ import Dynamic from '../../../../components/Dynamic'
 import { serializeForm } from '../../../../services/formData'
 import { generateQueryUrl } from '../../../../services/queryString'
 import { useCookies } from 'react-cookie'
-import WithLang from '../../../../services/lang/withLang'
+import WithLang from '../../../../services/lang/WithLang'
 import WithProfile from '../../../../components/providers/WithProfile'
 
 export const getStaticPaths = async () => {
