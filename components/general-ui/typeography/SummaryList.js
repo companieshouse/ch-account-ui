@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const SummaryList = (props) => {
-  const { children, className = '', renderFeatures, listItems = [] } = props
+  const { children, className = '', renderFeatures, listItems = [], hasActions } = props
   const classes = [className]
 
   const finalClassName = classes.join(' ').trim()
@@ -16,6 +16,14 @@ const SummaryList = (props) => {
         <dd className="govuk-summary-list__value">
           {listItem.value}
         </dd>
+        {hasActions && !listItem.action &&
+        <span className="govuk-summary-list__actions"/>
+        }
+        {hasActions && listItem.action &&
+        <dd className="govuk-summary-list__actions">
+          {listItem.action}
+        </dd>
+        }
         {listItem.action && <dd className="govuk-summary-list__actions">
           <a className="govuk-link" href={`${listItem.action.href}`}>
             {listItem.action.label}<span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
@@ -33,6 +41,7 @@ export default SummaryList
 SummaryList.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  hasActions: PropTypes.bool,
   renderFeatures: PropTypes.func,
   listItems: PropTypes.array
 }

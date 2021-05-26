@@ -1,7 +1,7 @@
 import React from 'react'
 import fetchMock from 'fetch-mock'
 import Login from '../../../pages/account/login'
-import { mockAuthId } from '../util'
+import { mockAuthId } from '../common-mocks'
 
 const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHLogin'
 

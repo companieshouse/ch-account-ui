@@ -42,6 +42,7 @@ const AssociateUserAndCompany = ({ lang }) => {
     let journeyName = ''
 
     headingCount.reset()
+
     if (!pageStep) return
 
     if (pageStep === '_restart') {

@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const Td = (props) => {
-  const { children, renderFeatures } = props
+  const { children, renderFeatures, ...rest } = props
   return (
-    <td className="govuk-table__cell">{children}{renderFeatures(props)}</td>
+    <td className="govuk-table__cell" {...rest}>{children}{renderFeatures(props)}</td>
   )
 }
 

@@ -1912,8 +1912,10 @@
                                           "component": "Td",
                                           "content": [{
                                             "component": "LinkText",
+                                            "dynamicProps": {
+                                              "href": "${user.detailsPath}"
+                                            },
                                             "props": {
-                                              "href": "/account/home",
                                               "children": "View details",
                                               "className": "govuk-link--no-visited-state"
                                             }
@@ -1960,6 +1962,141 @@
         "children": "Add a company",
         "href": "/account/associate/_start",
         "testId": "accountAssociateCompanyLink"
+      }
+    }
+  ],
+  "HOME_AUTHORISED_PERSON": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "title": "Authorised person's details"
+      }
+    },
+    {
+      "component": "Caption",
+      "dynamicProps": {
+        "children": "${company.name}"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Authorised person's details"
+      }
+    },
+    {
+      "component": "SummaryList",
+      "dynamicProps": {
+        "listItems.0.value": "${user.givenName}",
+        "listItems.1.value": "${user.mail}",
+        "listItems.2.value": {
+          "component": "Fragment",
+          "content": [
+            {
+              "conditional": {
+                "prop": "${user._refProperties.membershipStatus}",
+                "operator": "eeq",
+                "value": "confirmed"
+              },
+              "component": "Tag",
+              "props": {
+                "colour": "green",
+                "children": "Confirmed"
+              }
+            },
+            {
+              "conditional": {
+                "prop": "${user._refProperties.membershipStatus}",
+                "operator": "eeq",
+                "value": "pending"
+              },
+              "component": "Tag",
+              "props": {
+                "colour": "yellow",
+                "children": "Pending"
+              }
+            },
+            {
+              "conditional": {
+                "prop": "${user._refProperties.membershipStatus}",
+                "operator": "eeq",
+                "value": "pending"
+              },
+              "component": "BodyText",
+              "content": [
+                {
+                  "component": "Br"
+                },
+                {
+                  "component": "Fragment",
+                  "dynamicProps": {
+                    "children": "We have sent an email to ${user.mail}. This person must select the request link in the email so that they can file online for ${company.name}."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "listItems.2.action":  {
+          "conditional": {
+            "prop": "${user._refProperties.membershipStatus}",
+            "operator": "eeq",
+            "value": "pending"
+          },
+          "component": "LinkText",
+          "props": {
+            "children": "Resend email",
+            "testId": "resendAuthorisedUserRequestLink"
+          },
+          "dynamicProps": {
+            "href": "${company.resendLink}"
+          }
+        }
+      },
+      "props": {
+        "hasActions": true,
+        "listItems": [
+          {
+            "label": "Name",
+            "value": ""
+          },
+          {
+            "label": "Email address",
+            "value": ""
+          },
+          {
+            "label": "Status",
+            "value": ""
+          }
+        ]
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${user._refProperties.membershipStatus}",
+        "operator": "eeq",
+        "value": "pending"
+      },
+      "component": "Button",
+      "props": {
+        "warning": true,
+        "renderAs": "link",
+        "children": "Cancel request",
+        "href": "/account/associate/_start?action=cancel",
+        "testId": "cancelAuthorisedUserRequestLink"
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${user._refProperties.membershipStatus}",
+        "operator": "eeq",
+        "value": "confirmed"
+      },
+      "component": "LinkText",
+      "props": {
+        "children": "Remove authorisation to file online for this company",
+        "href": "/account/home",
+        "testId": "removeAuthorisedUserRequestLink"
       }
     }
   ],
@@ -2362,7 +2499,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "title": "Authorised person's details"
+        "title": "What are the authorised person's details?"
       }
     },
     {

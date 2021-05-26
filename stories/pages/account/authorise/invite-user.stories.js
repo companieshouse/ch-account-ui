@@ -1,7 +1,7 @@
 import React from 'react'
 import fetchMock from 'fetch-mock'
-import InviteUser from '../../../pages/account/authorise/[pageStep]'
-import { mockAuthId } from '../util'
+import InviteUser from '../../../../pages/account/authorise/[pageStep]'
+import { mockAuthId } from '../../common-mocks'
 
 const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHInviteUser'
 
@@ -29,7 +29,7 @@ const defaultResponse = {
 }
 
 export default {
-  title: 'Pages/Authorise/InviteUser',
+  title: 'Pages/Account/Authorise/InviteUser',
   args: {
     lang: 'en'
   }
