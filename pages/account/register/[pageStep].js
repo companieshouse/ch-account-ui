@@ -120,7 +120,8 @@ const RegisterContactDetails = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token, headingCount, lang, router, setCookie, uiStage])
+    // eslint-disable-next-line
+  }, [pageStep, overrideStage, service, token, headingCount, lang, router, setCookie])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
