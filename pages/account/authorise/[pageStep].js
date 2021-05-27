@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useCallback, useState, useMemo } from 'react'
 import { FORGEROCK_TREE_INVITE_USER } from '../../../services/environment'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
+import { findCustomPageProps, findCustomStage, findNotificationId, forgerockFlow } from '../../../services/forgerock'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
@@ -69,8 +69,10 @@ const InviteUser = ({ lang }) => {
 
         // Setup success URL for step 2 redirect
         if (stage === 'INVITE_USER_2') {
+          const notificationId = findNotificationId(step)
           stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
             notifyToken: 'authSuccess',
+            notifyId: notificationId,
             invitedUser: stepCustomPageProps.invitedUser,
             companyName: stepCustomPageProps.company.name
           })

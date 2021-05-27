@@ -98,38 +98,43 @@ export const findCustomStage = (step) => {
   return ''
 }
 
-export const findCustomPageProps = (step) => {
+export const findCallback = (step, callbackId) => {
   for (let i = 0; i < step.payload.callbacks.length; i++) {
     const callback = step.payload.callbacks[i]
 
     if (!callback) continue
     if (callback.type !== 'HiddenValueCallback') continue
-    if (!callback.output.find((output) => output.name === 'id' && output.value === 'pagePropsJSON')) continue
 
-    try {
-      const jsonString = callback.output.find((output) => output.name === 'value')?.value || ''
+    if (!callback.output.find((output) => output.name === 'id' && output.value === callbackId)) continue
 
-      if (!jsonString) {
-        console.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
-        continue
-      }
+    return callback.output.find((output) => output.name === 'value')?.value || ''
+  }
+}
 
-      const customPropsObject = JSON.parse(jsonString)
+export const findNotificationId = (step) => {
+  return findCallback(step, 'notificationId')
+}
 
-      return customPropsObject
-    } catch (err) {
-      return {
-        apiError: {
-          errors: [{
-            error: 'JSONParseError',
-            message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
-          }]
-        }
+export const findCustomPageProps = (step) => {
+  try {
+    const jsonString = findCallback(step, 'pagePropsJSON')
+
+    if (!jsonString) {
+      console.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
+      return {}
+    }
+
+    return JSON.parse(jsonString)
+  } catch (err) {
+    return {
+      apiError: {
+        errors: [{
+          error: 'JSONParseError',
+          message: 'API returned invalid JSON string in \'pagePropsJSON\' callback data: ' + err
+        }]
       }
     }
   }
-
-  return {}
 }
 
 export const forgerockFlow = ({
