@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
-import Router, { useRouter } from 'next/router'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
+import Router from 'next/router'
+import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_WF_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import WithLang from '../../services/lang/WithLang'
+import { useCookies } from 'react-cookie'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import { serializeForm } from '../../services/formData'
 
 const Login = ({ lang, queryParams }) => {
+  const [, setCookie] = useCookies()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
@@ -23,20 +25,24 @@ const Login = ({ lang, queryParams }) => {
 
   const {
     goto,
-    overrideStage = '',
-    authIndexValue
+    notifyType,
+    notifyHeading,
+    notifyTitle,
+    notifyChildren,
+    overrideStage = ''
   } = queryParams
 
   React.useEffect(() => {
     headingCount.reset()
-    const journeyName = authIndexValue || FORGEROCK_TREE_LOGIN
-    const isOIDC = journeyName !== FORGEROCK_TREE_LOGIN
-
     forgerockFlow({
-      journeyName,
-      journeyNamespace: 'LOGIN',
+      journeyName: FORGEROCK_TREE_WF_LOGIN,
+      journeyNamespace: 'WF_LOGIN',
       lang,
-      onSuccess: () => {
+      onSuccess: (loginData) => {
+        // Set auth cookie
+        setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
+        setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
+
         if (goto) {
           return Router.push(goto)
         }
@@ -45,12 +51,10 @@ const Login = ({ lang, queryParams }) => {
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'CH_LOGIN_1'))
+        setUiFeatures(getStageFeatures(lang, overrideStage || 'WF_LOGIN_1'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
-        const stage = step.payload.stage || findCustomStage(step)
-        step.payload.stage = stage
 
         if (stepCustomPageProps) {
           if (stepCustomPageProps.apiError) {
@@ -70,12 +74,12 @@ const Login = ({ lang, queryParams }) => {
 
         setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)
-        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
+        setUiFeatures(getStageFeatures(lang, overrideStage || step.payload.stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [overrideStage, headingCount, lang, goto, authIndexValue])
+  }, [overrideStage, notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount, lang, goto, setCookie])
 
   const onSubmit = (evt) => {
     evt.preventDefault()

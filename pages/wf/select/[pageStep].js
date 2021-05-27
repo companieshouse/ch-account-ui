@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React, { useState, useMemo } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
-import { CH_REQUEST_AUTH_CODE_URL, FORGEROCK_TREE_COMPANY_ASSOCIATION } from '../../../services/environment'
-import Router, { useRouter } from 'next/router'
+import { CH_REQUEST_AUTH_CODE_URL, FORGEROCK_TREE_WF_COMPANY_SELECTION } from '../../../services/environment'
+import { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
@@ -15,8 +15,7 @@ export const getStaticPaths = async () => {
   return {
     paths: [
       { params: { pageStep: '_start' } },
-      { params: { pageStep: '_restart' } },
-      { params: { pageStep: 'verify' } }
+      { params: { pageStep: '_restart' } }
     ],
     fallback: false
   }
@@ -26,7 +25,7 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const AssociateUserAndCompany = ({ lang }) => {
+const AssociateUserAndWebFilingCompany = ({ lang }) => {
   const router = useRouter()
   const [errors, setErrors] = useState([])
   const [customPageProps, setCustomPageProps] = useState({})
@@ -39,21 +38,14 @@ const AssociateUserAndCompany = ({ lang }) => {
   const { pageStep = '', service = '', token, overrideStage = '' } = router.query
 
   React.useEffect(() => {
-    let journeyName = ''
+    const journeyName = FORGEROCK_TREE_WF_COMPANY_SELECTION
 
     headingCount.reset()
-
     if (!pageStep) return
 
     if (pageStep === '_restart') {
-      router.replace('/account/associate/_start/')
+      router.replace('/wf/associate/_start/')
       return
-    }
-
-    if (pageStep === 'verify' && service && token) {
-      journeyName = service
-    } else {
-      journeyName = FORGEROCK_TREE_COMPANY_ASSOCIATION
     }
 
     setErrors([])
@@ -67,12 +59,9 @@ const AssociateUserAndCompany = ({ lang }) => {
     console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
-      journeyNamespace: 'COMPANY_ASSOCIATION',
+      journeyNamespace: 'WF_COMPANY_SELECTION',
       lang,
       stepOptions,
-      onSuccess: () => {
-        Router.push('/account/home')
-      },
       onFailure: (errData, newErrors = []) => {
         // We only get here if there was a fatal error signal from the forgerock client library
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
@@ -96,7 +85,7 @@ const AssociateUserAndCompany = ({ lang }) => {
           }
         }
 
-        if (stage === 'COMPANY_ASSOCIATION_3') {
+        if (stage === 'WF_COMPANY_SELECTION_3') {
           stepCustomPageProps.requestAuthCodePath = CH_REQUEST_AUTH_CODE_URL
         }
 
@@ -129,8 +118,6 @@ const AssociateUserAndCompany = ({ lang }) => {
     <FeatureDynamicView
       width='two-thirds'
       onSubmit={onSubmit}
-      hasBackLink={true}
-      hasAccountLinks={true}
       hasLogoutLink={true}
       titleLinkHref="/account/home"
     >
@@ -148,8 +135,8 @@ const AssociateUserAndCompany = ({ lang }) => {
   )
 }
 
-export default WithLang(AssociateUserAndCompany)
+export default WithLang(AssociateUserAndWebFilingCompany)
 
-AssociateUserAndCompany.propTypes = {
+AssociateUserAndWebFilingCompany.propTypes = {
   lang: PropTypes.string.isRequired
 }

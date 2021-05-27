@@ -21,6 +21,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
   // TODO Move logic to the specific page handlers
   if (step.type === StepType.LoginFailure) {
+    console.log(step)
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
       token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`,
