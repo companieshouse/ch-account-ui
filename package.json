@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "concurrently -n next,storybook \"next dev -p 3000\"  \"npm:storybook\"",
     "build": "next build && next export && node update-static-asset-urls.js",
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
@@ -11,7 +11,7 @@
     "sonar": "sonar-scanner",
     "eslint": "eslint .",
     "prepare": "husky install",
-    "storybook": "start-storybook -s ./public -p 6006",
+    "storybook": "start-storybook -s ./public -p 3001",
     "build-storybook": "build-storybook",
     "preinstall": "npx npm-force-resolutions"
   },
@@ -40,6 +40,7 @@
     "@testing-library/react": "^11.2.7",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.0",
     "eslint": "^7.27.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.3",

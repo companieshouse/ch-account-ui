@@ -302,13 +302,14 @@ export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
   return res
 }
 
-export const getCompaniesAssociatedWithUser = async (accessToken, userId) => {
+export const getCompaniesAssociatedWithUser = async (accessToken, userId, company) => {
   if (!userId) {
     console.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
+  const queryFilter = company ? `number+eq+"${company}"` : 'true'
   const queryFields = 'users,name,number,addressLine1,addressLine2,locality,region,postalCode'
-  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=true&_fields=${queryFields}`
+  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=${queryFilter}&_fields=${queryFields}`
 
   const res = await fetch(url, {
     headers: {
