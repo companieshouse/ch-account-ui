@@ -3,18 +3,16 @@ import React, { useMemo } from 'react'
 import Router from 'next/router'
 import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import WithLang from '../../services/lang/WithLang'
-import { useCookies } from 'react-cookie'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import { serializeForm } from '../../services/formData'
 
 const Login = ({ lang, queryParams }) => {
-  const [, setCookie] = useCookies()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
@@ -39,10 +37,6 @@ const Login = ({ lang, queryParams }) => {
       journeyNamespace: 'LOGIN',
       lang,
       onSuccess: (loginData) => {
-        // Set auth cookie
-        setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
-        setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
-
         if (goto) {
           return Router.push(goto)
         }
@@ -79,7 +73,7 @@ const Login = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [overrideStage, notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount, lang, goto, setCookie])
+  }, [overrideStage, notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount, lang, goto])
 
   const onSubmit = (evt) => {
     evt.preventDefault()

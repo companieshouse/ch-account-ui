@@ -6,14 +6,12 @@ import WithLang from '../../../services/lang/WithLang'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../../services/translate'
 import { errorsPropType } from '../../../services/propTypes'
-
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { getCompaniesAssociatedWithUser } from '../../../services/forgerock'
-import WithAccessToken from '../../../components/providers/WithAccessToken'
 import WithQueryParams from '../../../components/providers/WithQueryParams'
-import WithProfile from '../../../components/providers/WithProfile'
 import { generateQueryUrl } from '../../../services/queryString'
+import useFRAuth from '../../../services/useFRAuth'
 
 export const extendCompaniesData = (companiesData) => {
   return companiesData.map((company) => {
@@ -25,25 +23,27 @@ export const extendCompaniesData = (companiesData) => {
   })
 }
 
-const Index = ({ errors, lang, profile, accessToken }) => {
+const YourCompanies = ({ errors, lang }) => {
+  const { profile, accessToken } = useFRAuth()
   const [associationData, setAssociationData] = React.useState({ count: '0', companies: [] })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
-  const { sub } = profile
+  const sub = profile?.sub
 
   React.useEffect(() => {
     headingCount.reset()
-
-    getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
-      console.log('AssociationData', response)
-      setAssociationData({
-        count: response.count,
-        companies: extendCompaniesData(response.companies)
+    if (sub && accessToken) {
+      getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
+        console.log('AssociationData', response)
+        setAssociationData({
+          count: response.count,
+          companies: extendCompaniesData(response.companies)
+        })
       })
-    })
+    }
   }, [notifyType, notifyHeading, notifyTitle, notifyChildren, accessToken, headingCount, sub])
 
   return (
@@ -70,9 +70,9 @@ const Index = ({ errors, lang, profile, accessToken }) => {
   )
 }
 
-export default WithAccessToken(WithProfile(WithQueryParams(WithLang(Index))))
+export default WithQueryParams(WithLang(YourCompanies))
 
-Index.propTypes = {
+YourCompanies.propTypes = {
   companies: PropTypes.array,
   errors: errorsPropType,
   headingCount: PropTypes.instanceOf(HeadingCount),
@@ -81,7 +81,7 @@ Index.propTypes = {
   accessToken: PropTypes.string
 }
 
-Index.defaultProps = {
+YourCompanies.defaultProps = {
   companies: [],
   errors: [],
   profile: {}

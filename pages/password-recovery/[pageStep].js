@@ -3,11 +3,10 @@ import React, { useMemo } from 'react'
 import Router, { useRouter } from 'next/router'
 import { findCustomPageProps, forgerockFlow, findCustomStage } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_FMP } from '../../services/environment'
+import { FORGEROCK_TREE_FMP } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import WithLang from '../../services/lang/WithLang'
-import { useCookies } from 'react-cookie'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
@@ -31,7 +30,6 @@ export const getStaticProps = async () => {
 
 const ResetPassword = ({ lang, queryParams }) => {
   const router = useRouter()
-  const [, setCookie] = useCookies()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
@@ -86,11 +84,7 @@ const ResetPassword = ({ lang, queryParams }) => {
       journeyNamespace: 'RESET_PASSWORD',
       lang,
       stepOptions,
-      onSuccess: (loginData) => {
-        // Set auth cookie
-        setCookie(CH_COOKIE_NAME, loginData.tokens.accessToken, { path: '/' })
-        setCookie(ID_COOKIE_NAME, loginData.currentUser, { path: '/' })
-
+      onSuccess: () => {
         if (goto) {
           return Router.push(goto)
         }
@@ -132,7 +126,7 @@ const ResetPassword = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, service, token, headingCount, lang, overrideStage, goto, router, setCookie])
+  }, [pageStep, service, token, headingCount, lang, overrideStage, goto, router])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
