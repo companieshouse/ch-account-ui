@@ -9,31 +9,36 @@ import { errorsPropType } from '../../../services/propTypes'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { getCompaniesAssociatedWithUser } from '../../../services/forgerock'
-import WithAccessToken from '../../../components/providers/WithAccessToken'
-import WithProfile from '../../../components/providers/WithProfile'
 import { generateQueryUrl } from '../../../services/queryString'
+import useFRAuth from '../../../services/useFRAuth'
 
-const AuthorisedPerson = ({ errors, lang, profile, accessToken }) => {
+const AuthorisedPerson = ({ errors, lang }) => {
+  const { accessToken, profile } = useFRAuth()
   const router = useRouter()
   const [associationData, setAssociationData] = React.useState({ count: '0', companies: [] })
   const uiStage = 'HOME_AUTHORISED_PERSON'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
-  const { sub } = profile
+  const sub = profile?.sub
   const { companyNumber, userId } = router.query
 
   React.useEffect(() => {
     headingCount.reset()
 
-    getCompaniesAssociatedWithUser(accessToken, sub, companyNumber).then((response) => {
-      const company = response.companies[0]
-      company.resendLink = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name })
-      setAssociationData({
-        count: response.count,
-        company,
-        user: company.users.filter((user) => (userId === user._refResourceId))[0]
+    if (accessToken && sub) {
+      getCompaniesAssociatedWithUser(accessToken, sub, companyNumber).then((response) => {
+        const company = response.companies[0]
+        company.resendLink = generateQueryUrl('/account/authorise/_start/', {
+          companyNumber: company.number,
+          companyName: company.name
+        })
+        setAssociationData({
+          count: response.count,
+          company,
+          user: company.users.filter((user) => (userId === user._refResourceId))[0]
+        })
       })
-    })
+    }
   }, [accessToken, headingCount, sub, companyNumber, userId])
 
   return (
@@ -56,7 +61,7 @@ const AuthorisedPerson = ({ errors, lang, profile, accessToken }) => {
 
 export { AuthorisedPerson }
 
-export default WithAccessToken(WithProfile(WithLang(AuthorisedPerson)))
+export default WithLang(AuthorisedPerson)
 
 AuthorisedPerson.propTypes = {
   companies: PropTypes.array,

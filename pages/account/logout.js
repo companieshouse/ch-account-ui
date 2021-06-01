@@ -11,21 +11,16 @@ import BodyText from '../../components/general-ui/typeography/BodyText'
 import LinkText from '../../components/general-ui/interaction/LinkText'
 import WidthContainer from '../../components/general-ui/layout/WidthContainer'
 import WithLang from '../../services/lang/WithLang'
-import { CH_COOKIE_NAME, ID_COOKIE_NAME } from '../../services/environment'
-import { useCookies } from 'react-cookie'
 import { translate } from '../../services/translate'
 import Header from '../../components/general-ui/Header'
 
 const Logout = ({ lang }) => {
-  const [, , removeCookie] = useCookies()
   const [errors, setErrors] = React.useState([])
   const headingCount = new HeadingCount()
 
   const doLogout = () => {
     logoutFlow({
       onSuccess: () => {
-        removeCookie(CH_COOKIE_NAME, { path: '/' })
-        removeCookie(ID_COOKIE_NAME, { path: '/' })
         Router.push('/account/login')
       },
       onFailure: (err) => {

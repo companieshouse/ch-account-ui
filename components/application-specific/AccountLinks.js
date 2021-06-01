@@ -7,11 +7,12 @@ import SectionBreak from '../general-ui/typeography/SectionBreak'
 import SpanText from '../general-ui/typeography/SpanText'
 import { translate } from '../../services/translate'
 import WithLang from '../../services/lang/WithLang'
-import WithProfile from '../providers/WithProfile'
+import useFRAuth from '../../services/useFRAuth'
 
 const AccountLinks = (props) => {
-  const { lang, profile = {} } = props
-  const { email } = profile
+  const { profile } = useFRAuth()
+  const { lang } = props
+  const email = profile?.email
 
   return (
     <>
@@ -32,7 +33,7 @@ const AccountLinks = (props) => {
   )
 }
 
-export default WithProfile(WithLang(AccountLinks))
+export default WithLang(AccountLinks)
 
 AccountLinks.propTypes = {
   profile: PropTypes.object,

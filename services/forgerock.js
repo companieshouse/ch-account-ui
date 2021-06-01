@@ -137,11 +137,28 @@ export const findCustomPageProps = (step) => {
   }
 }
 
+export const forgerockInit = (journeyName) => {
+  try {
+    Config.get()
+  } catch {
+    Config.set({
+      clientId: FORGEROCK_CLIENT_ID,
+      realmPath: FORGEROCK_REALM,
+      redirectUri: FORGEROCK_REDIRECT,
+      scope: FORGEROCK_SCOPE,
+      serverConfig: {
+        baseUrl: FORGEROCK_AM,
+        timeout: 30000
+      },
+      tree: journeyName
+    })
+  }
+}
+
 export const forgerockFlow = ({
   onSuccess,
   onFailure,
   onUpdateUi,
-  onUpdateUser,
   journeyName,
   journeyNamespace,
   stepOptions,
@@ -209,12 +226,6 @@ export const forgerockFlow = ({
       })
 
       return
-    }
-
-    if (onUpdateUser) {
-      UserManager.getCurrentUser().then((user) => {
-        onUpdateUser(user)
-      })
     }
 
     if (step.type === StepType.LoginFailure) {

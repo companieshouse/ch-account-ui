@@ -8,10 +8,10 @@ import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import WithLang from '../../services/lang/WithLang'
-import WithQueryParams from '../../components/providers/WithQueryParams'
-import WithProfile from '../../components/providers/WithProfile'
+import useFRAuth from '../../services/useFRAuth'
 
-const ManageAccount = ({ errors, lang, profile }) => {
+const ManageAccount = ({ errors, lang }) => {
+  const { profile } = useFRAuth()
   const uiStage = 'HOME_MANAGE_ACCOUNT'
   const headingCount = useMemo(() => new HeadingCount(), [])
 
@@ -47,7 +47,7 @@ const ManageAccount = ({ errors, lang, profile }) => {
   )
 }
 
-export default WithQueryParams(WithProfile(WithLang(ManageAccount)))
+export default (WithLang(ManageAccount))
 
 ManageAccount.propTypes = {
   companies: PropTypes.array,

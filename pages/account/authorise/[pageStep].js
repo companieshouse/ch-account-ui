@@ -10,7 +10,6 @@ import componentMap from '../../../services/componentMap'
 import WithLang from '../../../services/lang/WithLang'
 import HeadingCount from '../../../services/HeadingCount'
 import { serializeForm } from '../../../services/formData'
-import WithAccessToken from '../../../components/providers/WithAccessToken'
 import { generateQueryUrl } from '../../../services/queryString'
 
 export const getStaticPaths = async () => {
@@ -136,4 +135,4 @@ InviteUser.propTypes = {
   lang: PropTypes.string
 }
 
-export default WithAccessToken(WithLang(InviteUser))
+export default WithLang(InviteUser)

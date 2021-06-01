@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
-import { FORGEROCK_TREE_CHANGE_PHONE_NUMBER, ID_COOKIE_NAME } from '../../../../services/environment'
+import { FORGEROCK_TREE_CHANGE_PHONE_NUMBER } from '../../../../services/environment'
 import { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
@@ -10,9 +10,8 @@ import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
 import { serializeForm } from '../../../../services/formData'
 import { generateQueryUrl } from '../../../../services/queryString'
-import { useCookies } from 'react-cookie'
 import WithLang from '../../../../services/lang/WithLang'
-import WithProfile from '../../../../components/providers/WithProfile'
+import useFRAuth from '../../../../services/useFRAuth'
 
 export const getStaticPaths = async () => {
   return {
@@ -28,9 +27,9 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const ChangeNumber = ({ lang, profile }) => {
+const ChangeNumber = ({ lang }) => {
+  const { profile } = useFRAuth()
   const router = useRouter()
-  const [, setCookie] = useCookies()
   const [errors, setErrors] = React.useState([])
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [uiStage, setUiStage] = React.useState('')
@@ -68,9 +67,6 @@ const ChangeNumber = ({ lang, profile }) => {
       journeyNamespace: 'UPDATE_PHONE',
       lang,
       stepOptions,
-      onUpdateUser: (currentUser) => {
-        setCookie(ID_COOKIE_NAME, currentUser, { path: '/' })
-      },
       onFailure: (errData, newErrors = []) => {
         // We only get here if there was a fatal error signal from the forgerock client library
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
@@ -114,7 +110,7 @@ const ChangeNumber = ({ lang, profile }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token, headingCount, lang, profilePhoneNumber, router, setCookie])
+  }, [pageStep, overrideStage, service, token, headingCount, lang, profilePhoneNumber, router])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -147,7 +143,7 @@ const ChangeNumber = ({ lang, profile }) => {
   )
 }
 
-export default WithProfile(WithLang(ChangeNumber))
+export default WithLang(ChangeNumber)
 
 ChangeNumber.propTypes = {
   lang: PropTypes.string.isRequired,
