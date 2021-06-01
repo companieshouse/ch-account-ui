@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import Router from 'next/router'
-import { findCustomPageProps, forgerockFlow } from '../../services/forgerock'
+import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_COOKIE_NAME, ID_COOKIE_NAME, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
@@ -55,6 +55,8 @@ const Login = ({ lang, queryParams }) => {
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
+        const stage = step.payload.stage || findCustomStage(step)
+        step.payload.stage = stage
 
         if (stepCustomPageProps) {
           if (stepCustomPageProps.apiError) {
@@ -74,7 +76,7 @@ const Login = ({ lang, queryParams }) => {
 
         setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)
-        setUiFeatures(getStageFeatures(lang, overrideStage || step.payload.stage))
+        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
