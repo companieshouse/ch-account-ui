@@ -61,6 +61,14 @@
       }
     }
   ],
+  "LOGIN_4": [
+    {
+      "feature": "Redirect",
+      "props": {
+        "url": "/password-recovery/request/?notifyToken=forcedUpdate"
+      }
+    }
+  ],
   "REGISTRATION_1": [
     {
       "feature": "PageHeading",

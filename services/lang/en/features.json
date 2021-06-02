@@ -63,6 +63,14 @@
       ]
     }
   ],
+  "CH_LOGIN_4": [
+    {
+      "component": "Redirect",
+      "dynamicProps": {
+        "url": "/password-recovery/request/?notifyToken=forceUpdate"
+      }
+    }
+  ],
   "LOGIN_MFA": [
     {
       "component": "BrowserTitle",
@@ -600,6 +608,18 @@
     }
   ],
   "RESET_PASSWORD_1": [
+    {
+      "conditional": {
+        "prop": "${notifyToken}",
+        "operator": "eeq",
+        "value": "forceUpdate"
+      },
+      "component": "NotificationBanner",
+      "dynamicProps": {
+        "title": "Important",
+        "heading": "Your password needs to be updated. Please follow the instructions."
+      }
+    },
     {
       "component": "PageHeading",
       "props": {
