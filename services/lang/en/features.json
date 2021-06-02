@@ -199,7 +199,7 @@
       }
     }
   ],
-  "WF_COMPANY_SELECTION_2": [
+  "EWF_LOGIN_3": [
     {
       "component": "BrowserTitle",
       "props": {
@@ -291,7 +291,7 @@
       ]
     }
   ],
-  "WF_COMPANY_SELECTION_3": [
+  "EWF_LOGIN_4": [
     {
       "component": "BrowserTitle",
       "props": {
@@ -348,7 +348,7 @@
       ]
     }
   ],
-  "WF_COMPANY_SELECTION_4": [
+  "EWF_LOGIN_5": [
     {
       "component": "BrowserTitle",
       "props": {

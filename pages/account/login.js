@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import { CH_REQUEST_AUTH_CODE_URL, FORGEROCK_TREE_LOGIN } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import WithLang from '../../services/lang/WithLang'
@@ -30,7 +30,6 @@ const Login = ({ lang, queryParams }) => {
   React.useEffect(() => {
     headingCount.reset()
     const journeyName = authIndexValue || FORGEROCK_TREE_LOGIN
-    const isOIDC = journeyName !== FORGEROCK_TREE_LOGIN
 
     forgerockFlow({
       journeyName,
@@ -63,6 +62,10 @@ const Login = ({ lang, queryParams }) => {
           }
         }
 
+        if (stage === 'WF_COMPANY_SELECTION_3') {
+          stepCustomPageProps.requestAuthCodePath = CH_REQUEST_AUTH_CODE_URL
+        }
+
         // Update the errors for the page
         setErrors((currentErrorsArray) => {
           return [...currentErrorsArray, ...stepErrors]
@@ -73,7 +76,8 @@ const Login = ({ lang, queryParams }) => {
         setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
-      }
+      },
+      isOIDC: authIndexValue !== FORGEROCK_TREE_LOGIN
     })
   }, [overrideStage, headingCount, lang, goto, authIndexValue])
 
@@ -102,6 +106,8 @@ const Login = ({ lang, queryParams }) => {
     </FeatureDynamicView>
   )
 }
+
+export { Login }
 
 export default withQueryParams(WithLang(Login))
 
