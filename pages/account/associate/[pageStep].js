@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useState, useMemo } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
-import { FORGEROCK_TREE_COMPANY_ASSOCIATION } from '../../../services/environment'
+import { CH_REQUEST_AUTH_CODE_URL, FORGEROCK_TREE_COMPANY_ASSOCIATION } from '../../../services/environment'
 import Router, { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
@@ -94,6 +94,10 @@ const AssociateUserAndCompany = ({ lang }) => {
 
             stepErrors.push(...apiErrorsAsAppErrors)
           }
+        }
+
+        if (stage === 'COMPANY_ASSOCIATION_3') {
+          stepCustomPageProps.requestAuthCodePath = CH_REQUEST_AUTH_CODE_URL
         }
 
         // Update the errors for the page

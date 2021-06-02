@@ -21,6 +21,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
   // TODO Move logic to the specific page handlers
   if (step.type === StepType.LoginFailure) {
+    console.log(step)
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
       token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`,
@@ -162,7 +163,8 @@ export const forgerockFlow = ({
   journeyName,
   journeyNamespace,
   stepOptions,
-  lang
+  lang,
+  isOIDC
 }) => {
   if (!lang) {
     console.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
@@ -194,7 +196,7 @@ export const forgerockFlow = ({
     FRAuth.next(step, nextStepOptions).then(handleStep).catch(handleFatalError)
   }
 
-  const handleStep = (step) => {
+  const handleStep = async (step) => {
     console.log('Forgerock step, handleStep(step) got', step)
 
     // Find any validation errors and convert them to an errors array
@@ -205,27 +207,14 @@ export const forgerockFlow = ({
 
     if (step.type === StepType.LoginSuccess) {
       console.log('ForgeRock login success', step)
-      console.log('ForgeRock getting session token...')
-      const sessionToken = step.getSessionToken()
 
-      TokenManager.getTokens({ forceRenew: true }).then((tokens) => {
-        return Promise.all([tokens, UserManager.getCurrentUser()])
-      }).then(([tokens, currentUser]) => {
-        console.log('ForgeRock getTokens returned', tokens)
-        console.log('Resolving promise with', {
-          sessionToken,
-          tokens,
-          currentUser
-        })
+      if (isOIDC) {
+        const tokens = await TokenManager.getTokens({ forceRenew: true })
+        const user = await UserManager.getCurrentUser()
+        return onSuccess(tokens, user)
+      }
 
-        return onSuccess({
-          sessionToken,
-          tokens,
-          currentUser
-        })
-      })
-
-      return
+      return onSuccess()
     }
 
     if (step.type === StepType.LoginFailure) {
