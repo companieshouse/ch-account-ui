@@ -164,7 +164,7 @@ export const forgerockFlow = ({
   journeyNamespace,
   stepOptions,
   lang,
-  isOIDC
+  isAuthOnly
 }) => {
   if (!lang) {
     console.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
@@ -208,7 +208,7 @@ export const forgerockFlow = ({
     if (step.type === StepType.LoginSuccess) {
       console.log('ForgeRock login success', step)
 
-      if (isOIDC) {
+      if (!isAuthOnly) {
         const tokens = await TokenManager.getTokens({ forceRenew: true })
         const user = await UserManager.getCurrentUser()
         return onSuccess(tokens, user)
