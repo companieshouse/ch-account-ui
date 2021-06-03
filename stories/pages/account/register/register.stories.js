@@ -349,3 +349,59 @@ REGISTRATION_3.args = {
     ]
   }
 }
+
+export const REGISTRATION_ERROR = Template.bind({})
+REGISTRATION_ERROR.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+REGISTRATION_ERROR.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'REGISTRATION_ERROR'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"errors":[{"label":"Unknown error occurred","token":"REGISTRATION_GENERAL_ERROR","fieldName":"IDToken1","anchor":"IDToken1"}]}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken5',
+            value: 'pagePropsJSON'
+          }
+        ]
+      }
+    ]
+  }
+}

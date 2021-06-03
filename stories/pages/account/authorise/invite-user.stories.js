@@ -56,3 +56,43 @@ INVITE_USER_1.story = {
     }
   }
 }
+
+export const INVITE_USER_ERROR = Template.bind({})
+INVITE_USER_ERROR.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [{
+      type: 'HiddenValueCallback',
+      output: [{ name: 'value', value: 'INVITE_USER_ERROR' }, { name: 'id', value: 'stage' }],
+      input: [{ name: 'IDToken4', value: 'stage' }]
+    },
+    {
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: '{"errors":[{"label":"No Company Number found in request.","token":"INVITE_USER_NO_COMPANY_IN_REQUEST_ERROR","fieldName":"IDToken1","anchor":"IDToken1"}]}'
+        },
+        {
+          name: 'id',
+          value: 'pagePropsJSON'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken5',
+          value: 'pagePropsJSON'
+        }
+      ]
+    }]
+  }
+}
+INVITE_USER_1.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        companyId: '12345678'
+      }
+    }
+  }
+}

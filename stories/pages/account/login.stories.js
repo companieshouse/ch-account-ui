@@ -293,7 +293,7 @@ EWF_LOGIN_4.args = {
         output: [
           {
             name: 'prompt',
-            value: 'Do you wanto your Companies House account?'
+            value: 'Do you wan to your Companies House account?'
           },
           {
             name: 'choices',
@@ -348,6 +348,54 @@ EWF_LOGIN_4.args = {
         input: [
           {
             name: 'IDToken4',
+            value: 'pagePropsJSON'
+          }
+        ]
+      }
+    ]
+  }
+}
+
+export const GENERIC_ERROR = Template.bind({})
+GENERIC_ERROR.args = {
+  queryParams: {},
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'GENERIC_ERROR'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"errors":[{"label":"Unknown error occurred","token":"ERROR_UNKNOWN","fieldName":"IDToken1","anchor":"IDToken1"}]}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken5',
             value: 'pagePropsJSON'
           }
         ]
