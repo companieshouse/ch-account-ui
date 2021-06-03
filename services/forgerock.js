@@ -332,7 +332,7 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
     if (status === 200) {
       count = body.resultCount
       companies = body.result || []
-      pendingCompanies = companies.filter((company) => company._refProperties.membershipStatus === 'pending')
+      pendingCompanies = companies.filter((company) => company._refProperties.membershipStatus !== 'confirmed')
       pendingCount = pendingCompanies.length
 
       // Loop each company and get reverse associations

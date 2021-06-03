@@ -164,7 +164,7 @@ const Dynamic = (props) => {
             // Check type of subContentItem
             if (typeof subContentItem === 'string') {
               // Direct template string replacement
-              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem, false, false))
+              pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem, false, true))
               log(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
             } else if (subContentItem instanceof Array) {
               const arr = processDynamicProps(subContentItem, { ...otherProps, ...props, ...otherItemProps })

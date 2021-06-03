@@ -2447,7 +2447,7 @@
                 {
                   "component": "Column",
                   "props": {
-                    "width": "three-quarters"
+                    "width": "two-thirds"
                   },
                   "content": [
                     {
@@ -2510,93 +2510,101 @@
                           }
                         }
                       ]
-                    },
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "component": "Row",
+              "content": [
+                {
+                  "component": "Column",
+                  "props": {
+                    "width": "three-quarters"
+                  },
+                  "content": [
                     {
-                      "component": "Row",
+                      "component": "Table",
                       "content": [
                         {
-                          "component": "Column",
-                          "props": {
-                            "width": "full"
-                          },
+                          "component": "THead",
                           "content": [
                             {
-                              "component": "Table",
+                              "component": "Tr",
                               "content": [
                                 {
-                                  "component": "THead",
+                                  "component": "Th",
+                                  "props": {
+                                    "children": "Pending requests"
+                                  }
+                                },
+                                {
+                                  "component": "Th"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "component": "TBody",
+                          "content": [
+                            {
+                              "component": "Tr",
+                              "content": [
+                                {
+                                  "component": "Td",
+                                  "props": {
+                                    "rowSpan": 2
+                                  },
                                   "content": [
                                     {
-                                      "component": "Tr",
-                                      "content": [
-                                        {
-                                          "component": "Th",
-                                          "props": {
-                                            "children": "Pending requests"
-                                          }
-                                        },
-                                        {
-                                          "component": "Th"
-                                        }
-                                      ]
+                                      "component": "BodyText",
+                                      "dynamicProps": {
+                                        "children": "Hannah Salt wants to give you authorisation to file online for this company."
+                                      }
                                     }
                                   ]
                                 },
                                 {
-                                  "component": "TBody",
+                                  "conditional": {
+                                    "prop": "${user._refProperties.membershipStatus}",
+                                    "operator": "eeq",
+                                    "value": "confirmed"
+                                  },
+                                  "component": "Td",
+                                  "content": [{
+                                    "component": "Tag",
+                                    "dynamicProps": {
+                                      "colour": "green",
+                                      "children": "Confirmed"
+                                    }
+                                  }]
+                                },
+                                {
+                                  "component": "Td",
+                                  "props": {
+                                    "width": "one-half"
+                                  },
                                   "content": [
                                     {
-                                      "component": "Tr",
-                                      "content": [
-                                        {
-                                          "component": "Td",
-                                          "props": {
-                                            "rowSpan": 2
-                                          },
-                                          "dynamicProps": {
-                                            "children": "Hannah Salt wants to give you authorisation to file online for this company."
-                                          }
-                                        },
-                                        {
-                                          "conditional": {
-                                            "prop": "${user._refProperties.membershipStatus}",
-                                            "operator": "eeq",
-                                            "value": "confirmed"
-                                          },
-                                          "component": "Td",
-                                          "content": [{
-                                            "component": "Tag",
-                                            "dynamicProps": {
-                                              "colour": "green",
-                                              "children": "Confirmed"
-                                            }
-                                          }]
-                                        },
-                                        {
-                                          "component": "Td",
-                                          "content": [
-                                            {
-                                              "component": "LinkText",
-                                              "dynamicProps": {
-                                                "href": "${company.acceptPath}",
-                                                "children": "Accept request",
-                                                "className": "govuk-link--no-visited-state"
-                                              }
-                                            },
-                                            {
-                                              "component": "Br"
-                                            },
-                                            {
-                                              "component": "LinkText",
-                                              "dynamicProps": {
-                                                "href": "${company.declinePath}",
-                                                "children": "Decline request",
-                                                "className": "govuk-link--no-visited-state"
-                                              }
-                                            }
-                                          ]
-                                        }
-                                      ]
+                                      "component": "LinkText",
+                                      "dynamicProps": {
+                                        "href": "${company.acceptPath}",
+                                        "children": "Accept request",
+                                        "className": "govuk-link--no-visited-state"
+                                      }
+                                    },
+                                    {
+                                      "component": "Br"
+                                    },
+                                    {
+                                      "component": "LinkText",
+                                      "dynamicProps": {
+                                        "href": "${company.declinePath}",
+                                        "children": "Decline request",
+                                        "className": "govuk-link--no-visited-state"
+                                      }
                                     }
                                   ]
                                 }
