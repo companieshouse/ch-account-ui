@@ -24,15 +24,15 @@ const Login = ({ lang, queryParams }) => {
   const {
     goto,
     overrideStage = '',
-    authIndexValue
+    authIndexValue,
+    mode
   } = queryParams
 
   React.useEffect(() => {
     headingCount.reset()
-    const journeyName = authIndexValue || FORGEROCK_TREE_LOGIN
 
     forgerockFlow({
-      journeyName,
+      journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
       journeyNamespace: 'LOGIN',
       lang,
       onSuccess: () => {
@@ -77,9 +77,9 @@ const Login = ({ lang, queryParams }) => {
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       },
-      isOIDC: authIndexValue !== FORGEROCK_TREE_LOGIN
+      isAuthOnly: mode === 'AUTHN_ONLY'
     })
-  }, [overrideStage, headingCount, lang, goto, authIndexValue])
+  }, [overrideStage, headingCount, lang, goto, authIndexValue, mode])
 
   const onSubmit = (evt) => {
     evt.preventDefault()
