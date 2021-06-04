@@ -19,7 +19,7 @@ const defaultProps = {
 
 describe('RadioGroup', () => {
   it('Renders as radio group', () => {
-    render(<RadioGroup {...defaultProps} />)
+    render(<RadioGroup {...defaultProps} renderLabelAs="heading" />)
     const testElement = screen.getByTestId('RadioGroupID')
 
     expect(testElement).toBeInTheDocument()

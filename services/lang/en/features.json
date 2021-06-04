@@ -142,14 +142,37 @@
       }
     },
     {
+      "component": "PageHeading",
+      "props": {
+        "children": "Enter the details of the company you want to access in WebFiling"
+      }
+    },
+    {
       "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken2": {
-            "renderLabelAs": "heading",
-            "label": "What is the company number?",
-            "fixedWidth": "10",
-            "hint": "Enter the registration number of the company you want to access in WebFiling."
+            "label": "Where was the company registered?",
+            "options": [
+                {
+                  "label": "England / Wales",
+                  "value": 0,
+                  "checked": false
+                },
+                {
+                  "label": "Scotland",
+                  "value": 1,
+                  "checked": false
+                },
+                {
+                  "label": "Northern Ireland",
+                  "value": 2,
+                  "checked": false
+                }
+              ]
+          },
+          "IDToken3": {
+            "label": "Company number"
           }
         }
       }
@@ -285,7 +308,10 @@
           "component": "LinkText",
           "props": {
             "children": "Choose a different company",
-            "href": "/account/associate/_restart"
+            "testId": "chooseDifferentCompanyLink"
+          },
+          "dynamicProps": {
+            "href": "${chooseCompanyPath}"
           }
         }
       ]
@@ -358,11 +384,11 @@
     {
       "component": "DisplayUiElements",
       "dynamicProps": {
-        "elementProps.IDToken1.caption": "${company.name}"
+        "elementProps.IDToken2.caption": "${company.name}"
       },
       "props": {
         "elementProps": {
-          "IDToken1": {
+          "IDToken2": {
             "renderLabelAs": "heading",
             "caption": "Test",
             "captionPosition": "above",
@@ -2739,7 +2765,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "title": "Chexck your phone"
+        "title": "Check your phone"
       }
     },
     {

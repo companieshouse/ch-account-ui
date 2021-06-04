@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
-import Router from 'next/router'
+import React, { useMemo, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import { CH_REQUEST_AUTH_CODE_URL, FORGEROCK_TREE_LOGIN } from '../../services/environment'
@@ -12,7 +12,16 @@ import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import { serializeForm } from '../../services/formData'
 
+const navMap = {
+  EWF_LOGIN_2: 'EWF_LOGIN_1',
+  EWF_LOGIN_3: 'EWF_LOGIN_2',
+  EWF_LOGIN_4: 'EWF_LOGIN_3',
+  EWF_LOGIN_5: 'EWF_LOGIN_4'
+}
+
 const Login = ({ lang, queryParams }) => {
+  const router = useRouter()
+  const { push, asPath } = router
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
   const [uiStage, setUiStage] = React.useState('')
@@ -23,24 +32,26 @@ const Login = ({ lang, queryParams }) => {
 
   const {
     goto,
+    initStage,
     overrideStage = '',
     authIndexValue,
     mode
   } = queryParams
 
-  React.useEffect(() => {
+  useEffect(() => {
     headingCount.reset()
 
     forgerockFlow({
       journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
       journeyNamespace: 'LOGIN',
+      initialStep: initStage || undefined,
+      isAuthOnly: mode === 'AUTHN_ONLY',
       lang,
       onSuccess: () => {
         if (goto) {
-          return Router.push(goto)
+          return push(goto)
         }
-
-        Router.push('/account/home')
+        push('/account/home')
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
@@ -62,7 +73,11 @@ const Login = ({ lang, queryParams }) => {
           }
         }
 
-        if (stage === 'WF_COMPANY_SELECTION_3') {
+        if (stage === 'EWF_LOGIN_3') {
+          stepCustomPageProps.chooseCompanyPath = `${asPath}&initStage='EWF_LOGIN_2'`
+        }
+
+        if (stage === 'EWF_LOGIN_4') {
           stepCustomPageProps.requestAuthCodePath = CH_REQUEST_AUTH_CODE_URL
         }
 
@@ -76,10 +91,14 @@ const Login = ({ lang, queryParams }) => {
         setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
-      },
-      isAuthOnly: mode === 'AUTHN_ONLY'
+      }
     })
-  }, [overrideStage, headingCount, lang, goto, authIndexValue, mode])
+  }, [overrideStage, headingCount, lang, goto, authIndexValue, mode, push])
+
+  const onBack = (evt) => {
+    evt.preventDefault()
+    push(`${asPath}&initStage=${navMap[uiStage]}`)
+  }
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -91,6 +110,7 @@ const Login = ({ lang, queryParams }) => {
 
   return (
     <FeatureDynamicView
+      onBack={onBack}
       onSubmit={onSubmit}
     >
       <Dynamic
