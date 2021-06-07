@@ -390,7 +390,6 @@
         "elementProps": {
           "IDToken2": {
             "renderLabelAs": "heading",
-            "caption": "Test",
             "captionPosition": "above",
             "label": "Do you want to add this company to your Companies House account?",
             "fixedWidth": "10"
@@ -428,6 +427,140 @@
         "type": "submit",
         "testId": "submitButton"
       }
+    }
+  ],
+  "EWF_LOGIN_OTP_METHOD": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "How do you want to confirm it's you?"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "Before you can make changes to your account, we need to confirm it's you. This helps us keep your account secure."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": null
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Continue",
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "EWF_LOGIN_OTP": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Check your phone"
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "We've sent you a text message with a security code to "
+          }
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "weight": "bold"
+          },
+          "content": [
+            {
+              "component": "ObfuscatePhoneNumber",
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
+              }
+            }
+          ]
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "."
+          }
+        }
+      ]
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "It may take a few minutes to arrive."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": "Security code"
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Continue",
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "component": "Details",
+      "props": {
+        "summary": "I have not received a text message"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
+            "children": "The text message may take a few minutes to arrive."
+          }
+        },
+        {
+          "component": "BodyText",
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "If it still has not arrived, you can "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "ask us to send you another text message",
+                "href": "/password-recovery/_restart/",
+                "testId": "restartPasswordRecoveryLink"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "LOGIN_MFA": [
