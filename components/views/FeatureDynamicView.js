@@ -21,6 +21,7 @@ const FeatureDynamicView = (props) => {
     width,
     formAction,
     onSubmit,
+    onBack,
     renderFeatures,
     children
   } = props
@@ -42,7 +43,7 @@ const FeatureDynamicView = (props) => {
           </>}
       </WidthContainer>
       <WidthContainer>
-        {hasBackLink === true && <BackLink testId="backLink">Back</BackLink>}
+        {hasBackLink === true && <BackLink testId="backLink" onClick={onBack}>Back</BackLink>}
         <Main className="govuk-main-wrapper--auto-spacing">
           <WidthContainer>
             <Row>
@@ -71,6 +72,7 @@ FeatureDynamicView.propTypes = {
   errors: errorsPropType,
   formAction: PropTypes.string,
   headingCount: PropTypes.instanceOf(HeadingCount),
+  onBack: PropTypes.func,
   onSubmit: PropTypes.func,
   renderFeatures: PropTypes.func,
   uiElements: PropTypes.array,

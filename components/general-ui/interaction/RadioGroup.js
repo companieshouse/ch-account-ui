@@ -5,7 +5,7 @@ import HeadingText from '../typeography/HeadingText'
 import { errorsPropType } from '../../../services/propTypes'
 
 const RadioGroup = (props) => {
-  const { hint = '', label = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined, caption, captionPosition, captionSize } = props
+  const { hint = '', label = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined, caption, captionPosition, captionSize, renderLabelAs } = props
   const classes = [className]
 
   const finalClassName = classes.join(' ').trim()
@@ -14,13 +14,19 @@ const RadioGroup = (props) => {
   return (
     <div className={`govuk-form-group ${Boolean(error || groupError) && 'govuk-form-group--error'} ${finalClassName}`}>
       <fieldset data-testid={testId} className="govuk-fieldset" aria-describedby={`${id}-hint ${id}-error`}>
-        {label && <legend className="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <HeadingText className="govuk-fieldset__heading" headingCount={headingCount}>
-            {Boolean(caption) === true && captionPosition === 'above' && <span className={`govuk-caption-${captionSize}`}>{caption}</span>}
-            {label}
-            {Boolean(caption) === true && captionPosition === 'below' && <span className={`govuk-caption-${captionSize}`}>{caption}</span>}
-          </HeadingText>
-        </legend>}
+
+          {renderLabelAs === 'heading'
+            ? (
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <HeadingText className="govuk-fieldset__heading" headingCount={headingCount}>
+                {Boolean(caption) === true && captionPosition === 'above' && <span className={`govuk-caption-${captionSize}`}>{caption}</span>}
+                {label}
+                {Boolean(caption) === true && captionPosition === 'below' && <span className={`govuk-caption-${captionSize}`}>{caption}</span>}
+              </HeadingText>
+            </legend>
+              )
+            : <legend className="govuk-fieldset__legend">{label}</legend>
+          }
 
         <div id={`${id}-hint`} className="govuk-hint">
           {hint}
@@ -58,6 +64,7 @@ RadioGroup.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   required: PropTypes.bool,
+  renderLabelAs: PropTypes.string,
   testId: PropTypes.string.isRequired,
   headingCount: PropTypes.object,
   options: PropTypes.array,

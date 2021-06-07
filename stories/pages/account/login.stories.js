@@ -102,11 +102,97 @@ EWF_LOGIN_2.args = {
     authId: mockAuthId,
     callbacks: [
       {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please enter the company number.'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'ChoiceCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Where was the company registered?'
+          },
+          {
+            name: 'choices',
+            value: [
+              'en',
+              'sc',
+              'ni'
+            ]
+          },
+          {
+            name: 'defaultChoice',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 0
+          }
+        ]
+      },
+      {
+        type: 'NameCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Enter Company number'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ]
+      },
+      {
         type: 'HiddenValueCallback',
         output: [
           {
             name: 'value',
             value: 'EWF_LOGIN_2'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'stage'
+          }
+        ]
+      }
+    ],
+    stage: 'EWF_LOGIN_2'
+  }
+}
+
+export const EWF_LOGIN_3 = Template.bind({})
+EWF_LOGIN_3.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  queryParams: WFOIDCParams,
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'EWF_LOGIN_3'
           },
           {
             name: 'id',
@@ -125,7 +211,7 @@ EWF_LOGIN_2.args = {
         output: [
           {
             name: 'message',
-            value: '{"_id":"2adbc7e9-7ae3-4a61-8b43-003945e80e96","_rev":"00000000c22701a0","number":"08023036","type":"ltd","status":"active","locality":"London","postalCode":"N11 1GN","addressLine1":"Building 3 North London Business Park","addressLine2":"Oakleigh Road South","region":null,"creationDate":"2012-04-10T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"1X100 LIMITED"}'
+            value: '{"_id":"6c222b5b-7211-45a6-b4ee-4fe2645ca667","_rev":"00000000f7720165","number":"03550649","type":"private-limited-guarant-nsc","status":"active","locality":null,"postalCode":"W9 3HN","addressLine1":"16 Bradiston Road","addressLine2":"London","region":null,"creationDate":"1998-04-22T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"16 BRADISTON ROAD LIMITED"}'
           },
           {
             name: 'messageType',
@@ -138,7 +224,7 @@ EWF_LOGIN_2.args = {
         output: [
           {
             name: 'value',
-            value: '{"company":{"_id":"2adbc7e9-7ae3-4a61-8b43-003945e80e96","_rev":"00000000c22701a0","number":"08023036","type":"ltd","status":"active","locality":"London","postalCode":"N11 1GN","addressLine1":"Building 3 North London Business Park","addressLine2":"Oakleigh Road South","region":null,"creationDate":"2012-04-10T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"1X100 LIMITED"}}'
+            value: '{"company":{"_id":"6c222b5b-7211-45a6-b4ee-4fe2645ca667","_rev":"00000000f7720165","number":"03550649","type":"private-limited-guarant-nsc","status":"active","locality":null,"postalCode":"W9 3HN","addressLine1":"16 Bradiston Road","addressLine2":"London","region":null,"creationDate":"1998-04-22T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"16 BRADISTON ROAD LIMITED"}}'
           },
           {
             name: 'id',
@@ -186,13 +272,12 @@ EWF_LOGIN_2.args = {
           }
         ]
       }
-    ],
-    stage: 'EWF_LOGIN_2'
+    ]
   }
 }
 
-export const EWF_LOGIN_3 = Template.bind({})
-EWF_LOGIN_3.args = {
+export const EWF_LOGIN_4 = Template.bind({})
+EWF_LOGIN_4.args = {
   path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
@@ -231,94 +316,6 @@ EWF_LOGIN_3.args = {
         output: [
           {
             name: 'value',
-            value: 'EWF_LOGIN_3'
-          },
-          {
-            name: 'id',
-            value: 'stage'
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken3',
-            value: 'stage'
-          }
-        ]
-      },
-      {
-        type: 'HiddenValueCallback',
-        output: [
-          {
-            name: 'value',
-            value: '{"company":{"_id":"2adbc7e9-7ae3-4a61-8b43-003945e80e96","_rev":"00000000c22701a0","number":"08023036","type":"ltd","status":"active","locality":"London","postalCode":"N11 1GN","addressLine1":"Building 3 North London Business Park","addressLine2":"Oakleigh Road South","region":null,"creationDate":"2012-04-10T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"1X100 LIMITED"}}'
-          },
-          {
-            name: 'id',
-            value: 'pagePropsJSON'
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken4',
-            value: 'pagePropsJSON'
-          }
-        ]
-      }
-    ]
-  }
-}
-
-export const EWF_LOGIN_4 = Template.bind({})
-EWF_LOGIN_4.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
-  queryParams: WFOIDCParams,
-  responseData: {
-    authId: mockAuthId,
-    callbacks: [
-      {
-        type: 'TextOutputCallback',
-        output: [
-          {
-            name: 'message',
-            value: 'Please enter the company auth code.'
-          },
-          {
-            name: 'messageType',
-            value: '0'
-          }
-        ]
-      },
-      {
-        type: 'ChoiceCallback',
-        output: [
-          {
-            name: 'prompt',
-            value: 'Do you wanto your Companies House account?'
-          },
-          {
-            name: 'choices',
-            value: [
-              'Yes',
-              'No'
-            ]
-          },
-          {
-            name: 'defaultChoice',
-            value: 1
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken1',
-            value: 0
-          }
-        ]
-      },
-      {
-        type: 'HiddenValueCallback',
-        output: [
-          {
-            name: 'value',
             value: 'EWF_LOGIN_4'
           },
           {
@@ -338,7 +335,7 @@ EWF_LOGIN_4.args = {
         output: [
           {
             name: 'value',
-            value: '{"company":{"_id":"2adbc7e9-7ae3-4a61-8b43-003945e80e96","_rev":"00000000c22701a0","number":"08023036","type":"ltd","status":"active","locality":"London","postalCode":"N11 1GN","addressLine1":"Building 3 North London Business Park","addressLine2":"Oakleigh Road South","region":null,"creationDate":"2012-04-10T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"1X100 LIMITED"}}'
+            value: '{"company":{"_id":"6c222b5b-7211-45a6-b4ee-4fe2645ca667","_rev":"00000000f7720165","number":"03550649","type":"private-limited-guarant-nsc","status":"active","locality":null,"postalCode":"W9 3HN","addressLine1":"16 Bradiston Road","addressLine2":"London","region":null,"creationDate":"1998-04-22T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"16 BRADISTON ROAD LIMITED"}}'
           },
           {
             name: 'id',
@@ -353,5 +350,212 @@ EWF_LOGIN_4.args = {
         ]
       }
     ]
+  }
+}
+
+export const EWF_LOGIN_5 = Template.bind({})
+EWF_LOGIN_5.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  queryParams: WFOIDCParams,
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Do you want to add this company to your Companies House account?'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'ConfirmationCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Do you want to add this company to your Companies House account?'
+          },
+          {
+            name: 'messageType',
+            value: 0
+          },
+          {
+            name: 'options',
+            value: [
+              'YES',
+              'NO'
+            ]
+          },
+          {
+            name: 'optionType',
+            value: -1
+          },
+          {
+            name: 'defaultOption',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 0
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'EWF_LOGIN_5'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"company":{"_id":"6c222b5b-7211-45a6-b4ee-4fe2645ca667","_rev":"00000000f7720165","number":"03550649","type":"private-limited-guarant-nsc","status":"active","locality":null,"postalCode":"W9 3HN","addressLine1":"16 Bradiston Road","addressLine2":"London","region":null,"creationDate":"1998-04-22T00:00:00Z","jurisdiction":"england-wales","adminIDs":[],"ownerIDs":[],"parentAdminIDs":[],"parentIDs":[],"parentOwnerIDs":[],"authCode":"$2a$10$uS7dsFz8iIuNvXQK6dG1v.F//uQajFz0BLc60/B8qrGqsdFrU77MO","authCodeIsActive":true,"name":"16 BRADISTON ROAD LIMITED"}}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'pagePropsJSON'
+          }
+        ]
+      }
+    ]
+  }
+}
+
+export const EWF_LOGIN_OTP_METHOD = Template.bind({})
+EWF_LOGIN_OTP_METHOD.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  queryParams: WFOIDCParams,
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'ChoiceCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: "How do you want to confirm it's you?"
+          },
+          {
+            name: 'choices',
+            value: [
+              'email',
+              'text'
+            ]
+          },
+          {
+            name: 'defaultChoice',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 0
+          }
+        ],
+        _id: 1
+      }
+    ],
+    stage: 'EWF_LOGIN_OTP_METHOD',
+    header: "How do you want to confirm it's you?",
+    description: "How do you want to confirm it's you?"
+  }
+}
+
+export const EWF_LOGIN_OTP = Template.bind({})
+EWF_LOGIN_OTP.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  queryParams: WFOIDCParams,
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"phoneNumber":"07777777777"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 'pagePropsJSON'
+          }
+        ],
+        _id: 0
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'ff898fec-21ac-4794-ae9f-b1a2aeab75c2'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'notificationId'
+          }
+        ],
+        _id: 1
+      },
+      {
+        type: 'PasswordCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'One Time Password'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ],
+        _id: 2
+      }
+    ],
+    stage: 'EWF_LOGIN_OTP',
+    header: 'Please enter your code',
+    description: 'Please enter the code you received via SMS'
   }
 }

@@ -165,7 +165,7 @@ const ResetPassword = ({ lang, queryParams }) => {
     </FeatureDynamicView>
   )
 }
-
+export { ResetPassword }
 export default withQueryParams(WithLang(ResetPassword))
 
 ResetPassword.propTypes = {

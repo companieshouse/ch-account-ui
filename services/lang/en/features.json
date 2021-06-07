@@ -142,14 +142,37 @@
       }
     },
     {
+      "component": "PageHeading",
+      "props": {
+        "children": "Enter the details of the company you want to access in WebFiling"
+      }
+    },
+    {
       "component": "DisplayUiElements",
       "props": {
         "elementProps": {
           "IDToken2": {
-            "renderLabelAs": "heading",
-            "label": "What is the company number?",
-            "fixedWidth": "10",
-            "hint": "Enter the registration number of the company you want to access in WebFiling."
+            "label": "Where was the company registered?",
+            "options": [
+                {
+                  "label": "England / Wales",
+                  "value": 0,
+                  "checked": false
+                },
+                {
+                  "label": "Scotland",
+                  "value": 1,
+                  "checked": false
+                },
+                {
+                  "label": "Northern Ireland",
+                  "value": 2,
+                  "checked": false
+                }
+              ]
+          },
+          "IDToken3": {
+            "label": "Company number"
           }
         }
       }
@@ -285,7 +308,10 @@
           "component": "LinkText",
           "props": {
             "children": "Choose a different company",
-            "href": "/account/associate/_restart"
+            "testId": "chooseDifferentCompanyLink"
+          },
+          "dynamicProps": {
+            "href": "${chooseCompanyPath}"
           }
         }
       ]
@@ -358,13 +384,12 @@
     {
       "component": "DisplayUiElements",
       "dynamicProps": {
-        "elementProps.IDToken1.caption": "${company.name}"
+        "elementProps.IDToken2.caption": "${company.name}"
       },
       "props": {
         "elementProps": {
-          "IDToken1": {
+          "IDToken2": {
             "renderLabelAs": "heading",
-            "caption": "Test",
             "captionPosition": "above",
             "label": "Do you want to add this company to your Companies House account?",
             "fixedWidth": "10"
@@ -402,6 +427,140 @@
         "type": "submit",
         "testId": "submitButton"
       }
+    }
+  ],
+  "EWF_LOGIN_OTP_METHOD": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "How do you want to confirm it's you?"
+      }
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "Before you can make changes to your account, we need to confirm it's you. This helps us keep your account secure."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": null
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Continue",
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    }
+  ],
+  "EWF_LOGIN_OTP": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Check your phone"
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "We've sent you a text message with a security code to "
+          }
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "weight": "bold"
+          },
+          "content": [
+            {
+              "component": "ObfuscatePhoneNumber",
+              "dynamicProps": {
+                "phoneNumber": "${phoneNumber}"
+              }
+            }
+          ]
+        },
+        {
+          "component": "SpanText",
+          "props": {
+            "children": "."
+          }
+        }
+      ]
+    },
+    {
+      "component": "BodyText",
+      "props": {
+        "children": "It may take a few minutes to arrive."
+      }
+    },
+    {
+      "component": "DisplayUiElements",
+      "props": {
+        "elementProps": {
+          "IDToken1": {
+            "label": "Security code"
+          }
+        }
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "children": "Continue",
+        "type": "submit",
+        "testId": "submitButton"
+      }
+    },
+    {
+      "component": "Details",
+      "props": {
+        "summary": "I have not received a text message"
+      },
+      "content": [
+        {
+          "component": "BodyText",
+          "props": {
+            "children": "The text message may take a few minutes to arrive."
+          }
+        },
+        {
+          "component": "BodyText",
+          "content": [
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "If it still has not arrived, you can "
+              }
+            },
+            {
+              "component": "LinkText",
+              "props": {
+                "children": "ask us to send you another text message",
+                "href": "/password-recovery/_restart/",
+                "testId": "restartPasswordRecoveryLink"
+              }
+            },
+            {
+              "component": "SpanText",
+              "props": {
+                "children": "."
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "LOGIN_MFA": [
@@ -2739,7 +2898,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "title": "Chexck your phone"
+        "title": "Check your phone"
       }
     },
     {
