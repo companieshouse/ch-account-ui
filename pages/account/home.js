@@ -28,7 +28,7 @@ const Home = ({ errors, lang }) => {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
         console.log('AssociationData', response)
         setAssociationData({
-          count: response.count,
+          count: response.confirmedCount,
           pendingCount: response.pendingCount,
           companies: response.companies
         })
@@ -45,7 +45,7 @@ const Home = ({ errors, lang }) => {
       width="full"
       titleLinkHref="/account/home"
       hasBackLink={false}
-      hasLanguageSwitcher={false}
+      hasLanguageSwitcher={true}
       hasLogoutLink={true}
       hasAccountLinks={true}
     >

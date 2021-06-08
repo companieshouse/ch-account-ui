@@ -12,12 +12,13 @@ import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
 import { generateQueryUrl } from '../../services/queryString'
 import useFRAuth from '../../services/useFRAuth'
 
-export const extendCompaniesData = (companiesData) => {
+export const extendCompaniesData = (companiesData, sub) => {
   return companiesData.map((company) => {
     console.log(company)
     const acceptPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'accept' })
     const declinePath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'decline' })
-    return { ...company, acceptPath, declinePath }
+    const inviter = company.users.filter((user) => user._refResourceId === company._refProperties.inviterId)[0]
+    return { ...company, acceptPath, declinePath, inviter }
   })
 }
 
@@ -38,13 +39,11 @@ const Notifications = ({ errors, lang }) => {
         console.log('AssociationData', response)
         setAssociationData({
           count: response.pendingCount,
-          companies: extendCompaniesData(response.pendingCompanies)
+          companies: extendCompaniesData(response.pendingCompanies, sub)
         })
       })
     }
   }, [sub, accessToken, headingCount])
-
-  console.log(associationData)
 
   return (
     <FeatureDynamicView

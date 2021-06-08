@@ -1656,7 +1656,7 @@
             {
               "component": "HeadingText",
               "props": {
-                "children": "Overview",
+                "children": "Your account",
                 "size": "m"
               }
             },
@@ -1672,7 +1672,8 @@
                         "count": "${associationData.count}"
                       },
                       "props": {
-                        "count": ""
+                        "count": "",
+                        "width": "one-half"
                       },
                       "content": [
                         {
@@ -1695,38 +1696,7 @@
                         {
                           "component": "BodyText",
                           "props": {
-                            "children": "View and manage your companies and the people authorised to file on behalf of a company."
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "component": "InfoBlock",
-                      "props": {
-                        "count": "0"
-                      },
-                      "content": [
-                        {
-                          "component": "HeadingText",
-                          "props": {
-                            "type": "h3",
-                            "size": "m"
-                          },
-                          "content": [
-                            {
-                              "component": "LinkText",
-                              "props": {
-                                "children": "Companies you follow",
-                                "href": "https://www.google.com",
-                                "testId": "companiesYouFollowLink"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "component": "BodyText",
-                          "props": {
-                            "children": "To receive notifications about a company, search for a company on the Companies House register and use the 'Follow a company' service."
+                            "children": "Add a company to your account. View, manage and file for companies you’ve added. Manage people authorised to file on behalf of a company."
                           }
                         }
                       ]
@@ -1736,6 +1706,10 @@
                       "dynamicProps": {
                         "count": "${associationData.pendingCount}"
                       },
+                      "props": {
+                        "count": "",
+                        "width": "one-half"
+                      },
                       "content": [
                         {
                           "component": "HeadingText",
@@ -1747,7 +1721,7 @@
                             {
                               "component": "LinkText",
                               "props": {
-                                "children": "Notifications",
+                                "children": "Messages",
                                 "href": "/account/notifications/",
                                 "testId": "notificationsLink"
                               }
@@ -1757,7 +1731,7 @@
                         {
                           "component": "BodyText",
                           "props": {
-                            "children": "Requests for authorised people to file on behalf of a company will appear here."
+                            "children": "View messages relating to your Companies House account."
                           }
                         }
                       ]
@@ -1794,6 +1768,9 @@
                   "content": [
                     {
                       "component": "InfoBlock",
+                      "props": {
+                        "width": "one-half"
+                      },
                       "content": [
                         {
                           "component": "HeadingText",
@@ -1805,73 +1782,22 @@
                             {
                               "component": "LinkText",
                               "props": {
-                                "children": "Search the register",
+                                "children": "WebFiling",
                                 "href": "https://www.google.com",
-                                "testId": "searchRegisterLink"
+                                "testId": "webFilingLink"
                               }
                             }
                           ]
                         },
                         {
-                          "component": "BodyText",
+                          "component": "List",
                           "props": {
-                            "children": "Search for company information on the Companies House register."
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "component": "InfoBlock",
-                      "content": [
-                        {
-                          "component": "HeadingText",
-                          "props": {
-                            "type": "h3",
-                            "size": "m"
-                          },
-                          "content": [
-                            {
-                              "component": "LinkText",
-                              "props": {
-                                "children": "Follow a company",
-                                "href": "https://www.google.com",
-                                "testId": "followCompanyLink"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "component": "BodyText",
-                          "props": {
-                            "children": "Receive email alerts about a company's activity."
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "component": "InfoBlock",
-                      "content": [
-                        {
-                          "component": "HeadingText",
-                          "props": {
-                            "type": "h3",
-                            "size": "m"
-                          },
-                          "content": [
-                            {
-                              "component": "LinkText",
-                              "props": {
-                                "children": "File accounts",
-                                "href": "https://www.google.com",
-                                "testId": "fileAccountsLink"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "component": "BodyText",
-                          "props": {
-                            "children": "File abridged or full accounts."
+                            "items": [
+                              "File your company's confirmation statement / annual return",
+                              "File your company's annual accounts",
+                              "File your company's director / secretary changes and other information",
+                              "Sign up to get email reminders when your company’s accounts and confirmation statement are due"
+                            ]
                           }
                         }
                       ]
@@ -2074,7 +2000,16 @@
             {
               "component": "BodyText",
               "props": {
-                "children": "If you want to file for a company, you'll need to add it to your account."
+                "children": "Add a company to your account so that you can:"
+              }
+            },
+            {
+              "component": "List",
+              "props": {
+                "items": [
+                  "file for the company online",
+                  "authorise people to file for the company on your behalf"
+                ]
               }
             },
             {
@@ -2266,8 +2201,8 @@
                                         {
                                           "conditional": {
                                             "prop": "${user._refProperties.membershipStatus}",
-                                            "operator": "eeq",
-                                            "value": "confirmed"
+                                            "operator": "ne",
+                                            "value": "pending"
                                           },
                                           "component": "Td",
                                           "content": [{
@@ -2281,8 +2216,8 @@
                                         {
                                           "conditional": {
                                             "prop": "${user._refProperties.membershipStatus}",
-                                            "operator": "nee",
-                                            "value": "confirmed"
+                                            "operator": "eeq",
+                                            "value": "pending"
                                           },
                                           "component": "Td",
                                           "content": [{
@@ -2354,7 +2289,7 @@
     {
       "component": "BrowserTitle",
       "props": {
-        "title": "Companies House account"
+        "title": "Messages"
       }
     },
     {
@@ -2373,7 +2308,7 @@
     {
       "component": "PageHeading",
       "props": {
-        "children": "Notifications"
+        "children": "Messages"
       }
     },
     {
@@ -2393,7 +2328,7 @@
               "component": "HeadingText",
               "props": {
                 "size": "m",
-                "children": "You do not have any pending notifications"
+                "children": "You do not have any messages"
               }
             },
             {
@@ -2434,12 +2369,24 @@
             {
               "component": "HeadingText",
               "dynamicProps": {
-                "children": "${company.name}",
+                "children": " ${company.name} ",
                 "anchor": "${company.number}"
               },
               "props": {
-                "size": "m"
-              }
+                "size": "m",
+                "style": {
+                  "margin-right": "10px"
+                }
+              },
+              "content": [
+                {
+                  "component": "Tag",
+                  "dynamicProps": {
+                    "colour": "yellow",
+                    "children": "Pending"
+                  }
+                }
+              ]
             },
             {
               "component": "Row",
@@ -2559,9 +2506,23 @@
                                   },
                                   "content": [
                                     {
+                                      "conditional": {
+                                        "prop": "${company.inviter.givenName}",
+                                        "operator": "is"
+                                      },
                                       "component": "BodyText",
                                       "dynamicProps": {
-                                        "children": "Hannah Salt wants to give you authorisation to file online for this company."
+                                        "children": " ${company.inviter.givenName} wants to give you authorisation to file online for this company."
+                                      }
+                                    },
+                                    {
+                                      "conditional": {
+                                        "prop": "${company.inviter.givenName}",
+                                        "operator": "not"
+                                      },
+                                      "component": "BodyText",
+                                      "dynamicProps": {
+                                        "children": "Someone wants to give you authorisation to file online for this company."
                                       }
                                     }
                                   ]
@@ -2588,23 +2549,28 @@
                                   },
                                   "content": [
                                     {
-                                      "component": "LinkText",
-                                      "dynamicProps": {
-                                        "href": "${company.acceptPath}",
-                                        "children": "Accept request",
-                                        "className": "govuk-link--no-visited-state"
+                                      "component": "BodyText",
+                                      "content": [      {
+                                        "component": "LinkText",
+                                        "dynamicProps": {
+                                          "href": "${company.acceptPath}",
+                                          "children": "Accept request",
+                                          "className": "govuk-link--no-visited-state"
+                                        }
                                       }
+                                      ]
                                     },
                                     {
-                                      "component": "Br"
-                                    },
-                                    {
-                                      "component": "LinkText",
-                                      "dynamicProps": {
-                                        "href": "${company.declinePath}",
-                                        "children": "Decline request",
-                                        "className": "govuk-link--no-visited-state"
+                                      "component": "BodyText",
+                                      "content": [              {
+                                        "component": "LinkText",
+                                        "dynamicProps": {
+                                          "href": "${company.declinePath}",
+                                          "children": "Decline request",
+                                          "className": "govuk-link--no-visited-state"
+                                        }
                                       }
+                                      ]
                                     }
                                   ]
                                 }

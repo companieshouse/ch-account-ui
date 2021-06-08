@@ -1,4 +1,4 @@
-@import "../../node_modules/govuk-frontend/govuk/all";
+@import "node_modules/govuk-frontend/govuk/all";
 @import "./govuk-language-select";
 
 .js-disabled {
@@ -28,15 +28,21 @@
 }
 
 .infoBlock {
-  padding: 2em;
-  height: 300px;
-  width: 310px;
-  margin-right: 10px;
-  background-color: govuk-colour("light-grey");
-}
+  padding: 0 10px 10px 0;
 
-.infoBlock:last-child {
-  margin-right: 0;
+  &__wrapper {
+    min-height: 320px;
+    padding: 2em;
+    background-color: govuk-colour("light-grey");
+  }
+
+  &__count {
+    color: #003078
+  }
+
+  &:last-child {
+    color: #003078
+  }
 }
 
 .boxCard {

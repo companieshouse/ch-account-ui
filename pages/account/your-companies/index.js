@@ -39,8 +39,8 @@ const YourCompanies = ({ errors, lang }) => {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
         console.log('AssociationData', response)
         setAssociationData({
-          count: response.count,
-          companies: extendCompaniesData(response.companies)
+          count: response.confirmedCount,
+          companies: extendCompaniesData(response.confirmedCompanies)
         })
       })
     }

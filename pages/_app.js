@@ -3,6 +3,8 @@ import React from 'react'
 import Footer from '../components/general-ui/Footer'
 import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
+import '../css/global.scss'
+
 function MyApp ({ Component, pageProps }) {
   React.useEffect(() => {
     import('govuk-frontend').then(({ initAll }) => {
