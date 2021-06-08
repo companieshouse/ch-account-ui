@@ -1815,7 +1815,7 @@
             {
               "component": "HeadingText",
               "props": {
-                "children": "Overview",
+                "children": "Your account",
                 "size": "m"
               }
             },
@@ -1831,7 +1831,8 @@
                         "count": "${associationData.count}"
                       },
                       "props": {
-                        "count": ""
+                        "count": "",
+                        "width": "one-half"
                       },
                       "content": [
                         {
@@ -1854,15 +1855,19 @@
                         {
                           "component": "BodyText",
                           "props": {
-                            "children": "View and manage your companies and the people authorised to file on behalf of a company."
+                            "children": "Add a company to your account. View, manage and file for companies you’ve added. Manage people authorised to file on behalf of a company."
                           }
                         }
                       ]
                     },
                     {
                       "component": "InfoBlock",
+                      "dynamicProps": {
+                        "count": "${associationData.pendingCount}"
+                      },
                       "props": {
-                        "count": "0"
+                        "count": "",
+                        "width": "one-half"
                       },
                       "content": [
                         {
@@ -1875,39 +1880,8 @@
                             {
                               "component": "LinkText",
                               "props": {
-                                "children": "Companies you follow",
-                                "href": "https://www.google.com",
-                                "testId": "companiesYouFollowLink"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "component": "BodyText",
-                          "props": {
-                            "children": "To receive notifications about a company, search for a company on the Companies House register and use the 'Follow a company' service."
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "component": "InfoBlock",
-                      "props": {
-                        "count": "0"
-                      },
-                      "content": [
-                        {
-                          "component": "HeadingText",
-                          "props": {
-                            "type": "h3",
-                            "size": "m"
-                          },
-                          "content": [
-                            {
-                              "component": "LinkText",
-                              "props": {
-                                "children": "Notifications",
-                                "href": "https://www.google.com",
+                                "children": "Messages",
+                                "href": "/account/notifications/",
                                 "testId": "notificationsLink"
                               }
                             }
@@ -1916,7 +1890,7 @@
                         {
                           "component": "BodyText",
                           "props": {
-                            "children": "Requests for authorised people to file on behalf of a company will appear here."
+                            "children": "View messages relating to your Companies House account."
                           }
                         }
                       ]
@@ -1953,6 +1927,9 @@
                   "content": [
                     {
                       "component": "InfoBlock",
+                      "props": {
+                        "width": "one-half"
+                      },
                       "content": [
                         {
                           "component": "HeadingText",
@@ -1964,73 +1941,22 @@
                             {
                               "component": "LinkText",
                               "props": {
-                                "children": "Search the register",
+                                "children": "WebFiling",
                                 "href": "https://www.google.com",
-                                "testId": "searchRegisterLink"
+                                "testId": "webFilingLink"
                               }
                             }
                           ]
                         },
                         {
-                          "component": "BodyText",
+                          "component": "List",
                           "props": {
-                            "children": "Search for company information on the Companies House register."
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "component": "InfoBlock",
-                      "content": [
-                        {
-                          "component": "HeadingText",
-                          "props": {
-                            "type": "h3",
-                            "size": "m"
-                          },
-                          "content": [
-                            {
-                              "component": "LinkText",
-                              "props": {
-                                "children": "Follow a company",
-                                "href": "https://www.google.com",
-                                "testId": "followCompanyLink"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "component": "BodyText",
-                          "props": {
-                            "children": "Receive email alerts about a company's activity."
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "component": "InfoBlock",
-                      "content": [
-                        {
-                          "component": "HeadingText",
-                          "props": {
-                            "type": "h3",
-                            "size": "m"
-                          },
-                          "content": [
-                            {
-                              "component": "LinkText",
-                              "props": {
-                                "children": "File accounts",
-                                "href": "https://www.google.com",
-                                "testId": "fileAccountsLink"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "component": "BodyText",
-                          "props": {
-                            "children": "File abridged or full accounts."
+                            "items": [
+                              "File your company's confirmation statement / annual return",
+                              "File your company's annual accounts",
+                              "File your company's director / secretary changes and other information",
+                              "Sign up to get email reminders when your company’s accounts and confirmation statement are due"
+                            ]
                           }
                         }
                       ]
@@ -2152,7 +2078,7 @@
     {
       "conditional": {
         "prop": "${notifyToken}",
-        "operator": "is",
+        "operator": "eeq",
         "value": "authSuccess"
       },
       "component": "NotificationBanner",
@@ -2164,6 +2090,32 @@
       "dynamicProps": {
         "notifyId": "${notifyId}",
         "heading": "An email request has been sent to ${invitedUser} to be authorised to file online for ${companyName}"
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${notifyToken}",
+        "operator": "eeq",
+        "value": "acceptSuccess"
+      },
+      "component": "NotificationBanner",
+      "dynamicProps": {
+        "type": "success",
+        "title": "Success",
+        "heading": "You are now authorised to file online for ${companyName}"
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${notifyToken}",
+        "operator": "eeq",
+        "value": "declineSuccess"
+      },
+      "component": "NotificationBanner",
+      "dynamicProps": {
+        "type": "success",
+        "title": "Success",
+        "heading": "You have declined the request to have authorisation to file online for ${companyName}"
       }
     },
     {
@@ -2207,7 +2159,16 @@
             {
               "component": "BodyText",
               "props": {
-                "children": "If you want to file for a company, you'll need to add it to your account."
+                "children": "Add a company to your account so that you can:"
+              }
+            },
+            {
+              "component": "List",
+              "props": {
+                "items": [
+                  "file for the company online",
+                  "authorise people to file for the company on your behalf"
+                ]
               }
             },
             {
@@ -2399,8 +2360,8 @@
                                         {
                                           "conditional": {
                                             "prop": "${user._refProperties.membershipStatus}",
-                                            "operator": "eeq",
-                                            "value": "confirmed"
+                                            "operator": "ne",
+                                            "value": "pending"
                                           },
                                           "component": "Td",
                                           "content": [{
@@ -2414,8 +2375,8 @@
                                         {
                                           "conditional": {
                                             "prop": "${user._refProperties.membershipStatus}",
-                                            "operator": "nee",
-                                            "value": "confirmed"
+                                            "operator": "eeq",
+                                            "value": "pending"
                                           },
                                           "component": "Td",
                                           "content": [{
@@ -2481,6 +2442,313 @@
         "href": "/account/associate/_start",
         "testId": "accountAssociateCompanyLink"
       }
+    }
+  ],
+  "HOME_NOTIFICATIONS": [
+    {
+      "component": "BrowserTitle",
+      "props": {
+        "title": "Messages"
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${notifyToken}",
+        "operator": "eeq",
+        "value": "authSuccess"
+      },
+      "component": "NotificationBanner",
+      "dynamicProps": {
+        "type": "success",
+        "title": "Success",
+        "heading": "An email request has been sent to ${invitedUser} to be authorised to file online for ${companyName}"
+      }
+    },
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "Messages"
+      }
+    },
+    {
+      "component": "SectionBreak"
+    },
+    {
+      "conditional": {
+        "prop": "${companies.length}",
+        "operator": "not"
+      },
+      "component": "Fragment",
+      "content": [
+        {
+          "component": "BoxCard",
+          "content": [
+            {
+              "component": "HeadingText",
+              "props": {
+                "size": "m",
+                "children": "You do not have any messages"
+              }
+            },
+            {
+              "component": "Button",
+              "props": {
+                "renderAs": "link",
+                "children": "Back to your home page",
+                "href": "/account/home/",
+                "testId": "accountAssociateCompanyLink"
+              }
+            }
+          ]
+        },
+        {
+          "component": "SectionBreak"
+        }
+      ]
+    },
+    {
+      "conditional": {
+        "prop": "${companies.length}",
+        "operator": "gt",
+        "value": 0
+      },
+      "iterator": {
+        "prop": "${companies}",
+        "name": "company",
+        "index": "index"
+      },
+      "component": "Fragment",
+      "dynamicProps": {
+        "key": "${company._id}"
+      },
+      "content": [
+        {
+          "component": "BoxCard",
+          "content": [
+            {
+              "component": "HeadingText",
+              "dynamicProps": {
+                "children": " ${company.name} ",
+                "anchor": "${company.number}"
+              },
+              "props": {
+                "size": "m",
+                "style": {
+                  "margin-right": "10px"
+                }
+              },
+              "content": [
+                {
+                  "component": "Tag",
+                  "dynamicProps": {
+                    "colour": "yellow",
+                    "children": "Pending"
+                  }
+                }
+              ]
+            },
+            {
+              "component": "Row",
+              "content": [
+                {
+                  "component": "Column",
+                  "props": {
+                    "width": "two-thirds"
+                  },
+                  "content": [
+                    {
+                      "component": "BodyText",
+                      "props": {
+                        "weight": "bold"
+                      },
+                      "content": [
+                        {
+                          "component": "SpanText",
+                          "props": {
+                            "children": "Company number"
+                          }
+                        },
+                        {
+                          "component": "Br"
+                        },
+                        {
+                          "component": "Fragment",
+                          "dynamicProps": {
+                            "children": "${company.number}"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "component": "BodyText",
+                      "props": {
+                        "weight": "bold"
+                      },
+                      "content": [
+                        {
+                          "component": "SpanText",
+                          "props": {
+                            "children": "Correspondence address"
+                          }
+                        },
+                        {
+                          "component": "Br"
+                        },
+                        {
+                          "component": "Fragment",
+                          "dynamicProps": {
+                            "children": {
+                              "component": "ArrayJoin",
+                              "props": {
+                                "joinWith": ", ",
+                                "stripEmpty": true
+                              },
+                              "dynamicProps": {
+                                "arr": [
+                                  "${company.addressLine1}",
+                                  "${company.addressLine2}",
+                                  "${company.locality}",
+                                  "${company.region}",
+                                  "${company.postalCode}"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "component": "Row",
+              "content": [
+                {
+                  "component": "Column",
+                  "props": {
+                    "width": "three-quarters"
+                  },
+                  "content": [
+                    {
+                      "component": "Table",
+                      "content": [
+                        {
+                          "component": "THead",
+                          "content": [
+                            {
+                              "component": "Tr",
+                              "content": [
+                                {
+                                  "component": "Th",
+                                  "props": {
+                                    "children": "Pending requests"
+                                  }
+                                },
+                                {
+                                  "component": "Th"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "component": "TBody",
+                          "content": [
+                            {
+                              "component": "Tr",
+                              "content": [
+                                {
+                                  "component": "Td",
+                                  "props": {
+                                    "rowSpan": 2
+                                  },
+                                  "content": [
+                                    {
+                                      "conditional": {
+                                        "prop": "${company.inviter.givenName}",
+                                        "operator": "is"
+                                      },
+                                      "component": "BodyText",
+                                      "dynamicProps": {
+                                        "children": " ${company.inviter.givenName} wants to give you authorisation to file online for this company."
+                                      }
+                                    },
+                                    {
+                                      "conditional": {
+                                        "prop": "${company.inviter.givenName}",
+                                        "operator": "not"
+                                      },
+                                      "component": "BodyText",
+                                      "dynamicProps": {
+                                        "children": "Someone wants to give you authorisation to file online for this company."
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "conditional": {
+                                    "prop": "${user._refProperties.membershipStatus}",
+                                    "operator": "eeq",
+                                    "value": "confirmed"
+                                  },
+                                  "component": "Td",
+                                  "content": [{
+                                    "component": "Tag",
+                                    "dynamicProps": {
+                                      "colour": "green",
+                                      "children": "Confirmed"
+                                    }
+                                  }]
+                                },
+                                {
+                                  "component": "Td",
+                                  "props": {
+                                    "width": "one-half"
+                                  },
+                                  "content": [
+                                    {
+                                      "component": "BodyText",
+                                      "content": [      {
+                                        "component": "LinkText",
+                                        "dynamicProps": {
+                                          "href": "${company.acceptPath}",
+                                          "children": "Accept request",
+                                          "className": "govuk-link--no-visited-state"
+                                        }
+                                      }
+                                      ]
+                                    },
+                                    {
+                                      "component": "BodyText",
+                                      "content": [              {
+                                        "component": "LinkText",
+                                        "dynamicProps": {
+                                          "href": "${company.declinePath}",
+                                          "children": "Decline request",
+                                          "className": "govuk-link--no-visited-state"
+                                        }
+                                      }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "SectionBreak"
+        }
+      ]
     }
   ],
   "HOME_AUTHORISED_PERSON": [
@@ -3077,11 +3345,19 @@
       }
     }
   ],
+  "INVITE_USER_3": [
+    {
+      "component": "Redirect",
+      "dynamicProps": {
+        "url": "${acceptSuccessPath}"
+      }
+    }
+  ],
   "INVITE_USER_ERROR": [
     {
       "component": "PageHeading",
       "props": {
-        "children": "Unable to invite user"
+        "children": "Unable to complete this request"
       }
     },
     {

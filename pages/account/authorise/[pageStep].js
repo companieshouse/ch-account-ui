@@ -33,12 +33,18 @@ const InviteUser = ({ lang }) => {
   const [uiStage, setUiStage] = useState('')
   const [customPageProps, setCustomPageProps] = useState({})
   const [submitData, setSubmitData] = useState((formData, stepOptions) => {})
-  const { pageStep = '', service = '', token, overrideStage = '', companyNumber } = router.query
+
+  const { pageStep = '', service = '', token, overrideStage = '', companyNumber, action } = router.query
+
   const headingCount = useMemo(() => new HeadingCount(), [])
 
-  const getStepOptions = useCallback(() => ({
-    query: { companyNumber: companyNumber, token }
-  }), [companyNumber, token])
+  const getStepOptions = useCallback(() => {
+    const requestQuery = { companyNumber: companyNumber, token }
+    if (action) {
+      requestQuery.action = action
+    }
+    return { query: requestQuery }
+  }, [companyNumber, token, action])
 
   React.useEffect(() => {
     headingCount.reset()
@@ -73,6 +79,14 @@ const InviteUser = ({ lang }) => {
             notifyToken: 'authSuccess',
             notifyId: notificationId,
             invitedUser: stepCustomPageProps.invitedUser,
+            companyName: stepCustomPageProps.company.name
+          })
+        }
+
+        // Setup success URL for step 3 (accept) redirect
+        if (stage === 'INVITE_USER_3') {
+          stepCustomPageProps.acceptSuccessPath = generateQueryUrl('/account/your-companies/', {
+            notifyToken: `${action}Success`,
             companyName: stepCustomPageProps.company.name
           })
         }
