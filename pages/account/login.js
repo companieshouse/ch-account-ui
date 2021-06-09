@@ -86,11 +86,7 @@ const Login = ({ lang, queryParams }) => {
           stepCustomPageProps.requestAuthCodePath = CH_REQUEST_AUTH_CODE_URL
         }
 
-        // Update the errors for the page
-        setErrors((currentErrorsArray) => {
-          return [...currentErrorsArray, ...stepErrors]
-        })
-
+        setErrors(stepErrors)
         setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)
         setUiFeatures(getStageFeatures(lang, overrideStage || stage))

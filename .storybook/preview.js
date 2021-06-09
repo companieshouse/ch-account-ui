@@ -1,5 +1,5 @@
 
-import '../css/global.css'
+import '../css/global.scss'
 import { withNextRouter } from 'storybook-addon-next-router';
 
 export const decorators = [withNextRouter()]
