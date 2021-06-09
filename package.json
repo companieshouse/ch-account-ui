@@ -63,6 +63,7 @@
     "prop-types": "^15.7.2",
     "replace-in-files": "^3.0.0",
     "sass": "^1.34.0",
+    "sass-loader": "^10.2.0",
     "sonarqube-scanner": "^2.8.0",
     "storybook-addon-next-router": "^2.0.4"
   },
