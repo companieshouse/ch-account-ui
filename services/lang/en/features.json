@@ -3318,10 +3318,6 @@
         "elementProps": {
           "IDToken2": {
             "formGroup": "nameAndEmail",
-            "label": "Full name (optional)"
-          },
-          "IDToken3": {
-            "formGroup": "nameAndEmail",
             "label": "Email address",
             "hint": "We'll send an email that contains a request link."
           }
