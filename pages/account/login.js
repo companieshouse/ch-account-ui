@@ -47,6 +47,11 @@ const Login = ({ lang, queryParams }) => {
       initialStep: initStage || undefined,
       isAuthOnly: mode === 'AUTHN_ONLY',
       lang,
+      stepOptions: {
+        query: {
+          ForceAuth: true
+        }
+      },
       onSuccess: () => {
         if (goto) {
           return push(goto)
