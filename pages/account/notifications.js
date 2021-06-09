@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useMemo, useState } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
-import withLang from '../../services/lang/withLang'
+import WithLang from '../../services/lang/WithLang'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
@@ -69,7 +69,7 @@ const Notifications = ({ errors, lang }) => {
   )
 }
 
-export default withLang(Notifications)
+export default WithLang(Notifications)
 
 Notifications.propTypes = {
   companies: PropTypes.array,
