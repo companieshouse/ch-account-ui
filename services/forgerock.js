@@ -164,8 +164,7 @@ export const forgerockFlow = ({
   journeyNamespace,
   stepOptions,
   lang,
-  isAuthOnly,
-  initialStep
+  isAuthOnly
 }) => {
   if (!lang) {
     console.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
@@ -240,7 +239,7 @@ export const forgerockFlow = ({
   }
 
   // Start the login process
-  nextStep(initialStep, stepOptions)
+  nextStep(undefined, stepOptions)
 }
 
 export const logoutFlow = ({

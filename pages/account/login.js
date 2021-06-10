@@ -32,7 +32,6 @@ const Login = ({ lang, queryParams }) => {
 
   const {
     goto,
-    initStage,
     overrideStage = '',
     authIndexValue,
     mode
@@ -44,7 +43,6 @@ const Login = ({ lang, queryParams }) => {
     forgerockFlow({
       journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
       journeyNamespace: 'LOGIN',
-      initialStep: initStage || undefined,
       isAuthOnly: mode === 'AUTHN_ONLY',
       lang,
       stepOptions: {

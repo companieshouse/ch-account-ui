@@ -12,20 +12,24 @@ const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefin
   const isChecked = (choice, index) => {
     return (typeof defaultValue === 'number' && index === defaultValue) || choice === defaultValue
   }
+  const { options, ...restCustomElementProps } = customElementProps
+  const mergedOptions = choices.map((choice, index) => {
+    return {
+      label: options?.[index]?.label || choice,
+      value: options?.[index]?.value || index,
+      checked: isChecked(choice, index)
+    }
+  })
 
   return (
     <RadioGroup
       id={id}
       testId={testId}
       label={label}
-      options={choices.map((choice, index) => ({
-        label: choice,
-        value: index,
-        checked: isChecked(choice, index)
-      }))}
+      options={mergedOptions}
       defaultValue={defaultValue}
       groupError={groupError}
-      {...customElementProps}
+      {...restCustomElementProps}
     />
   )
 }

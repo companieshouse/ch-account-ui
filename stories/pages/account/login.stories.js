@@ -26,7 +26,7 @@ const Template = (args) => {
 export const CH_LOGIN_1 = Template.bind({})
 CH_LOGIN_1.args = {
   queryParams: {},
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHLogin',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHLogin',
   responseData: {
     authId: mockAuthId,
     callbacks: [{
@@ -49,7 +49,7 @@ CH_LOGIN_1.args = {
 
 export const EWF_LOGIN_1 = Template.bind({})
 EWF_LOGIN_1.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -96,7 +96,7 @@ EWF_LOGIN_1.args = {
 
 export const EWF_LOGIN_2 = Template.bind({})
 EWF_LOGIN_2.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -180,9 +180,114 @@ EWF_LOGIN_2.args = {
   }
 }
 
+export const EWF_LOGIN_2_ERROR = Template.bind({})
+EWF_LOGIN_2_ERROR.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  queryParams: WFOIDCParams,
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'The company 33333 could not be found. Please try again.'
+          },
+          {
+            name: 'messageType',
+            value: '2'
+          }
+        ]
+      },
+      {
+        type: 'ChoiceCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Where was the company registered?'
+          },
+          {
+            name: 'choices',
+            value: [
+              'EW',
+              'SC',
+              'NI'
+            ]
+          },
+          {
+            name: 'defaultChoice',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 0
+          }
+        ]
+      },
+      {
+        type: 'NameCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Enter Company number'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'COMPANY_ASSOCIATION_1'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"errors":[{"label":"The company ${companyNumber} could not be found.","token":"COMPANY_NOT_FOUND","fieldName":"IDToken2","anchor":"IDToken2"}],"company":{"number":"33333"}}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken5',
+            value: 'pagePropsJSON'
+          }
+        ]
+      }
+    ],
+    stage: 'EWF_LOGIN_2'
+  }
+}
+
 export const EWF_LOGIN_3 = Template.bind({})
 EWF_LOGIN_3.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -278,7 +383,7 @@ EWF_LOGIN_3.args = {
 
 export const EWF_LOGIN_4 = Template.bind({})
 EWF_LOGIN_4.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -355,7 +460,7 @@ EWF_LOGIN_4.args = {
 
 export const EWF_LOGIN_5 = Template.bind({})
 EWF_LOGIN_5.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -451,7 +556,7 @@ EWF_LOGIN_5.args = {
 
 export const EWF_LOGIN_OTP_METHOD = Template.bind({})
 EWF_LOGIN_OTP_METHOD.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -492,7 +597,7 @@ EWF_LOGIN_OTP_METHOD.args = {
 
 export const EWF_LOGIN_OTP = Template.bind({})
 EWF_LOGIN_OTP.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,

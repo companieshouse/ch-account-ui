@@ -447,7 +447,15 @@
       "props": {
         "elementProps": {
           "IDToken1": {
-            "label": null
+            "label": null,
+            "options": [
+              {
+                "label": "Email"
+              },
+              {
+                "label": "Text"
+              }
+            ]
           }
         }
       }
@@ -463,12 +471,33 @@
   ],
   "EWF_LOGIN_OTP": [
     {
+      "conditional": {
+        "prop": "${type}",
+        "operator": "eeq",
+        "value": "sms"
+      },
       "component": "PageHeading",
       "props": {
         "children": "Check your phone"
       }
     },
     {
+      "conditional": {
+        "prop": "${type}",
+        "operator": "nee",
+        "value": "sms"
+      },
+      "component": "PageHeading",
+      "props": {
+        "children": "Check your email"
+      }
+    },
+    {
+      "conditional": {
+        "prop": "${type}",
+        "operator": "eeq",
+        "value": "sms"
+      },
       "component": "BodyText",
       "content": [
         {
@@ -495,6 +524,22 @@
           "component": "SpanText",
           "props": {
             "children": "."
+          }
+        }
+      ]
+    },
+    {
+      "conditional": {
+        "prop": "${type}",
+        "operator": "nee",
+        "value": "sms"
+      },
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "SpanText",
+          "dynamicProps": {
+            "children": "We've sent you an email with a security code to ${emailAddress}."
           }
         }
       ]
@@ -1162,7 +1207,15 @@
       "props": {
         "elementProps": {
           "IDToken1": {
-            "label": null
+            "label": null,
+            "options": [
+              {
+                "label": "Email"
+              },
+              {
+                "label": "Text"
+              }
+            ]
           }
         }
       }
@@ -3375,6 +3428,27 @@
       "component": "PageHeading",
       "props": {
         "children": "An error occurred while sending the SMS."
+      }
+    },
+    {
+      "component": "BodyText",
+      "content": [
+        {
+          "component": "LinkText",
+          "props": {
+            "children": "Please try again",
+            "href": "/account/home",
+            "testId": "yourCompaniesLink"
+          }
+        }
+      ]
+    }
+  ],
+  "SEND_MFA_EMAIL_ERROR": [
+    {
+      "component": "PageHeading",
+      "props": {
+        "children": "An error occurred while sending the email."
       }
     },
     {
