@@ -12,7 +12,9 @@ const Button = ({
   href = '#',
   children, className = '',
   hasStartIcon = false,
-  testId
+  testId,
+  handler,
+  handlers
 }) => {
   const classes = [className]
 
@@ -21,6 +23,12 @@ const Button = ({
   if (hasStartIcon === true) classes.push('govuk-button--start')
 
   const finalClassName = classes.join(' ').trim()
+
+  if (handler) {
+    onClick = (evt) => {
+      handlers[handler.name](evt, handler.params)
+    }
+  }
 
   if (renderAs === 'link') {
     return (
@@ -45,7 +53,7 @@ const Button = ({
 
   if (renderAs === 'button') {
     return (
-      <button type={type} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
+      <button type={type} onClick={onClick} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
         {label}
         {children}
       </button>
@@ -62,6 +70,8 @@ Button.propTypes = {
   className: PropTypes.string,
   hasStartIcon: PropTypes.bool,
   href: PropTypes.string,
+  handler: PropTypes.object,
+  handlers: PropTypes.object,
   label: PropTypes.string,
   onClick: PropTypes.func,
   renderAs: PropTypes.string,

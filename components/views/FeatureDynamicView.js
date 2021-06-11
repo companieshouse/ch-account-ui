@@ -20,6 +20,7 @@ const FeatureDynamicView = (props) => {
     titleLinkHref,
     width,
     formAction,
+    formRef,
     onSubmit,
     onBack,
     renderFeatures,
@@ -49,7 +50,7 @@ const FeatureDynamicView = (props) => {
             <Row>
               <Column width={width}>
                 {Boolean(formAction || onSubmit) === true &&
-                <form action={formAction} onSubmit={onSubmit} method="post" noValidate={true}>
+                <form action={formAction} onSubmit={onSubmit} method="post" noValidate={true} ref={formRef}>
                   {renderFeatures(props)}
                   {children}
                 </form>}

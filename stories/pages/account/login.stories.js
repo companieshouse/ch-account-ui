@@ -94,6 +94,135 @@ EWF_LOGIN_1.args = {
   }
 }
 
+export const EWF_PROFILE = Template.bind({})
+EWF_PROFILE.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  queryParams: WFOIDCParams,
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Update your personal details'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'BOTH'
+          },
+          {
+            name: 'id',
+            value: 'BOTH'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'BOTH'
+          }
+        ]
+      },
+      {
+        type: 'NameCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'What is your full name? (optional)'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ]
+      },
+      {
+        type: 'NameCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'What is your mobile number? (optional)'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: ''
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'EWF_PROFILE'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken5',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'ConfirmationCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Do you want to skip?'
+          },
+          {
+            name: 'messageType',
+            value: 0
+          },
+          {
+            name: 'options',
+            value: [
+              'SKIP',
+              'SUBMIT'
+            ]
+          },
+          {
+            name: 'optionType',
+            value: -1
+          },
+          {
+            name: 'defaultOption',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken6',
+            value: 0
+          }
+        ]
+      }
+    ],
+    stage: 'EWF_PROFILE',
+    header: 'Sign Up',
+    description: "Signing up is fast and easy.<br>Already have an account? <a href='#/service/Login'>Sign In</a>"
+  }
+}
+
 export const EWF_LOGIN_2 = Template.bind({})
 EWF_LOGIN_2.args = {
   path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
