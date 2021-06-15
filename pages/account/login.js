@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useEffect } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import { CH_REQUEST_AUTH_CODE_URL, FORGEROCK_TREE_LOGIN } from '../../services/environment'
+import {
+  CH_EWF_LEGACY_AUTH_URL,
+  CH_EWF_REQUEST_AUTH_CODE_URL,
+  CH_REQUEST_AUTH_CODE_URL,
+  FORGEROCK_TREE_LOGIN
+} from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import WithLang from '../../services/lang/WithLang'
@@ -12,15 +17,9 @@ import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import { serializeForm } from '../../services/formData'
 
-const navMap = {
-  EWF_LOGIN_2: 'EWF_LOGIN_1',
-  EWF_LOGIN_3: 'EWF_LOGIN_2',
-  EWF_LOGIN_4: 'EWF_LOGIN_3',
-  EWF_LOGIN_5: 'EWF_LOGIN_4'
-}
-
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
+  const formRef = useRef()
   const { push, asPath } = router
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
@@ -76,12 +75,10 @@ const Login = ({ lang, queryParams }) => {
           }
         }
 
-        if (stage === 'EWF_LOGIN_3') {
-          stepCustomPageProps.chooseCompanyPath = `${asPath}&initStage='EWF_LOGIN_2'`
-        }
-
-        if (stage === 'EWF_LOGIN_4') {
-          stepCustomPageProps.requestAuthCodePath = CH_REQUEST_AUTH_CODE_URL
+        stepCustomPageProps.links = {
+          chooseCompanyPath: `${asPath}`,
+          requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+          ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL
         }
 
         setErrors(stepErrors)
@@ -92,25 +89,27 @@ const Login = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [overrideStage, headingCount, lang, goto, authIndexValue, mode, push])
-
-  const onBack = (evt) => {
-    evt.preventDefault()
-    push(`${asPath}&initStage=${navMap[uiStage]}`)
-  }
+  }, [asPath, overrideStage, headingCount, lang, goto, authIndexValue, mode, push])
 
   const onSubmit = (evt) => {
-    evt.preventDefault()
+    evt?.preventDefault()
+
     setErrors([])
 
-    const formData = serializeForm(evt.target)
+    const formData = serializeForm(formRef.current)
     submitData(formData)
+  }
+
+  const onSecondarySubmit = (evt, params) => {
+    evt.preventDefault()
+    document.getElementsByName(params.target)[0].value = params.value
+    onSubmit()
   }
 
   return (
     <FeatureDynamicView
-      onBack={onBack}
       onSubmit={onSubmit}
+      formRef={formRef}
     >
       <Dynamic
         {...customPageProps}
@@ -121,6 +120,7 @@ const Login = ({ lang, queryParams }) => {
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
+        handlers={{ onSecondarySubmit }}
       />
     </FeatureDynamicView>
   )

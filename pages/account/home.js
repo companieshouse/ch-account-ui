@@ -10,6 +10,7 @@ import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
 import useFRAuth from '../../services/useFRAuth'
+import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 
 const Home = ({ errors, lang }) => {
   const { profile, accessToken } = useFRAuth()
@@ -58,6 +59,7 @@ const Home = ({ errors, lang }) => {
         uiStage={uiStage}
         profile={profile}
         associationData={associationData}
+        links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />
     </FeatureDynamicView>
