@@ -167,13 +167,11 @@
     "props": {
       "elementProps": {
         "IDToken3": {
-          "type": "text",
           "autoComplete": "name",
           "hint": "This is the name that will be displayed in your account. It is up to you how your name is displayed, for example 'Dan Smith' or 'Daniel Smith'.",
           "label": "What is your full name? (optional)"
         },
         "IDToken4": {
-          "type": "text",
           "autoComplete": "tel",
           "hint": "Add your mobile number to make your account more secure. We'll send a security code to this number by text message.",
           "label": "What is your mobile number? (optional)"
@@ -205,7 +203,7 @@
               "name": "onSecondarySubmit",
               "params": {
                 "target": "IDToken6",
-                "value": 1
+                "value": 0
               }
             }
           }
