@@ -37,6 +37,7 @@ import BoxCard from '../components/application-specific/BoxCard'
 import Br from '../components/general-ui/layout/Br'
 import ArrayJoin from '../components/general-ui/ArrayJoin'
 import ErrorSummary from '../components/general-ui/typeography/ErrorSummary'
+import ErrorPageSummary from '../components/general-ui/typeography/ErrorPageSummary'
 import Tag from '../components/general-ui/typeography/Tag'
 import ObfuscatePhoneNumber from '../components/application-specific/ObfuscatePhoneNumber'
 
@@ -80,6 +81,7 @@ const componentMap = {
   Br,
   ArrayJoin,
   ErrorSummary,
+  ErrorPageSummary,
   Tag,
   ObfuscatePhoneNumber
 }

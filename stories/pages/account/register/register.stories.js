@@ -2,21 +2,30 @@ import React from 'react'
 import fetchMock from 'fetch-mock'
 import Regsiter from '../../../../pages/account/register/[pageStep]'
 import { mockAuthId } from '../../common-mocks'
+import { setCallback } from '../../story-utils'
 
 const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHRegistration'
 
 export default {
   title: 'Pages/Account/Register',
-  args: {
-    lang: 'en'
+  argTypes: {
+    lang: {
+      options: ['en', 'ch'],
+      control: { type: 'radio' }
+    }
   }
 }
 
-const Template = (args) => {
-  fetchMock.restore().mock(path, args.responseData, {
+// eslint-disable-next-line react/prop-types
+const Template = ({ pageProps, responseData, ...rest }) => {
+  if (pageProps) {
+    // eslint-disable-next-line react/prop-types
+    setCallback(responseData.callbacks, 'pagePropsJSON', pageProps)
+  }
+  fetchMock.restore().mock(path, responseData, {
     delay: 100 // fake a slow network
   })
-  return <Regsiter {...args} />
+  return <Regsiter {...rest} />
 }
 
 export const REGISTRATION_1 = Template.bind({})
@@ -347,5 +356,74 @@ REGISTRATION_3.args = {
         ]
       }
     ]
+  }
+}
+
+export const REGISTRATION_ERROR = Template.bind({})
+
+const registrationsErrors = {
+  REGISTRATION_GENERAL_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"REGISTRATION_GENERAL_ERROR"}]}',
+  REGISTRATION_SEND_EMAIL_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":"REGISTRATION_SEND_EMAIL_ERROR"}]}',
+  TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"REGISTRATION_TOKEN_PARSING_ERROR"}]}',
+  NO_TOKEN_ERROR: '{"errors":[{"label":"No Registration Token found in request.","token":"REGISTRATION_NO_TOKEN_ERROR"}]}',
+  REGISTRATION_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"REGISTRATION_TOKEN_EXPIRED_ERROR"}]}'
+}
+
+REGISTRATION_ERROR.argTypes = {
+  pageProps: {
+    options: Object.keys(registrationsErrors),
+    type: 'select',
+    mapping: registrationsErrors
+  }
+}
+REGISTRATION_ERROR.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+REGISTRATION_ERROR.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [{
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: 'REGISTRATION_ERROR'
+        },
+        {
+          name: 'id',
+          value: 'stage'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken2',
+          value: 'stage'
+        }
+      ]
+    }, {
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: ''
+        },
+        {
+          name: 'id',
+          value: 'pagePropsJSON'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken5',
+          value: 'pagePropsJSON'
+        }
+      ]
+    }]
   }
 }

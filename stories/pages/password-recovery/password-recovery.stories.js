@@ -2,7 +2,7 @@ import React from 'react'
 import fetchMock from 'fetch-mock'
 import { ResetPassword } from '../../../pages/password-recovery/[pageStep]'
 import { mockAuthId } from '../common-mocks'
-import { COMPANY_ASSOCIATION_2 } from '../account/associate/associate.stories'
+import { setCallback } from '../story-utils'
 
 export default {
   title: 'Pages/PasswordRecovery/ResetPassword',
@@ -11,11 +11,16 @@ export default {
   }
 }
 
-const Template = (args) => {
-  fetchMock.restore().mock(args.path, args.responseData, {
+// eslint-disable-next-line react/prop-types
+const Template = ({ pageProps, responseData, path, ...rest }) => {
+  if (pageProps) {
+    // eslint-disable-next-line react/prop-types
+    setCallback(responseData.callbacks, 'pagePropsJSON', pageProps)
+  }
+  fetchMock.restore().mock(path, responseData, {
     delay: 100 // fake a slow network
   })
-  return <ResetPassword {...args} />
+  return <ResetPassword {...rest} />
 }
 
 export const RESET_PASSWORD_1 = Template.bind({})
@@ -251,5 +256,75 @@ RESET_PASSWORD_3.args = {
     stage: 'RESET_PASSWORD_3',
     header: 'Please enter your code',
     description: 'Please enter the code you received via SMS'
+  }
+}
+
+export const RESET_PASSWORD_ERROR = Template.bind({})
+
+const registrationsErrors = {
+  RESET_PASSWORD_GENERAL_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"RESET_PASSWORD_GENERAL_ERROR"}]}',
+  RESET_PASSWORD_EMAIL_SEND_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":" RESET_PASSWORD_EMAIL_SEND_ERROR"}]}',
+  RESET_PASSWORD_TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"RESET_PASSWORD_TOKEN_PARSING_ERROR"}]}',
+  RESET_PASSWORD_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"RESET_PASSWORD_TOKEN_EXPIRED_ERROR"}]}'
+}
+
+RESET_PASSWORD_ERROR.argTypes = {
+  pageProps: {
+    options: Object.keys(registrationsErrors),
+    type: 'select',
+    mapping: registrationsErrors
+  }
+}
+RESET_PASSWORD_ERROR.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: 'request'
+      }
+    }
+  }
+}
+RESET_PASSWORD_ERROR.args = {
+  queryParams: {},
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHResetPassword',
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [{
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: 'RESET_PASSWORD_ERROR'
+        },
+        {
+          name: 'id',
+          value: 'stage'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken2',
+          value: 'stage'
+        }
+      ]
+    }, {
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: ''
+        },
+        {
+          name: 'id',
+          value: 'pagePropsJSON'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken5',
+          value: 'pagePropsJSON'
+        }
+      ]
+    }]
   }
 }

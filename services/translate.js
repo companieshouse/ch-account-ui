@@ -1,4 +1,4 @@
-import enFeatures from './lang/en/features.json'
+import enFeatures from './lang/en/features.js'
 import enTokens from './lang/en/tokens.json'
 
 import cyFeatures from './lang/cy/features.json'
