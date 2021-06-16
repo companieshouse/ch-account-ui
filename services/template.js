@@ -45,7 +45,8 @@ export const parseTemplateString = (data, templateString, forceString = false, r
   // Break out the data requests in the template string and
   // render the data in place of tokens
   const regexp = /\${([\s\S]+?)}/g
-  const matchData = templateString.match(regexp)
+
+  const matchData = templateString?.match(regexp)
   let matches
 
   if (forceString === false && matchData !== null && matchData.length === 1 && templateString.indexOf('${') === 0) {

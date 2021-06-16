@@ -76,13 +76,13 @@ const RegisterContactDetails = ({ lang }) => {
         // We only get here if there was a fatal error signal from the forgerock client library
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
         // and are handled gracefully by the onUpdateUi function
-        setErrors(newErrors)
-
-        if (!uiStage) {
-          setUiStage('GENERIC_ERROR')
-        }
-
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'GENERIC_ERROR'))
+        let stage = 'GENERIC_ERROR'
+        newErrors.forEach((error) => {
+          if (error.stage) {
+            stage = error.stage
+          }
+        })
+        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -133,13 +133,13 @@ const RegisterContactDetails = ({ lang }) => {
       headingCount={headingCount}
     >
       <Dynamic
+        {...customPageProps}
         componentMap={componentMap}
         headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        {...customPageProps}
         {...router.query}
       />
     </FeatureDynamicView>

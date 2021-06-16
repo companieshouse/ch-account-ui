@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import Router from 'next/router'
 import { logoutFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
@@ -10,10 +10,11 @@ import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 
 const Logout = ({ lang }) => {
-  const [errors, setErrors] = React.useState([])
+  const [errors, setErrors] = useState([])
   const headingCount = new HeadingCount()
   const uiStage = 'LOGOUT_ERROR'
   const content = getStageFeatures(lang, uiStage)
+  const [loggingOut, setLoggingOut] = useState(true)
 
   const doLogout = () => {
     logoutFlow({
@@ -21,6 +22,7 @@ const Logout = ({ lang }) => {
         Router.push('/account/login')
       },
       onFailure: (err) => {
+        setLoggingOut(false)
         setErrors([{
           label: translate(lang, 'LOGOUT_SERVICE_ERROR')
         }, {
@@ -34,6 +36,10 @@ const Logout = ({ lang }) => {
     headingCount.reset()
     doLogout()
   })
+
+  if (loggingOut) {
+    return null
+  }
 
   return (
     <FeatureDynamicView

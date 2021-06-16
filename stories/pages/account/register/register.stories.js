@@ -364,8 +364,8 @@ export const REGISTRATION_ERROR = Template.bind({})
 const registrationsErrors = {
   REGISTRATION_GENERAL_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"REGISTRATION_GENERAL_ERROR"}]}',
   REGISTRATION_SEND_EMAIL_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":"REGISTRATION_SEND_EMAIL_ERROR"}]}',
-  TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"REGISTRATION_TOKEN_PARSING_ERROR"}]}',
-  NO_TOKEN_ERROR: '{"errors":[{"label":"No Registration Token found in request.","token":"REGISTRATION_NO_TOKEN_ERROR"}]}',
+  REGISTRATION_TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"REGISTRATION_TOKEN_PARSING_ERROR"}]}',
+  REGISTRATION_NO_TOKEN_ERROR: '{"errors":[{"label":"No Registration Token found in request.","token":"REGISTRATION_NO_TOKEN_ERROR"}]}',
   REGISTRATION_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"REGISTRATION_TOKEN_EXPIRED_ERROR"}]}'
 }
 

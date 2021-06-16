@@ -135,6 +135,83 @@ const features = {
           }
         }
       ]
+    },
+    {
+      component: 'BodyText',
+      content: [
+        {
+          component: 'LinkText',
+          dynamicProps: {
+            href: '${links.ewfLegacyAuthUrl}'
+          },
+          props: {
+            children: "I'm an agent or lender and I want to file a charge (mortgage) document",
+            testId: 'forgottenMyPasswordLink'
+          }
+        }
+      ]
+    }
+  ],
+  EWF_PROFILE: [
+    {
+      component: 'BrowserTitle',
+      props: {
+        title: 'Update your personal details'
+      }
+    },
+    {
+      component: 'PageHeading',
+      props: {
+        children: 'Update your personal details'
+      }
+    },
+    {
+      component: 'DisplayUiElements',
+      props: {
+        elementProps: {
+          IDToken3: {
+            autoComplete: 'name',
+            hint: "This is the name that will be displayed in your account. It is up to you how your name is displayed, for example 'Dan Smith' or 'Daniel Smith'.",
+            label: 'What is your full name? (optional)'
+          },
+          IDToken4: {
+            autoComplete: 'tel',
+            hint: "Add your mobile number to make your account more secure. We'll send a security code to this number by text message.",
+            label: 'What is your mobile number? (optional)'
+          },
+          IDToken6: {
+            _hidden: true
+          }
+        }
+      }
+    },
+    {
+      component: 'ButtonGroup',
+      content: [{
+        component: 'Button',
+        props: {
+          children: 'Continue',
+          type: 'submit',
+          testId: 'submitButton'
+        }
+      },
+      {
+        component: 'Button',
+        props: {
+          children: 'Skip',
+          type: 'submit',
+          secondary: true,
+          testId: 'submitButton',
+          handler: {
+            name: 'onSecondarySubmit',
+            params: {
+              target: 'IDToken6',
+              value: 0
+            }
+          }
+        }
+      }
+      ]
     }
   ],
   EWF_LOGIN_2: [
@@ -314,7 +391,7 @@ const features = {
             testId: 'chooseDifferentCompanyLink'
           },
           dynamicProps: {
-            href: '${chooseCompanyPath}'
+            href: '${links.chooseCompanyPath}'
           }
         }
       ]
@@ -324,7 +401,7 @@ const features = {
     {
       component: 'BrowserTitle',
       props: {
-        title: 'Provide the company auth code'
+        title: 'Enter the company authentication code'
       }
     },
     {
@@ -367,11 +444,26 @@ const features = {
         {
           component: 'LinkText',
           dynamicProps: {
-            href: '${requestAuthCodePath}'
+            href: '${links.requestAuthCodePath}'
           },
           props: {
             children: 'Request an authentication code',
             testId: 'requestAuthCodeLink'
+          }
+        }
+      ]
+    },
+    {
+      component: 'BodyText',
+      content: [
+        {
+          component: 'LinkText',
+          dynamicProps: {
+            href: '${links.ewfLegacyAuthUrl}'
+          },
+          props: {
+            children: "I'm an agent or lender and I want to file a charge (mortgage) document",
+            testId: 'forgottenMyPasswordLink'
           }
         }
       ]
@@ -1055,52 +1147,78 @@ const features = {
   ],
   REGISTRATION_ERROR: [
     {
-      component: 'PageHeading',
-      props: {
-        showErrorSummary: false,
-        children: 'Sorry, there is a problem with the service'
-      }
-    },
-    {
-      component: 'BodyText',
-      props: {
-        children: 'An error occurred during the registration process. To continue, please click the link below and start the registration process again with a different email address.'
-      }
-    },
-    {
-      iterator: {
-        prop: '${errors}',
-        name: 'error',
-        index: 'index'
+      conditional: {
+        prop: '${errors.0.tokenNoNamespace}',
+        operator: 'eeq',
+        value: 'REGISTRATION_GENERAL_ERROR'
       },
-      component: 'ErrorPageSummary',
-      content: [
-        {
-          conditional: {
-            prop: '${error.token}',
-            operator: 'eeq',
-            value: 'REGISTRATION_TOKEN_EXPIRED_ERROR'
-          },
-          component: 'BodyText',
-          dynamicProps: {
-            children: 'The token has expired'
-          }
-        }
-      ]
+      component: 'Fragment',
+      content: genericError
     },
     {
-      component: 'BodyText',
+      conditional: {
+        prop: '${errors.0.tokenNoNamespace}',
+        operator: 'eeq',
+        value: 'REGISTRATION_SEND_EMAIL_ERROR'
+      },
+      component: 'Fragment',
+      content: genericError
+    },
+    {
+      conditional: {
+        prop: '${errors.0.tokenNoNamespace}',
+        operator: 'eeq',
+        value: 'REGISTRATION_NO_TOKEN_ERROR'
+      },
+      component: 'Fragment',
       content: [
         {
-          component: 'LinkText',
+          component: 'PageHeading',
           props: {
-            children: 'Click here to try a different email address',
-            href: '/account/register/_restart/',
-            testId: 'startRegistrationAgainLink'
+            children: 'Page not found',
+            showErrorSummary: false
           }
+        },
+        {
+          component: 'BodyText',
+          props: {
+            children: ['If you typed the link, check it is correct.']
+          }
+        },
+        {
+          component: 'BodyText',
+          props: {
+            children: 'If you pasted the link, check you copied the entire link.'
+          }
+        },
+        {
+          component: 'BodyText',
+          content: [
+            {
+              component: 'SpanText',
+              props: {
+                children: 'If the link is correct, you must '
+              }
+            },
+            {
+              component: 'LinkText',
+              props: {
+                children: 'start again to register a new account',
+                href: '/account/register/_start/',
+                testId: 'registrationLink'
+              }
+            },
+            {
+              component: 'SpanText',
+              props: {
+                children: '.'
+              }
+            }
+          ]
         }
       ]
     }
+
   ],
   GENERIC_ERROR: genericError,
   LIMIT_EXCEEDED_ERROR: [
@@ -1777,7 +1895,7 @@ const features = {
         {
           component: 'LinkText',
           dynamicProps: {
-            href: '${requestAuthCodePath}'
+            href: '${links.requestAuthCodePath}'
           },
           props: {
             children: 'Request an authentication code',
@@ -2050,9 +2168,11 @@ const features = {
                           content: [
                             {
                               component: 'LinkText',
+                              dynamicProps: {
+                                href: '${links.ewfAuthenticatedEntry}'
+                              },
                               props: {
                                 children: 'WebFiling',
-                                href: 'https://www.google.com',
                                 testId: 'webFilingLink'
                               }
                             }
@@ -3014,7 +3134,7 @@ const features = {
     {
       component: 'BodyText',
       props: {
-        children: 'For your security, we\'ve signed you out because you have not used the service for 45 minutes.'
+        children: 'For your security, we\'ve signed you out.'
       }
     },
     {
@@ -3027,7 +3147,25 @@ const features = {
       component: 'BodyText',
       content: [
         {
+          conditional: {
+            prop: '${restartPath}',
+            operator: 'is'
+          },
           component: 'LinkText',
+          dynamicProps: {
+            href: '{restartPath}'
+          },
+          props: {
+            children: 'Sign back in to your account.',
+            testId: 'loginExistingAccountLink'
+          }
+        },
+        {
+          component: 'LinkText',
+          conditional: {
+            prop: '${restartPath}',
+            operator: 'not'
+          },
           props: {
             children: 'Sign back in to your account.',
             href: '/account/login',

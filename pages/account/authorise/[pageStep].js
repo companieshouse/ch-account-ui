@@ -63,9 +63,17 @@ const InviteUser = ({ lang }) => {
         Router.push('/account/your-companies')
       },
       onFailure: (errData, newErrors = []) => {
-        // Fatal error
+        // We only get here if there was a fatal error signal from the forgerock client library
+        // all other errors are not considered a failure (such as incorrectly formatted inputs etc
+        // and are handled gracefully by the onUpdateUi function
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'NO_SESSION_ERROR'))
+        let stage = 'GENERIC_ERROR'
+        newErrors.forEach((error) => {
+          if (error.stage) {
+            stage = error.stage
+          }
+        })
+        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)

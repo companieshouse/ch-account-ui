@@ -24,6 +24,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     console.log(step)
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
+      stage: 'NO_SESSION_ERROR',
       token: `${journeyNamespace}_ERROR_LOGIN_FAILURE`,
       tokenNoNamespace: 'ERROR_LOGIN_FAILURE',
       anchor: 'IDToken1'
