@@ -119,32 +119,36 @@ EWF_PROFILE.args = {
         output: [
           {
             name: 'value',
-            value: 'BOTH'
+            value: 'PHONE'
           },
           {
             name: 'id',
-            value: 'BOTH'
+            value: 'PHONE'
           }
         ],
         input: [
           {
             name: 'IDToken2',
-            value: 'BOTH'
+            value: 'PHONE'
           }
         ]
       },
       {
-        type: 'NameCallback',
+        type: 'HiddenValueCallback',
         output: [
           {
-            name: 'prompt',
-            value: 'What is your full name? (optional)'
+            name: 'value',
+            value: 'IGNOREME'
+          },
+          {
+            name: 'id',
+            value: 'IGNOREME'
           }
         ],
         input: [
           {
             name: 'IDToken3',
-            value: ''
+            value: 'IGNOREME'
           }
         ]
       },

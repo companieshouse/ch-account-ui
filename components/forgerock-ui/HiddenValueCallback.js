@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const HiddenValueCallback = ({ element, customElementProps = {} }) => {
-  const id = element.getOutputValue('id')
+const HiddenValueCallback = ({ element, customElementProps }) => {
+  const outputId = element.getOutputValue('id')
+  const outputValue = element.getOutputValue('value')
+  const inputName = element.payload.input[0].name
 
-  if (id === 'pagePropsJSON') return null
-
-  const currentValue = element.getOutputValue('value')
+  if (outputId === 'pagePropsJSON') return null
 
   return (
-    <input type="hidden" name={id} value={currentValue} {...customElementProps} />
+    <input type="hidden" id={outputId} name={inputName} value={outputId} data-output-value={outputValue} {...customElementProps} />
   )
 }
 
