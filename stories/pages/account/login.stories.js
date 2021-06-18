@@ -17,9 +17,15 @@ const WFOIDCParams = {
 }
 
 const Template = (args) => {
-  fetchMock.restore().mock(args.path, args.responseData, {
+  fetchMock.restore()
+  fetchMock.mock(args.path, args.responseData, {
     delay: 100 // fake a slow network
   })
+  if (args.submitPath) {
+    fetchMock.mock(args.submitPath, args.submitResponseData, {
+      delay: 100 // fake a slow network
+    })
+  }
   return <Login {...args} />
 }
 
@@ -97,6 +103,87 @@ EWF_LOGIN_1.args = {
 export const EWF_PROFILE = Template.bind({})
 EWF_PROFILE.args = {
   path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  submitPath: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  submitResponseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please enter the company number.'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'ChoiceCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Where was the company registered?'
+          },
+          {
+            name: 'choices',
+            value: [
+              'en',
+              'sc',
+              'ni'
+            ]
+          },
+          {
+            name: 'defaultChoice',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 0
+          }
+        ]
+      },
+      {
+        type: 'NameCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Enter Company number'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'EWF_LOGIN_2'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'stage'
+          }
+        ]
+      }
+    ],
+    stage: 'EWF_LOGIN_2'
+  },
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -119,36 +206,32 @@ EWF_PROFILE.args = {
         output: [
           {
             name: 'value',
-            value: 'PHONE'
+            value: 'BOTH'
           },
           {
             name: 'id',
-            value: 'PHONE'
+            value: 'BOTH'
           }
         ],
         input: [
           {
             name: 'IDToken2',
-            value: 'PHONE'
+            value: 'BOTH'
           }
         ]
       },
       {
-        type: 'HiddenValueCallback',
+        type: 'NameCallback',
         output: [
           {
-            name: 'value',
-            value: 'IGNOREME'
-          },
-          {
-            name: 'id',
-            value: 'IGNOREME'
+            name: 'prompt',
+            value: 'What is your name? (optional)'
           }
         ],
         input: [
           {
             name: 'IDToken3',
-            value: 'IGNOREME'
+            value: ''
           }
         ]
       },
