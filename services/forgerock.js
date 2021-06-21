@@ -171,8 +171,17 @@ export const forgerockFlow = ({
     console.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
     return null
   }
+
+  const langMiddleware = (req, action, next) => {
+    if (req.init.headers) {
+      req.init.headers['Chosen-Language'] = lang === 'cy' ? 'CY' : 'EN'
+    }
+    next()
+  }
+
   Config.set({
     clientId: FORGEROCK_CLIENT_ID,
+    middleware: [langMiddleware],
     realmPath: FORGEROCK_REALM,
     redirectUri: FORGEROCK_REDIRECT,
     scope: FORGEROCK_SCOPE,
