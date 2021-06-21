@@ -6,7 +6,7 @@ import HeadingCount from '../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
   CH_EWF_REQUEST_AUTH_CODE_URL,
-  CH_REQUEST_AUTH_CODE_URL,
+  FORGEROCK_TREE_WF_LOGIN,
   FORGEROCK_TREE_LOGIN
 } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
@@ -31,9 +31,9 @@ const Login = ({ lang, queryParams }) => {
 
   const {
     goto,
-    overrideStage = '',
     authIndexValue,
-    mode
+    mode,
+    overrideStage = ''
   } = queryParams
 
   useEffect(() => {
@@ -57,7 +57,14 @@ const Login = ({ lang, queryParams }) => {
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'CH_LOGIN_1'))
+
+        let stage = overrideStage || 'CH_LOGIN_1'
+        newErrors.forEach((error) => {
+          if (error.stage) {
+            stage = error.stage
+          }
+        })
+        setUiFeatures(getStageFeatures(lang, stage))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -78,7 +85,8 @@ const Login = ({ lang, queryParams }) => {
         stepCustomPageProps.links = {
           chooseCompanyPath: `${asPath}`,
           requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
-          ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL
+          ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
+          restartPath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
         }
 
         setErrors(stepErrors)

@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import Router from 'next/router'
 import { logoutFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
-import Main from '../../components/general-ui/layout/Main'
-import Row from '../../components/general-ui/layout/Row'
-import Column from '../../components/general-ui/layout/Column'
-import PageHeading from '../../components/general-ui/typeography/PageHeading'
-import BodyText from '../../components/general-ui/typeography/BodyText'
-import LinkText from '../../components/general-ui/interaction/LinkText'
-import WidthContainer from '../../components/general-ui/layout/WidthContainer'
 import WithLang from '../../services/lang/WithLang'
-import { translate } from '../../services/translate'
-import Header from '../../components/general-ui/Header'
+import { getStageFeatures, translate } from '../../services/translate'
+import FeatureDynamicView from '../../components/views/FeatureDynamicView'
+import Dynamic from '../../components/Dynamic'
+import componentMap from '../../services/componentMap'
 
 const Logout = ({ lang }) => {
-  const [errors, setErrors] = React.useState([])
+  const [errors, setErrors] = useState([])
   const headingCount = new HeadingCount()
+  const uiStage = 'LOGOUT_ERROR'
+  const content = getStageFeatures(lang, uiStage)
+  const [loggingOut, setLoggingOut] = useState(true)
 
   const doLogout = () => {
     logoutFlow({
@@ -24,6 +22,7 @@ const Logout = ({ lang }) => {
         Router.push('/account/login')
       },
       onFailure: (err) => {
+        setLoggingOut(false)
         setErrors([{
           label: translate(lang, 'LOGOUT_SERVICE_ERROR')
         }, {
@@ -38,26 +37,29 @@ const Logout = ({ lang }) => {
     doLogout()
   })
 
+  if (loggingOut) {
+    return null
+  }
+
   return (
-    <>
-      <Header/>
-      <WidthContainer>
-        <Main>
-          <Row>
-            <Column width='two-thirds'>
-              <PageHeading headingCount={headingCount} errors={errors}>Sign out of your Companies House
-                account</PageHeading>
-              <BodyText>
-                <LinkText href={'/account/login'} testId='loginToAccountLink'>Sign in to your account</LinkText>
-              </BodyText>
-            </Column>
-          </Row>
-        </Main>
-      </WidthContainer>
-    </>
+    <FeatureDynamicView
+      width="full"
+      titleLinkHref="/account/home"
+      hasBackLink={false}
+      hasLanguageSwitcher={true}
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={content}
+        errors={errors}
+        uiElements={[]}
+        uiStage={uiStage}
+      />
+    </FeatureDynamicView>
   )
 }
-
+export { Logout }
 export default WithLang(Logout)
 
 Logout.propTypes = {

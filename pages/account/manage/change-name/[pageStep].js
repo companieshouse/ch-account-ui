@@ -69,7 +69,14 @@ const ChangeName = ({ lang }) => {
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
         // and are handled gracefully by the onUpdateUi function
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, overrideStage || 'CHANGE_NAME_1'))
+
+        let stage = 'CHANGE_NAME_1'
+        newErrors.forEach((error) => {
+          if (error.stage) {
+            stage = error.stage
+          }
+        })
+        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
