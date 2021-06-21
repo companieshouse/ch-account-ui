@@ -12,37 +12,38 @@ import { errorsPropType } from '../../services/propTypes'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import { getFieldError } from '../../services/errors'
 
-const getElement = ({ element, id, index, customProps = {} }, errors, groupError = undefined) => {
+const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, groupError = undefined) => {
   // console.log('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
+  const uid = `${uiStage}-${id}-${index}`
 
   switch (element.payload.type) {
     case CallbackType.HiddenValueCallback:
-      return <HiddenValueCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <HiddenValueCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.NameCallback:
-      return <NameCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <NameCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.PasswordCallback:
-      return <PasswordCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <PasswordCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.StringAttributeInputCallback:
-      return <StringAttributeInputCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <StringAttributeInputCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.ValidatedCreatePasswordCallback:
-      return <ValidatedCreatePasswordCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <ValidatedCreatePasswordCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.ChoiceCallback:
-      return <ChoiceCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <ChoiceCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.ConfirmationCallback:
-      return <ConfirmationCallback id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <ConfirmationCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     default:
       return null
   }
 }
 
-const CustomFormGroup = ({ currentFormGroup, errors }) => {
+const CustomFormGroup = ({ currentFormGroup, errors, uiStage }) => {
   if (!currentFormGroup || !currentFormGroup.elements) {
     console.log('DisplayUiElements (CustomFormGroup): Form group has no elements', currentFormGroup)
     return null
@@ -55,14 +56,14 @@ const CustomFormGroup = ({ currentFormGroup, errors }) => {
     <fieldset className="govuk-fieldset" role="group">
       {currentFormGroup.elements.map((formGroupElementData, formGroupElementDataIndex) => {
         return (<FormGroup key={formGroupElementDataIndex} groupIds={groupIds}>
-          {getElement(formGroupElementData, errors, groupError)}
+          {getElement({ ...formGroupElementData, uiStage }, errors, groupError)}
         </FormGroup>)
       })}
     </fieldset>
   </FormGroup>
 }
 
-const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], headingCount }) => {
+const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], headingCount, uiStage }) => {
   let currentFormGroup
 
   return (
@@ -114,9 +115,9 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
           // console.log('DisplayUiElements: Outputting form group and trailing element', currentFormGroup.name)
           const output = (
             <React.Fragment key={`formGroup_${index}`}>
-              <CustomFormGroup currentFormGroup={currentFormGroup} errors={errors} />
+              <CustomFormGroup currentFormGroup={currentFormGroup} errors={errors} uiStage={uiStage} />
               <FormGroup key={id} errors={errors} groupIds={[id]}>
-                {getElement({ element, index, id, customProps }, errors)}
+                {getElement({ element, index, id, customProps, uiStage }, errors)}
               </FormGroup>
             </React.Fragment>
           )
@@ -127,7 +128,7 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
           return output
         }
 
-        const elementToRender = getElement({ element, index, id, customProps: { ...customProps, headingCount } }, errors)
+        const elementToRender = getElement({ element, index, id, customProps: { ...customProps, headingCount }, uiStage }, errors)
 
         if (!elementToRender) return null
 

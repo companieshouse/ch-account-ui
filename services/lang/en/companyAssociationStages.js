@@ -21,7 +21,8 @@ const companyAssociationStages = {
             renderLabelAs: 'heading',
             label: 'What is the company number?',
             fixedWidth: '10',
-            hint: 'Enter the number of the company you would like to add to your Companies House account'
+            hint: 'Enter the number of the company you would like to add to your Companies House account',
+            autoComplete: 'off'
           }
         }
       }

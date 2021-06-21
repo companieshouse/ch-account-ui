@@ -250,7 +250,9 @@ const loginStages = {
             ]
           },
           IDToken3: {
-            label: 'Company number'
+            label: 'Company number',
+            autoComplete: 'off',
+            testId: 'companyNumberInputField'
           }
         }
       }
