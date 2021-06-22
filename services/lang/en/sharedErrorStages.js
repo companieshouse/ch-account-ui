@@ -33,12 +33,12 @@ const sharedErrorStages = {
       content: [
         {
           conditional: {
-            prop: '${restartPath}',
+            prop: '${links.resumePath}',
             operator: 'is'
           },
           component: 'LinkText',
           dynamicProps: {
-            href: '{restartPath}'
+            href: '${links.resumePath}'
           },
           props: {
             children: 'Sign back in to your account.',
@@ -46,11 +46,11 @@ const sharedErrorStages = {
           }
         },
         {
-          component: 'LinkText',
           conditional: {
-            prop: '${restartPath}',
+            prop: '${links.resumePath}',
             operator: 'not'
           },
+          component: 'LinkText',
           props: {
             children: 'Sign back in to your account.',
             href: '/account/login',
@@ -62,45 +62,57 @@ const sharedErrorStages = {
   ],
   LIMIT_EXCEEDED_ERROR: [
     {
+      component: 'BrowserTitle',
+      props: {
+        title: 'You are now signed out'
+      }
+    },
+    {
       component: 'PageHeading',
       props: {
-        children: 'Account locked',
+        children: 'You are now signed out',
         showErrorSummary: false
       }
     },
     {
       component: 'BodyText',
       props: {
-        children: 'You have entered incorrect details too many times.'
-      }
-    },
-    {
-      component: 'BodyText',
-      props: {
-        children: 'Your account is now locked for 5 minutes.'
+        children: 'You have entered an incorrect code too many times. For your security, we\'ve signed you out.'
       }
     },
     {
       component: 'BodyText',
       content: [
         {
-          component: 'SpanText',
+          conditional: {
+            prop: '${links.resumePath}',
+            operator: 'is'
+          },
+          component: 'LinkText',
+          dynamicProps: {
+            href: '${links.resumePath}'
+          },
           props: {
-            children: 'You can '
+            children: 'Sign back in to your account',
+            testId: 'loginExistingAccountLink'
           }
         },
         {
+          conditional: {
+            prop: '${links.resumePath}',
+            operator: 'not'
+          },
           component: 'LinkText',
           props: {
-            children: 'reset your password',
-            href: '/password-recovery/request/',
-            testId: 'accountHomeLink'
+            children: 'Sign back in to your account',
+            href: '/account/login',
+            testId: 'loginExistingAccountLink'
           }
         },
         {
           component: 'SpanText',
           props: {
-            children: ' if you\'ve forgotten it.'
+            children: ' to try again.'
           }
         }
       ]
