@@ -32,19 +32,12 @@ const FeatureDynamicView = (props) => {
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={titleLinkHref} />
       <WidthContainer style={{ paddingTop: '20px' }}>
         {hasAccountLinks === true && <AccountLinks />}
-        {(hasBackLink === true || hasLanguageSwitcher === true) && <>
-            <Column width='two-thirds'>
-              {hasBackLink === false && <span>&nbsp;</span>}
-            </Column>
-            {hasLanguageSwitcher === true && <Column width='one-third' className="alignRight">
-              <Row>
-                <LanguageSwitcher />
-              </Row>
-            </Column>}
-          </>}
       </WidthContainer>
       <WidthContainer>
-        {hasBackLink === true && <BackLink testId="backLink" onClick={onBack}>Back</BackLink>}
+        <Row>
+            {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'}><BackLink testId="backLink" onClick={onBack}>Back</BackLink></Column>}
+            {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'}><LanguageSwitcher /></Column>}
+        </Row>
         <Main className="govuk-main-wrapper--auto-spacing">
           <WidthContainer>
             <Row>
@@ -73,6 +66,7 @@ FeatureDynamicView.propTypes = {
   errors: errorsPropType,
   formAction: PropTypes.string,
   headingCount: PropTypes.instanceOf(HeadingCount),
+  formRef: PropTypes.func,
   onBack: PropTypes.func,
   onSubmit: PropTypes.func,
   renderFeatures: PropTypes.func,
