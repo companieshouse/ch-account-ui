@@ -36,6 +36,13 @@ const Login = ({ lang, queryParams }) => {
     overrideStage = ''
   } = queryParams
 
+  const links = {
+    chooseCompanyPath: `${asPath}`,
+    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
+    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
+  }
+
   useEffect(() => {
     headingCount.reset()
 
@@ -57,13 +64,13 @@ const Login = ({ lang, queryParams }) => {
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
-
         let stage = overrideStage || 'CH_LOGIN_1'
         newErrors.forEach((error) => {
           if (error.stage) {
             stage = error.stage
           }
         })
+        setCustomPageProps({ links })
         setUiFeatures(getStageFeatures(lang, stage))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
@@ -82,15 +89,8 @@ const Login = ({ lang, queryParams }) => {
           }
         }
 
-        stepCustomPageProps.links = {
-          chooseCompanyPath: `${asPath}`,
-          requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
-          ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-          restartPath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
-        }
-
         setErrors(stepErrors)
-        setCustomPageProps(stepCustomPageProps)
+        setCustomPageProps({ ...stepCustomPageProps, links })
         setUiStage(step.payload.stage)
         setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
@@ -114,10 +114,17 @@ const Login = ({ lang, queryParams }) => {
     onSubmit()
   }
 
+  const onBack = (evt, params) => {
+    evt.preventDefault()
+    push(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
+  }
+
   return (
     <FeatureDynamicView
       onSubmit={onSubmit}
       formRef={formRef}
+      onBack={onBack}
+      hasBackLink={uiStage !== 'CH_LOGIN_1' && uiStage !== 'EWF_LOGIN_1'}
     >
       <Dynamic
         {...customPageProps}
