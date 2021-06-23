@@ -142,14 +142,14 @@ const AssociateUserAndCompany = ({ lang }) => {
       titleLinkHref="/account/home"
     >
       <Dynamic
+        {...customPageProps}
+        {...router.query}
         componentMap={componentMap}
         headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        {...router.query}
-        {...customPageProps}
       />
     </FeatureDynamicView>
   )
