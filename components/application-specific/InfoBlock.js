@@ -18,7 +18,7 @@ const InfoBlock = (props) => {
   return (
     <Column width={width} className={`infoBlock ${finalClassName}`}>
       <div className="infoBlock__wrapper">
-        {count !== '' && <HeadingText className="infoBlock__count" type={countHeadingType} size="l">{count}</HeadingText>}
+        {count && <HeadingText className="infoBlock__count" type={countHeadingType} size="l">{count}</HeadingText>}
         {title !== '' && <HeadingText type={titleHeadingType} size="l">{title}</HeadingText>}
         {children}
         {renderFeatures(props)}
@@ -32,7 +32,7 @@ export default InfoBlock
 InfoBlock.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  count: PropTypes.string,
+  count: PropTypes.number,
   countHeadingType: PropTypes.string,
   renderFeatures: PropTypes.func,
   title: PropTypes.string,
@@ -45,7 +45,6 @@ InfoBlock.defaultProps = {
   countHeadingType: 'h2',
   renderFeatures: () => { return null },
   titleHeadingType: 'h3',
-  count: '',
   title: '',
   width: 'one-third'
 }

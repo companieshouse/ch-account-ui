@@ -14,7 +14,7 @@ import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 
 const Home = ({ errors, lang }) => {
   const { profile, accessToken } = useFRAuth()
-  const [associationData, setAssociationData] = React.useState({ count: '0', companies: [] })
+  const [associationData, setAssociationData] = React.useState({ count: 0, pendingCount: 0, companies: [] })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)

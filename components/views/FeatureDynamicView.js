@@ -10,6 +10,7 @@ import LanguageSwitcher from '../application-specific/LanguageSwitcher'
 import { errorsPropType } from '../../services/propTypes'
 import Header from '../general-ui/Header'
 import AccountLinks from '../application-specific/AccountLinks'
+import Footer from '../general-ui/Footer'
 
 const FeatureDynamicView = (props) => {
   const {
@@ -63,6 +64,7 @@ const FeatureDynamicView = (props) => {
           </WidthContainer>
         </Main>
       </WidthContainer>
+      <Footer />
     </>
   )
 }

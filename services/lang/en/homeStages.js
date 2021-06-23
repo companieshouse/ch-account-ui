@@ -63,7 +63,7 @@ const homeStages = {
                         count: '${associationData.count}'
                       },
                       props: {
-                        count: '',
+                        count: 0,
                         width: 'one-half'
                       },
                       content: [
@@ -98,7 +98,7 @@ const homeStages = {
                         count: '${associationData.pendingCount}'
                       },
                       props: {
-                        count: '',
+                        count: 0,
                         width: 'one-half'
                       },
                       content: [

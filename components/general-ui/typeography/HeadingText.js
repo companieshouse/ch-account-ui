@@ -27,12 +27,12 @@ const HeadingText = (props) => {
   React.useEffect(() => {
     if (headingCount && !type) {
       headingCount.use()
-      setTag(`h${headingCount.count}`)
+      const level = headingCount.count <= 6 ? headingCount.count : 6
+      setTag(`h${level}`)
     }
   }, [headingCount, type])
 
   if (!tag) {
-    console.warn("A HeadingText component was asked to render but didn't know what tag to use. Either pass a `headingCount` or a `type` prop.")
     return null
   }
 
@@ -65,7 +65,7 @@ HeadingText.defaultProps = {
   className: '',
   label: '',
   size: 'xl',
-  type: '',
+  type: 'h1',
   weight: 'bold',
   renderFeatures: () => { return null }
 }

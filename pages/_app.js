@@ -18,7 +18,6 @@ function MyApp ({ Component, pageProps }) {
     <>
       <CookieBanners />
       <Component {...pageProps} />
-      <Footer />
     </>
   )
 }
