@@ -1,7 +1,7 @@
 import enFeatures from './lang/en/features.js'
 import enTokens from './lang/en/tokens.json'
 
-import cyFeatures from './lang/cy/features.json'
+import cyFeatures from './lang/cy/features.js'
 import cyTokens from './lang/cy/tokens.json'
 
 const features = {
