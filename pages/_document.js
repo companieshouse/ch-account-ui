@@ -11,7 +11,7 @@ class MyDocument extends Document {
   render () {
     const BASE_PATH = process.env.BASE_PATH || ''
     return (
-      <Html lang="en">
+      <Html className="govuk-template" lang="en">
         <head>
           <meta charSet="utf-8"/>
           <title>GOV.UK - The best place to find government services and information</title>
