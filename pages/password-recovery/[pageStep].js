@@ -158,15 +158,15 @@ const ResetPassword = ({ lang, queryParams }) => {
       titleLinkHref="/"
     >
       <Dynamic
+        {...router.query}
+        {...queryParams}
+        {...customPageProps}
         componentMap={componentMap}
         headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        {...router.query}
-        {...queryParams}
-        {...customPageProps}
       />
     </FeatureDynamicView>
   )
