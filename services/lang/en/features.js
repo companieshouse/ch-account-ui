@@ -10,6 +10,7 @@ import changePasswordStages from './changePasswordStages'
 import changeNameStages from './changeNameStages'
 import updatePhoneStages from './updatePhoneStages'
 import inviteUserStages from './inviteUserStages'
+import onboardingStages from './onboardingStages'
 
 const features = {
   ...loginStages,
@@ -22,7 +23,8 @@ const features = {
   ...updatePhoneStages,
   ...homeStages,
   ...sharedErrorStages,
-  ...inviteUserStages
+  ...inviteUserStages,
+  ...onboardingStages
 
 }
 

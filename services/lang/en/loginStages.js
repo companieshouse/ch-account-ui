@@ -650,7 +650,8 @@ const loginStages = {
       props: {
         elementProps: {
           IDToken1: {
-            label: 'Security code'
+            label: 'Security code',
+            required: true
           }
         }
       }
