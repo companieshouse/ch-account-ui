@@ -388,7 +388,15 @@ const loginStages = {
           component: 'LinkText',
           props: {
             children: 'Choose a different company',
-            testId: 'chooseDifferentCompanyLink'
+            testId: 'chooseDifferentCompanyLink',
+            renderAs: 'link',
+            handler: {
+              name: 'onSecondarySubmit',
+              params: {
+                target: 'IDToken4',
+                value: 1
+              }
+            }
           },
           dynamicProps: {
             href: '${links.chooseCompanyPath}'
