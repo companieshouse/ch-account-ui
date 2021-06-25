@@ -18,7 +18,11 @@ const changePasswordStages = {
         elementProps: {
           IDToken2: {
             label: 'Enter your current password',
-            suffix: null
+            suffix: null,
+            customValidation: [{
+              name: 'required',
+              token: 'PASSWORD_REQUIRED'
+            }]
           },
           IDToken3: {
             label: 'Enter a new password',

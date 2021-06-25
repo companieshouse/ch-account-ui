@@ -649,8 +649,27 @@ const loginStages = {
       component: 'DisplayUiElements',
       props: {
         elementProps: {
-          IDToken1: {
-            label: 'Security code'
+          IDToken3: {
+            label: 'Security code',
+            autoComplete: 'off',
+            type: 'number',
+            suffix: false,
+            fixedWidth: '10',
+            customValidation: [{
+              name: 'required',
+              token: 'OTP_REQUIRED'
+            }]
+          },
+          IDToken4: {
+            label: 'Security code',
+            autoComplete: 'off',
+            type: 'number',
+            suffix: false,
+            fixedWidth: '10',
+            customValidation: [{
+              name: 'required',
+              token: 'OTP_REQUIRED'
+            }]
           }
         }
       }
@@ -664,6 +683,11 @@ const loginStages = {
       }
     },
     {
+      conditional: {
+        prop: '${type}',
+        operator: 'eeq',
+        value: 'sms'
+      },
       component: 'Details',
       props: {
         summary: 'I have not received a text message'
@@ -701,7 +725,79 @@ const loginStages = {
           ]
         }
       ]
+    },
+    {
+      conditional: {
+        prop: '${type}',
+        operator: 'nee',
+        value: 'sms'
+      },
+      component: 'Details',
+      props: {
+        summary: 'I have not received an email'
+      },
+      content: [
+        {
+          component: 'BodyText',
+          props: {
+            children: "The email may take a few minutes to arrive. Its subject link is 'Reset your password - Companies House account'."
+          }
+        },
+        {
+          component: 'BodyText',
+          props: {
+          },
+          content: [
+            {
+              component: 'SpanText',
+              props: {
+                children: 'Check your junk folder. If it still has not arrived, you can '
+              }
+            },
+            {
+              component: 'LinkText',
+              props: {
+                children: 'ask us to send you another email',
+                href: '/password-recovery/_restart/',
+                testId: 'restartPasswordRecoveryLink'
+              }
+            },
+            {
+              component: 'SpanText',
+              props: {
+                children: '.'
+              }
+            }
+          ]
+        },
+        {
+          component: 'BodyText',
+          content: [
+            {
+              component: 'SpanText',
+              props: {
+                children: 'If you have given us the wrong email address, you can '
+              }
+            },
+            {
+              component: 'LinkText',
+              props: {
+                children: 'give us a different email address',
+                href: '/password-recovery/_restart/',
+                testId: 'restartPasswordRecoveryLink'
+              }
+            },
+            {
+              component: 'SpanText',
+              props: {
+                children: '.'
+              }
+            }
+          ]
+        }
+      ]
     }
+
   ],
   LOGIN_MFA: [
     {

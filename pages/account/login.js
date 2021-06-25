@@ -15,7 +15,8 @@ import WithLang from '../../services/lang/WithLang'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
-import { serializeForm } from '../../services/formData'
+import { serializeForm, customValidation } from '../../services/formData'
+import { translateErrors } from '../../services/errors'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -36,15 +37,15 @@ const Login = ({ lang, queryParams }) => {
     overrideStage = ''
   } = queryParams
 
-  const links = {
-    chooseCompanyPath: `${asPath}`,
-    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
-    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
-  }
-
   useEffect(() => {
     headingCount.reset()
+
+    const links = {
+      chooseCompanyPath: `${asPath}`,
+      requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+      ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
+      resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
+    }
 
     forgerockFlow({
       journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
@@ -102,9 +103,23 @@ const Login = ({ lang, queryParams }) => {
   const onSubmit = (evt) => {
     evt?.preventDefault()
 
+    // Clear existing errors
     setErrors([])
 
+    // Get formData from the DOM with callback IDTokens as the key
     const formData = serializeForm(formRef.current)
+
+    // Apply any client side validation rules defined in the uiElements feature
+    const uiElements = uiFeatures.find((feature) => feature.component === 'DisplayUiElements')
+    if (uiElements) {
+      const errors = customValidation(formData, uiElements.props.elementProps)
+      if (errors.length) {
+        setErrors(translateErrors(errors, lang))
+        return
+      }
+    }
+
+    // Submit FR stage
     submitData(formData)
   }
 
