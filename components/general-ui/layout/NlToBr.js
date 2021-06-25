@@ -7,7 +7,7 @@ const NlToBr = (props) => {
 
   return (
     <>
-      {contentArr.map((contentItem, index) => <React.Fragment key={index}>{contentItem}<br /></React.Fragment>)}
+      {contentArr.map((contentItem, index) => { return contentItem !== 'undefined' ? <React.Fragment key={index}>{contentItem}<br /></React.Fragment> : null })}
       {renderFeatures(props)}
     </>
   )

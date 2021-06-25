@@ -33,13 +33,13 @@ export const getTemplateDataValue = (data, templateString) => {
  * JavaScript-style template e.g. "Your name is ${user.firstName}".
  * @param {Boolean} [forceString=false] If true, the return value
  * will always be a string.
- * @param {Boolean} [replaceIfUndefined=true] If true and the
- * corresponding data value for a template marker is undefined
- * the value "undefined" will be inserted. If false, the template
+ * @param {Boolean} [replaceIfEmpty=true] If true and the
+ * corresponding data value for a template marker is undefined or null
+ * undefined will be inserted. If false, the template
  * string marker will be left intact.
  * @returns {*}
  */
-export const parseTemplateString = (data, templateString, forceString = false, replaceIfUndefined = true) => {
+export const parseTemplateString = (data, templateString, forceString = false, replaceIfEmpty = true) => {
   let finalValue = templateString
 
   // Break out the data requests in the template string and
@@ -55,13 +55,17 @@ export const parseTemplateString = (data, templateString, forceString = false, r
 
     // We only return here if the templateString had no further matches
     if (!regexp.exec(templateString)) {
-      const value = pathGet(data, matches[1])
+      let value = pathGet(data, matches[1])
 
-      if (value !== undefined || replaceIfUndefined === true) {
-        return value
+      if (value === undefined && replaceIfEmpty === false) {
+        return templateString
       }
 
-      return templateString
+      if (value === null) {
+        value = undefined
+      }
+
+      return value
     }
   }
 
@@ -72,11 +76,17 @@ export const parseTemplateString = (data, templateString, forceString = false, r
   // return a string instead
   while ((matches = regexp.exec(templateString))) {
     const matchString = matches[0]
-    const value = pathGet(data, matches[1])
+    let value = pathGet(data, matches[1])
 
-    if (value !== undefined || replaceIfUndefined === true) {
-      finalValue = finalValue.replace(matchString, value)
+    if (value === undefined && replaceIfEmpty === false) {
+      return
     }
+
+    if (value === null) {
+      value = undefined
+    }
+
+    finalValue = finalValue.replace(matchString, value)
   }
 
   return finalValue
