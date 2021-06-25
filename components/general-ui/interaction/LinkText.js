@@ -3,9 +3,16 @@ import React from 'react'
 import Link from 'next/link'
 
 const LinkText = (props) => {
-  const { children, href, style, className = '', target, testId, renderFeatures, onClick } = props
+  const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler } = props
+  let onClick = props.onClick
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
+
+  if (handler) {
+    onClick = (evt) => {
+      handlers[handler.name](evt, handler.params)
+    }
+  }
 
   return (
     <Link href={href}>
@@ -21,6 +28,8 @@ LinkText.propTypes = {
   target: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
+  handler: PropTypes.object,
+  handlers: PropTypes.object,
   href: PropTypes.string.isRequired,
   testId: PropTypes.string.isRequired,
   renderFeatures: PropTypes.func,
