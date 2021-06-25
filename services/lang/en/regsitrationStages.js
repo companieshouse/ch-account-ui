@@ -107,10 +107,16 @@ const registrationStages = {
       component: 'DisplayUiElements',
       props: {
         elementProps: {
-          IDToken1: {
+          IDToken3: {
             label: 'Security code',
             type: 'number',
-            autoComplete: 'off'
+            autoComplete: 'off',
+            suffix: false,
+            fixedWidth: '10',
+            customValidation: [{
+              name: 'required',
+              token: 'OTP_REQUIRED'
+            }]
           }
         }
       }

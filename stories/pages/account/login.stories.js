@@ -823,7 +823,7 @@ EWF_LOGIN_OTP.args = {
         output: [
           {
             name: 'value',
-            value: '{"phoneNumber":"07777777777"}'
+            value: '{"phoneNumber":"","emailAddress":"stuart.parr@amido.com","type":"email"}'
           },
           {
             name: 'id',
@@ -839,11 +839,25 @@ EWF_LOGIN_OTP.args = {
         _id: 0
       },
       {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please check your email'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ],
+        _id: 1
+      },
+      {
         type: 'HiddenValueCallback',
         output: [
           {
             name: 'value',
-            value: 'ff898fec-21ac-4794-ae9f-b1a2aeab75c2'
+            value: '653a0781-a6ef-43fb-87a0-2014512930ef'
           },
           {
             name: 'id',
@@ -852,11 +866,11 @@ EWF_LOGIN_OTP.args = {
         ],
         input: [
           {
-            name: 'IDToken2',
+            name: 'IDToken3',
             value: 'notificationId'
           }
         ],
-        _id: 1
+        _id: 2
       },
       {
         type: 'PasswordCallback',
@@ -868,11 +882,11 @@ EWF_LOGIN_OTP.args = {
         ],
         input: [
           {
-            name: 'IDToken3',
+            name: 'IDToken4',
             value: ''
           }
         ],
-        _id: 2
+        _id: 3
       }
     ],
     stage: 'EWF_LOGIN_OTP',

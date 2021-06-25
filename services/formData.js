@@ -25,4 +25,38 @@ const serializeForm = (formEl) => {
   return obj
 }
 
-export { serializeForm }
+const validateField = (value, field, customValidationRules) => {
+  const results = []
+  const rules = {
+    required: (value) => { return value !== '' ? '' : 'Enter your details' }
+  }
+
+  customValidationRules.forEach((rule) => {
+    const result = rules[rule.name](value)
+    if (result.length) {
+      results.push({ token: rule.token, fieldName: field, anchor: field, label: result })
+    }
+  })
+
+  return results
+}
+
+const customValidation = (formData, elementProps) => {
+  let errors = []
+
+  // Loop through ui elements and find any custom validation rules
+  Object.keys(elementProps).forEach((key) => {
+    const props = elementProps[key]
+    if (props.customValidation) {
+      const value = formData[key]
+      // check the field exists in the form data
+      if (typeof value !== 'undefined') {
+        errors = [...errors, ...validateField(value, key, props.customValidation)]
+      }
+    }
+  })
+
+  return errors
+}
+
+export { serializeForm, customValidation }

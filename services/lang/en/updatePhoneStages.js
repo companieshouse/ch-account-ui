@@ -137,7 +137,11 @@ const updatePhoneStages = {
             type: 'number',
             autoComplete: 'off',
             suffix: false,
-            fixedWidth: '10'
+            fixedWidth: '10',
+            customValidation: [{
+              name: 'required',
+              token: 'OTP_REQUIRED'
+            }]
           }
         }
       }

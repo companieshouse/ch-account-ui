@@ -9,7 +9,7 @@ const HiddenValueCallback = ({ element, customElementProps }) => {
   if (outputId === 'pagePropsJSON') return null
 
   return (
-    <input type="hidden" id={outputId} name={inputName} value={outputId} data-output-value={outputValue} {...customElementProps} />
+    <input id={outputId} name={inputName} value={outputId} data-output-value={outputValue} {...customElementProps} type="hidden" />
   )
 }
 

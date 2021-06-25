@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
 import { FORGEROCK_TREE_CHANGE_PHONE_NUMBER } from '../../../../services/environment'
@@ -8,10 +8,11 @@ import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
 import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
-import { serializeForm } from '../../../../services/formData'
+import { customValidation, serializeForm } from '../../../../services/formData'
 import { generateQueryUrl } from '../../../../services/queryString'
 import WithLang from '../../../../services/lang/WithLang'
 import useFRAuth from '../../../../services/useFRAuth'
+import { translateErrors } from '../../../../services/errors'
 
 export const getStaticPaths = async () => {
   return {
@@ -29,6 +30,7 @@ export const getStaticProps = async () => {
 
 const ChangeNumber = ({ lang }) => {
   const { profile } = useFRAuth()
+  const formRef = useRef()
   const router = useRouter()
   const [errors, setErrors] = React.useState([])
   const [customPageProps, setCustomPageProps] = React.useState({})
@@ -118,10 +120,25 @@ const ChangeNumber = ({ lang }) => {
   }, [pageStep, overrideStage, service, token, headingCount, lang, profilePhoneNumber, router])
 
   const onSubmit = (evt) => {
-    evt.preventDefault()
+    evt?.preventDefault()
+
+    // Clear existing errors
     setErrors([])
 
-    const formData = serializeForm(evt.target)
+    // Get formData from the DOM with callback IDTokens as the key
+    const formData = serializeForm(formRef.current)
+
+    // Apply any client side validation rules defined in the uiElements feature
+    const uiElements = uiFeatures.find((feature) => feature.component === 'DisplayUiElements')
+    if (uiElements) {
+      const errors = customValidation(formData, uiElements.props.elementProps)
+      if (errors.length) {
+        setErrors(translateErrors(errors, lang))
+        return
+      }
+    }
+
+    // Submit FR stage
     submitData(formData)
   }
 
@@ -130,6 +147,7 @@ const ChangeNumber = ({ lang }) => {
 
   return (
     <FeatureDynamicView
+      formRef={formRef}
       width='two-thirds'
       titleLinkHref="/account/home"
       onSubmit={onSubmit}
