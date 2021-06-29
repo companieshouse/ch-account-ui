@@ -1,0 +1,129 @@
+import CH_LOGIN_1 from './CH_LOGIN_1.js'
+import CH_LOGIN_4 from './CH_LOGIN_4.js'
+import EWF_LOGIN_1 from './EWF_LOGIN_1.js'
+import EWF_PROFILE from './EWF_PROFILE.js'
+import EWF_LOGIN_2 from './EWF_LOGIN_2.js'
+import EWF_LOGIN_3 from './EWF_LOGIN_3.js'
+import EWF_LOGIN_4 from './EWF_LOGIN_4.js'
+import EWF_LOGIN_5 from './EWF_LOGIN_5.js'
+import EWF_LOGIN_OTP_METHOD from './EWF_LOGIN_OTP_METHOD.js'
+import EWF_LOGIN_OTP from './EWF_LOGIN_OTP.js'
+import LOGIN_MFA from './LOGIN_MFA.js'
+import REGISTRATION_1 from './REGISTRATION_1.js'
+import REGISTRATION_MFA from './REGISTRATION_MFA.js'
+import REGISTRATION_2 from './REGISTRATION_2.js'
+import REGISTRATION_3 from './REGISTRATION_3.js'
+import REGISTRATION_4 from './REGISTRATION_4.js'
+import REGISTRATION_5 from './REGISTRATION_5.js'
+import REGISTRATION_ERROR from './REGISTRATION_ERROR.js'
+import RESET_PASSWORD_1 from './RESET_PASSWORD_1.js'
+import RESET_PASSWORD_2 from './RESET_PASSWORD_2.js'
+import RESET_PASSWORD_3 from './RESET_PASSWORD_3.js'
+import RESET_PASSWORD_4 from './RESET_PASSWORD_4.js'
+import RESET_PASSWORD_5 from './RESET_PASSWORD_5.js'
+import RESET_PASSWORD_6 from './RESET_PASSWORD_6.js'
+import RESET_PASSWORD_ERROR from './RESET_PASSWORD_ERROR.js'
+import COMPANY_ASSOCIATION_1 from './COMPANY_ASSOCIATION_1.js'
+import COMPANY_ASSOCIATION_2 from './COMPANY_ASSOCIATION_2.js'
+import COMPANY_ASSOCIATION_3 from './COMPANY_ASSOCIATION_3.js'
+import COMPANY_ASSOCIATION_4 from './COMPANY_ASSOCIATION_4.js'
+import REQUEST_AUTHENTICATION_CODE_1 from './REQUEST_AUTHENTICATION_CODE_1.js'
+import REQUEST_AUTHENTICATION_CODE_2 from './REQUEST_AUTHENTICATION_CODE_2.js'
+import CHANGE_PASSWORD_1 from './CHANGE_PASSWORD_1.js'
+import CHANGE_PASSWORD_2 from './CHANGE_PASSWORD_2.js'
+import CHANGE_NAME_1 from './CHANGE_NAME_1.js'
+import CHANGE_NAME_2 from './CHANGE_NAME_2.js'
+import UPDATE_PHONE_1 from './UPDATE_PHONE_1.js'
+import UPDATE_PHONE_2 from './UPDATE_PHONE_2.js'
+import UPDATE_PHONE_3 from './UPDATE_PHONE_3.js'
+import HOME_OVERVIEW from './HOME_OVERVIEW.js'
+import HOME_MANAGE_ACCOUNT from './HOME_MANAGE_ACCOUNT.js'
+import HOME_YOUR_COMPANIES from './HOME_YOUR_COMPANIES.js'
+import HOME_NOTIFICATIONS from './HOME_NOTIFICATIONS.js'
+import HOME_AUTHORISED_PERSON from './HOME_AUTHORISED_PERSON.js'
+import NO_SESSION_ERROR from './NO_SESSION_ERROR.js'
+import LIMIT_EXCEEDED_ERROR from './LIMIT_EXCEEDED_ERROR.js'
+import LOGOUT_ERROR from './LOGOUT_ERROR.js'
+import GENERIC_ERROR from './GENERIC_ERROR.js'
+import SEND_MFA_SMS_ERROR from './SEND_MFA_SMS_ERROR.js'
+import SEND_MFA_EMAIL_ERROR from './SEND_MFA_EMAIL_ERROR.js'
+import INVITE_USER_1 from './INVITE_USER_1.js'
+import INVITE_USER_2 from './INVITE_USER_2.js'
+import INVITE_USER_3 from './INVITE_USER_3.js'
+import INVITE_USER_ERROR from './INVITE_USER_ERROR.js'
+
+import tokensEn from '../lang/en/content-tokens.json'
+import tokensCy from '../lang/cy/content-tokens.json'
+
+const getStages = (lang) => {
+  const stages = {}
+  const contentTokens = {
+    en: tokensEn,
+    cy: tokensCy
+  }
+  const tokens = contentTokens[lang]
+
+  const features = {
+    CH_LOGIN_1,
+    CH_LOGIN_4,
+    EWF_LOGIN_1,
+    EWF_PROFILE,
+    EWF_LOGIN_2,
+    EWF_LOGIN_3,
+    EWF_LOGIN_4,
+    EWF_LOGIN_5,
+    EWF_LOGIN_OTP_METHOD,
+    EWF_LOGIN_OTP,
+    LOGIN_MFA,
+    REGISTRATION_1,
+    REGISTRATION_MFA,
+    REGISTRATION_2,
+    REGISTRATION_3,
+    REGISTRATION_4,
+    REGISTRATION_5,
+    REGISTRATION_ERROR,
+    RESET_PASSWORD_1,
+    RESET_PASSWORD_2,
+    RESET_PASSWORD_3,
+    RESET_PASSWORD_4,
+    RESET_PASSWORD_5,
+    RESET_PASSWORD_6,
+    RESET_PASSWORD_ERROR,
+    COMPANY_ASSOCIATION_1,
+    COMPANY_ASSOCIATION_2,
+    COMPANY_ASSOCIATION_3,
+    COMPANY_ASSOCIATION_4,
+    REQUEST_AUTHENTICATION_CODE_1,
+    REQUEST_AUTHENTICATION_CODE_2,
+    CHANGE_PASSWORD_1,
+    CHANGE_PASSWORD_2,
+    CHANGE_NAME_1,
+    CHANGE_NAME_2,
+    UPDATE_PHONE_1,
+    UPDATE_PHONE_2,
+    UPDATE_PHONE_3,
+    HOME_OVERVIEW,
+    HOME_MANAGE_ACCOUNT,
+    HOME_YOUR_COMPANIES,
+    HOME_NOTIFICATIONS,
+    HOME_AUTHORISED_PERSON,
+    NO_SESSION_ERROR,
+    LIMIT_EXCEEDED_ERROR,
+    LOGOUT_ERROR,
+    GENERIC_ERROR,
+    SEND_MFA_SMS_ERROR,
+    SEND_MFA_EMAIL_ERROR,
+    INVITE_USER_1,
+    INVITE_USER_2,
+    INVITE_USER_3,
+    INVITE_USER_ERROR
+  }
+
+  Object.keys(features).map((key) => {
+    stages[key] = features[key](lang, tokens)
+  })
+
+  return stages
+}
+
+export default getStages
