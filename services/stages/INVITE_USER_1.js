@@ -45,7 +45,7 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['INVITE_USER_1.[6].Button.sendEmailRequest'],
+      children: tokens['SHARED.continue'],
       type: 'submit',
       testId: 'submitButton'
     }

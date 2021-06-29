@@ -1,6 +1,12 @@
 
 const RESET_PASSWORD_4 = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['RESET_PASSWORD_4.[0].PageHeading.resetYourPassword']
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['RESET_PASSWORD_4.[0].PageHeading.resetYourPassword']
@@ -11,7 +17,11 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
+          label: tokens['SHARED.enterANewPassword'],
           hint: tokens['SHARED.thisMustBeAtLeast8CharactersLongAndHardTo']
+        },
+        IDToken2: {
+          label: tokens['SHARED.reEnterTheNewPassword']
         }
       }
     }
@@ -25,7 +35,13 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens['RESET_PASSWORD_4.[2].Details.trCopyGoesHere']
+          children: tokens['SHARED.youCanUseNumbersSymbolsAndSpaces']
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens['SHARED.aGoodWayToCreateASecureAndMemorablePassword']
         }
       }
     ]

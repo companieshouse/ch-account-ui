@@ -3,7 +3,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.companiesHouseAccount']
+      title: tokens['SHARED.yourCompanies']
     }
   },
   {
@@ -53,19 +53,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'PageHeading',
     props: {
       children: tokens['SHARED.yourCompanies']
-    },
-    content: [
-      {
-        component: 'Caption',
-        props: {
-          children: tokens['HOME_YOUR_COMPANIES.[4].PageHeading.viewAndManageTheCompaniesYouHaveAddedToYour'],
-          size: 'm',
-          style: {
-            paddingTop: '0.5em'
-          }
-        }
-      }
-    ]
+    }
   },
   {
     component: 'SectionBreak'
@@ -97,8 +85,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
             component: 'List',
             props: {
               items: [
-                'file for the company online',
-                'authorise people to file for the company on your behalf'
+                tokens['HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline'],
+                tokens['HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile']
               ]
             }
           },
@@ -106,7 +94,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
             component: 'Button',
             props: {
               renderAs: 'link',
-              children: tokens['HOME_YOUR_COMPANIES.[6].Fragment.addACompany'],
+              children: tokens['SHARED.addACompany'],
               href: '/account/associate/_start',
               testId: 'accountAssociateCompanyLink'
             }

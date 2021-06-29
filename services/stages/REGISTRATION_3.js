@@ -21,7 +21,7 @@ const REGISTRATION_3 = (lang, tokens) => [
       {
         component: 'SpanText',
         dynamicProps: {
-          children: tokens['SHARED.email']
+          children: '${email}'
         },
         props: {
           weight: 'bold'
@@ -48,22 +48,73 @@ const REGISTRATION_3 = (lang, tokens) => [
   {
     component: 'InsetText',
     props: {
-      children: tokens['REGISTRATION_3.[4].InsetText.theVerificationLinkWillExpireIfYouDoNot']
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {
-      children: tokens['REGISTRATION_3.[5].BodyText.thisPageWillUpdateAutomaticallyWhenYouSelect'],
-      weight: 'bold'
+      children: tokens['REGISTRATION_3.[4].InsetText.theVerificationLinkWillExpire']
     }
   },
   {
     component: 'Details',
     props: {
-      children: tokens['REGISTRATION_3.[6].Details.trCopyGoesHere'],
       summary: tokens['SHARED.iHaveNotReceivedAnEmail']
-    }
+    },
+    content: [
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubject']
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {},
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens['SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou']
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens['SHARED.askUsToSendYouAnotherEmail'],
+              href: '/password-recovery/_restart/',
+              testId: 'restartPasswordRecoveryLink'
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens['SHARED.']
+            }
+          }
+        ]
+      },
+      {
+        component: 'BodyText',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens['SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou']
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens['SHARED.giveUsADifferentEmailAddress'],
+              href: '/password-recovery/_restart/',
+              testId: 'restartPasswordRecoveryLink'
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens['SHARED.']
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
 export default REGISTRATION_3

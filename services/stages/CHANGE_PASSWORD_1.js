@@ -3,7 +3,7 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['CHANGE_PASSWORD_1.[0].BrowserTitle.changeYourPassword']
+      title: tokens['SHARED.changeYourPassword']
     }
   },
   {
@@ -27,12 +27,12 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
           ]
         },
         IDToken3: {
-          label: tokens['CHANGE_PASSWORD_1.[2].DisplayUiElements.enterANewPassword'],
+          label: tokens['SHARED.enterANewPassword'],
           hint: tokens['SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'],
           formGroup: 'newPassword'
         },
         IDToken4: {
-          label: tokens['CHANGE_PASSWORD_1.[2].DisplayUiElements.reEnterTheNewPassword'],
+          label: tokens['SHARED.reEnterTheNewPassword'],
           formGroup: 'newPassword'
         }
       }
@@ -51,28 +51,28 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens['CHANGE_PASSWORD_1.[3].Details.youCanUseNumbersSymbolsAndSpaces']
+          children: tokens['SHARED.youCanUseNumbersSymbolsAndSpaces']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['CHANGE_PASSWORD_1.[3].Details.aGoodWayToCreateASecureAndMemorablePassword']
+          children: tokens['SHARED.aGoodWayToCreateASecureAndMemorablePassword']
         }
       }
     ]
   },
   {
-    component: 'Button',
-    props: {
-      children: tokens['SHARED.resetPassword'],
-      type: 'submit',
-      testId: 'submitButton'
-    }
-  },
-  {
-    component: 'BodyText',
+    component: 'ButtonGroup',
     content: [
+      {
+        component: 'Button',
+        props: {
+          children: tokens['SHARED.resetPassword'],
+          type: 'submit',
+          testId: 'submitButton'
+        }
+      },
       {
         component: 'LinkText',
         props: {

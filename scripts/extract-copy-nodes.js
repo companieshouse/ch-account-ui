@@ -1,8 +1,11 @@
+// Utility script for one off extraction and tokenisation of copy from feature definitions
+//
+// Run with the following command
 // node --experimental-json-modules extract-copy-nodes.js
-import features from './services/lang/en/retired-stages/features.js'
+
+import features from '../services/lang/en/retired-stages/features.js'
 import set from 'lodash.set'
 import camelCase from 'lodash.camelcase'
-import findKey from 'lodash.findkey'
 import fs from 'fs'
 
 const keys = { }

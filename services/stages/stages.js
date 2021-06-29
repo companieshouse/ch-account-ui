@@ -8,6 +8,7 @@ import EWF_LOGIN_4 from './EWF_LOGIN_4.js'
 import EWF_LOGIN_5 from './EWF_LOGIN_5.js'
 import EWF_LOGIN_OTP_METHOD from './EWF_LOGIN_OTP_METHOD.js'
 import EWF_LOGIN_OTP from './EWF_LOGIN_OTP.js'
+import PHONE_OTP from './PHONE_OTP'
 import LOGIN_MFA from './LOGIN_MFA.js'
 import REGISTRATION_1 from './REGISTRATION_1.js'
 import REGISTRATION_MFA from './REGISTRATION_MFA.js'
@@ -74,6 +75,7 @@ const getStages = (lang) => {
     EWF_LOGIN_5,
     EWF_LOGIN_OTP_METHOD,
     EWF_LOGIN_OTP,
+    PHONE_OTP,
     LOGIN_MFA,
     REGISTRATION_1,
     REGISTRATION_MFA,

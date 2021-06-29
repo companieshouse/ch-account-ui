@@ -1,6 +1,12 @@
 
 const RESET_PASSWORD_1 = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress']
+    }
+  },
+  {
     conditional: {
       prop: '${notifyToken}',
       operator: 'eeq',
@@ -38,7 +44,7 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['RESET_PASSWORD_1.[4].Button.sendLink'],
+      children: tokens['SHARED.continue'],
       type: 'submit',
       testId: 'submitButton'
     }

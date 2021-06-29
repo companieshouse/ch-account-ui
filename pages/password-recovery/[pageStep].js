@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import Router, { useRouter } from 'next/router'
 import { findCustomPageProps, forgerockFlow, findCustomStage } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
@@ -10,7 +10,8 @@ import WithLang from '../../services/lang/WithLang'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
-import { serializeForm } from '../../services/formData'
+import { customValidation, serializeForm } from '../../services/formData'
+import { translateErrors } from '../../services/errors'
 
 export const getStaticPaths = async () => {
   return {
@@ -29,6 +30,7 @@ export const getStaticProps = async () => {
 }
 
 const ResetPassword = ({ lang, queryParams }) => {
+  const formRef = useRef()
   const router = useRouter()
   const [customPageProps, setCustomPageProps] = React.useState({})
   const [errors, setErrors] = React.useState([])
@@ -135,10 +137,25 @@ const ResetPassword = ({ lang, queryParams }) => {
   }, [pageStep, service, token, headingCount, lang, overrideStage, goto, router])
 
   const onSubmit = (evt) => {
-    evt.preventDefault()
+    evt?.preventDefault()
+
+    // Clear existing errors
     setErrors([])
 
-    const formData = serializeForm(evt.target)
+    // Get formData from the DOM with callback IDTokens as the key
+    const formData = serializeForm(formRef.current)
+
+    // Apply any client side validation rules defined in the uiElements feature
+    const uiElements = uiFeatures.find((feature) => feature.component === 'DisplayUiElements')
+    if (uiElements) {
+      const errors = customValidation(formData, uiElements.props.elementProps)
+      if (errors.length) {
+        setErrors(translateErrors(errors, lang))
+        return
+      }
+    }
+
+    // Submit FR stage
     submitData(formData)
   }
 
@@ -150,6 +167,7 @@ const ResetPassword = ({ lang, queryParams }) => {
 
   return (
     <FeatureDynamicView
+      formRef={formRef}
       onSubmit={onSubmit}
       headingCount={headingCount}
       hasAccountLinks={false}

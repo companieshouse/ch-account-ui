@@ -3,7 +3,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.companiesHouseAccount']
+      title: tokens['SHARED.SHARED.manageAccount']
     }
   },
   {
@@ -63,7 +63,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           label: tokens['HOME_MANAGE_ACCOUNT.[4].SummaryList.fullName'],
           value: '',
           action: {
-            label: tokens['HOME_MANAGE_ACCOUNT.[4].SummaryList.change'],
+            label: tokens['SHARED.change'],
             desc: 'name',
             href: '/account/manage/change-name/_start'
           }

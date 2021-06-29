@@ -1,6 +1,12 @@
 
 const REGISTRATION_4 = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['REGISTRATION_4.[0].BrowserTitle.createAPassword']
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['REGISTRATION_4.[0].PageHeading.createAPassword']
@@ -11,8 +17,9 @@ const REGISTRATION_4 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
-          type: 'password',
-          autoComplete: 'password'
+          label: tokens['SHARED.enterPassword'],
+          hint: tokens['SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'],
+          formGroup: 'newPassword'
         }
       }
     }
@@ -20,9 +27,21 @@ const REGISTRATION_4 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      children: tokens['REGISTRATION_4.[2].Details.weNeedSomeTextCopyForThisSectionAsItIsNot'],
       summary: tokens['REGISTRATION_4.[2].Details.helpWithCreatingAPassword']
+    },
+    content: [{
+      component: 'BodyText',
+      props: {
+        children: tokens['REGISTRATION_4.[2].Details.youCanUseNumbers']
+      }
+    },
+    {
+      component: 'BodyText',
+      props: {
+        children: tokens['SHARED.aGoodWayToCreateASecureAndMemorablePassword']
+      }
     }
+    ]
   },
   {
     component: 'Button',

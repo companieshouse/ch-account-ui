@@ -85,7 +85,7 @@ const EWF_LOGIN_OTP = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken3: {
-          label: tokens['EWF_LOGIN_OTP.[5].DisplayUiElements.securityCode'],
+          label: tokens['SHARED.securityCode'],
           autoComplete: 'off',
           type: 'number',
           suffix: false,
@@ -132,12 +132,6 @@ const EWF_LOGIN_OTP = (lang, tokens) => [
       summary: tokens['SHARED.iHaveNotReceivedATextMessage']
     },
     content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens['SHARED.theTextMessageMayTakeAFewMinutesTo']
-        }
-      },
       {
         component: 'BodyText',
         content: [

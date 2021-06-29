@@ -1,9 +1,9 @@
 
-const REGISTRATION_MFA = (lang, tokens) => [
+const PHONE_OTP = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.verifyYourMobileNumber']
+      title: tokens['SHARED.checkYourPhone']
     }
   },
   {
@@ -34,6 +34,12 @@ const REGISTRATION_MFA = (lang, tokens) => [
             }
           }
         ]
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens['SHARED.']
+        }
       }
     ]
   },
@@ -47,7 +53,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken3: {
+        IDToken4: {
           label: tokens['SHARED.securityCode'],
           type: 'number',
           autoComplete: 'off',
@@ -90,7 +96,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens['SHARED.askUsToSendYouAnotherTextMessage'],
-              href: '/account/register/_restart/'
+              href: '/account/manage/change-phone-number/_restart'
             }
           },
           {
@@ -104,4 +110,4 @@ const REGISTRATION_MFA = (lang, tokens) => [
     ]
   }
 ]
-export default REGISTRATION_MFA
+export default PHONE_OTP

@@ -1,6 +1,12 @@
 
 const RESET_PASSWORD_6 = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['RESET_PASSWORD_6.[0].PageHeading.checkYourEmails']
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['RESET_PASSWORD_6.[0].PageHeading.checkYourEmails']

@@ -1,16 +1,22 @@
 
 const SEND_MFA_SMS_ERROR = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared'],
+      children: tokens['SHARED.sorryThereIsAProblemWithTheService'],
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared']
+      children: tokens['SHARED.tryAgainLater']
     }
   },
   {
@@ -19,7 +25,7 @@ const SEND_MFA_SMS_ERROR = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared'],
+          children: tokens['SHARED.contactCompaniesHouse'],
           href: 'https://www.gov.uk/contact-companies-house',
           testId: 'contactCompaniesHouseLink'
         }
@@ -27,7 +33,7 @@ const SEND_MFA_SMS_ERROR = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['INVITE_USER_ERROR.[2].BodyText.tokenStartTokensSendMfaEmailError2BodyText']
+          children: tokens['SHARED.ifYouHaveAnyQuestions']
         }
       }
     ]

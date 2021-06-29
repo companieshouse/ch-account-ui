@@ -132,6 +132,7 @@ const ChangeName = ({ lang }) => {
       width='two-thirds'
       titleLinkHref="/account/home"
       onSubmit={onSubmit}
+      hasAccountLinks
     >
       <Dynamic
         {...customPageProps}

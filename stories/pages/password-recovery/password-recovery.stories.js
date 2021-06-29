@@ -259,6 +259,130 @@ RESET_PASSWORD_3.args = {
   }
 }
 
+export const RESET_PASSWORD_4 = Template.bind({})
+RESET_PASSWORD_4.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: 'request'
+      }
+    }
+  }
+}
+RESET_PASSWORD_4.args = {
+  queryParams: {},
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHResetPassword',
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"phoneNumber":"07777777777"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 'pagePropsJSON'
+          }
+        ],
+        _id: 0
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'ff898fec-21ac-4794-ae9f-b1a2aeab75c2'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'notificationId'
+          }
+        ],
+        _id: 1
+      }
+    ],
+    stage: 'RESET_PASSWORD_4',
+    header: 'Please enter your code',
+    description: 'Please enter the code you received via SMS'
+  }
+}
+
+export const RESET_PASSWORD_6 = Template.bind({})
+RESET_PASSWORD_6.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: 'request'
+      }
+    }
+  }
+}
+RESET_PASSWORD_6.args = {
+  queryParams: {},
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHResetPassword',
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"phoneNumber":"07777777777"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 'pagePropsJSON'
+          }
+        ],
+        _id: 0
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'ff898fec-21ac-4794-ae9f-b1a2aeab75c2'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'notificationId'
+          }
+        ],
+        _id: 1
+      }
+    ],
+    stage: 'RESET_PASSWORD_6'
+  }
+}
+
 export const RESET_PASSWORD_ERROR = Template.bind({})
 
 const registrationsErrors = {

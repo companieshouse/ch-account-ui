@@ -153,3 +153,86 @@ LIMIT_EXCEEDED_ERROR.args = {
     }]
   }
 }
+
+export const PHONE_OTP = Template.bind({})
+PHONE_OTP.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"phoneNumber":"077777777777"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 'pagePropsJSON'
+          }
+        ],
+        _id: 0
+      },
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please check your email'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ],
+        _id: 1
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '653a0781-a6ef-43fb-87a0-2014512930ef'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'notificationId'
+          }
+        ],
+        _id: 2
+      },
+      {
+        type: 'PasswordCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'One Time Password'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: ''
+          }
+        ],
+        _id: 3
+      }
+    ],
+    stage: 'PHONE_OTP',
+    header: 'Please enter your code',
+    description: 'Please enter the code you received via SMS'
+  }
+}

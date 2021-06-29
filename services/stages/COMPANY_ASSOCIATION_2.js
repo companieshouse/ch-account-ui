@@ -3,7 +3,7 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.confirmThisIsTheCorrectCompany']
+      title: tokens['COMPANY_ASSOCIATION_2.[0].BrowserTitle.confirmThisIs']
     }
   },
   {

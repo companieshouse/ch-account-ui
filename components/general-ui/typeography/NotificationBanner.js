@@ -19,7 +19,7 @@ const NotificationBanner = (props) => {
       </div>
       <div className="govuk-notification-banner__content">
         <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__heading">{heading}</HeadingText>
-        <p className="govuk-body">{children}</p>
+        {children && <p className="govuk-body">{children}</p>}
       </div>
     </div>
   )

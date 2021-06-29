@@ -1,6 +1,12 @@
 
 const RESET_PASSWORD_3 = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['SHARED.checkYourPhone']
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['SHARED.checkYourPhone']
@@ -44,7 +50,24 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
     }
   },
   {
-    component: 'DisplayUiElements'
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken3: {
+          label: tokens['SHARED.securityCode'],
+          autoComplete: 'off',
+          type: 'number',
+          suffix: false,
+          fixedWidth: '10',
+          customValidation: [
+            {
+              name: 'required',
+              token: 'OTP_REQUIRED'
+            }
+          ]
+        }
+      }
+    }
   },
   {
     component: 'Button',
@@ -60,12 +83,6 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
       summary: tokens['SHARED.iHaveNotReceivedATextMessage']
     },
     content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens['SHARED.theTextMessageMayTakeAFewMinutesTo']
-        }
-      },
       {
         component: 'BodyText',
         content: [

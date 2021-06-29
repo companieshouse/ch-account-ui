@@ -1,5 +1,12 @@
+import genericError from '../lang/en/retired-stages/genericError.json'
 
 const REGISTRATION_ERROR = (lang, tokens) => [
+  {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['REGISTRATION_ERROR.[0].BrowserTitle.registrationError']
+    }
+  },
   {
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
@@ -7,40 +14,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       value: 'REGISTRATION_GENERAL_ERROR'
     },
     component: 'Fragment',
-    content: [
-      {
-        component: 'PageHeading',
-        props: {
-          children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared'],
-          showErrorSummary: false
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared']
-        }
-      },
-      {
-        component: 'BodyText',
-        content: [
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared'],
-              href: 'https://www.gov.uk/contact-companies-house',
-              testId: 'contactCompaniesHouseLink'
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens['INVITE_USER_ERROR.[2].BodyText.tokenStartTokensSendMfaEmailError2BodyText']
-            }
-          }
-        ]
-      }
-    ]
+    content: genericError
   },
   {
     conditional: {
@@ -49,40 +23,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       value: 'REGISTRATION_SEND_EMAIL_ERROR'
     },
     component: 'Fragment',
-    content: [
-      {
-        component: 'PageHeading',
-        props: {
-          children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared'],
-          showErrorSummary: false
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared']
-        }
-      },
-      {
-        component: 'BodyText',
-        content: [
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens['SHARED.tokenStartTokensSharedTokenStartTokensShared'],
-              href: 'https://www.gov.uk/contact-companies-house',
-              testId: 'contactCompaniesHouseLink'
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens['INVITE_USER_ERROR.[2].BodyText.tokenStartTokensSendMfaEmailError2BodyText']
-            }
-          }
-        ]
-      }
-    ]
+    content: genericError
   },
   {
     conditional: {
@@ -95,22 +36,20 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['REGISTRATION_ERROR.[2].Fragment.pageNotFound'],
+          children: 'Page not found',
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: [
-            'If you typed the link, check it is correct.'
-          ]
+          children: ['If you typed the link, check it is correct.']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['REGISTRATION_ERROR.[2].Fragment.ifYouPastedTheLinkCheckYouCopiedTheEntire']
+          children: 'If you pasted the link, check you copied the entire link.'
         }
       },
       {
@@ -119,13 +58,13 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[2].Fragment.ifTheLinkIsCorrectYouMust']
+              children: 'If the link is correct, you must '
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[2].Fragment.startAgainToRegisterANewAccount'],
+              children: 'start again to register a new account',
               href: '/account/register/_start/',
               testId: 'registrationLink'
             }
@@ -133,7 +72,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: '.'
             }
           }
         ]
@@ -151,22 +90,20 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['SHARED.pageNotFound'],
+          children: 'Page not found',
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: [
-            'If you typed the link, check it is correct.'
-          ]
+          children: ['If you typed the link, check it is correct.']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouPastedTheLinkCheckYouCopiedTheEntire']
+          children: 'If you pasted the link, check you copied the entire link.'
         }
       },
       {
@@ -175,13 +112,13 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifTheLinkIsCorrectYouMust']
+              children: 'If the link is correct, you must '
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.startAgainToRegisterANewAccount'],
+              children: 'start again to register a new account',
               href: '/account/register/_start/',
               testId: 'registrationLink'
             }
@@ -189,7 +126,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: '.'
             }
           }
         ]
@@ -207,7 +144,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['REGISTRATION_ERROR.[4].Fragment.verificationLinkHasExpired'],
+          children: 'Verification link has expired',
           showErrorSummary: false
         }
       },
@@ -217,13 +154,13 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[4].Fragment.theLinkToVerifyYourEmailAddressHowNowExpired']
+              children: 'The link to verify your email address has now expired. You must start again to '
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[4].Fragment.registerANewAccount'],
+              children: 'register a new account',
               href: '/account/register/_start/',
               testId: 'registrationLink'
             }
@@ -231,12 +168,55 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: '.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${errors.0.tokenNoNamespace}',
+      operator: 'eeq',
+      value: 'REGISTRATION_ERROR_USER_ALREADY_EXIST'
+    },
+    component: 'Fragment',
+    content: [
+      {
+        component: 'PageHeading',
+        props: {
+          children: 'User already exists',
+          showErrorSummary: false
+        }
+      },
+      {
+        component: 'BodyText',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: 'An account with this email address already exists '
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: 'register a new account',
+              href: '/account/register/_start/',
+              testId: 'registrationLink'
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: '.'
             }
           }
         ]
       }
     ]
   }
+
 ]
 export default REGISTRATION_ERROR

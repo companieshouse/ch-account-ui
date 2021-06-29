@@ -35,7 +35,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
             component: 'Tag',
             props: {
               colour: 'green',
-              children: 'Confirmed'
+              children: tokens['SHARED.confirmed']
             }
           },
           {
@@ -47,7 +47,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
             component: 'Tag',
             props: {
               colour: 'yellow',
-              children: 'Pending'
+              children: tokens['SHARED.pending']
             }
           },
           {
@@ -64,7 +64,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
               {
                 component: 'Fragment',
                 dynamicProps: {
-                  children: 'We have sent an email to ${user.mail}. This person must select the request link in the email so that they can file online for ${company.name}.'
+                  children: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust']
                 }
               }
             ]
@@ -79,48 +79,13 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
         },
         component: 'LinkText',
         props: {
-          children: 'Resend email',
+          children: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail'],
           testId: 'resendAuthorisedUserRequestLink'
         },
         dynamicProps: {
           href: '${company.resendLink}'
         }
-      },
-      listItems: [
-        null,
-        null,
-        {
-          value: {
-            content: [
-              {
-                props: {
-                  children: tokens['SHARED.confirmed']
-                }
-              },
-              {
-                props: {
-                  children: tokens['SHARED.pending']
-                }
-              },
-              {
-                content: [
-                  null,
-                  {
-                    dynamicProps: {
-                      children: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust']
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          action: {
-            props: {
-              children: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail']
-            }
-          }
-        }
-      ]
+      }
     },
     props: {
       hasActions: true,
