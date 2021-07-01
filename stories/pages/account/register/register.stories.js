@@ -359,6 +359,160 @@ REGISTRATION_3.args = {
   }
 }
 
+export const REGISTRATION_4 = Template.bind({})
+REGISTRATION_4.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+REGISTRATION_4.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'ValidatedCreatePasswordCallback',
+        output: [
+          {
+            name: 'echoOn',
+            value: false
+          },
+          {
+            name: 'policies',
+            value: {
+              policyRequirements: [
+                'VALID_TYPE'
+              ],
+              fallbackPolicies: null,
+              name: 'password',
+              policies: [
+                {
+                  policyRequirements: [
+                    'VALID_TYPE'
+                  ],
+                  policyId: 'valid-type',
+                  params: {
+                    types: [
+                      'string'
+                    ]
+                  }
+                }
+              ],
+              conditionalPolicies: null
+            }
+          },
+          {
+            name: 'failedPolicies',
+            value: []
+          },
+          {
+            name: 'validateOnly',
+            value: false
+          },
+          {
+            name: 'prompt',
+            value: 'Password'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: ''
+          },
+          {
+            name: 'IDToken1validateOnly',
+            value: false
+          }
+        ],
+        _id: 0
+      }
+    ],
+    stage: 'REGISTRATION_4',
+    header: 'Enter your password',
+    description: 'Please enter your account password'
+  }
+}
+
+export const REGISTRATION_MFA = Template.bind({})
+REGISTRATION_MFA.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+REGISTRATION_MFA.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"phoneNumber":"07736831354"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 'pagePropsJSON'
+          }
+        ],
+        _id: 3
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'b094568f-0f21-426e-b9a6-5c4a0f5f5882'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'notificationId'
+          }
+        ],
+        _id: 4
+      },
+      {
+        type: 'PasswordCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'One Time Password'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ],
+        _id: 5
+      }
+    ],
+    stage: 'REGISTRATION_MFA',
+    header: 'Please enter your code',
+    description: 'Please enter the code you received via SMS'
+  }
+}
+
 export const REGISTRATION_ERROR = Template.bind({})
 
 const registrationsErrors = {
@@ -366,7 +520,8 @@ const registrationsErrors = {
   REGISTRATION_SEND_EMAIL_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":"REGISTRATION_SEND_EMAIL_ERROR"}]}',
   REGISTRATION_TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"REGISTRATION_TOKEN_PARSING_ERROR"}]}',
   REGISTRATION_NO_TOKEN_ERROR: '{"errors":[{"label":"No Registration Token found in request.","token":"REGISTRATION_NO_TOKEN_ERROR"}]}',
-  REGISTRATION_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"REGISTRATION_TOKEN_EXPIRED_ERROR"}]}'
+  REGISTRATION_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"REGISTRATION_TOKEN_EXPIRED_ERROR"}]}',
+  REGISTRATION_ERROR_USER_ALREADY_EXIST: '{"errors":[{"label":"Registration Failed: a user with this email already exists","token":"REGISTRATION_ERROR_USER_ALREADY_EXIST"}]}'
 }
 
 REGISTRATION_ERROR.argTypes = {

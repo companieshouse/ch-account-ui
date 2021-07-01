@@ -188,3 +188,69 @@ COMPANY_ASSOCIATION_2.args = {
     ]
   }
 }
+
+export const COMPANY_ASSOCIATION_3 = Template.bind({})
+COMPANY_ASSOCIATION_3.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+COMPANY_ASSOCIATION_3.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHCompanyAssociation',
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please enter the company number.'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'NameCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Enter Company number'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: ''
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'COMPANY_ASSOCIATION_3'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'stage'
+          }
+        ]
+      }
+    ]
+  }
+}

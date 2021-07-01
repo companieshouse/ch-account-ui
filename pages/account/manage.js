@@ -29,7 +29,6 @@ const ManageAccount = ({ errors, lang }) => {
       width="two-thirds"
       titleLinkHref="/account/home"
       hasBackLink={false}
-      hasLanguageSwitcher={false}
       hasLogoutLink={true}
       hasAccountLinks={true}
     >

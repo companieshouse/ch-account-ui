@@ -1,12 +1,10 @@
-import enFeatures from './lang/en/features.js'
+import getStages from './stages/stages'
 import enTokens from './lang/en/tokens.json'
-
-import cyFeatures from './lang/cy/features.js'
 import cyTokens from './lang/cy/tokens.json'
 
 const features = {
-  en: enFeatures,
-  cy: cyFeatures
+  en: getStages('en'),
+  cy: getStages('cy')
 }
 
 const tokens = {

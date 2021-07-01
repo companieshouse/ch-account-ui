@@ -823,7 +823,7 @@ EWF_LOGIN_OTP.args = {
         output: [
           {
             name: 'value',
-            value: '{"phoneNumber":"","emailAddress":"stuart.parr@amido.com","type":"email"}'
+            value: '{"phoneNumber":"077777777777","emailAddress":"stuart.parr@amido.com","type":"email"}'
           },
           {
             name: 'id',

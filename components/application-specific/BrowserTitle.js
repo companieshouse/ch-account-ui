@@ -3,7 +3,7 @@ import React from 'react'
 
 const BrowserTitle = ({ title }) => {
   React.useEffect(() => {
-    window.document.title = title
+    window.document.title = title + ' - Companies House WebFiling account - GOV.UK'
   })
 
   return null
