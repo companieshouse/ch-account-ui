@@ -33,7 +33,6 @@ const AuthorisedPerson = ({ errors, lang }) => {
           companyName: company.name
         })
         setAssociationData({
-          count: response.count,
           company,
           user: company.users.filter((user) => (userId === user._refResourceId))[0]
         })

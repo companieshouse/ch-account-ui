@@ -68,7 +68,7 @@ FeatureDynamicView.propTypes = {
   errors: errorsPropType,
   formAction: PropTypes.string,
   headingCount: PropTypes.instanceOf(HeadingCount),
-  formRef: PropTypes.func,
+  formRef: PropTypes.object,
   onBack: PropTypes.func,
   onSubmit: PropTypes.func,
   renderFeatures: PropTypes.func,
