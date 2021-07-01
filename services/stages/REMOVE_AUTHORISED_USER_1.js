@@ -50,7 +50,7 @@ const REMOVE_AUTHORISED_USER_1 = (lang, tokens) => [
   {
     component: 'BodyText',
     dynamicProps: {
-      children: 'We\'ll email ${displayName} to let them know they are no longer authorised to file online for this company. We\'ll also email anyone else who is authorised to file for this company that ${displayName}\'s authorisation has been removed. We will not tell Hannah Salt who removed their authorisation.'
+      children: 'We\'ll email ${displayName} to let them know they are no longer authorised to file online for this company. We\'ll also email anyone else who is authorised to file for this company that ${displayName}\'s authorisation has been removed. We will not tell ${displayName} who removed their authorisation.'
     }
   },
   {
