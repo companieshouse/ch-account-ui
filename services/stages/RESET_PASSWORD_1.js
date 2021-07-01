@@ -14,7 +14,7 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
     },
     component: 'NotificationBanner',
     dynamicProps: {
-      title: tokens['RESET_PASSWORD_1.[0].NotificationBanner.important'],
+      title: tokens['SHARED.important'],
       heading: tokens['RESET_PASSWORD_1.[0].NotificationBanner.yourPasswordNeedsToBeUpdatedPleaseFollowThe']
     }
   },

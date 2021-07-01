@@ -9,7 +9,7 @@ const REGISTRATION_1 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['REGISTRATION_1.[1].PageHeading.whatAreYourDetails']
+      children: tokens['SHARED.whatAreYourDetails']
     }
   },
   {

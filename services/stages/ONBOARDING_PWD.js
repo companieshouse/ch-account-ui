@@ -3,30 +3,54 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: 'Create your password'
+      title: tokens['ONBOARDING_PWD.[0].BrowserTitle.createAPassword']
     }
+  },
+  {
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens['SHARED.important'],
+      heading: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate']
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.toFindOutMoreAboutWebFiling']
+        }
+      },
+      {
+        component: 'LinkText',
+        props: {
+          href: 'https://www.gov.uk/guidance/filing-your-companies-house-information-online',
+          children: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.LinkText.guidanceAboutOnlineFiling']
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens['SHARED.']
+        }
+      }
+    ]
   },
   {
     component: 'PageHeading',
     props: {
-      children: 'Create your password'
+      children: tokens['ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling']
     }
   },
   {
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken2: {
-          label: 'Enter your current password',
-          suffix: null
-        },
         IDToken3: {
-          label: 'Enter a new password',
-          hint: 'This must be at least 8 characters long and hard to guess.',
+          label: tokens['SHARED.enterPassword'],
+          hint: tokens['SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'],
           formGroup: 'newPassword'
         },
         IDToken4: {
-          label: 'Re-enter the new password',
+          label: tokens['SHARED.reEnterPassword'],
           formGroup: 'newPassword'
         }
       }
@@ -35,7 +59,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: 'Help with creating your password'
+      summary: tokens['SHARED.helpWithCreatingYourPassword']
     },
     content: [
       {
@@ -45,13 +69,13 @@ const ONBOARDING_PWD = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: 'You can use numbers, symbols and spaces.'
+          children: tokens['SHARED.youCanUseNumbersSymbolsAndSpaces']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: 'A good way to create a secure and memorable password is to use 3 random words.'
+          children: tokens['SHARED.aGoodWayToCreateASecureAndMemorablePassword']
         }
       }
     ]
@@ -59,22 +83,10 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: 'Create password',
+      children: tokens['SHARED.createAccount'],
       type: 'submit',
       testId: 'submitButton'
     }
-  },
-  {
-    component: 'BodyText',
-    content: [
-      {
-        component: 'LinkText',
-        props: {
-          children: 'Cancel',
-          href: '/account/manage'
-        }
-      }
-    ]
   }
 ]
 export default ONBOARDING_PWD
