@@ -15,7 +15,7 @@ const EWF_LOGIN_3 = (lang, tokens) => [
   {
     component: 'HeadingText',
     dynamicProps: {
-      children: tokens['SHARED.companyName']
+      children: '${company.name}'
     },
     props: {
       size: 'l'

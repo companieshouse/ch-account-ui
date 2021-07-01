@@ -83,7 +83,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
           {
             component: 'HeadingText',
             dynamicProps: {
-              children: tokens['HOME_NOTIFICATIONS.[5].Fragment.companyName'],
+              children: '${company.name}',
               anchor: '${company.number}'
             },
             props: {
@@ -129,7 +129,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                       {
                         component: 'Fragment',
                         dynamicProps: {
-                          children: tokens['SHARED.companyNumber']
+                          children: '${company.number}'
                         }
                       }
                     ]

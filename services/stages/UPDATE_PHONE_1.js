@@ -27,7 +27,7 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
           weight: 'bold'
         },
         dynamicProps: {
-          children: tokens['UPDATE_PHONE_1.[2].BodyText.profilePhoneNumber']
+          children: '${profilePhoneNumber}'
         }
       },
       {

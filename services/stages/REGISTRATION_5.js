@@ -18,7 +18,7 @@ const REGISTRATION_5 = (lang, tokens) => [
       {
         component: 'SpanText',
         dynamicProps: {
-          children: tokens['SHARED.email']
+          children: '${email}'
         },
         props: {
           weight: 'bold'

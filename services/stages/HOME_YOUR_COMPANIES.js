@@ -128,7 +128,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
           {
             component: 'HeadingText',
             dynamicProps: {
-              children: tokens['SHARED.companyName']
+              children: '${company.name}'
             },
             props: {
               size: 'm'
@@ -161,7 +161,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                       {
                         component: 'Fragment',
                         dynamicProps: {
-                          children: tokens['SHARED.companyNumber']
+                          children: '${company.number}'
                         }
                       }
                     ]
@@ -262,7 +262,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                         },
                                         component: 'Td',
                                         dynamicProps: {
-                                          children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.userGivenName']
+                                          children: '${user.givenName}'
                                         }
                                       },
                                       {
@@ -272,7 +272,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                         },
                                         component: 'Td',
                                         dynamicProps: {
-                                          children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.userMail']
+                                          children: '${user.mail}'
                                         }
                                       },
                                       {

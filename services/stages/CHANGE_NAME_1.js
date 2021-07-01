@@ -27,7 +27,7 @@ const CHANGE_NAME_1 = (lang, tokens) => [
           weight: 'bold'
         },
         dynamicProps: {
-          children: tokens['CHANGE_NAME_1.[2].BodyText.profileName']
+          children: '${profileName}'
         }
       },
       {

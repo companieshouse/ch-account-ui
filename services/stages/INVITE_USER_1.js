@@ -9,7 +9,7 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'Caption',
     dynamicProps: {
-      children: tokens['INVITE_USER_1.[1].Caption.companyName']
+      children: '${companyName}'
     }
   },
   {

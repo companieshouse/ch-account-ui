@@ -9,7 +9,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'Caption',
     dynamicProps: {
-      children: tokens['SHARED.companyName']
+      children: '${company.name}'
     }
   },
   {

@@ -28,7 +28,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       {
         component: 'SpanText',
         dynamicProps: {
-          children: tokens['RESET_PASSWORD_6.[2].BodyText.email']
+          children: '${email}'
         },
         props: {
           weight: 'bold'

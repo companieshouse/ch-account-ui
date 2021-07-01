@@ -22,7 +22,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
               {
                 component: 'Caption',
                 dynamicProps: {
-                  children: tokens['HOME_OVERVIEW.[1].Row.profileGivenName']
+                  children: '${profile.given_name}'
                 },
                 props: {
                   size: 'xl'
