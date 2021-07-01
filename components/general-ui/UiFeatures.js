@@ -35,6 +35,7 @@ import InfoBlocks from '../application-specific/InfoBlocks'
 import InfoBlock from '../application-specific/InfoBlock'
 import AccountLinks from '../application-specific/AccountLinks'
 import SummaryListItem from './typeography/SummaryListItem'
+import WarningText from './typeography/WarningText'
 
 const featureMap = {
   Button,
@@ -71,7 +72,8 @@ const featureMap = {
   InfoBlocks,
   InfoBlock,
   AccountLinks,
-  SummaryListItem
+  SummaryListItem,
+  WarningText
 }
 
 const UiFeatures = (props) => {

@@ -129,8 +129,11 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
     component: 'LinkText',
     props: {
       children: tokens['HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'],
-      href: '/account/home',
+      href: '',
       testId: 'removeAuthorisedUserRequestLink'
+    },
+    dynamicProps: {
+      href: '${company.removeAuthorisedLink}'
     }
   }
 ]

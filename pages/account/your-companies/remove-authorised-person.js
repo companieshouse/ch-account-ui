@@ -25,7 +25,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = useMemo(() => new HeadingCount(), [])
 
-  const { mode, companyNumber, userId } = queryParams
+  const { companyNumber, userId } = queryParams
 
   useEffect(() => {
     headingCount.reset()
@@ -36,7 +36,8 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
       lang,
       stepOptions: {
         query: {
-          ForceAuth: true
+          companyNumber,
+          userId
         }
       },
       onSuccess: () => {
@@ -62,6 +63,8 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
           }
         }
 
+        stepCustomPageProps.displayName = stepCustomPageProps.invitedUser.givenName ? stepCustomPageProps.invitedUser.givenName : stepCustomPageProps.invitedUser.mail
+
         setErrors(stepErrors)
         setCustomPageProps(stepCustomPageProps)
         setUiStage(step.payload.stage)
@@ -70,7 +73,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [asPath, headingCount, lang, mode, push])
+  }, [asPath, headingCount, lang, push])
 
   const onSubmit = (evt) => {
     evt?.preventDefault()
@@ -105,6 +108,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
     <FeatureDynamicView
       onSubmit={onSubmit}
       formRef={formRef}
+      hasAccountLinks
     >
       <Dynamic
         {...customPageProps}
