@@ -7,6 +7,31 @@ const REGISTRATION_4 = (lang, tokens) => [
     }
   },
   {
+    component: 'NotificationBanner',
+    props: {
+      title: tokens['SHARED.success'],
+      heading: tokens['SHARED.emailAddressVerified'],
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens['SHARED.youHaveSuccessfullyVerifiedTheEmail']
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${email}'
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['REGISTRATION_4.[0].PageHeading.createAPassword']
