@@ -20,6 +20,7 @@ export const FORGEROCK_TREE_REQUEST_AUTH_CODE = process.env.FORGEROCK_TREE_REQUE
 export const FORGEROCK_TREE_CHANGE_PASSWORD = process.env.FORGEROCK_TREE_CHANGE_PASSWORD || 'CHChangePassword'
 export const FORGEROCK_TREE_CHANGE_PHONE_NUMBER = process.env.FORGEROCK_TREE_CHANGE_PHONE_NUMBER || 'CHChangePhoneNumber'
 export const FORGEROCK_TREE_CHANGE_NAME = process.env.FORGEROCK_TREE_CHANGE_NAME || 'CHChangeName'
+export const FORGEROCK_TREE_ONBOARDING = process.env.FORGEROCK_TREE_ONBOARDING || 'CHOnboarding'
 
 export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_REQUEST_AUTH_CODE_URL || 'https://ewf.companieshouse.gov.uk//seclogin?tc=1'
 export const CH_EWF_LEGACY_AUTH_URL = process.env.CH_EWF_LEGACY_AUTH_URL || 'https://ewf.companieshouse.gov.uk/legacy'

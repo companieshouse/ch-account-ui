@@ -52,6 +52,9 @@ import INVITE_USER_1 from './INVITE_USER_1.js'
 import INVITE_USER_2 from './INVITE_USER_2.js'
 import INVITE_USER_3 from './INVITE_USER_3.js'
 import INVITE_USER_ERROR from './INVITE_USER_ERROR.js'
+import ONBOARDING_PROFILE from './ONBOARDING_PROFILE.js'
+import ONBOARDING_PWD from './ONBOARDING_PWD.js'
+import ONBOARDING_ERROR from './ONBOARDING_ERROR.js'
 
 import tokensEn from '../lang/en/content-tokens.json'
 import tokensCy from '../lang/cy/content-tokens.json'
@@ -112,6 +115,9 @@ const getStages = (lang) => {
     NO_SESSION_ERROR,
     LIMIT_EXCEEDED_ERROR,
     LOGOUT_ERROR,
+    ONBOARDING_ERROR,
+    ONBOARDING_PWD,
+    ONBOARDING_PROFILE,
     GENERIC_ERROR,
     SEND_MFA_SMS_ERROR,
     SEND_MFA_EMAIL_ERROR,
