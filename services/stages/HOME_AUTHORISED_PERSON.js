@@ -105,21 +105,21 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       ]
     }
   },
-  {
-    conditional: {
-      prop: '${user._refProperties.membershipStatus}',
-      operator: 'eeq',
-      value: 'pending'
-    },
-    component: 'Button',
-    props: {
-      warning: true,
-      renderAs: 'link',
-      children: tokens['HOME_AUTHORISED_PERSON.[4].Button.cancelRequest'],
-      href: '/account/associate/_start?action=cancel',
-      testId: 'cancelAuthorisedUserRequestLink'
-    }
-  },
+  // {
+  //   conditional: {
+  //     prop: '${user._refProperties.membershipStatus}',
+  //     operator: 'eeq',
+  //     value: 'pending'
+  //   },
+  //   component: 'Button',
+  //   props: {
+  //     warning: true,
+  //     renderAs: 'link',
+  //     children: tokens['HOME_AUTHORISED_PERSON.[4].Button.cancelRequest'],
+  //     href: '/account/associate/_start?action=cancel',
+  //     testId: 'cancelAuthorisedUserRequestLink'
+  //   }
+  // },
   {
     conditional: {
       prop: '${user._refProperties.membershipStatus}',
@@ -129,8 +129,11 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
     component: 'LinkText',
     props: {
       children: tokens['HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'],
-      href: '/account/home',
+      href: '',
       testId: 'removeAuthorisedUserRequestLink'
+    },
+    dynamicProps: {
+      href: '${company.removeAuthorisedLink}'
     }
   }
 ]

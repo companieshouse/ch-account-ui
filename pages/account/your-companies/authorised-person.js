@@ -32,8 +32,11 @@ const AuthorisedPerson = ({ errors, lang }) => {
           companyNumber: company.number,
           companyName: company.name
         })
+        company.removeAuthorisedLink = generateQueryUrl('/account/your-companies/remove-authorised-person/', {
+          companyNumber: company.number,
+          userId
+        })
         setAssociationData({
-          count: response.count,
           company,
           user: company.users.filter((user) => (userId === user._refResourceId))[0]
         })

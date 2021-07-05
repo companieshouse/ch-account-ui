@@ -37,7 +37,7 @@ const CheckboxGroup = (props) => {
           <span className="govuk-visually-hidden">Error:</span> {error.label}
         </span>}
         <div className="govuk-checkboxes">
-          {options.map((option, index) => <div key={`${option.value}_${index}`} className="govuk-checkboxes__item">
+          {options.filter((option) => !option.filter).map((option, index) => <div key={`${option.value}_${index}`} className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"
               id={`${id}_${index}`}

@@ -40,6 +40,7 @@ import ErrorSummary from '../components/general-ui/typeography/ErrorSummary'
 import ErrorPageSummary from '../components/general-ui/typeography/ErrorPageSummary'
 import Tag from '../components/general-ui/typeography/Tag'
 import ObfuscatePhoneNumber from '../components/application-specific/ObfuscatePhoneNumber'
+import WarningText from '../components/general-ui/typeography/WarningText'
 
 const componentMap = {
   Button,
@@ -83,7 +84,8 @@ const componentMap = {
   ErrorSummary,
   ErrorPageSummary,
   Tag,
-  ObfuscatePhoneNumber
+  ObfuscatePhoneNumber,
+  WarningText
 }
 
 export default componentMap

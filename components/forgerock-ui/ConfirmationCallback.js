@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import RadioGroup from '../general-ui/interaction/RadioGroup'
+import CheckboxGroup from '../general-ui/interaction/CheckboxGroup'
 
 const ConfirmationCallback = ({ element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
@@ -18,19 +19,34 @@ const ConfirmationCallback = ({ element, customElementProps = {}, groupError = u
     return <input type="hidden" name={id} value={defaultValue} />
   }
 
+  const { options, ...restCustomElementProps } = customElementProps
+  const mergedOptions = choices.map((choice, index) => {
+    return {
+      label: options?.[index]?.label || choice,
+      value: options?.[index]?.value || index,
+      checked: isChecked(choice, index),
+      filter: customElementProps.type === 'checkbox' && defaultValue === index
+    }
+  })
+
+  if (customElementProps.type === 'checkbox') {
+    return <CheckboxGroup
+      testId={testId}
+      options={mergedOptions}
+      id={id}
+      {...restCustomElementProps}
+    />
+  }
+
   return (
     <RadioGroup
       id={id}
       testId={testId}
       heading={label}
-      options={choices.map((choice, index) => ({
-        label: choice,
-        value: index,
-        checked: isChecked(choice, index)
-      }))}
+      options={mergedOptions}
       defaultValue={defaultValue}
       groupError={groupError}
-      {...customElementProps}
+      {...restCustomElementProps}
     />
   )
 }
