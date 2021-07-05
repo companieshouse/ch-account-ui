@@ -3,7 +3,7 @@ const REGISTRATION_5 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['REGISTRATION_5.[0].PageHeading.emailAddressVerified']
+      children: tokens['SHARED.emailAddressVerified']
     }
   },
   {
@@ -12,7 +12,7 @@ const REGISTRATION_5 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['REGISTRATION_5.[1].InsetText.youHaveSuccessfullyVerifiedTheEmail']
+          children: tokens['SHARED.youHaveSuccessfullyVerifiedTheEmail']
         }
       },
       {
