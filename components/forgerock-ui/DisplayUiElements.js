@@ -11,9 +11,10 @@ import ConfirmationCallback from './ConfirmationCallback'
 import { errorsPropType } from '../../services/propTypes'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import { getFieldError } from '../../services/errors'
+import log from '../../services/log'
 
 const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, groupError = undefined) => {
-  // console.log('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
+  // log.debug('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
   const uid = `${uiStage}-${id}-${index}`
 
   switch (element.payload.type) {
@@ -45,7 +46,7 @@ const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, g
 
 const CustomFormGroup = ({ currentFormGroup, errors, uiStage }) => {
   if (!currentFormGroup || !currentFormGroup.elements) {
-    console.log('DisplayUiElements (CustomFormGroup): Form group has no elements', currentFormGroup)
+    // log.debug('DisplayUiElements (CustomFormGroup): Form group has no elements', currentFormGroup)
     return null
   }
 
@@ -77,7 +78,7 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
           // The element is part of a group... let's find all these elements
           // and render them as children of the same parent <FormGroup> element
           if (!currentFormGroup) {
-            // console.log('DisplayUiElements: Creating form group', customProps.formGroup)
+            // log.debug('DisplayUiElements: Creating form group', customProps.formGroup)
             // We don't have a current form group and this element is part of one
             // so let's create the form group now. Elements that ar part of a form
             // are contiguous so we now just need to keep adding elements until
@@ -94,7 +95,7 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
             }
           }
 
-          // console.log('DisplayUiElements: Adding element', element.payload.type, 'to group', customProps.formGroup)
+          // log.debug('DisplayUiElements: Adding element', element.payload.type, 'to group', customProps.formGroup)
 
           // Add the current element to the form group
           currentFormGroup.elements.push({
@@ -112,7 +113,7 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
         } else if (currentFormGroup) {
           // We've found an element that is not part of a form group and we have a
           // currentFormGroup so output that current form group and then continue
-          // console.log('DisplayUiElements: Outputting form group and trailing element', currentFormGroup.name)
+          // log.debug('DisplayUiElements: Outputting form group and trailing element', currentFormGroup.name)
           const output = (
             <React.Fragment key={`formGroup_${index}`}>
               <CustomFormGroup currentFormGroup={currentFormGroup} errors={errors} uiStage={uiStage} />

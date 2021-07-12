@@ -3,10 +3,7 @@ import React from 'react'
 import { getTemplateDataValue, parseTemplateString, processDynamicProps } from '../services/template'
 import { set as pathSet } from '@irrelon/path'
 import WithTransformedErrors from './providers/WithTransformedErrors'
-
-const log = (...rest) => {
-  // console.log(...rest)
-}
+import log from '../services/log'
 
 const isConditionalSatisfied = (conditional, data) => {
   if (conditional instanceof Array) {
@@ -19,7 +16,7 @@ const isConditionalSatisfied = (conditional, data) => {
 
   // Get the conditional prop data
   const propData = getTemplateDataValue(data, prop)
-  console.log('Running conditional', conditional, propData)
+  log.debug('Running conditional', conditional, propData)
   switch (operator) {
     case 'gt':
       if (propData > value) return true
@@ -66,7 +63,7 @@ const isConditionalSatisfied = (conditional, data) => {
     default:
       break
   }
-  console.log('Returning false')
+  log.debug('Returning false')
   return false
 }
 
@@ -118,7 +115,7 @@ const renderIterator = (contentItem, iterator, data) => {
  */
 const Dynamic = (props) => {
   const { content = [], componentMap = {}, children, ...otherProps } = props
-  log('<Dynamic>: Rendering with props', props)
+  // log.debug('<Dynamic>: Rendering with props', props)
   if (!content.length) {
     return <>{children}</>
   }
@@ -155,7 +152,7 @@ const Dynamic = (props) => {
           return renderIterator(contentItem, iterator, { ...otherProps, ...props, ...otherItemProps, componentMap })
         }
 
-        log('Dynamic: +++ Render component:', component)
+        // log.debug('Dynamic: +++ Render component:', component)
 
         // Check for prop replacement sub-content
         const dynamicPropEntries = (typeof dynamicProps === 'object' && Object.entries(dynamicProps)) || []
@@ -165,19 +162,19 @@ const Dynamic = (props) => {
             if (typeof subContentItem === 'string') {
               // Direct template string replacement
               pathSet(props, propName, parseTemplateString({ ...otherProps, ...props, ...otherItemProps }, subContentItem, false, true))
-              log(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
+              // log.debug(`Dynamic: Replacing prop "${propName}" with new val`, props[propName], props)
             } else if (subContentItem instanceof Array) {
               const arr = processDynamicProps(subContentItem, { ...otherProps, ...props, ...otherItemProps })
               pathSet(props, propName, arr)
-              log(`Dynamic: Replacing prop "${propName}" with array-based new val`, props[propName], props)
+              // log.debug(`Dynamic: Replacing prop "${propName}" with array-based new val`, props[propName], props)
             } else if (typeof subContentItem === 'object') {
               // Scan for prop template strings in fields and values
               subContentItem.props = processDynamicProps(subContentItem.props, { ...otherProps, ...props, ...otherItemProps })
 
-              log('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
+              // log.debug('Dynamic: Rendering sub-component', subContentItem.component, 'as prop', propName)
 
               // Replace the labelled prop with this component
-              log(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
+              // log.debug(`Dynamic: Assigning prop ${propName} to dynamic from`, subContentItem)
               pathSet(props, propName, <Dynamic componentMap={componentMap} content={[subContentItem]} {...otherProps} {...otherItemProps} />)
             } else {
               throw new Error(`Unrecognised dynamicProp value: ${JSON.stringify(subContentItem)}`)
@@ -185,8 +182,8 @@ const Dynamic = (props) => {
           })
         }
 
-        log('Dynamic: Rendering component', component, 'with props', props)
-        log('Dynamic: --- End', component)
+        // log.debug('Dynamic: Rendering component', component, 'with props', props)
+        // log.debug('Dynamic: --- End', component)
 
         return <ComponentClass key={`${component}_${index}`} {...otherProps} {...otherItemProps} {...props}>
           {props.children}

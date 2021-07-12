@@ -10,6 +10,7 @@ import {
   FORGEROCK_USER_ENDPOINT
 } from './environment'
 import { translateErrors } from './errors'
+import log from './log'
 
 export { CallbackType }
 
@@ -21,7 +22,7 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
 
   // TODO Move logic to the specific page handlers
   if (step.type === StepType.LoginFailure) {
-    console.log(step)
+    log.debug(step)
     errors.push({
       errData: step, // Add the errData key to pass along the original error info
       stage: 'NO_SESSION_ERROR',
@@ -122,7 +123,7 @@ export const findCustomPageProps = (step) => {
     const jsonString = findCallback(step, 'pagePropsJSON')
 
     if (!jsonString) {
-      console.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
+      log.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
       return {}
     }
 
@@ -168,7 +169,7 @@ export const forgerockFlow = ({
   isAuthOnly
 }) => {
   if (!lang) {
-    console.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
+    log.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
     return null
   }
 
@@ -193,7 +194,7 @@ export const forgerockFlow = ({
   })
 
   const handleFatalError = (err) => {
-    console.log('ForgeRock fatal error', err)
+    log.debug('ForgeRock fatal error', err)
     onFailure(err, [{
       errData: err, // Add the errData key to pass along the original error info
       token: 'ERROR_UNKNOWN', // We don't know the error
@@ -202,12 +203,12 @@ export const forgerockFlow = ({
   }
 
   const nextStep = (step, nextStepOptions) => {
-    console.log('ForgeRock calling next step', step, nextStepOptions)
+    log.debug('ForgeRock calling next step', step, nextStepOptions)
     FRAuth.next(step, nextStepOptions).then(handleStep).catch(handleFatalError)
   }
 
   const handleStep = async (step) => {
-    console.log('Forgerock step, handleStep(step) got', step)
+    log.debug('Forgerock step, handleStep(step) got', step)
 
     // Find any validation errors and convert them to an errors array
     // that our front-end can use. This normalises the errors across
@@ -216,7 +217,7 @@ export const forgerockFlow = ({
     const errors = translateErrors(normaliseErrors(step, journeyNamespace), lang)
 
     if (step.type === StepType.LoginSuccess) {
-      console.log('ForgeRock login success', step)
+      log.debug('ForgeRock login success', step)
 
       if (!isAuthOnly) {
         const tokens = await TokenManager.getTokens({ forceRenew: true })
@@ -228,11 +229,11 @@ export const forgerockFlow = ({
     }
 
     if (step.type === StepType.LoginFailure) {
-      console.log('ForgeRock login failure', step)
+      log.debug('ForgeRock login failure', step)
       return onFailure(step, errors)
     }
 
-    console.log('Stepping', step)
+    log.debug('Stepping', step)
     onUpdateUi(step, (formData, uiStepOptions) => {
       // Fill in the step input data from form data
       step.callbacks.forEach((callback) => {
@@ -272,7 +273,7 @@ export const logoutFlow = ({
 
 export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
   if (!companyId) {
-    console.error('getUsersAssociatedWithCompany(accessToken, companyId): No userId provided!')
+    log.error('getUsersAssociatedWithCompany(accessToken, companyId): No userId provided!')
     return
   }
 
@@ -314,7 +315,7 @@ export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
 
 export const getCompaniesAssociatedWithUser = async (accessToken, userId, company) => {
   if (!userId) {
-    console.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
+    log.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
   const queryFilter = company ? `number+eq+"${company}"` : 'true'

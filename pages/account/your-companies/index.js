@@ -37,7 +37,6 @@ const YourCompanies = ({ errors, lang }) => {
     headingCount.reset()
     if (sub && accessToken) {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
-        console.log('AssociationData', response)
         setAssociationData({
           count: response.confirmedCount,
           companies: extendCompaniesData(response.confirmedCompanies)

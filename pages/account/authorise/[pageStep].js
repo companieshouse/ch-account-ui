@@ -11,6 +11,7 @@ import WithLang from '../../../services/lang/WithLang'
 import HeadingCount from '../../../services/HeadingCount'
 import { serializeForm } from '../../../services/formData'
 import { generateQueryUrl } from '../../../services/queryString'
+import log from '../../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -52,7 +53,7 @@ const InviteUser = ({ lang }) => {
     const journeyName = FORGEROCK_TREE_INVITE_USER
     const stepOptions = getStepOptions()
 
-    console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
+    log.debug(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
 
     forgerockFlow({
       journeyName,

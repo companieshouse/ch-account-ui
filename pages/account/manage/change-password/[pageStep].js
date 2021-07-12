@@ -11,6 +11,7 @@ import componentMap from '../../../../services/componentMap'
 import Dynamic from '../../../../components/Dynamic'
 import { customValidation, serializeForm } from '../../../../services/formData'
 import { translateErrors } from '../../../../services/errors'
+import log from '../../../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -58,7 +59,7 @@ const ChangePassword = ({ lang }) => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
+    log.debug('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'CHANGE_PASSWORD',

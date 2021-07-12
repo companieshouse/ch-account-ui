@@ -14,7 +14,6 @@ import useFRAuth from '../../services/useFRAuth'
 
 export const extendCompaniesData = (companiesData, sub) => {
   return companiesData.map((company) => {
-    console.log(company)
     const acceptPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'accept' })
     const declinePath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'decline' })
     const inviter = company.users.filter((user) => user._refResourceId === company._refProperties.inviterId)[0]
@@ -36,7 +35,6 @@ const Notifications = ({ errors, lang }) => {
 
     if (accessToken && sub) {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
-        console.log('AssociationData', response)
         setAssociationData({
           count: response.pendingCount,
           companies: extendCompaniesData(response.pendingCompanies, sub)

@@ -11,6 +11,7 @@ import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { customValidation, serializeForm } from '../../../services/formData'
 import { translateErrors } from '../../../services/errors'
+import log from '../../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -65,7 +66,7 @@ const RegisterContactDetails = ({ lang }) => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
+    log.debug('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'REGISTRATION',

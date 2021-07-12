@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import log from '../../services/log'
 import Button from './interaction/Button'
 import ButtonGroup from './interaction/ButtonGroup'
 import HeadingText from './typeography/HeadingText'
@@ -82,7 +83,7 @@ const UiFeatures = (props) => {
 
   if (!uiFeatures.length) return null
 
-  if (!uiStage) console.warn('The stage name has not been set for this page in ForgeRock. The page may not render the correct text or title!')
+  if (!uiStage) log.warn('The stage name has not been set for this page in ForgeRock. The page may not render the correct text or title!')
 
   return (
     <>
