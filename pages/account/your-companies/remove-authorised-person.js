@@ -12,6 +12,7 @@ import withQueryParams from '../../../components/providers/WithQueryParams'
 import { serializeForm, customValidation } from '../../../services/formData'
 import { translateErrors } from '../../../services/errors'
 import { FORGEROCK_TREE_REMOVE_AUTHORISED_USER } from '../../../services/environment'
+import { generateQueryUrl } from '../../../services/queryString'
 
 const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -30,7 +31,8 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const stepOptions = {
     query: {
       companyNumber,
-      userId
+      userId,
+      ForceAuth: true
     }
   }
 
@@ -43,7 +45,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
       lang,
       stepOptions,
       onSuccess: () => {
-        push('/account/home')
+        push('/account/your-companies/')
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
@@ -67,7 +69,11 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
 
         stepCustomPageProps.displayName = stepCustomPageProps.invitedUser?.displayName
         stepCustomPageProps.links = {
-          removeUserSuccess: `/account/your-companies/?notifyToken=removeUserSuccess&companyName=${stepCustomPageProps.company}&userName=${stepCustomPageProps.user}`
+          removeUserSuccess: generateQueryUrl('/account/your-companies/', {
+            notifyToken: 'removeUserSuccess',
+            userName: stepCustomPageProps.user,
+            companyName: stepCustomPageProps.company
+          })
         }
 
         setErrors(stepErrors)

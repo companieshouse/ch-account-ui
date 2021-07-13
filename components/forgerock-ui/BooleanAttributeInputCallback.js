@@ -9,7 +9,6 @@ const BooleanAttributeInputCallback = ({ errors, element, customElementProps, gr
   const currentValue = element.getOutputValue('value')
 
   return (
-    <>
     <CheckboxGroup
       id={id}
       errors={errors}
@@ -21,8 +20,6 @@ const BooleanAttributeInputCallback = ({ errors, element, customElementProps, gr
       groupError={groupError}
       {...rest}
     />
-      <input type="hidden" name="IDToken2validateOnly" value={false} />
-      </>
   )
 }
 

@@ -3,7 +3,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: 'Remove authorisation to file online'
+      title: tokens['REMOVE_USER_CONFIRM.[0].BrowserTitle.removeAuthorisationToFileOnline']
     }
   },
   {
@@ -15,13 +15,13 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'PageHeading',
     dynamicProps: {
-      children: 'Do you want to remove ${userDisplayName}\'s authorisation to file online for this company?'
+      children: tokens['REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS']
     }
   },
   {
     component: 'BodyText',
     dynamicProps: {
-      children: 'If you remove ${userDisplayName}\'s authorisation, they will no longer be able to access ${company.name} in their Companies House account.'
+      children: tokens['REMOVE_USER_CONFIRM.[3].BodyText.ifYouRemoveUserDisplayNameSAuthorisationThey']
     }
   },
   {
@@ -30,7 +30,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
       {
         component: 'Fragment',
         dynamicProps: {
-          children: ' ${userDisplayName} will still be able to file online for this company if they have access to the current authentication code.'
+          children: tokens['REMOVE_USER_CONFIRM.[4].WarningText.userDisplayNameWillStillBeAbleToFileOnline']
         }
       },
       {
@@ -42,7 +42,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
       {
         component: 'Fragment',
         dynamicProps: {
-          children: 'You should change the authentication code for this company as soon as possible after you have removed ${userDisplayName}\'s authorisation.'
+          children: tokens['REMOVE_USER_CONFIRM.[4].WarningText.youShouldChangeTheAuthenticationCodeForThis']
         }
       }
     ]
@@ -50,13 +50,13 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'BodyText',
     dynamicProps: {
-      children: 'We\'ll email ${userDisplayName} to let them know they are no longer authorised to file online for this company. We\'ll also email anyone else who is authorised to file for this company that ${userDisplayName}\'s authorisation has been removed. We will not tell ${userDisplayName} who removed their authorisation.'
+      children: tokens['REMOVE_USER_CONFIRM.[5].BodyText.wellEmailUserDisplayNameToLetThemKnowTheyAre']
     }
   },
   {
     component: 'BodyText',
     dynamicProps: {
-      children: 'If ${userDisplayName} is appointed as an officer of the company, such as a director or secretary, removing their authorisation to file online does not remove their appointment.'
+      children: tokens['REMOVE_USER_CONFIRM.[6].BodyText.ifUserDisplayNameIsAppointedAsAnOfficerOfThe']
     }
   },
   {
@@ -64,7 +64,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
-          label: 'I confirm that I have read and understood this information.'
+          label: tokens['REMOVE_USER_CONFIRM.[7].DisplayUiElements.iConfirmThatIHaveReadAndUnderstoodThis']
         },
         IDToken4: {
           _hidden: true
@@ -78,7 +78,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: 'Remove authorisation',
+          children: tokens['REMOVE_USER_CONFIRM.[8].ButtonGroup.removeAuthorisation'],
           type: 'submit',
           testId: 'submitButton',
           warning: true
@@ -87,7 +87,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: 'Cancel',
+          children: tokens['SHARED.cancel'],
           type: 'submit',
           testId: 'submitButton',
           secondary: true,

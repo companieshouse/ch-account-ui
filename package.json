@@ -11,7 +11,7 @@
     "sonar": "sonar-scanner",
     "eslint": "eslint .",
     "prepare": "husky install",
-    "storybook": "start-storybook -s ./public -p 3001",
+    "storybook": "BROWSER=none start-storybook -s ./public -p 3001",
     "build-storybook": "build-storybook",
     "preinstall": "npx npm-force-resolutions"
   },
