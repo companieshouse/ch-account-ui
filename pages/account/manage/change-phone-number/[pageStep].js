@@ -13,6 +13,7 @@ import { generateQueryUrl } from '../../../../services/queryString'
 import WithLang from '../../../../services/lang/WithLang'
 import useFRAuth from '../../../../services/useFRAuth'
 import { translateErrors } from '../../../../services/errors'
+import log from '../../../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -63,7 +64,7 @@ const ChangeNumber = ({ lang }) => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
+    log.debug('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'UPDATE_PHONE',

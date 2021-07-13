@@ -27,7 +27,6 @@ const Home = ({ errors, lang }) => {
 
     if (accessToken && sub) {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
-        console.log('AssociationData', response)
         setAssociationData({
           count: response.confirmedCount,
           pendingCount: response.pendingCount,

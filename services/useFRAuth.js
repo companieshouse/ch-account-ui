@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { forgerockInit } from './forgerock'
 import { TokenManager, UserManager } from '@forgerock/javascript-sdk'
 import { useRouter } from 'next/router'
+import log from '../services/log'
 
 /**
  * React hook to provide authentication parameters for pages outwith the regular FR flow.
@@ -18,7 +19,7 @@ const useFRAuth = () => {
     forgerockInit()
     const getAuth = async () => {
       const accessTokens = await TokenManager.getTokens({ forceRenew: false, support: 'modern' }).catch((err) => {
-        console.log('FR Auth: Failed to get tokens: ' + err)
+        log.debug('FR Auth: Failed to get tokens: ' + err)
         push('/account/login/')
       })
       if (!accessTokens) {
@@ -27,7 +28,7 @@ const useFRAuth = () => {
       setAccessToken(accessTokens.accessToken)
 
       const user = await UserManager.getCurrentUser().catch((err) => {
-        console.log('FR Auth: Failed to get user details: ' + err)
+        log.debug('FR Auth: Failed to get user details: ' + err)
         push('/account/login/')
       })
       setProfile(user)

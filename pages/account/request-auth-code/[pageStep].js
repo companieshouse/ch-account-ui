@@ -10,6 +10,7 @@ import WithLang from '../../../services/lang/WithLang'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { serializeForm } from '../../../services/formData'
+import log from '../../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -56,7 +57,7 @@ const RequestAuthCode = ({ lang }) => {
       }
     }
 
-    console.log('Staring FR journey', journeyName, stepOptions)
+    log.debug('Staring FR journey', journeyName, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'REQUEST_AUTHENTICATION_CODE',

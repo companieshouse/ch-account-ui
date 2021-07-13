@@ -12,6 +12,7 @@ import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import { customValidation, serializeForm } from '../../services/formData'
 import { translateErrors } from '../../services/errors'
+import log from '../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -80,7 +81,7 @@ const ResetPassword = ({ lang, queryParams }) => {
       }
     }
 
-    console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
+    log.debug(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'RESET_PASSWORD',
@@ -161,7 +162,6 @@ const ResetPassword = ({ lang, queryParams }) => {
 
   // Check if the router has been initialised yet
   if (!pageStep) {
-    console.log('Not rendering yet, no pageStep has been defined!', pageStep)
     return null
   }
 

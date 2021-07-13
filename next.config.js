@@ -1,6 +1,7 @@
 const withTM = require('next-transpile-modules')(['@irrelon/path'])
 
 const BASE_PATH = process.env.BASE_PATH
+const ENVIRONMENT = process.env.ENVIRONMENT
 const FORGEROCK_AM = process.env.FORGEROCK_AM
 const FORGEROCK_REALM = process.env.FORGEROCK_REALM
 const FORGEROCK_SCOPE = process.env.FORGEROCK_SCOPE
@@ -12,6 +13,7 @@ const FORGEROCK_USER_ENDPOINT = process.env.FORGEROCK_USER_ENDPOINT
 module.exports = withTM({
   env: {
     BASE_PATH,
+    ENVIRONMENT,
     FORGEROCK_AM,
     FORGEROCK_REALM,
     FORGEROCK_SCOPE,

@@ -13,6 +13,7 @@ import WithLang from '../../../services/lang/WithLang'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { serializeForm } from '../../../services/formData'
+import log from '../../../services/log'
 
 export const getStaticPaths = async () => {
   return {
@@ -67,7 +68,7 @@ const AssociateUserAndCompany = ({ lang }) => {
       }
     }
 
-    console.log(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
+    log.debug(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace: 'COMPANY_ASSOCIATION',
