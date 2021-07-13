@@ -24,7 +24,7 @@ const CheckboxGroup = (props) => {
 
   return (
     <div className={`govuk-form-group ${Boolean(error || groupError) && 'govuk-form-group--error'} ${finalClassName}`}>
-      <fieldset data-testid={testId} className="govuk-fieldset" aria-describedby={`${id}-hint ${id}-error`}>
+      <fieldset id={id} data-testid={testId} className="govuk-fieldset" aria-describedby={`${id}-hint ${id}-error`}>
         {Boolean(label) && <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
           <HeadingText className="govuk-fieldset__heading" headingCount={headingCount}>
             {label}

@@ -6,13 +6,22 @@
  */
 const serializeForm = (formEl) => {
   const obj = {}
+  const convertBool = (value) => {
+    if (value === 'true') {
+      return true
+    }
+    if (value === 'false') {
+      return false
+    }
+    return value
+  }
   Array.prototype.slice.call(formEl.elements).forEach(function (field) {
     if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].indexOf(field.type) > -1) return
     if (field.type === 'select-multiple') {
       const options = []
       Array.prototype.slice.call(field.options).forEach(function (option) {
         if (!option.selected) return
-        options.push(option.value)
+        options.push(convertBool(option.value))
       })
       if (options.length) {
         obj[field.name] = options
@@ -20,7 +29,7 @@ const serializeForm = (formEl) => {
       return
     }
     if (['checkbox', 'radio'].indexOf(field.type) > -1 && !field.checked) return
-    obj[field.name] = field.value
+    obj[field.name] = convertBool(field.value)
   })
   return obj
 }

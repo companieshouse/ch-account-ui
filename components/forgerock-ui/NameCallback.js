@@ -3,7 +3,7 @@ import React from 'react'
 import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
 
-const NameCallback = ({ errors, element, customElementProps, groupError }) => {
+const NameCallback = ({ errors, element, customElementProps, groupError, testId }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
 
@@ -14,7 +14,7 @@ const NameCallback = ({ errors, element, customElementProps, groupError }) => {
       autoComplete="email"
       label={label}
       errors={errors}
-      testId="usernameInputField"
+      testId={testId}
       groupError={groupError}
       {...customElementProps}
     />
@@ -27,10 +27,12 @@ NameCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
   errors: errorsPropType,
-  groupError: PropTypes.string
+  groupError: PropTypes.string,
+  testId: PropTypes.string
 }
 
 NameCallback.defaultProps = {
   customElementProps: {},
-  errors: []
+  errors: [],
+  testId: 'usernameInputField'
 }

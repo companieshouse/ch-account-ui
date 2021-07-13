@@ -21,7 +21,8 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           label: tokens['SHARED.whatIsTheCompanyNumber'],
           fixedWidth: '10',
           hint: tokens['COMPANY_ASSOCIATION_1.[2].DisplayUiElements.enterTheNumberOfTheCompanyYouWouldLikeToAdd'],
-          autoComplete: 'off'
+          autoComplete: 'off',
+          testId: 'companyNumberInputField'
         }
       }
     }

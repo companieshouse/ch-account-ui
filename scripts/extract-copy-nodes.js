@@ -1,16 +1,21 @@
 // Utility script for one off extraction and tokenisation of copy from feature definitions
 //
 // Run with the following command
+// add  "type": "module" to package.json
 // node --experimental-json-modules extract-copy-nodes.js
 
-import features from '../services/lang/en/retired-stages/features.js'
+import getStages from '../services/stages/stages.js'
 import set from 'lodash.set'
 import camelCase from 'lodash.camelcase'
 import fs from 'fs'
+import currentTokens from '../services/lang/en/content-tokens.json'
 
-const keys = { }
+const keys = { ...currentTokens }
 const imports = []
 const tokenisedStages = {}
+
+const features = getStages('en')
+const includeStages = ['REMOVE_USER_CONFIRM']
 
 const flatten = function (data) {
   const result = {}
@@ -96,7 +101,7 @@ const replaceInStages = (stages, value, newValue) => {
 }
 
 // Loop through all the current features
-Object.keys(features).forEach((key) => {
+Object.keys(features).filter((stageName) => includeStages.includes(stageName)).forEach((key) => {
   const stage = features[key]
   const tokenisedStage = stage
   // keys = { ...flatten(stage), ...keys }
@@ -171,13 +176,13 @@ Object.keys(tokenisedStages).forEach((key) => {
   const ${key} = (lang, tokens) => ${jsData}
   export default ${key}
   `
-  fs.writeFileSync(`./services/stages/${key}.js`, template)
+  fs.writeFileSync(`../services/stages/${key}-tokenised.js`, template)
 
   imports.push({ key, fileName: `../../stages/${key}.js` })
 })
 
 // Write all the generated tokens to a file
-fs.writeFileSync('./services/lang/en/content-tokens.json', JSON.stringify(order(keys), null, 4))
+fs.writeFileSync('../services/lang/en/content-tokens-new.json', JSON.stringify(order(keys), null, 4))
 
 // Write the imports to console for copy and paste
 imports.forEach((importFile) => {
