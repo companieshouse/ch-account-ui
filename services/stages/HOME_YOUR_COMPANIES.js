@@ -50,6 +50,40 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'removeUserSuccess'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      type: 'success',
+      title: tokens['SHARED.success'],
+      heading: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.isNoLongerAuthorisedToFileOnline']
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.youShould']
+        }
+      },
+      {
+        component: 'LinkText',
+        props: {
+          href: 'https://www.gov.uk/guidance/company-authentication-codes-for-online-filing#change-or-cancel-your-code',
+          children: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode']
+        }
+      },
+      {
+        component: 'SpanText',
+        dynamicProps: {
+          children: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.forThisCompanyIf']
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['SHARED.yourCompanies']

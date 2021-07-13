@@ -12,6 +12,7 @@ import withQueryParams from '../../../components/providers/WithQueryParams'
 import { serializeForm, customValidation } from '../../../services/formData'
 import { translateErrors } from '../../../services/errors'
 import { FORGEROCK_TREE_REMOVE_AUTHORISED_USER } from '../../../services/environment'
+import { generateQueryUrl } from '../../../services/queryString'
 
 const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -27,25 +28,28 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
 
   const { companyNumber, userId } = queryParams
 
+  const stepOptions = {
+    query: {
+      companyNumber,
+      userId,
+      ForceAuth: true
+    }
+  }
+
   useEffect(() => {
     headingCount.reset()
 
     forgerockFlow({
       journeyName: FORGEROCK_TREE_REMOVE_AUTHORISED_USER,
-      journeyNamespace: 'REMOVE_AUTHORISED_USER',
+      journeyNamespace: 'REMOVE_USER',
       lang,
-      stepOptions: {
-        query: {
-          companyNumber,
-          userId
-        }
-      },
+      stepOptions,
       onSuccess: () => {
-        push('/account/home')
+        push('/account/your-companies/')
       },
       onFailure: (errData, newErrors = []) => {
         setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, 'REMOVE_AUTHORISED_USER_1'))
+        setUiFeatures(getStageFeatures(lang, 'REMOVE_USER_CONFIRM'))
       },
       onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
         const stepCustomPageProps = findCustomPageProps(step)
@@ -63,7 +67,14 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
           }
         }
 
-        stepCustomPageProps.displayName = stepCustomPageProps.invitedUser.givenName ? stepCustomPageProps.invitedUser.givenName : stepCustomPageProps.invitedUser.mail
+        stepCustomPageProps.displayName = stepCustomPageProps.invitedUser?.displayName
+        stepCustomPageProps.links = {
+          removeUserSuccess: generateQueryUrl('/account/your-companies/', {
+            notifyToken: 'removeUserSuccess',
+            userName: stepCustomPageProps.user,
+            companyName: stepCustomPageProps.company
+          })
+        }
 
         setErrors(stepErrors)
         setCustomPageProps(stepCustomPageProps)
@@ -95,7 +106,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
     }
 
     // Submit FR stage
-    submitData(formData)
+    submitData(formData, stepOptions)
   }
 
   const onSecondarySubmit = (evt, params) => {
@@ -109,6 +120,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
       onSubmit={onSubmit}
       formRef={formRef}
       hasAccountLinks
+      hasBackLink={false}
     >
       <Dynamic
         {...customPageProps}

@@ -8,6 +8,7 @@ import ValidatedCreatePasswordCallback from './ValidatedCreatePasswordCallback'
 import ChoiceCallback from './ChoiceCallback'
 import HiddenValueCallback from './HiddenValueCallback'
 import ConfirmationCallback from './ConfirmationCallback'
+import BooleanAttributeInputCallback from './BooleanAttributeInputCallback'
 import { errorsPropType } from '../../services/propTypes'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import { getFieldError } from '../../services/errors'
@@ -38,6 +39,9 @@ const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, g
 
     case CallbackType.ConfirmationCallback:
       return <ConfirmationCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+
+    case CallbackType.BooleanAttributeInputCallback:
+      return <BooleanAttributeInputCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     default:
       return null
