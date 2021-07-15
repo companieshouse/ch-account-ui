@@ -120,6 +120,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
       onSubmit={onSubmit}
       formRef={formRef}
       hasAccountLinks
+      accountLinksItem={2}
       hasBackLink={false}
     >
       <Dynamic

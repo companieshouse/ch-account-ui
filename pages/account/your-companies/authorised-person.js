@@ -48,7 +48,8 @@ const AuthorisedPerson = ({ errors, lang }) => {
     <FeatureDynamicView
       titleLinkHref="/account/home"
       hasLogoutLink={true}
-      hasAccountLinks={true}
+      hasAccountLinks
+      accountLinksItem={2}
     >
       <Dynamic
         componentMap={componentMap}

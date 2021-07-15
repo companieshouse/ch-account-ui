@@ -65,7 +65,6 @@ HeadingText.defaultProps = {
   className: '',
   label: '',
   size: 'xl',
-  type: 'h1',
   weight: 'bold',
   renderFeatures: () => { return null }
 }

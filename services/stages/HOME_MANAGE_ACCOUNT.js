@@ -35,7 +35,8 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['HOME_MANAGE_ACCOUNT.[3].PageHeading.manageYourAccount']
+      children: tokens['HOME_MANAGE_ACCOUNT.[3].PageHeading.manageYourAccount'],
+      size: 'l'
     },
     content: [
       {

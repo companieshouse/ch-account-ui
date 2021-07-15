@@ -151,6 +151,8 @@ const ChangeNumber = ({ lang }) => {
       formRef={formRef}
       width='two-thirds'
       titleLinkHref="/account/home"
+      hasAccountLinks
+      accountLinksItem={5}
       onSubmit={onSubmit}
     >
       <Dynamic

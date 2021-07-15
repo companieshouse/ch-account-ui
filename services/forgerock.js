@@ -319,7 +319,7 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
     return
   }
   const queryFilter = company ? `number+eq+"${company}"` : 'true'
-  const queryFields = 'users,name,number,addressLine1,addressLine2,locality,region,postalCode'
+  const queryFields = 'users,name,number,addressLine1,addressLine2,locality,region,postalCode,jurisdiction'
   const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=${queryFilter}&_fields=${queryFields}`
 
   const res = await fetch(url, {

@@ -3,12 +3,7 @@ import React from 'react'
 import LinkText from './interaction/LinkText'
 import Link from 'next/link'
 
-const Header = (props) => {
-  const {
-    hasLogoutLink = false,
-    titleLinkHref = '/'
-  } = props
-
+const Header = ({ hasLogoutLink, titleLinkHref }) => {
   return (
     <header className="govuk-header " role="banner" data-module="govuk-header">
       <a href="#content" className="govuk-skip-link">Skip to main content</a>
@@ -67,6 +62,6 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  hasLogoutLink: false,
+  hasLogoutLink: true,
   titleLinkHref: '/'
 }

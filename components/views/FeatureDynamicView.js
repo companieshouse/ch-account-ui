@@ -18,6 +18,7 @@ const FeatureDynamicView = (props) => {
     hasLanguageSwitcher,
     hasLogoutLink,
     hasAccountLinks,
+    accountLinksItem,
     titleLinkHref,
     width,
     formAction,
@@ -31,14 +32,14 @@ const FeatureDynamicView = (props) => {
   return (
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={titleLinkHref} />
-      <WidthContainer style={{ paddingTop: '20px' }}>
-        {hasAccountLinks === true && <AccountLinks />}
+      <WidthContainer style={{ paddingTop: '2ex' }}>
+        {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} />}
       </WidthContainer>
       <WidthContainer>
-        <Row>
-            {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'}><BackLink testId="backLink" onClick={onBack}>Back</BackLink></Column>}
-            {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'}><LanguageSwitcher /></Column>}
-        </Row>
+          {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'}><BackLink testId="backLink" onClick={onBack}>Back</BackLink></Column>}
+          {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'}><LanguageSwitcher /></Column>}
+      </WidthContainer>
+      <WidthContainer>
         <Main className="govuk-main-wrapper--auto-spacing">
           <WidthContainer>
             <Row>
@@ -80,6 +81,7 @@ FeatureDynamicView.propTypes = {
   children: PropTypes.node,
   hasLogoutLink: PropTypes.bool,
   hasAccountLinks: PropTypes.bool,
+  accountLinksItem: PropTypes.number,
   titleLinkHref: PropTypes.string
 }
 
