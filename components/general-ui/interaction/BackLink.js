@@ -8,20 +8,24 @@ const BackLink = ({ children, href = '', className = '', testId, onClick }) => {
 
   if (href) {
     return (
-      <Link href={href}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events */}
-        <a tabIndex="-1" role="link" className={`govuk-back-link no-js-hide ${finalClassName}`} onClick={onClick} data-testid={testId}>{children}</a>
-      </Link>
+      <div className="back-link">
+        <Link href={href}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events */}
+          <a tabIndex="-1" role="link" className={`govuk-back-link no-js-hide ${finalClassName}`} onClick={onClick} data-testid={testId}>{children}</a>
+        </Link>
+      </div>
     )
   }
 
   return (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <a href="#" onClick={(...args) => {
-      if (onClick) return onClick(...args)
-      window.history.back()
-      return false
-    }} className={`govuk-back-link no-js-hide ${finalClassName}`} data-testid={testId}>{children}</a>
+    <div className="back-link">
+      <a href="#" onClick={(...args) => {
+        if (onClick) return onClick(...args)
+        window.history.back()
+        return false
+      }} className={`govuk-back-link no-js-hide ${finalClassName}`} data-testid={testId}>{children}</a>
+    </div>
   )
 }
 

@@ -30,7 +30,8 @@ const ManageAccount = ({ errors, lang }) => {
       titleLinkHref="/account/home"
       hasBackLink={false}
       hasLogoutLink={true}
-      hasAccountLinks={true}
+      hasAccountLinks
+      accountLinksItem={5}
     >
       <Dynamic
         componentMap={componentMap}

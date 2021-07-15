@@ -22,7 +22,8 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.messages']
+      children: tokens['SHARED.messages'],
+      size: 'l'
     }
   },
   {
@@ -39,19 +40,10 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
         component: 'BoxCard',
         content: [
           {
-            component: 'HeadingText',
+            component: 'BodyText',
             props: {
               size: 'm',
               children: tokens['HOME_NOTIFICATIONS.[4].Fragment.youDoNotHaveAnyMessages']
-            }
-          },
-          {
-            component: 'Button',
-            props: {
-              renderAs: 'link',
-              children: tokens['HOME_NOTIFICATIONS.[4].Fragment.backToYourHomePage'],
-              href: '/account/home/',
-              testId: 'accountAssociateCompanyLink'
             }
           }
         ]

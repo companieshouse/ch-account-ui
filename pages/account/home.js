@@ -48,6 +48,7 @@ const Home = ({ errors, lang }) => {
       hasLanguageSwitcher={true}
       hasLogoutLink={true}
       hasAccountLinks={true}
+      accountLinksItem={1}
     >
       <Dynamic
         componentMap={componentMap}

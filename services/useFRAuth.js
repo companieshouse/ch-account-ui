@@ -15,6 +15,8 @@ const useFRAuth = () => {
   const [accessToken, setAccessToken] = useState()
   const [profile, setProfile] = useState()
 
+  const extendProfile = (profile) => ({ ...profile, display_name: profile?.given_name || profile?.email })
+
   useEffect(() => {
     forgerockInit()
     const getAuth = async () => {
@@ -31,7 +33,7 @@ const useFRAuth = () => {
         log.debug('FR Auth: Failed to get user details: ' + err)
         push('/account/login/')
       })
-      setProfile(user)
+      setProfile(extendProfile(user))
     }
     getAuth()
   }, [push])

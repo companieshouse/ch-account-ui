@@ -22,7 +22,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
               {
                 component: 'Caption',
                 dynamicProps: {
-                  children: '${profile.given_name}'
+                  children: '${profile.display_name}'
                 },
                 props: {
                   size: 'xl'
@@ -41,13 +41,9 @@ const HOME_OVERVIEW = (lang, tokens) => [
         component: 'Column',
         content: [
           {
-            component: 'SectionBreak'
-          },
-          {
-            component: 'HeadingText',
+            component: 'SectionBreak',
             props: {
-              children: tokens['HOME_OVERVIEW.[2].Row.yourAccount'],
-              size: 'm'
+              size: 's'
             }
           },
           {
@@ -59,34 +55,66 @@ const HOME_OVERVIEW = (lang, tokens) => [
                   {
                     component: 'InfoBlock',
                     dynamicProps: {
+                      href: '${links.ewfAuthenticatedEntry}'
+                    },
+                    props: {
+                      width: 'one-third',
+                      testId: 'webFiling',
+                      header: tokens['HOME_OVERVIEW.[3].Row.webFiling']
+                    },
+                    content: [
+                      {
+                        component: 'BodyText',
+                        props: {
+                          children: 'You can:',
+                          size: 16
+                        }
+                      },
+                      {
+                        component: 'List',
+                        props: {
+                          size: 16,
+                          items: [
+                            'file your company’s annual accounts',
+                            'file your company’s confirmation statement',
+                            'file your company’s director or secretary changes',
+                            'sign up to get email reminders'
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    component: 'InfoBlock',
+                    dynamicProps: {
                       count: '${associationData.count}'
                     },
                     props: {
                       count: 0,
-                      width: 'one-half'
+                      countLabel: 'companies',
+                      width: 'one-third',
+                      href: '/account/your-companies',
+                      testId: 'yourCompanies',
+                      header: tokens['SHARED.yourCompanies']
                     },
                     content: [
                       {
-                        component: 'HeadingText',
-                        props: {
-                          type: 'h3',
-                          size: 'm'
-                        },
-                        content: [
-                          {
-                            component: 'LinkText',
-                            props: {
-                              children: tokens['SHARED.yourCompanies'],
-                              href: '/account/your-companies',
-                              testId: 'yourCompaniesLink'
-                            }
-                          }
-                        ]
-                      },
-                      {
                         component: 'BodyText',
                         props: {
-                          children: tokens['HOME_OVERVIEW.[2].Row.addACompanyToYourAccountViewManageAndFileFor']
+                          children: 'You can:',
+                          size: 16
+                        }
+                      },
+                      {
+                        component: 'List',
+                        props: {
+                          size: 16,
+                          items: [
+                            'add a company to your WebFiling account',
+                            'view, manage and file for companies you’ve added',
+                            'authorise people to file documents for your company online',
+                            'view and manage authorised people'
+                          ]
                         }
                       }
                     ]
@@ -98,98 +126,18 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     },
                     props: {
                       count: 0,
-                      width: 'one-half'
+                      countLabel: 'new messages',
+                      width: 'one-third',
+                      href: '/account/notifications/',
+                      testId: 'notifications',
+                      header: tokens['SHARED.messages']
                     },
                     content: [
-                      {
-                        component: 'HeadingText',
-                        props: {
-                          type: 'h3',
-                          size: 'm'
-                        },
-                        content: [
-                          {
-                            component: 'LinkText',
-                            props: {
-                              children: tokens['SHARED.messages'],
-                              href: '/account/notifications/',
-                              testId: 'notificationsLink'
-                            }
-                          }
-                        ]
-                      },
                       {
                         component: 'BodyText',
+                        size: 16,
                         props: {
-                          children: tokens['HOME_OVERVIEW.[2].Row.viewMessagesRelatingToYourCompaniesHouse']
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    component: 'Row',
-    content: [
-      {
-        component: 'Column',
-        content: [
-          {
-            component: 'SectionBreak'
-          },
-          {
-            component: 'HeadingText',
-            props: {
-              children: tokens['HOME_OVERVIEW.[3].Row.services'],
-              size: 'm'
-            }
-          },
-          {
-            component: 'Column',
-            content: [
-              {
-                component: 'InfoBlocks',
-                content: [
-                  {
-                    component: 'InfoBlock',
-                    props: {
-                      width: 'one-half'
-                    },
-                    content: [
-                      {
-                        component: 'HeadingText',
-                        props: {
-                          type: 'h3',
-                          size: 'm'
-                        },
-                        content: [
-                          {
-                            component: 'LinkText',
-                            dynamicProps: {
-                              href: '${links.ewfAuthenticatedEntry}'
-                            },
-                            props: {
-                              children: tokens['HOME_OVERVIEW.[3].Row.webFiling'],
-                              testId: 'webFilingLink'
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        component: 'List',
-                        props: {
-                          items: [
-                            "File your company's confirmation statement / annual return",
-                            "File your company's annual accounts",
-                            "File your company's director / secretary changes and other information",
-                            'Sign up to get email reminders when your company’s accounts and confirmation statement are due'
-                          ]
+                          children: 'View messages relating to your WebFiling account.'
                         }
                       }
                     ]

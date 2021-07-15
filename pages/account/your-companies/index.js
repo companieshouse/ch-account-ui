@@ -12,14 +12,18 @@ import { getCompaniesAssociatedWithUser } from '../../../services/forgerock'
 import WithQueryParams from '../../../components/providers/WithQueryParams'
 import { generateQueryUrl } from '../../../services/queryString'
 import useFRAuth from '../../../services/useFRAuth'
+import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../../services/environment'
 
 export const extendCompaniesData = (companiesData) => {
   return companiesData.map((company) => {
     const authorisePath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name })
+    const filePath = generateQueryUrl(CH_EWF_AUTHENTICATED_ENTRY_URL, { companyNo: company.number, jurisdiction: company.jurisdiction })
+
     company.users.forEach((user) => {
       user.detailsPath = generateQueryUrl('/account/your-companies/authorised-person', { companyNumber: company.number, userId: user._refResourceId })
     })
-    return { ...company, authorisePath }
+
+    return { ...company, authorisePath, filePath }
   })
 }
 
@@ -50,9 +54,9 @@ const YourCompanies = ({ errors, lang }) => {
       width="full"
       titleLinkHref="/account/home"
       hasBackLink={false}
-      hasLanguageSwitcher={false}
       hasLogoutLink={true}
-      hasAccountLinks={true}
+      hasAccountLinks
+      accountLinksItem={2}
     >
       <Dynamic
         componentMap={componentMap}

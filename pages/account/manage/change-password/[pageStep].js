@@ -143,6 +143,7 @@ const ChangePassword = ({ lang }) => {
       headingCount={headingCount}
       uiStage={uiStage}
       hasAccountLinks
+      accountLinksItem={5}
       {...customPageProps}
     >
       <Dynamic

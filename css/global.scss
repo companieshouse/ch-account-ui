@@ -28,16 +28,16 @@
 }
 
 .infoBlock {
-  padding: 0 10px 10px 0;
+  padding: 10px 10px 10px 0;
 
   &__wrapper {
-    min-height: 320px;
+    min-height: 390px;
     padding: 2em;
     background-color: govuk-colour("light-grey");
   }
 
   &__count {
-    color: #003078
+    color: #4F2C93
   }
 
   &:last-child {
@@ -51,3 +51,55 @@
   border-width: 1px;
   padding: 2em;
 }
+
+.account-menu{
+
+  //item in menu
+  &-item{
+    list-style-type: none;
+    padding: 12px 0;
+  }
+
+  //current item in menu
+  &__item--current {
+    padding-bottom: 18px;
+    @media (min-width: 40.0625em) {
+      border-bottom: 4px solid #1d70b8;
+    }
+  }
+
+  //menu link style
+  &-link {
+    font-size: 15px;
+    line-height: 1.25;
+    text-decoration: none;
+    margin-right: 3ex;
+  }
+
+
+  &__item {
+    list-style-type: none;
+    padding: 12px 0;
+  }
+
+
+  &-link-description {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.1428571429;
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+.back-link {
+  height: 2em;
+  padding-bottom: 3em;
+}
+
+
+

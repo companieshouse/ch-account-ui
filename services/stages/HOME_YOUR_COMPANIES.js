@@ -86,7 +86,17 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.yourCompanies']
+      children: tokens['SHARED.yourCompanies'],
+      size: 'l'
+    }
+  },
+  {
+    component: 'Button',
+    props: {
+      renderAs: 'link',
+      children: tokens['SHARED.addACompany'],
+      href: '/account/associate/_start',
+      testId: 'accountAssociateCompanyLink'
     }
   },
   {
@@ -122,15 +132,6 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                 tokens['HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline'],
                 tokens['HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile']
               ]
-            }
-          },
-          {
-            component: 'Button',
-            props: {
-              renderAs: 'link',
-              children: tokens['SHARED.addACompany'],
-              href: '/account/associate/_start',
-              testId: 'accountAssociateCompanyLink'
             }
           }
         ]
@@ -365,12 +366,30 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                             ]
                           },
                           {
-                            component: 'LinkText',
-                            dynamicProps: {
-                              href: '${company.authorisePath}',
-                              children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'],
-                              className: 'govuk-link--no-visited-state'
-                            }
+                            component: 'BodyText',
+                            content: [
+                              {
+                                component: 'LinkText',
+                                dynamicProps: {
+                                  href: '${company.filePath}',
+                                  children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'],
+                                  className: 'govuk-link--no-visited-state'
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            component: 'BodyText',
+                            content: [
+                              {
+                                component: 'LinkText',
+                                dynamicProps: {
+                                  href: '${company.authorisePath}',
+                                  children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'],
+                                  className: 'govuk-link--no-visited-state'
+                                }
+                              }
+                            ]
                           }
                         ]
                       }
