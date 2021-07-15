@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import RadioGroup from '../general-ui/interaction/RadioGroup'
-import CheckboxGroup from '../general-ui/interaction/CheckboxGroup'
 
 const ConfirmationCallback = ({ element, customElementProps = {}, groupError = undefined }) => {
   const id = element.payload.input[0].name
@@ -28,15 +27,6 @@ const ConfirmationCallback = ({ element, customElementProps = {}, groupError = u
       filter: customElementProps.type === 'checkbox' && defaultValue === index
     }
   })
-
-  if (customElementProps.type === 'checkbox') {
-    return <CheckboxGroup
-      testId={testId}
-      options={mergedOptions}
-      id={id}
-      {...restCustomElementProps}
-    />
-  }
 
   return (
     <RadioGroup

@@ -7,6 +7,12 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
     }
   },
   {
+    component: 'ErrorSummary',
+    props: {
+      title: tokens['COMPANY_ASSOCIATION_1.[1].ErrorSummary.thereIsAProblem']
+    }
+  },
+  {
     component: 'Caption',
     dynamicProps: {
       children: '${company.name}'
@@ -16,6 +22,9 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
     component: 'PageHeading',
     dynamicProps: {
       children: tokens['REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS']
+    },
+    props: {
+      showErrorSummary: false
     }
   },
   {

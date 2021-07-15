@@ -4,7 +4,7 @@ import Login from '../../pages/account/login'
 import { mockAuthId } from './common-mocks'
 import { setCallback } from './story-utils'
 
-const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHLogin'
+const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling-Login'
 
 export default {
   title: 'Pages/Shared',
@@ -234,5 +234,126 @@ PHONE_OTP.args = {
     stage: 'PHONE_OTP',
     header: 'Please enter your code',
     description: 'Please enter the code you received via SMS'
+  }
+}
+
+export const EMAIL_CONSENT = Template.bind({})
+EMAIL_CONSENT.args = {
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling-Login',
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      // {
+      //   type: 'HiddenValueCallback',
+      //   output: [
+      //     {
+      //       name: 'value',
+      //       value: '{"errors":[{"label":"The company ${companyNumber} could not be found.","token":"COMPANY_NOT_FOUND","fieldName":"IDToken2","anchor":"IDToken1"}],"company":{"number":"33333"}}'
+      //     },
+      //     {
+      //       name: 'id',
+      //       value: 'pagePropsJSON'
+      //     }
+      //   ],
+      //   input: [
+      //     {
+      //       name: 'IDToken1',
+      //       value: 'pagePropsJSON'
+      //     }
+      //   ],
+      //   _id: 0
+      // },
+      {
+        type: 'BooleanAttributeInputCallback',
+        output: [
+          {
+            name: 'name',
+            value: 'preferences/updates'
+          },
+          {
+            name: 'prompt',
+            value: 'Send me news and updates'
+          },
+          {
+            name: 'required',
+            value: false
+          },
+          {
+            name: 'policies',
+            value: {}
+          },
+          {
+            name: 'failedPolicies',
+            value: []
+          },
+          {
+            name: 'validateOnly',
+            value: false
+          },
+          {
+            name: 'value',
+            value: false
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: false
+          },
+          {
+            name: 'IDToken1validateOnly',
+            value: false
+          }
+        ],
+        _id: 0
+      },
+      {
+        type: 'BooleanAttributeInputCallback',
+        output: [
+          {
+            name: 'name',
+            value: 'preferences/marketing'
+          },
+          {
+            name: 'prompt',
+            value: 'Send me special offers and services'
+          },
+          {
+            name: 'required',
+            value: false
+          },
+          {
+            name: 'policies',
+            value: {}
+          },
+          {
+            name: 'failedPolicies',
+            value: []
+          },
+          {
+            name: 'validateOnly',
+            value: false
+          },
+          {
+            name: 'value',
+            value: false
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: false
+          },
+          {
+            name: 'IDToken2validateOnly',
+            value: false
+          }
+        ],
+        _id: 1
+      }
+    ],
+    stage: 'EMAIL_CONSENT',
+    header: 'Please enter your email preferences',
+    description: 'Please enter your email preferences'
   }
 }
