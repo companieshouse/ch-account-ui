@@ -48,7 +48,7 @@ const Login = ({ lang, queryParams }) => {
     }
 
     forgerockFlow({
-      journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
+      journeyName: authIndexValue || FORGEROCK_TREE_WF_LOGIN,
       journeyNamespace: 'LOGIN',
       isAuthOnly: mode === 'AUTHN_ONLY',
       lang,

@@ -9,7 +9,8 @@ export const FORGEROCK_CLIENT_ID = process.env.FORGEROCK_CLIENT_ID || 'ForgeRock
 export const FORGEROCK_REDIRECT = process.env.FORGEROCK_REDIRECT || 'http://localhost:3000/account/home/'
 
 export const FORGEROCK_TREE_LOGIN = process.env.FORGEROCK_TREE_LOGIN || 'CHLogin'
-export const FORGEROCK_TREE_WF_LOGIN = process.env.FORGEROCK_TREE_WF_LOGIN || 'CHWebFiling'
+export const FORGEROCK_TREE_WF = process.env.FORGEROCK_TREE_WF || 'CHWebFiling'
+export const FORGEROCK_TREE_WF_LOGIN = process.env.FORGEROCK_TREE_WF_LOGIN || 'CHWebFiling-Login'
 export const FORGEROCK_TREE_REGISTER = process.env.FORGEROCK_TREE_REGISTER || 'CHRegistration'
 export const FORGEROCK_TREE_REGISTER_VERIFY = process.env.FORGEROCK_TREE_REGISTER_VERIFY || 'CHVerifyReg'
 export const FORGEROCK_TREE_FMP = process.env.FORGEROCK_TREE_FMP || 'CHResetPassword'
