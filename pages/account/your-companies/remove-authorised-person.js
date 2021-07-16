@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
+import { findCustomPageProps, findCustomStage, findNotificationId, forgerockFlow } from '../../../services/forgerock'
 import HeadingCount from '../../../services/HeadingCount'
 import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
@@ -71,8 +71,10 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
         stepCustomPageProps.links = {
           removeUserSuccess: generateQueryUrl('/account/your-companies/', {
             notifyToken: 'removeUserSuccess',
+            notifyId: findNotificationId(step),
             userName: stepCustomPageProps.user,
             companyName: stepCustomPageProps.company
+
           })
         }
 

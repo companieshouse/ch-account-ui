@@ -3,7 +3,7 @@ import React from 'react'
 import CheckboxGroup from '../general-ui/interaction/CheckboxGroup'
 
 const BooleanAttributeInputCallback = ({ errors, element, customElementProps, groupError }) => {
-  const { label, ...rest } = customElementProps
+  const { label, hint, ...rest } = customElementProps
   const id = element.payload.input[0].name
   const inputLabel = customElementProps.label || element.getPrompt()
   const currentValue = element.getOutputValue('value')
@@ -15,7 +15,8 @@ const BooleanAttributeInputCallback = ({ errors, element, customElementProps, gr
       options={[{
         label: inputLabel,
         value: !currentValue,
-        checked: false
+        checked: false,
+        hint
       }]}
       groupError={groupError}
       {...rest}

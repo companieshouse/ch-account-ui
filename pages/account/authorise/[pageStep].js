@@ -83,10 +83,9 @@ const InviteUser = ({ lang }) => {
 
         // Setup success URL for step 2 redirect
         if (stage === 'INVITE_USER_2') {
-          const notificationId = findNotificationId(step)
           stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
             notifyToken: 'authSuccess',
-            notifyId: notificationId,
+            notifyId: findNotificationId(step),
             invitedUser: stepCustomPageProps.invitedUser,
             companyName: stepCustomPageProps.company.name
           })

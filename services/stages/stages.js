@@ -58,6 +58,7 @@ import INVITE_USER_ERROR from './INVITE_USER_ERROR.js'
 import ONBOARDING_PROFILE from './ONBOARDING_PROFILE.js'
 import ONBOARDING_PWD from './ONBOARDING_PWD.js'
 import ONBOARDING_ERROR from './ONBOARDING_ERROR.js'
+import EMAIL_CONSENT from './EMAIL_CONSENT.js'
 
 import tokensEn from '../lang/en/content-tokens.json'
 import tokensCy from '../lang/cy/content-tokens.json'
@@ -81,6 +82,7 @@ const getStages = (lang) => {
     EWF_LOGIN_5,
     EWF_LOGIN_OTP_METHOD,
     EWF_LOGIN_OTP,
+    EMAIL_CONSENT,
     PHONE_OTP,
     LOGIN_MFA,
     REGISTRATION_1,

@@ -10,9 +10,12 @@ const defaultProps = {
   testId: 'CheckboxGroup',
   label: 'Test heading',
   headingCount: new HeadingCount(),
+  formGroup: 'testGroup',
+  formGroupHeading: 'Test heading',
+  formGroupHing: 'Test hint',
   options: [
-    { checked: false, label: 'option1', value: 'option1' },
-    { checked: true, label: 'option2', value: 'option2', }
+    { checked: false, label: 'option1', value: 'option1', hint: 'option one hint text' },
+    { checked: true, label: 'option2', value: 'option2', hint: 'option two hint text' }
   ]
 }
 
@@ -33,7 +36,7 @@ describe('CheckboxGroup', () => {
   })
 
   it('Should have no common accessibility issues', async () => {
-    const { container } = render(<CheckboxGroup
+    const { container, debug } = render(<CheckboxGroup
       {...defaultProps}
       errors={[{ anchor: 'CheckboxGroup', label: 'Test error' }]}
     />)
