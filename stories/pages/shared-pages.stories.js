@@ -243,26 +243,6 @@ EMAIL_CONSENT.args = {
   responseData: {
     authId: mockAuthId,
     callbacks: [
-      // {
-      //   type: 'HiddenValueCallback',
-      //   output: [
-      //     {
-      //       name: 'value',
-      //       value: '{"errors":[{"label":"The company ${companyNumber} could not be found.","token":"COMPANY_NOT_FOUND","fieldName":"IDToken2","anchor":"IDToken1"}],"company":{"number":"33333"}}'
-      //     },
-      //     {
-      //       name: 'id',
-      //       value: 'pagePropsJSON'
-      //     }
-      //   ],
-      //   input: [
-      //     {
-      //       name: 'IDToken1',
-      //       value: 'pagePropsJSON'
-      //     }
-      //   ],
-      //   _id: 0
-      // },
       {
         type: 'BooleanAttributeInputCallback',
         output: [

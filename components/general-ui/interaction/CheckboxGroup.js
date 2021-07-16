@@ -6,8 +6,7 @@ import HeadingText from '../typeography/HeadingText'
 
 const CheckboxGroup = (props) => {
   const {
-    hint = '',
-    options = [],
+    options,
     children,
     id,
     errors,
@@ -46,14 +45,12 @@ const CheckboxGroup = (props) => {
             type="checkbox"
             value={option.value}
             defaultChecked={option.checked}
-            aria-describedby={hint ? `${id}-hint` : null}
+            aria-describedby={option.hint ? `${id}_${index}-hint` : null}
           />
           <label className="govuk-label govuk-checkboxes__label" htmlFor={`${id}_${index}`}>
             {option.label}
           </label>
-          <div id={`${id}-hint`} className="govuk-hint govuk-checkboxes__hint">
-            {hint}
-          </div>
+          {option.hint ? <div id={`${id}_${index}-hint`} className="govuk-hint govuk-checkboxes__hint">{option.hint}</div> : null}
         </div>)}
       </div>
       {children}
