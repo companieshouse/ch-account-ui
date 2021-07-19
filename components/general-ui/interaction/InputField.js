@@ -31,7 +31,7 @@ const InputField = ({ lang, label, renderLabelAs, caption, captionPosition, capt
         <span className="govuk-visually-hidden">{translate(lang, 'INPUT_ERROR_SCREEN_READER_PREFIX')}:</span> {error.label}
       </span>}
       <div className="govuk-input__wrapper">
-        {Boolean(prefix) === true && <div className="govuk-input__prefix" aria-hidden="true">{prefix}</div>}
+        {Boolean(prefix) === true && <div className="govuk-input__prefix">{prefix}</div>}
         <input className={`govuk-input ${Boolean(error || groupError) && 'govuk-input--error'} ${finalClassName}`}
                id={id}
                name={id}
@@ -43,7 +43,7 @@ const InputField = ({ lang, label, renderLabelAs, caption, captionPosition, capt
                required={required}
                {...otherProps}
         />
-        {Boolean(suffix) === true && <div className="govuk-input__suffix" aria-hidden="true">{suffix}</div>}
+        {Boolean(suffix) === true && <div className="govuk-input__suffix">{suffix}</div>}
       </div>
     </React.Fragment>
   )
