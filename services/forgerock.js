@@ -271,6 +271,33 @@ export const logoutFlow = ({
   // SessionManager.logout().then(onSuccess).catch(onFailure)
 }
 
+export const getUserFields = async (accessToken, userId, fields) => {
+  const url = `${FORGEROCK_USER_ENDPOINT}${userId}?_fields=${fields}`
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    },
+    init: {
+      credentials: 'include'
+    }
+  })
+
+  const { status, headers } = res
+
+  if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
+    const body = await res.json()
+
+    return {
+      status,
+      body,
+      headers
+    }
+  }
+
+  return res
+}
+
 export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
   if (!companyId) {
     log.error('getUsersAssociatedWithCompany(accessToken, companyId): No userId provided!')
