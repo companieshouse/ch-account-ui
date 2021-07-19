@@ -34,7 +34,9 @@ const Login = ({ lang, queryParams }) => {
     goto,
     authIndexValue,
     mode,
-    overrideStage = ''
+    overrideStage = '',
+    companyNo,
+    jurisdiction
   } = queryParams
 
   useEffect(() => {
@@ -54,7 +56,9 @@ const Login = ({ lang, queryParams }) => {
       lang,
       stepOptions: {
         query: {
-          ForceAuth: true
+          ForceAuth: true,
+          companyNo,
+          jurisdiction
         }
       },
       onSuccess: () => {
@@ -120,7 +124,12 @@ const Login = ({ lang, queryParams }) => {
     }
 
     // Submit FR stage
-    submitData(formData)
+    submitData(formData, {
+      query: {
+        companyNo,
+        jurisdiction
+      }
+    })
   }
 
   const onSecondarySubmit = (evt, params) => {
