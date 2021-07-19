@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import { errorsPropType } from '../../../services/propTypes'
-import HeadingText from '../typeography/HeadingText'
 
 const CheckboxGroup = (props) => {
   const {

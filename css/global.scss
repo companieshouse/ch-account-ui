@@ -53,7 +53,6 @@
 }
 
 .account-menu{
-
   //item in menu
   &-item{
     list-style-type: none;
@@ -63,7 +62,8 @@
   //current item in menu
   &__item--current {
     padding-bottom: 18px;
-    @media (min-width: 40.0625em) {
+
+    @include govuk-media-query($from: tablet) {
       border-bottom: 4px solid #1d70b8;
     }
   }
@@ -84,9 +84,6 @@
 
 
   &-link-description {
-    font-family: "GDS Transport",arial,sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
     font-size: 14px;
     font-size: .875rem;
@@ -101,5 +98,21 @@
   padding-bottom: 3em;
 }
 
+.summary-list {
+  &__value {
+    width: 20%;
+    @include govuk-media-query($from: tablet) {
+      padding-left: govuk-spacing(6);
+    }
+  }
+
+  &__actions {
+    width: 20%;
+  }
+
+  &__key {
+    width: 60%;
+  }
+}
 
 

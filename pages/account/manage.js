@@ -1,28 +1,41 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
-import { getStageFeatures } from '../../services/translate'
+import { getStageFeatures, translate } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import WithLang from '../../services/lang/WithLang'
 import useFRAuth from '../../services/useFRAuth'
+import { getUserFields, getUserProfile } from '../../services/forgerock'
 
 const ManageAccount = ({ errors, lang }) => {
-  const { profile } = useFRAuth()
+  const { profile, accessToken } = useFRAuth()
+  const [preferences, setPreferences] = useState({})
+  const sub = profile?.sub
   const uiStage = 'HOME_MANAGE_ACCOUNT'
   const headingCount = useMemo(() => new HeadingCount(), [])
-
   const content = getStageFeatures(lang, uiStage)
-
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
 
   React.useEffect(() => {
     headingCount.reset()
-  }, [notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount])
+    if (sub && accessToken) {
+      getUserFields(accessToken, sub, 'preferences').then((response) => {
+        const fields = response.body || {}
+        const translatedPreferences = {}
+        Object.keys(fields?.preferences).map((pref) => {
+          translatedPreferences[pref] = fields.preferences[pref] ? translate(lang, 'YES') : translate(lang, 'NO')
+        })
+        setPreferences(translatedPreferences)
+      })
+    }
+  }, [notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount, sub, accessToken, lang])
+
+  console.log(preferences)
 
   return (
     <FeatureDynamicView
@@ -41,6 +54,7 @@ const ManageAccount = ({ errors, lang }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
+        preferences={preferences}
         {...router.query}
       />
     </FeatureDynamicView>
