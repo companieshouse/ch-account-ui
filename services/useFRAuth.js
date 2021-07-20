@@ -20,7 +20,7 @@ const useFRAuth = () => {
   useEffect(() => {
     forgerockInit()
     const getAuth = async () => {
-      const accessTokens = await TokenManager.getTokens({ forceRenew: false, support: 'modern' }).catch((err) => {
+      const accessTokens = await TokenManager.getTokens({ forceRenew: false }).catch((err) => {
         log.debug('FR Auth: Failed to get tokens: ' + err)
         push('/account/login/')
       })
