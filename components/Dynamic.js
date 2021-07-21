@@ -60,6 +60,10 @@ const isConditionalSatisfied = (conditional, data) => {
       if (!propData) return true
       break
 
+    case 'in':
+      if (value.includes(propData)) return true
+      break
+
     default:
       break
   }

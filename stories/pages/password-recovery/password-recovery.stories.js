@@ -276,49 +276,65 @@ RESET_PASSWORD_4.args = {
     authId: mockAuthId,
     callbacks: [
       {
-        type: 'HiddenValueCallback',
+        type: 'ValidatedCreatePasswordCallback',
         output: [
           {
-            name: 'value',
-            value: '{"phoneNumber":"07777777777"}'
+            name: 'echoOn',
+            value: false
           },
           {
-            name: 'id',
-            value: 'pagePropsJSON'
+            name: 'policies',
+            value: {
+              policyRequirements: [
+                'VALID_TYPE'
+              ],
+              fallbackPolicies: null,
+              name: 'password',
+              policies: [
+                {
+                  policyRequirements: [
+                    'VALID_TYPE'
+                  ],
+                  policyId: 'valid-type',
+                  params: {
+                    types: [
+                      'string'
+                    ]
+                  }
+                }
+              ],
+              conditionalPolicies: null
+            }
+          },
+          {
+            name: 'failedPolicies',
+            value: []
+          },
+          {
+            name: 'validateOnly',
+            value: false
+          },
+          {
+            name: 'prompt',
+            value: 'Password'
           }
         ],
         input: [
           {
             name: 'IDToken1',
-            value: 'pagePropsJSON'
+            value: ''
+          },
+          {
+            name: 'IDToken1validateOnly',
+            value: false
           }
         ],
         _id: 0
-      },
-      {
-        type: 'HiddenValueCallback',
-        output: [
-          {
-            name: 'value',
-            value: 'ff898fec-21ac-4794-ae9f-b1a2aeab75c2'
-          },
-          {
-            name: 'id',
-            value: 'notificationId'
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken2',
-            value: 'notificationId'
-          }
-        ],
-        _id: 1
       }
     ],
     stage: 'RESET_PASSWORD_4',
-    header: 'Please enter your code',
-    description: 'Please enter the code you received via SMS'
+    header: 'Please enter your new password',
+    description: 'Please enter your new password'
   }
 }
 
@@ -343,7 +359,7 @@ RESET_PASSWORD_6.args = {
         output: [
           {
             name: 'value',
-            value: '{"phoneNumber":"07777777777"}'
+            value: '{"phoneNumber":"07777777777", "email":"hannah.salt@example.com"}'
           },
           {
             name: 'id',
@@ -387,9 +403,9 @@ export const RESET_PASSWORD_ERROR = Template.bind({})
 
 const registrationsErrors = {
   RESET_PASSWORD_GENERAL_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"RESET_PASSWORD_GENERAL_ERROR"}]}',
-  RESET_PASSWORD_EMAIL_SEND_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":" RESET_PASSWORD_EMAIL_SEND_ERROR"}]}',
+  RESET_PASSWORD_EMAIL_SEND_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":"RESET_PASSWORD_EMAIL_SEND_ERROR"}]}',
   RESET_PASSWORD_TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"RESET_PASSWORD_TOKEN_PARSING_ERROR"}]}',
-  RESET_PASSWORD_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"RESET_PASSWORD_TOKEN_EXPIRED_ERROR"}]}'
+  RESET_PASSWORD_ERROR_TOKEN_EXPIRED: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"RESET_PASSWORD_ERROR_TOKEN_EXPIRED"}]}'
 }
 
 RESET_PASSWORD_ERROR.argTypes = {

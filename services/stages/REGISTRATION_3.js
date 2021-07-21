@@ -40,8 +40,8 @@ const REGISTRATION_3 = (lang, tokens) => [
     props: {
       type: 'number',
       items: [
-        'Open the email.',
-        'Select the verification link in the email.'
+        tokens['REGISTRATION_3.[6].List.openTheEmail'],
+        tokens['REGISTRATION_3.[6].List.selectTheVerificationLink']
       ]
     }
   },
@@ -60,7 +60,7 @@ const REGISTRATION_3 = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubject']
+          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectVerify']
         }
       },
       {

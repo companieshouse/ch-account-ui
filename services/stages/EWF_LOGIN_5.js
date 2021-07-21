@@ -3,47 +3,62 @@ const EWF_LOGIN_5 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['EWF_LOGIN_5.[0].BrowserTitle.addThisCompanyToYourCompaniesHouse']
+      title: tokens['EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline']
+    }
+  },
+  {
+    component: 'Caption',
+    dynamicProps: {
+      children: '${company.name}'
+    }
+  },
+  {
+    component: 'PageHeading',
+    props: {
+      children: tokens['EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline']
+    }
+  },
+  {
+    component: 'BodyText',
+    props: {
+      children: tokens['EWF_LOGIN_5.[3].BodyText.weCanSecurelyStoreTheCompanyDetailsYou']
+    }
+  },
+  {
+    component: 'BodyText',
+    props: {
+      children: tokens['EWF_LOGIN_5.[4].BodyText.thisMeansYou']
+    }
+  },
+  {
+    component: 'List',
+    props: {
+      items: [
+        tokens['EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode'],
+        tokens['EWF_LOGIN_5.[4].List.canAuthoriseOtherPeople']
+      ]
     }
   },
   {
     component: 'DisplayUiElements',
     dynamicProps: {
-      'elementProps.IDToken2.caption': '${company.name}'
+      'elementProps.IDToken2.label': tokens['SHARED.doYouWantUsToStoreTheCompanyDetailsFor']
     },
     props: {
       elementProps: {
         IDToken2: {
-          renderLabelAs: 'heading',
-          captionPosition: 'above',
-          label: tokens['EWF_LOGIN_5.[1].DisplayUiElements.doYouWantToAddThisCompanyToYourCompanies'],
-          fixedWidth: '10'
-        }
-      }
-    }
-  },
-  {
-    component: 'Details',
-    props: {
-      summary: tokens['EWF_LOGIN_5.[2].Details.benefitsOfAddingThisCompanyToYourCompanies']
-    },
-    content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens['EWF_LOGIN_5.[2].Details.byAddingThisCompanyToYourAccountYou']
-        }
-      },
-      {
-        component: 'List',
-        props: {
-          items: [
-            "will not need to re-enter the company's authentication code for most online filings",
-            'can authorise other people to file on your behalf'
+          fixedWidth: '10',
+          options: [
+            {
+              label: tokens['SHARED.yes']
+            },
+            {
+              label: tokens['SHARED.no']
+            }
           ]
         }
       }
-    ]
+    }
   },
   {
     component: 'Button',
@@ -54,4 +69,5 @@ const EWF_LOGIN_5 = (lang, tokens) => [
     }
   }
 ]
+
 export default EWF_LOGIN_5

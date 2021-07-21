@@ -16,20 +16,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.toFindOutMoreAboutWebFiling']
-        }
-      },
-      {
-        component: 'LinkText',
-        props: {
-          href: 'https://www.gov.uk/guidance/filing-your-companies-house-information-online',
-          children: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.LinkText.guidanceAboutOnlineFiling']
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          children: tokens['SHARED.']
+          children: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause']
         }
       }
     ]
@@ -87,6 +74,19 @@ const ONBOARDING_PWD = (lang, tokens) => [
       type: 'submit',
       testId: 'submitButton'
     }
+  },
+  {
+    component: 'BodyText',
+    content: [
+      {
+        component: 'LinkText',
+        props: {
+          children: tokens['ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling'],
+          testId: 'guidanceLink',
+          href: 'https://www.gov.uk/guidance/filing-your-companies-house-information-online'
+        }
+      }
+    ]
   }
 ]
 export default ONBOARDING_PWD

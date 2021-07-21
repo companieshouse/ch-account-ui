@@ -41,7 +41,8 @@ const Onboarding = ({ lang, queryParams }) => {
       lang,
       stepOptions: {
         query: {
-          token
+          token,
+          ForceAuth: true
         }
       },
       onSuccess: () => {

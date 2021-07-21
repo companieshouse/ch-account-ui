@@ -36,7 +36,7 @@ const FeatureDynamicView = (props) => {
         {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} />}
       </WidthContainer>
       <WidthContainer>
-          {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'}><BackLink testId="backLink" onClick={onBack}>Back</BackLink></Column>}
+          {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'}><BackLink testId="backLink" onClick={onBack}/></Column>}
           {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'}><LanguageSwitcher /></Column>}
       </WidthContainer>
       <WidthContainer>

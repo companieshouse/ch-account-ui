@@ -3,7 +3,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['EWF_LOGIN_1.[0].BrowserTitle.signInToWebFiling']
+      title: tokens['SHARED.signInToWebFiling']
     }
   },
   {

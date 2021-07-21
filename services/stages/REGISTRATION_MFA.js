@@ -3,7 +3,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.verifyYourMobileNumber']
+      title: tokens['SHARED.checkYourPhone']
     }
   },
   {

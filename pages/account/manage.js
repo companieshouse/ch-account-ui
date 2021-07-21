@@ -27,9 +27,11 @@ const ManageAccount = ({ errors, lang }) => {
       getUserFields(accessToken, sub, 'preferences').then((response) => {
         const fields = response.body || {}
         const translatedPreferences = {}
-        Object.keys(fields?.preferences).map((pref) => {
-          translatedPreferences[pref] = fields.preferences[pref] ? translate(lang, 'YES') : translate(lang, 'NO')
-        })
+        if (fields?.preferences) {
+          Object.keys(fields.preferences).map((pref) => {
+            translatedPreferences[pref] = fields.preferences[pref] ? translate(lang, 'YES') : translate(lang, 'NO')
+          })
+        }
         setPreferences(translatedPreferences)
       })
     }

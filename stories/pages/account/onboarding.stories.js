@@ -3,7 +3,7 @@ import fetchMock from 'fetch-mock'
 import { Onboarding } from '../../../pages/account/onboarding'
 import { mockAuthId } from '../common-mocks'
 
-const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHOnboarding'
+const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHOnboarding'
 
 export default {
   title: 'Pages/Account/Onboarding',

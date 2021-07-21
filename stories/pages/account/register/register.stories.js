@@ -1,6 +1,6 @@
 import React from 'react'
 import fetchMock from 'fetch-mock'
-import Regsiter from '../../../../pages/account/register/[pageStep]'
+import { Register } from '../../../../pages/account/register/[pageStep]'
 import { mockAuthId } from '../../common-mocks'
 import { setCallback } from '../../story-utils'
 
@@ -8,11 +8,8 @@ const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/
 
 export default {
   title: 'Pages/Account/Register',
-  argTypes: {
-    lang: {
-      options: ['en', 'ch'],
-      control: { type: 'radio' }
-    }
+  args: {
+    lang: 'cy'
   }
 }
 
@@ -25,7 +22,7 @@ const Template = ({ pageProps, responseData, ...rest }) => {
   fetchMock.restore().mock(path, responseData, {
     delay: 100 // fake a slow network
   })
-  return <Regsiter {...rest} />
+  return <Register {...rest} />
 }
 
 export const REGISTRATION_1 = Template.bind({})
@@ -520,8 +517,11 @@ const registrationsErrors = {
   REGISTRATION_SEND_EMAIL_ERROR: '{"errors":[{"label":"An error occurred while sending the email. Please try again later.","token":"REGISTRATION_SEND_EMAIL_ERROR"}]}',
   REGISTRATION_TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error occurred while parsing the token. Please try again.","token":"REGISTRATION_TOKEN_PARSING_ERROR"}]}',
   REGISTRATION_NO_TOKEN_ERROR: '{"errors":[{"label":"No Registration Token found in request.","token":"REGISTRATION_NO_TOKEN_ERROR"}]}',
-  REGISTRATION_TOKEN_EXPIRED_ERROR: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"REGISTRATION_TOKEN_EXPIRED_ERROR"}]}',
-  REGISTRATION_ERROR_USER_ALREADY_EXIST: '{"errors":[{"label":"Registration Failed: a user with this email already exists","token":"REGISTRATION_ERROR_USER_ALREADY_EXIST"}]}'
+  REGISTRATION_ERROR_TOKEN_EXPIRED: '{"errors":[{"label":"The registration token has expired. Please restart the registration process.","token":"REGISTRATION_ERROR_TOKEN_EXPIRED"}]}',
+  REGISTRATION_ERROR_USER_ALREADY_EXIST: '{"errors":[{"label":"Registration Failed: a user with this email already exists","token":"REGISTRATION_ERROR_USER_ALREADY_EXIST"}]}',
+  REGISTRATION_ERROR_JWT_TYPE_UNKNOWN: '{"errors":[{"label":"Registration Failed: a user with this email already exists","token":"REGISTRATION_ERROR_JWT_TYPE_UNKNOWN"}]}',
+  REGISTRATION_TOKEN_ISSUED_IN_FUTURE: '{"errors":[{"label":"Registration Failed: a user with this email already exists","token":"REGISTRATION_TOKEN_ISSUED_IN_FUTURE"}]}',
+  REGISTRATION_ERROR_TOKEN_ISSUER_MISMATCH: '{"errors":[{"label":"Registration Failed: a user with this email already exists","token":"REGISTRATION_ERROR_TOKEN_ISSUER_MISMATCH"}]}'
 }
 
 REGISTRATION_ERROR.argTypes = {

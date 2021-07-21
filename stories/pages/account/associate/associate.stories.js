@@ -1,8 +1,7 @@
 import React from 'react'
 import fetchMock from 'fetch-mock'
-import AssociateUserAndCompany from '../../../../pages/account/associate/[pageStep]'
+import { AssociateUserAndCompany } from '../../../../pages/account/associate/[pageStep]'
 import { mockAuthId } from '../../common-mocks'
-import { INVITE_USER_1 } from '../authorise/invite-user.stories'
 
 export default {
   title: 'Pages/Account/Associate/CompanyAssociation',

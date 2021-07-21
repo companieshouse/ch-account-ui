@@ -3,13 +3,13 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['RESET_PASSWORD_6.[0].PageHeading.checkYourEmails']
+      title: tokens['SHARED.checkYourEmail']
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['RESET_PASSWORD_6.[0].PageHeading.checkYourEmails']
+      children: tokens['SHARED.checkYourEmail']
     }
   },
   {
@@ -57,7 +57,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubject']
+          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset']
         }
       },
       {

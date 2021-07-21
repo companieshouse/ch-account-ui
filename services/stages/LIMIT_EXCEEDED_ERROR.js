@@ -32,7 +32,7 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
           href: '${links.resumePath}'
         },
         props: {
-          children: tokens['LIMIT_EXCEEDED_ERROR.[3].BodyText.signBackInToYourAccount'],
+          children: tokens['SHARED.signBackInToYourAccount'],
           testId: 'loginExistingAccountLink'
         }
       },
@@ -51,7 +51,7 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['LIMIT_EXCEEDED_ERROR.[3].BodyText.toTryAgain']
+          children: tokens['SHARED.toTryAgain']
         }
       }
     ]

@@ -66,6 +66,8 @@ const Home = ({ errors, lang }) => {
   )
 }
 
+export { Home }
+
 export default WithLang(Home)
 
 Home.propTypes = {

@@ -24,7 +24,7 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
         IDToken4: {
           autoComplete: 'tel',
           hint: tokens['SHARED.addYourMobileNumberToMakeYourAccountMore'],
-          label: tokens['SHARED.mobileNumber']
+          label: tokens['SHARED.mobileNumberOptional']
         },
         IDToken6: {
           _hidden: true

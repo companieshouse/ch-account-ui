@@ -3,7 +3,7 @@ const EWF_LOGIN_3 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['EWF_LOGIN_3.[0].BrowserTitle.confirmThisIsTheCorrectCompany']
+      title: tokens['SHARED.confirmThisIsTheCorrectCompany']
     }
   },
   {

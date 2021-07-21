@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from '../../../pages/account/home'
+import { Home } from '../../../pages/account/home'
 import fetchMock from 'fetch-mock'
 import {
   mockAuthId,

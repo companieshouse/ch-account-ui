@@ -6,6 +6,28 @@ const EWF_LOGIN_OTP = (lang, tokens) => [
       operator: 'eeq',
       value: 'sms'
     },
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['SHARED.checkYourPhone']
+    }
+  },
+  {
+    conditional: {
+      prop: '${type}',
+      operator: 'nee',
+      value: 'sms'
+    },
+    component: 'BrowserTitle',
+    props: {
+      title: tokens['SHARED.checkYourEmail']
+    }
+  },
+  {
+    conditional: {
+      prop: '${type}',
+      operator: 'eeq',
+      value: 'sms'
+    },
     component: 'PageHeading',
     props: {
       children: tokens['SHARED.checkYourPhone']
@@ -19,7 +41,7 @@ const EWF_LOGIN_OTP = (lang, tokens) => [
     },
     component: 'PageHeading',
     props: {
-      children: tokens['EWF_LOGIN_OTP.[1].PageHeading.checkYourEmail']
+      children: tokens['SHARED.checkYourEmail']
     }
   },
   {
@@ -173,7 +195,7 @@ const EWF_LOGIN_OTP = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubject']
+          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP']
         }
       },
       {

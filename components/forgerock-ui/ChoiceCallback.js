@@ -17,6 +17,7 @@ const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefin
     return {
       label: options?.[index]?.label || choice,
       value: options?.[index]?.value || index,
+      hint: options?.[index]?.hint,
       checked: isChecked(choice, index)
     }
   })
