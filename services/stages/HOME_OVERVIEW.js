@@ -3,7 +3,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.companiesHouseAccount']
+      title: tokens['HOME_OVERVIEW.[1].Row.home']
     }
   },
   {
@@ -66,7 +66,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       {
                         component: 'BodyText',
                         props: {
-                          children: 'You can:',
+                          children: tokens['SHARED.youCan'],
                           size: 16
                         }
                       },
@@ -74,12 +74,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                         component: 'List',
                         props: {
                           size: 16,
-                          items: [
-                            'file your company’s annual accounts',
-                            'file your company’s confirmation statement',
-                            'file your company’s director or secretary changes',
-                            'sign up to get email reminders'
-                          ]
+                          items: tokens['HOME_OVERVIEW.[3].List.webFiling']
                         }
                       }
                     ]
@@ -91,7 +86,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     },
                     props: {
                       count: 0,
-                      countLabel: 'companies',
+                      countLabel: tokens['HOME_OVERVIEW.[2].InfoBlock.companies'],
                       width: 'one-third',
                       href: '/account/your-companies',
                       testId: 'yourCompanies',
@@ -101,7 +96,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       {
                         component: 'BodyText',
                         props: {
-                          children: 'You can:',
+                          children: tokens['SHARED.youCan'],
                           size: 16
                         }
                       },
@@ -109,12 +104,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                         component: 'List',
                         props: {
                           size: 16,
-                          items: [
-                            'add a company to your WebFiling account',
-                            'view, manage and file for companies you’ve added',
-                            'authorise people to file documents for your company online',
-                            'view and manage authorised people'
-                          ]
+                          items: tokens['HOME_OVERVIEW.[3].List.yourCompanies']
                         }
                       }
                     ]
@@ -126,7 +116,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     },
                     props: {
                       count: 0,
-                      countLabel: 'new messages',
+                      countLabel: tokens['HOME_OVERVIEW.[2].InfoBlock.newMessages'],
                       width: 'one-third',
                       href: '/account/notifications/',
                       testId: 'notifications',
@@ -137,7 +127,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                         component: 'BodyText',
                         size: 16,
                         props: {
-                          children: 'View messages relating to your WebFiling account.'
+                          children: tokens['HOME_OVERVIEW.[2].InfoBlock.viewMessagesRelatedToYourAccount']
                         }
                       }
                     ]

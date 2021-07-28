@@ -3,7 +3,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.SHARED.manageAccount']
+      title: tokens['SHARED.manageAccount']
     }
   },
   {
@@ -48,7 +48,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['HOME_MANAGE_ACCOUNT.[3].PageHeading.manageYourAccount'],
+      children: tokens['SHARED.manageAccount'],
       size: 'l'
     },
     content: [
@@ -67,7 +67,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
   {
     component: 'HeadingText',
     props: {
-      children: 'Account details',
+      children: tokens['SHARED.accountDetails'],
       size: 'm'
     }
   },
@@ -84,7 +84,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           label: tokens['HOME_MANAGE_ACCOUNT.[4].SummaryList.fullName'],
           value: '',
           action: {
-            label: tokens['SHARED.change'],
+            label: tokens['SHARED.update'],
             desc: 'name',
             href: '/account/manage/change-name/_start'
           }
@@ -100,7 +100,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           label: tokens['SHARED.password'],
           value: '*************',
           action: {
-            label: tokens['SHARED.change'],
+            label: tokens['SHARED.update'],
             desc: 'password',
             href: '/account/manage/change-password/_start'
           }
@@ -109,7 +109,7 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           label: tokens['HOME_MANAGE_ACCOUNT.[4].SummaryList.mobileNumber'],
           value: '',
           action: {
-            label: tokens['SHARED.change'],
+            label: tokens['SHARED.update'],
             desc: 'mobile number',
             href: '/account/manage/change-phone-number/_start'
           }
@@ -120,14 +120,14 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
   {
     component: 'HeadingText',
     props: {
-      children: 'Email preferences',
+      children: tokens['SHARED.emailPreferences'],
       size: 'm'
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: 'Some types of email are essential to manage your account. We need to send you essential emails from time to time.',
+      children: tokens['HOME_MANAGE_ACCOUNT.[6].BodyText.someTypesOfEmailAreEssentialToManage'],
       hint: true
     }
   },
@@ -141,8 +141,8 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
       customLayout: true,
       listItems: [
         {
-          label: 'Can we send you emails to tell you about a new message in your account?',
-          hint: 'In the future, we\'d like to send you emails to let you know you\'ve received a new message in your account',
+          label: tokens['HOME_MANAGE_ACCOUNT.[7].SummaryList.canWeSendYouEmailsToTellYouAbout'],
+          hint: tokens['HOME_MANAGE_ACCOUNT.[7].SummaryList.inTheFutureWedLikeToSendYouEmails'],
           action: {
             label: tokens['SHARED.change'],
             desc: 'name',
@@ -150,8 +150,8 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           }
         },
         {
-          label: 'Can we send you emails about Companies House activities?',
-          hint: 'For example, marketing, communications campaigns, or user research activities',
+          label: tokens['HOME_MANAGE_ACCOUNT.[7].SummaryList.canWeSendYouEmailsAboutCompaniesHouse'],
+          hint: tokens['HOME_MANAGE_ACCOUNT.[7].SummaryList.forExampleMarketing'],
           action: {
             label: tokens['SHARED.change'],
             desc: 'name',

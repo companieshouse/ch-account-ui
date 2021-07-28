@@ -1,31 +1,29 @@
 
 const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
   {
-    component: 'PageHeading',
+    component: 'BrowserTitle',
     props: {
-      children: tokens['SHARED.howDoYouWantToConfirmItsYou']
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {
-      children: tokens['SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo']
+      title: tokens['SHARED.howDoYouWantToConfirmItsYou']
     }
   },
   {
     component: 'DisplayUiElements',
+    dynamicProps: {
+      'elementProps.IDToken1.options': [
+        {
+          label: tokens['SHARED.email']
+        },
+        {
+          label: tokens['SHARED.text']
+        }
+      ]
+    },
     props: {
       elementProps: {
         IDToken1: {
-          label: null,
-          options: [
-            {
-              label: tokens['SHARED.email']
-            },
-            {
-              label: tokens['SHARED.text']
-            }
-          ]
+          renderLabelAs: 'heading',
+          label: tokens['SHARED.howDoYouWantToConfirmItsYou'],
+          hint: tokens['SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo']
         }
       }
     }

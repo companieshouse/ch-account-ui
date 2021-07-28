@@ -13,32 +13,6 @@ const CHANGE_NAME_1 = (lang, tokens) => [
     }
   },
   {
-    component: 'BodyText',
-    content: [
-      {
-        component: 'SpanText',
-        dynamicProps: {
-          children: tokens['CHANGE_NAME_1.[2].BodyText.theNameCurrentlyShownInYourCompaniesHouse']
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          weight: 'bold'
-        },
-        dynamicProps: {
-          children: '${profileName}'
-        }
-      },
-      {
-        component: 'SpanText',
-        dynamicProps: {
-          children: tokens['SHARED.']
-        }
-      }
-    ]
-  },
-  {
     component: 'DisplayUiElements',
     props: {
       elementProps: {

@@ -339,7 +339,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             component: 'Tag',
                                             props: {
                                               colour: 'yellow',
-                                              children: tokens['SHARED.pending']
+                                              children: tokens['SHARED.awaitingConfirmation']
                                             }
                                           }
                                         ]

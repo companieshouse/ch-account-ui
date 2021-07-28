@@ -25,7 +25,7 @@ const RadioGroup = (props) => {
               </HeadingText>
             </legend>
               )
-            : <legend className="govuk-fieldset__legend">{label}</legend>
+            : <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">{label}</legend>
           }
 
         <div id={`${id}-hint`} className="govuk-hint">
@@ -37,10 +37,18 @@ const RadioGroup = (props) => {
         </span>}
         <div className="govuk-radios">
           {options.map((option, index) => <div key={`${option.value}_${index}`} className="govuk-radios__item">
-            <input className="govuk-radios__input" id={`${id}_${index}`} name={id} type="radio" value={option.value} defaultChecked={option.checked} />
+            <input
+              className="govuk-radios__input"
+              id={`${id}_${index}`}
+              name={id} type="radio"
+              value={option.value}
+              defaultChecked={option.checked}
+              aria-describedby={option.hint ? `${id}_${index}-hint` : null}
+            />
             <label className="govuk-label govuk-radios__label" htmlFor={`${id}_${index}`}>
               {option.label}
             </label>
+            {option.hint ? <div id={`${id}_${index}-hint`} className="govuk-hint govuk-radios__hint">{option.hint}</div> : null}
           </div>)}
         </div>
         {children}

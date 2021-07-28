@@ -13,37 +13,11 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
     }
   },
   {
-    component: 'BodyText',
-    content: [
-      {
-        component: 'SpanText',
-        props: {
-          children: tokens['UPDATE_PHONE_1.[2].BodyText.theMobileNumberCurrentlyStoredInYour']
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          weight: 'bold'
-        },
-        dynamicProps: {
-          children: '${profilePhoneNumber}'
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          children: tokens['SHARED.']
-        }
-      }
-    ]
-  },
-  {
     component: 'DisplayUiElements',
     props: {
       elementProps: {
         IDToken2: {
-          label: tokens['UPDATE_PHONE_1.[3].DisplayUiElements.newMobileNumber'],
+          label: tokens['SHARED.mobileNumber'],
           hint: tokens['UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText'],
           type: 'number',
           autoComplete: 'off'

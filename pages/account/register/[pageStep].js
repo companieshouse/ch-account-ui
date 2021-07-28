@@ -28,7 +28,7 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const RegisterContactDetails = ({ lang }) => {
+const Register = ({ lang }) => {
   const router = useRouter()
   const formRef = useRef()
   const [errors, setErrors] = React.useState([])
@@ -165,8 +165,10 @@ const RegisterContactDetails = ({ lang }) => {
   )
 }
 
-export default WithLang(RegisterContactDetails)
+export { Register }
 
-RegisterContactDetails.propTypes = {
+export default WithLang(Register)
+
+Register.propTypes = {
   lang: PropTypes.string
 }

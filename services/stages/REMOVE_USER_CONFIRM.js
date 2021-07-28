@@ -59,12 +59,6 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'BodyText',
     dynamicProps: {
-      children: tokens['REMOVE_USER_CONFIRM.[5].BodyText.wellEmailUserDisplayNameToLetThemKnowTheyAre']
-    }
-  },
-  {
-    component: 'BodyText',
-    dynamicProps: {
       children: tokens['REMOVE_USER_CONFIRM.[6].BodyText.ifUserDisplayNameIsAppointedAsAnOfficerOfThe']
     }
   },

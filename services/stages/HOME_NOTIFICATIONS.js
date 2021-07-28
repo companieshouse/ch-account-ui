@@ -89,7 +89,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                 component: 'Tag',
                 dynamicProps: {
                   colour: 'yellow',
-                  children: tokens['SHARED.pending']
+                  children: tokens['SHARED.awaitingConfirmation']
                 }
               }
             ]

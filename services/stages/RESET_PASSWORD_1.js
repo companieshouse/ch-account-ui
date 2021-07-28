@@ -35,6 +35,7 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
+          label: tokens['SHARED.emailAddress'],
           type: 'email',
           autoComplete: 'email'
         }

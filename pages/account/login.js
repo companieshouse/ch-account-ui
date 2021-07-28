@@ -97,12 +97,15 @@ const Login = ({ lang, queryParams }) => {
         setErrors(stepErrors)
         setCustomPageProps({ ...stepCustomPageProps, links })
         setUiStage(step.payload.stage)
-        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
         setUiElements(step.callbacks)
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [asPath, overrideStage, headingCount, lang, goto, authIndexValue, mode, push])
+  }, [asPath, overrideStage, headingCount, goto, authIndexValue, mode, push])
+
+  useEffect(() => {
+    setUiFeatures(getStageFeatures(lang, overrideStage || uiStage))
+  }, [lang, uiStage, overrideStage])
 
   const onSubmit = (evt) => {
     evt?.preventDefault()
@@ -141,6 +144,10 @@ const Login = ({ lang, queryParams }) => {
   const onBack = (evt, params) => {
     evt.preventDefault()
     push(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
+  }
+
+  if (!uiStage) {
+    return null
   }
 
   return (

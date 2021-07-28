@@ -1,36 +1,15 @@
+import genericError from './genericError'
 
 const INVITE_USER_ERROR = (lang, tokens) => [
   {
-    component: 'PageHeading',
+    component: 'BrowserTitle',
     props: {
-      children: 'Sorry, there is a problem with the service',
-      showErrorSummary: false
+      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
     }
   },
   {
-    component: 'BodyText',
-    props: {
-      children: 'Try again later.'
-    }
-  },
-  {
-    component: 'BodyText',
-    content: [
-      {
-        component: 'LinkText',
-        props: {
-          children: 'Contact Companies House',
-          href: 'https://www.gov.uk/contact-companies-house',
-          testId: 'contactCompaniesHouseLink'
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          children: ' if you have any questions.'
-        }
-      }
-    ]
+    component: 'Fragment',
+    content: genericError(lang, tokens)
   }
 ]
 export default INVITE_USER_ERROR

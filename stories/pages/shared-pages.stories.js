@@ -1,6 +1,6 @@
 import React from 'react'
 import fetchMock from 'fetch-mock'
-import Login from '../../pages/account/login'
+import { Login } from '../../pages/account/login'
 import { mockAuthId } from './common-mocks'
 import { setCallback } from './story-utils'
 
@@ -8,9 +8,13 @@ const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/
 
 export default {
   title: 'Pages/Shared',
+  args: {
+    queryParams: {},
+    lang: 'en'
+  },
   argTypes: {
     lang: {
-      options: ['en', 'ch'],
+      options: ['en', 'cy'],
       control: { type: 'radio' }
     }
   }
@@ -138,6 +142,95 @@ LIMIT_EXCEEDED_ERROR.args = {
         {
           name: 'value',
           value: ''
+        },
+        {
+          name: 'id',
+          value: 'pagePropsJSON'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken5',
+          value: 'pagePropsJSON'
+        }
+      ]
+    }]
+  }
+}
+
+export const NO_SESSION_ERROR = Template.bind({})
+NO_SESSION_ERROR.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [{
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: 'NO_SESSION_ERROR'
+        },
+        {
+          name: 'id',
+          value: 'stage'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken2',
+          value: 'stage'
+        }
+      ]
+    }, {
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: '{"errors":[{"label":"Exceeded number of attempts, please try again later.,","token":"NO_ACTIVE_SESSION"}]}'
+        },
+        {
+          name: 'id',
+          value: 'pagePropsJSON'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken5',
+          value: 'pagePropsJSON'
+        }
+      ]
+    }]
+  }
+}
+
+export const SEND_MFA_SMS_ERROR = Template.bind({})
+
+SEND_MFA_SMS_ERROR.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [{
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: 'SEND_MFA_SMS_ERROR'
+        },
+        {
+          name: 'id',
+          value: 'stage'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken2',
+          value: 'stage'
+        }
+      ]
+    }, {
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: '{"errors":[{"label":"Exceeded number of attempts, please try again later.,","token":"SEND_MFA_SMS_ERROR"}]}'
         },
         {
           name: 'id',

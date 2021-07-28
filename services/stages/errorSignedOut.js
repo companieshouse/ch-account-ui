@@ -1,22 +1,9 @@
-
-const NO_SESSION_ERROR = (lang, tokens) => [
-  {
-    component: 'BrowserTitle',
-    props: {
-      title: tokens['SHARED.youAreNowSignedOut']
-    }
-  },
+const errorSignedOut = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.youAreNowSignedOut'],
+      children: tokens['SHARED.sorryThereIsAProblemWithTheService'],
       showErrorSummary: false
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {
-      children: tokens['NO_SESSION_ERROR.[2].BodyText.forYourSecurityWeveSignedYouOut']
     }
   },
   {
@@ -53,8 +40,15 @@ const NO_SESSION_ERROR = (lang, tokens) => [
           href: '/account/login',
           testId: 'loginExistingAccountLink'
         }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens['SHARED.toTryAgain']
+        }
       }
     ]
   }
 ]
-export default NO_SESSION_ERROR
+
+export default errorSignedOut

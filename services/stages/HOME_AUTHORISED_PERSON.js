@@ -47,7 +47,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
             component: 'Tag',
             props: {
               colour: 'yellow',
-              children: tokens['SHARED.pending']
+              children: tokens['SHARED.awaitingConfirmation']
             }
           },
           {

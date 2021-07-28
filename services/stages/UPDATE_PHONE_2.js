@@ -1,4 +1,4 @@
-
+// NOTE: This stage should now be redundant, replaced by PHONE_OTP
 const UPDATE_PHONE_2 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -85,17 +85,11 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
     content: [
       {
         component: 'BodyText',
-        props: {
-          children: tokens['SHARED.theTextMessageMayTakeAFewMinutesTo']
-        }
-      },
-      {
-        component: 'BodyText',
         content: [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifItDoesNotArriveYouCan']
+              children: tokens['SHARED.ifItStillHasNotArrivedYouCan']
             }
           },
           {

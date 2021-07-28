@@ -1,79 +1,48 @@
+import genericError from './genericError'
 
 const RESET_PASSWORD_ERROR = (lang, tokens) => [
   {
-    conditional: {
-      prop: '${errors.0.token}',
-      operator: 'nee',
-      value: 'RESET_PASSWORD_TOKEN_EXPIRED_ERROR'
-    },
-    component: 'PageHeading',
+    component: 'BrowserTitle',
     props: {
-      showErrorSummary: false,
-      children: tokens['SHARED.sorryThereIsAProblemWithTheService']
+      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
     }
   },
   {
     conditional: {
-      prop: '${errors.0.token}',
+      prop: '${errors.0.tokenNoNamespace}',
+      operator: 'in',
+      value: ['RESET_PASSWORD_GENERAL_ERROR', 'RESET_PASSWORD_EMAIL_SEND_ERROR', 'RESET_PASSWORD_TOKEN_PARSING_ERROR']
+    },
+    component: 'Fragment',
+    content: genericError(lang, tokens)
+  },
+  {
+    conditional: {
+      prop: '${errors.0.tokenNoNamespace}',
       operator: 'eeq',
-      value: 'RESET_PASSWORD_TOKEN_EXPIRED_ERROR'
+      value: 'RESET_PASSWORD_ERROR_TOKEN_EXPIRED'
     },
-    component: 'PageHeading',
-    props: {
-      showErrorSummary: false,
-      children: tokens['RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired']
-    }
-  },
-  {
-    conditional: {
-      prop: '${errors.0.token}',
-      operator: 'nee',
-      value: 'RESET_PASSWORD_TOKEN_EXPIRED_ERROR'
-    },
-    component: 'BodyText',
-    props: {
-      children: tokens['SHARED.tryAgainLater']
-    }
-  },
-  {
-    conditional: {
-      prop: '${errors.0.token}',
-      operator: 'eeq',
-      value: 'RESET_PASSWORD_TOKEN_EXPIRED_ERROR'
-    },
-    component: 'ErrorPageSummary',
+    component: 'Fragment',
     content: [
       {
-        component: 'LinkText',
+        component: 'PageHeading',
         props: {
-          children: tokens['RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword'],
-          href: '/account/register/_restart/',
-          testId: 'startRegistrationAgainLink'
-        }
-      }
-    ]
-  },
-  {
-    conditional: {
-      prop: '${errors.0.token}',
-      operator: 'nee',
-      value: 'RESET_PASSWORD_TOKEN_EXPIRED_ERROR'
-    },
-    component: 'BodyText',
-    content: [
-      {
-        component: 'LinkText',
-        props: {
-          children: tokens['SHARED.contactCompaniesHouse'],
-          href: 'https://www.gov.uk/contact-companies-house',
-          testId: 'contactCompaniesHouseLink'
+          showErrorSummary: false,
+          children: tokens['RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired']
         }
       },
       {
-        component: 'SpanText',
-        props: {
-          children: tokens['SHARED.ifYouHaveAnyQuestions']
-        }
+        component: 'ErrorPageSummary',
+        content: [
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens['RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword'],
+              href: '/account/register/_restart/',
+              testId: 'startRegistrationAgainLink'
+            }
+          }
+        ]
       }
     ]
   }

@@ -157,6 +157,8 @@ const AssociateUserAndCompany = ({ lang }) => {
   )
 }
 
+export { AssociateUserAndCompany }
+
 export default WithLang(AssociateUserAndCompany)
 
 AssociateUserAndCompany.propTypes = {

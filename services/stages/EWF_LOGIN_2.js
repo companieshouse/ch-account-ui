@@ -3,13 +3,13 @@ const EWF_LOGIN_2 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.whatIsTheCompanyNumber']
+      title: tokens['SHARED.enterTheDetailsOfTheCompanyYouWantToAccess']
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['EWF_LOGIN_2.[1].PageHeading.enterTheDetailsOfTheCompanyYouWantToAccessIn']
+      children: tokens['SHARED.enterTheDetailsOfTheCompanyYouWantToAccess']
     }
   },
   {
@@ -37,7 +37,7 @@ const EWF_LOGIN_2 = (lang, tokens) => [
           ]
         },
         IDToken3: {
-          label: tokens['SHARED.companyNumber'],
+          label: tokens['SHARED.whatIsTheCompanyNumber'],
           autoComplete: 'off',
           testId: 'companyNumberInputField'
         }

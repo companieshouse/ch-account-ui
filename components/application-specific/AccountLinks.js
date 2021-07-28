@@ -13,7 +13,6 @@ import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 const AccountLinks = (props) => {
   const { profile } = useFRAuth()
   const { lang, currentItem } = props
-  const email = profile?.email
 
   const AccountLinkItem = ({ current, text, href }) => <a href={href} className={`account-menu-link govuk-link govuk-link--no-visited-state${current ? ' account-menu__item--current' : ''}`}>{text}</a>
 

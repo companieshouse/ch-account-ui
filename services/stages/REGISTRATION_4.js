@@ -3,7 +3,7 @@ const REGISTRATION_4 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['REGISTRATION_4.[0].BrowserTitle.createAPassword']
+      title: tokens['REGISTRATION_4.[0].PageHeading.createAPassword']
     }
   },
   {
@@ -57,7 +57,7 @@ const REGISTRATION_4 = (lang, tokens) => [
     content: [{
       component: 'BodyText',
       props: {
-        children: tokens['REGISTRATION_4.[2].Details.youCanUseNumbers']
+        children: tokens['SHARED.youCanUseNumbersSymbolsAndSpaces']
       }
     },
     {
