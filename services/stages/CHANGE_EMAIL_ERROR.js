@@ -1,4 +1,4 @@
-import genericError from './genericError'
+import genericError from './shared/genericError.js'
 
 const CHANGE_EMAIL_ERROR = (lang, tokens) => [
   {

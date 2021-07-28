@@ -1,4 +1,4 @@
-import genericError from './genericError'
+import genericError from './shared/genericError.js'
 
 const ONBOARDING_ERROR = (lang, tokens) => [
   {

@@ -1,15 +1,14 @@
-
 const CHANGE_EMAIL_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: 'Update your email address'
+      title: tokens['SHARED.updateYourEmailAddress']
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: 'Update your email address',
+      children: tokens['SHARED.updateYourEmailAddress'],
       size: 'l'
     }
   },
@@ -18,7 +17,7 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
-          label: 'Enter your current password',
+          label: tokens['SHARED.enterYourCurrentPassword'],
           customValidation: [
             {
               name: 'required',
@@ -27,10 +26,10 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
           ]
         },
         IDToken3: {
-          label: 'Enter your new email address'
+          label: tokens['CHANGE_EMAIL_1.[2].DisplayUiElements.enterYourNewEmailAddress']
         },
         IDToken4: {
-          label: 'Re-enter your new email address'
+          label: tokens['CHANGE_EMAIL_1.[2].DisplayUiElements.reEnterYourNewEmailAddress']
         }
       }
     }
@@ -41,7 +40,7 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: 'Update email address',
+          children: tokens['CHANGE_EMAIL_1.[3].ButtonGroup.updateEmailAddress'],
           type: 'submit',
           testId: 'submitButton'
         }

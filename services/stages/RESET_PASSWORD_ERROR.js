@@ -1,4 +1,4 @@
-import genericError from './genericError'
+import genericError from './shared/genericError.js'
 
 const RESET_PASSWORD_ERROR = (lang, tokens) => [
   {
