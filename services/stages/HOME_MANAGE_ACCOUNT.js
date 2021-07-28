@@ -46,6 +46,22 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'changeEmailSuccess'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      type: 'success',
+      title: tokens['SHARED.success'],
+      heading: 'You\'ve successfully changed your email address to ${profile.email}.'
+    },
+    props: {
+      children: 'If you receive eReminders and want them to be sent to this email address, you’ll also need to update your eReminder email address. You can do this in WebFiling.'
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens['SHARED.manageAccount'],
@@ -93,7 +109,9 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           label: tokens['SHARED.email'],
           value: '',
           action: {
-            label: ''
+            label: tokens['SHARED.update'],
+            desc: 'email',
+            href: '/account/manage/change-email/_start'
           }
         },
         {

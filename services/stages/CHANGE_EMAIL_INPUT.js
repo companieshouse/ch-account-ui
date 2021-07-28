@@ -1,0 +1,4 @@
+import PHONE_OTP from './PHONE_OTP'
+
+const CHANGE_EMAIL_INPUT = PHONE_OTP
+export default CHANGE_EMAIL_INPUT
