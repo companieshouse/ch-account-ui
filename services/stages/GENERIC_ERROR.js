@@ -1,6 +1,6 @@
-import genericError from './genericError'
+import genericError from './shared/genericError.js'
 
-const GENERIC_ERROR = (lang, tokens) => [
+const GENERIC_ERROR = (lang, tokens) => ([
   {
     component: 'BrowserTitle',
     props: {
@@ -11,5 +11,5 @@ const GENERIC_ERROR = (lang, tokens) => [
     component: 'Fragment',
     content: genericError(lang, tokens)
   }
-]
+])
 export default GENERIC_ERROR

@@ -1,4 +1,4 @@
-import errorSignedOut from './errorSignedOut'
+import errorSignedOut from './shared/errorSignedOut.js'
 
 const SEND_MFA_SMS_ERROR = (lang, tokens) => [
   {

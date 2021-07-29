@@ -1,5 +1,5 @@
-import genericError from './genericError.js'
-import pageNotFoundError from './pageNotFoundError'
+import genericError from './shared/genericError.js'
+import pageNotFoundError from './shared/pageNotFoundError.js'
 
 const REGISTRATION_ERROR = (lang, tokens) => [
   {

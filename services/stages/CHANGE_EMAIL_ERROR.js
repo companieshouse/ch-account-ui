@@ -1,6 +1,6 @@
 import genericError from './shared/genericError.js'
 
-const ONBOARDING_ERROR = (lang, tokens) => [
+const CHANGE_EMAIL_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
@@ -12,4 +12,4 @@ const ONBOARDING_ERROR = (lang, tokens) => [
     content: genericError(lang, tokens)
   }
 ]
-export default ONBOARDING_ERROR
+export default CHANGE_EMAIL_ERROR
