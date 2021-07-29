@@ -1,4 +1,4 @@
-import emailOtp from './shared/emailOtp'
+import emailOtp from './shared/emailOtp.js'
 
 const CHANGE_EMAIL_INPUT = (lang, tokens) => ([
   {

@@ -3,10 +3,11 @@ import React from 'react'
 import ListItem from './ListItem'
 
 const List = (props) => {
-  const { type = 'bullet', children, className = '', items = [], renderFeatures, size } = props
+  const { type = 'bullet', children, className = '', items = [], renderFeatures, size, paddingBottom } = props
   const classes = [className]
   if (type === 'bullet') classes.push('govuk-list--bullet')
   if (size) classes.push(`govuk-!-font-size-${size}`)
+  if (paddingBottom) classes.push(`govuk-!-padding-bottom-${paddingBottom}`)
   if (type === 'number') classes.push('govuk-list--number')
 
   const finalClassName = classes.join(' ').trim()
@@ -28,6 +29,7 @@ List.propTypes = {
   type: PropTypes.string,
   renderFeatures: PropTypes.func,
   items: PropTypes.array,
+  paddingBottom: PropTypes.string,
   size: PropTypes.number
 }
 
