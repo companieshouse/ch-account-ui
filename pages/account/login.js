@@ -17,6 +17,7 @@ import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import { serializeForm, customValidation } from '../../services/formData'
 import { translateErrors } from '../../services/errors'
+import { companyTypeMapping, mapCompanyData } from '../../services/mappings'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -92,6 +93,10 @@ const Login = ({ lang, queryParams }) => {
 
             stepErrors.push(...apiErrorsAsAppErrors)
           }
+        }
+
+        if (stepCustomPageProps?.company) {
+          stepCustomPageProps.company = mapCompanyData(stepCustomPageProps.company)
         }
 
         setErrors(stepErrors)

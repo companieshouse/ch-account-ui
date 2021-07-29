@@ -14,6 +14,7 @@ import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { serializeForm } from '../../../services/formData'
 import log from '../../../services/log'
+import { mapCompanyData } from '../../../services/mappings'
 
 export const getStaticPaths = async () => {
   return {
@@ -104,6 +105,10 @@ const AssociateUserAndCompany = ({ lang }) => {
 
             stepErrors.push(...apiErrorsAsAppErrors)
           }
+        }
+
+        if (stepCustomPageProps?.company) {
+          stepCustomPageProps.company = mapCompanyData(stepCustomPageProps.company)
         }
 
         stepCustomPageProps.links = { requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL }
