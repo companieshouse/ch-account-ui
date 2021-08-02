@@ -53,12 +53,20 @@ const companyStatusMapping = {
 }
 
 const mapCompanyData = (company) => {
-  const { type, status, creationDate, ...rest } = company
-  const displayType = companyTypeMapping[type.toLowerCase()] || type
-  const displayStatus = companyStatusMapping[status.toLowerCase()] || status
-  const displayDate = moment(creationDate).format('DD MMMM YYYY')
+  const { type, status, creationDate } = company
+  const mappedData = { ...company }
 
-  return { ...rest, type: displayType, status: displayStatus, creationDate: displayDate }
+  if (type) {
+    mappedData.type = companyTypeMapping[type.toLowerCase()] || type
+  }
+  if (status) {
+    mappedData.status = companyStatusMapping[status.toLowerCase()] || status
+  }
+  if (creationDate) {
+    mappedData.creationDate = moment(creationDate).format('DD MMMM YYYY')
+  }
+
+  return mappedData
 }
 
 export { mapCompanyData }
