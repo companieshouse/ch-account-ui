@@ -3,7 +3,7 @@ import React from 'react'
 import ListItem from './ListItem'
 
 const List = (props) => {
-  const { type = 'bullet', children, className = '', items = [], renderFeatures, size, paddingBottom } = props
+  const { type = 'bullet', children, className = '', items = [], size, paddingBottom } = props
   const classes = [className]
   if (type === 'bullet') classes.push('govuk-list--bullet')
   if (size) classes.push(`govuk-!-font-size-${size}`)
@@ -15,7 +15,6 @@ const List = (props) => {
   return (
     <ul className={`govuk-list ${finalClassName}`}>
       {children}
-      {renderFeatures(props)}
       {items.map((itemText, index) => <ListItem key={index}>{itemText}</ListItem>)}
     </ul>
   )
