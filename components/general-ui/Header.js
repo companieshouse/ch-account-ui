@@ -33,9 +33,6 @@ const Header = ({ hasLogoutLink, titleLinkHref }) => {
           </Link>
         </div>
         <div className="govuk-header__content">
-          <LinkText href={titleLinkHref} className="govuk-header__link govuk-header__link--service-name" testId="headerTitleHomeLink">
-            Companies House account
-          </LinkText>
           {hasLogoutLink === true && <>
             <button type="button" className="govuk-header__menu-button govuk-js-header-toggle"
                     aria-controls="navigation" aria-label="Show or hide navigation menu">Menu

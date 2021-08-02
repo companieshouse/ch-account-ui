@@ -1,4 +1,4 @@
-import phoneOtp from './shared/phoneOtp'
+import phoneOtp from './shared/phoneOtp.js'
 
 const PHONE_OTP = (lang, tokens) => [
   {

@@ -1,5 +1,5 @@
-import phoneOtp from './shared/phoneOtp'
-import emailOtp from './shared/emailOtp'
+import phoneOtp from './shared/phoneOtp.js'
+import emailOtp from './shared/emailOtp.js'
 
 const EWF_LOGIN_OTP = (lang, tokens) => [
   {
