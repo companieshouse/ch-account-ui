@@ -12,7 +12,7 @@ import BooleanAttributeInputCallback from './BooleanAttributeInputCallback'
 import { errorsPropType } from '../../services/propTypes'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import { getFieldError } from '../../services/errors'
-import log from '../../services/log'
+import { customValidation } from '../../services/formData'
 
 const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, groupError = undefined) => {
   // log.debug('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
@@ -68,7 +68,7 @@ const CustomFormGroup = ({ currentFormGroup, errors, uiStage }) => {
   </FormGroup>
 }
 
-const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], headingCount, uiStage }) => {
+const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiStage, handlers }) => {
   let currentFormGroup
 
   return (
@@ -76,6 +76,12 @@ const DisplayUiElements = ({ uiElements = [], elementProps = {}, errors = [], he
       {uiElements.map((element, index) => {
         const id = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
         const customProps = elementProps[id]
+
+        if (customProps?.customValidation && handlers?.onSubmitCallbacks) {
+          handlers.onSubmitCallbacks.push((formData) => {
+            return customValidation(formData, id, customProps?.customValidation)
+          })
+        }
 
         // Find out if we need to group these inputs together into a single input group
         if (customProps && customProps.formGroup) {
@@ -149,19 +155,20 @@ export default DisplayUiElements
 DisplayUiElements.propTypes = {
   elementProps: PropTypes.object,
   errors: errorsPropType,
-  stage: PropTypes.string,
+  uiStage: PropTypes.string,
   uiElements: PropTypes.array,
-  headingCount: PropTypes.object
+  headingCount: PropTypes.object,
+  handlers: PropTypes.array
 }
 
 DisplayUiElements.defaultProps = {
   elementProps: {},
   errors: [],
-  stage: '',
   uiElements: []
 }
 
 CustomFormGroup.propTypes = {
+  uiStage: PropTypes.string,
   currentFormGroup: PropTypes.object,
   errors: PropTypes.array
 }

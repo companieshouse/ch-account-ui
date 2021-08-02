@@ -50,22 +50,13 @@ const validateField = (value, field, customValidationRules) => {
   return results
 }
 
-const customValidation = (formData, elementProps) => {
-  let errors = []
+const customValidation = (formData, id, validationProps) => {
+  const value = formData[id]
 
-  // Loop through ui elements and find any custom validation rules
-  Object.keys(elementProps).forEach((key) => {
-    const props = elementProps[key]
-    if (props.customValidation) {
-      const value = formData[key]
-      // check the field exists in the form data
-      if (typeof value !== 'undefined') {
-        errors = [...errors, ...validateField(value, key, props.customValidation)]
-      }
-    }
-  })
-
-  return errors
+  // check the field exists in the form data
+  if (typeof value !== 'undefined') {
+    return validateField(value, id, validationProps)
+  }
 }
 
 export { serializeForm, customValidation }

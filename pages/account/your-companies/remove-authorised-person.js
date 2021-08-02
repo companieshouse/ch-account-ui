@@ -25,6 +25,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = useMemo(() => new HeadingCount(), [])
+  const onSubmitCallbacks = []
 
   const { companyNumber, userId } = queryParams
 
@@ -97,10 +98,9 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
     // Get formData from the DOM with callback IDTokens as the key
     const formData = serializeForm(formRef.current)
 
-    // Apply any client side validation rules defined in the uiElements feature
-    const uiElements = uiFeatures.find((feature) => feature.component === 'DisplayUiElements')
-    if (uiElements) {
-      const errors = customValidation(formData, uiElements.props.elementProps)
+    // Execute any submit callbacks defined in the child components and apply returned errors
+    for (const callback of onSubmitCallbacks) {
+      const errors = callback(formData)
       if (errors.length) {
         setErrors(translateErrors(errors, lang))
         return
@@ -134,7 +134,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        handlers={{ onSecondarySubmit }}
+        handlers={{ onSecondarySubmit, onSubmitCallbacks }}
       />
     </FeatureDynamicView>
   )
