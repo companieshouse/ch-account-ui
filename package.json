@@ -23,6 +23,7 @@
     "fast-text-encoding": "^1.0.3",
     "govuk-frontend": "^3.13.0",
     "loglevel": "^1.7.1",
+    "moment": "^2.29.1",
     "next": "^10.2.3",
     "next-transpile-modules": "^7.3.0",
     "react": "17.0.1",
