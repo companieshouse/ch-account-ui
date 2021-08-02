@@ -20,9 +20,58 @@ const LOGIN = (lang, tokens) => [
   {
     component: 'List',
     props: {
-      paddingBottom: 3,
-      items: tokens['LOGIN.[4].List.inWebFilingYouCan']
-    }
+      paddingBottom: 3
+    },
+    content: [
+      {
+        component: 'ListItem',
+        props: {
+          children: tokens['LOGIN.[4].List.inWebFilingYouCanOne']
+        }
+      },
+      {
+        component: 'ListItem',
+        props: {
+          children: tokens['LOGIN.[4].List.inWebFilingYouCanTwo']
+        }
+      },
+      {
+        component: 'ListItem',
+        props: {
+          children: tokens['LOGIN.[4].List.inWebFilingYouCanThree']
+        }
+      },
+      {
+        component: 'ListItem',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens['LOGIN.[4].List.inWebFilingYouCanFourSignUp']
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              href: 'https://www.gov.uk/guidance/register-for-email-reminders-from-companies-house',
+              children: tokens['LOGIN.[4].List.inWebFilingYouCanFourEmailReminders']
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens['LOGIN.[4].List.inWebFilingYouCanFourWhenYour']
+            }
+          }
+        ]
+      },
+      {
+        component: 'ListItem',
+        props: {
+          children: tokens['LOGIN.[4].List.inWebFilingYouCanFive']
+        }
+      }
+    ]
   },
   {
     component: 'Button',

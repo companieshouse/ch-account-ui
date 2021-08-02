@@ -7,6 +7,7 @@ import LinkText from '../components/general-ui/interaction/LinkText'
 import DisplayUiElements from '../components/forgerock-ui/DisplayUiElements'
 import PageHeading from '../components/general-ui/typeography/PageHeading'
 import List from '../components/general-ui/typeography/List'
+import ListItem from '../components/general-ui/typeography/ListItem'
 import InsetText from '../components/general-ui/typeography/InsetText'
 import Details from '../components/general-ui/typeography/Details'
 import TemplateText from '../components/general-ui/typeography/TemplateText'
@@ -52,6 +53,7 @@ const componentMap = {
   DisplayUiElements,
   PageHeading,
   List,
+  ListItem,
   InsetText,
   Details,
   TemplateText,
