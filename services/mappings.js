@@ -41,6 +41,7 @@ const companyTypeMapping = {
 const companyStatusMapping = {
   active: 'Active',
   dissolved: 'Dissolved',
+  dormant: 'Dormant',
   liquidation: 'Liquidation',
   receivership: 'Receiver Action',
   'converted-closed': 'Converted / Closed',
@@ -53,8 +54,8 @@ const companyStatusMapping = {
 
 const mapCompanyData = (company) => {
   const { type, status, creationDate, ...rest } = company
-  const displayType = companyTypeMapping[type]
-  const displayStatus = companyStatusMapping[status]
+  const displayType = companyTypeMapping[type.toLowerCase()] || type
+  const displayStatus = companyStatusMapping[status.toLowerCase()] || status
   const displayDate = moment(creationDate).format('DD MMMM YYYY')
 
   return { ...rest, type: displayType, status: displayStatus, creationDate: displayDate }
