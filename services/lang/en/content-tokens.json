@@ -194,6 +194,7 @@
     "SHARED.enterPassword": "Enter password",
     "SHARED.enterTheCompanyAuthenticationCode": "Enter the company authentication code",
     "SHARED.enterTheDetailsOfTheCompanyYouWantToAccess": "Enter the details of the company you want to access",
+    "SHARED.enterTheDetailsOfTheCompanyYouWantToAdd": "Enter the details of the company you want to add to your account",
     "SHARED.enterYourCurrentPassword": "Enter your current password",
     "SHARED.fullName": "Full name (optional)",
     "SHARED.giveUsADifferentEmailAddress": "give us a different email address",
@@ -280,5 +281,6 @@
     ],
     "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": "Manage account - Update your mobile number",
     "UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword": "Enter your WebFiling account password.",
-    "UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText": "Enter the mobile number you want to be stored in this account. We'll send a security code to this number by text message."
+    "UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText": "Enter the mobile number you want to be stored in this account. We'll send a security code to this number by text message.",
+    "UPDATE_PHONE_2.[0].BrowserTitle.checkYourPhone": "Manage account - Check your phone"
 }

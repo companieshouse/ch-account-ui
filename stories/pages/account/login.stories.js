@@ -331,33 +331,6 @@ EWF_LOGIN_2.args = {
         ]
       },
       {
-        type: 'ChoiceCallback',
-        output: [
-          {
-            name: 'prompt',
-            value: 'Where was the company registered?'
-          },
-          {
-            name: 'choices',
-            value: [
-              'en',
-              'sc',
-              'ni'
-            ]
-          },
-          {
-            name: 'defaultChoice',
-            value: 0
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken2',
-            value: 0
-          }
-        ]
-      },
-      {
         type: 'NameCallback',
         output: [
           {
@@ -367,8 +340,35 @@ EWF_LOGIN_2.args = {
         ],
         input: [
           {
-            name: 'IDToken3',
+            name: 'IDToken2',
             value: ''
+          }
+        ]
+      },
+      {
+        type: 'ChoiceCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Where was the company registered?'
+          },
+          {
+            name: 'choices',
+            value: [
+              'EW',
+              'SC',
+              'NI'
+            ]
+          },
+          {
+            name: 'defaultChoice',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 0
           }
         ]
       },
