@@ -77,6 +77,10 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
         const id = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
         const customProps = elementProps[id]
 
+        if (customProps?.remove) {
+          return null
+        }
+
         if (customProps?.customValidation && handlers?.onSubmitCallbacks) {
           handlers.onSubmitCallbacks.push((formData) => {
             return customValidation(formData, id, customProps?.customValidation)
