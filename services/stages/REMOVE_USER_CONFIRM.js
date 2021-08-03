@@ -9,7 +9,7 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'ErrorSummary',
     props: {
-      title: tokens['COMPANY_ASSOCIATION_1.[1].ErrorSummary.thereIsAProblem']
+      title: tokens['SHARED.thereIsAProblem']
     }
   },
   {

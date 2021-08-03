@@ -36,6 +36,19 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
     conditional: {
       prop: '${notifyToken}',
       operator: 'eeq',
+      value: 'changePasswordSuccess'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      type: 'success',
+      title: tokens['SHARED.success'],
+      heading: tokens['HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourPassword']
+    }
+  },
+  {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
       value: 'changePreferencesSuccess'
     },
     component: 'NotificationBanner',
@@ -55,10 +68,10 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
     dynamicProps: {
       type: 'success',
       title: tokens['SHARED.success'],
-      heading: 'You\'ve successfully changed your email address to ${profile.email}.'
+      heading: tokens['HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourEmailTo']
     },
     props: {
-      children: 'If you receive eReminders and want them to be sent to this email address, you’ll also need to update your eReminder email address. You can do this in WebFiling.'
+      children: tokens['HOME_MANAGE_ACCOUNT.[2].NotificationBanner.ifYouReceiveEReminders']
     }
   },
   {

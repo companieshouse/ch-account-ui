@@ -266,7 +266,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                       {
                                         component: 'Th',
                                         props: {
-                                          children: tokens['SHARED.status']
+                                          children: tokens['SHARED.authorisationStatus']
                                         }
                                       },
                                       {

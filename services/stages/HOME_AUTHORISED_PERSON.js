@@ -99,7 +99,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
           value: ''
         },
         {
-          label: tokens['SHARED.status'],
+          label: tokens['SHARED.authorisationStatus'],
           value: ''
         }
       ]

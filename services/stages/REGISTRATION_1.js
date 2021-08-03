@@ -32,31 +32,31 @@ const REGISTRATION_1 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['REGISTRATION_1.[3].Details.whereYourNameWillBeShown']
+      summary: tokens['SHARED.whereYourNameWillBeShown']
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['REGISTRATION_1.[3].Details.ifYouProvideYourNameThisWillBeShown']
+          children: tokens['SHARED.ifYouProvideYourNameThisWillBeShown']
         }
       },
       {
         component: 'List',
         props: {
-          items: tokens['REGISTRATION_1.[3].Details.List']
+          items: tokens['SHARED.whereYourNameWillBeShownList']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['REGISTRATION_1.[3].Details.itIsUpToYouHowYourNameIsShownForExampleJen']
+          children: tokens['SHARED.itIsUpToYouHowYourNameIsShownForExampleJen']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['REGISTRATION_1.[3].Details.ifYouDoNotProvideYourNameYourEmailAddress']
+          children: tokens['SHARED.ifYouDoNotProvideYourNameYourEmailAddress']
         }
       }
     ]

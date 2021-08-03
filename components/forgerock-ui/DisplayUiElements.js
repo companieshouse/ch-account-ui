@@ -162,7 +162,7 @@ DisplayUiElements.propTypes = {
   uiStage: PropTypes.string,
   uiElements: PropTypes.array,
   headingCount: PropTypes.object,
-  handlers: PropTypes.array
+  handlers: PropTypes.object
 }
 
 DisplayUiElements.defaultProps = {
