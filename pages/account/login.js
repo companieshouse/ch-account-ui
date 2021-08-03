@@ -6,8 +6,7 @@ import HeadingCount from '../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
   CH_EWF_REQUEST_AUTH_CODE_URL,
-  FORGEROCK_TREE_WF_LOGIN,
-  FORGEROCK_TREE_LOGIN
+  FORGEROCK_TREE_WF_LOGIN
 } from '../../services/environment'
 import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
@@ -15,9 +14,9 @@ import WithLang from '../../services/lang/WithLang'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
-import { serializeForm, customValidation } from '../../services/formData'
+import { serializeForm } from '../../services/formData'
 import { translateErrors } from '../../services/errors'
-import { companyTypeMapping, mapCompanyData } from '../../services/mappings'
+import { mapCompanyData } from '../../services/mappings'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -30,6 +29,7 @@ const Login = ({ lang, queryParams }) => {
   const [uiElements, setUiElements] = React.useState([])
   const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = useMemo(() => new HeadingCount(), [])
+  const onSubmitCallbacks = []
 
   const {
     goto,
@@ -121,10 +121,9 @@ const Login = ({ lang, queryParams }) => {
     // Get formData from the DOM with callback IDTokens as the key
     const formData = serializeForm(formRef.current)
 
-    // Apply any client side validation rules defined in the uiElements feature
-    const uiElements = uiFeatures.find((feature) => feature.component === 'DisplayUiElements')
-    if (uiElements) {
-      const errors = customValidation(formData, uiElements.props.elementProps)
+    // Execute any submit callbacks defined in the child components and apply returned errors
+    for (const callback of onSubmitCallbacks) {
+      const errors = callback(formData)
       if (errors.length) {
         setErrors(translateErrors(errors, lang))
         return
@@ -171,7 +170,7 @@ const Login = ({ lang, queryParams }) => {
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        handlers={{ onSecondarySubmit }}
+        handlers={{ onSecondarySubmit, onSubmitCallbacks }}
       />
     </FeatureDynamicView>
   )
