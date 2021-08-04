@@ -48,7 +48,6 @@ const Notifications = ({ errors, lang }) => {
       width="full"
       titleLinkHref="/account/home"
       hasBackLink={false}
-      hasLanguageSwitcher={false}
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={4}

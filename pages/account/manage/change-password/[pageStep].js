@@ -12,6 +12,7 @@ import Dynamic from '../../../../components/Dynamic'
 import { customValidation, serializeForm } from '../../../../services/formData'
 import { translateErrors } from '../../../../services/errors'
 import log from '../../../../services/log'
+import { generateQueryUrl } from '../../../../services/queryString'
 
 export const getStaticPaths = async () => {
   return {
@@ -93,6 +94,10 @@ const ChangePassword = ({ lang }) => {
             stepErrors.push(...apiErrorsAsAppErrors)
           }
         }
+
+        stepCustomPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
+          notifyToken: 'changePasswordSuccess'
+        })
 
         // Update the errors for the page
         setErrors((currentErrorsArray) => {

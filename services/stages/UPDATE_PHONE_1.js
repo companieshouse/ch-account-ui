@@ -9,7 +9,8 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.changeYourMobileNumber']
+      children: tokens['SHARED.changeYourMobileNumber'],
+      size: 'l'
     }
   },
   {

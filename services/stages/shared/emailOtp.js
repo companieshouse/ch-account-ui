@@ -99,31 +99,6 @@ const emailOtp = (lang, tokens) => ([
             }
           }
         ]
-      },
-      {
-        component: 'BodyText',
-        content: [
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens['SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou']
-            }
-          },
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens['SHARED.giveUsADifferentEmailAddress'],
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens['SHARED.']
-            }
-          }
-        ]
       }
     ]
   }
