@@ -80,7 +80,7 @@
     ],
     "HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany": "Mae ${companyName} wedi'i ychwanegu at eich cyfrif.",
     "HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode": "newid y cod dilysu",
-    "HOME_YOUR_COMPANIES.[3].NotificationBanner.forThisCompanyIf": "  ar gyfer y cwmni hwn os oes gan ${userName} fynediad iddo o hyd.",
+    "HOME_YOUR_COMPANIES.[3].NotificationBanner.forThisCompanyIf": " ar gyfer y cwmni hwn os oes gan ${userName} fynediad iddo o hyd.",
     "HOME_YOUR_COMPANIES.[3].NotificationBanner.isNoLongerAuthorisedToFileOnline": "Nid yw ${userName} bellach wedi'i hawdurdodi i ffeilio ar-lein ar gyfer ${companyName}.",
     "HOME_YOUR_COMPANIES.[3].NotificationBanner.youHaveDeclinedTheRequestToHaveAuthorisation": "Rydych wedi gwrthod y cais i gael caniatâd i ffeilio ar-lein ar gyfer ${companyName}.",
     "HOME_YOUR_COMPANIES.[3].NotificationBanner.youShould": "Efallai yr hoffech ",
