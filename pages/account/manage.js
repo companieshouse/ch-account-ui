@@ -46,7 +46,7 @@ const ManageAccount = ({ errors, lang }) => {
       hasBackLink={false}
       hasLogoutLink={true}
       hasAccountLinks
-      accountLinksItem={5}
+      accountLinksItem={6}
     >
       <Dynamic
         componentMap={componentMap}

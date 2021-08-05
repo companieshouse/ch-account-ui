@@ -146,7 +146,7 @@ const ChangeEmail = ({ lang }) => {
       width='two-thirds'
       titleLinkHref="/account/home"
       hasAccountLinks
-      accountLinksItem={5}
+      accountLinksItem={6}
       onSubmit={onSubmit}
     >
       <Dynamic

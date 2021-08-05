@@ -57,7 +57,6 @@ const Login = ({ lang, queryParams }) => {
       lang,
       stepOptions: {
         query: {
-          ForceAuth: true,
           companyNo,
           jurisdiction
         }
