@@ -29,6 +29,7 @@ export default BooleanAttributeInputCallback
 BooleanAttributeInputCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
+  errors: PropTypes.object,
   groupError: PropTypes.object
 }
 

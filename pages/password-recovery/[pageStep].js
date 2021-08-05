@@ -10,7 +10,7 @@ import WithLang from '../../services/lang/WithLang'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
-import { customValidation, serializeForm } from '../../services/formData'
+import { serializeForm } from '../../services/formData'
 import { translateErrors } from '../../services/errors'
 import log from '../../services/log'
 

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Footer from '../components/general-ui/Footer'
 import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
 import '../css/global.scss'

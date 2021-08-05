@@ -9,7 +9,7 @@ import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import WithLang from '../../services/lang/WithLang'
 import useFRAuth from '../../services/useFRAuth'
-import { getUserFields, getUserProfile } from '../../services/forgerock'
+import { getUserFields } from '../../services/forgerock'
 
 const ManageAccount = ({ errors, lang }) => {
   const { profile, accessToken } = useFRAuth()
@@ -28,7 +28,7 @@ const ManageAccount = ({ errors, lang }) => {
         const fields = response.body || {}
         const translatedPreferences = {}
         if (fields?.preferences) {
-          Object.keys(fields.preferences).map((pref) => {
+          Object.keys(fields.preferences).forEach((pref) => {
             translatedPreferences[pref] = fields.preferences[pref] ? translate(lang, 'YES') : translate(lang, 'NO')
           })
         }

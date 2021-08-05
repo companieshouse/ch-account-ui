@@ -12,7 +12,7 @@ import LinkText from '../general-ui/interaction/LinkText'
  */
 
 const InfoBlock = (props) => {
-  const { count, countLabel, children, className, renderFeatures, width, testId, header, href, headingCount } = props
+  const { count, countLabel, children, className, width, testId, header, href, headingCount } = props
   console.log(headingCount)
   const classes = [className]
 
@@ -42,7 +42,11 @@ InfoBlock.propTypes = {
   renderFeatures: PropTypes.func,
   title: PropTypes.string,
   titleHeadingType: PropTypes.string,
-  width: PropTypes.string
+  width: PropTypes.string,
+  testId: PropTypes.string,
+  header: PropTypes.string,
+  href: PropTypes.string,
+  headingCount: PropTypes.string
 }
 
 InfoBlock.defaultProps = {
