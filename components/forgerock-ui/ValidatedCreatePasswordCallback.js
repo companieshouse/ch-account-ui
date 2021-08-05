@@ -45,7 +45,9 @@ ValidatedCreatePasswordCallback.propTypes = {
   customElementProps: PropTypes.object,
   element: PropTypes.object.isRequired,
   errors: errorsPropType,
-  groupError: PropTypes.string
+  groupError: PropTypes.string,
+  hasShowPasswordSuffix: PropTypes.bool,
+  lang: PropTypes.string
 }
 
 ValidatedCreatePasswordCallback.defaultProps = {

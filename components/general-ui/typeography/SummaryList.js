@@ -43,6 +43,7 @@ export default SummaryList
 SummaryList.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  customLayout: PropTypes.bool,
   hasActions: PropTypes.bool,
   renderFeatures: PropTypes.func,
   listItems: PropTypes.array

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import HeadingCount from '../../../../services/HeadingCount'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../../services/forgerock'
-import { FORGEROCK_TREE_CHANGE_NAME, FORGEROCK_TREE_CHANGE_PREFS } from '../../../../services/environment'
+import { FORGEROCK_TREE_CHANGE_PREFS } from '../../../../services/environment'
 import { useRouter } from 'next/router'
 import { getStageFeatures } from '../../../../services/translate'
 import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
@@ -11,7 +11,6 @@ import Dynamic from '../../../../components/Dynamic'
 import { serializeForm } from '../../../../services/formData'
 import { generateQueryUrl } from '../../../../services/queryString'
 import WithLang from '../../../../services/lang/WithLang'
-import useFRAuth from '../../../../services/useFRAuth'
 
 export const getStaticPaths = async () => {
   return {

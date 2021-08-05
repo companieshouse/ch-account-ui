@@ -20,8 +20,9 @@ const BackLink = ({ href, className, testId, onClick, lang }) => {
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+
     <div className="back-link">
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a href="#" onClick={(...args) => {
         if (onClick) return onClick(...args)
         window.history.back()

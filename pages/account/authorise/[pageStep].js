@@ -119,7 +119,7 @@ const InviteUser = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token, getStepOptions, headingCount, lang])
+  }, [action, pageStep, overrideStage, service, token, getStepOptions, headingCount, lang])
 
   const onSubmit = (evt) => {
     evt.preventDefault()

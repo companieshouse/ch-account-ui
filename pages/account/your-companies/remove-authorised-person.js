@@ -9,7 +9,7 @@ import WithLang from '../../../services/lang/WithLang'
 import componentMap from '../../../services/componentMap'
 import Dynamic from '../.././../components/Dynamic'
 import withQueryParams from '../../../components/providers/WithQueryParams'
-import { serializeForm, customValidation } from '../../../services/formData'
+import { serializeForm } from '../../../services/formData'
 import { translateErrors } from '../../../services/errors'
 import { FORGEROCK_TREE_REMOVE_AUTHORISED_USER } from '../../../services/environment'
 import { generateQueryUrl } from '../../../services/queryString'
@@ -29,16 +29,16 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
 
   const { companyNumber, userId } = queryParams
 
-  const stepOptions = {
-    query: {
-      companyNumber,
-      userId,
-      ForceAuth: true
-    }
-  }
-
   useEffect(() => {
     headingCount.reset()
+
+    const stepOptions = {
+      query: {
+        companyNumber,
+        userId,
+        ForceAuth: true
+      }
+    }
 
     forgerockFlow({
       journeyName: FORGEROCK_TREE_REMOVE_AUTHORISED_USER,
@@ -87,7 +87,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [asPath, headingCount, lang, push])
+  }, [companyNumber, userId, asPath, headingCount, lang, push])
 
   const onSubmit = (evt) => {
     evt?.preventDefault()
@@ -108,7 +108,13 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
     }
 
     // Submit FR stage
-    submitData(formData, stepOptions)
+    submitData(formData, {
+      query: {
+        companyNumber,
+        userId,
+        ForceAuth: true
+      }
+    })
   }
 
   const onSecondarySubmit = (evt, params) => {

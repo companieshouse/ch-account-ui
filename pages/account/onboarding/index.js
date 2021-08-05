@@ -85,7 +85,7 @@ const Onboarding = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [asPath, overrideStage, headingCount, lang, push])
+  }, [goto, token, asPath, overrideStage, headingCount, lang, push])
 
   const onSubmit = (evt) => {
     evt?.preventDefault()

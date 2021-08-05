@@ -106,7 +106,7 @@ const Login = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [asPath, overrideStage, headingCount, goto, authIndexValue, mode, push])
+  }, [companyNo, jurisdiction, lang, asPath, overrideStage, headingCount, goto, authIndexValue, mode, push])
 
   useEffect(() => {
     setUiFeatures(getStageFeatures(lang, overrideStage || uiStage))

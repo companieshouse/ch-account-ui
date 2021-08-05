@@ -9,7 +9,7 @@ import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
-import { customValidation, serializeForm } from '../../../services/formData'
+import { serializeForm } from '../../../services/formData'
 import { translateErrors } from '../../../services/errors'
 import log from '../../../services/log'
 
