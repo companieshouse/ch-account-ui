@@ -50,7 +50,7 @@ const Notifications = ({ errors, lang }) => {
       hasBackLink={false}
       hasLogoutLink={true}
       hasAccountLinks
-      accountLinksItem={4}
+      accountLinksItem={5}
     >
       <Dynamic
         componentMap={componentMap}
