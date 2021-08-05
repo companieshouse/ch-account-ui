@@ -29,5 +29,6 @@ export const FORGEROCK_TREE_ONBOARDING = process.env.FORGEROCK_TREE_ONBOARDING |
 export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_URL || 'https://ewf-kermit.companieshouse.gov.uk/legacy'
 export const CH_EWF_LEGACY_AUTH_URL = process.env.CH_EWF_LEGACY_AUTH_URL || 'https://ewf-kermit.companieshouse.gov.uk/legacy'
 export const CH_EWF_AUTHENTICATED_ENTRY_URL = process.env.CH_EWF_AUTHENTICATED_ENTRY_URL || 'https://ewf-kermit.companieshouse.gov.uk/file-for-a-company'
+export const CH_EWF_RECENT_FILINGS_URL = process.env.CH_EWF_RECENT_FILINGS_URL || 'https://ewf-kermit.companieshouse.gov.uk/recent-filings'
 
 console.log(`Running as environment: ${ENVIRONMENT}`)
