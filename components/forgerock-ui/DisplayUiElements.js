@@ -13,6 +13,8 @@ import { errorsPropType } from '../../services/propTypes'
 import FormGroup from '../general-ui/interaction/FormGroup'
 import { getFieldError } from '../../services/errors'
 import { customValidation } from '../../services/formData'
+import Dynamic from '../Dynamic'
+import componentMap from '../../services/componentMap'
 
 const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, groupError = undefined) => {
   // log.debug('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
@@ -60,9 +62,14 @@ const CustomFormGroup = ({ currentFormGroup, errors, uiStage }) => {
   return <FormGroup errors={errors} groupIds={groupIds}>
     <fieldset className="govuk-fieldset" role="group">
       {currentFormGroup.elements.map((formGroupElementData, formGroupElementDataIndex) => {
-        return (<FormGroup key={formGroupElementDataIndex} groupIds={groupIds}>
-          {getElement({ ...formGroupElementData, uiStage }, errors, groupError)}
-        </FormGroup>)
+        return (
+          <>
+            <FormGroup key={formGroupElementDataIndex} groupIds={groupIds}>
+              {getElement({ ...formGroupElementData, uiStage }, errors, groupError)}
+            </FormGroup>
+            {formGroupElementData.additionalContent}
+          </>
+        )
       })}
     </fieldset>
   </FormGroup>
@@ -76,6 +83,9 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
       {uiElements.map((element, index) => {
         const id = (element.payload?.input && element.payload?.input[0]?.name) || `unknownFieldId_${index}`
         const customProps = elementProps[id]
+        if (customProps?.remove) {
+          return false
+        }
 
         if (customProps?.remove) {
           return null
@@ -86,6 +96,17 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
             return customValidation(formData, id, customProps?.customValidation)
           })
         }
+
+        const additionalContent = customProps?.content
+          ? <Dynamic
+            componentMap={componentMap}
+            headingCount={headingCount}
+            content={customProps.content}
+            errors={errors}
+            uiElements={uiElements}
+            uiStage={uiStage}
+          />
+          : null
 
         // Find out if we need to group these inputs together into a single input group
         if (customProps && customProps.formGroup) {
@@ -119,7 +140,8 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
             customProps: {
               ...customProps,
               headingCount
-            }
+            },
+            additionalContent
           })
 
           // We don't render anything yet as this element needs to be part of a form group
@@ -147,7 +169,7 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
 
         if (!elementToRender) return null
 
-        return <FormGroup key={id} errors={errors} groupIds={[id]}>{elementToRender}</FormGroup>
+        return <><FormGroup key={id} errors={errors} groupIds={[id]}>{elementToRender}</FormGroup>{additionalContent}</>
       })}
       {Boolean(currentFormGroup) && <CustomFormGroup currentFormGroup={currentFormGroup} errors={errors} />}
     </>

@@ -28,9 +28,6 @@ module.exports = withTM({
     CH_EWF_LEGACY_AUTH_URL,
     CH_EWF_AUTHENTICATED_ENTRY_URL
   },
-  future: {
-    webpack5: true
-  },
   basePath: BASE_PATH,
   trailingSlash: true,
   reactStrictMode: true

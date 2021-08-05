@@ -62,6 +62,33 @@ COMPANY_ASSOCIATION_1.args = {
         ]
       },
       {
+        type: 'ChoiceCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'Where was the company registered?'
+          },
+          {
+            name: 'choices',
+            value: [
+              'EW',
+              'SC',
+              'NI'
+            ]
+          },
+          {
+            name: 'defaultChoice',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 0
+          }
+        ]
+      },
+      {
         type: 'HiddenValueCallback',
         output: [
           {
@@ -75,7 +102,7 @@ COMPANY_ASSOCIATION_1.args = {
         ],
         input: [
           {
-            name: 'IDToken3',
+            name: 'IDToken4',
             value: 'stage'
           }
         ]

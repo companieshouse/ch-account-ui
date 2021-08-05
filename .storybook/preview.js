@@ -1,11 +1,12 @@
 
 import '../css/global.scss'
-import { withNextRouter } from 'storybook-addon-next-router';
-
-export const decorators = [withNextRouter()]
+import { RouterContext } from "next/dist/next-server/lib/router-context";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,

@@ -25,7 +25,7 @@ const RadioGroup = (props) => {
               </HeadingText>
             </legend>
               )
-            : <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">{label}</legend>
+            : <legend className="govuk-fieldset__legend">{label}</legend>
           }
 
         <div id={`${id}-hint`} className="govuk-hint">
@@ -89,6 +89,7 @@ RadioGroup.defaultProps = {
   fluidWidth: '',
   hint: '',
   label: '',
+
   required: false,
   options: []
 }

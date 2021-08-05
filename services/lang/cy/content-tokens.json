@@ -192,6 +192,7 @@
     "SHARED.enterPassword": "Mewngofnodwch eich cyfrinair",
     "SHARED.enterTheCompanyAuthenticationCode": "Cofnodwch god dilysu'r cwmni",
     "SHARED.enterTheDetailsOfTheCompanyYouWantToAccess": "Mewngofnodwch fanylion y cwmni rydych eisiau mynediad iddo",
+    "SHARED.enterTheDetailsOfTheCompanyYouWantToAdd": "Enter the details of the company you want to add to your account",
     "SHARED.enterYourCurrentPassword": "Mewngofnodwch eich cyfrinair cyfredol",
     "SHARED.fullName": "Full name (optional)",
     "SHARED.giveUsADifferentEmailAddress": "rhowch gyfeiriad e-bost gwahanol i ni",
@@ -269,5 +270,6 @@
     "SHARED.yourCompanies": "Eich cwmnïau",
     "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol",
     "UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword": "Mewngofnodwch eich cyfrinair WebFiling",
-    "UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText": "Mewngofnodwch y rhif ffôn symudol rydych am storio yn y cyfrif hwn. Byddwn yn anfon cod diogelwch i'r rhif hwn drwy neges destun."
+    "UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText": "Mewngofnodwch y rhif ffôn symudol rydych am storio yn y cyfrif hwn. Byddwn yn anfon cod diogelwch i'r rhif hwn drwy neges destun.",
+    "UPDATE_PHONE_2.[0].BrowserTitle.checkYourPhone": "Rheoli eich cyfrif - Gwiriwch eich ffôn"
 }

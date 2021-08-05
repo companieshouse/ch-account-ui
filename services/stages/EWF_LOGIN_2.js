@@ -17,7 +17,52 @@ const EWF_LOGIN_2 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
+          label: tokens['SHARED.whatIsTheCompanyNumber'],
+          fixedWidth: '10',
+          formGroup: 'companyDetails',
+          autoComplete: 'off',
+          testId: 'companyNumberInputField',
+          content: [
+            {
+              component: 'Details',
+              props: {
+                summary: tokens['SHARED.helpWithMyCompanyNumber']
+              },
+              content: [
+                {
+                  component: 'BodyText',
+                  props: {},
+                  content: [
+                    {
+                      component: 'SpanText',
+                      props: {
+                        children: tokens['SHARED.youCanFindThisBySearchingForTheCompanyOn']
+                      }
+                    },
+                    {
+                      component: 'LinkText',
+                      props: {
+                        children: tokens['SHARED.companiesHouseRegisterOpensInANewTab'],
+                        href: 'https://find-and-update.company-information.service.gov.uk',
+                        target: '_blank',
+                        testId: 'companiesHouseRegisterLink'
+                      }
+                    },
+                    {
+                      component: 'SpanText',
+                      props: {
+                        children: tokens['SHARED.']
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        IDToken3: {
           label: tokens['EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered'],
+          formGroup: 'companyDetails',
           options: [
             {
               label: tokens['EWF_LOGIN_2.[2].DisplayUiElements.englandWales'],
@@ -35,49 +80,9 @@ const EWF_LOGIN_2 = (lang, tokens) => [
               checked: false
             }
           ]
-        },
-        IDToken3: {
-          label: tokens['SHARED.whatIsTheCompanyNumber'],
-          autoComplete: 'off',
-          testId: 'companyNumberInputField'
         }
       }
     }
-  },
-  {
-    component: 'Details',
-    props: {
-      summary: tokens['SHARED.helpWithMyCompanyNumber']
-    },
-    content: [
-      {
-        component: 'BodyText',
-        props: {},
-        content: [
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens['SHARED.youCanFindThisBySearchingForTheCompanyOn']
-            }
-          },
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens['SHARED.companiesHouseRegisterOpensInANewTab'],
-              href: 'https://find-and-update.company-information.service.gov.uk',
-              target: '_blank',
-              testId: 'companiesHouseRegisterLink'
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens['SHARED.']
-            }
-          }
-        ]
-      }
-    ]
   },
   {
     component: 'Button',
