@@ -25,7 +25,7 @@ BodyText.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   hint: PropTypes.bool,
-  size: PropTypes.number,
+  size: PropTypes.string,
   weight: PropTypes.string,
   renderFeatures: PropTypes.func
 }

@@ -32,7 +32,7 @@ const Template = (args) => {
 export const CH_LOGIN_1 = Template.bind({})
 CH_LOGIN_1.args = {
   queryParams: {},
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHLogin',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHLogin',
   responseData: {
     authId: mockAuthId,
     callbacks: [{
@@ -55,7 +55,7 @@ CH_LOGIN_1.args = {
 
 export const EWF_LOGIN_1 = Template.bind({})
 EWF_LOGIN_1.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -102,7 +102,7 @@ EWF_LOGIN_1.args = {
 
 export const EWF_PROFILE = Template.bind({})
 EWF_PROFILE.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   submitPath: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   submitResponseData: {
     authId: mockAuthId,
@@ -312,7 +312,7 @@ EWF_PROFILE.args = {
 
 export const EWF_LOGIN_2 = Template.bind({})
 EWF_LOGIN_2.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -398,7 +398,7 @@ EWF_LOGIN_2.args = {
 
 export const EWF_LOGIN_2_ERROR = Template.bind({})
 EWF_LOGIN_2_ERROR.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -503,7 +503,7 @@ EWF_LOGIN_2_ERROR.args = {
 
 export const EWF_LOGIN_3 = Template.bind({})
 EWF_LOGIN_3.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -599,7 +599,7 @@ EWF_LOGIN_3.args = {
 
 export const EWF_LOGIN_4 = Template.bind({})
 EWF_LOGIN_4.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
