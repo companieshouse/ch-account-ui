@@ -42,7 +42,7 @@ const ChangeEmail = ({ lang }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const onSubmitCallbacks = []
 
-  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
+  const { pageStep = '', service = '', overrideStage = '' } = router.query
 
   React.useEffect(() => {
     headingCount.reset()
@@ -59,7 +59,7 @@ const ChangeEmail = ({ lang }) => {
 
     const stepOptions = {
       query: {
-        token
+        ForceAuth: true
       }
     }
 
@@ -69,6 +69,12 @@ const ChangeEmail = ({ lang }) => {
       journeyNamespace: 'CHANGE_EMAIL',
       lang,
       stepOptions,
+      onSuccess: () => {
+        const successPath = generateQueryUrl('/account/manage/', {
+          notifyToken: 'changeEmailSuccess'
+        })
+        router.push(successPath)
+      },
       onFailure: (errData, newErrors = []) => {
         // We only get here if there was a fatal error signal from the forgerock client library
         // all other errors are not considered a failure (such as incorrectly formatted inputs etc
@@ -97,10 +103,6 @@ const ChangeEmail = ({ lang }) => {
           }
         }
 
-        stepCustomPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
-          notifyToken: 'changeEmailSuccess'
-        })
-
         // Update the errors for the page
         setErrors((currentErrorsArray) => {
           return [...currentErrorsArray, ...stepErrors]
@@ -113,7 +115,7 @@ const ChangeEmail = ({ lang }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [pageStep, overrideStage, service, token, headingCount, lang, router])
+  }, [pageStep, overrideStage, service, headingCount, lang, router])
 
   const onSubmit = (evt) => {
     evt?.preventDefault()

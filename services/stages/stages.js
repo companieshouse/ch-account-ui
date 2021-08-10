@@ -39,7 +39,6 @@ import CHANGE_NAME_2 from './CHANGE_NAME_2.js'
 import CHANGE_EMAIL_1 from './CHANGE_EMAIL_1.js'
 import CHANGE_EMAIL_ERROR from './CHANGE_EMAIL_ERROR.js'
 import CHANGE_EMAIL_INPUT from './CHANGE_EMAIL_INPUT.js'
-import CHANGE_EMAIL_2 from './CHANGE_EMAIL_2.js'
 import UPDATE_PHONE_1 from './UPDATE_PHONE_1.js'
 import UPDATE_PHONE_2 from './UPDATE_PHONE_2.js'
 import UPDATE_PHONE_3 from './UPDATE_PHONE_3.js'
@@ -122,7 +121,6 @@ const getStages = (lang) => {
     CHANGE_EMAIL_1,
     CHANGE_EMAIL_ERROR,
     CHANGE_EMAIL_INPUT,
-    CHANGE_EMAIL_2,
     UPDATE_PHONE_1,
     UPDATE_PHONE_2,
     UPDATE_PHONE_3,
@@ -151,7 +149,7 @@ const getStages = (lang) => {
     UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION
   }
 
-  Object.keys(features).map((key) => {
+  Object.keys(features).forEach((key) => {
     stages[key] = features[key](lang, tokens)
   })
 
