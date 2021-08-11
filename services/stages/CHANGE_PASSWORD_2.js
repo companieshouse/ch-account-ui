@@ -2,7 +2,7 @@
 const CHANGE_PASSWORD_2 = (lang, tokens) => [
   {
     component: 'Redirect',
-    props: {
+    dynamicProps: {
       url: '${changeSuccessPath}'
     }
   }
