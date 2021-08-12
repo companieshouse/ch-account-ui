@@ -166,16 +166,21 @@ export const forgerockFlow = ({
   journeyNamespace,
   stepOptions,
   lang,
+  getLang,
   isAuthOnly
 }) => {
-  if (!lang) {
+  if (!lang && !getLang) {
     log.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
     return null
   }
 
+  if (!getLang) {
+    getLang = () => lang
+  }
+
   const langMiddleware = (req, action, next) => {
     if (req.init.headers) {
-      req.init.headers['Chosen-Language'] = lang === 'cy' ? 'CY' : 'EN'
+      req.init.headers['Chosen-Language'] = getLang() === 'cy' ? 'CY' : 'EN'
     }
     next()
   }
@@ -214,7 +219,7 @@ export const forgerockFlow = ({
     // that our front-end can use. This normalises the errors across
     // different calls and steps etc to ensure we don't have to manually
     // code different error handling methods for different pages.
-    const errors = translateErrors(normaliseErrors(step, journeyNamespace), lang)
+    const errors = translateErrors(normaliseErrors(step, journeyNamespace), getLang())
 
     if (step.type === StepType.LoginSuccess) {
       log.debug('ForgeRock login success', step)

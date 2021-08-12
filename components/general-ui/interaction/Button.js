@@ -14,13 +14,15 @@ const Button = ({
   hasStartIcon = false,
   testId,
   handler,
-  handlers
+  handlers,
+  loading
 }) => {
   const classes = [className]
 
   if (warning === true) classes.push('govuk-button--warning')
   if (secondary === true) classes.push('govuk-button--secondary')
   if (hasStartIcon === true) classes.push('govuk-button--start')
+  if (loading === true) classes.push('govuk-button--disabled')
 
   const finalClassName = classes.join(' ').trim()
 
@@ -53,7 +55,7 @@ const Button = ({
 
   if (renderAs === 'button') {
     return (
-      <button type={type} onClick={onClick} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
+      <button disabled={loading && 'disabled'} aria-disabled={loading && 'true'} type={type} onClick={onClick} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
         {label}
         {children}
       </button>
@@ -73,6 +75,7 @@ Button.propTypes = {
   handler: PropTypes.object,
   handlers: PropTypes.object,
   label: PropTypes.string,
+  loading: PropTypes.bool,
   onClick: PropTypes.func,
   renderAs: PropTypes.string,
   type: PropTypes.string,

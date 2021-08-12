@@ -1,157 +1,77 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../services/forgerock'
 import HeadingCount from '../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
   CH_EWF_REQUEST_AUTH_CODE_URL,
   FORGEROCK_TREE_WF_LOGIN
 } from '../../services/environment'
-import { getStageFeatures } from '../../services/translate'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import WithLang from '../../services/lang/WithLang'
 import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
-import { serializeForm } from '../../services/formData'
-import { translateErrors } from '../../services/errors'
-import { mapCompanyData } from '../../services/mappings'
+import useFRFlow from '../../services/useFRFlow'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
   const formRef = useRef()
-  const { push, asPath } = router
-  const [customPageProps, setCustomPageProps] = React.useState({})
-  const [errors, setErrors] = React.useState([])
-  const [uiStage, setUiStage] = React.useState('')
-  const [uiFeatures, setUiFeatures] = React.useState([])
-  const [uiElements, setUiElements] = React.useState([])
-  const [submitData, setSubmitData] = React.useState((formData) => {})
   const headingCount = useMemo(() => new HeadingCount(), [])
-  const onSubmitCallbacks = []
+  const { asPath, push } = router
 
   const {
     goto,
     authIndexValue,
+    ForceAuth,
     mode,
-    overrideStage = '',
     companyNo,
     jurisdiction
   } = queryParams
 
+  const links = {
+    chooseCompanyPath: `${asPath}`,
+    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
+    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
+  }
+
   useEffect(() => {
     headingCount.reset()
+  })
 
-    const links = {
-      chooseCompanyPath: `${asPath}`,
-      requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
-      ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-      resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
+  const FRFlowConfig = {
+    journeyName: authIndexValue || FORGEROCK_TREE_WF_LOGIN,
+    journeyNamespace: 'LOGIN',
+    isAuthOnly: mode === 'AUTHN_ONLY',
+    defaultErrorStage: 'EWF_LOGIN_1',
+    lang,
+    formRef,
+    stepQuery: {
+      companyNo,
+      ForceAuth,
+      jurisdiction
+    },
+    handleSuccess: () => {
+      if (goto) {
+        return push(goto)
+      }
+      push('/account/home/')
     }
-
-    forgerockFlow({
-      journeyName: authIndexValue || FORGEROCK_TREE_WF_LOGIN,
-      journeyNamespace: 'LOGIN',
-      isAuthOnly: mode === 'AUTHN_ONLY',
-      lang,
-      stepOptions: {
-        query: {
-          companyNo,
-          jurisdiction
-        }
-      },
-      onSuccess: () => {
-        if (goto) {
-          return push(goto)
-        }
-        push('/account/home')
-      },
-      onFailure: (errData, newErrors = []) => {
-        setErrors(newErrors)
-        let stage = overrideStage || 'CH_LOGIN_1'
-        newErrors.forEach((error) => {
-          if (error.stage) {
-            stage = error.stage
-          }
-        })
-        setCustomPageProps({ links })
-        setUiFeatures(getStageFeatures(lang, stage))
-      },
-      onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
-        const stepCustomPageProps = findCustomPageProps(step)
-        const stage = step.payload.stage || findCustomStage(step)
-        step.payload.stage = stage
-
-        if (stepCustomPageProps) {
-          if (stepCustomPageProps.apiError) {
-            // Transform the apiError structure to the app's errors array structure
-            const apiErrorsAsAppErrors = stepCustomPageProps.apiError.errors.map((errorItem) => ({
-              label: errorItem.message
-            }))
-
-            stepErrors.push(...apiErrorsAsAppErrors)
-          }
-        }
-
-        if (stepCustomPageProps?.company) {
-          stepCustomPageProps.company = mapCompanyData(stepCustomPageProps.company)
-        }
-
-        setErrors(stepErrors)
-        setCustomPageProps({ ...stepCustomPageProps, links })
-        setUiStage(step.payload.stage)
-        setUiElements(step.callbacks)
-        setSubmitData(() => submitDataFunc)
-      }
-    })
-  }, [companyNo, jurisdiction, lang, asPath, overrideStage, headingCount, goto, authIndexValue, mode, push])
-
-  useEffect(() => {
-    setUiFeatures(getStageFeatures(lang, overrideStage || uiStage))
-  }, [lang, uiStage, overrideStage])
-
-  const onSubmit = (evt) => {
-    evt?.preventDefault()
-
-    // Clear existing errors
-    setErrors([])
-
-    // Get formData from the DOM with callback IDTokens as the key
-    const formData = serializeForm(formRef.current)
-
-    // Execute any submit callbacks defined in the child components and apply returned errors
-    for (const callback of onSubmitCallbacks) {
-      const errors = callback(formData)
-      if (errors.length) {
-        setErrors(translateErrors(errors, lang))
-        return
-      }
-    }
-
-    // Submit FR stage
-    submitData(formData, {
-      query: {
-        companyNo,
-        jurisdiction
-      }
-    })
   }
 
-  const onSecondarySubmit = (evt, params) => {
+  const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading } = useFRFlow(FRFlowConfig)
+
+  const { onSubmit, ...restHandlers } = flowHandlers
+
+  const onBack = (evt) => {
     evt.preventDefault()
-    document.getElementsByName(params.target)[0].value = params.value
-    onSubmit()
+    window.location.assign(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
   }
 
-  const onBack = (evt, params) => {
-    evt.preventDefault()
-    push(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
-  }
+  const { errors = [], ...restPageProps } = stepPageProps
 
-  if (!uiStage) {
-    return null
-  }
+  const companySelection = uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'
 
   return (
     <FeatureDynamicView
@@ -159,10 +79,12 @@ const Login = ({ lang, queryParams }) => {
       formRef={formRef}
       onBack={onBack}
       hasBackLink={uiStage !== 'CH_LOGIN_1' && uiStage !== 'EWF_LOGIN_1'}
-      hasAccountLinks={uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'}
+      hasLogoutLink={companySelection}
+      hasAccountLinks={companySelection}
     >
-      <Dynamic
-        {...customPageProps}
+      {uiStage
+        ? <Dynamic
+        {...restPageProps}
         {...queryParams}
         componentMap={componentMap}
         headingCount={headingCount}
@@ -170,8 +92,11 @@ const Login = ({ lang, queryParams }) => {
         errors={errors}
         uiElements={uiElements}
         uiStage={uiStage}
-        handlers={{ onSecondarySubmit, onSubmitCallbacks }}
+        handlers={restHandlers}
+        links={links}
+        loading={loading}
       />
+        : null}
     </FeatureDynamicView>
   )
 }
