@@ -23,6 +23,7 @@ const Login = ({ lang, queryParams }) => {
   const {
     goto,
     authIndexValue,
+    ForceAuth,
     mode,
     companyNo,
     jurisdiction
@@ -48,6 +49,7 @@ const Login = ({ lang, queryParams }) => {
     formRef,
     stepQuery: {
       companyNo,
+      ForceAuth,
       jurisdiction
     },
     handleSuccess: () => {
@@ -69,13 +71,16 @@ const Login = ({ lang, queryParams }) => {
 
   const { errors = [], ...restPageProps } = stepPageProps
 
+  const companySelection = uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'
+
   return (
     <FeatureDynamicView
       onSubmit={onSubmit}
       formRef={formRef}
       onBack={onBack}
       hasBackLink={uiStage !== 'CH_LOGIN_1' && uiStage !== 'EWF_LOGIN_1'}
-      hasAccountLinks={uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'}
+      hasLogoutLink={companySelection}
+      hasAccountLinks={companySelection}
     >
       {uiStage
         ? <Dynamic

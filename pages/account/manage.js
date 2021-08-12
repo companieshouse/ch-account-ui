@@ -37,8 +37,6 @@ const ManageAccount = ({ errors, lang }) => {
     }
   }, [notifyType, notifyHeading, notifyTitle, notifyChildren, headingCount, sub, accessToken, lang])
 
-  console.log(preferences)
-
   return (
     <FeatureDynamicView
       width="two-thirds"
