@@ -2,6 +2,7 @@ import React from 'react'
 import fetchMock from 'fetch-mock'
 import { Onboarding } from '../../../pages/account/onboarding'
 import { mockAuthId } from '../common-mocks'
+import { setCallback } from '../story-utils'
 
 const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHOnboarding'
 
@@ -13,7 +14,11 @@ export default {
 }
 
 const Template = (args) => {
-  const { responseData, ...rest } = args
+  const { responseData, pageProps, ...rest } = args
+  if (pageProps) {
+    // eslint-disable-next-line react/prop-types
+    setCallback(responseData.callbacks, 'pagePropsJSON', pageProps)
+  }
   fetchMock.restore().mock(path, responseData, {
     delay: 100 // fake a slow network
   })
@@ -233,5 +238,79 @@ ONBOARDING_PROFILE.args = {
         ]
       }
     ]
+  }
+}
+
+export const ONBOARDING_ERROR = Template.bind({})
+
+const onBoardingErrors = {
+  ONBOARDING_NO_TOKEN_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_NO_TOKEN_ERROR"}]}',
+  ONBOARDING_ERROR_TOKEN_EXPIRED: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_EXPIRED"}]}',
+  ONBOARDING_USER_LOOKUP_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_USER_LOOKUP_ERROR"}]}',
+  ONBOARDING_USER_NOT_FOUND_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_USER_NOT_FOUND_ERROR"}]}',
+  ONBOARDING_DATE_EXPIRED_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_DATE_EXPIRED_ERROR"}]}',
+  ONBOARDING_NO_INVITE_FOUND: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_NO_INVITE_FOUND"}]}',
+  ONBOARDING_ERROR_JWT_TYPE_UNKNOWN: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_JWT_TYPE_UNKNOWN"}]}',
+  ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH"}]}',
+  ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE"}]}'
+}
+
+ONBOARDING_ERROR.argTypes = {
+  pageProps: {
+    options: Object.keys(onBoardingErrors),
+    type: 'select',
+    mapping: onBoardingErrors
+  }
+}
+ONBOARDING_ERROR.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+ONBOARDING_ERROR.args = {
+  queryParams: {},
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [{
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: 'ONBOARDING_ERROR'
+        },
+        {
+          name: 'id',
+          value: 'stage'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken2',
+          value: 'stage'
+        }
+      ]
+    }, {
+      type: 'HiddenValueCallback',
+      output: [
+        {
+          name: 'value',
+          value: ''
+        },
+        {
+          name: 'id',
+          value: 'pagePropsJSON'
+        }
+      ],
+      input: [
+        {
+          name: 'IDToken5',
+          value: 'pagePropsJSON'
+        }
+      ]
+    }]
   }
 }

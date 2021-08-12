@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import HeadingCount from '../../../services/HeadingCount'
 import {
+  CH_EWF_AUTHENTICATED_ENTRY_URL,
   FORGEROCK_TREE_ONBOARDING
 } from '../../../services/environment'
 import { getStageFeatures } from '../../../services/translate'
@@ -118,6 +119,7 @@ const Onboarding = ({ lang, queryParams }) => {
         uiElements={uiElements}
         uiStage={uiStage}
         handlers={{ onSecondarySubmit }}
+        links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
       />
     </FeatureDynamicView>
   )
