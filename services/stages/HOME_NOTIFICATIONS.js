@@ -10,13 +10,24 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
     conditional: {
       prop: '${notifyToken}',
       operator: 'eeq',
-      value: 'authSuccess'
+      value: 'noCompanyMatch'
     },
     component: 'NotificationBanner',
     dynamicProps: {
-      type: 'success',
-      title: tokens['SHARED.success'],
-      heading: tokens['SHARED.anEmailRequestHasBeenSentToInvitedUserToBe']
+      title: tokens['SHARED.important'],
+      heading: 'The authorisation request for this company no longer exists'
+    }
+  },
+  {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'companyAlreadyAuthorised'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens['SHARED.important'],
+      heading: 'You are already authorised for this company'
     }
   },
   {
@@ -261,10 +272,14 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                     content: [
                                       {
                                         component: 'LinkText',
+                                        props: {
+                                          className: 'govuk-link--no-visited-state',
+                                          testId: 'declineRequestLink'
+                                        },
                                         dynamicProps: {
                                           href: '${company.acceptPath}',
-                                          children: tokens['HOME_NOTIFICATIONS.[5].Fragment.acceptRequest'],
-                                          className: 'govuk-link--no-visited-state'
+                                          children: tokens['HOME_NOTIFICATIONS.[5].Fragment.acceptRequest']
+
                                         }
                                       }
                                     ]
@@ -274,10 +289,13 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                     content: [
                                       {
                                         component: 'LinkText',
+                                        props: {
+                                          className: 'govuk-link--no-visited-state',
+                                          testId: 'declineRequestLink'
+                                        },
                                         dynamicProps: {
                                           href: '${company.declinePath}',
-                                          children: tokens['HOME_NOTIFICATIONS.[5].Fragment.declineRequest'],
-                                          className: 'govuk-link--no-visited-state'
+                                          children: tokens['HOME_NOTIFICATIONS.[5].Fragment.declineRequest']
                                         }
                                       }
                                     ]

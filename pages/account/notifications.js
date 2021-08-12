@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { useMemo, useState } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
-import WithLang from '../../services/lang/WithLang'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
@@ -11,6 +10,8 @@ import componentMap from '../../services/componentMap'
 import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
 import { generateQueryUrl } from '../../services/queryString'
 import useFRAuth from '../../services/useFRAuth'
+import WithQueryParams from '../../components/providers/WithQueryParams'
+import WithLang from '../../services/lang/WithLang'
 
 export const extendCompaniesData = (companiesData, sub) => {
   return companiesData.map((company) => {
@@ -21,14 +22,17 @@ export const extendCompaniesData = (companiesData, sub) => {
   })
 }
 
-const Notifications = ({ errors, lang }) => {
+const Notifications = ({ errors, lang, queryParams }) => {
   const { profile, accessToken } = useFRAuth()
-  const [associationData, setAssociationData] = useState({ count: '0', companies: [] })
+  const [associationData, setAssociationData] = useState({ count: '0' })
+  const [pageNotification, setPageNotification] = useState()
   const uiStage = 'HOME_NOTIFICATIONS'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
   const sub = profile?.sub
+  const { companies, pendingCompanies } = associationData
+  const { companyNumber } = queryParams
 
   React.useEffect(() => {
     headingCount.reset()
@@ -37,11 +41,30 @@ const Notifications = ({ errors, lang }) => {
       getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
         setAssociationData({
           count: response.pendingCount,
-          companies: extendCompaniesData(response.pendingCompanies, sub)
+          companies: response.companies,
+          pendingCompanies: extendCompaniesData(response.pendingCompanies, sub)
         })
       })
     }
   }, [sub, accessToken, headingCount])
+
+  // Handle companyNumber query
+  React.useEffect(() => {
+    if (companyNumber && pendingCompanies) {
+      const anchorCompany = pendingCompanies.find((company) => company.number === companyNumber)
+      if (anchorCompany) {
+        window.location.hash = anchorCompany.number
+        return
+      }
+
+      const confirmedCompany = companies.find((company) => company.number === companyNumber)
+      if (confirmedCompany) {
+        setPageNotification('companyAlreadyAuthorised')
+      } else {
+        setPageNotification('noCompanyMatch')
+      }
+    }
+  }, [companyNumber, companies, pendingCompanies])
 
   return (
     <FeatureDynamicView
@@ -60,26 +83,22 @@ const Notifications = ({ errors, lang }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
-        companies={associationData.companies}
+        companies={associationData.pendingCompanies}
+        notifyToken={pageNotification}
         {...router.query}
       />
     </FeatureDynamicView>
   )
 }
 
-export default WithLang(Notifications)
+export default WithQueryParams(WithLang(Notifications))
 
 Notifications.propTypes = {
-  companies: PropTypes.array,
   errors: errorsPropType,
-  headingCount: PropTypes.instanceOf(HeadingCount),
-  profile: PropTypes.object,
   lang: PropTypes.string,
-  accessToken: PropTypes.string
+  queryParams: PropTypes.object
 }
 
 Notifications.defaultProps = {
-  companies: [],
-  errors: [],
-  profile: {}
+  errors: []
 }

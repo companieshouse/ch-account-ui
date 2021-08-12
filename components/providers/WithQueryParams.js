@@ -1,4 +1,4 @@
-import querystring from 'querystring'
+import queryString from 'query-string'
 import React from 'react'
 
 /**
@@ -9,7 +9,7 @@ import React from 'react'
  * @returns {function(*): *}
  */
 const WithQueryParams = (WrappedComponent) => function WithQueryParams (props) {
-  const queryParams = typeof window !== 'undefined' ? querystring.parse(window.location.search.slice(1)) : {}
+  const queryParams = typeof window !== 'undefined' ? queryString.parse(window.location.search.slice(1)) : {}
   return <WrappedComponent {...props} queryParams={queryParams} />
 }
 
