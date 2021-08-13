@@ -149,9 +149,10 @@ const ChangePassword = ({ lang }) => {
       uiStage={uiStage}
       hasAccountLinks
       accountLinksItem={6}
-      {...customPageProps}
     >
       <Dynamic
+        {...customPageProps}
+        {...router.query}
         componentMap={componentMap}
         headingCount={headingCount}
         content={uiFeatures}
@@ -159,7 +160,6 @@ const ChangePassword = ({ lang }) => {
         uiElements={uiElements}
         uiStage={uiStage}
         handlers={{ onSubmitCallbacks }}
-        {...router.query}
       />
     </FeatureDynamicView>
   )
