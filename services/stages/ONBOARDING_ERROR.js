@@ -1,5 +1,5 @@
 import genericError from './shared/genericError.js'
-import pageNotFoundError from './shared/pageNotFoundError'
+import pageNotFoundError from './shared/pageNotFoundError.js'
 
 const ONBOARDING_ERROR = (lang, tokens) => [
   {
@@ -21,7 +21,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
       operator: 'in',
-      value: ['ONBOARDING_NO_TOKEN_ERROR']
+      value: ['ONBOARDING_NO_TOKEN_ERROR', 'ONBOARDING_TOKEN_PARSING_ERROR']
     },
     component: 'Fragment',
     content: pageNotFoundError(lang, tokens)
@@ -37,20 +37,20 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: 'Invitation has expired',
+          children: tokens['ONBOARDING_ERROR.[3].Fragment.invitationHasExpired'],
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: 'The link to accept or decline authorisation to file online has expired.'
+          children: tokens['SHARED.theLinkToAcceptOrDeclineAuthorisationToFile']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: 'The person who gave you authorisation would need to do this again if you want to be authorised to file online for this company.'
+          children: tokens['SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo']
         }
       },
       {
@@ -59,7 +59,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: 'Alternatively, if you have access to the current authentication code, you can '
+              children: tokens['SHARED.alternativelyIfYouHaveAccessToTheCurrent']
             }
           },
           {
@@ -68,14 +68,14 @@ const ONBOARDING_ERROR = (lang, tokens) => [
               href: '${links.ewfAuthenticatedEntry}'
             },
             props: {
-              children: 'sign in to WebFiling',
+              children: tokens['SHARED.signInToWebFilingLink'],
               testId: 'webFilingLink'
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: ' and add the company to your account.'
+              children: tokens['SHARED.andAddTheCompanyToYourAccount']
             }
           }
         ]
@@ -93,20 +93,20 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: 'Authorisation link has expired',
+          children: tokens['ONBOARDING_ERROR.[4].Fragment.authorisationLinkHasExpired'],
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: 'The link to accept or decline authorisation to file online has expired.'
+          children: tokens['SHARED.theLinkToAcceptOrDeclineAuthorisationToFile']
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: 'The person who gave you authorisation would need to do this again if you want to be authorised to file online for this company.'
+          children: tokens['SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo']
         }
       },
       {
@@ -115,7 +115,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: 'Alternatively, if you have access to the current authentication code, you can '
+              children: tokens['SHARED.alternativelyIfYouHaveAccessToTheCurrent']
             }
           },
           {
@@ -124,14 +124,14 @@ const ONBOARDING_ERROR = (lang, tokens) => [
               href: '${links.ewfAuthenticatedEntry}'
             },
             props: {
-              children: 'sign in to WebFiling',
+              children: tokens['SHARED.signInToWebFilingLink'],
               testId: 'webFilingLink'
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: ' and add the company to your account.'
+              children: tokens['SHARED.andAddTheCompanyToYourAccount']
             }
           }
         ]

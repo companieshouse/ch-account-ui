@@ -245,6 +245,7 @@ export const ONBOARDING_ERROR = Template.bind({})
 
 const onBoardingErrors = {
   ONBOARDING_NO_TOKEN_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_NO_TOKEN_ERROR"}]}',
+  ONBOARDING_TOKEN_PARSING_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_TOKEN_PARSING_ERROR"}]}',
   ONBOARDING_ERROR_TOKEN_EXPIRED: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_EXPIRED"}]}',
   ONBOARDING_USER_LOOKUP_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_USER_LOOKUP_ERROR"}]}',
   ONBOARDING_USER_NOT_FOUND_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_USER_NOT_FOUND_ERROR"}]}',
