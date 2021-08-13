@@ -2,14 +2,14 @@ const errorSignedOut = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.sorryThereIsAProblemWithTheService'],
+      children: tokens('SHARED.sorryThereIsAProblemWithTheService'),
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.weHaveNotSavedYourInformation']
+      children: tokens('SHARED.weHaveNotSavedYourInformation')
     }
   },
   {
@@ -25,7 +25,7 @@ const errorSignedOut = (lang, tokens) => [
           href: '${links.resumePath}'
         },
         props: {
-          children: tokens['SHARED.signBackInToYourAccount'],
+          children: tokens('SHARED.signBackInToYourAccount'),
           testId: 'loginExistingAccountLink'
         }
       },
@@ -36,7 +36,7 @@ const errorSignedOut = (lang, tokens) => [
         },
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.signBackInToYourAccount'],
+          children: tokens('SHARED.signBackInToYourAccount'),
           href: '/account/login',
           testId: 'loginExistingAccountLink'
         }
@@ -44,7 +44,7 @@ const errorSignedOut = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.toTryAgain']
+          children: tokens('SHARED.toTryAgain')
         }
       }
     ]

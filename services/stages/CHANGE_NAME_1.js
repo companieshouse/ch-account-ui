@@ -3,13 +3,13 @@ const CHANGE_NAME_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['CHANGE_NAME_1.[0].BrowserTitle.changeYourName']
+      title: tokens('CHANGE_NAME_1.[0].BrowserTitle.changeYourName')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.changeYourName'],
+      children: tokens('SHARED.changeYourName'),
       size: 'l'
     }
   },
@@ -18,7 +18,7 @@ const CHANGE_NAME_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
-          label: tokens['CHANGE_NAME_1.[3].DisplayUiElements.enterNewFullName'],
+          label: tokens('CHANGE_NAME_1.[3].DisplayUiElements.enterNewFullName'),
           autoComplete: 'off'
         }
       }
@@ -27,31 +27,31 @@ const CHANGE_NAME_1 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.whereYourNameWillBeShown']
+      summary: tokens('SHARED.whereYourNameWillBeShown')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouProvideYourNameThisWillBeShown']
+          children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
         }
       },
       {
         component: 'List',
         props: {
-          items: tokens['SHARED.whereYourNameWillBeShownList']
+          items: tokens('SHARED.whereYourNameWillBeShownList')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.itIsUpToYouHowYourNameIsShownForExampleJen']
+          children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouDoNotProvideYourNameYourEmailAddress']
+          children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
         }
       }
     ]
@@ -62,7 +62,7 @@ const CHANGE_NAME_1 = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens['CHANGE_NAME_1.[4].ButtonGroup.changeName'],
+          children: tokens('CHANGE_NAME_1.[4].ButtonGroup.changeName'),
           type: 'submit',
           testId: 'submitButton'
         }
@@ -70,7 +70,7 @@ const CHANGE_NAME_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.cancel'],
+          children: tokens('SHARED.cancel'),
           href: '/account/manage'
         }
       }

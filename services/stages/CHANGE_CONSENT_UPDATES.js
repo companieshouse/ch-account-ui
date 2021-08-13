@@ -3,7 +3,7 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail']
+      title: tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail')
     }
   },
   {
@@ -16,14 +16,14 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
         IDToken2: {
           renderLabelAs: 'heading',
           captionPosition: 'above',
-          label: tokens['CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.canWeEmailYouToTellYouAboutANewMessageInYour'],
-          hint: tokens['CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.inTheFutureWedLikeToSendYouEmailsToLetYou'],
+          label: tokens('CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.canWeEmailYouToTellYouAboutANewMessageInYour'),
+          hint: tokens('CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.inTheFutureWedLikeToSendYouEmailsToLetYou'),
           options: [
             {
-              label: tokens['SHARED.yes']
+              label: tokens('SHARED.yes')
             },
             {
-              label: tokens['SHARED.no']
+              label: tokens('SHARED.no')
             }
           ]
         },
@@ -39,7 +39,7 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens['SHARED.save'],
+          children: tokens('SHARED.save'),
           type: 'submit',
           testId: 'submitButton'
         }
@@ -47,7 +47,7 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.cancel'],
+          children: tokens('SHARED.cancel'),
           href: '/account/manage'
         }
       }

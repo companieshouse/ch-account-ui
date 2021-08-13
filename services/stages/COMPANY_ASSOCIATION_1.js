@@ -3,13 +3,13 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.enterTheDetailsOfTheCompanyYouWantToAdd']
+      title: tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.enterTheDetailsOfTheCompanyYouWantToAdd']
+      children: tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd')
     }
   },
   {
@@ -17,7 +17,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
-          label: tokens['SHARED.whatIsTheCompanyNumber'],
+          label: tokens('SHARED.whatIsTheCompanyNumber'),
           fixedWidth: '10',
           autoComplete: 'off',
           testId: 'companyNumberInputField',
@@ -26,7 +26,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
             {
               component: 'Details',
               props: {
-                summary: tokens['SHARED.helpWithMyCompanyNumber']
+                summary: tokens('SHARED.helpWithMyCompanyNumber')
               },
               content: [
                 {
@@ -36,13 +36,13 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
                     {
                       component: 'SpanText',
                       props: {
-                        children: tokens['SHARED.youCanFindThisBySearchingForTheCompanyOn']
+                        children: tokens('SHARED.youCanFindThisBySearchingForTheCompanyOn')
                       }
                     },
                     {
                       component: 'LinkText',
                       props: {
-                        children: tokens['SHARED.companiesHouseRegisterOpensInANewTab'],
+                        children: tokens('SHARED.companiesHouseRegisterOpensInANewTab'),
                         href: 'https://find-and-update.company-information.service.gov.uk',
                         target: '_blank',
                         testId: 'companiesHouseRegisterLink'
@@ -51,7 +51,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
                     {
                       component: 'SpanText',
                       props: {
-                        children: tokens['SHARED.']
+                        children: tokens('SHARED.')
                       }
                     }
                   ]
@@ -61,21 +61,21 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           ]
         },
         IDToken3: {
-          label: tokens['EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered'],
+          label: tokens('EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered'),
           formGroup: 'companyDetails',
           options: [
             {
-              label: tokens['EWF_LOGIN_2.[2].DisplayUiElements.englandWales'],
+              label: tokens('EWF_LOGIN_2.[2].DisplayUiElements.englandWales'),
               value: 0,
               checked: false
             },
             {
-              label: tokens['EWF_LOGIN_2.[2].DisplayUiElements.scotland'],
+              label: tokens('EWF_LOGIN_2.[2].DisplayUiElements.scotland'),
               value: 1,
               checked: false
             },
             {
-              label: tokens['EWF_LOGIN_2.[2].DisplayUiElements.northernIreland'],
+              label: tokens('EWF_LOGIN_2.[2].DisplayUiElements.northernIreland'),
               value: 2,
               checked: false
             }
@@ -87,7 +87,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

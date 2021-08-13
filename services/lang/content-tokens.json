@@ -1,0 +1,1138 @@
+{
+    "CHANGE_CONSENT_MARKETING.[0].BrowserTitle.manageAccountChangeConsentForCompaniesHouse": {
+        "en": "Manage account - Can we send you emails about Companies House activities?",
+        "cy": "Rheoli cyfrif - Allwn ni anfon negeseuon e-bost atoch am weithgareddau Tŷ'r Cwmnïau?"
+    },
+    "CHANGE_CONSENT_MARKETING.[1].DisplayUiElements.canWeSendYouEmailsAboutCompaniesHouse": {
+        "en": "Can we send you emails about Companies House activities?",
+        "cy": "Allwn ni anfon negeseuon e-bost atoch am weithgareddau Tŷ'r Cwmnïau?"
+    },
+    "CHANGE_CONSENT_MARKETING.[1].DisplayUiElements.forExampleMarketingCommunicationsCampaignsOr": {
+        "en": "For example, marketing, communications campaigns, or user research activities",
+        "cy": "Er enghraifft, ymgyrchoedd marchnata, cyfathrebu neu weithgareddau ymchwil i ddefnyddwyr "
+    },
+    "CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail": {
+        "en": "Manage account - Can we email you to tell you about a new message in your account?",
+        "cy": "Rheoli cyfrif - Allwn ni anfon e-bost atoch i ddweud wrthych am neges newydd yn eich cyfrif?"
+    },
+    "CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.canWeEmailYouToTellYouAboutANewMessageInYour": {
+        "en": "Can we email you to tell you about a new message in your account?",
+        "cy": "Allwn ni anfon e-bost atoch i ddweud wrthych am neges newydd yn eich cyfrif?"
+    },
+    "CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.inTheFutureWedLikeToSendYouEmailsToLetYou": {
+        "en": "In the future, we'd like to send you emails to let you know you've received a new message in your account",
+        "cy": "Yn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges newydd yn eich cyfrif "
+    },
+    "CHANGE_EMAIL_1.[2].DisplayUiElements.enterYourNewEmailAddress": {
+        "en": "Enter your new email address",
+        "cy": "Mewngofnodwch eich cyfeiriad e-bost newydd"
+    },
+    "CHANGE_EMAIL_1.[2].DisplayUiElements.reEnterYourNewEmailAddress": {
+        "en": "Re-enter your new email address",
+        "cy": "Ailgofnodwch eich cyfeiriad e-bost newydd "
+    },
+    "CHANGE_EMAIL_1.[3].ButtonGroup.updateEmailAddress": {
+        "en": "Update email address",
+        "cy": "Diweddaru eich cyfeiriad e-bost"
+    },
+    "CHANGE_NAME_1.[0].BrowserTitle.changeYourName": {
+        "en": "Manage account - Change your name",
+        "cy": "Rheoli eich cyfrif - Diweddaru eich enw"
+    },
+    "CHANGE_NAME_1.[3].DisplayUiElements.enterNewFullName": {
+        "en": "Enter your full name",
+        "cy": "Cofnodwch enw llawn newydd"
+    },
+    "CHANGE_NAME_1.[4].ButtonGroup.changeName": {
+        "en": "Update name",
+        "cy": "Diweddaru enw"
+    },
+    "CHANGE_PASSWORD_1.[2].DisplayUiElements.enterYourCurrentPassword": {
+        "en": "Enter your current password",
+        "cy": "Mewngofnodwch eich cyfrinair cyfredol"
+    },
+    "CH_LOGIN_1.[0].BrowserTitle.signInToCompaniesHouseAccount": {
+        "en": "Sign in to Companies House account",
+        "cy": "Sign in to Companies House account"
+    },
+    "CH_LOGIN_1.[1].PageHeading.signInToYourCompaniesHouseAccount": {
+        "en": "Sign in to your Companies House account",
+        "cy": "Sign in to your Companies House account"
+    },
+    "CH_LOGIN_1.[2].DisplayUiElements.youCannotUseYourWebFilingDetailsToSignInYou": {
+        "en": "You cannot use your WebFiling details to sign in. You must sign in to or create a Companies House account.",
+        "cy": "You cannot use your WebFiling details to sign in. You must sign in to or create a Companies House account."
+    },
+    "CH_LOGIN_1.[4].BodyText.registerANewAccount": {
+        "en": "Register a new account",
+        "cy": "Register a new account"
+    },
+    "COMPANY_ASSOCIATION_1.[0].BrowserTitle.tellUsTheCompanyNumber": {
+        "en": "Your companies - What is the company number?",
+        "cy": "Eich cwmnïau - Beth yw rhif y cwmni?"
+    },
+    "COMPANY_ASSOCIATION_1.[2].DisplayUiElements.enterTheNumberOfTheCompanyYouWouldLikeToAdd": {
+        "en": "Enter the number of the company you would like to add to your Companies House account.",
+        "cy": "Mewngofnodwch rif y cwmni rydych chi am ychwanegu at eich cyfrif WebFiling Tŷ’r Cwmnïau."
+    },
+    "COMPANY_ASSOCIATION_2.[0].BrowserTitle.confirmThisIs": {
+        "en": "Your companies - Confirm this is the correct company",
+        "cy": "Eich cwmnïau - Cadarnhewch mai hwn yw'r cwmni cywir"
+    },
+    "COMPANY_ASSOCIATION_3.[0].BrowserTitle.provideTheCompanyAuthCode": {
+        "en": "Your companies - Enter the company authentication code",
+        "cy": "Eich cwmnïau - Cofnodwch god dilysu'r cwmni"
+    },
+    "EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount": {
+        "en": "Create an account",
+        "cy": "Creu cyfrif"
+    },
+    "EWF_LOGIN_2.[2].DisplayUiElements.englandWales": {
+        "en": "England or Wales",
+        "cy": "Cymru neu Lloegr"
+    },
+    "EWF_LOGIN_2.[2].DisplayUiElements.northernIreland": {
+        "en": "Northern Ireland",
+        "cy": "Gogledd Iwerddon"
+    },
+    "EWF_LOGIN_2.[2].DisplayUiElements.scotland": {
+        "en": "Scotland",
+        "cy": "Alban"
+    },
+    "EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered": {
+        "en": "Where was the company registered?",
+        "cy": "Ble cofrestrwyd y cwmni?"
+    },
+    "EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline": {
+        "en": "Store company details for future online filings",
+        "cy": "Storio manylion cwmni ar gyfer ffeilio ar-lein yn y dyfodol"
+    },
+    "EWF_LOGIN_5.[3].BodyText.weCanSecurelyStoreTheCompanyDetailsYou": {
+        "en": "We can securely store the company details you entered to make online filing quicker and easier in the future.",
+        "cy": "Gallwn storio manylion y cwmni a roesoch yn ddiogel i wneud ffeilio ar-lein yn haws yn y dyfodol"
+    },
+    "EWF_LOGIN_5.[4].BodyText.thisMeansYou": {
+        "en": "This means you:",
+        "cy": "Mae hyn yn golygu:"
+    },
+    "EWF_LOGIN_5.[4].List.canAuthoriseOtherPeople": {
+        "en": "can authorise other people to file online for the company",
+        "cy": "gallwch awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni"
+    },
+    "EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode": {
+        "en": "will not need to re-enter the company's authentication code for most online filings",
+        "cy": "•\t ni fydd angen i chi ail-gofnodi cod dilysu'r cwmni ar gyfer y rhan fwyaf o ffeilio ar-lein"
+    },
+    "EWF_LOGIN_OTP.[1].PageHeading.checkYourEmail": {
+        "en": "Check your email",
+        "cy": "Check your email"
+    },
+    "EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail": {
+        "en": "We've sent you an email with a security code to ${emailAddress}.",
+        "cy": "Rydym wedi anfon e-bost at ${emailAddress} sy'n cynnwys cod diogelwch."
+    },
+    "EWF_PROFILE.[1].Caption.thisIsOptional": {
+        "en": "This is optional. You can update your details at any time.",
+        "cy": "This is optional. You can update your details at any time."
+    },
+    "EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional": {
+        "en": "What is your full name?",
+        "cy": "What is your full name? (optional)"
+    },
+    "EWF_PROFILE.[2].DisplayUiElements.whatIsYourMobileNumberOptional": {
+        "en": "What is your mobile number?",
+        "cy": "What is your mobile number? (optional)"
+    },
+    "EWF_PROFILE.[3].ButtonGroup.skip": {
+        "en": "Skip",
+        "cy": "Skip"
+    },
+    "HOME_AUTHORISED_PERSON.[0].BrowserTitle.authorisedPersonsDetails": {
+        "en": "Your companies - Authorised person's details",
+        "cy": "Eich cwmnïau - Manylion y person awdurdodedig"
+    },
+    "HOME_AUTHORISED_PERSON.[3].SummaryList.name": {
+        "en": "Name",
+        "cy": "Enw"
+    },
+    "HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail": {
+        "en": "Resend email",
+        "cy": "Anfon e-bost arall"
+    },
+    "HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust": {
+        "en": "We have sent an email to ${user.mail}. This person must select the request link in the email so that they can file online for ${company.name}.",
+        "cy": "Rydym wedi anfon e-bost at ${user.mail}. Rhaid iddynt ddewis y ddolen hon yn yr e-bost i'w hawdurdodi i ffeilio ar-lein ar gyfer ${company.name}."
+    },
+    "HOME_AUTHORISED_PERSON.[4].Button.cancelRequest": {
+        "en": "Cancel request",
+        "cy": "Canslo y cais"
+    },
+    "HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis": {
+        "en": "Remove authorisation to file online for this company",
+        "cy": "Dileu'r awdurdodiad i ffeilio ar gyfer y cwmni hwn"
+    },
+    "HOME_MANAGE_ACCOUNT.[1].NotificationBanner.youveSuccessfullyUpdatedYourMobile": {
+        "en": "You've successfully updated your mobile number.",
+        "cy": "Rydych chi wedi diweddaru eich rhif ffôn symudol yn llwyddiannus."
+    },
+    "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.ifYouReceiveEReminders": {
+        "en": "If you receive eReminders and want them to be sent to this email address, you’ll also need to update your eReminder email address. You can do this in WebFiling.",
+        "cy": "Os ydych yn derbyn eReminders ac eisiau iddynt gael eu hanfon i'r cyfeiriad e-bost hwn, bydd angen i chi hefyd ddiweddaru eich cyfeiriad e-bost eReminder. Gallwch wneud hyn yn WebFiling."
+    },
+    "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourEmailPref": {
+        "en": "You've successfully updated your email preferences.",
+        "cy": "Rydych wedi diweddaru eich dewisiadau e-bost yn llwyddiannus."
+    },
+    "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourEmailTo": {
+        "en": "You've successfully changed your email address to ${profile.email}.",
+        "cy": "Rydych wedi newid eich cyfeiriad e-bost yn llwyddiannus i ${profile.email}."
+    },
+    "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourName": {
+        "en": "You've successfully updated your name.",
+        "cy": "Rydych wedi diweddaru eich enw yn llwyddiannus."
+    },
+    "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourPassword": {
+        "en": "You've successfully updated your password.",
+        "cy": "Rydych wedi diweddaru eich cyfrinair yn llwyddiannus."
+    },
+    "HOME_MANAGE_ACCOUNT.[3].PageHeading.makeChangesToYourDetailsAndAccount": {
+        "en": "Make changes to your details and account settings.",
+        "cy": "Gwnewch newidiadau i’ch manylion a gosodiadau eich cyfrif."
+    },
+    "HOME_MANAGE_ACCOUNT.[4].SummaryList.fullName": {
+        "en": "Full name",
+        "cy": "Enw llawn"
+    },
+    "HOME_MANAGE_ACCOUNT.[4].SummaryList.mobileNumber": {
+        "en": "Mobile number",
+        "cy": "Rhif ffôn Symudol"
+    },
+    "HOME_MANAGE_ACCOUNT.[6].BodyText.someTypesOfEmailAreEssentialToManage": {
+        "en": "Some types of email are essential to manage your account. We need to send you essential emails from time to time.",
+        "cy": "Mae rhai mathau o e-bost yn hanfodol i reoli eich cyfrif. Mae angen i ni anfon negeseuon e-bost hanfodol atoch o bryd i'w gilydd"
+    },
+    "HOME_MANAGE_ACCOUNT.[7].SummaryList.canWeSendYouEmailsAboutCompaniesHouse": {
+        "en": "Can we send you emails about Companies House activities?",
+        "cy": "Gallwn anfon negeseuon e-bost atoch am weithgareddau Tŷ'r Cwmnïau?"
+    },
+    "HOME_MANAGE_ACCOUNT.[7].SummaryList.canWeSendYouEmailsToTellYouAbout": {
+        "en": "Can we send you emails to tell you about a new message in your account?",
+        "cy": "Gallwn anfon negeseuon e-bost atoch i ddweud wrthych am neges newydd yn eich cyfrif?"
+    },
+    "HOME_MANAGE_ACCOUNT.[7].SummaryList.forExampleMarketing": {
+        "en": "For example, marketing, communications campaigns, or user research activities",
+        "cy": "Er enghraifft, marchnata, ymgyrchoedd cyfathrebu, neu weithgareddau ymchwil i ddefnyddwyr"
+    },
+    "HOME_MANAGE_ACCOUNT.[7].SummaryList.inTheFutureWedLikeToSendYouEmails": {
+        "en": "In the future, we'd like to send you emails to let you know you've received a new message in your account",
+        "cy": "IYn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges newydd yn eich cyfrif"
+    },
+    "HOME_NOTIFICATIONS.[4].Fragment.youDoNotHaveAnyMessages": {
+        "en": "You have not received any messages.",
+        "cy": "Nid ydych wedi derbyn unrhyw negeseuon."
+    },
+    "HOME_NOTIFICATIONS.[5].Fragment.acceptRequest": {
+        "en": "Accept",
+        "cy": "Derbyn"
+    },
+    "HOME_NOTIFICATIONS.[5].Fragment.companyInviterGivenNameWantsToGiveYou": {
+        "en": " ${company.inviter.givenName} wants to give you authorisation to file online for this company.",
+        "cy": "Mae ${company.inviter.givenName} eisiau rhoi caniatâd i chi ffeilio ar-lein ar gyfer y cwmni hwn."
+    },
+    "HOME_NOTIFICATIONS.[5].Fragment.declineRequest": {
+        "en": "Decline",
+        "cy": "Gwrthod"
+    },
+    "HOME_NOTIFICATIONS.[5].Fragment.pendingRequests": {
+        "en": "Awaiting confirmation",
+        "cy": "Yn aros am gadarnhad"
+    },
+    "HOME_NOTIFICATIONS.[5].Fragment.someoneWantsToGiveYouAuthorisationToFile": {
+        "en": " ${company.inviter.mail} wants to give you authorisation to file online for this company.",
+        "cy": "Mae ${company.inviter.mail} eisiau rhoi caniatâd i chi ffeilio ar-lein ar gyfer y cwmni hwn."
+    },
+    "HOME_OVERVIEW.[1].Row.home": {
+        "en": "Home",
+        "cy": "Hafan"
+    },
+    "HOME_OVERVIEW.[2].InfoBlock.companies": {
+        "en": "companies",
+        "cy": "cwmnïau"
+    },
+    "HOME_OVERVIEW.[2].InfoBlock.newMessages": {
+        "en": "new messages",
+        "cy": "negeseuon newydd"
+    },
+    "HOME_OVERVIEW.[2].InfoBlock.viewMessagesRelatedToYourAccount": {
+        "en": "View messages relating to your WebFiling account.",
+        "cy": "Gweld y negeseuon sy'n ymwneud â'ch cyfrif WebFiling."
+    },
+    "HOME_OVERVIEW.[3].List.webFiling": {
+        "en": [
+            "file your company’s annual accounts",
+            "file your company’s confirmation statement",
+            "file your company’s director or secretary changes",
+            "sign up to get email reminders"
+        ],
+        "cy": [
+            "ffeilio cyfrifon blynyddol eich cwmni",
+            "ffeilio datganiad cadarnhau eich cwmni",
+            "ffeilio newidiadau cyfarwyddwr neu ysgrifennydd eich cwmni",
+            "cofrestru i gael nodiadau atgoffa drwy e-bost"
+        ]
+    },
+    "HOME_OVERVIEW.[3].List.yourCompanies": {
+        "en": [
+            "add a company to your WebFiling account",
+            "view, manage and file for companies you’ve added",
+            "authorise people to file documents for your company online",
+            "view and manage authorised people"
+        ],
+        "cy": [
+            "tychwanegu gwmni i'ch cyfrif.",
+            "gweld, rheoli a ffeilio ar gyfer cwmnïau rydych chi wedi'u hychwanegu.",
+            "awdurdodi pobl i ffeilio dogfennau ar gyfer eich cwmni ar-lein",
+            "gweld a rheoli pobl awdurdodedig"
+        ]
+    },
+    "HOME_OVERVIEW.[3].Row.services": {
+        "en": "Services",
+        "cy": "Services"
+    },
+    "HOME_OVERVIEW.[3].Row.webFiling": {
+        "en": "WebFiling",
+        "cy": "WebFiling"
+    },
+    "HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany": {
+        "en": " ${companyName} has been added to your account.",
+        "cy": "Mae ${companyName} wedi'i ychwanegu at eich cyfrif."
+    },
+    "HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode": {
+        "en": "change the authentication code",
+        "cy": "newid y cod dilysu"
+    },
+    "HOME_YOUR_COMPANIES.[3].NotificationBanner.forThisCompanyIf": {
+        "en": " for this company if ${userName} still has access to it.",
+        "cy": " ar gyfer y cwmni hwn os oes gan ${userName} fynediad iddo o hyd."
+    },
+    "HOME_YOUR_COMPANIES.[3].NotificationBanner.isNoLongerAuthorisedToFileOnline": {
+        "en": "${userName} is no longer authorised to file online for ${companyName}.",
+        "cy": "Nid yw ${userName} bellach wedi'i hawdurdodi i ffeilio ar-lein ar gyfer ${companyName}."
+    },
+    "HOME_YOUR_COMPANIES.[3].NotificationBanner.youHaveDeclinedTheRequestToHaveAuthorisation": {
+        "en": "You have declined the request to have authorisation to file online for ${companyName}",
+        "cy": "Rydych wedi gwrthod y cais i gael caniatâd i ffeilio ar-lein ar gyfer ${companyName}."
+    },
+    "HOME_YOUR_COMPANIES.[3].NotificationBanner.youShould": {
+        "en": "You may wish to ",
+        "cy": "Efallai yr hoffech "
+    },
+    "HOME_YOUR_COMPANIES.[6].Fragment.addACompanyToYourAccountSoThatYou": {
+        "en": "Add a company to your account so that you can:",
+        "cy": "Ychwanegwch gwmni i'ch cyfrif fel y gallwch:"
+    },
+    "HOME_YOUR_COMPANIES.[6].Fragment.youHaveNotAddedAnyCompaniesToThis": {
+        "en": "You have not added any companies to your WebFiling account",
+        "cy": "Nid ydych wedi ychwanegu unrhyw gwmnïau at eich cyfrif WebFiling"
+    },
+    "HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis": {
+        "en": "Authorise a person to file online for this company",
+        "cy": "Awdurdodi person i ffeilio ar-lein ar gyfer y cwmni hwn"
+    },
+    "HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany": {
+        "en": "File for this company",
+        "cy": "Ffeilio ar gyfer y cwmni hwn"
+    },
+    "HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany": {
+        "en": "People authorised to file online for this company",
+        "cy": "Pobl sydd wedi'u hawdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn"
+    },
+    "HOME_YOUR_COMPANIES.[7].Fragment.view": {
+        "en": "View",
+        "cy": "Gweld"
+    },
+    "HOME_YOUR_COMPANIES.[7].Fragment.viewDetails": {
+        "en": "View details",
+        "cy": "Cadarnhawyd Gweld y manylion"
+    },
+    "HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile": {
+        "en": "authorise other people to file online for the company",
+        "cy": "awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni hwn"
+    },
+    "HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline": {
+        "en": "file for the company online",
+        "cy": "ffeilio ar gyfer y cwmni ar-lein"
+    },
+    "INVITE_USER_1.[0].BrowserTitle.whatAreTheAuthorisedPersonsDetails": {
+        "en": "Eich cwmnïau - Beth yw manylion yr unigolyn awdurdodedig?",
+        "cy": "Eich cwmnïau - Beth yw manylion yr unigolyn awdurdodedig?"
+    },
+    "INVITE_USER_1.[3].BodyText.tellUsTheDetailsOfThePersonYouWantTo": {
+        "en": "Tell us the details of the person you want to authorise to file online for this company.",
+        "cy": "Dywedwch wrthym fanylion y person rydych chi am ei awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn."
+    },
+    "INVITE_USER_1.[4].InsetText.youCanChangeWhoIsAuthorisedToFileAtAny": {
+        "en": "You can change who is authorised to file at any time.",
+        "cy": "Gallwch newid pwy sydd ag awdurdod i ffeilio ar unrhyw adeg."
+    },
+    "INVITE_USER_1.[5].DisplayUiElements.wellSendAnEmailThatContainsARequest": {
+        "en": "We'll send them an email that contains a link.",
+        "cy": "Byddwn yn anfon e-bost sy'n cynnwys dolen."
+    },
+    "LIMIT_EXCEEDED_ERROR.[2].BodyText.youHaveEnteredAnIncorrectCodeTooManyTimesFor": {
+        "en": "You have entered an incorrect code too many times. For your security, we've signed you out.",
+        "cy": "Rydych wedi rhoi cod anghywir i mewn gormod o weithiau. Er mwyn eich diogelwch, rydym wedi eich arwyddo allan."
+    },
+    "LOGIN.[3].BodyText.inWebFilingYouCan": {
+        "en": "In WebFiling, you can:",
+        "cy": "Yn Webfiling, gallwch:"
+    },
+    "LOGIN.[4].List.inWebFilingYouCanFive": {
+        "en": "authorise people to file documents for your company online",
+        "cy": "awdurdodi pobl i ffeilio dogfennau ar gyfer eich cwmni ar-lein"
+    },
+    "LOGIN.[4].List.inWebFilingYouCanFourEmailReminders": {
+        "en": "email reminders",
+        "cy": "atgoffa e-bost"
+    },
+    "LOGIN.[4].List.inWebFilingYouCanFourSignUp": {
+        "en": "sign up to get ",
+        "cy": "cofrestri i gael nodiadau "
+    },
+    "LOGIN.[4].List.inWebFilingYouCanFourWhenYour": {
+        "en": " when your company’s accounts and confirmation statement are due",
+        "cy": " pan fydd cyfrifon a datganiad cadarnhau eich cwmni yn ddyledus"
+    },
+    "LOGIN.[4].List.inWebFilingYouCanOne": {
+        "en": "file your company’s annual accounts",
+        "cy": "ffeilio cyfrifon blynyddol eich cwmni"
+    },
+    "LOGIN.[4].List.inWebFilingYouCanThree": {
+        "en": "file your company’s director or secretary changes and other information",
+        "cy": "ffeilio newidiadau cyfarwyddwr neu ysgrifennydd eich cwmni a gwybodaeth arall"
+    },
+    "LOGIN.[4].List.inWebFilingYouCanTwo": {
+        "en": "file your company’s confirmation statement",
+        "cy": "ffeilio datganiad cadarnhau eich cwmni"
+    },
+    "LOGIN.[6].BodyText.createANewAccount": {
+        "en": "Create a new account",
+        "cy": "Creu cyfrif"
+    },
+    "LOGIN.[7].BodyText.whoCanUseWebFiling": {
+        "en": "Who can use WebFiling",
+        "cy": "Pwy sy'n gallu defnyddio Webfiling?"
+    },
+    "NO_SESSION_ERROR.[2].BodyText.forYourSecurityWeveSignedYouOut": {
+        "en": "For your security, we've signed you out.",
+        "cy": "Er mwyn eich diogelwch, rydym wedi eich arwyddo allan."
+    },
+    "ONBOARDING_ERROR.[3].Fragment.invitationHasExpired": {
+        "en": "Invitation has expired",
+        "cy": "Mae’r gwahoddiad wedi dod i ben"
+    },
+    "ONBOARDING_ERROR.[4].Fragment.authorisationLinkHasExpired": {
+        "en": "Authorisation link has expired",
+        "cy": "Mae'r ddolen awdurdodi wedi dod i ben"
+    },
+    "ONBOARDING_PWD.[0].BrowserTitle.createAPassword": {
+        "en": "Create a password",
+        "cy": "Creu cyfrinair"
+    },
+    "ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause": {
+        "en": "This is because the email address ${user.mail}, which was provided by the person who authorised you, does not have an account.",
+        "cy": "Y rheswm am hyn yw nad oes gan y cyfeiriad e-bost ${user.mail} a ddarparwyd gan y person oedd wedi eich awdurdodi, gyfrif."
+    },
+    "ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate": {
+        "en": "You need to create a WebFiling account to be authorised to file online for ${company.name}",
+        "cy": "Mae angen i chi greu cyfrif WebFiling er mwyn cael eich awdurdodi i ffeilio ar-lein ar gyfer ${company.name}"
+    },
+    "ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling": {
+        "en": "Create a password for your WebFiling account",
+        "cy": "Creu cyfrinair ar gyfer eich cyfrif WebFiling"
+    },
+    "ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling": {
+        "en": "Guidance about online filing using WebFiling (opens in new tab)",
+        "cy": "Cyfarwyddyd ar ffeilio ar-lein gan ddefnyddio Webfiling (yn agor mewn tab newydd)"
+    },
+    "REGISTRATION_2.[0].PageHeading.enterYourDetails": {
+        "en": "Enter your details",
+        "cy": "Enter your details"
+    },
+    "REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress": {
+        "en": "Verify your email address",
+        "cy": "Gwiriwch eich cyfeiriad e-bost"
+    },
+    "REGISTRATION_3.[2].BodyText.whichContainsAVerificationLink": {
+        "en": " which contains a verification link.",
+        "cy": " sy'n cynnwys dolen gwirio."
+    },
+    "REGISTRATION_3.[4].InsetText.theVerificationLinkWillExpire": {
+        "en": "The link will expire in 24 hours.",
+        "cy": "Mi fydd y ddolen yn dod i ben mewn 24 awr."
+    },
+    "REGISTRATION_3.[6].List.openTheEmail": {
+        "en": "Open the email.",
+        "cy": "Agorwch yr e-bost."
+    },
+    "REGISTRATION_3.[6].List.selectTheVerificationLink": {
+        "en": "Select the verification link in the email.",
+        "cy": "Dewiswch y ddolen gwirio yn yr e-bost."
+    },
+    "REGISTRATION_4.[0].PageHeading.createAPassword": {
+        "en": "Create a password",
+        "cy": "Creu cyfrinair"
+    },
+    "REGISTRATION_4.[2].Details.helpWithCreatingAPassword": {
+        "en": "Help with creating a password",
+        "cy": "Help gyda chreu cyfrinair"
+    },
+    "REGISTRATION_ERROR.[4].Fragment.anAccountWithThisEmailAddressAlreadyExists": {
+        "en": "An account with this email address already exists ",
+        "cy": "Mae cyfrif gyda'r cyfeiriad e-bost hwn eisoes yn bodoli "
+    },
+    "REGISTRATION_ERROR.[4].Fragment.registerANewAccount": {
+        "en": "register a new account",
+        "cy": "ddechrau eto i gofrestru cyfrif newydd"
+    },
+    "REGISTRATION_ERROR.[4].Fragment.theLinkToVerifyYourEmailAddressHowNowExpired": {
+        "en": "The link to verify your email address how now expired. You must start again to ",
+        "cy": "Mae'r ddolen i wirio eich cyfeiriad e-bost bellach wedi dod i ben. Rhaid i chi "
+    },
+    "REGISTRATION_ERROR.[4].Fragment.userAlreadyExists": {
+        "en": "User already exists",
+        "cy": "Defnyddiwr yn bodoli eisoes"
+    },
+    "REGISTRATION_ERROR.[4].Fragment.verificationLinkHasExpired": {
+        "en": "Verification link has expired",
+        "cy": "Mae'r ddolen gwirio wedi dod i ben"
+    },
+    "REMOVE_USER_CONFIRM.[0].BrowserTitle.removeAuthorisationToFileOnline": {
+        "en": "Remove authorisation to file online",
+        "cy": "Tynnu awdurdodiad i ffeilio ar-lein ar gyfer y cwmni hwn"
+    },
+    "REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS": {
+        "en": "Remove ${userDisplayName}'s authorisation to file online for this company",
+        "cy": "Tynnu awdurdodiad ${userDisplayName}'s i ffeilio ar-lein ar gyfer y cwmni hwn"
+    },
+    "REMOVE_USER_CONFIRM.[3].BodyText.ifYouRemoveUserDisplayNameSAuthorisationThey": {
+        "en": "If you remove ${userDisplayName}'s authorisation, this means they will no longer be able to file online for ${company.name} without a current authentication code. We'll email ${userDisplayName} to let them know you have removed their authorisation.",
+        "cy": "Os byddwch yn tynnu awdurdodiad ${userDisplayName}, mae hyn yn golygu na fyddant bellach yn gallu ffeilio ar-lein ar gyfer ${company.name} heb god dilysu cyfredol. Byddwn yn e-bostio ${userDisplayName} i roi gwybod iddynt eich bod wedi dileu eu hawdurdodaeth."
+    },
+    "REMOVE_USER_CONFIRM.[4].WarningText.userDisplayNameWillStillBeAbleToFileOnline": {
+        "en": " ${userDisplayName} will still be able to file online for this company if they have access to the current authentication code.",
+        "cy": "Bydd ${userDisplayName} dal yn gallu ffeilio ar-lein ar gyfer y cwmni hwn os oes ganddi fynediad i'r cod dilysu cyfredol."
+    },
+    "REMOVE_USER_CONFIRM.[4].WarningText.youShouldChangeTheAuthenticationCodeForThis": {
+        "en": "You may wish to change the authentication code for this company as soon as possible after you have removed ${userDisplayName}'s authorisation.",
+        "cy": "Efallai y byddwch yn dymuno newid y cod dilysu ar gyfer y cwmni hwn cyn gynted â phosibl ar ôl i chi tynnu awdurdodiad ${userDisplayName}."
+    },
+    "REMOVE_USER_CONFIRM.[6].BodyText.ifUserDisplayNameIsAppointedAsAnOfficerOfThe": {
+        "en": "If ${userDisplayName} is appointed as an officer of the company, such as a director or secretary, removing their authorisation to file online does not remove their appointment.",
+        "cy": "Os penodir ${userDisplayName} yn swyddog i'r cwmni, fel cyfarwyddwr neu ysgrifennydd, nid yw dileu eu hawdurdodiad i ffeilio ar-lein yn dileu eu penodiad."
+    },
+    "REMOVE_USER_CONFIRM.[7].DisplayUiElements.iConfirmThatIHaveReadAndUnderstoodThis": {
+        "en": "I confirm that I have read and understood this information.",
+        "cy": "Rwy'n cadarnhau fy mod wedi darllen a deall y wybodaeth hon."
+    },
+    "REMOVE_USER_CONFIRM.[8].ButtonGroup.removeAuthorisation": {
+        "en": "Remove authorisation",
+        "cy": "Tynnu awdurdodiad"
+    },
+    "REQUEST_AUTHENTICATION_CODE_1.[0].BrowserTitle.requestingAnAuthenticationCode": {
+        "en": "Requesting an authentication code",
+        "cy": "Requesting an authentication code"
+    },
+    "REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.doYouWantUsToSendTheAuthenticationCodeToThe": {
+        "en": "Do you want us to send the authentication code to the registered office address?",
+        "cy": "Do you want us to send the authentication code to the registered office address?"
+    },
+    "REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.wellSendTheAuthenticationCodeByPost": {
+        "en": "We'll send the authentication code by post to:",
+        "cy": "We'll send the authentication code by post to:"
+    },
+    "REQUEST_AUTHENTICATION_CODE_1.[5].BodyText.itCanTakeUpTo5DaysToArrive": {
+        "en": "It can take up to 5 days to arrive.",
+        "cy": "It can take up to 5 days to arrive."
+    },
+    "REQUEST_AUTHENTICATION_CODE_1.[6].Button.sendTheAuthenticationCode": {
+        "en": "Send the authentication code",
+        "cy": "Send the authentication code"
+    },
+    "REQUEST_AUTHENTICATION_CODE_2.[0].BrowserTitle.authenticationCodeRequested": {
+        "en": "Authentication code requested",
+        "cy": "Authentication code requested"
+    },
+    "REQUEST_AUTHENTICATION_CODE_2.[1].NotificationBanner.itUsuallyTakesUpTo5DaysToArrive": {
+        "en": "It usually takes up to 5 days to arrive.",
+        "cy": "It usually takes up to 5 days to arrive."
+    },
+    "REQUEST_AUTHENTICATION_CODE_2.[1].NotificationBanner.theAuthenticationCodeForFlowersLimitedWillBe": {
+        "en": "The authentication code for FLOWERS LIMITED will be posted to the registered office address.",
+        "cy": "The authentication code for FLOWERS LIMITED will be posted to the registered office address."
+    },
+    "RESET_PASSWORD_1.[0].NotificationBanner.yourPasswordNeedsToBeUpdatedPleaseFollowThe": {
+        "en": "Update your password to make your account more secure.",
+        "cy": "Update your password to make your account more secure."
+    },
+    "RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress": {
+        "en": "What is your email address?",
+        "cy": "Beth yw eich cyfeiriad e-bost?"
+    },
+    "RESET_PASSWORD_1.[2].BodyText.enterTheEmailAddressYouUsedToCreateYour": {
+        "en": "Enter the email address you used to create your Companies House WebFiling account.",
+        "cy": "Mewngofnodwch y cyfeiriad e-bost a ddefnyddiwyd gennych i greu eich cyfrif WebFiling Tŷ'r Cwmnïau"
+    },
+    "RESET_PASSWORD_4.[0].PageHeading.resetYourPassword": {
+        "en": "Reset your password",
+        "cy": "Ailosod eich cyfrinair"
+    },
+    "RESET_PASSWORD_6.[0].PageHeading.checkYourEmails": {
+        "en": "Check your emails",
+        "cy": "Check your emails"
+    },
+    "RESET_PASSWORD_6.[2].BodyText.whichContainsLinkToResetYourPassword": {
+        "en": " which contains a link to reset your password.",
+        "cy": " sy'n cynnwys dolen i ailosod eich cyfrinair."
+    },
+    "RESET_PASSWORD_6.[3].InsetText.theLinkWillExpireIn6Hours": {
+        "en": "The link will expire in 6 hours.",
+        "cy": "Daw'r ddolen hon i ben mewPassword reset link has expiredn 6 awr."
+    },
+    "RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired": {
+        "en": "Password reset link has expired",
+        "cy": "Dolen ailosod cyfrinair wedi dod i ben"
+    },
+    "RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword": {
+        "en": "Start again to reset your password",
+        "cy": "Dechreuwch eto i ailosod eich cyfrinair"
+    },
+    "SHARED.": {
+        "en": ".",
+        "cy": "."
+    },
+    "SHARED.aGoodWayToCreateASecureAndMemorablePassword": {
+        "en": "A good way to create a secure and memorable password is to use 3 random words.",
+        "cy": "Ffordd dda o greu cyfrinair diogel a chofiadwy yw defnyddio 3 gair hap."
+    },
+    "SHARED.accountDetails": {
+        "en": "Account details",
+        "cy": "Manylion y cyfrif"
+    },
+    "SHARED.addACompany": {
+        "en": "Add a company",
+        "cy": "Ychwanegwch gwmni"
+    },
+    "SHARED.addYourMobileNumberToMakeYourAccountMore": {
+        "en": "Add your mobile number to make your account more secure. We'll send a security code to this number by text message.",
+        "cy": "Add your mobile number to make your account more secure. We'll send a security code to this number by text message."
+    },
+    "SHARED.alternativelyIfYouHaveAccessToTheCurrent": {
+        "en": "Alternatively, if you have access to the current authentication code, you can ",
+        "cy": "Fel arall, os oes gennych fynediad i'r cod dilysu cyfredol, gallwch "
+    },
+    "SHARED.anEmailRequestHasBeenSentToInvitedUserToBe": {
+        "en": "An email request has been sent to ${invitedUser} to be authorised to file online for ${companyName}",
+        "cy": "Mae cais e-bost wedi'i anfon at ${invitedUser} i'w awdurdodi i ffeilio ar-lein ar gyfer ${companyName}."
+    },
+    "SHARED.andAddTheCompanyToYourAccount": {
+        "en": " and add the company to your account.",
+        "cy": " ac ychwanegu'r cwmni at eich cyfrif."
+    },
+    "SHARED.askUsToSendYouAnotherEmail": {
+        "en": "ask us to send you another email",
+        "cy": "gofynnwch inni anfon e-bost arall atoch"
+    },
+    "SHARED.askUsToSendYouAnotherTextMessage": {
+        "en": "ask us to send you another text message",
+        "cy": "ofyn i ni anfon neges destun arall atoch"
+    },
+    "SHARED.authorisationStatus": {
+        "en": "Authorisation status",
+        "cy": "Statws awdurdodiad"
+    },
+    "SHARED.authorisedPersonsDetails": {
+        "en": "Authorised person's details",
+        "cy": "Manylion y person awdurdodedig"
+    },
+    "SHARED.awaitingConfirmation": {
+        "en": "Awaiting Confirmation",
+        "cy": "Aros am gadarnhad"
+    },
+    "SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo": {
+        "en": "You need a security code to access your account.",
+        "cy": "Mae angen cod diogelwch arnoch i gael mynediad i'ch cyfrif"
+    },
+    "SHARED.cancel": {
+        "en": "Cancel",
+        "cy": "Canslo"
+    },
+    "SHARED.change": {
+        "en": "Change",
+        "cy": "Newid"
+    },
+    "SHARED.changeYourMobileNumber": {
+        "en": "Update your mobile number",
+        "cy": "Diweddaru eich rhif ffôn symudol"
+    },
+    "SHARED.changeYourName": {
+        "en": "Update your name",
+        "cy": "Diweddaru eich enw"
+    },
+    "SHARED.changeYourPassword": {
+        "en": "Update your password",
+        "cy": "Diweddaru eich cyfrinair"
+    },
+    "SHARED.checkYourEmail": {
+        "en": "Check your email",
+        "cy": "Gwiriwch eich negeseuon e-bost"
+    },
+    "SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou": {
+        "en": "Check your junk folder. If it still has not arrived, you can ",
+        "cy": "Gwiriwch eich ffolder sothach. Os nad yw wedi cyrraedd o hyd, gallwch chi "
+    },
+    "SHARED.checkYourPhone": {
+        "en": "Check your phone",
+        "cy": "Gwiriwch eich ffôn"
+    },
+    "SHARED.chooseADifferentCompany": {
+        "en": "Choose a different company",
+        "cy": "Dewiswch gwmni gwahanol"
+    },
+    "SHARED.companiesHouseAccount": {
+        "en": "Companies House account",
+        "cy": "Companies House account"
+    },
+    "SHARED.companiesHouseRegisterOpensInANewTab": {
+        "en": "Companies House register (opens in a new tab)",
+        "cy": "Tŷ'r Cwmnïau (yn agor mewn tab newydd)"
+    },
+    "SHARED.companyNumber": {
+        "en": "Company number",
+        "cy": "Rhif y cwmni"
+    },
+    "SHARED.companyType": {
+        "en": "Company type",
+        "cy": "Math o gwmni"
+    },
+    "SHARED.confirmAndContinue": {
+        "en": "Confirm and continue",
+        "cy": "Cadarnhau a pharhau"
+    },
+    "SHARED.confirmThisIsTheCorrectCompany": {
+        "en": "Confirm this is the correct company",
+        "cy": "Cadarnhewch mai hwn yw'r cwmni cywir"
+    },
+    "SHARED.confirmed": {
+        "en": "Confirmed",
+        "cy": "Cadarnhawyd"
+    },
+    "SHARED.contactCompaniesHouse": {
+        "en": "Contact Companies House",
+        "cy": "Cysylltwch â Thŷ'r Cwmnïau"
+    },
+    "SHARED.continue": {
+        "en": "Continue",
+        "cy": "Parhau"
+    },
+    "SHARED.correspondenceAddress": {
+        "en": "Correspondence address",
+        "cy": "Cyfeiriad gohebiaeth"
+    },
+    "SHARED.createAccount": {
+        "en": "Create account",
+        "cy": "Creu Cyfrif"
+    },
+    "SHARED.doYouWantUsToStoreTheCompanyDetailsFor": {
+        "en": "Do you want us to store the company details for ${company.name}?",
+        "cy": "Ydych chi am i ni storio manylion y cwmni ar gyfer ${company.name}?"
+    },
+    "SHARED.email": {
+        "en": "Email",
+        "cy": "E-bost"
+    },
+    "SHARED.emailAddress": {
+        "en": "Email address",
+        "cy": "Cyfeiriad E-bost"
+    },
+    "SHARED.emailAddressVerified": {
+        "en": "Email address verified",
+        "cy": "Cyfeiriad e-bost wedi'i wirio"
+    },
+    "SHARED.emailPreferences": {
+        "en": "Email preferences",
+        "cy": "Dewisiadau e-bost"
+    },
+    "SHARED.enterANewPassword": {
+        "en": "Enter a new password",
+        "cy": "Mewngofnodwch gyfrinair newydd"
+    },
+    "SHARED.enterPassword": {
+        "en": "Enter password",
+        "cy": "Mewngofnodwch eich cyfrinair"
+    },
+    "SHARED.enterTheCompanyAuthenticationCode": {
+        "en": "Enter the company authentication code",
+        "cy": "Cofnodwch god dilysu'r cwmni"
+    },
+    "SHARED.enterTheDetailsOfTheCompanyYouWantToAccess": {
+        "en": "Enter the details of the company you want to access",
+        "cy": "Mewngofnodwch fanylion y cwmni rydych eisiau mynediad iddo"
+    },
+    "SHARED.enterTheDetailsOfTheCompanyYouWantToAdd": {
+        "en": "Enter the details of the company you want to add to your account",
+        "cy": "Enter the details of the company you want to add to your account"
+    },
+    "SHARED.enterYourCurrentPassword": {
+        "en": "Enter your current password",
+        "cy": "Mewngofnodwch eich cyfrinair cyfredol"
+    },
+    "SHARED.fullName": {
+        "en": "Full name (optional)",
+        "cy": "Full name (optional)"
+    },
+    "SHARED.giveUsADifferentEmailAddress": {
+        "en": "give us a different email address",
+        "cy": "rhowch gyfeiriad e-bost gwahanol i ni"
+    },
+    "SHARED.helpWithAuthenticationCode": {
+        "en": "Help with authentication code",
+        "cy": "Help gyda chod dilysu"
+    },
+    "SHARED.helpWithCreatingYourPassword": {
+        "en": "Help with creating your password",
+        "cy": "Help gyda chreu cyfrinair"
+    },
+    "SHARED.helpWithMyCompanyNumber": {
+        "en": "Help with company number",
+        "cy": "Cymorth gyda rhif y cwmni"
+    },
+    "SHARED.howDoYouWantToConfirmItsYou": {
+        "en": "How do you want to get a security code?",
+        "cy": "Sut ydych chi am dderbyn eich cod diogelwch?"
+    },
+    "SHARED.iHaveNotReceivedATextMessage": {
+        "en": "I have not received a text message",
+        "cy": "Nid wyf wedi derbyn neges destun"
+    },
+    "SHARED.iHaveNotReceivedAnEmail": {
+        "en": "I have not received an email",
+        "cy": "Nid wyf wedi derbyn e-bost"
+    },
+    "SHARED.ifItDoesNotArriveYouCan": {
+        "en": "If it does not arrive, you can ",
+        "cy": "If it does not arrive, you can "
+    },
+    "SHARED.ifItStillHasNotArrivedYouCan": {
+        "en": "If the text message does not arrive after a few minutes, you can ",
+        "cy": "Os na fydd y neges destun yn cyrraedd ar ôl ychydig o funudau, gallwch "
+    },
+    "SHARED.ifTheLinkIsCorrectYouMust": {
+        "en": "If the link is correct, you must ",
+        "cy": "Os yw'r ddolen yn gywir, rhaid i chi "
+    },
+    "SHARED.ifYouDoNotProvideYourNameYourEmailAddress": {
+        "en": "If you do not provide your name, your email address will be displayed instead. It will be partially hidden, for example jen*****@example.com.",
+        "cy": "Os nad ydych yn darparu eich enw, bydd eich cyfeiriad ebost yn cael ei arddangos yn lle hynny. Bydd yn cuddio'n rhannol, er enghraifft jen*****@enghraifft.com"
+    },
+    "SHARED.ifYouHaveAnyQuestions": {
+        "en": " if you have any questions.",
+        "cy": " os oes unrhyw gwestiynau gennych."
+    },
+    "SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou": {
+        "en": "If you have given us the wrong email address, you can ",
+        "cy": "Os ydych chi wedi rhoi'r cyfeiriad e-bost anghywir i ni, gallwch chi "
+    },
+    "SHARED.ifYouPastedTheLinkCheckYouCopiedTheEntire": {
+        "en": "If you pasted the link, check you copied the entire link.",
+        "cy": "Os gwnaethoch chi gludo'r ddolen, gwiriwch eich bod wedi copïo'r ddolen gyfan."
+    },
+    "SHARED.ifYouProvideYourNameThisWillBeShown": {
+        "en": "If you provide your name, this will be shown:",
+        "cy": "Os ydych yn darparu eich enw, dangosir hyn:"
+    },
+    "SHARED.ifYouTypesTheLinkCheckItIsCorrect": {
+        "en": "If you typed the link, check it is correct.",
+        "cy": "Os gwnaethoch deipio'r ddolen, gwiriwch ei bod yn gywir"
+    },
+    "SHARED.imAnAgentOrLenderAndIWantToFileACharge": {
+        "en": "I need to file a charge (mortgage) document using a lender authentication code",
+        "cy": "Mae angen i mi ffeilio dogfen arwystl (morgais) gan ddefnyddio cod dilysu benthyciwr"
+    },
+    "SHARED.important": {
+        "en": "Important",
+        "cy": "Pwysig"
+    },
+    "SHARED.incorporationDate": {
+        "en": "Incorporation date",
+        "cy": "Dyddiad corffori"
+    },
+    "SHARED.itIsUpToYouHowYourNameIsShownForExampleJen": {
+        "en": "It is up to you how your name is shown. For example, ‘Jen Smith’ or ‘Jennifer Smith’.",
+        "cy": "Mater i chi yw sut y dangosir eich enw. Er enghraifft, 'Jen Smith' neu 'Jennifer Smith'."
+    },
+    "SHARED.itMayTakeAFewMinutesToArrive": {
+        "en": "It may take a few minutes to arrive.",
+        "cy": "Efallai bydd yn cymryd ychydig funudau i gyrraedd."
+    },
+    "SHARED.iveForgottenMyPassword": {
+        "en": "I've forgotten my password",
+        "cy": "Rydw i wedi anghofio fy nghyfrinair"
+    },
+    "SHARED.manageAccount": {
+        "en": "Manage account",
+        "cy": "Rheoli eich cyfrif"
+    },
+    "SHARED.messages": {
+        "en": "Messages",
+        "cy": "Negeseuon"
+    },
+    "SHARED.mobileNumber": {
+        "en": "Mobile number",
+        "cy": "Rhif ffôn symudol"
+    },
+    "SHARED.mobileNumberOptional": {
+        "en": "Mobile number (optional)",
+        "cy": "Mobile number (optional)"
+    },
+    "SHARED.no": {
+        "en": "No",
+        "cy": "Na"
+    },
+    "SHARED.pageNotFound": {
+        "en": "Page not found",
+        "cy": "Heb ganfod y dudalen"
+    },
+    "SHARED.password": {
+        "en": "Password",
+        "cy": "Cyfrinair"
+    },
+    "SHARED.pending": {
+        "en": "Pending",
+        "cy": "Pending"
+    },
+    "SHARED.reEnterPassword": {
+        "en": "Re-enter password",
+        "cy": "Ailgofnodwch eich cyfrinair"
+    },
+    "SHARED.reEnterTheNewPassword": {
+        "en": "Re-enter the new password",
+        "cy": "Ailgofnodwch y cyfrinair newydd"
+    },
+    "SHARED.registeredOfficeAddress": {
+        "en": "Registered office address",
+        "cy": "Cyfeiriad swyddfa gofrestredig"
+    },
+    "SHARED.requestAnAuthenticationCode": {
+        "en": "I do not have an authentication code",
+        "cy": "Gofynnwch am god dilysu"
+    },
+    "SHARED.resetPassword": {
+        "en": "Update password",
+        "cy": "Diweddaru eich cyfrinair"
+    },
+    "SHARED.save": {
+        "en": "Save",
+        "cy": "Cadw"
+    },
+    "SHARED.securityCode": {
+        "en": "Security code",
+        "cy": "Cod diogelwch"
+    },
+    "SHARED.signBackInToYourAccount": {
+        "en": "Sign back in to your account",
+        "cy": "Mewngofnodwch i'ch cyfrif eto"
+    },
+    "SHARED.signIn": {
+        "en": "Sign in",
+        "cy": "Mewngofnodwch"
+    },
+    "SHARED.signInToWebFiling": {
+        "en": "Sign in to WebFiling",
+        "cy": "Mewngofnodwch i WebFiling"
+    },
+    "SHARED.signInToWebFilingLink": {
+        "en": "sign in to WebFiling",
+        "cy": "fewngofnodi i WebFiling"
+    },
+    "SHARED.skip": {
+        "en": "Skip",
+        "cy": "Skip"
+    },
+    "SHARED.sorryThereIsAProblemWithTheService": {
+        "en": "Sorry, there is a problem with the service",
+        "cy": "Ymddiheuriadau, mae yna broblem gyda'r gwasanaeth"
+    },
+    "SHARED.startAgainToRegisterANewAccount": {
+        "en": "start again to register a new account",
+        "cy": "ddechrau eto i gofrestru cyfrif newydd"
+    },
+    "SHARED.status": {
+        "en": "Status",
+        "cy": "Statws"
+    },
+    "SHARED.success": {
+        "en": "Success",
+        "cy": "Llwyddiant"
+    },
+    "SHARED.text": {
+        "en": "Text message",
+        "cy": "Neges destun"
+    },
+    "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
+        "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House security code'.",
+        "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: cod diogelwch'."
+    },
+    "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset": {
+        "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: reset your password'.",
+        "cy": "Efallai y bydd yr e-bost yn cymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: ailosod eich cyfrinair'."
+    },
+    "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectVerify": {
+        "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: verify your email address'.",
+        "cy": "Efallai y bydd yr e-bost yn cymryd ychydig o funudau i gyrraedd. Ei linell pwnc yw ' Tŷ'r Cwmnïau: gwiriwch eich cyfeiriad e-bost'."
+    },
+    "SHARED.theLinkToAcceptOrDeclineAuthorisationToFile": {
+        "en": "The link to accept or decline authorisation to file online for this company has expired.",
+        "cy": "Mae'r ddolen i dderbyn neu wrthod awdurdodiad i ffeilio ar-lein ar gyfer y cwmni hwn wedi dod i ben."
+    },
+    "SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo": {
+        "en": "The person who gave you authorisation would need to do this again if you want to be authorised to file online for this company.",
+        "cy": "Os ydych am gael eich awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn, bydd angen i'r person a roddodd awdurdodiad i chi, wneud hyn eto."
+    },
+    "SHARED.theTextMessageMayTakeAFewMinutesTo": {
+        "en": "The text message may take a few minutes to arrive.",
+        "cy": "The text message may take a few minutes to arrive."
+    },
+    "SHARED.thereIsAProblem": {
+        "en": "There is a problem",
+        "cy": "Mae yna broblem"
+    },
+    "SHARED.thisIsA6CharacterCodeIssuedByUsToEachCompany": {
+        "en": "This is a 6 character code issued by us to each company. The code is used to authorise online filings.",
+        "cy": "Cod 6 cymeriad yw hwn a gyhoeddir gennym ni i bob cwmni. Defnyddir y cod i awdurdodi ffeilio ar-lein."
+    },
+    "SHARED.thisIsTheNameThatWillBeDisplayedInYour": {
+        "en": "This is the name that will be displayed in your account. It is up to you how your name is displayed, for example 'Dan Smith' or 'Daniel Smith'.",
+        "cy": "This is the name that will be displayed in your account. It is up to you how your name is displayed, for example 'Dan Smith' or 'Daniel Smith'."
+    },
+    "SHARED.thisMustBeAtLeast8CharactersLongAndHardTo": {
+        "en": "This must be at least 8 characters long and hard to guess.",
+        "cy": "Rhaid i'r cyfrinair hwn fod o leiaf 8 cymeriad o hyd ac yn anodd i ddyfalu."
+    },
+    "SHARED.toTryAgain": {
+        "en": " to try again.",
+        "cy": " i roi cynnig arall arni."
+    },
+    "SHARED.tryAgainLater": {
+        "en": "Try again later.",
+        "cy": "Rhowch gynnig arall arni yn hwyrach."
+    },
+    "SHARED.update": {
+        "en": "Update",
+        "cy": "Diweddaru"
+    },
+    "SHARED.updateYourEmailAddress": {
+        "en": "Update your email address",
+        "cy": "Diweddaru eich cyfeiriad e-bost"
+    },
+    "SHARED.updateYourPersonalDetails": {
+        "en": "Update your personal details",
+        "cy": "Update your personal details"
+    },
+    "SHARED.verifyYourMobileNumber": {
+        "en": "Verify your mobile number",
+        "cy": "Verify your mobile number"
+    },
+    "SHARED.weHaveNotSavedYourInformation": {
+        "en": "We have not saved your information.",
+        "cy": "Nid ydym wedi cadw eich gwybodaeth."
+    },
+    "SHARED.wellSendALinkToThisEmailAddressToVerifyYou": {
+        "en": "We'll send a link to this email address to verify you have access to it.",
+        "cy": "We'll send a link to this email address to verify you have access to it."
+    },
+    "SHARED.weveSentATextMessageWithASecurityCode": {
+        "en": "We've sent a text message with a security code to ",
+        "cy": "Rydym wedi anfon neges destun gyda chod diogelwch i "
+    },
+    "SHARED.weveSentAnEmailTo": {
+        "en": "We've sent an email to ",
+        "cy": "Rydym wedi anfon e-bost at "
+    },
+    "SHARED.weveSentYouATextMessageWithASecurityCode": {
+        "en": "We've sent you a text message with a security code to ",
+        "cy": "Rydym wedi anfon neges destun gyda chod diogelwch i "
+    },
+    "SHARED.whatAreTheAuthorisedPersonsDetails": {
+        "en": "What are the authorised person's details?",
+        "cy": "Beth yw manylion yr unigolyn awdurdodedig?"
+    },
+    "SHARED.whatAreYourDetails": {
+        "en": "What are your details?",
+        "cy": "What are your details?"
+    },
+    "SHARED.whatIsTheCompanyNumber": {
+        "en": "What is the company number?",
+        "cy": "Beth yw rif y cwmni?"
+    },
+    "SHARED.whereYourNameWillBeShown": {
+        "en": "Where your name will be shown",
+        "cy": "Ble bydd eich enw'n cael ei ddangos"
+    },
+    "SHARED.whereYourNameWillBeShownList": {
+        "en": [
+            "in your account",
+            "in emails",
+            "in emails and in the account of people who are authorised to file online for the same companies as you"
+        ],
+        "cy": [
+            "yn eich cyfrif",
+            "mewn negeseuon e-bost",
+            "mewn negeseuon e-bost ac yng nghyfrif pobl sydd wedi'u hawdurdodi i ffeilio ar-lein ar gyfer yr un cwmnïau â chi"
+        ]
+    },
+    "SHARED.yes": {
+        "en": "Yes",
+        "cy": "Ie"
+    },
+    "SHARED.youAreNowSignedOut": {
+        "en": "You are now signed out",
+        "cy": "Rydych bellach wedi arwyddo allan."
+    },
+    "SHARED.youCan": {
+        "en": "You can:",
+        "cy": "Gallwch:"
+    },
+    "SHARED.youCanFindThisBySearchingForTheCompanyOn": {
+        "en": "You can find this by searching for the company on the ",
+        "cy": "Gallwch ddod o hyd i hyn drwy chwilio am y cwmni ar gofrestr "
+    },
+    "SHARED.youCanUseNumbersSymbolsAndSpaces": {
+        "en": "You can use letters, numbers, symbols and spaces.",
+        "cy": "Gallwch ddefnyddio llythrennau, rhifau, symbolau a bylchau."
+    },
+    "SHARED.youHaveSuccessfullyVerifiedTheEmail": {
+        "en": "You have successfully verified the email address ",
+        "cy": "Rydych wedi gwirio'r cyfeiriad e-bost yn llwyddiannus "
+    },
+    "SHARED.yourCompanies": {
+        "en": "Your companies",
+        "cy": "Eich cwmnïau"
+    },
+    "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
+        "en": "Manage account - Update your mobile number",
+        "cy": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol"
+    },
+    "UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword": {
+        "en": "Enter your WebFiling account password.",
+        "cy": "Mewngofnodwch eich cyfrinair WebFiling"
+    },
+    "UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText": {
+        "en": "Enter the mobile number you want to be stored in this account. We'll send a security code to this number by text message.",
+        "cy": "Mewngofnodwch y rhif ffôn symudol rydych am storio yn y cyfrif hwn. Byddwn yn anfon cod diogelwch i'r rhif hwn drwy neges destun."
+    },
+    "UPDATE_PHONE_2.[0].BrowserTitle.checkYourPhone": {
+        "en": "Manage account - Check your phone",
+        "cy": "Rheoli eich cyfrif - Gwiriwch eich ffôn"
+    }
+}

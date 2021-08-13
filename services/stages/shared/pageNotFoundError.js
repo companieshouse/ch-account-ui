@@ -2,20 +2,20 @@ const pageNotFoundError = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.pageNotFound'],
+      children: tokens('SHARED.pageNotFound'),
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.ifYouTypesTheLinkCheckItIsCorrect']
+      children: tokens('SHARED.ifYouTypesTheLinkCheckItIsCorrect')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.ifYouPastedTheLinkCheckYouCopiedTheEntire']
+      children: tokens('SHARED.ifYouPastedTheLinkCheckYouCopiedTheEntire')
     }
   },
   {
@@ -24,13 +24,13 @@ const pageNotFoundError = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.ifTheLinkIsCorrectYouMust']
+          children: tokens('SHARED.ifTheLinkIsCorrectYouMust')
         }
       },
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.startAgainToRegisterANewAccount'],
+          children: tokens('SHARED.startAgainToRegisterANewAccount'),
           href: '/account/register/_start/',
           testId: 'registrationLink'
         }

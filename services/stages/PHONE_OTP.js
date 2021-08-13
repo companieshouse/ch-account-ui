@@ -4,7 +4,7 @@ const PHONE_OTP = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.checkYourPhone']
+      title: tokens('SHARED.checkYourPhone')
     }
   },
   {

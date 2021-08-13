@@ -3,20 +3,20 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.youAreNowSignedOut']
+      title: tokens('SHARED.youAreNowSignedOut')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.youAreNowSignedOut'],
+      children: tokens('SHARED.youAreNowSignedOut'),
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['LIMIT_EXCEEDED_ERROR.[2].BodyText.youHaveEnteredAnIncorrectCodeTooManyTimesFor']
+      children: tokens('LIMIT_EXCEEDED_ERROR.[2].BodyText.youHaveEnteredAnIncorrectCodeTooManyTimesFor')
     }
   },
   {
@@ -32,7 +32,7 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
           href: '${links.resumePath}'
         },
         props: {
-          children: tokens['SHARED.signBackInToYourAccount'],
+          children: tokens('SHARED.signBackInToYourAccount'),
           testId: 'loginExistingAccountLink'
         }
       },
@@ -43,7 +43,7 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
         },
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.signBackInToYourAccount'],
+          children: tokens('SHARED.signBackInToYourAccount'),
           href: '/account/login',
           testId: 'loginExistingAccountLink'
         }
@@ -51,7 +51,7 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.toTryAgain']
+          children: tokens('SHARED.toTryAgain')
         }
       }
     ]

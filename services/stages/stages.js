@@ -67,18 +67,11 @@ import CHANGE_CONSENT_MARKETING from './CHANGE_CONSENT_MARKETING.js'
 import UPDATE_EMAIL_UPDATES_CONSENT_CONFIRMATION from './UPDATE_EMAIL_UPDATES_CONSENT_CONFIRMATION.js'
 import UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION from './UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION.js'
 
-import tokensEn from '../lang/en/content-tokens.json'
-import tokensCy from '../lang/cy/content-tokens.json'
+import contentTokens from '../lang/content-tokens.json'
+import log from '../log'
 
-const getStages = (lang) => {
-  const stages = {}
-  const contentTokens = {
-    en: tokensEn,
-    cy: tokensCy
-  }
-  const tokens = contentTokens[lang]
-
-  const features = {
+const getStage = (stage, lang) => {
+  const stages = {
     CH_LOGIN_1,
     CH_LOGIN_4,
     EWF_LOGIN_1,
@@ -149,11 +142,16 @@ const getStages = (lang) => {
     UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION
   }
 
-  Object.keys(features).forEach((key) => {
-    stages[key] = features[key](lang, tokens)
-  })
+  const tokens = (key) => {
+    const token = contentTokens[key] && contentTokens[key][lang]
+    if (!token) {
+      log.error('Missing content token: ' + key)
+      return ''
+    }
+    return token
+  }
 
-  return stages
+  return stages[stage](lang, tokens)
 }
 
-export default getStages
+export default getStage

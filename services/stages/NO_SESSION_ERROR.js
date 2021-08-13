@@ -3,26 +3,26 @@ const NO_SESSION_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.youAreNowSignedOut']
+      title: tokens('SHARED.youAreNowSignedOut')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.youAreNowSignedOut'],
+      children: tokens('SHARED.youAreNowSignedOut'),
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['NO_SESSION_ERROR.[2].BodyText.forYourSecurityWeveSignedYouOut']
+      children: tokens('NO_SESSION_ERROR.[2].BodyText.forYourSecurityWeveSignedYouOut')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.weHaveNotSavedYourInformation']
+      children: tokens('SHARED.weHaveNotSavedYourInformation')
     }
   },
   {
@@ -38,7 +38,7 @@ const NO_SESSION_ERROR = (lang, tokens) => [
           href: '${links.resumePath}'
         },
         props: {
-          children: tokens['SHARED.signBackInToYourAccount'],
+          children: tokens('SHARED.signBackInToYourAccount'),
           testId: 'loginExistingAccountLink'
         }
       },
@@ -49,7 +49,7 @@ const NO_SESSION_ERROR = (lang, tokens) => [
         },
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.signBackInToYourAccount'],
+          children: tokens('SHARED.signBackInToYourAccount'),
           href: '/account/login',
           testId: 'loginExistingAccountLink'
         }

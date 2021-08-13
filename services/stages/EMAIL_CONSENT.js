@@ -9,7 +9,7 @@ const EMAIL_CONSENT = (lang, tokens) => [
   {
     component: 'ErrorSummary',
     props: {
-      title: tokens['SHARED.thereIsAProblem']
+      title: tokens('SHARED.thereIsAProblem')
     }
   },
   {

@@ -2,7 +2,7 @@ const emailOtp = (lang, tokens) => ([
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.checkYourEmail']
+      children: tokens('SHARED.checkYourEmail')
     }
   },
   {
@@ -11,7 +11,7 @@ const emailOtp = (lang, tokens) => ([
       {
         component: 'SpanText',
         dynamicProps: {
-          children: tokens['EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail']
+          children: tokens('EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail')
         }
       }
     ]
@@ -21,7 +21,7 @@ const emailOtp = (lang, tokens) => ([
     props: {
       elementProps: {
         IDToken3: {
-          label: tokens['SHARED.securityCode'],
+          label: tokens('SHARED.securityCode'),
           autoComplete: 'off',
           type: 'number',
           suffix: false,
@@ -34,7 +34,7 @@ const emailOtp = (lang, tokens) => ([
           ]
         },
         IDToken4: {
-          label: tokens['SHARED.securityCode'],
+          label: tokens('SHARED.securityCode'),
           autoComplete: 'off',
           type: 'number',
           suffix: false,
@@ -52,7 +52,7 @@ const emailOtp = (lang, tokens) => ([
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -65,13 +65,13 @@ const emailOtp = (lang, tokens) => ([
     },
     component: 'Details',
     props: {
-      summary: tokens['SHARED.iHaveNotReceivedAnEmail']
+      summary: tokens('SHARED.iHaveNotReceivedAnEmail')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP']
+          children: tokens('SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP')
         }
       },
       {
@@ -81,13 +81,13 @@ const emailOtp = (lang, tokens) => ([
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou']
+              children: tokens('SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.askUsToSendYouAnotherEmail'],
+              children: tokens('SHARED.askUsToSendYouAnotherEmail'),
               href: '/password-recovery/_restart/',
               testId: 'restartPasswordRecoveryLink'
             }
@@ -95,7 +95,7 @@ const emailOtp = (lang, tokens) => ([
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]

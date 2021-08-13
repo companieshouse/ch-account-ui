@@ -5,7 +5,9 @@ const WithLang = (WrappedComponent, options = { withSetter: false }) => function
   const [cookies, setCookie] = useCookies(['lang'])
   const { lang = 'en' } = cookies
 
-  const setLang = (newLang) => setCookie('lang', newLang)
+  const setLang = (newLang) => {
+    setCookie('lang', newLang, { path: '/' })
+  }
 
   const langProps = {
     lang

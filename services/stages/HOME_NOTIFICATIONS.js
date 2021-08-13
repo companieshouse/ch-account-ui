@@ -3,7 +3,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.messages']
+      title: tokens('SHARED.messages')
     }
   },
   {
@@ -14,7 +14,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
     },
     component: 'NotificationBanner',
     dynamicProps: {
-      title: tokens['SHARED.important'],
+      title: tokens('SHARED.important'),
       heading: 'The authorisation request for this company no longer exists'
     }
   },
@@ -26,14 +26,14 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
     },
     component: 'NotificationBanner',
     dynamicProps: {
-      title: tokens['SHARED.important'],
+      title: tokens('SHARED.important'),
       heading: 'You are already authorised for this company'
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.messages'],
+      children: tokens('SHARED.messages'),
       size: 'l'
     }
   },
@@ -54,7 +54,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
             component: 'BodyText',
             props: {
               size: 'm',
-              children: tokens['HOME_NOTIFICATIONS.[4].Fragment.youDoNotHaveAnyMessages']
+              children: tokens('HOME_NOTIFICATIONS.[4].Fragment.youDoNotHaveAnyMessages')
             }
           }
         ]
@@ -100,7 +100,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                 component: 'Tag',
                 dynamicProps: {
                   colour: 'yellow',
-                  children: tokens['SHARED.awaitingConfirmation']
+                  children: tokens('SHARED.awaitingConfirmation')
                 }
               }
             ]
@@ -123,7 +123,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                       {
                         component: 'SpanText',
                         props: {
-                          children: tokens['SHARED.companyNumber']
+                          children: tokens('SHARED.companyNumber')
                         }
                       },
                       {
@@ -146,7 +146,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                       {
                         component: 'SpanText',
                         props: {
-                          children: tokens['SHARED.correspondenceAddress']
+                          children: tokens('SHARED.correspondenceAddress')
                         }
                       },
                       {
@@ -200,7 +200,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                               {
                                 component: 'Th',
                                 props: {
-                                  children: tokens['HOME_NOTIFICATIONS.[5].Fragment.pendingRequests']
+                                  children: tokens('HOME_NOTIFICATIONS.[5].Fragment.pendingRequests')
                                 }
                               },
                               {
@@ -229,7 +229,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                     },
                                     component: 'BodyText',
                                     dynamicProps: {
-                                      children: tokens['HOME_NOTIFICATIONS.[5].Fragment.companyInviterGivenNameWantsToGiveYou']
+                                      children: tokens('HOME_NOTIFICATIONS.[5].Fragment.companyInviterGivenNameWantsToGiveYou')
                                     }
                                   },
                                   {
@@ -239,7 +239,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                     },
                                     component: 'BodyText',
                                     dynamicProps: {
-                                      children: tokens['HOME_NOTIFICATIONS.[5].Fragment.someoneWantsToGiveYouAuthorisationToFile']
+                                      children: tokens('HOME_NOTIFICATIONS.[5].Fragment.someoneWantsToGiveYouAuthorisationToFile')
                                     }
                                   }
                                 ]
@@ -256,7 +256,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                     component: 'Tag',
                                     dynamicProps: {
                                       colour: 'green',
-                                      children: tokens['SHARED.confirmed']
+                                      children: tokens('SHARED.confirmed')
                                     }
                                   }
                                 ]
@@ -278,7 +278,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                         },
                                         dynamicProps: {
                                           href: '${company.acceptPath}',
-                                          children: tokens['HOME_NOTIFICATIONS.[5].Fragment.acceptRequest']
+                                          children: tokens('HOME_NOTIFICATIONS.[5].Fragment.acceptRequest')
 
                                         }
                                       }
@@ -295,7 +295,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                         },
                                         dynamicProps: {
                                           href: '${company.declinePath}',
-                                          children: tokens['HOME_NOTIFICATIONS.[5].Fragment.declineRequest']
+                                          children: tokens('HOME_NOTIFICATIONS.[5].Fragment.declineRequest')
                                         }
                                       }
                                     ]

@@ -2,13 +2,13 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.updateYourEmailAddress']
+      title: tokens('SHARED.updateYourEmailAddress')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.updateYourEmailAddress'],
+      children: tokens('SHARED.updateYourEmailAddress'),
       size: 'l'
     }
   },
@@ -17,7 +17,7 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
-          label: tokens['SHARED.enterYourCurrentPassword'],
+          label: tokens('SHARED.enterYourCurrentPassword'),
           customValidation: [
             {
               name: 'required',
@@ -26,10 +26,10 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
           ]
         },
         IDToken3: {
-          label: tokens['CHANGE_EMAIL_1.[2].DisplayUiElements.enterYourNewEmailAddress']
+          label: tokens('CHANGE_EMAIL_1.[2].DisplayUiElements.enterYourNewEmailAddress')
         },
         IDToken4: {
-          label: tokens['CHANGE_EMAIL_1.[2].DisplayUiElements.reEnterYourNewEmailAddress']
+          label: tokens('CHANGE_EMAIL_1.[2].DisplayUiElements.reEnterYourNewEmailAddress')
         }
       }
     }
@@ -40,7 +40,7 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens['CHANGE_EMAIL_1.[3].ButtonGroup.updateEmailAddress'],
+          children: tokens('CHANGE_EMAIL_1.[3].ButtonGroup.updateEmailAddress'),
           type: 'submit',
           testId: 'submitButton'
         }
@@ -48,7 +48,7 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.cancel'],
+          children: tokens('SHARED.cancel'),
           href: '/account/manage'
         }
       }

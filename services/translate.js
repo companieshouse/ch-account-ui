@@ -1,67 +1,32 @@
-import getStages from './stages/stages'
-import enTokens from './lang/en/tokens.json'
-import cyTokens from './lang/cy/tokens.json'
+import getStage from './stages/stages'
+import tokens from './lang/tokens.json'
 
-const features = {
-  en: getStages('en'),
-  cy: getStages('cy')
-}
+/**
+ * Returns object containing the static stage definition populated with translated tokens
+ * @param lang The language to use when populating tokens
+ * @param stage The stage key to get
+ * @returns {[{feature: string, props: {children: string}}, {component: string, feature: string}]|*}
+ */
+export const getStageFeatures = (lang = 'en', stage = '') => {
+  const stageFeatures = getStage(stage, lang)
 
-const tokens = {
-  en: enTokens,
-  cy: cyTokens
-}
-
-export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
-  if (!features[lang]) {
+  if (!stageFeatures) {
     return [{
       feature: 'BodyText',
-      component: 'BodyText',
       props: {
-        children: `Cannot find features for lang "${lang}".`
-      },
-      children: `Cannot find features for lang "${lang}".`
+        children: `Cannot find stage data for stage "${stage}".  Either the journey page node has not been given a stage name or you are not correctly passing the stage name to the getStageFeatures(lang, stage) function!`
+      }
     }, {
       feature: 'DisplayUiElements',
       component: 'DisplayUiElements'
     }]
   }
 
-  if (!stage || !features[lang][stage]) {
-    return [{
-      feature: 'BodyText',
-      props: {
-        children: `Cannot find stage data for lang "${lang}" and stage "${stage}".  Either the journey page node has not been given a stage name or you are not correctly passing the stage name to the getStageFeatures(lang, stage, featureName) function!`
-      },
-      children: `Cannot find stage data for lang "${lang}" and stage "${stage}".  Either the journey page node has not been given a stage name or you are not correctly passing the stage name to the getStageFeatures(lang, stage, featureName) function!`
-    }, {
-      feature: 'DisplayUiElements',
-      component: 'DisplayUiElements'
-    }]
-  }
-
-  if (!featureName) {
-    return features[lang][stage]
-  }
-
-  if (!features[lang][stage][featureName]) {
-    return [{
-      feature: 'BodyText',
-      props: {
-        children: `No feature data for lang "${lang}", stage "${stage}" and featureName "${featureName}". Please check your stage data to ensure you have defined a feature with this name!`
-      },
-      children: `No feature data for lang "${lang}", stage "${stage}" and featureName "${featureName}". Please check your stage data to ensure you have defined a feature with this name!`
-    }, {
-      feature: 'DisplayUiElements',
-      component: 'DisplayUiElements'
-    }]
-  }
-
-  return features[lang][stage][featureName]
+  return stageFeatures
 }
 
 /**
- * Converts a token to the corresponding human-readable string for the
+ * Converts a dynamic token to the corresponding human-readable string for the
  * given language.
  * @param {String} lang The language to use when translating.
  * @param {String} token The token to translate.
@@ -70,13 +35,9 @@ export const getStageFeatures = (lang = 'en', stage = '', featureName = '') => {
  * @returns {String} The human-readable translated token string.
  */
 export const translate = (lang, token, defaultErrorValue = undefined) => {
-  if (!tokens[lang]) {
-    return defaultErrorValue !== undefined ? defaultErrorValue : `Translation tokens missing for lang "${lang}". Please check /services/lang/${lang}/tokens.json to make sure the file exists!`
-  }
-
-  if (tokens[lang][token] === undefined) {
+  if (tokens[token][lang] === undefined) {
     return defaultErrorValue !== undefined ? defaultErrorValue : `Translation text missing for lang "${lang}" and token "${token}". Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with this name!`
   }
 
-  return tokens[lang][token]
+  return tokens[token][lang]
 }

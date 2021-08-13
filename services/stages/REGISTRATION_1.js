@@ -3,13 +3,13 @@ const REGISTRATION_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.createACompaniesHouseAccount']
+      title: tokens('SHARED.whatAreYourDetails')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.whatAreYourDetails']
+      children: tokens('SHARED.whatAreYourDetails')
     }
   },
   {
@@ -32,31 +32,31 @@ const REGISTRATION_1 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.whereYourNameWillBeShown']
+      summary: tokens('SHARED.whereYourNameWillBeShown')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouProvideYourNameThisWillBeShown']
+          children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
         }
       },
       {
         component: 'List',
         props: {
-          items: tokens['SHARED.whereYourNameWillBeShownList']
+          items: tokens('SHARED.whereYourNameWillBeShownList')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.itIsUpToYouHowYourNameIsShownForExampleJen']
+          children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouDoNotProvideYourNameYourEmailAddress']
+          children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
         }
       }
     ]
@@ -71,12 +71,12 @@ const REGISTRATION_1 = (lang, tokens) => [
         IDToken2: {
           type: 'email',
           autoComplete: 'email',
-          hint: tokens['SHARED.wellSendALinkToThisEmailAddressToVerifyYou']
+          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou')
         },
         IDToken3: {
           type: 'text',
           autoComplete: 'tel',
-          hint: tokens['SHARED.addYourMobileNumberToMakeYourAccountMore']
+          hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore')
         }
       }
     }
@@ -84,7 +84,7 @@ const REGISTRATION_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

@@ -3,7 +3,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['HOME_AUTHORISED_PERSON.[0].BrowserTitle.authorisedPersonsDetails']
+      title: tokens('HOME_AUTHORISED_PERSON.[0].BrowserTitle.authorisedPersonsDetails')
     }
   },
   {
@@ -15,7 +15,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.authorisedPersonsDetails']
+      children: tokens('SHARED.authorisedPersonsDetails')
     }
   },
   {
@@ -35,7 +35,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
             component: 'Tag',
             props: {
               colour: 'green',
-              children: tokens['SHARED.confirmed']
+              children: tokens('SHARED.confirmed')
             }
           },
           {
@@ -47,7 +47,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
             component: 'Tag',
             props: {
               colour: 'yellow',
-              children: tokens['SHARED.awaitingConfirmation']
+              children: tokens('SHARED.awaitingConfirmation')
             }
           },
           {
@@ -64,7 +64,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
               {
                 component: 'Fragment',
                 dynamicProps: {
-                  children: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust']
+                  children: tokens('HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust')
                 }
               }
             ]
@@ -79,7 +79,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
         },
         component: 'LinkText',
         props: {
-          children: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail'],
+          children: tokens('HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail'),
           testId: 'resendAuthorisedUserRequestLink'
         },
         dynamicProps: {
@@ -91,15 +91,15 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       hasActions: true,
       listItems: [
         {
-          label: tokens['HOME_AUTHORISED_PERSON.[3].SummaryList.name'],
+          label: tokens('HOME_AUTHORISED_PERSON.[3].SummaryList.name'),
           value: ''
         },
         {
-          label: tokens['SHARED.emailAddress'],
+          label: tokens('SHARED.emailAddress'),
           value: ''
         },
         {
-          label: tokens['SHARED.authorisationStatus'],
+          label: tokens('SHARED.authorisationStatus'),
           value: ''
         }
       ]
@@ -115,7 +115,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   //   props: {
   //     warning: true,
   //     renderAs: 'link',
-  //     children: tokens['HOME_AUTHORISED_PERSON.[4].Button.cancelRequest'],
+  //     children: tokens('HOME_AUTHORISED_PERSON.[4].Button.cancelRequest'),
   //     href: '/account/associate/_start?action=cancel',
   //     testId: 'cancelAuthorisedUserRequestLink'
   //   }
@@ -128,7 +128,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
     },
     component: 'LinkText',
     props: {
-      children: tokens['HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'],
+      children: tokens('HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'),
       href: '',
       testId: 'removeAuthorisedUserRequestLink'
     },

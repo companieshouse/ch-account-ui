@@ -3,13 +3,13 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.checkYourPhone']
+      title: tokens('SHARED.checkYourPhone')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.checkYourPhone']
+      children: tokens('SHARED.checkYourPhone')
     }
   },
   {
@@ -18,7 +18,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.weveSentYouATextMessageWithASecurityCode']
+          children: tokens('SHARED.weveSentYouATextMessageWithASecurityCode')
         }
       },
       {
@@ -38,7 +38,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.']
+          children: tokens('SHARED.')
         }
       }
     ]
@@ -46,7 +46,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.itMayTakeAFewMinutesToArrive']
+      children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
     }
   },
   {
@@ -54,7 +54,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken3: {
-          label: tokens['SHARED.securityCode'],
+          label: tokens('SHARED.securityCode'),
           autoComplete: 'off',
           type: 'number',
           suffix: false,
@@ -72,7 +72,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -80,7 +80,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.iHaveNotReceivedATextMessage']
+      summary: tokens('SHARED.iHaveNotReceivedATextMessage')
     },
     content: [
       {
@@ -89,13 +89,13 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifItStillHasNotArrivedYouCan']
+              children: tokens('SHARED.ifItStillHasNotArrivedYouCan')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.askUsToSendYouAnotherTextMessage'],
+              children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
               href: '/password-recovery/_restart/',
               testId: 'restartPasswordRecoveryLink'
             }
@@ -103,7 +103,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]

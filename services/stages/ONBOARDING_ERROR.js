@@ -5,7 +5,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
+      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
     }
   },
   {
@@ -37,20 +37,20 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['ONBOARDING_ERROR.[3].Fragment.invitationHasExpired'],
+          children: tokens('ONBOARDING_ERROR.[3].Fragment.invitationHasExpired'),
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theLinkToAcceptOrDeclineAuthorisationToFile']
+          children: tokens('SHARED.theLinkToAcceptOrDeclineAuthorisationToFile')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo']
+          children: tokens('SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo')
         }
       },
       {
@@ -59,7 +59,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.alternativelyIfYouHaveAccessToTheCurrent']
+              children: tokens('SHARED.alternativelyIfYouHaveAccessToTheCurrent')
             }
           },
           {
@@ -68,14 +68,14 @@ const ONBOARDING_ERROR = (lang, tokens) => [
               href: '${links.ewfAuthenticatedEntry}'
             },
             props: {
-              children: tokens['SHARED.signInToWebFilingLink'],
+              children: tokens('SHARED.signInToWebFilingLink'),
               testId: 'webFilingLink'
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.andAddTheCompanyToYourAccount']
+              children: tokens('SHARED.andAddTheCompanyToYourAccount')
             }
           }
         ]
@@ -93,20 +93,20 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['ONBOARDING_ERROR.[4].Fragment.authorisationLinkHasExpired'],
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.authorisationLinkHasExpired'),
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theLinkToAcceptOrDeclineAuthorisationToFile']
+          children: tokens('SHARED.theLinkToAcceptOrDeclineAuthorisationToFile')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo']
+          children: tokens('SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo')
         }
       },
       {
@@ -115,7 +115,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.alternativelyIfYouHaveAccessToTheCurrent']
+              children: tokens('SHARED.alternativelyIfYouHaveAccessToTheCurrent')
             }
           },
           {
@@ -124,14 +124,14 @@ const ONBOARDING_ERROR = (lang, tokens) => [
               href: '${links.ewfAuthenticatedEntry}'
             },
             props: {
-              children: tokens['SHARED.signInToWebFilingLink'],
+              children: tokens('SHARED.signInToWebFilingLink'),
               testId: 'webFilingLink'
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.andAddTheCompanyToYourAccount']
+              children: tokens('SHARED.andAddTheCompanyToYourAccount')
             }
           }
         ]

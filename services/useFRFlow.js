@@ -72,7 +72,9 @@ const useFRFlow = (config) => {
   }, [flowConfig])
 
   useEffect(() => {
-    setUiFeatures(getStageFeatures(lang, uiStage))
+    if (uiStage && lang) {
+      setUiFeatures(getStageFeatures(lang, uiStage))
+    }
   }, [lang, uiStage])
 
   const onSubmit = (evt) => {

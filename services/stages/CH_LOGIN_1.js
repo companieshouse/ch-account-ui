@@ -3,13 +3,13 @@ const CH_LOGIN_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['CH_LOGIN_1.[0].BrowserTitle.signInToCompaniesHouseAccount']
+      title: tokens('CH_LOGIN_1.[0].BrowserTitle.signInToCompaniesHouseAccount')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['CH_LOGIN_1.[1].PageHeading.signInToYourCompaniesHouseAccount']
+      children: tokens('CH_LOGIN_1.[1].PageHeading.signInToYourCompaniesHouseAccount')
     }
   },
   {
@@ -18,12 +18,12 @@ const CH_LOGIN_1 = (lang, tokens) => [
       elementProps: {
         IDToken1: {
           formGroup: 'usernameAndPassword',
-          label: tokens['SHARED.emailAddress'],
-          hint: tokens['CH_LOGIN_1.[2].DisplayUiElements.youCannotUseYourWebFilingDetailsToSignInYou']
+          label: tokens('SHARED.emailAddress'),
+          hint: tokens('CH_LOGIN_1.[2].DisplayUiElements.youCannotUseYourWebFilingDetailsToSignInYou')
         },
         IDToken2: {
           formGroup: 'usernameAndPassword',
-          label: tokens['SHARED.password']
+          label: tokens('SHARED.password')
         }
       }
     }
@@ -31,7 +31,7 @@ const CH_LOGIN_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.signIn'],
+      children: tokens('SHARED.signIn'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -42,7 +42,7 @@ const CH_LOGIN_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['CH_LOGIN_1.[4].BodyText.registerANewAccount'],
+          children: tokens('CH_LOGIN_1.[4].BodyText.registerANewAccount'),
           href: '/account/register/_start',
           testId: 'registerNewAccountLink'
         }
@@ -55,7 +55,7 @@ const CH_LOGIN_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.iveForgottenMyPassword'],
+          children: tokens('SHARED.iveForgottenMyPassword'),
           href: '/password-recovery/request',
           testId: 'forgottenMyPasswordLink'
         }

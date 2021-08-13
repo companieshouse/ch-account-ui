@@ -3,7 +3,7 @@ const REGISTRATION_2 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['REGISTRATION_2.[0].PageHeading.enterYourDetails']
+      children: tokens('REGISTRATION_2.[0].PageHeading.enterYourDetails')
     }
   },
   {
@@ -24,7 +24,7 @@ const REGISTRATION_2 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }
