@@ -3,7 +3,7 @@ const EWF_LOGIN_5 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline']
+      title: tokens('EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline')
     }
   },
   {
@@ -15,34 +15,34 @@ const EWF_LOGIN_5 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline']
+      children: tokens('EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['EWF_LOGIN_5.[3].BodyText.weCanSecurelyStoreTheCompanyDetailsYou']
+      children: tokens('EWF_LOGIN_5.[3].BodyText.weCanSecurelyStoreTheCompanyDetailsYou')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['EWF_LOGIN_5.[4].BodyText.thisMeansYou']
+      children: tokens('EWF_LOGIN_5.[4].BodyText.thisMeansYou')
     }
   },
   {
     component: 'List',
     props: {
       items: [
-        tokens['EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode'],
-        tokens['EWF_LOGIN_5.[4].List.canAuthoriseOtherPeople']
+        tokens('EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode'),
+        tokens('EWF_LOGIN_5.[4].List.canAuthoriseOtherPeople')
       ]
     }
   },
   {
     component: 'DisplayUiElements',
     dynamicProps: {
-      'elementProps.IDToken2.label': tokens['SHARED.doYouWantUsToStoreTheCompanyDetailsFor']
+      'elementProps.IDToken2.label': tokens('SHARED.doYouWantUsToStoreTheCompanyDetailsFor')
     },
     props: {
       elementProps: {
@@ -50,10 +50,10 @@ const EWF_LOGIN_5 = (lang, tokens) => [
           fixedWidth: '10',
           options: [
             {
-              label: tokens['SHARED.yes']
+              label: tokens('SHARED.yes')
             },
             {
-              label: tokens['SHARED.no']
+              label: tokens('SHARED.no')
             }
           ]
         }
@@ -63,7 +63,7 @@ const EWF_LOGIN_5 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

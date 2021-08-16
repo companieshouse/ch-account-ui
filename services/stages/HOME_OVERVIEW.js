@@ -3,7 +3,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['HOME_OVERVIEW.[1].Row.home']
+      title: tokens('HOME_OVERVIEW.[1].Row.home')
     }
   },
   {
@@ -15,7 +15,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
           {
             component: 'HeadingText',
             props: {
-              children: tokens['HOME_OVERVIEW.[1].Row.home'],
+              children: tokens('HOME_OVERVIEW.[1].Row.home'),
               size: 'l'
             },
             content: [
@@ -60,13 +60,13 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     props: {
                       width: 'one-third',
                       testId: 'webFiling',
-                      header: tokens['HOME_OVERVIEW.[3].Row.webFiling']
+                      header: tokens('HOME_OVERVIEW.[3].Row.webFiling')
                     },
                     content: [
                       {
                         component: 'BodyText',
                         props: {
-                          children: tokens['SHARED.youCan'],
+                          children: tokens('SHARED.youCan'),
                           size: 16
                         }
                       },
@@ -74,7 +74,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                         component: 'List',
                         props: {
                           size: 16,
-                          items: tokens['HOME_OVERVIEW.[3].List.webFiling']
+                          items: tokens('HOME_OVERVIEW.[3].List.webFiling')
                         }
                       }
                     ]
@@ -86,17 +86,17 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     },
                     props: {
                       count: 0,
-                      countLabel: tokens['HOME_OVERVIEW.[2].InfoBlock.companies'],
+                      countLabel: tokens('HOME_OVERVIEW.[2].InfoBlock.companies'),
                       width: 'one-third',
                       href: '/account/your-companies',
                       testId: 'yourCompanies',
-                      header: tokens['SHARED.yourCompanies']
+                      header: tokens('SHARED.yourCompanies')
                     },
                     content: [
                       {
                         component: 'BodyText',
                         props: {
-                          children: tokens['SHARED.youCan'],
+                          children: tokens('SHARED.youCan'),
                           size: 16
                         }
                       },
@@ -104,7 +104,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                         component: 'List',
                         props: {
                           size: 16,
-                          items: tokens['HOME_OVERVIEW.[3].List.yourCompanies']
+                          items: tokens('HOME_OVERVIEW.[3].List.yourCompanies')
                         }
                       }
                     ]
@@ -116,18 +116,18 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     },
                     props: {
                       count: 0,
-                      countLabel: tokens['HOME_OVERVIEW.[2].InfoBlock.newMessages'],
+                      countLabel: tokens('HOME_OVERVIEW.[2].InfoBlock.newMessages'),
                       width: 'one-third',
                       href: '/account/notifications/',
                       testId: 'notifications',
-                      header: tokens['SHARED.messages']
+                      header: tokens('SHARED.messages')
                     },
                     content: [
                       {
                         component: 'BodyText',
                         size: 16,
                         props: {
-                          children: tokens['HOME_OVERVIEW.[2].InfoBlock.viewMessagesRelatedToYourAccount']
+                          children: tokens('HOME_OVERVIEW.[2].InfoBlock.viewMessagesRelatedToYourAccount')
                         }
                       }
                     ]

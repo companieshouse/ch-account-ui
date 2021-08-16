@@ -5,7 +5,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
+      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
     }
   },
   {
@@ -28,14 +28,14 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['SHARED.sorryThereIsAProblemWithTheService'],
+          children: tokens('SHARED.sorryThereIsAProblemWithTheService'),
           showErrorSummary: false
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.weHaveNotSavedYourInformation']
+          children: tokens('SHARED.weHaveNotSavedYourInformation')
         }
       },
       {
@@ -44,7 +44,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.signBackInToYourAccount'],
+              children: tokens('SHARED.signBackInToYourAccount'),
               href: '/account/login/',
               testId: 'contactCompaniesHouseLink'
             }
@@ -52,7 +52,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.toTryAgain']
+              children: tokens('SHARED.toTryAgain')
             }
           }
         ]
@@ -79,7 +79,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['REGISTRATION_ERROR.[4].Fragment.verificationLinkHasExpired'],
+          children: tokens('REGISTRATION_ERROR.[4].Fragment.verificationLinkHasExpired'),
           showErrorSummary: false
         }
       },
@@ -89,13 +89,13 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[4].Fragment.theLinkToVerifyYourEmailAddressHowNowExpired']
+              children: tokens('REGISTRATION_ERROR.[4].Fragment.theLinkToVerifyYourEmailAddressHowNowExpired')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[4].Fragment.registerANewAccount'],
+              children: tokens('REGISTRATION_ERROR.[4].Fragment.registerANewAccount'),
               href: '/account/register/_start/',
               testId: 'registrationLink'
             }
@@ -121,7 +121,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens['REGISTRATION_ERROR.[4].Fragment.userAlreadyExists'],
+          children: tokens('REGISTRATION_ERROR.[4].Fragment.userAlreadyExists'),
           showErrorSummary: false
         }
       },
@@ -131,13 +131,13 @@ const REGISTRATION_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[4].Fragment.anAccountWithThisEmailAddressAlreadyExists']
+              children: tokens('REGISTRATION_ERROR.[4].Fragment.anAccountWithThisEmailAddressAlreadyExists')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['REGISTRATION_ERROR.[4].Fragment.registerANewAccount'],
+              children: tokens('REGISTRATION_ERROR.[4].Fragment.registerANewAccount'),
               href: '/account/register/_start/',
               testId: 'registrationLink'
             }

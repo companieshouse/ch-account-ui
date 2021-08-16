@@ -2,14 +2,14 @@ const genericError = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.sorryThereIsAProblemWithTheService'],
+      children: tokens('SHARED.sorryThereIsAProblemWithTheService'),
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.tryAgainLater']
+      children: tokens('SHARED.tryAgainLater')
     }
   },
   {
@@ -18,7 +18,7 @@ const genericError = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.contactCompaniesHouse'],
+          children: tokens('SHARED.contactCompaniesHouse'),
           href: 'https://www.gov.uk/contact-companies-house',
           testId: 'contactCompaniesHouseLink'
         }
@@ -26,7 +26,7 @@ const genericError = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.ifYouHaveAnyQuestions']
+          children: tokens('SHARED.ifYouHaveAnyQuestions')
         }
       }
     ]

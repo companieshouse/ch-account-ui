@@ -4,7 +4,7 @@ const SEND_MFA_SMS_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
+      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
     }
   },
   {

@@ -2,19 +2,19 @@ const LOGIN = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.signInToWebFiling']
+      title: tokens('SHARED.signInToWebFiling')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.signInToWebFiling']
+      children: tokens('SHARED.signInToWebFiling')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['LOGIN.[3].BodyText.inWebFilingYouCan']
+      children: tokens('LOGIN.[3].BodyText.inWebFilingYouCan')
     }
   },
   {
@@ -26,19 +26,19 @@ const LOGIN = (lang, tokens) => [
       {
         component: 'ListItem',
         props: {
-          children: tokens['LOGIN.[4].List.inWebFilingYouCanOne']
+          children: tokens('LOGIN.[4].List.inWebFilingYouCanOne')
         }
       },
       {
         component: 'ListItem',
         props: {
-          children: tokens['LOGIN.[4].List.inWebFilingYouCanTwo']
+          children: tokens('LOGIN.[4].List.inWebFilingYouCanTwo')
         }
       },
       {
         component: 'ListItem',
         props: {
-          children: tokens['LOGIN.[4].List.inWebFilingYouCanThree']
+          children: tokens('LOGIN.[4].List.inWebFilingYouCanThree')
         }
       },
       {
@@ -47,20 +47,20 @@ const LOGIN = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['LOGIN.[4].List.inWebFilingYouCanFourSignUp']
+              children: tokens('LOGIN.[4].List.inWebFilingYouCanFourSignUp')
             }
           },
           {
             component: 'LinkText',
             props: {
               href: 'https://www.gov.uk/guidance/register-for-email-reminders-from-companies-house',
-              children: tokens['LOGIN.[4].List.inWebFilingYouCanFourEmailReminders']
+              children: tokens('LOGIN.[4].List.inWebFilingYouCanFourEmailReminders')
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: tokens['LOGIN.[4].List.inWebFilingYouCanFourWhenYour']
+              children: tokens('LOGIN.[4].List.inWebFilingYouCanFourWhenYour')
             }
           }
         ]
@@ -68,7 +68,7 @@ const LOGIN = (lang, tokens) => [
       {
         component: 'ListItem',
         props: {
-          children: tokens['LOGIN.[4].List.inWebFilingYouCanFive']
+          children: tokens('LOGIN.[4].List.inWebFilingYouCanFive')
         }
       }
     ]
@@ -77,7 +77,7 @@ const LOGIN = (lang, tokens) => [
     component: 'Button',
     props: {
       renderAs: 'link',
-      children: tokens['SHARED.signIn'],
+      children: tokens('SHARED.signIn'),
       href: '/account/login/',
       testId: 'loginLink'
     }
@@ -88,7 +88,7 @@ const LOGIN = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['LOGIN.[6].BodyText.createANewAccount'],
+          children: tokens('LOGIN.[6].BodyText.createANewAccount'),
           href: '/account/register/_start/',
           testId: 'registerLink'
         }
@@ -101,7 +101,7 @@ const LOGIN = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['LOGIN.[7].BodyText.whoCanUseWebFiling'],
+          children: tokens('LOGIN.[7].BodyText.whoCanUseWebFiling'),
           href: 'https://ewf.companieshouse.gov.uk/sframe?name=aboutWebFiling&lang=en',
           testId: 'aboutWebFilingLink'
         }
@@ -117,7 +117,7 @@ const LOGIN = (lang, tokens) => [
           href: '${links.legacyAuthURL}'
         },
         props: {
-          children: tokens['SHARED.imAnAgentOrLenderAndIWantToFileACharge'],
+          children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
           testId: 'lendersLink'
         }
       }

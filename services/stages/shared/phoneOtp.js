@@ -2,7 +2,7 @@ const phoneOtp = (lang, tokens) => ([
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.checkYourPhone']
+      children: tokens('SHARED.checkYourPhone')
     }
   },
   {
@@ -11,7 +11,7 @@ const phoneOtp = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.weveSentATextMessageWithASecurityCode']
+          children: tokens('SHARED.weveSentATextMessageWithASecurityCode')
         }
       },
       {
@@ -31,7 +31,7 @@ const phoneOtp = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.']
+          children: tokens('SHARED.')
         }
       }
     ]
@@ -39,7 +39,7 @@ const phoneOtp = (lang, tokens) => ([
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.itMayTakeAFewMinutesToArrive']
+      children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
     }
   },
   {
@@ -47,7 +47,7 @@ const phoneOtp = (lang, tokens) => ([
     props: {
       elementProps: {
         IDToken4: {
-          label: tokens['SHARED.securityCode'],
+          label: tokens('SHARED.securityCode'),
           type: 'number',
           autoComplete: 'off',
           suffix: false,
@@ -65,7 +65,7 @@ const phoneOtp = (lang, tokens) => ([
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -73,7 +73,7 @@ const phoneOtp = (lang, tokens) => ([
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.iHaveNotReceivedATextMessage']
+      summary: tokens('SHARED.iHaveNotReceivedATextMessage')
     },
     content: [
       {
@@ -82,20 +82,20 @@ const phoneOtp = (lang, tokens) => ([
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifItStillHasNotArrivedYouCan']
+              children: tokens('SHARED.ifItStillHasNotArrivedYouCan')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.askUsToSendYouAnotherTextMessage'],
+              children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
               href: '/account/manage/change-phone-number/_restart'
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]

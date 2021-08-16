@@ -3,13 +3,13 @@ const EWF_LOGIN_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.signInToWebFiling']
+      title: tokens('SHARED.signInToWebFiling')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.signInToWebFiling']
+      children: tokens('SHARED.signInToWebFiling')
     }
   },
   {
@@ -18,11 +18,11 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       elementProps: {
         IDToken1: {
           formGroup: 'usernameAndPassword',
-          label: tokens['SHARED.emailAddress']
+          label: tokens('SHARED.emailAddress')
         },
         IDToken2: {
           formGroup: 'usernameAndPassword',
-          label: tokens['SHARED.password']
+          label: tokens('SHARED.password')
         }
       }
     }
@@ -30,7 +30,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.signIn'],
+      children: tokens('SHARED.signIn'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -41,7 +41,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount'],
+          children: tokens('EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount'),
           href: '/account/register/_start',
           testId: 'registerNewAccountLink'
         }
@@ -54,7 +54,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.iveForgottenMyPassword'],
+          children: tokens('SHARED.iveForgottenMyPassword'),
           href: '/password-recovery/request',
           testId: 'forgottenMyPasswordLink'
         }
@@ -70,7 +70,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
           href: '${links.ewfLegacyAuthUrl}'
         },
         props: {
-          children: tokens['SHARED.imAnAgentOrLenderAndIWantToFileACharge'],
+          children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
           testId: 'forgottenMyPasswordLink'
         }
       }

@@ -3,7 +3,7 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress']
+      title: tokens('RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress')
     }
   },
   {
@@ -14,20 +14,20 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
     },
     component: 'NotificationBanner',
     dynamicProps: {
-      title: tokens['SHARED.important'],
-      heading: tokens['RESET_PASSWORD_1.[0].NotificationBanner.yourPasswordNeedsToBeUpdatedPleaseFollowThe']
+      title: tokens('SHARED.important'),
+      heading: tokens('RESET_PASSWORD_1.[0].NotificationBanner.yourPasswordNeedsToBeUpdatedPleaseFollowThe')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress']
+      children: tokens('RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['RESET_PASSWORD_1.[2].BodyText.enterTheEmailAddressYouUsedToCreateYour']
+      children: tokens('RESET_PASSWORD_1.[2].BodyText.enterTheEmailAddressYouUsedToCreateYour')
     }
   },
   {
@@ -35,7 +35,7 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
-          label: tokens['SHARED.emailAddress'],
+          label: tokens('SHARED.emailAddress'),
           type: 'email',
           autoComplete: 'email'
         }
@@ -45,7 +45,7 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

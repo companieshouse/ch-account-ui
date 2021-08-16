@@ -3,13 +3,13 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.checkYourEmail']
+      title: tokens('SHARED.checkYourEmail')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.checkYourEmail']
+      children: tokens('SHARED.checkYourEmail')
     }
   },
   {
@@ -22,7 +22,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.weveSentAnEmailTo']
+          children: tokens('SHARED.weveSentAnEmailTo')
         }
       },
       {
@@ -37,7 +37,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['RESET_PASSWORD_6.[2].BodyText.whichContainsLinkToResetYourPassword']
+          children: tokens('RESET_PASSWORD_6.[2].BodyText.whichContainsLinkToResetYourPassword')
         }
       }
     ]
@@ -45,19 +45,19 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
   {
     component: 'InsetText',
     props: {
-      children: tokens['RESET_PASSWORD_6.[3].InsetText.theLinkWillExpireIn6Hours']
+      children: tokens('RESET_PASSWORD_6.[3].InsetText.theLinkWillExpireIn6Hours')
     }
   },
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.iHaveNotReceivedAnEmail']
+      summary: tokens('SHARED.iHaveNotReceivedAnEmail')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset']
+          children: tokens('SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset')
         }
       },
       {
@@ -67,13 +67,13 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou']
+              children: tokens('SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.askUsToSendYouAnotherEmail'],
+              children: tokens('SHARED.askUsToSendYouAnotherEmail'),
               href: '/password-recovery/_restart/',
               testId: 'restartPasswordRecoveryLink'
             }
@@ -81,7 +81,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]
@@ -92,13 +92,13 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou']
+              children: tokens('SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.giveUsADifferentEmailAddress'],
+              children: tokens('SHARED.giveUsADifferentEmailAddress'),
               href: '/password-recovery/_restart/',
               testId: 'restartPasswordRecoveryLink'
             }
@@ -106,7 +106,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]

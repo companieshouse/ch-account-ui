@@ -3,7 +3,7 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['INVITE_USER_1.[0].BrowserTitle.whatAreTheAuthorisedPersonsDetails']
+      title: tokens('INVITE_USER_1.[0].BrowserTitle.whatAreTheAuthorisedPersonsDetails')
     }
   },
   {
@@ -15,19 +15,19 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.whatAreTheAuthorisedPersonsDetails']
+      children: tokens('SHARED.whatAreTheAuthorisedPersonsDetails')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['INVITE_USER_1.[3].BodyText.tellUsTheDetailsOfThePersonYouWantTo']
+      children: tokens('INVITE_USER_1.[3].BodyText.tellUsTheDetailsOfThePersonYouWantTo')
     }
   },
   {
     component: 'InsetText',
     props: {
-      children: tokens['INVITE_USER_1.[4].InsetText.youCanChangeWhoIsAuthorisedToFileAtAny']
+      children: tokens('INVITE_USER_1.[4].InsetText.youCanChangeWhoIsAuthorisedToFileAtAny')
     }
   },
   {
@@ -36,8 +36,8 @@ const INVITE_USER_1 = (lang, tokens) => [
       elementProps: {
         IDToken2: {
           formGroup: 'nameAndEmail',
-          label: tokens['SHARED.emailAddress'],
-          hint: tokens['INVITE_USER_1.[5].DisplayUiElements.wellSendAnEmailThatContainsARequest']
+          label: tokens('SHARED.emailAddress'),
+          hint: tokens('INVITE_USER_1.[5].DisplayUiElements.wellSendAnEmailThatContainsARequest')
         }
       }
     }
@@ -45,7 +45,7 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

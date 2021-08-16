@@ -4,7 +4,7 @@ const CHANGE_EMAIL_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
+      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
     }
   },
   {

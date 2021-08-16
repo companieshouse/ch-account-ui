@@ -3,13 +3,13 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['RESET_PASSWORD_4.[0].PageHeading.resetYourPassword']
+      title: tokens('RESET_PASSWORD_4.[0].PageHeading.resetYourPassword')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['RESET_PASSWORD_4.[0].PageHeading.resetYourPassword']
+      children: tokens('RESET_PASSWORD_4.[0].PageHeading.resetYourPassword')
     }
   },
   {
@@ -17,11 +17,11 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
-          label: tokens['SHARED.enterANewPassword'],
-          hint: tokens['SHARED.thisMustBeAtLeast8CharactersLongAndHardTo']
+          label: tokens('SHARED.enterANewPassword'),
+          hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo')
         },
         IDToken2: {
-          label: tokens['SHARED.reEnterTheNewPassword']
+          label: tokens('SHARED.reEnterTheNewPassword')
         }
       }
     }
@@ -29,19 +29,19 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.helpWithCreatingYourPassword']
+      summary: tokens('SHARED.helpWithCreatingYourPassword')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.youCanUseNumbersSymbolsAndSpaces']
+          children: tokens('SHARED.youCanUseNumbersSymbolsAndSpaces')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.aGoodWayToCreateASecureAndMemorablePassword']
+          children: tokens('SHARED.aGoodWayToCreateASecureAndMemorablePassword')
         }
       }
     ]
@@ -49,7 +49,7 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.resetPassword'],
+      children: tokens('SHARED.resetPassword'),
       type: 'submit',
       testId: 'submitButton'
     }

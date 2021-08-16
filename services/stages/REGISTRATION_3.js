@@ -3,7 +3,7 @@ const REGISTRATION_3 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress']
+      children: tokens('REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress')
     }
   },
   {
@@ -15,7 +15,7 @@ const REGISTRATION_3 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.weveSentAnEmailTo']
+          children: tokens('SHARED.weveSentAnEmailTo')
         }
       },
       {
@@ -30,7 +30,7 @@ const REGISTRATION_3 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['REGISTRATION_3.[2].BodyText.whichContainsAVerificationLink']
+          children: tokens('REGISTRATION_3.[2].BodyText.whichContainsAVerificationLink')
         }
       }
     ]
@@ -40,27 +40,27 @@ const REGISTRATION_3 = (lang, tokens) => [
     props: {
       type: 'number',
       items: [
-        tokens['REGISTRATION_3.[6].List.openTheEmail'],
-        tokens['REGISTRATION_3.[6].List.selectTheVerificationLink']
+        tokens('REGISTRATION_3.[6].List.openTheEmail'),
+        tokens('REGISTRATION_3.[6].List.selectTheVerificationLink')
       ]
     }
   },
   {
     component: 'InsetText',
     props: {
-      children: tokens['REGISTRATION_3.[4].InsetText.theVerificationLinkWillExpire']
+      children: tokens('REGISTRATION_3.[4].InsetText.theVerificationLinkWillExpire')
     }
   },
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.iHaveNotReceivedAnEmail']
+      summary: tokens('SHARED.iHaveNotReceivedAnEmail')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectVerify']
+          children: tokens('SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectVerify')
         }
       },
       {
@@ -70,13 +70,13 @@ const REGISTRATION_3 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou']
+              children: tokens('SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.askUsToSendYouAnotherEmail'],
+              children: tokens('SHARED.askUsToSendYouAnotherEmail'),
               href: '/password-recovery/_restart/',
               testId: 'restartPasswordRecoveryLink'
             }
@@ -84,7 +84,7 @@ const REGISTRATION_3 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]
@@ -95,13 +95,13 @@ const REGISTRATION_3 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou']
+              children: tokens('SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.giveUsADifferentEmailAddress'],
+              children: tokens('SHARED.giveUsADifferentEmailAddress'),
               href: '/password-recovery/_restart/',
               testId: 'restartPasswordRecoveryLink'
             }
@@ -109,7 +109,7 @@ const REGISTRATION_3 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]

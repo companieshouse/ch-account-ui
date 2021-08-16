@@ -4,7 +4,7 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.sorryThereIsAProblemWithTheService']
+      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
     }
   },
   {
@@ -28,7 +28,7 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
         component: 'PageHeading',
         props: {
           showErrorSummary: false,
-          children: tokens['RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired']
+          children: tokens('RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired')
         }
       },
       {
@@ -37,7 +37,7 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
           {
             component: 'LinkText',
             props: {
-              children: tokens['RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword'],
+              children: tokens('RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword'),
               href: '/account/register/_restart/',
               testId: 'startRegistrationAgainLink'
             }

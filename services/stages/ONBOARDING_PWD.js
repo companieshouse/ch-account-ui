@@ -3,20 +3,20 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['ONBOARDING_PWD.[0].BrowserTitle.createAPassword']
+      title: tokens('ONBOARDING_PWD.[0].BrowserTitle.createAPassword')
     }
   },
   {
     component: 'NotificationBanner',
     dynamicProps: {
-      title: tokens['SHARED.important'],
-      heading: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate']
+      title: tokens('SHARED.important'),
+      heading: tokens('ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate')
     },
     content: [
       {
         component: 'SpanText',
         props: {
-          children: tokens['ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause']
+          children: tokens('ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause')
         }
       }
     ]
@@ -24,7 +24,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling']
+      children: tokens('ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling')
     }
   },
   {
@@ -32,12 +32,12 @@ const ONBOARDING_PWD = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken3: {
-          label: tokens['SHARED.enterPassword'],
-          hint: tokens['SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'],
+          label: tokens('SHARED.enterPassword'),
+          hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'),
           formGroup: 'newPassword'
         },
         IDToken4: {
-          label: tokens['SHARED.reEnterPassword'],
+          label: tokens('SHARED.reEnterPassword'),
           formGroup: 'newPassword'
         }
       }
@@ -46,7 +46,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.helpWithCreatingYourPassword']
+      summary: tokens('SHARED.helpWithCreatingYourPassword')
     },
     content: [
       {
@@ -56,13 +56,13 @@ const ONBOARDING_PWD = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.youCanUseNumbersSymbolsAndSpaces']
+          children: tokens('SHARED.youCanUseNumbersSymbolsAndSpaces')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.aGoodWayToCreateASecureAndMemorablePassword']
+          children: tokens('SHARED.aGoodWayToCreateASecureAndMemorablePassword')
         }
       }
     ]
@@ -70,7 +70,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.createAccount'],
+      children: tokens('SHARED.createAccount'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -81,7 +81,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling'],
+          children: tokens('ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling'),
           testId: 'guidanceLink',
           href: 'https://www.gov.uk/guidance/filing-your-companies-house-information-online'
         }

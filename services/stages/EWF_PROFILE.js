@@ -3,19 +3,19 @@ const EWF_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.updateYourPersonalDetails']
+      title: tokens('SHARED.updateYourPersonalDetails')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.updateYourPersonalDetails']
+      children: tokens('SHARED.updateYourPersonalDetails')
     },
     content: [
       {
         component: 'Caption',
         props: {
-          children: tokens['EWF_PROFILE.[1].Caption.thisIsOptional'],
+          children: tokens('EWF_PROFILE.[1].Caption.thisIsOptional'),
           size: 'm',
           style: {
             paddingTop: '0.5em'
@@ -30,7 +30,7 @@ const EWF_PROFILE = (lang, tokens) => [
       elementProps: {
         IDToken3: {
           autoComplete: 'name',
-          label: tokens['EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional']
+          label: tokens('EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional')
         },
         IDToken4: {
           remove: true
@@ -44,31 +44,31 @@ const EWF_PROFILE = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.whereYourNameWillBeShown']
+      summary: tokens('SHARED.whereYourNameWillBeShown')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouProvideYourNameThisWillBeShown']
+          children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
         }
       },
       {
         component: 'List',
         props: {
-          items: tokens['SHARED.whereYourNameWillBeShownList']
+          items: tokens('SHARED.whereYourNameWillBeShownList')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.itIsUpToYouHowYourNameIsShownForExampleJen']
+          children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.ifYouDoNotProvideYourNameYourEmailAddress']
+          children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
         }
       }
     ]
@@ -82,8 +82,8 @@ const EWF_PROFILE = (lang, tokens) => [
         },
         IDToken4: {
           autoComplete: 'tel',
-          hint: tokens['SHARED.addYourMobileNumberToMakeYourAccountMore'],
-          label: tokens['EWF_PROFILE.[2].DisplayUiElements.whatIsYourMobileNumberOptional']
+          hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore'),
+          label: tokens('EWF_PROFILE.[2].DisplayUiElements.whatIsYourMobileNumberOptional')
         },
         IDToken6: {
           _hidden: true
@@ -97,7 +97,7 @@ const EWF_PROFILE = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens['SHARED.continue'],
+          children: tokens('SHARED.continue'),
           type: 'submit',
           testId: 'submitButton'
         }
@@ -105,7 +105,7 @@ const EWF_PROFILE = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens['EWF_PROFILE.[3].ButtonGroup.skip'],
+          children: tokens('EWF_PROFILE.[3].ButtonGroup.skip'),
           type: 'submit',
           secondary: true,
           testId: 'submitButton',

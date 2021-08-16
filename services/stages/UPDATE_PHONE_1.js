@@ -3,13 +3,13 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber']
+      title: tokens('UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.changeYourMobileNumber'],
+      children: tokens('SHARED.changeYourMobileNumber'),
       size: 'l'
     }
   },
@@ -18,14 +18,14 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken2: {
-          label: tokens['SHARED.mobileNumber'],
-          hint: tokens['UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText'],
+          label: tokens('SHARED.mobileNumber'),
+          hint: tokens('UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText'),
           type: 'number',
           autoComplete: 'off'
         },
         IDToken3: {
-          label: tokens['SHARED.password'],
-          hint: tokens['UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword']
+          label: tokens('SHARED.password'),
+          hint: tokens('UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword')
         }
       }
     }
@@ -36,7 +36,7 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens['SHARED.continue'],
+          children: tokens('SHARED.continue'),
           type: 'submit',
           testId: 'submitButton'
         }
@@ -44,7 +44,7 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.cancel'],
+          children: tokens('SHARED.cancel'),
           href: '/account/manage'
         }
       }

@@ -3,13 +3,13 @@ const LOGIN_MFA = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.verifyYourMobileNumber']
+      title: tokens('SHARED.verifyYourMobileNumber')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.checkYourPhone']
+      children: tokens('SHARED.checkYourPhone')
     }
   },
   {
@@ -18,7 +18,7 @@ const LOGIN_MFA = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens['SHARED.weveSentATextMessageWithASecurityCode']
+          children: tokens('SHARED.weveSentATextMessageWithASecurityCode')
         }
       },
       {
@@ -40,7 +40,7 @@ const LOGIN_MFA = (lang, tokens) => [
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.itMayTakeAFewMinutesToArrive']
+      children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
     }
   },
   {
@@ -48,7 +48,7 @@ const LOGIN_MFA = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
-          label: tokens['SHARED.securityCode'],
+          label: tokens('SHARED.securityCode'),
           type: 'number',
           autoComplete: 'off'
         }
@@ -58,7 +58,7 @@ const LOGIN_MFA = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -66,13 +66,13 @@ const LOGIN_MFA = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.iHaveNotReceivedATextMessage']
+      summary: tokens('SHARED.iHaveNotReceivedATextMessage')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.theTextMessageMayTakeAFewMinutesTo']
+          children: tokens('SHARED.theTextMessageMayTakeAFewMinutesTo')
         }
       },
       {
@@ -81,20 +81,20 @@ const LOGIN_MFA = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.ifItDoesNotArriveYouCan']
+              children: tokens('SHARED.ifItDoesNotArriveYouCan')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens['SHARED.askUsToSendYouAnotherTextMessage'],
+              children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
               href: '/account/login/'
             }
           },
           {
             component: 'SpanText',
             props: {
-              children: tokens['SHARED.']
+              children: tokens('SHARED.')
             }
           }
         ]

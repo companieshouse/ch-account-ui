@@ -3,13 +3,13 @@ const RESET_PASSWORD_2 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.howDoYouWantToConfirmItsYou']
+      children: tokens('SHARED.howDoYouWantToConfirmItsYou')
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: tokens['SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo']
+      children: tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo')
     }
   },
   {
@@ -20,10 +20,10 @@ const RESET_PASSWORD_2 = (lang, tokens) => [
           label: null,
           options: [
             {
-              label: tokens['SHARED.email']
+              label: tokens('SHARED.email')
             },
             {
-              label: tokens['SHARED.text']
+              label: tokens('SHARED.text')
             }
           ]
         }
@@ -33,7 +33,7 @@ const RESET_PASSWORD_2 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

@@ -3,7 +3,7 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.howDoYouWantToConfirmItsYou']
+      title: tokens('SHARED.howDoYouWantToConfirmItsYou')
     }
   },
   {
@@ -11,10 +11,10 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
     dynamicProps: {
       'elementProps.IDToken1.options': [
         {
-          label: tokens['SHARED.email']
+          label: tokens('SHARED.email')
         },
         {
-          label: tokens['SHARED.text']
+          label: tokens('SHARED.text')
         }
       ]
     },
@@ -22,8 +22,8 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
       elementProps: {
         IDToken1: {
           renderLabelAs: 'heading',
-          label: tokens['SHARED.howDoYouWantToConfirmItsYou'],
-          hint: tokens['SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo']
+          label: tokens('SHARED.howDoYouWantToConfirmItsYou'),
+          hint: tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo')
         }
       }
     }
@@ -31,7 +31,7 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }

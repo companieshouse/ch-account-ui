@@ -3,13 +3,13 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['COMPANY_ASSOCIATION_2.[0].BrowserTitle.confirmThisIs']
+      title: tokens('COMPANY_ASSOCIATION_2.[0].BrowserTitle.confirmThisIs')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.confirmThisIsTheCorrectCompany']
+      children: tokens('SHARED.confirmThisIsTheCorrectCompany')
     }
   },
   {
@@ -38,23 +38,23 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
     props: {
       listItems: [
         {
-          label: tokens['SHARED.companyNumber'],
+          label: tokens('SHARED.companyNumber'),
           value: ''
         },
         {
-          label: tokens['SHARED.status'],
+          label: tokens('SHARED.status'),
           value: ''
         },
         {
-          label: tokens['SHARED.incorporationDate'],
+          label: tokens('SHARED.incorporationDate'),
           value: ''
         },
         {
-          label: tokens['SHARED.companyType'],
+          label: tokens('SHARED.companyType'),
           value: ''
         },
         {
-          label: tokens['SHARED.registeredOfficeAddress'],
+          label: tokens('SHARED.registeredOfficeAddress'),
           value: ''
         }
       ]
@@ -73,7 +73,7 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.confirmAndContinue'],
+      children: tokens('SHARED.confirmAndContinue'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -84,7 +84,7 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens['SHARED.chooseADifferentCompany'],
+          children: tokens('SHARED.chooseADifferentCompany'),
           href: '/account/associate/_restart'
         }
       }

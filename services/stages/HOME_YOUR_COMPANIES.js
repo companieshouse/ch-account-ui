@@ -3,7 +3,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.yourCompanies']
+      title: tokens('SHARED.yourCompanies')
     }
   },
   {
@@ -15,12 +15,12 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'NotificationBanner',
     props: {
       type: 'success',
-      title: tokens['SHARED.success'],
+      title: tokens('SHARED.success'),
       testId: 'notification-banner-auth-success'
     },
     dynamicProps: {
       notifyId: '${notifyId}',
-      heading: tokens['SHARED.anEmailRequestHasBeenSentToInvitedUserToBe']
+      heading: tokens('SHARED.anEmailRequestHasBeenSentToInvitedUserToBe')
     }
   },
   {
@@ -32,8 +32,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'NotificationBanner',
     dynamicProps: {
       type: 'success',
-      title: tokens['SHARED.success'],
-      heading: tokens['HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany']
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany')
     }
   },
   {
@@ -45,8 +45,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'NotificationBanner',
     dynamicProps: {
       type: 'success',
-      title: tokens['SHARED.success'],
-      heading: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.youHaveDeclinedTheRequestToHaveAuthorisation']
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.youHaveDeclinedTheRequestToHaveAuthorisation')
     }
   },
   {
@@ -58,27 +58,27 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'NotificationBanner',
     dynamicProps: {
       type: 'success',
-      title: tokens['SHARED.success'],
-      heading: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.isNoLongerAuthorisedToFileOnline']
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.isNoLongerAuthorisedToFileOnline')
     },
     content: [
       {
         component: 'SpanText',
         props: {
-          children: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.youShould']
+          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.youShould')
         }
       },
       {
         component: 'LinkText',
         props: {
           href: 'https://www.gov.uk/guidance/company-authentication-codes-for-online-filing#change-or-cancel-your-code',
-          children: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode']
+          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode')
         }
       },
       {
         component: 'SpanText',
         dynamicProps: {
-          children: tokens['HOME_YOUR_COMPANIES.[3].NotificationBanner.forThisCompanyIf']
+          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.forThisCompanyIf')
         }
       }
     ]
@@ -86,7 +86,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.yourCompanies'],
+      children: tokens('SHARED.yourCompanies'),
       size: 'l'
     }
   },
@@ -94,7 +94,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'Button',
     props: {
       renderAs: 'link',
-      children: tokens['SHARED.addACompany'],
+      children: tokens('SHARED.addACompany'),
       href: '/account/associate/_start',
       testId: 'accountAssociateCompanyLink'
     }
@@ -116,21 +116,21 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
             component: 'HeadingText',
             props: {
               size: 'm',
-              children: tokens['HOME_YOUR_COMPANIES.[6].Fragment.youHaveNotAddedAnyCompaniesToThis']
+              children: tokens('HOME_YOUR_COMPANIES.[6].Fragment.youHaveNotAddedAnyCompaniesToThis')
             }
           },
           {
             component: 'BodyText',
             props: {
-              children: tokens['HOME_YOUR_COMPANIES.[6].Fragment.addACompanyToYourAccountSoThatYou']
+              children: tokens('HOME_YOUR_COMPANIES.[6].Fragment.addACompanyToYourAccountSoThatYou')
             }
           },
           {
             component: 'List',
             props: {
               items: [
-                tokens['HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline'],
-                tokens['HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile']
+                tokens('HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline'),
+                tokens('HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile')
               ]
             }
           }
@@ -187,7 +187,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                       {
                         component: 'SpanText',
                         props: {
-                          children: tokens['SHARED.companyNumber']
+                          children: tokens('SHARED.companyNumber')
                         }
                       },
                       {
@@ -210,7 +210,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                       {
                         component: 'SpanText',
                         props: {
-                          children: tokens['SHARED.correspondenceAddress']
+                          children: tokens('SHARED.correspondenceAddress')
                         }
                       },
                       {
@@ -260,19 +260,19 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                       {
                                         component: 'Th',
                                         props: {
-                                          children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany']
+                                          children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
                                         }
                                       },
                                       {
                                         component: 'Th',
                                         props: {
-                                          children: tokens['SHARED.authorisationStatus']
+                                          children: tokens('SHARED.authorisationStatus')
                                         }
                                       },
                                       {
                                         component: 'Th',
                                         props: {
-                                          children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.view']
+                                          children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.view')
                                         }
                                       }
                                     ]
@@ -322,7 +322,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             component: 'Tag',
                                             dynamicProps: {
                                               colour: 'green',
-                                              children: tokens['SHARED.confirmed']
+                                              children: tokens('SHARED.confirmed')
                                             }
                                           }
                                         ]
@@ -339,7 +339,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             component: 'Tag',
                                             props: {
                                               colour: 'yellow',
-                                              children: tokens['SHARED.awaitingConfirmation']
+                                              children: tokens('SHARED.awaitingConfirmation')
                                             }
                                           }
                                         ]
@@ -353,7 +353,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                               href: '${user.detailsPath}'
                                             },
                                             props: {
-                                              children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'],
+                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'),
                                               className: 'govuk-link--no-visited-state'
                                             }
                                           }
@@ -372,7 +372,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                 component: 'LinkText',
                                 dynamicProps: {
                                   href: '${company.filePath}',
-                                  children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'],
+                                  children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'),
                                   className: 'govuk-link--no-visited-state'
                                 }
                               }
@@ -385,7 +385,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                 component: 'LinkText',
                                 dynamicProps: {
                                   href: '${company.authorisePath}',
-                                  children: tokens['HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'],
+                                  children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'),
                                   className: 'govuk-link--no-visited-state'
                                 }
                               }
@@ -415,7 +415,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'Button',
     props: {
       renderAs: 'link',
-      children: tokens['SHARED.addACompany'],
+      children: tokens('SHARED.addACompany'),
       href: '/account/associate/_start',
       testId: 'accountAssociateCompanyLink'
     }

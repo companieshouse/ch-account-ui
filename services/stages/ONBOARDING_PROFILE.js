@@ -3,13 +3,13 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.whatAreYourDetails']
+      title: tokens('SHARED.whatAreYourDetails')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['SHARED.whatAreYourDetails']
+      children: tokens('SHARED.whatAreYourDetails')
     }
   },
   {
@@ -18,13 +18,13 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       elementProps: {
         IDToken3: {
           autoComplete: 'name',
-          hint: tokens['SHARED.thisIsTheNameThatWillBeDisplayedInYour'],
-          label: tokens['SHARED.fullName']
+          hint: tokens('SHARED.thisIsTheNameThatWillBeDisplayedInYour'),
+          label: tokens('SHARED.fullName')
         },
         IDToken4: {
           autoComplete: 'tel',
-          hint: tokens['SHARED.addYourMobileNumberToMakeYourAccountMore'],
-          label: tokens['SHARED.mobileNumberOptional']
+          hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore'),
+          label: tokens('SHARED.mobileNumberOptional')
         },
         IDToken6: {
           _hidden: true
@@ -37,7 +37,7 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
     content: [{
       component: 'Button',
       props: {
-        children: tokens['SHARED.continue'],
+        children: tokens('SHARED.continue'),
         type: 'submit',
         testId: 'submitButton'
       }
@@ -45,7 +45,7 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
     {
       component: 'Button',
       props: {
-        children: tokens['SHARED.skip'],
+        children: tokens('SHARED.skip'),
         type: 'submit',
         secondary: true,
         testId: 'submitButton',

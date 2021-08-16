@@ -3,7 +3,7 @@ const EWF_LOGIN_4 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['SHARED.enterTheCompanyAuthenticationCode']
+      title: tokens('SHARED.enterTheCompanyAuthenticationCode')
     }
   },
   {
@@ -17,7 +17,7 @@ const EWF_LOGIN_4 = (lang, tokens) => [
           renderLabelAs: 'heading',
           caption: '',
           captionPosition: 'above',
-          label: tokens['SHARED.enterTheCompanyAuthenticationCode'],
+          label: tokens('SHARED.enterTheCompanyAuthenticationCode'),
           fixedWidth: '10'
         }
       }
@@ -26,7 +26,7 @@ const EWF_LOGIN_4 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.continue'],
+      children: tokens('SHARED.continue'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -34,13 +34,13 @@ const EWF_LOGIN_4 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens['SHARED.helpWithAuthenticationCode']
+      summary: tokens('SHARED.helpWithAuthenticationCode')
     },
     content: [
       {
         component: 'BodyText',
         props: {
-          children: tokens['SHARED.thisIsA6CharacterCodeIssuedByUsToEachCompany']
+          children: tokens('SHARED.thisIsA6CharacterCodeIssuedByUsToEachCompany')
         }
       },
       {
@@ -49,7 +49,7 @@ const EWF_LOGIN_4 = (lang, tokens) => [
           href: '${links.requestAuthCodePath}'
         },
         props: {
-          children: tokens['SHARED.requestAnAuthenticationCode'],
+          children: tokens('SHARED.requestAnAuthenticationCode'),
           testId: 'requestAuthCodeLink'
         }
       }
@@ -64,7 +64,7 @@ const EWF_LOGIN_4 = (lang, tokens) => [
           href: '${links.ewfLegacyAuthUrl}'
         },
         props: {
-          children: tokens['SHARED.imAnAgentOrLenderAndIWantToFileACharge'],
+          children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
           testId: 'forgottenMyPasswordLink'
         }
       }

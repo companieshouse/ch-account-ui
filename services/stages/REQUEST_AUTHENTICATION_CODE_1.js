@@ -3,13 +3,13 @@ const REQUEST_AUTHENTICATION_CODE_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens['REQUEST_AUTHENTICATION_CODE_1.[0].BrowserTitle.requestingAnAuthenticationCode']
+      title: tokens('REQUEST_AUTHENTICATION_CODE_1.[0].BrowserTitle.requestingAnAuthenticationCode')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens['REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.doYouWantUsToSendTheAuthenticationCodeToThe']
+      children: tokens('REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.doYouWantUsToSendTheAuthenticationCodeToThe')
     }
   },
   {
@@ -18,7 +18,7 @@ const REQUEST_AUTHENTICATION_CODE_1 = (lang, tokens) => [
   {
     component: 'BodyText',
     props: {
-      children: tokens['REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.wellSendTheAuthenticationCodeByPost']
+      children: tokens('REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.wellSendTheAuthenticationCodeByPost')
     }
   },
   {
@@ -38,13 +38,13 @@ const REQUEST_AUTHENTICATION_CODE_1 = (lang, tokens) => [
   {
     component: 'BodyText',
     props: {
-      children: tokens['REQUEST_AUTHENTICATION_CODE_1.[5].BodyText.itCanTakeUpTo5DaysToArrive']
+      children: tokens('REQUEST_AUTHENTICATION_CODE_1.[5].BodyText.itCanTakeUpTo5DaysToArrive')
     }
   },
   {
     component: 'Button',
     props: {
-      children: tokens['REQUEST_AUTHENTICATION_CODE_1.[6].Button.sendTheAuthenticationCode'],
+      children: tokens('REQUEST_AUTHENTICATION_CODE_1.[6].Button.sendTheAuthenticationCode'),
       type: 'submit',
       testId: 'submitButton'
     }
@@ -52,7 +52,7 @@ const REQUEST_AUTHENTICATION_CODE_1 = (lang, tokens) => [
   {
     component: 'Button',
     props: {
-      children: tokens['SHARED.cancel'],
+      children: tokens('SHARED.cancel'),
       secondary: true,
       className: 'marginLeft',
       renderAs: 'link',
