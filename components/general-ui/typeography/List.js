@@ -12,10 +12,12 @@ const List = (props) => {
 
   const finalClassName = classes.join(' ').trim()
 
+  const listItems = items ? items.map((itemText, index) => <ListItem key={index}>{itemText}</ListItem>) : null
+
   return (
     <ul className={`govuk-list ${finalClassName}`}>
       {children}
-      {items.map((itemText, index) => <ListItem key={index}>{itemText}</ListItem>)}
+      {listItems}
     </ul>
   )
 }

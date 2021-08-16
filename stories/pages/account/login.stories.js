@@ -103,7 +103,7 @@ EWF_LOGIN_1.args = {
 export const EWF_PROFILE = Template.bind({})
 EWF_PROFILE.args = {
   path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
-  submitPath: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
+  // submitPath: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   submitResponseData: {
     authId: mockAuthId,
     callbacks: [

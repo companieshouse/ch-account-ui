@@ -10,7 +10,19 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.whatAreYourDetails')
-    }
+    },
+    content: [
+      {
+        component: 'Caption',
+        props: {
+          children: tokens('SHARED.thisIsOptional'),
+          size: 'm',
+          style: {
+            paddingTop: '0.5em'
+          }
+        }
+      }
+    ]
   },
   {
     component: 'DisplayUiElements',
@@ -18,8 +30,41 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       elementProps: {
         IDToken3: {
           autoComplete: 'name',
-          hint: tokens('SHARED.thisIsTheNameThatWillBeDisplayedInYour'),
-          label: tokens('SHARED.fullName')
+          label: tokens('SHARED.fullName'),
+          content: [
+            {
+              component: 'Details',
+              props: {
+                summary: tokens('SHARED.whereYourNameWillBeShown')
+              },
+              content: [
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
+                  }
+                },
+                {
+                  component: 'List',
+                  props: {
+                    items: tokens('SHARED.whereYourNameWillBeShownList')
+                  }
+                },
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
+                  }
+                },
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
+                  }
+                }
+              ]
+            }
+          ]
         },
         IDToken4: {
           autoComplete: 'tel',

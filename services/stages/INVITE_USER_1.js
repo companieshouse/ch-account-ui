@@ -3,7 +3,7 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('INVITE_USER_1.[0].BrowserTitle.whatAreTheAuthorisedPersonsDetails')
+      title: tokens('SHARED.whatIsTheAuthorisedPersonsEmailAddress')
     }
   },
   {
@@ -15,7 +15,7 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.whatAreTheAuthorisedPersonsDetails')
+      children: tokens('SHARED.whatIsTheAuthorisedPersonsEmailAddress')
     }
   },
   {

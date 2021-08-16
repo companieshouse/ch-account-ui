@@ -145,7 +145,7 @@ const getStage = (stage, lang) => {
   const tokens = (key) => {
     const token = contentTokens[key] && contentTokens[key][lang]
     if (!token) {
-      log.error('Missing content token: ' + key)
+      log.warn('Missing content token: ' + key)
       return ''
     }
     return token

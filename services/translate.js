@@ -1,5 +1,6 @@
 import getStage from './stages/stages'
 import tokens from './lang/tokens.json'
+import log from './log'
 
 /**
  * Returns object containing the static stage definition populated with translated tokens
@@ -35,7 +36,8 @@ export const getStageFeatures = (lang = 'en', stage = '') => {
  * @returns {String} The human-readable translated token string.
  */
 export const translate = (lang, token, defaultErrorValue = undefined) => {
-  if (tokens[token][lang] === undefined) {
+  if (!tokens[token] || !tokens[token][lang]) {
+    log.warn(`Missing token for lang: ${lang} token: ${token}`)
     return defaultErrorValue !== undefined ? defaultErrorValue : `Translation text missing for lang "${lang}" and token "${token}". Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with this name!`
   }
 

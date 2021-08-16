@@ -148,7 +148,7 @@ const ChangeName = ({ lang }) => {
     </FeatureDynamicView>
   )
 }
-
+export { ChangeName }
 export default WithLang(ChangeName)
 
 ChangeName.propTypes = {
