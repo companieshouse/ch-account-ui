@@ -1,17 +1,17 @@
 import React from 'react'
-import { Home } from '../../../pages/account/home'
 import fetchMock from 'fetch-mock'
 import {
   mockAuthId,
-  mockCompaniesPath,
-  mockCompaniesResponse,
+  mockConfirmedCompaniesPath,
+  mockConfirmedCompaniesResponse,
   mockUserProfile,
   mockUserPath,
   tokens
-} from '../common-mocks'
+} from '../../common-mocks'
+import { YourCompanies } from '../../../../pages/account/your-companies'
 
 export default {
-  title: 'Pages/Account/Home',
+  title: 'Pages/Account/YourCompanies',
   args: {
     lang: 'en'
   }
@@ -25,12 +25,12 @@ const Template = ({ userOrgsResponse, orgUsersResponse, mockUserResponse, ...res
     return { redirectUrl: 'http://not.used.com', status: 302 }
   })
   fetchMock.mock(mockUserPath, mockUserProfile)
-  fetchMock.mock(mockCompaniesPath, mockCompaniesResponse)
-  return <Home {...rest} />
+  fetchMock.mock(mockConfirmedCompaniesPath, mockConfirmedCompaniesResponse)
+  return <YourCompanies {...rest}/>
 }
 
-export const HOME_OVERVIEW = Template.bind({})
-HOME_OVERVIEW.args = {
+export const HOME_YOUR_COMPANIES = Template.bind({})
+HOME_YOUR_COMPANIES.args = {
   accessToken: mockAuthId,
-  companiesResponse: mockCompaniesResponse
+  companiesResponse: mockConfirmedCompaniesResponse
 }

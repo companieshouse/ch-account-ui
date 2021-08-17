@@ -15,7 +15,7 @@ const ONBOARDING_PWD = (lang, tokens) => [
     content: [
       {
         component: 'SpanText',
-        props: {
+        dynamicProps: {
           children: tokens('ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause')
         }
       }

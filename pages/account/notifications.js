@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
@@ -7,56 +7,39 @@ import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
-import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
-import { generateQueryUrl } from '../../services/queryString'
 import useFRAuth from '../../services/useFRAuth'
 import WithQueryParams from '../../components/providers/WithQueryParams'
 import WithLang from '../../services/lang/WithLang'
-
-export const extendCompaniesData = (companiesData, sub) => {
-  return companiesData.map((company) => {
-    const acceptPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'accept' })
-    const declinePath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'decline' })
-    const inviter = company.users.filter((user) => user._refResourceId === company._refProperties.inviterId)[0]
-    return { ...company, acceptPath, declinePath, inviter }
-  })
-}
+import Loading from '../../components/application-specific/Loading'
 
 const Notifications = ({ errors, lang, queryParams }) => {
-  const { profile, accessToken } = useFRAuth()
-  const [associationData, setAssociationData] = useState({ count: '0' })
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
   const [pageNotification, setPageNotification] = useState()
   const uiStage = 'HOME_NOTIFICATIONS'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
-  const sub = profile?.sub
-  const { companies, pendingCompanies } = associationData
+  const { companies } = companyData
   const { companyNumber } = queryParams
 
-  React.useEffect(() => {
+  const pendingCompanies = companies.filter((company) => company.membershipStatus === 'pending')
+
+  useEffect(() => {
     headingCount.reset()
+  })
 
-    if (accessToken && sub) {
-      getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
-        setAssociationData({
-          count: response.pendingCount,
-          companies: response.companies,
-          pendingCompanies: extendCompaniesData(response.pendingCompanies, sub)
-        })
-      })
-    }
-  }, [sub, accessToken, headingCount])
-
-  // Handle companyNumber query
+  // Handle companyNumber URL query
   React.useEffect(() => {
-    if (companyNumber && pendingCompanies) {
+    if (companyNumber && companies.length) {
       const anchorCompany = pendingCompanies.find((company) => company.number === companyNumber)
+
+      // Set hash for scroll behaviour
       if (anchorCompany) {
         window.location.hash = anchorCompany.number
         return
       }
 
+      // Handle error notifications
       const confirmedCompany = companies.find((company) => company.number === companyNumber)
       if (confirmedCompany) {
         setPageNotification('companyAlreadyAuthorised')
@@ -64,7 +47,7 @@ const Notifications = ({ errors, lang, queryParams }) => {
         setPageNotification('noCompanyMatch')
       }
     }
-  }, [companyNumber, companies, pendingCompanies])
+  }, [companyNumber, companies, pendingCompanies, companyData])
 
   return (
     <FeatureDynamicView
@@ -75,18 +58,21 @@ const Notifications = ({ errors, lang, queryParams }) => {
       hasAccountLinks
       accountLinksItem={5}
     >
-      <Dynamic
-        componentMap={componentMap}
-        headingCount={headingCount}
-        content={content}
-        errors={errors}
-        uiElements={[]}
-        uiStage={uiStage}
-        profile={profile}
-        companies={associationData.pendingCompanies}
-        notifyToken={pageNotification}
-        {...router.query}
-      />
+      {loading
+        ? <Loading/>
+        : <Dynamic
+          componentMap={componentMap}
+          headingCount={headingCount}
+          content={content}
+          errors={errors}
+          uiElements={[]}
+          uiStage={uiStage}
+          profile={profile}
+          companies={pendingCompanies}
+          notifyToken={pageNotification}
+          {...router.query}
+        />
+      }
     </FeatureDynamicView>
   )
 }

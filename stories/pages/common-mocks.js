@@ -1,6 +1,6 @@
 const mockAuthId = 'USkphWGRwV1ZkNGJrbHFiMmxhUjJ4NVNXNHdMaTVVVW1KNE9EWjBOVWRzWTBSaFRISXdTRTlhYUhObkxuVnlXRWhFTmtoS2VrZEdTV015UjJkWWJrRktNRnBqWDNsNU9FaHlXRmhTT0hsTFRVOVlSbmt6U25oU1JqWmZTVVJQU1VSa1ExZzJObTl3UkV4ekxXaEhWbGRtVEdwMmEyRlFObm96WmtkRFZuWmFabmhFY21ab1VFaHRZM3BsUlV4UmNrWnpVblJGWmtJM09FbDJiMk5FVkhkalNIazBaMUZMTlRGMlFrcFRaMUJOZFc0M1RFSnlaMkpKYVdGV1dISlRhazVDZEZGUGRHWnVNVk00ZG5JeFVuWlhZbkJPYTI5UFpWQlRVVVZoTXpkbFUxSklaWGxYVUhOcVMwMXdha293YTA5V1dHMXFPVEU0YkRVMFYwNDBORU5oVlV0Sk1scDFaM1ZGYTJSdU5WSmpXbTl0U3pWMVRrUkxXV1Z4YTBGNmVrcHNkMXB3ZVV4cFZrMDNVamN0TTAxR1FtNVVaelp1TTBnNWJUTm9Wblp1VjNCek0zSjVTbFJDYzIxVWVISkNVamt3WDJKeVJtNTVlV05uVmpVM2EwUlVZVU5STkRoWWVYUlRVMHgxV1U1dWFWbFFhMkZHU2toeVRraGtka1kzYmt4WmQydGlTbGRUY2paNFNFTTBWM1ptWTB3NExXTkxNekYxWDJWWlZrdD053ZEZSR1RsIzQnBlbkpuYmpkMkxWZ3pjVWxMU1hwRVlraGtOalpmUjFkcVUxTnhhekJrTjFobWNWRkRVWGRwZW1RMk0ybFVabU5ZTFc1M2FUTmplV3hUYzFGM05VODRjbFZXUVhKaVozQlVlazl2V0RaWVpra3hNVko0YjFFNWNVeDViSGxFV2xOekxuQlNVVU4wZERKM1JGZFVhVWh1TW5KWWJFRkxWMEUud0pOdTR3ZXhTSzk5V3BzRUNpMWN3OVlFQnNzR0RXVUFBYlE4VWJ0V2h3RSIsImV4cCI6MTYyMTkzOTUxOSwiaWF0IjoxNjIxOTM5MjE5fQ.zY_gB7cQJ7o2J9FSARch7NZgmZwjpy5XdZkaZzA5oHM'
 
-const mockUserPath = 'https://idam.amido.aws.chdev.org/am/oauth2/realms/root/realms/alpha/authorize?client_id=ForgeRockSDKClient&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Faccount%2Fhome%2F&response_type=code&scope=openid%20email%20phone%20profile%20fr%3Aidm%3A*&state=MjQ0MTY0MTg5Mjk2MjY3MTQ2ODQxODgxMTMyMjUxODcyMjUxMTgyMTE3Ng&code_challenge=fiCuhC2IbJ9JRiQkTIo5LdOixHzDw1sz7WipMXYM4C8&code_challenge_method=S256'
+const mockUserPath = 'https://idam.amido.aws.chdev.org/am/oauth2/realms/root/realms/alpha/userinfo'
 const mockUserProfile = {
   phone_number: '07777777777',
   given_name: 'Oliver Evans',
@@ -9,6 +9,147 @@ const mockUserProfile = {
   email: 'oliver.evans@ch.com',
   sub: '4f167155-1a32-40d2-98ea-18a2b335cecc',
   subname: 'id=4f167155-1a32-40d2-98ea-18a2b335cecc,ou=user,o=alpha,ou=services,ou=am-config'
+}
+
+const mockCompanyPath = 'https://openam-companieshouse-uk-dev.id.forgerock.io/openidm/endpoint/company?currentPage=1&pageSize=9999&maxPages=10&searchTerm=06600043'
+const mockCompanyResponse = {
+  _id: '12e26a55-1c1b-4571-b7f1-374be012bc68',
+  pagination: {
+    totalItems: 3,
+    startPage: 1,
+    startIndex: 0,
+    pages: [1],
+    endIndex: 2,
+    totalPages: 1,
+    pageSize: '9999',
+    endPage: 1,
+    currentPage: '1'
+  },
+  results: [{
+    postalCode: 'S1 2DW',
+    jurisdiction: 'EW',
+    locality: 'Sheffield',
+    membershipStatus: 'confirmed',
+    type: 'ltd',
+    number: '06600043',
+    members: [{
+      phone: '******1354',
+      displayName: 's******@amido.com',
+      name: null,
+      _id: '12e26a55-1c1b-4571-b7f1-374be012bc68',
+      membershipStatus: 'confirmed',
+      email: 's******@amido.com'
+    },
+    {
+      phone: null,
+      displayName: 's******@companieshouse.gov',
+      name: null,
+      _id: '74f90707-0e36-4a8e-b574-799b33e26e55',
+      membershipStatus: 'pending',
+      email: 's******@companieshouse.gov'
+    }
+    ],
+    name: '31-29 SPENCER ROAD LIMITED',
+    addressLine1: 'Northchurch Business Centre',
+    addressLine2: '84 Queen Street',
+    inviter: null,
+    _id: '362b5237-f6ed-431d-960e-585590732a8d',
+    region: null,
+    status: 'active'
+  }]
+}
+
+const mockCompaniesPath = 'https://openam-companieshouse-uk-dev.id.forgerock.io/openidm/endpoint/company?currentPage=1&pageSize=9999&maxPages=10'
+const mockCompaniesResponse = { _id: '12e26a55-1c1b-4571-b7f1-374be012bc68', pagination: { totalItems: 3, startPage: 1, startIndex: 0, pages: [1], endIndex: 2, totalPages: 1, pageSize: '9999', endPage: 1, currentPage: '1' }, results: [{ postalCode: 'S1 2DW', jurisdiction: 'EW', locality: 'Sheffield', membershipStatus: 'confirmed', type: 'ltd', number: '06600043', members: [{ phone: '******1354', displayName: 's******@amido.com', name: null, _id: '12e26a55-1c1b-4571-b7f1-374be012bc68', membershipStatus: 'confirmed', email: 's******@amido.com' }], name: '31-29 SPENCER ROAD LIMITED', addressLine1: 'Northchurch Business Centre', addressLine2: '84 Queen Street', inviter: null, _id: '362b5237-f6ed-431d-960e-585590732a8d', region: null, status: 'active' }, { postalCode: 'TW31RT', jurisdiction: 'EW', locality: 'London', membershipStatus: 'confirmed', type: 'LTD', number: '12341234', members: [{ phone: '******1354', displayName: 's******@amido.com', name: null, _id: '12e26a55-1c1b-4571-b7f1-374be012bc68', membershipStatus: 'confirmed', email: 's******@amido.com' }], name: 'test company', addressLine1: null, addressLine2: null, inviter: null, _id: '81b53863-6be8-4cb3-942d-0ac76b1c79c7', region: null, status: 'active' }, { postalCode: 'SK6 6HN', jurisdiction: 'EW', locality: 'Stockport', membershipStatus: 'confirmed', type: 'ltd', number: '08025038', members: [{ phone: '******1354', displayName: 's******@amido.com', name: null, _id: '12e26a55-1c1b-4571-b7f1-374be012bc68', membershipStatus: 'confirmed', email: 's******@amido.com' }, { phone: null, displayName: 's******@companieshouse.gov', name: null, _id: '74f90707-0e36-4a8e-b574-799b33e26e55', membershipStatus: 'pending', email: 's******@companieshouse.gov' }], name: '3 (S+E) LIMITED', addressLine1: '5 Westminster Close', addressLine2: 'Marple', inviter: null, _id: '6f5a618f-1700-48f8-ab43-2a65940dba9a', region: null, status: 'active' }] }
+
+const mockConfirmedCompaniesPath = 'https://openam-companieshouse-uk-dev.id.forgerock.io/openidm/endpoint/company?currentPage=1&pageSize=9999&maxPages=10&status=confirmed'
+const mockConfirmedCompaniesResponse = {
+  _id: '12e26a55-1c1b-4571-b7f1-374be012bc68',
+  pagination: {
+    totalItems: 3,
+    startPage: 1,
+    startIndex: 0,
+    pages: [1],
+    endIndex: 2,
+    totalPages: 1,
+    pageSize: '9999',
+    endPage: 1,
+    currentPage: '1'
+  },
+  results: [{
+    postalCode: 'S1 2DW',
+    jurisdiction: 'EW',
+    locality: 'Sheffield',
+    membershipStatus: 'confirmed',
+    type: 'ltd',
+    number: '06600043',
+    members: [{
+      phone: '******1354',
+      displayName: 's******@amido.com',
+      name: null,
+      _id: '12e26a55-1c1b-4571-b7f1-374be012bc68',
+      membershipStatus: 'confirmed',
+      email: 's******@amido.com'
+    }],
+    name: '31-29 SPENCER ROAD LIMITED',
+    addressLine1: 'Northchurch Business Centre',
+    addressLine2: '84 Queen Street',
+    inviter: null,
+    _id: '362b5237-f6ed-431d-960e-585590732a8d',
+    region: null,
+    status: 'active'
+  }, {
+    postalCode: 'TW31RT',
+    jurisdiction: 'EW',
+    locality: 'London',
+    membershipStatus: 'confirmed',
+    type: 'LTD',
+    number: '12341234',
+    members: [{
+      phone: '******1354',
+      displayName: 's******@amido.com',
+      name: null,
+      _id: '12e26a55-1c1b-4571-b7f1-374be012bc68',
+      membershipStatus: 'confirmed',
+      email: 's******@amido.com'
+    }],
+    name: 'test company',
+    addressLine1: null,
+    addressLine2: null,
+    inviter: null,
+    _id: '81b53863-6be8-4cb3-942d-0ac76b1c79c7',
+    region: null,
+    status: 'active'
+  }, {
+    postalCode: 'SK6 6HN',
+    jurisdiction: 'EW',
+    locality: 'Stockport',
+    membershipStatus: 'confirmed',
+    type: 'ltd',
+    number: '08025038',
+    members: [{
+      phone: '******1354',
+      displayName: 's******@amido.com',
+      name: null,
+      _id: '12e26a55-1c1b-4571-b7f1-374be012bc68',
+      membershipStatus: 'confirmed',
+      email: 's******@amido.com'
+    }, {
+      phone: null,
+      displayName: 's******@companieshouse.gov',
+      name: null,
+      _id: '74f90707-0e36-4a8e-b574-799b33e26e55',
+      membershipStatus: 'pending',
+      email: 's******@companieshouse.gov'
+    }],
+    name: '3 (S+E) LIMITED',
+    addressLine1: '5 Westminster Close',
+    addressLine2: 'Marple',
+    inviter: null,
+    _id: '6f5a618f-1700-48f8-ab43-2a65940dba9a',
+    region: null,
+    status: 'active'
+  }]
 }
 
 const mockUserOrgsPath = 'https://idam.amido.aws.chdev.org/openidm/managed/alpha_user/4f167155-1a32-40d2-98ea-18a2b335cecc/memberOfOrg?_queryFilter=number+eq+%2208023036%22&_fields=users,name,number,addressLine1,addressLine2,locality,region,postalCode'
@@ -94,4 +235,21 @@ const mockOrgUsersResponse = {
   remainingPagedResults: -1
 }
 
-export { mockAuthId, mockUserPath, mockUserProfile, mockUserOrgsPath, mockUserOrgsResponse, mockOrgUsersPath, mockOrgUsersResponse }
+const tokens = { accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMmUyNmE1NS0xYzFiLTQ1NzEtYjdmMS0zNzRiZTAxMmJjNjgiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMDJlNmE3NmEtYTM1NC00OTY0LWI1ZmItYzU5ODU0MDM2ZGI0LTE1NzMzOCIsInN1Ym5hbWUiOiIxMmUyNmE1NS0xYzFiLTQ1NzEtYjdmMS0zNzRiZTAxMmJjNjgiLCJpc3MiOiJodHRwczovL2lkYW0uYW1pZG8uYXdzLmNoZGV2Lm9yZzo0NDMvYW0vb2F1dGgyIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiZjVfWkpCeGJrZ3ZxSWg2YWhSOWZTVE5nSUVnLmhRQ3J2RFlscmR2d05tWU1HVks5eF96TFRCbyIsImF1ZCI6IkZvcmdlUm9ja1NES0NsaWVudCIsIm5iZiI6MTYyOTI3MzIzNSwiZ3JhbnRfdHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsInNjb3BlIjpbInBob25lIiwib3BlbmlkIiwicHJvZmlsZSIsImZyOmlkbToqIiwiZW1haWwiXSwiYXV0aF90aW1lIjoxNjI5MjczMjMzLCJyZWFsbSI6Ii9hbHBoYSIsImV4cCI6MTYyOTI3NjgzNSwiaWF0IjoxNjI5MjczMjM1LCJleHBpcmVzX2luIjozNjAwLCJqdGkiOiJmNV9aSkJ4YmtndnFJaDZhaFI5ZlNUTmdJRWcuTnNhblZHcjJwbldTcmlsdUZzUWFlWko1LVdrIn0.b3By5O0EwwEpuSZ3hjvAv1pSX6s6x5vD22rzMtHGON8', idToken: 'eyJ0eXAiOiJKV1QiLCJraWQiOiJNTkdqT0JKRm1rZW4weWJsdURUdnlMbEpUbGM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoieWF0U1c3Z0VBLVdoYUp3eHBaUk9JdyIsInN1YiI6IjEyZTI2YTU1LTFjMWItNDU3MS1iN2YxLTM3NGJlMDEyYmM2OCIsImF1ZGl0VHJhY2tpbmdJZCI6IjAyZTZhNzZhLWEzNTQtNDk2NC1iNWZiLWM1OTg1NDAzNmRiNC0xNTczNDAiLCJzdWJuYW1lIjoiMTJlMjZhNTUtMWMxYi00NTcxLWI3ZjEtMzc0YmUwMTJiYzY4IiwiaXNzIjoiaHR0cHM6Ly9pZGFtLmFtaWRvLmF3cy5jaGRldi5vcmc6NDQzL2FtL29hdXRoMiIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwic2lkIjoiSU51SnlINkdaTlRNcE9nVEVLb2NnZDYvYTd0cnRKdHR6RzVObHpQQ1JBYz0iLCJhdWQiOiJGb3JnZVJvY2tTREtDbGllbnQiLCJjX2hhc2giOiJyQTFEdmR6M3lkemR3OXMydS11Mkt3IiwiYWNyIjoiY2hzIiwib3JnLmZvcmdlcm9jay5vcGVuaWRjb25uZWN0Lm9wcyI6ImNlMUYxai1veHZHR2trLXMxYkdIUHNLNk1KcyIsInNfaGFzaCI6IkRUY0pNUG1sTjMxTFNLWVIyaWNwMGciLCJhenAiOiJGb3JnZVJvY2tTREtDbGllbnQiLCJhdXRoX3RpbWUiOjE2MjkyNzMyMzMsIm5hbWUiOiJudWxsIHN0dWFydC5wYXJyQGFtaWRvLmNvbSIsInJlYWxtIjoiL2FscGhhIiwicGhvbmVfbnVtYmVyIjoiMDc3MzY4MzEzNTQiLCJleHAiOjE2MjkyNzY4MzUsInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNjI5MjczMjM1LCJmYW1pbHlfbmFtZSI6InN0dWFydC5wYXJyQGFtaWRvLmNvbSIsImVtYWlsIjoic3R1YXJ0LnBhcnJAYW1pZG8uY29tIn0.Eyo4p9G0WSI-mhNGFCrTLjP-CdYC8N0_MflIl_mUmZWRrTpTa5rKt5MfMfRZ9ED-INVMh0I_KKRBmKh_O8NldavoOn8FOO7RPb0QVOXTGM5dOh6mSCo23mDk2XLw67hkji3_2MMU47Mk5Ec035LzqpQW8mfAONhOeacNKpMNRfc1pO90VqzH_Gofx1vbSrKJtqMiJcoqbUkbvtMxHLrpsi0d60sPKsfp7pDy6_C4qGiERsh7BYTqecV1bPkvceqUtAAD81rEB0oE_eofI7SKKbl9jn4KniCbmywWXRTjJfVB9703SvcnWAe2QUVTvv3wFcbGYrrSYfxoaYjcyT2A3Q', refreshToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMmUyNmE1NS0xYzFiLTQ1NzEtYjdmMS0zNzRiZTAxMmJjNjgiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMDJlNmE3NmEtYTM1NC00OTY0LWI1ZmItYzU5ODU0MDM2ZGI0LTE1NzMzOSIsInN1Ym5hbWUiOiIxMmUyNmE1NS0xYzFiLTQ1NzEtYjdmMS0zNzRiZTAxMmJjNjgiLCJpc3MiOiJodHRwczovL2lkYW0uYW1pZG8uYXdzLmNoZGV2Lm9yZzo0NDMvYW0vb2F1dGgyIiwidG9rZW5OYW1lIjoicmVmcmVzaF90b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6ImY1X1pKQnhia2d2cUloNmFoUjlmU1ROZ0lFZy5oUUNydkRZbHJkdndObVlNR1ZLOXhfekxUQm8iLCJzaWQiOiJJTnVKeUg2R1pOVE1wT2dURUtvY2dkNi9hN3RydEp0dHpHNU5selBDUkFjPSIsImF1ZCI6IkZvcmdlUm9ja1NES0NsaWVudCIsImFjciI6ImNocyIsIm5iZiI6MTYyOTI3MzIzNSwib3BzIjoiY2UxRjFqLW94dkdHa2stczFiR0hQc0s2TUpzIiwiZ3JhbnRfdHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsInNjb3BlIjpbInBob25lIiwib3BlbmlkIiwicHJvZmlsZSIsImZyOmlkbToqIiwiZW1haWwiXSwiYXV0aF90aW1lIjoxNjI5MjczMjMzLCJyZWFsbSI6Ii9hbHBoYSIsImV4cCI6MTYyOTg3ODAzNSwiaWF0IjoxNjI5MjczMjM1LCJleHBpcmVzX2luIjo2MDQ4MDAsImp0aSI6ImY1X1pKQnhia2d2cUloNmFoUjlmU1ROZ0lFZy5QdGN3N0h4R0dQcks2dTdLLS11Zmh1RXVhekUifQ.Xrtx2ANp87tAQPxjqovFiyn7mVLWW7j6rPeom8t7Nt0' }
+
+export {
+  mockAuthId,
+  mockCompaniesResponse,
+  mockCompaniesPath,
+  mockCompanyPath,
+  mockCompanyResponse,
+  mockConfirmedCompaniesPath,
+  mockConfirmedCompaniesResponse,
+  mockOrgUsersPath,
+  mockOrgUsersResponse,
+  mockUserOrgsPath,
+  mockUserOrgsResponse,
+  mockUserPath,
+  mockUserProfile,
+  tokens
+}

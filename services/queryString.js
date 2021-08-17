@@ -1,6 +1,8 @@
 export const serialize = (obj) => {
   const str = Object.entries(obj).reduce((strParts, [key, val]) => {
-    strParts.push(encodeURIComponent(key) + '=' + encodeURIComponent(val))
+    if (val) {
+      strParts.push(encodeURIComponent(key) + '=' + encodeURIComponent(val))
+    }
     return strParts
   }, [])
 

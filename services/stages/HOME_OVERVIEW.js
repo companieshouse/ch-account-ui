@@ -82,7 +82,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                   {
                     component: 'InfoBlock',
                     dynamicProps: {
-                      count: '${associationData.count}'
+                      count: '${companyData.count}'
                     },
                     props: {
                       count: 0,
@@ -112,7 +112,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                   {
                     component: 'InfoBlock',
                     dynamicProps: {
-                      count: '${associationData.pendingCount}'
+                      count: '${companyData.pendingCount}'
                     },
                     props: {
                       count: 0,
