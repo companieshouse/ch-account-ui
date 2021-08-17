@@ -3,13 +3,13 @@ const CHANGE_NAME_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('CHANGE_NAME_1.[0].BrowserTitle.changeYourName')
+      title: tokens('CHANGE_NAME_1.[0].BrowserTitle.updateYourName')
     }
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.changeYourName'),
+      children: tokens('SHARED.updateYourName'),
       size: 'l'
     }
   },

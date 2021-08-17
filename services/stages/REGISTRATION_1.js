@@ -17,63 +17,52 @@ const REGISTRATION_1 = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
+          label: tokens('SHARED.fullNameOptional'),
           type: 'text',
-          autoComplete: 'name'
+          autoComplete: 'name',
+          content: [
+            {
+              component: 'Details',
+              props: {
+                summary: tokens('SHARED.whereYourNameWillBeShown')
+              },
+              content: [
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
+                  }
+                },
+                {
+                  component: 'List',
+                  props: {
+                    items: tokens('SHARED.whereYourNameWillBeShownList')
+                  }
+                },
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
+                  }
+                },
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
+                  }
+                }
+              ]
+            }
+          ]
         },
         IDToken2: {
-          remove: true
-        },
-        IDToken3: {
-          remove: true
-        }
-      }
-    }
-  },
-  {
-    component: 'Details',
-    props: {
-      summary: tokens('SHARED.whereYourNameWillBeShown')
-    },
-    content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
-        }
-      },
-      {
-        component: 'List',
-        props: {
-          items: tokens('SHARED.whereYourNameWillBeShownList')
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
-        }
-      }
-    ]
-  },
-  {
-    component: 'DisplayUiElements',
-    props: {
-      elementProps: {
-        IDToken1: {
-          remove: true
-        },
-        IDToken2: {
+          label: tokens('SHARED.emailAddress'),
           type: 'email',
           autoComplete: 'email',
           hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou')
         },
         IDToken3: {
+          label: tokens('SHARED.mobileNumberOptional'),
           type: 'text',
           autoComplete: 'tel',
           hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore')

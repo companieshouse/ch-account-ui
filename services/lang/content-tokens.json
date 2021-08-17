@@ -35,9 +35,9 @@
         "en": "Update email address",
         "cy": "Diweddaru eich cyfeiriad e-bost"
     },
-    "CHANGE_NAME_1.[0].BrowserTitle.changeYourName": {
-        "en": "Manage account - Change your name",
-        "cy": "Rheoli eich cyfrif - Diweddaru eich enw"
+    "CHANGE_NAME_1.[0].BrowserTitle.updateYourName": {
+        "en": "Manage account - Update your name",
+        "cy": "Rheoli eich cyfrif - Diweddarwch eich enw"
     },
     "CHANGE_NAME_1.[3].DisplayUiElements.enterNewFullName": {
         "en": "Enter your full name",
@@ -93,7 +93,7 @@
     },
     "EWF_LOGIN_2.[2].DisplayUiElements.northernIreland": {
         "en": "Northern Ireland",
-        "cy": "Gogledd Iwerddon"
+        "cy": "Gorllewin Iwerddon"
     },
     "EWF_LOGIN_2.[2].DisplayUiElements.scotland": {
         "en": "Scotland",
@@ -123,29 +123,17 @@
         "en": "will not need to re-enter the company's authentication code for most online filings",
         "cy": "•\t ni fydd angen i chi ail-gofnodi cod dilysu'r cwmni ar gyfer y rhan fwyaf o ffeilio ar-lein"
     },
-    "EWF_LOGIN_OTP.[1].PageHeading.checkYourEmail": {
-        "en": "Check your email",
-        "cy": "Check your email"
-    },
     "EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail": {
         "en": "We've sent you an email with a security code to ${emailAddress}.",
         "cy": "Rydym wedi anfon e-bost at ${emailAddress} sy'n cynnwys cod diogelwch."
     },
-    "EWF_PROFILE.[1].Caption.thisIsOptional": {
-        "en": "This is optional. You can update your details at any time.",
-        "cy": "This is optional. You can update your details at any time."
-    },
     "EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional": {
         "en": "What is your full name?",
-        "cy": "What is your full name? (optional)"
+        "cy": "Beth yw eich enw llawn?"
     },
     "EWF_PROFILE.[2].DisplayUiElements.whatIsYourMobileNumberOptional": {
         "en": "What is your mobile number?",
-        "cy": "What is your mobile number? (optional)"
-    },
-    "EWF_PROFILE.[3].ButtonGroup.skip": {
-        "en": "Skip",
-        "cy": "Skip"
+        "cy": "Beth yw eich rhif ffôn symudol?"
     },
     "HOME_AUTHORISED_PERSON.[0].BrowserTitle.authorisedPersonsDetails": {
         "en": "Your companies - Authorised person's details",
@@ -363,12 +351,8 @@
         "en": "file for the company online",
         "cy": "ffeilio ar gyfer y cwmni ar-lein"
     },
-    "INVITE_USER_1.[0].BrowserTitle.whatAreTheAuthorisedPersonsDetails": {
-        "en": "Eich cwmnïau - Beth yw manylion yr unigolyn awdurdodedig?",
-        "cy": "Eich cwmnïau - Beth yw manylion yr unigolyn awdurdodedig?"
-    },
     "INVITE_USER_1.[3].BodyText.tellUsTheDetailsOfThePersonYouWantTo": {
-        "en": "Tell us the details of the person you want to authorise to file online for this company.",
+        "en": "Tell us the email address of the person you want to authorise to file online for this company.",
         "cy": "Dywedwch wrthym fanylion y person rydych chi am ei awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn."
     },
     "INVITE_USER_1.[4].InsetText.youCanChangeWhoIsAuthorisedToFileAtAny": {
@@ -573,7 +557,7 @@
     },
     "RESET_PASSWORD_1.[0].NotificationBanner.yourPasswordNeedsToBeUpdatedPleaseFollowThe": {
         "en": "Update your password to make your account more secure.",
-        "cy": "Update your password to make your account more secure."
+        "cy": "Diweddarwch eich cyfrinair i wneud eich cyfrif yn fwy diogel."
     },
     "RESET_PASSWORD_1.[1].PageHeading.enterYourEmailAddress": {
         "en": "What is your email address?",
@@ -586,10 +570,6 @@
     "RESET_PASSWORD_4.[0].PageHeading.resetYourPassword": {
         "en": "Reset your password",
         "cy": "Ailosod eich cyfrinair"
-    },
-    "RESET_PASSWORD_6.[0].PageHeading.checkYourEmails": {
-        "en": "Check your emails",
-        "cy": "Check your emails"
     },
     "RESET_PASSWORD_6.[2].BodyText.whichContainsLinkToResetYourPassword": {
         "en": " which contains a link to reset your password.",
@@ -625,7 +605,7 @@
     },
     "SHARED.addYourMobileNumberToMakeYourAccountMore": {
         "en": "Add your mobile number to make your account more secure. We'll send a security code to this number by text message.",
-        "cy": "Add your mobile number to make your account more secure. We'll send a security code to this number by text message."
+        "cy": "Ychwanegwch eich rhif ffôn symudol i wneud eich cyfrif yn fwy diogel. Byddwn yn anfon cod diogelwch i'r rhif hwn drwy neges destun."
     },
     "SHARED.alternativelyIfYouHaveAccessToTheCurrent": {
         "en": "Alternatively, if you have access to the current authentication code, you can ",
@@ -675,7 +655,7 @@
         "en": "Update your mobile number",
         "cy": "Diweddaru eich rhif ffôn symudol"
     },
-    "SHARED.changeYourName": {
+    "SHARED.updateYourName": {
         "en": "Update your name",
         "cy": "Diweddaru eich enw"
     },
@@ -781,15 +761,19 @@
     },
     "SHARED.enterTheDetailsOfTheCompanyYouWantToAdd": {
         "en": "Enter the details of the company you want to add to your account",
-        "cy": "Enter the details of the company you want to add to your account"
+        "cy": "Mewngofnodwch fanylion y cwmni rydych am ei ychwanegu at eich cyfrif"
     },
     "SHARED.enterYourCurrentPassword": {
         "en": "Enter your current password",
         "cy": "Mewngofnodwch eich cyfrinair cyfredol"
     },
     "SHARED.fullName": {
+        "en": "Full name",
+        "cy": "Enw llawn"
+    },
+    "SHARED.fullNameOptional": {
         "en": "Full name (optional)",
-        "cy": "Full name (optional)"
+        "cy": "Enw llawn (opsiynol)"
     },
     "SHARED.giveUsADifferentEmailAddress": {
         "en": "give us a different email address",
@@ -893,7 +877,7 @@
     },
     "SHARED.mobileNumberOptional": {
         "en": "Mobile number (optional)",
-        "cy": "Mobile number (optional)"
+        "cy": "Rhif ffôn symudol (opsiynol)"
     },
     "SHARED.no": {
         "en": "No",
@@ -906,10 +890,6 @@
     "SHARED.password": {
         "en": "Password",
         "cy": "Cyfrinair"
-    },
-    "SHARED.pending": {
-        "en": "Pending",
-        "cy": "Pending"
     },
     "SHARED.reEnterPassword": {
         "en": "Re-enter password",
@@ -957,7 +937,7 @@
     },
     "SHARED.skip": {
         "en": "Skip",
-        "cy": "Skip"
+        "cy": "Anwybyddu"
     },
     "SHARED.sorryThereIsAProblemWithTheService": {
         "en": "Sorry, there is a problem with the service",
@@ -1011,9 +991,9 @@
         "en": "This is a 6 character code issued by us to each company. The code is used to authorise online filings.",
         "cy": "Cod 6 cymeriad yw hwn a gyhoeddir gennym ni i bob cwmni. Defnyddir y cod i awdurdodi ffeilio ar-lein."
     },
-    "SHARED.thisIsTheNameThatWillBeDisplayedInYour": {
-        "en": "This is the name that will be displayed in your account. It is up to you how your name is displayed, for example 'Dan Smith' or 'Daniel Smith'.",
-        "cy": "This is the name that will be displayed in your account. It is up to you how your name is displayed, for example 'Dan Smith' or 'Daniel Smith'."
+    "SHARED.thisIsOptional": {
+        "en": "This is optional. You can update your details at any time.",
+        "cy": "Mae hyn yn opsiynol. Gallwch ddiweddaru eich manylion ar unrhyw adeg."
     },
     "SHARED.thisMustBeAtLeast8CharactersLongAndHardTo": {
         "en": "This must be at least 8 characters long and hard to guess.",
@@ -1037,7 +1017,7 @@
     },
     "SHARED.updateYourPersonalDetails": {
         "en": "Update your personal details",
-        "cy": "Update your personal details"
+        "cy": "Diweddarwch eich manylion personol"
     },
     "SHARED.verifyYourMobileNumber": {
         "en": "Verify your mobile number",
@@ -1049,7 +1029,7 @@
     },
     "SHARED.wellSendALinkToThisEmailAddressToVerifyYou": {
         "en": "We'll send a link to this email address to verify you have access to it.",
-        "cy": "We'll send a link to this email address to verify you have access to it."
+        "cy": "Byddwn yn anfon dolen i'r cyfeiriad e-bost hwn i wirio bod gennych fynediad iddo."
     },
     "SHARED.weveSentATextMessageWithASecurityCode": {
         "en": "We've sent a text message with a security code to ",
@@ -1063,13 +1043,13 @@
         "en": "We've sent you a text message with a security code to ",
         "cy": "Rydym wedi anfon neges destun gyda chod diogelwch i "
     },
-    "SHARED.whatAreTheAuthorisedPersonsDetails": {
-        "en": "What are the authorised person's details?",
-        "cy": "Beth yw manylion yr unigolyn awdurdodedig?"
-    },
     "SHARED.whatAreYourDetails": {
         "en": "What are your details?",
-        "cy": "What are your details?"
+        "cy": "Beth yw eich manylion?"
+    },
+    "SHARED.whatIsTheAuthorisedPersonsEmailAddress": {
+        "en": "What is the authorised person's email address?",
+        "cy": "Beth yw manylion yr unigolyn awdurdodedig?"
     },
     "SHARED.whatIsTheCompanyNumber": {
         "en": "What is the company number?",

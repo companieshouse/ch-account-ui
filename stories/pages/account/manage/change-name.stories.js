@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 import fetchMock from 'fetch-mock'
 import { mockAuthId } from '../../common-mocks'
-import ChangeName from '../../../../pages/account/manage/change-name/[pageStep]'
+import { ChangeName } from '../../../../pages/account/manage/change-name/[pageStep]'
 import React from 'react'
 
 export default {

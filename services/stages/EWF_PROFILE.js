@@ -15,7 +15,7 @@ const EWF_PROFILE = (lang, tokens) => [
       {
         component: 'Caption',
         props: {
-          children: tokens('EWF_PROFILE.[1].Caption.thisIsOptional'),
+          children: tokens('SHARED.thisIsOptional'),
           size: 'm',
           style: {
             paddingTop: '0.5em'
@@ -30,55 +30,41 @@ const EWF_PROFILE = (lang, tokens) => [
       elementProps: {
         IDToken3: {
           autoComplete: 'name',
-          label: tokens('EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional')
-        },
-        IDToken4: {
-          remove: true
-        },
-        IDToken6: {
-          remove: true
-        }
-      }
-    }
-  },
-  {
-    component: 'Details',
-    props: {
-      summary: tokens('SHARED.whereYourNameWillBeShown')
-    },
-    content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
-        }
-      },
-      {
-        component: 'List',
-        props: {
-          items: tokens('SHARED.whereYourNameWillBeShownList')
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
-        }
-      }
-    ]
-  },
-  {
-    component: 'DisplayUiElements',
-    props: {
-      elementProps: {
-        IDToken3: {
-          remove: true
+          label: tokens('EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional'),
+          content: [
+            {
+              component: 'Details',
+              props: {
+                summary: tokens('SHARED.whereYourNameWillBeShown')
+              },
+              content: [
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.ifYouProvideYourNameThisWillBeShown')
+                  }
+                },
+                {
+                  component: 'List',
+                  props: {
+                    items: tokens('SHARED.whereYourNameWillBeShownList')
+                  }
+                },
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.itIsUpToYouHowYourNameIsShownForExampleJen')
+                  }
+                },
+                {
+                  component: 'BodyText',
+                  props: {
+                    children: tokens('SHARED.ifYouDoNotProvideYourNameYourEmailAddress')
+                  }
+                }
+              ]
+            }
+          ]
         },
         IDToken4: {
           autoComplete: 'tel',
@@ -105,7 +91,7 @@ const EWF_PROFILE = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens('EWF_PROFILE.[3].ButtonGroup.skip'),
+          children: tokens('SHARED.skip'),
           type: 'submit',
           secondary: true,
           testId: 'submitButton',

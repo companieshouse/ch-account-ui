@@ -2,19 +2,21 @@ import genericError from './shared/genericError.js'
 
 const RESET_PASSWORD_ERROR = (lang, tokens) => [
   {
-    component: 'BrowserTitle',
-    props: {
-      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
-    }
-  },
-  {
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
       operator: 'in',
       value: ['RESET_PASSWORD_GENERAL_ERROR', 'RESET_PASSWORD_EMAIL_SEND_ERROR', 'RESET_PASSWORD_TOKEN_PARSING_ERROR']
     },
     component: 'Fragment',
-    content: genericError(lang, tokens)
+    content: [
+      {
+        component: 'BrowserTitle',
+        props: {
+          title: tokens('SHARED.sorryThereIsAProblemWithTheService')
+        }
+      },
+      ...genericError(lang, tokens)
+    ]
   },
   {
     conditional: {
@@ -24,6 +26,12 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
     },
     component: 'Fragment',
     content: [
+      {
+        component: 'BrowserTitle',
+        props: {
+          title: tokens('RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired')
+        }
+      },
       {
         component: 'PageHeading',
         props: {
