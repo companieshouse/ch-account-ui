@@ -133,6 +133,15 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                 tokens('HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile')
               ]
             }
+          },
+          {
+            component: 'Button',
+            props: {
+              renderAs: 'link',
+              children: tokens('SHARED.addACompany'),
+              href: '/account/associate/_start',
+              testId: 'accountAssociateCompanyLink'
+            }
           }
         ]
       },
@@ -294,7 +303,19 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                         component: 'Td',
                                         dynamicProps: {
                                           children: '${member.displayName}'
-                                        }
+                                        },
+                                        content: [
+                                          {
+                                            conditional: {
+                                              prop: '${member.currentUser}',
+                                              operator: 'is'
+                                            },
+                                            component: 'SpanText',
+                                            props: {
+                                              children: tokens('SHARED.you')
+                                            }
+                                          }
+                                        ]
                                       },
                                       {
                                         conditional: {
@@ -391,20 +412,6 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
         component: 'SectionBreak'
       }
     ]
-  },
-  {
-    conditional: {
-      prop: '${companies.length}',
-      operator: 'gt',
-      value: 0
-    },
-    component: 'Button',
-    props: {
-      renderAs: 'link',
-      children: tokens('SHARED.addACompany'),
-      href: '/account/associate/_start',
-      testId: 'accountAssociateCompanyLink'
-    }
   }
 ]
 export default HOME_YOUR_COMPANIES

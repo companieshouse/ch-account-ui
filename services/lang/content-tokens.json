@@ -1071,6 +1071,10 @@
         "en": "Yes",
         "cy": "Ie"
     },
+    "SHARED.you": {
+        "en": " (you)",
+        "cy": " (chi)"
+    },
     "SHARED.youAreNowSignedOut": {
         "en": "You are now signed out",
         "cy": "Rydych bellach wedi arwyddo allan."
