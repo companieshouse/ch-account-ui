@@ -341,6 +341,7 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
           declinePath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'decline' }),
           members: company.members?.map((member) => ({
             ...member,
+            currentUser: member._id === userId,
             detailsPath: generateQueryUrl('/account/your-companies/authorised-person', { companyNumber: company.number, userId: member._id })
           })
           )
