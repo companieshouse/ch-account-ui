@@ -21,14 +21,14 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'SummaryList',
     dynamicProps: {
-      'listItems.0.value': '${user.givenName}',
-      'listItems.1.value': '${user.mail}',
+      'listItems.0.value': '${user.name}',
+      'listItems.1.value': '${user.email}',
       'listItems.2.value': {
         component: 'Fragment',
         content: [
           {
             conditional: {
-              prop: '${user._refProperties.membershipStatus}',
+              prop: '${user.membershipStatus}',
               operator: 'eeq',
               value: 'confirmed'
             },
@@ -40,7 +40,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
           },
           {
             conditional: {
-              prop: '${user._refProperties.membershipStatus}',
+              prop: '${user.membershipStatus}',
               operator: 'eeq',
               value: 'pending'
             },
@@ -52,7 +52,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
           },
           {
             conditional: {
-              prop: '${user._refProperties.membershipStatus}',
+              prop: '${user.membershipStatus}',
               operator: 'eeq',
               value: 'pending'
             },
@@ -73,7 +73,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       },
       'listItems.2.action': {
         conditional: {
-          prop: '${user._refProperties.membershipStatus}',
+          prop: '${user.membershipStatus}',
           operator: 'eeq',
           value: 'pending'
         },
@@ -83,7 +83,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
           testId: 'resendAuthorisedUserRequestLink'
         },
         dynamicProps: {
-          href: '${company.resendLink}'
+          href: '${company.resendPath}'
         }
       }
     },
@@ -107,7 +107,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   },
   // {
   //   conditional: {
-  //     prop: '${user._refProperties.membershipStatus}',
+  //     prop: '${user.membershipStatus}',
   //     operator: 'eeq',
   //     value: 'pending'
   //   },
@@ -122,7 +122,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   // },
   {
     conditional: {
-      prop: '${user._refProperties.membershipStatus}',
+      prop: '${user.membershipStatus}',
       operator: 'eeq',
       value: 'confirmed'
     },
@@ -133,7 +133,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       testId: 'removeAuthorisedUserRequestLink'
     },
     dynamicProps: {
-      href: '${company.removeAuthorisedLink}'
+      href: '${company.removeAuthorisedPath}'
     }
   }
 ]

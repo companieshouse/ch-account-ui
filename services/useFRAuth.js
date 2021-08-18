@@ -3,21 +3,6 @@ import { forgerockInit, getCompaniesAssociatedWithUser } from './forgerock'
 import { TokenManager, UserManager } from '@forgerock/javascript-sdk'
 import { useRouter } from 'next/router'
 import log from '../services/log'
-import { generateQueryUrl } from './queryString'
-import { CH_EWF_AUTHENTICATED_ENTRY_URL } from './environment'
-
-export const extendCompaniesData = (companiesData) => {
-  return companiesData.map((company) => {
-    const authorisePath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name })
-    const filePath = generateQueryUrl(CH_EWF_AUTHENTICATED_ENTRY_URL, { companyNo: company.number, jurisdiction: company.jurisdiction })
-
-    company.users.forEach((user) => {
-      user.detailsPath = generateQueryUrl('/account/your-companies/authorised-person', { companyNumber: company.number, userId: user._refResourceId })
-    })
-
-    return { ...company, authorisePath, filePath }
-  })
-}
 
 /**
  * React hook to provide authentication parameters for pages outwith the regular FR flow.
@@ -26,7 +11,7 @@ export const extendCompaniesData = (companiesData) => {
  * @returns {{profile: object, accessToken: object}}
  */
 const useFRAuth = (config = {}) => {
-  const { fetchCompanyData } = config
+  const { fetchCompanyData, companySearch, companyStatus } = config
   const [loading, setLoading] = useState(true)
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
@@ -63,15 +48,14 @@ const useFRAuth = (config = {}) => {
 
   useEffect(() => {
     if (sub && accessToken && fetchCompanyData) {
-      getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
+      getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
         setCompanyData({
-          count: response.confirmedCount,
-          companies: extendCompaniesData(response.confirmedCompanies)
+          companies: data.companies
         })
         setLoading(false)
       })
     }
-  }, [sub, accessToken, fetchCompanyData])
+  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
 
   return { accessToken, profile, companyData, loading }
 }

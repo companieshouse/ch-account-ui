@@ -1,9 +1,10 @@
 import './forgerock-polyfills'
 import { Config, FRAuth, FRUser, StepType, TokenManager, UserManager, CallbackType } from '@forgerock/javascript-sdk'
 import {
+  CH_EWF_AUTHENTICATED_ENTRY_URL,
   FORGEROCK_AM,
   FORGEROCK_CLIENT_ID,
-  FORGEROCK_COMPANY_ENDPOINT,
+  FORGEROCK_IDM_COMPANY_ENDPOINT,
   FORGEROCK_REALM,
   FORGEROCK_REDIRECT,
   FORGEROCK_SCOPE,
@@ -11,6 +12,7 @@ import {
 } from './environment'
 import { translateErrors } from './errors'
 import log from './log'
+import { generateQueryUrl } from './queryString'
 
 export { CallbackType }
 
@@ -303,56 +305,13 @@ export const getUserFields = async (accessToken, userId, fields) => {
   return res
 }
 
-export const getUsersAssociatedWithCompany = async (accessToken, companyId) => {
-  if (!companyId) {
-    log.error('getUsersAssociatedWithCompany(accessToken, companyId): No userId provided!')
-    return
-  }
-
-  const queryFields = 'userName,givenName,mail'
-  const url = `${FORGEROCK_COMPANY_ENDPOINT}${companyId}/members?_queryFilter=true&_fields=${queryFields}`
-
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    },
-    init: {
-      credentials: 'include'
-    }
-  })
-
-  const { status, headers } = res
-
-  if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
-    const body = await res.json()
-    let users = []
-    let count = 0
-
-    if (status === 200) {
-      count = body.resultCount
-      users = body.result || []
-    }
-
-    return {
-      count,
-      users,
-      status,
-      body,
-      headers
-    }
-  }
-
-  return res
-}
-
-export const getCompaniesAssociatedWithUser = async (accessToken, userId, company) => {
+export const getCompaniesAssociatedWithUser = async (accessToken, userId, companySearch, companyStatus) => {
   if (!userId) {
     log.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
-  const queryFilter = company ? `number+eq+"${company}"` : 'true'
-  const queryFields = 'users,name,number,addressLine1,addressLine2,locality,region,postalCode,jurisdiction'
-  const url = `${FORGEROCK_USER_ENDPOINT}${userId}/memberOfOrg?_queryFilter=${queryFilter}&_fields=${queryFields}`
+
+  const url = generateQueryUrl(FORGEROCK_IDM_COMPANY_ENDPOINT, { currentPage: 1, pageSize: 9999, maxPages: 10, searchTerm: companySearch, status: companyStatus })
 
   const res = await fetch(url, {
     headers: {
@@ -362,46 +321,36 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
       credentials: 'include'
     }
   })
-
   const { status, headers } = res
 
   if (res.headers && res.headers.get('Content-Type') && res.headers.get('Content-Type').indexOf('application/json') > -1) {
     const body = await res.json()
     let companies = []
     let count = 0
-    let confirmedCount = 0
-    let confirmedCompanies = []
-    let pendingCount = 0
-    let pendingCompanies = []
 
     if (status === 200) {
-      count = body.resultCount
-      companies = body.result || []
+      const companiesData = body.results || []
+      count = companiesData.count
 
-      if (!company) {
-        confirmedCompanies = companies.filter((company) => company._refProperties.membershipStatus !== 'pending')
-        confirmedCount = confirmedCompanies.length
-        pendingCompanies = companies.filter((company) => company._refProperties.membershipStatus === 'pending')
-        pendingCount = pendingCompanies.length
-      }
-
-      // Loop each company and get reverse associations
-      await Promise.all(companies.map(async (company) => {
-        const {
-          users
-        } = await getUsersAssociatedWithCompany(accessToken, company._refResourceId)
-
-        company.users = users || []
-      }))
+      companies = companiesData.map((company) => {
+        return {
+          ...company,
+          authorisePath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name }),
+          filePath: generateQueryUrl(CH_EWF_AUTHENTICATED_ENTRY_URL, { companyNo: company.number, jurisdiction: company.jurisdiction }),
+          acceptPath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'accept' }),
+          declinePath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'decline' }),
+          members: company.members?.map((member) => ({
+            ...member,
+            detailsPath: generateQueryUrl('/account/your-companies/authorised-person', { companyNumber: company.number, userId: member._id })
+          })
+          )
+        }
+      })
     }
 
     return {
       count,
       companies,
-      confirmedCompanies,
-      confirmedCount,
-      pendingCount,
-      pendingCompanies,
       status,
       body,
       headers

@@ -13,7 +13,7 @@ import useFRAuth from '../../../services/useFRAuth'
 import Loading from '../../../components/application-specific/Loading'
 
 const YourCompanies = ({ errors, lang }) => {
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed' })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -49,6 +49,8 @@ const YourCompanies = ({ errors, lang }) => {
     </FeatureDynamicView>
   )
 }
+
+export { YourCompanies }
 
 export default WithQueryParams(WithLang(YourCompanies))
 

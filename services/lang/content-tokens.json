@@ -148,8 +148,8 @@
         "cy": "Anfon e-bost arall"
     },
     "HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust": {
-        "en": "We have sent an email to ${user.mail}. This person must select the request link in the email so that they can file online for ${company.name}.",
-        "cy": "Rydym wedi anfon e-bost at ${user.mail}. Rhaid iddynt ddewis y ddolen hon yn yr e-bost i'w hawdurdodi i ffeilio ar-lein ar gyfer ${company.name}."
+        "en": "We have sent an email to ${user.email}. This person must select the request link in the email so that they can file online for ${company.name}.",
+        "cy": "Rydym wedi anfon e-bost at ${user.email}. Rhaid iddynt ddewis y ddolen hon yn yr e-bost i'w hawdurdodi i ffeilio ar-lein ar gyfer ${company.name}."
     },
     "HOME_AUTHORISED_PERSON.[4].Button.cancelRequest": {
         "en": "Cancel request",
@@ -224,8 +224,8 @@
         "cy": "Derbyn"
     },
     "HOME_NOTIFICATIONS.[5].Fragment.companyInviterGivenNameWantsToGiveYou": {
-        "en": " ${company.inviter.givenName} wants to give you authorisation to file online for this company.",
-        "cy": "Mae ${company.inviter.givenName} eisiau rhoi caniatâd i chi ffeilio ar-lein ar gyfer y cwmni hwn."
+        "en": " ${company.inviter.displayName} wants to give you authorisation to file online for this company.",
+        "cy": "Mae ${company.inviter.displayName} eisiau rhoi caniatâd i chi ffeilio ar-lein ar gyfer y cwmni hwn."
     },
     "HOME_NOTIFICATIONS.[5].Fragment.declineRequest": {
         "en": "Decline",
@@ -234,10 +234,6 @@
     "HOME_NOTIFICATIONS.[5].Fragment.pendingRequests": {
         "en": "Awaiting confirmation",
         "cy": "Yn aros am gadarnhad"
-    },
-    "HOME_NOTIFICATIONS.[5].Fragment.someoneWantsToGiveYouAuthorisationToFile": {
-        "en": " ${company.inviter.mail} wants to give you authorisation to file online for this company.",
-        "cy": "Mae ${company.inviter.mail} eisiau rhoi caniatâd i chi ffeilio ar-lein ar gyfer y cwmni hwn."
     },
     "HOME_OVERVIEW.[1].Row.home": {
         "en": "Home",
@@ -424,8 +420,8 @@
         "cy": "Creu cyfrinair"
     },
     "ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause": {
-        "en": "This is because the email address ${user.mail}, which was provided by the person who authorised you, does not have an account.",
-        "cy": "Y rheswm am hyn yw nad oes gan y cyfeiriad e-bost ${user.mail} a ddarparwyd gan y person oedd wedi eich awdurdodi, gyfrif."
+        "en": "This is because the email address ${user.userName}, which was provided by the person who authorised you, does not have an account.",
+        "cy": "Y rheswm am hyn yw nad oes gan y cyfeiriad e-bost ${user.userName} a ddarparwyd gan y person oedd wedi eich awdurdodi, gyfrif."
     },
     "ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate": {
         "en": "You need to create a WebFiling account to be authorised to file online for ${company.name}",

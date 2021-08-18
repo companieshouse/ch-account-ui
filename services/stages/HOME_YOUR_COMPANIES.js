@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -285,34 +285,20 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                   {
                                     component: 'Tr',
                                     iterator: {
-                                      prop: '${company.users}',
-                                      name: 'user',
+                                      prop: '${company.members}',
+                                      name: 'member',
                                       index: 'index'
                                     },
                                     content: [
                                       {
-                                        conditional: {
-                                          prop: '${user.givenName}',
-                                          operator: 'is'
-                                        },
                                         component: 'Td',
                                         dynamicProps: {
-                                          children: '${user.givenName}'
+                                          children: '${member.displayName}'
                                         }
                                       },
                                       {
                                         conditional: {
-                                          prop: '${user.givenName}',
-                                          operator: 'not'
-                                        },
-                                        component: 'Td',
-                                        dynamicProps: {
-                                          children: '${user.mail}'
-                                        }
-                                      },
-                                      {
-                                        conditional: {
-                                          prop: '${user._refProperties.membershipStatus}',
+                                          prop: '${member.membershipStatus}',
                                           operator: 'ne',
                                           value: 'pending'
                                         },
@@ -329,7 +315,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                       },
                                       {
                                         conditional: {
-                                          prop: '${user._refProperties.membershipStatus}',
+                                          prop: '${member.membershipStatus}',
                                           operator: 'eeq',
                                           value: 'pending'
                                         },
@@ -350,7 +336,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           {
                                             component: 'LinkText',
                                             dynamicProps: {
-                                              href: '${user.detailsPath}'
+                                              href: '${member.detailsPath}'
                                             },
                                             props: {
                                               children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'),

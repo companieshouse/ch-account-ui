@@ -94,16 +94,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
               style: {
                 'margin-right': '10px'
               }
-            },
-            content: [
-              {
-                component: 'Tag',
-                dynamicProps: {
-                  colour: 'yellow',
-                  children: tokens('SHARED.awaitingConfirmation')
-                }
-              }
-            ]
+            }
           },
           {
             component: 'Row',
@@ -223,30 +214,16 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                 },
                                 content: [
                                   {
-                                    conditional: {
-                                      prop: '${company.inviter.givenName}',
-                                      operator: 'is'
-                                    },
                                     component: 'BodyText',
                                     dynamicProps: {
                                       children: tokens('HOME_NOTIFICATIONS.[5].Fragment.companyInviterGivenNameWantsToGiveYou')
-                                    }
-                                  },
-                                  {
-                                    conditional: {
-                                      prop: '${company.inviter.givenName}',
-                                      operator: 'not'
-                                    },
-                                    component: 'BodyText',
-                                    dynamicProps: {
-                                      children: tokens('HOME_NOTIFICATIONS.[5].Fragment.someoneWantsToGiveYouAuthorisationToFile')
                                     }
                                   }
                                 ]
                               },
                               {
                                 conditional: {
-                                  prop: '${user._refProperties.membershipStatus}',
+                                  prop: '${user.membershipStatus}',
                                   operator: 'eeq',
                                   value: 'confirmed'
                                 },

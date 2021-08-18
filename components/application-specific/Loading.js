@@ -7,12 +7,12 @@ const Loading = () => {
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setDisplay(true)
-    }, 500)
+    }, 600)
 
     return () => clearTimeout(timeOut)
   })
 
-  return display ? <BodyText>Please wait...</BodyText> : null
+  return display ? <BodyText>Page loading...</BodyText> : null
 }
 
 export default Loading

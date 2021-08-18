@@ -8,37 +8,21 @@ import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
-import { getCompaniesAssociatedWithUser } from '../../services/forgerock'
 import useFRAuth from '../../services/useFRAuth'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 
 const Home = ({ errors, lang }) => {
-  const { profile, accessToken } = useFRAuth()
-  const [associationData, setAssociationData] = React.useState({ count: 0, pendingCount: 0, companies: [] })
+  const { profile, companyData } = useFRAuth({ fetchCompanyData: true })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
-  const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
-  const sub = profile?.sub
+
+  const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
 
   React.useEffect(() => {
     headingCount.reset()
-
-    if (accessToken && sub) {
-      getCompaniesAssociatedWithUser(accessToken, sub).then((response) => {
-        setAssociationData({
-          count: response.confirmedCount,
-          pendingCount: response.pendingCount,
-          companies: response.companies
-        })
-      })
-    }
-  }, [sub, accessToken, headingCount, notifyType, notifyHeading, notifyTitle, notifyChildren])
-
-  if (!sub || !accessToken) {
-    return null
-  }
+  })
 
   return (
     <FeatureDynamicView
@@ -50,6 +34,7 @@ const Home = ({ errors, lang }) => {
       hasAccountLinks={true}
       accountLinksItem={1}
     >
+
       <Dynamic
         componentMap={componentMap}
         headingCount={headingCount}
@@ -58,7 +43,7 @@ const Home = ({ errors, lang }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
-        associationData={associationData}
+        companyData={{ count: companyData.companies.length, pendingCount: pendingCompanies.length }}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />
