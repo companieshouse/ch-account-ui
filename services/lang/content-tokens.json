@@ -1091,6 +1091,10 @@
         "en": "You have successfully verified the email address ",
         "cy": "Rydych wedi gwirio'r cyfeiriad e-bost yn llwyddiannus "
     },
+    "SHARED.youveSuccessfullyResetYourPassword": {
+        "en": "You've successfully reset your password.",
+        "cy": "Rydych wedi diweddaru eich cyfrinair yn llwyddiannus."
+    },
     "SHARED.yourCompanies": {
         "en": "Your companies",
         "cy": "Eich cwmnïau"

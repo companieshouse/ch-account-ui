@@ -27,6 +27,19 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     conditional: {
       prop: '${notifyToken}',
       operator: 'eeq',
+      value: 'associateSuccess'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      type: 'success',
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany')
+    }
+  },
+  {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
       value: 'acceptSuccess'
     },
     component: 'NotificationBanner',

@@ -1,27 +1,23 @@
 import PropTypes from 'prop-types'
-import React, { useState, useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from '../../../services/forgerock'
 import {
   CH_EWF_REQUEST_AUTH_CODE_URL,
   FORGEROCK_TREE_COMPANY_ASSOCIATION
 } from '../../../services/environment'
-import Router, { useRouter } from 'next/router'
-import { getStageFeatures } from '../../../services/translate'
+import { useRouter } from 'next/router'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
-import { serializeForm } from '../../../services/formData'
-import log from '../../../services/log'
-import { mapCompanyData } from '../../../services/mappings'
+import { generateQueryUrl } from '../../../services/queryString'
+import useFRFlow from '../../../services/useFRFlow'
 
 export const getStaticPaths = async () => {
   return {
     paths: [
       { params: { pageStep: '_start' } },
-      { params: { pageStep: '_restart' } },
-      { params: { pageStep: 'verify' } }
+      { params: { pageStep: '_restart' } }
     ],
     fallback: false
   }
@@ -33,131 +29,71 @@ export const getStaticProps = async () => {
 
 const AssociateUserAndCompany = ({ lang }) => {
   const router = useRouter()
-  const [errors, setErrors] = useState([])
-  const [customPageProps, setCustomPageProps] = useState({})
-  const [uiStage, setUiStage] = useState('')
-  const [uiFeatures, setUiFeatures] = useState([])
-  const [uiElements, setUiElements] = useState([])
-  const [submitData, setSubmitData] = useState((formData) => {})
+  const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
 
-  const { pageStep = '', service = '', token, overrideStage = '' } = router.query
+  const { replace, query } = router
+  const { pageStep = '' } = query
 
   React.useEffect(() => {
-    let journeyName = ''
-
     headingCount.reset()
+  })
 
-    if (!pageStep) return
-
+  React.useEffect(() => {
     if (pageStep === '_restart') {
-      router.replace('/account/associate/_start/')
-      return
+      replace('/account/associate/_start/')
     }
+  }, [pageStep, replace])
 
-    if (pageStep === 'verify' && service && token) {
-      journeyName = service
-    } else {
-      journeyName = FORGEROCK_TREE_COMPANY_ASSOCIATION
-    }
-
-    setErrors([])
-
-    const stepOptions = {
-      query: {
-        token
-      }
-    }
-
-    log.debug(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
-    forgerockFlow({
-      journeyName,
-      journeyNamespace: 'COMPANY_ASSOCIATION',
-      lang,
-      stepOptions,
-      onSuccess: () => {
-        Router.push('/account/home')
-      },
-      onFailure: (errData, newErrors = []) => {
-        // We only get here if there was a fatal error signal from the forgerock client library
-        // all other errors are not considered a failure (such as incorrectly formatted inputs etc
-        // and are handled gracefully by the onUpdateUi function
-        setErrors(newErrors)
-        let stage = 'GENERIC_ERROR'
-        newErrors.forEach((error) => {
-          if (error.stage) {
-            stage = error.stage
-          }
-        })
-        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
-      },
-      onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
-        const stepCustomPageProps = findCustomPageProps(step)
-        const stage = step.payload.stage || findCustomStage(step)
-        step.payload.stage = stage
-
-        if (stepCustomPageProps) {
-          if (stepCustomPageProps.apiError) {
-            // Transform the apiError structure to the app's errors array structure
-            const apiErrorsAsAppErrors = stepCustomPageProps.apiError.errors.map((errorItem) => ({
-              label: errorItem.message
-            }))
-
-            stepErrors.push(...apiErrorsAsAppErrors)
-          }
-        }
-
-        if (stepCustomPageProps?.company) {
-          stepCustomPageProps.company = mapCompanyData(stepCustomPageProps.company)
-        }
-
-        stepCustomPageProps.links = { requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL }
-
-        // Update the errors for the page
-        setErrors((currentErrorsArray) => {
-          return [...currentErrorsArray, ...stepErrors]
-        })
-
-        setCustomPageProps(stepCustomPageProps)
-        setUiStage(stage)
-        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
-        setUiElements(step.callbacks)
-        setSubmitData(() => submitDataFunc)
-      }
-    })
-  }, [pageStep, overrideStage, service, token, headingCount, lang, router])
-
-  const onSubmit = (evt) => {
-    evt.preventDefault()
-    setErrors([])
-
-    const formData = serializeForm(evt.target)
-    submitData(formData)
+  const FRFlowConfig = {
+    journeyName: FORGEROCK_TREE_COMPANY_ASSOCIATION,
+    journeyNamespace: 'COMPANY_ASSOCIATION',
+    defaultErrorStage: 'GENERIC_ERROR',
+    lang,
+    formRef,
+    pageStep
   }
 
-  // Check if the router has been initialised yet
-  if (!pageStep) return null
+  const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading } = useFRFlow(FRFlowConfig)
+
+  const { onSubmit, ...restHandlers } = flowHandlers
+
+  const links = {
+    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    associateSuccessPath: generateQueryUrl('/account/your-companies/', {
+      notifyToken: 'associateSuccess',
+      companyName: stepPageProps.company?.name
+    })
+  }
+
+  const { errors = [], ...restPageProps } = stepPageProps
 
   return (
     <FeatureDynamicView
-      width='two-thirds'
-      onSubmit={onSubmit}
-      hasBackLink={true}
-      hasAccountLinks={true}
       accountLinksItem={2}
+      formRef={formRef}
+      hasAccountLinks={true}
+      hasBackLink={true}
       hasLogoutLink={true}
+      onSubmit={onSubmit}
       titleLinkHref="/account/home"
+      width='two-thirds'
     >
-      <Dynamic
-        {...customPageProps}
+      {uiStage
+        ? <Dynamic
+        {...restPageProps}
         {...router.query}
         componentMap={componentMap}
-        headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
+        handlers={restHandlers}
+        headingCount={headingCount}
+        links={links}
+        loading={loading}
         uiElements={uiElements}
         uiStage={uiStage}
       />
+        : null }
     </FeatureDynamicView>
   )
 }

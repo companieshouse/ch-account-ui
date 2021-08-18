@@ -87,14 +87,14 @@ const Login = ({ lang, queryParams }) => {
         {...restPageProps}
         {...queryParams}
         componentMap={componentMap}
-        headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
-        uiElements={uiElements}
-        uiStage={uiStage}
         handlers={restHandlers}
+        headingCount={headingCount}
         links={links}
         loading={loading}
+        uiElements={uiElements}
+        uiStage={uiStage}
       />
         : null}
     </FeatureDynamicView>

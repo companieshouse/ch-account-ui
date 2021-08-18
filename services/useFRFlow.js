@@ -3,6 +3,7 @@ import { findCustomPageProps, findCustomStage, forgerockFlow } from './forgerock
 import { getStageFeatures } from './translate'
 import { serializeForm } from './formData'
 import { translateErrors } from './errors'
+import log from '../services/log'
 
 const useFRFlow = (config) => {
   const [loading, setLoading] = useState(true)
@@ -13,7 +14,7 @@ const useFRFlow = (config) => {
   const [submitData, setSubmitData] = React.useState(() => {})
   const onSubmitCallbacks = []
 
-  const { formRef, lang } = config
+  const { formRef, lang, pageStep } = config
 
   const flowConfig = useRef({
     defaultErrorStage: config.defaultErrorStage,
@@ -27,7 +28,7 @@ const useFRFlow = (config) => {
 
   useEffect(() => {
     const { defaultErrorStage, isAuthOnly, journeyName, journeyNamespace, stepOptions, handleSuccess, getLang } = flowConfig.current
-
+    log.debug(`Staring useFRFlow, journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace,
@@ -59,8 +60,11 @@ const useFRFlow = (config) => {
           const apiErrorsAsAppErrors = stepProps.apiError.errors.map((errorItem) => ({
             label: errorItem.message
           }))
-          stepProps.errors = [...stepProps.errors, ...apiErrorsAsAppErrors]
+          stepErrors.push(...apiErrorsAsAppErrors)
         }
+
+        // Replace raw errors with translated errors
+        stepProps.errors = stepErrors
 
         setStepPageProps(stepProps)
         setUiStage(step.payload.stage)
@@ -69,7 +73,7 @@ const useFRFlow = (config) => {
         setLoading(false)
       }
     })
-  }, [flowConfig])
+  }, [flowConfig, pageStep])
 
   useEffect(() => {
     if (uiStage && lang) {

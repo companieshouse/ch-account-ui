@@ -7,6 +7,19 @@ const CH_LOGIN_1 = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'resetSuccess'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      type: 'success',
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.youveSuccessfullyResetYourPassword')
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('CH_LOGIN_1.[1].PageHeading.signInToYourCompaniesHouseAccount')
