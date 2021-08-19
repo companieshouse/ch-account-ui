@@ -26,7 +26,7 @@ const REGISTRATION_4 = (lang, tokens) => [
           weight: 'bold'
         },
         dynamicProps: {
-          children: '${email}'
+          children: '${user.userName}'
         }
       }
     ]
@@ -41,9 +41,13 @@ const REGISTRATION_4 = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken1: {
+        IDToken2: {
           label: tokens('SHARED.enterPassword'),
           hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'),
+          formGroup: 'newPassword'
+        },
+        IDToken3: {
+          label: tokens('SHARED.reEnterPassword'),
           formGroup: 'newPassword'
         }
       }
