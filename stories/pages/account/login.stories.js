@@ -772,7 +772,7 @@ EWF_LOGIN_5.args = {
 
 export const EWF_LOGIN_OTP_METHOD = Template.bind({})
 EWF_LOGIN_OTP_METHOD.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,
@@ -813,7 +813,7 @@ EWF_LOGIN_OTP_METHOD.args = {
 
 export const EWF_LOGIN_OTP = Template.bind({})
 EWF_LOGIN_OTP.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,

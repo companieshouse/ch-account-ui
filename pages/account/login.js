@@ -29,13 +29,6 @@ const Login = ({ lang, queryParams }) => {
     jurisdiction
   } = queryParams
 
-  const links = {
-    chooseCompanyPath: `${asPath}`,
-    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
-    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
-  }
-
   useEffect(() => {
     headingCount.reset()
   })
@@ -69,6 +62,13 @@ const Login = ({ lang, queryParams }) => {
     window.location.assign(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
   }
 
+  const links = {
+    chooseCompanyPath: `${asPath}`,
+    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
+    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
+  }
+
   const { errors = [], ...restPageProps } = stepPageProps
 
   const companySelection = uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'
@@ -87,14 +87,14 @@ const Login = ({ lang, queryParams }) => {
         {...restPageProps}
         {...queryParams}
         componentMap={componentMap}
-        headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
-        uiElements={uiElements}
-        uiStage={uiStage}
         handlers={restHandlers}
+        headingCount={headingCount}
         links={links}
         loading={loading}
+        uiElements={uiElements}
+        uiStage={uiStage}
       />
         : null}
     </FeatureDynamicView>
