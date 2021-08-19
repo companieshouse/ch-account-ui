@@ -371,60 +371,85 @@ REGISTRATION_4.args = {
     authId: mockAuthId,
     callbacks: [
       {
-        type: 'ValidatedCreatePasswordCallback',
+        type: 'TextOutputCallback',
         output: [
           {
-            name: 'echoOn',
-            value: false
+            name: 'message',
+            value: 'Please create new password for user sparr@companieshouse.gov.uk'
           },
           {
-            name: 'policies',
-            value: {
-              policyRequirements: [
-                'VALID_TYPE'
-              ],
-              fallbackPolicies: null,
-              name: 'password',
-              policies: [
-                {
-                  policyRequirements: [
-                    'VALID_TYPE'
-                  ],
-                  policyId: 'valid-type',
-                  params: {
-                    types: [
-                      'string'
-                    ]
-                  }
-                }
-              ],
-              conditionalPolicies: null
-            }
-          },
-          {
-            name: 'failedPolicies',
-            value: []
-          },
-          {
-            name: 'validateOnly',
-            value: false
-          },
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'PasswordCallback',
+        output: [
           {
             name: 'prompt',
-            value: 'Password'
+            value: 'New password'
           }
         ],
         input: [
           {
-            name: 'IDToken1',
+            name: 'IDToken2',
             value: ''
-          },
+          }
+        ]
+      },
+      {
+        type: 'PasswordCallback',
+        output: [
           {
-            name: 'IDToken1validateOnly',
-            value: false
+            name: 'prompt',
+            value: 'Confirm new password'
           }
         ],
-        _id: 0
+        input: [
+          {
+            name: 'IDToken3',
+            value: ''
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'REGISTRATION_4'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"company":{"name":null},"user":{"userName":"sparr@companieshouse.gov.uk"}}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken5',
+            value: 'pagePropsJSON'
+          }
+        ]
       }
     ],
     stage: 'REGISTRATION_4',

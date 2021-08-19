@@ -16,12 +16,14 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken1: {
-          label: tokens('SHARED.enterANewPassword'),
-          hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo')
-        },
         IDToken2: {
-          label: tokens('SHARED.reEnterTheNewPassword')
+          label: tokens('SHARED.enterANewPassword'),
+          hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'),
+          formGroup: 'newPassword'
+        },
+        IDToken3: {
+          label: tokens('SHARED.reEnterTheNewPassword'),
+          formGroup: 'newPassword'
         }
       }
     }
