@@ -86,6 +86,9 @@ const emailOtp = (lang, tokens) => ([
           },
           {
             component: 'LinkText',
+            dynamicProps: {
+              href: '${links.resumePath}'
+            },
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherEmail'),
               href: '/password-recovery/_restart/',

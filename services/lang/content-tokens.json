@@ -124,7 +124,7 @@
         "cy": "•\t ni fydd angen i chi ail-gofnodi cod dilysu'r cwmni ar gyfer y rhan fwyaf o ffeilio ar-lein"
     },
     "EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail": {
-        "en": "We've sent you an email with a security code to ${emailAddress}.",
+        "en": "We've sent an email to ${emailAddress} which contains a security code.",
         "cy": "Rydym wedi anfon e-bost at ${emailAddress} sy'n cynnwys cod diogelwch."
     },
     "EWF_PROFILE.[2].DisplayUiElements.whatIsYourFullNameOptional": {
@@ -572,8 +572,8 @@
         "cy": " sy'n cynnwys dolen i ailosod eich cyfrinair."
     },
     "RESET_PASSWORD_6.[3].InsetText.theLinkWillExpireIn6Hours": {
-        "en": "The link will expire in 6 hours.",
-        "cy": "Daw'r ddolen hon i ben mewPassword reset link has expiredn 6 awr."
+        "en": "The link will expire in 24 hours.",
+        "cy": "Daw'r ddolen hon i ben mewPassword reset link has expiredn 24 awr."
     },
     "RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired": {
         "en": "Password reset link has expired",
@@ -899,8 +899,12 @@
         "en": "Registered office address",
         "cy": "Cyfeiriad swyddfa gofrestredig"
     },
-    "SHARED.requestAnAuthenticationCode": {
+    "SHARED.idDoNotHaveAnAuthenticationCode": {
         "en": "I do not have an authentication code",
+        "cy": "Nid oes cod dilysu gennyf"
+    },
+    "SHARED.requestAnAuthenticationCode": {
+        "en": "Request an authentication code",
         "cy": "Gofynnwch am god dilysu"
     },
     "SHARED.resetPassword": {
@@ -956,7 +960,7 @@
         "cy": "Neges destun"
     },
     "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
-        "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House security code'.",
+        "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House: security code'.",
         "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: cod diogelwch'."
     },
     "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset": {

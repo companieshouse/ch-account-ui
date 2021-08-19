@@ -10,9 +10,10 @@ import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import useFRAuth from '../../services/useFRAuth'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
+import Loading from '../../components/application-specific/Loading'
 
 const Home = ({ errors, lang }) => {
-  const { profile, companyData } = useFRAuth({ fetchCompanyData: true })
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -35,7 +36,9 @@ const Home = ({ errors, lang }) => {
       accountLinksItem={1}
     >
 
-      <Dynamic
+      {loading
+        ? <Loading/>
+        : <Dynamic
         componentMap={componentMap}
         headingCount={headingCount}
         content={content}
@@ -46,7 +49,7 @@ const Home = ({ errors, lang }) => {
         companyData={{ count: companyData.companies.length, pendingCount: pendingCompanies.length }}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
-      />
+      />}
     </FeatureDynamicView>
   )
 }

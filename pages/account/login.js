@@ -29,13 +29,6 @@ const Login = ({ lang, queryParams }) => {
     jurisdiction
   } = queryParams
 
-  const links = {
-    chooseCompanyPath: `${asPath}`,
-    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
-    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
-  }
-
   useEffect(() => {
     headingCount.reset()
   })
@@ -67,6 +60,13 @@ const Login = ({ lang, queryParams }) => {
   const onBack = (evt) => {
     evt.preventDefault()
     window.location.assign(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
+  }
+
+  const links = {
+    chooseCompanyPath: `${asPath}`,
+    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
+    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
   }
 
   const { errors = [], ...restPageProps } = stepPageProps

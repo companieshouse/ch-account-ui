@@ -49,7 +49,7 @@ const COMPANY_ASSOCIATION_3 = (lang, tokens) => [
           href: '${links.requestAuthCodePath}'
         },
         props: {
-          children: tokens('SHARED.requestAnAuthenticationCode'),
+          children: tokens('SHARED.idDoNotHaveAnAuthenticationCode'),
           testId: 'requestAuthCodeLink'
         }
       }
