@@ -241,6 +241,89 @@ ONBOARDING_PROFILE.args = {
   }
 }
 
+export const PHONE_OTP = Template.bind({})
+PHONE_OTP.args = {
+  queryParams: {},
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: ''
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken1',
+            value: 'pagePropsJSON'
+          }
+        ],
+        _id: 0
+      },
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please check your phone'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ],
+        _id: 1
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'notificationId'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'notificationId'
+          }
+        ],
+        _id: 2
+      },
+      {
+        type: 'PasswordCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: 'One Time Password'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: ''
+          }
+        ],
+        _id: 4
+      }
+    ],
+    stage: 'PHONE_OTP',
+    header: 'Please enter your code',
+    description: 'Please enter the code you received'
+  }
+}
+
 export const ONBOARDING_ERROR = Template.bind({})
 
 const onBoardingErrors = {

@@ -19,6 +19,7 @@ const Home = ({ errors, lang }) => {
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
 
+  const confirmedCompanies = companyData.companies.filter((company) => company.membershipStatus === 'confirmed')
   const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
 
   React.useEffect(() => {
@@ -46,7 +47,7 @@ const Home = ({ errors, lang }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
-        companyData={{ count: companyData.companies.length, pendingCount: pendingCompanies.length }}
+        companyData={{ count: confirmedCompanies.length, pendingCount: pendingCompanies.length }}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />}
