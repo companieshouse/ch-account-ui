@@ -4,7 +4,7 @@ import { Login } from '../../pages/account/login'
 import { mockAuthId } from './common-mocks'
 import { setCallback } from './story-utils'
 
-const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling-Login'
+const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling-Login'
 
 export default {
   title: 'Pages/Shared',
@@ -249,7 +249,7 @@ SEND_MFA_SMS_ERROR.args = {
 
 export const PHONE_OTP = Template.bind({})
 PHONE_OTP.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling-Login',
   responseData: {
     authId: mockAuthId,
     callbacks: [

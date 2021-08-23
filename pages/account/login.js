@@ -57,9 +57,12 @@ const Login = ({ lang, queryParams }) => {
 
   const { onSubmit, ...restHandlers } = flowHandlers
 
+  const isCompanySelection = uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'
+
   const onBack = (evt) => {
     evt.preventDefault()
-    window.location.assign(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/')
+    const home = isCompanySelection ? '/account/home/' : '/account/login/'
+    window.location.assign(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : home)
   }
 
   const links = {
@@ -71,16 +74,14 @@ const Login = ({ lang, queryParams }) => {
 
   const { errors = [], ...restPageProps } = stepPageProps
 
-  const companySelection = uiStage === 'EWF_LOGIN_2' || uiStage === 'EWF_LOGIN_3' || uiStage === 'EWF_LOGIN_4' || uiStage === 'EWF_LOGIN_5'
-
   return (
     <FeatureDynamicView
       onSubmit={onSubmit}
       formRef={formRef}
       onBack={onBack}
       hasBackLink={uiStage !== 'CH_LOGIN_1' && uiStage !== 'EWF_LOGIN_1'}
-      hasLogoutLink={companySelection}
-      hasAccountLinks={companySelection}
+      hasLogoutLink={isCompanySelection}
+      hasAccountLinks={isCompanySelection}
     >
       {uiStage
         ? <Dynamic

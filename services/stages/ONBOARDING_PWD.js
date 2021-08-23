@@ -31,12 +31,12 @@ const ONBOARDING_PWD = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken3: {
+        IDToken2: {
           label: tokens('SHARED.enterPassword'),
           hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'),
           formGroup: 'newPassword'
         },
-        IDToken4: {
+        IDToken3: {
           label: tokens('SHARED.reEnterPassword'),
           formGroup: 'newPassword'
         }
