@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import WithLang from '../../../services/lang/WithLang'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
@@ -9,10 +9,12 @@ import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import WithQueryParams from '../../../components/providers/WithQueryParams'
 import useFRAuth from '../../../services/useFRAuth'
-import Loading from '../../../components/application-specific/Loading'
+import { translateErrors } from '../../../services/errors'
+import { formatNumber } from '../../../services/formatting'
 
-const YourCompanies = ({ errors, lang, queryParams }) => {
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed' })
+const YourCompanies = ({ lang, queryParams }) => {
+  const [search, setSearch] = useState()
+  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed', companySearch: search })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -20,6 +22,12 @@ const YourCompanies = ({ errors, lang, queryParams }) => {
   useEffect(() => {
     headingCount.reset()
   })
+
+  const onSearch = (search) => {
+    setSearch(search)
+  }
+
+  const showCount = loading ? false : !!search
 
   return (
     <FeatureDynamicView
@@ -30,20 +38,24 @@ const YourCompanies = ({ errors, lang, queryParams }) => {
       hasAccountLinks
       accountLinksItem={2}
     >
-      {loading
-        ? <Loading/>
-        : <Dynamic
+      <Dynamic
+        companies={companyData.companies}
         componentMap={componentMap}
-        headingCount={headingCount}
         content={content}
-        errors={errors}
+        errors={translateErrors(errors, lang)}
+        handlers={{ onSearch }}
+        headingCount={headingCount}
+        loading={loading}
+        noCompanies={!search && companyData.companies.length === 0}
+        profile={profile}
+        searchCount={companyData?.companies ? formatNumber(companyData.companies.length) : null}
+        showCount={showCount}
         uiElements={[]}
         uiStage={uiStage}
-        profile={profile}
-        companies={companyData.companies}
+        lang={lang}
         {...queryParams}
       />
-      }
+
     </FeatureDynamicView>
   )
 }
@@ -64,6 +76,5 @@ YourCompanies.propTypes = {
 
 YourCompanies.defaultProps = {
   companies: [],
-  errors: [],
   profile: {}
 }
