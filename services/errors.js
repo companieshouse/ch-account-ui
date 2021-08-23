@@ -57,7 +57,7 @@ export const translateErrors = (errors, lang) => {
 
     error.label = tokensToTry.reduce((label, token) => {
       if (label) return label
-      label = translate(lang, token, '')
+      label = translate(lang, token, '', error.params)
 
       return label
     }, '')
