@@ -41,6 +41,23 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
   if (customPageProps.errors instanceof Array && customPageProps.errors.length > 0) {
     // Custom page props has errors in it
     customPageProps.errors.forEach((error) => {
+      if (error.token === 'PWD_POLICY_ERROR' && customPageProps.failedPolicies) {
+        customPageProps.failedPolicies.forEach((policy) => {
+          const requirement = policy.policyRequirements[0]
+          const requirementToken = requirement.policyRequirement
+          errors.push({
+            errData: error,
+            tokenNoNamespace: requirementToken,
+            token: `${journeyNamespace}_${requirementToken}`,
+            label: !error.token ? error.label : undefined,
+            anchor: error.anchor || undefined,
+            fieldName: error.fieldName,
+            params: requirement.params
+          })
+        })
+        return
+      }
+
       errors.push({
         errData: error,
         tokenNoNamespace: error.token,
@@ -51,40 +68,6 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
       })
     })
   }
-
-  // Scan the step callbacks for failedPolicies data
-  step.callbacks.forEach((callback) => {
-    const payload = callback?.payload
-    const inputs = payload?.input || []
-    const outputs = payload?.output || []
-
-    const fieldName = (outputs.find((output) => output.name === 'name') || {}).value || ''
-    if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
-
-    const failedPolicies = outputs.find((output) => output.name === 'failedPolicies')
-
-    // Loop the failed policies
-    failedPolicies?.value?.forEach((failedPolicy) => {
-      if (oneErrorPerField === true && fieldsWithErrors.indexOf(fieldName) > -1) return
-
-      try {
-        const json = JSON.parse(failedPolicy)
-        if (!json || !json.policyRequirement) return
-
-        errors.push({
-          errData: json,
-          tokenNoNamespace: json.policyRequirement,
-          token: `${journeyNamespace}_${json.policyRequirement}`,
-          anchor: (inputs && inputs[0] && inputs[0].name) || undefined,
-          fieldName
-        })
-
-        fieldsWithErrors.push(fieldName)
-      } catch (err) {
-        // Couldn't parse JSON - fail silently as this is an API issue
-      }
-    })
-  })
 
   return errors
 }
