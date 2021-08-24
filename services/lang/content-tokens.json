@@ -359,6 +359,18 @@
         "en": "We'll send them an email that contains a link.",
         "cy": "Byddwn yn anfon e-bost sy'n cynnwys dolen."
     },
+    "INVITE_USER_ERROR.[3].PageHeading.youCannotAuthoriseSomeone": {
+        "en": "You cannot authorise someone to file online for this company",
+        "cy": "You cannot authorise someone to file online for this company"
+    },
+    "INVITE_USER_ERROR.[4].BodyText.youCanOnlyAuthorisePeopleToFile": {
+        "en": "You can only authorise people to file online for a company if it's active.",
+        "cy": "You can only authorise people to file online for a company if it's active."
+    },
+    "INVITE_USER_ERROR.[5].LinkText.goBackToYourCompanies": {
+        "en": "Go back to 'Your companies'",
+        "cy": "Go back to 'Your companies'"
+    },
     "LIMIT_EXCEEDED_ERROR.[2].BodyText.youHaveEnteredAnIncorrectCodeTooManyTimesFor": {
         "en": "You have entered an incorrect code too many times. For your security, we've signed you out.",
         "cy": "Rydych wedi rhoi cod anghywir i mewn gormod o weithiau. Er mwyn eich diogelwch, rydym wedi eich arwyddo allan."

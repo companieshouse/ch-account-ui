@@ -56,3 +56,63 @@ INVITE_USER_1.story = {
     }
   }
 }
+
+export const INVITE_USER_ERROR = Template.bind({})
+INVITE_USER_ERROR.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'The company 00443789 is not active or dormant.'
+          },
+          {
+            name: 'messageType',
+            value: '2'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'INVITE_USER_ERROR'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"errors":[{"label":"The company 00443789 is not active or dormant.","token":"INVITE_USER_COMPANY_LOOKUP_ERROR"}]}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'pagePropsJSON'
+          }
+        ]
+      }
+    ]
+  }
+}
