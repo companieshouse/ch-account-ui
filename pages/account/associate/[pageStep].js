@@ -12,6 +12,7 @@ import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { generateQueryUrl } from '../../../services/queryString'
 import useFRFlow from '../../../services/useFRFlow'
+import { mapCompanyData } from '../../../services/mappings'
 
 export const getStaticPaths = async () => {
   return {
@@ -66,7 +67,7 @@ const AssociateUserAndCompany = ({ lang }) => {
     })
   }
 
-  const { errors = [], ...restPageProps } = stepPageProps
+  const { errors = [], company, ...restPageProps } = stepPageProps
 
   return (
     <FeatureDynamicView
@@ -85,6 +86,7 @@ const AssociateUserAndCompany = ({ lang }) => {
         {...router.query}
         componentMap={componentMap}
         content={uiFeatures}
+        company={company ? mapCompanyData(company) : null}
         errors={errors}
         handlers={restHandlers}
         headingCount={headingCount}
