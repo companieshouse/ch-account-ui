@@ -18,7 +18,6 @@ export { CallbackType }
 
 const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
   const errors = []
-  const fieldsWithErrors = []
 
   if (!step) return errors
 

@@ -66,7 +66,43 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     conditional: {
       prop: '${notifyToken}',
       operator: 'eeq',
-      value: 'removeUserSuccess'
+      value: 'removePendingUserSuccess'
+    },
+    component: 'NotificationBanner',
+    dynamicProps: {
+      type: 'success',
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.requestCancelled')
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.theRequestFor')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${userName}'
+        }
+      },
+      {
+        component: 'SpanText',
+        dynamicProps: {
+          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.toBeAddedAsAnAuthorised')
+        }
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'removeAuthorisedUserSuccess'
     },
     component: 'NotificationBanner',
     dynamicProps: {

@@ -25,6 +25,7 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   if (!loading && company) {
     company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name })
     company.removeAuthorisedPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId })
+    company.removePendingdPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, pending: true })
   }
 
   return (
