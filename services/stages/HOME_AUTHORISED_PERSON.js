@@ -7,6 +7,46 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'resendSuccess'
+    },
+    component: 'NotificationBanner',
+    props: {
+      type: 'success',
+      title: tokens('SHARED.success'),
+      testId: 'notification-banner-auth-success',
+      heading: 'Email sent'
+    },
+    dynamicProps: {
+      notifyId: '${notifyId}'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: 'We\'ve sent another email to '
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${user.email}'
+        }
+      },
+      {
+        component: 'SpanText',
+        dynamicProps: {
+          children: '.'
+        }
+      }
+    ]
+  },
+  {
     component: 'Caption',
     dynamicProps: {
       children: '${company.name}'
