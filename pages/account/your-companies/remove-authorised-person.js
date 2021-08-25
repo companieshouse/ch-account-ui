@@ -27,7 +27,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const onSubmitCallbacks = []
 
-  const { companyNumber, userId } = queryParams
+  const { companyNumber, userId, pending } = queryParams
 
   useEffect(() => {
     headingCount.reset()
@@ -36,6 +36,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
       query: {
         companyNumber,
         userId,
+        pending,
         ForceAuth: true
       }
     }
@@ -71,7 +72,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
         stepCustomPageProps.displayName = stepCustomPageProps.invitedUser?.displayName
         stepCustomPageProps.links = {
           removeUserSuccess: generateQueryUrl('/account/your-companies/', {
-            notifyToken: 'removeUserSuccess',
+            notifyToken: pending ? 'removePendingUserSuccess' : 'removeAuthorisedUserSuccess',
             notifyId: findNotificationId(step),
             userName: stepCustomPageProps.user,
             companyName: stepCustomPageProps.company
