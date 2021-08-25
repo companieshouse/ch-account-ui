@@ -5,7 +5,7 @@ import { errorsPropType } from '../../../services/propTypes'
 import WithLang from '../../../services/lang/WithLang'
 import { translate } from '../../../services/translate'
 
-const InputField = ({ lang, label, renderLabelAs, caption, captionPosition, captionSize, headingCount, type, id, className, errors, hint, fixedWidth, fluidWidth, autoComplete, testId, defaultValue, required, prefix, suffix, groupError, formGroup, ...otherProps }) => {
+const InputField = ({ lang, label, renderLabelAs, labelSize, caption, captionPosition, captionSize, children, headingCount, type, id, className, errors, hint, fixedWidth, fluidWidth, autoComplete, testId, defaultValue, required, prefix, suffix, groupError, formGroup, ...otherProps }) => {
   const classes = [className]
 
   if (fixedWidth) classes.push(`govuk-input--width-${fixedWidth}`)
@@ -16,7 +16,7 @@ const InputField = ({ lang, label, renderLabelAs, caption, captionPosition, capt
 
   return (
     <React.Fragment>
-      {renderLabelAs === 'label' && <label className="govuk-label" htmlFor={id}>
+      {renderLabelAs === 'label' && <label className={`govuk-label govuk-label--${labelSize}`} htmlFor={id}>
         {label}
       </label>}
       {renderLabelAs === 'heading' && <h1 className="govuk-label-wrapper">
@@ -44,6 +44,7 @@ const InputField = ({ lang, label, renderLabelAs, caption, captionPosition, capt
                {...otherProps}
         />
         {Boolean(suffix) === true && <div className="govuk-input__suffix">{suffix}</div>}
+        {children}
       </div>
     </React.Fragment>
   )
@@ -57,6 +58,7 @@ InputField.propTypes = {
   captionPosition: PropTypes.string,
   captionSize: PropTypes.string,
   className: PropTypes.string,
+  children: PropTypes.node,
   defaultValue: PropTypes.string,
   errors: errorsPropType,
   fixedWidth: PropTypes.string,
@@ -67,6 +69,7 @@ InputField.propTypes = {
   hint: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
+  labelSize: PropTypes.string,
   lang: PropTypes.string.isRequired,
   prefix: PropTypes.node,
   renderLabelAs: PropTypes.string,
@@ -86,6 +89,7 @@ InputField.defaultProps = {
   fluidWidth: '',
   hint: '',
   label: '',
+  labelSize: 'r',
   renderLabelAs: 'label',
   required: false,
   type: 'text'

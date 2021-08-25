@@ -152,298 +152,355 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'SectionBreak'
   },
   {
+    component: 'Search',
+    label: tokens('HOME_YOUR_COMPANIES.[3].Search.searchForACompany'),
+    hint: tokens('HOME_YOUR_COMPANIES.[3].Search.enterNameOrCompanyNumber')
+  },
+  {
     conditional: {
-      prop: '${companies.length}',
+      prop: '${showCount}',
+      operator: 'is'
+    },
+    component: 'Fragment',
+    content: [
+      {
+        conditional: {
+          prop: '${searchCount}',
+          operator: 'nee',
+          value: '1'
+        },
+        component: 'BodyText',
+        dynamicProps: {
+          weight: 'bold',
+          children: tokens('HOME_YOUR_COMPANIES.[3].BodyText.matchesFound')
+        }
+      },
+      {
+        conditional: {
+          prop: '${searchCount}',
+          operator: 'eeq',
+          value: '1'
+        },
+        component: 'BodyText',
+        dynamicProps: {
+          weight: 'bold',
+          children: tokens('HOME_YOUR_COMPANIES.[3].BodyText.matchFound')
+        }
+      }
+    ]
+  },
+  {
+    component: 'SectionBreak'
+  },
+  {
+    conditional: {
+      prop: '${loading}',
+      operator: 'is'
+    },
+    component: 'Loading'
+  },
+  {
+    conditional: {
+      prop: '${loading}',
       operator: 'not'
     },
     component: 'Fragment',
     content: [
       {
-        component: 'BoxCard',
+        conditional: {
+          prop: '${noCompanies}',
+          operator: 'is'
+        },
+        component: 'Fragment',
         content: [
           {
-            component: 'HeadingText',
-            props: {
-              size: 'm',
-              children: tokens('HOME_YOUR_COMPANIES.[6].Fragment.youHaveNotAddedAnyCompaniesToThis')
-            }
+            component: 'BoxCard',
+            content: [
+              {
+                component: 'HeadingText',
+                props: {
+                  size: 'm',
+                  children: tokens('HOME_YOUR_COMPANIES.[6].Fragment.youHaveNotAddedAnyCompaniesToThis')
+                }
+              },
+              {
+                component: 'BodyText',
+                props: {
+                  children: tokens('HOME_YOUR_COMPANIES.[6].Fragment.addACompanyToYourAccountSoThatYou')
+                }
+              },
+              {
+                component: 'List',
+                props: {
+                  items: [
+                    tokens('HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline'),
+                    tokens('HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile')
+                  ]
+                }
+              },
+              {
+                component: 'Button',
+                props: {
+                  renderAs: 'link',
+                  children: tokens('SHARED.addACompany'),
+                  href: '/account/associate/_start',
+                  testId: 'accountAssociateCompanyLink'
+                }
+              }
+            ]
           },
           {
-            component: 'BodyText',
-            props: {
-              children: tokens('HOME_YOUR_COMPANIES.[6].Fragment.addACompanyToYourAccountSoThatYou')
-            }
-          },
-          {
-            component: 'List',
-            props: {
-              items: [
-                tokens('HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline'),
-                tokens('HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile')
-              ]
-            }
-          },
-          {
-            component: 'Button',
-            props: {
-              renderAs: 'link',
-              children: tokens('SHARED.addACompany'),
-              href: '/account/associate/_start',
-              testId: 'accountAssociateCompanyLink'
-            }
+            component: 'SectionBreak'
           }
         ]
       },
       {
-        component: 'SectionBreak'
-      }
-    ]
-  },
-  {
-    conditional: {
-      prop: '${companies.length}',
-      operator: 'gt',
-      value: 0
-    },
-    iterator: {
-      prop: '${companies}',
-      name: 'company',
-      index: 'index'
-    },
-    component: 'Fragment',
-    dynamicProps: {
-      key: '${company._id}'
-    },
-    content: [
-      {
-        component: 'BoxCard',
+        conditional: {
+          prop: '${companies.length}',
+          operator: 'gt',
+          value: 0
+        },
+        iterator: {
+          prop: '${companies}',
+          name: 'company',
+          index: 'index'
+        },
+        component: 'Fragment',
+        dynamicProps: {
+          key: '${company._id}'
+        },
         content: [
           {
-            component: 'HeadingText',
-            dynamicProps: {
-              children: '${company.name}'
-            },
-            props: {
-              size: 'm'
-            }
-          },
-          {
-            component: 'Row',
+            component: 'BoxCard',
             content: [
               {
-                component: 'Column',
-                props: {
-                  width: 'three-quarters'
+                component: 'HeadingText',
+                dynamicProps: {
+                  children: '${company.name}'
                 },
+                props: {
+                  size: 'm'
+                }
+              },
+              {
+                component: 'Row',
                 content: [
                   {
-                    component: 'BodyText',
+                    component: 'Column',
                     props: {
-                      weight: 'bold'
+                      width: 'three-quarters'
                     },
                     content: [
                       {
-                        component: 'SpanText',
+                        component: 'BodyText',
                         props: {
-                          children: tokens('SHARED.companyNumber')
-                        }
-                      },
-                      {
-                        component: 'Br'
-                      },
-                      {
-                        component: 'Fragment',
-                        dynamicProps: {
-                          children: '${company.number}'
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    component: 'BodyText',
-                    props: {
-                      weight: 'bold'
-                    },
-                    content: [
-                      {
-                        component: 'SpanText',
-                        props: {
-                          children: tokens('SHARED.correspondenceAddress')
-                        }
-                      },
-                      {
-                        component: 'Br'
-                      },
-                      {
-                        component: 'Fragment',
-                        dynamicProps: {
-                          children: {
-                            component: 'ArrayJoin',
-                            props: {
-                              joinWith: ', ',
-                              stripEmpty: true
-                            },
-                            dynamicProps: {
-                              arr: [
-                                '${company.addressLine1}',
-                                '${company.addressLine2}',
-                                '${company.locality}',
-                                '${company.region}',
-                                '${company.postalCode}'
-                              ]
-                            }
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    component: 'Row',
-                    content: [
-                      {
-                        component: 'Column',
-                        props: {
-                          width: 'full'
+                          weight: 'bold'
                         },
                         content: [
                           {
-                            component: 'Table',
+                            component: 'SpanText',
+                            props: {
+                              children: tokens('SHARED.companyNumber')
+                            }
+                          },
+                          {
+                            component: 'Br'
+                          },
+                          {
+                            component: 'Fragment',
+                            dynamicProps: {
+                              children: '${company.number}'
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        component: 'BodyText',
+                        props: {
+                          weight: 'bold'
+                        },
+                        content: [
+                          {
+                            component: 'SpanText',
+                            props: {
+                              children: tokens('SHARED.correspondenceAddress')
+                            }
+                          },
+                          {
+                            component: 'Br'
+                          },
+                          {
+                            component: 'Fragment',
+                            dynamicProps: {
+                              children: {
+                                component: 'ArrayJoin',
+                                props: {
+                                  joinWith: ', ',
+                                  stripEmpty: true
+                                },
+                                dynamicProps: {
+                                  arr: [
+                                    '${company.addressLine1}',
+                                    '${company.addressLine2}',
+                                    '${company.locality}',
+                                    '${company.region}',
+                                    '${company.postalCode}'
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        component: 'Row',
+                        content: [
+                          {
+                            component: 'Column',
+                            props: {
+                              width: 'full'
+                            },
                             content: [
                               {
-                                component: 'THead',
+                                component: 'Table',
                                 content: [
                                   {
-                                    component: 'Tr',
+                                    component: 'THead',
                                     content: [
                                       {
-                                        component: 'Th',
-                                        props: {
-                                          children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
-                                        }
-                                      },
+                                        component: 'Tr',
+                                        content: [
+                                          {
+                                            component: 'Th',
+                                            props: {
+                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
+                                            }
+                                          },
+                                          {
+                                            component: 'Th',
+                                            props: {
+                                              children: tokens('SHARED.authorisationStatus')
+                                            }
+                                          },
+                                          {
+                                            component: 'Th',
+                                            props: {
+                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.view')
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    component: 'TBody',
+                                    content: [
                                       {
-                                        component: 'Th',
-                                        props: {
-                                          children: tokens('SHARED.authorisationStatus')
-                                        }
-                                      },
-                                      {
-                                        component: 'Th',
-                                        props: {
-                                          children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.view')
-                                        }
+                                        component: 'Tr',
+                                        iterator: {
+                                          prop: '${company.members}',
+                                          name: 'member',
+                                          index: 'index'
+                                        },
+                                        content: [
+                                          {
+                                            component: 'Td',
+                                            dynamicProps: {
+                                              children: '${member.displayName}'
+                                            },
+                                            content: [
+                                              {
+                                                conditional: {
+                                                  prop: '${member.currentUser}',
+                                                  operator: 'is'
+                                                },
+                                                component: 'SpanText',
+                                                props: {
+                                                  children: tokens('SHARED.you')
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            conditional: {
+                                              prop: '${member.membershipStatus}',
+                                              operator: 'ne',
+                                              value: 'pending'
+                                            },
+                                            component: 'Td',
+                                            content: [
+                                              {
+                                                component: 'Tag',
+                                                dynamicProps: {
+                                                  colour: 'green',
+                                                  children: tokens('SHARED.confirmed')
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            conditional: {
+                                              prop: '${member.membershipStatus}',
+                                              operator: 'eeq',
+                                              value: 'pending'
+                                            },
+                                            component: 'Td',
+                                            content: [
+                                              {
+                                                component: 'Tag',
+                                                props: {
+                                                  colour: 'yellow',
+                                                  children: tokens('SHARED.awaitingConfirmation')
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            component: 'Td',
+                                            content: [
+                                              {
+                                                component: 'LinkText',
+                                                dynamicProps: {
+                                                  href: '${member.detailsPath}'
+                                                },
+                                                props: {
+                                                  children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'),
+                                                  className: 'govuk-link--no-visited-state'
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
                                 ]
                               },
                               {
-                                component: 'TBody',
+                                component: 'BodyText',
                                 content: [
                                   {
-                                    component: 'Tr',
-                                    iterator: {
-                                      prop: '${company.members}',
-                                      name: 'member',
-                                      index: 'index'
-                                    },
-                                    content: [
-                                      {
-                                        component: 'Td',
-                                        dynamicProps: {
-                                          children: '${member.displayName}'
-                                        },
-                                        content: [
-                                          {
-                                            conditional: {
-                                              prop: '${member.currentUser}',
-                                              operator: 'is'
-                                            },
-                                            component: 'SpanText',
-                                            props: {
-                                              children: tokens('SHARED.you')
-                                            }
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        conditional: {
-                                          prop: '${member.membershipStatus}',
-                                          operator: 'ne',
-                                          value: 'pending'
-                                        },
-                                        component: 'Td',
-                                        content: [
-                                          {
-                                            component: 'Tag',
-                                            dynamicProps: {
-                                              colour: 'green',
-                                              children: tokens('SHARED.confirmed')
-                                            }
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        conditional: {
-                                          prop: '${member.membershipStatus}',
-                                          operator: 'eeq',
-                                          value: 'pending'
-                                        },
-                                        component: 'Td',
-                                        content: [
-                                          {
-                                            component: 'Tag',
-                                            props: {
-                                              colour: 'yellow',
-                                              children: tokens('SHARED.awaitingConfirmation')
-                                            }
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        component: 'Td',
-                                        content: [
-                                          {
-                                            component: 'LinkText',
-                                            dynamicProps: {
-                                              href: '${member.detailsPath}'
-                                            },
-                                            props: {
-                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'),
-                                              className: 'govuk-link--no-visited-state'
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ]
+                                    component: 'LinkText',
+                                    dynamicProps: {
+                                      href: '${company.filePath}',
+                                      children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'),
+                                      className: 'govuk-link--no-visited-state'
+                                    }
                                   }
                                 ]
-                              }
-                            ]
-                          },
-                          {
-                            component: 'BodyText',
-                            content: [
+                              },
                               {
-                                component: 'LinkText',
-                                dynamicProps: {
-                                  href: '${company.filePath}',
-                                  children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'),
-                                  className: 'govuk-link--no-visited-state'
-                                }
-                              }
-                            ]
-                          },
-                          {
-                            component: 'BodyText',
-                            content: [
-                              {
-                                component: 'LinkText',
-                                dynamicProps: {
-                                  href: '${company.authorisePath}',
-                                  children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'),
-                                  className: 'govuk-link--no-visited-state'
-                                }
+                                component: 'BodyText',
+                                content: [
+                                  {
+                                    component: 'LinkText',
+                                    dynamicProps: {
+                                      href: '${company.authorisePath}',
+                                      children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'),
+                                      className: 'govuk-link--no-visited-state'
+                                    }
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -454,13 +511,14 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                 ]
               }
             ]
+          },
+          {
+            component: 'SectionBreak'
           }
         ]
-      },
-      {
-        component: 'SectionBreak'
       }
     ]
   }
+
 ]
 export default HOME_YOUR_COMPANIES

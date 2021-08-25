@@ -11,6 +11,7 @@ import log from '../services/log'
  * @returns {{profile: object, accessToken: object}}
  */
 const useFRAuth = (config = {}) => {
+  const [errors, setErrors] = useState([])
   const { fetchCompanyData, companySearch, companyStatus } = config
   const [loading, setLoading] = useState(true)
   const { push } = useRouter()
@@ -39,6 +40,7 @@ const useFRAuth = (config = {}) => {
         push('/account/login/')
       })
       setProfile(extendProfile(user))
+
       if (!fetchCompanyData) {
         setLoading(false)
       }
@@ -48,16 +50,28 @@ const useFRAuth = (config = {}) => {
 
   useEffect(() => {
     if (sub && accessToken && fetchCompanyData) {
+      if (!loading) {
+        setLoading(true)
+      }
+      setErrors([])
       getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
         setCompanyData({
           companies: data.companies
         })
         setLoading(false)
-      })
+      }).catch((err) => {
+        setErrors([{
+          errData: err, // Add the errData key to pass along the original error info
+          token: 'ERROR_UNKNOWN', // We don't know the error
+          stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
+        }])
+        setLoading(false)
+      }
+      )
     }
   }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
 
-  return { accessToken, profile, companyData, loading }
+  return { accessToken, profile, companyData, loading, errors }
 }
 
 export default useFRAuth
