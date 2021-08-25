@@ -35,7 +35,7 @@ const InviteUser = ({ lang }) => {
   const [customPageProps, setCustomPageProps] = useState({})
   const [submitData, setSubmitData] = useState((formData, stepOptions) => {})
 
-  const { pageStep = '', service = '', token, overrideStage = '', companyNumber, action } = router.query
+  const { pageStep = '', service = '', token, overrideStage = '', companyNumber, action, userId } = router.query
 
   const headingCount = useMemo(() => new HeadingCount(), [])
 
@@ -44,8 +44,12 @@ const InviteUser = ({ lang }) => {
     if (action) {
       requestQuery.action = action
     }
+    // Optional userId passed to journey to skip email entry
+    if (userId) {
+      requestQuery.userId = userId
+    }
     return { query: requestQuery }
-  }, [companyNumber, token, action])
+  }, [companyNumber, token, action, userId])
 
   React.useEffect(() => {
     headingCount.reset()
@@ -83,12 +87,21 @@ const InviteUser = ({ lang }) => {
 
         // Setup success URL for step 2 redirect
         if (stage === 'INVITE_USER_2') {
-          stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
-            notifyToken: 'authSuccess',
-            notifyId: findNotificationId(step),
-            invitedUser: stepCustomPageProps.invitedUser,
-            companyName: stepCustomPageProps.company.name
-          })
+          if (userId) {
+            stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/authorised-person/', {
+              notifyToken: 'resendSuccess',
+              notifyId: findNotificationId(step),
+              companyNumber,
+              userId
+            })
+          } else {
+            stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
+              notifyToken: 'authSuccess',
+              notifyId: findNotificationId(step),
+              invitedUser: stepCustomPageProps.invitedUser,
+              companyName: stepCustomPageProps.company.name
+            })
+          }
         }
 
         // Setup success URL for step 3 (accept) redirect

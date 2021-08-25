@@ -23,7 +23,7 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   const user = company?.members?.filter((member) => (userId === member._id))[0]
 
   if (!loading && company) {
-    company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name })
+    company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, userId })
     company.removeAuthorisedPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId })
     company.removePendingdPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, pending: true })
   }
@@ -38,6 +38,7 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
       {loading
         ? <Loading/>
         : <Dynamic
+          {...queryParams}
           componentMap={componentMap}
           headingCount={headingCount}
           content={content}
