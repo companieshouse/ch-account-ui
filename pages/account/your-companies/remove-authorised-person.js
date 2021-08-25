@@ -88,7 +88,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
         setSubmitData(() => submitDataFunc)
       }
     })
-  }, [companyNumber, userId, asPath, headingCount, lang, push])
+  }, [companyNumber, userId, asPath, headingCount, lang, push, pending])
 
   const onSubmit = (evt) => {
     evt?.preventDefault()
