@@ -94,7 +94,6 @@ const AssociateUserAndCompany = ({ lang }) => {
         loading={loading}
         uiElements={uiElements}
         uiStage={uiStage}
-        company={mapCompanyData(company)}
       />
         : null }
     </FeatureDynamicView>
