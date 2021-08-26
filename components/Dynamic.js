@@ -3,7 +3,7 @@ import React from 'react'
 import { getTemplateDataValue, parseTemplateString, processDynamicProps } from '../services/template'
 import { set as pathSet } from '@irrelon/path'
 import WithTransformedErrors from './providers/WithTransformedErrors'
-import log from '../services/log'
+// import log from '../services/log'
 
 const isConditionalSatisfied = (conditional, data) => {
   if (conditional instanceof Array) {
@@ -16,7 +16,7 @@ const isConditionalSatisfied = (conditional, data) => {
 
   // Get the conditional prop data
   const propData = getTemplateDataValue(data, prop)
-  log.debug('Running conditional', conditional, propData)
+  // log.debug('Running conditional', conditional, propData)
   switch (operator) {
     case 'gt':
       if (propData > value) return true
@@ -67,7 +67,7 @@ const isConditionalSatisfied = (conditional, data) => {
     default:
       break
   }
-  log.debug('Returning false')
+  // log.debug('Returning false')
   return false
 }
 
