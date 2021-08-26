@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useRef } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
-import {
-  CH_EWF_REQUEST_AUTH_CODE_URL,
-  FORGEROCK_TREE_COMPANY_ASSOCIATION
-} from '../../../services/environment'
+import { FORGEROCK_TREE_COMPANY_ASSOCIATION } from '../../../services/environment'
 import { useRouter } from 'next/router'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
@@ -60,7 +57,7 @@ const AssociateUserAndCompany = ({ lang }) => {
   const { onSubmit, ...restHandlers } = flowHandlers
 
   const links = {
-    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
     associateSuccessPath: generateQueryUrl('/account/your-companies/', {
       notifyToken: 'associateSuccess',
       companyName: stepPageProps.company?.name

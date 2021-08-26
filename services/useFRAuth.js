@@ -50,9 +50,7 @@ const useFRAuth = (config = {}) => {
 
   useEffect(() => {
     if (sub && accessToken && fetchCompanyData) {
-      if (!loading) {
-        setLoading(true)
-      }
+      setLoading(true)
       setErrors([])
       getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
         setCompanyData({
@@ -69,7 +67,7 @@ const useFRAuth = (config = {}) => {
       }
       )
     }
-  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, loading])
+  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
 
   return { accessToken, profile, companyData, loading, errors }
 }
