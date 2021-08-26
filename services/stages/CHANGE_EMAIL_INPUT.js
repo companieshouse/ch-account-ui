@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import emailOtp from './shared/emailOtp.js'
 
 const CHANGE_EMAIL_INPUT = (lang, tokens) => ([

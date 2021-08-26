@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const ONBOARDING_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',

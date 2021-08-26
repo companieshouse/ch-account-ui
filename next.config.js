@@ -32,5 +32,8 @@ module.exports = withTM({
   },
   basePath: BASE_PATH,
   trailingSlash: true,
-  reactStrictMode: true
+  reactStrictMode: true,
+  eslint: {
+    dirs: ['pages', 'components', 'services']
+  }
 })

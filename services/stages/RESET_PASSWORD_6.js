@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const RESET_PASSWORD_6 = (lang, tokens) => [
   {
     component: 'BrowserTitle',

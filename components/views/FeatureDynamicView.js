@@ -11,6 +11,7 @@ import { errorsPropType } from '../../services/propTypes'
 import Header from '../general-ui/Header'
 import AccountLinks from '../application-specific/AccountLinks'
 import Footer from '../general-ui/Footer'
+import Script from 'next/script'
 
 const FeatureDynamicView = (props) => {
   const {
@@ -29,8 +30,11 @@ const FeatureDynamicView = (props) => {
     children
   } = props
 
+  const BASE_PATH = process.env.BASE_PATH || ''
+
   return (
     <>
+      <Script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`} strategy="beforeInteractive" />
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={titleLinkHref} />
       <WidthContainer style={{ paddingTop: '2ex' }}>
         {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} />}

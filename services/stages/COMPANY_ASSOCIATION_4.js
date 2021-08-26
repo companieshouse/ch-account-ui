@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const COMPANY_ASSOCIATION_4 = (lang, tokens) => [
   {
     component: 'Redirect',

@@ -1,4 +1,5 @@
-// NOTE: This stage should now be redundant, replaced by PHONE_OTP
+/* eslint-disable no-template-curly-in-string */
+// TODO: This stage should now be redundant, replaced by PHONE_OTP
 const UPDATE_PHONE_2 = (lang, tokens) => [
   {
     component: 'BrowserTitle',

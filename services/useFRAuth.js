@@ -69,7 +69,7 @@ const useFRAuth = (config = {}) => {
       }
       )
     }
-  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
+  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, loading])
 
   return { accessToken, profile, companyData, loading, errors }
 }

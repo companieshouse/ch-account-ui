@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const CHANGE_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',

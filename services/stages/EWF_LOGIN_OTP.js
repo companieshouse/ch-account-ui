@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import phoneOtp from './shared/phoneOtp.js'
 import emailOtp from './shared/emailOtp.js'
 

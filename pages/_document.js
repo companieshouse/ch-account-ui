@@ -25,7 +25,6 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="152x152" href={`${BASE_PATH}/assets/images/govuk-apple-touch-icon-152x152.png`}/>
           <link rel="apple-touch-icon" href={`${BASE_PATH}/assets/images/govuk-apple-touch-icon.png`}/>
           <meta property="og:image" content={`${BASE_PATH}/assets/images/govuk-opengraph-image.png`}/>
-          <script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`}/>
         </head>
         <Head />
         <body className="govuk-template__body app-body-class js-disabled">

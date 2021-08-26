@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const REMOVE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'BrowserTitle',

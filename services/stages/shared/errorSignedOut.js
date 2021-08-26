@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 const errorSignedOut = (lang, tokens) => [
   {
     component: 'PageHeading',

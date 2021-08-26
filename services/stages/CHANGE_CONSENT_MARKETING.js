@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
   {
     component: 'BrowserTitle',
