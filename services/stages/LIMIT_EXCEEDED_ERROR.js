@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',

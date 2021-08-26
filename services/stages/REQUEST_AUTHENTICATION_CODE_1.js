@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const REQUEST_AUTHENTICATION_CODE_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',

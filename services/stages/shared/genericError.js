@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 const genericError = (lang, tokens) => [
   {
     component: 'PageHeading',

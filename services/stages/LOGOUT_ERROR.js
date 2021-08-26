@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const LOGOUT_ERROR = (lang, tokens) => [
   {
     component: 'PageHeading',

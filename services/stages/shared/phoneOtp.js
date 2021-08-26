@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 const phoneOtp = (lang, tokens) => ([
   {
     component: 'PageHeading',

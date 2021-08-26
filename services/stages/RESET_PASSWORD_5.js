@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const RESET_PASSWORD_5 = (lang, tokens) => [
   {
     component: 'Redirect',

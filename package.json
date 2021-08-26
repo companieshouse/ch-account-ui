@@ -10,7 +10,7 @@
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
     "test": "jest --coverage",
     "sonar": "sonar-scanner",
-    "eslint": "eslint .",
+    "lint": "next lint --dir pages --dir components --dir services",
     "prepare": "husky install",
     "storybook": "BROWSER=none start-storybook -s ./public -p 3001",
     "build-storybook": "build-storybook",

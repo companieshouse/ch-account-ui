@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 const CHANGE_EMAIL_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',

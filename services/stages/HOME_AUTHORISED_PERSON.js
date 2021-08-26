@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'BrowserTitle',

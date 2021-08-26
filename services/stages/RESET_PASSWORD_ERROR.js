@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import genericError from './shared/genericError.js'
 
 const RESET_PASSWORD_ERROR = (lang, tokens) => [

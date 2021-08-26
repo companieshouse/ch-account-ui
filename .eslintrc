@@ -1,18 +1,8 @@
 {
-	"plugins": [
-		"jsx-a11y"
-	],
 	"extends": [
 		"eslint-config-standard",
-		"plugin:react/recommended",
-		"plugin:react-hooks/recommended",
-		"plugin:jsx-a11y/recommended"
+		"eslint-config-next"
 	],
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
-	},
 	"globals": {
 		"fetch": false
 	}

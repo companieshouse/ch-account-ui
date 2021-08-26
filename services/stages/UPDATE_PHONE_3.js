@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const UPDATE_PHONE_3 = (lang, tokens) => [
   {
     component: 'Redirect',

@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const REGISTRATION_2 = (lang, tokens) => [
   {
     component: 'PageHeading',

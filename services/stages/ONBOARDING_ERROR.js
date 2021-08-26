@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import genericError from './shared/genericError.js'
 import pageNotFoundError from './shared/pageNotFoundError.js'
 

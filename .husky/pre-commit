@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test && npm audit --audit-level=high
+npm run lint && npm test && npm audit --audit-level=high

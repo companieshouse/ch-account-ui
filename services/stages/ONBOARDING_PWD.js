@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'BrowserTitle',

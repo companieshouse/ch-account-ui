@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const REGISTRATION_MFA = (lang, tokens) => [
   {
     component: 'BrowserTitle',

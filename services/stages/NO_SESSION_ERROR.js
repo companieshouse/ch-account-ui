@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const NO_SESSION_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',

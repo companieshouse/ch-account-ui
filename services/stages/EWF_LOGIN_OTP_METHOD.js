@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
   {
     component: 'BrowserTitle',

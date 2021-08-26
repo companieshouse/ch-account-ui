@@ -2,7 +2,7 @@ import React from 'react'
 
 import Button from './Button'
 
-export default {
+const story = {
   title: 'GDS-Components/Button',
   component: Button,
   args: {
@@ -13,6 +13,8 @@ export default {
     testId: 'button'
   }
 }
+
+export default story
 
 const Template = (args) => <Button {...args} />
 

@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const EWF_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',

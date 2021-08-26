@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const INVITE_USER_2 = (lang, tokens) => [
   {
     component: 'Redirect',

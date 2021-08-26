@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const REMOVE_AUTHZ_USER_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',

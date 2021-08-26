@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import errorSignedOut from './shared/errorSignedOut.js'
 
 const SEND_MFA_EMAIL_ERROR = (lang, tokens) => [

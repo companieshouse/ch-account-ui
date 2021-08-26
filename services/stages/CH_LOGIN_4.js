@@ -1,4 +1,4 @@
-
+/* eslint-disable no-template-curly-in-string */
 const CH_LOGIN_4 = (lang, tokens) => [
   {
     component: 'Redirect',
