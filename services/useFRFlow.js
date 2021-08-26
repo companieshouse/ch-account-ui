@@ -102,7 +102,7 @@ const useFRFlow = (config) => {
     setStepPageProps((currentProps) => ({ ...currentProps, errors: [] }))
 
     // Submit FR stage
-    submitData(formData, flowConfig.current.stepOptions)
+    submitData(formData)
   }
 
   // Update callback values before submission

@@ -153,6 +153,9 @@ export const forgerockFlow = ({
   getLang,
   isAuthOnly
 }) => {
+  let retry
+  let previousStep
+
   if (!lang && !getLang) {
     log.error('You must pass lang to forgerockFlow() so that errors are correctly translated!')
     return null
@@ -182,6 +185,10 @@ export const forgerockFlow = ({
     tree: journeyName
   })
 
+  const isSessionTimedOut = (payload) => {
+    return payload.detail?.errorCode === '110'
+  }
+
   const handleFatalError = (err) => {
     log.debug('ForgeRock fatal error', err)
     onFailure(err, [{
@@ -193,6 +200,7 @@ export const forgerockFlow = ({
 
   const nextStep = (step, nextStepOptions) => {
     log.debug('ForgeRock calling next step', step, nextStepOptions)
+    previousStep = step // Store the previous step for retry in case of authId timout
     FRAuth.next(step, nextStepOptions).then(handleStep).catch(handleFatalError)
   }
 
@@ -207,34 +215,46 @@ export const forgerockFlow = ({
 
     if (step.type === StepType.LoginSuccess) {
       log.debug('ForgeRock login success', step)
-
       if (!isAuthOnly) {
         const tokens = await TokenManager.getTokens({ forceRenew: true })
         const user = await UserManager.getCurrentUser()
         return onSuccess(tokens, user)
       }
-
       return onSuccess()
     }
 
     if (step.type === StepType.LoginFailure) {
-      log.debug('ForgeRock login failure', step)
-      return onFailure(step, errors)
+      log.debug(`ForgeRock login failure: Retrying ${retry}`, step)
+      // Try getting a new auth token before failing
+      if (retry && isSessionTimedOut(step.payload)) {
+        FRAuth.next(undefined, stepOptions).then((retryStep) => {
+          const { authId } = retryStep.payload
+          if (previousStep.payload) {
+            previousStep.payload.authId = authId
+          }
+          retry = false
+          nextStep(previousStep, stepOptions)
+        })
+        return
+      } else {
+        return onFailure(step, errors)
+      }
     }
 
+    // Enable retry if first step
+    retry = !previousStep
+
     log.debug('Stepping', step)
-    onUpdateUi(step, (formData, uiStepOptions) => {
+    onUpdateUi(step, (formData) => {
       // Fill in the step input data from form data
       step.callbacks.forEach((callback) => {
         const payload = callback?.payload
         const inputs = payload?.input || []
-
         inputs.forEach((input) => {
           input.value = formData[input.name]
         })
       })
-
-      nextStep(step, uiStepOptions)
+      nextStep(step, stepOptions)
     }, errors)
   }
 
