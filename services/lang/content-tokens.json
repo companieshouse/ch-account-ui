@@ -559,37 +559,25 @@
         "en": "Remove authorisation",
         "cy": "Tynnu awdurdodiad"
     },
-    "REQUEST_AUTHENTICATION_CODE_1.[0].BrowserTitle.requestingAnAuthenticationCode": {
-        "en": "Requesting an authentication code",
-        "cy": "Requesting an authentication code"
+    "REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.youNeedTheAuthenticationCode": {
+        "en": "You need the authentication code to add ${companyName} to your account",
+        "cy": "You need the authentication code to add ${companyName} to your account"
     },
-    "REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.doYouWantUsToSendTheAuthenticationCodeToThe": {
-        "en": "Do you want us to send the authentication code to the registered office address?",
-        "cy": "Do you want us to send the authentication code to the registered office address?"
+    "REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.youCanRequestToHaveYourAuthenticationCode": {
+        "en": "You can request to have your authentication code sent to the registered office address or your home address. It can take up to 5 working days to arrive.",
+        "cy": "You can request to have your authentication code sent to the registered office address or your home address. It can take up to 5 working days to arrive."
     },
-    "REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.wellSendTheAuthenticationCodeByPost": {
-        "en": "We'll send the authentication code by post to:",
-        "cy": "We'll send the authentication code by post to:"
+    "REQUEST_AUTHENTICATION_CODE_1.[5].LinkText.sendAuthenticationCodeToOffice": {
+        "en": "Send the authentication code to the registered office address (opens in a new tab)",
+        "cy": "Send the authentication code to the registered office address (opens in a new tab)"
     },
-    "REQUEST_AUTHENTICATION_CODE_1.[5].BodyText.itCanTakeUpTo5DaysToArrive": {
-        "en": "It can take up to 5 days to arrive.",
-        "cy": "It can take up to 5 days to arrive."
+    "REQUEST_AUTHENTICATION_CODE_1.[6].LinkText.sendAuthenticationCodeToHome": {
+        "en": "Send the authentication code to my home address (opens in a new tab)",
+        "cy": "Send the authentication code to my home address (opens in a new tab)"
     },
-    "REQUEST_AUTHENTICATION_CODE_1.[6].Button.sendTheAuthenticationCode": {
-        "en": "Send the authentication code",
-        "cy": "Send the authentication code"
-    },
-    "REQUEST_AUTHENTICATION_CODE_2.[0].BrowserTitle.authenticationCodeRequested": {
-        "en": "Authentication code requested",
-        "cy": "Authentication code requested"
-    },
-    "REQUEST_AUTHENTICATION_CODE_2.[1].NotificationBanner.itUsuallyTakesUpTo5DaysToArrive": {
-        "en": "It usually takes up to 5 days to arrive.",
-        "cy": "It usually takes up to 5 days to arrive."
-    },
-    "REQUEST_AUTHENTICATION_CODE_2.[1].NotificationBanner.theAuthenticationCodeForFlowersLimitedWillBe": {
-        "en": "The authentication code for FLOWERS LIMITED will be posted to the registered office address.",
-        "cy": "The authentication code for FLOWERS LIMITED will be posted to the registered office address."
+    "REQUEST_AUTHENTICATION_CODE_1.[6].Button.returnToHomePage": {
+        "en": "Return to home page",
+        "cy": "Return to home page"
     },
     "RESET_PASSWORD_1.[0].NotificationBanner.yourPasswordNeedsToBeUpdatedPleaseFollowThe": {
         "en": "Update your password to make your account more secure.",

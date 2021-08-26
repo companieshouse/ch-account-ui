@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import HeadingCount from '../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
-  CH_EWF_REQUEST_AUTH_CODE_URL,
   FORGEROCK_TREE_WF_LOGIN
 } from '../../services/environment'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
@@ -13,6 +12,7 @@ import componentMap from '../../services/componentMap'
 import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import useFRFlow from '../../services/useFRFlow'
+import { generateQueryUrl } from '../../services/queryString'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -67,7 +67,7 @@ const Login = ({ lang, queryParams }) => {
 
   const links = {
     chooseCompanyPath: `${asPath}`,
-    requestAuthCodePath: CH_EWF_REQUEST_AUTH_CODE_URL,
+    requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
     ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
     resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
   }
