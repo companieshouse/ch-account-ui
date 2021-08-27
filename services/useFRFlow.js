@@ -1,22 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { findCustomPageProps, findCustomStage, forgerockFlow } from './forgerock'
+import { useEffect, useRef, useState } from 'react'
+import { findCustomPageProps, findCustomStage, forgerockFlow, findNotificationId } from './forgerock'
 import { getStageFeatures } from './translate'
 import { serializeForm } from './formData'
 import { translateErrors } from './errors'
 import log from '../services/log'
 
 const useFRFlow = (config) => {
-  const [init, setInit] = useState(false)
+  const [reset, setReset] = useState(false)
   const [loading, setLoading] = useState(true)
-  const [stepPageProps, setStepPageProps] = React.useState({})
-  const [uiStage, setUiStage] = React.useState('')
-  const [uiFeatures, setUiFeatures] = React.useState([])
-  const [uiElements, setUiElements] = React.useState([])
-  const [submitData, setSubmitData] = React.useState(() => {})
+  const [stepPageProps, setStepPageProps] = useState({})
+  const [notificationId, setNotificationId] = useState()
+  const [uiStage, setUiStage] = useState('')
+  const [uiFeatures, setUiFeatures] = useState([])
+  const [uiElements, setUiElements] = useState([])
+  const [submitData, setSubmitData] = useState(() => {})
   const onSubmitCallbacks = []
 
   const { formRef, lang, pageStep } = config
 
+  // Initial config
   const flowConfig = useRef({
     defaultErrorStage: config.defaultErrorStage,
     getLang: () => config.lang,
@@ -29,7 +31,7 @@ const useFRFlow = (config) => {
 
   useEffect(() => {
     const { defaultErrorStage, isAuthOnly, journeyName, journeyNamespace, stepOptions, handleSuccess, getLang } = flowConfig.current
-    log.debug(`Staring useFRFlow, journey "${journeyName}", stepOptions:`, stepOptions)
+    log.debug(`Starting useFRFlow, journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
       journeyNamespace,
@@ -64,7 +66,7 @@ const useFRFlow = (config) => {
 
         // Replace raw errors with translated errors
         stepProps.errors = stepErrors
-
+        setNotificationId(findNotificationId(step))
         setStepPageProps(stepProps)
         setUiStage(step.payload.stage)
         setUiElements(step.callbacks)
@@ -72,8 +74,8 @@ const useFRFlow = (config) => {
         setLoading(false)
       }
     })
-    setInit(true)
-  }, [flowConfig, pageStep, init])
+    setReset(false)
+  }, [flowConfig, pageStep, reset])
 
   useEffect(() => {
     if (uiStage && lang) {
@@ -113,12 +115,12 @@ const useFRFlow = (config) => {
   }
 
   // Restart the flow
-  const onBack = (evt) => {
+  const onReset = (evt) => {
     evt.preventDefault()
-    setInit(false)
+    setReset(true)
   }
 
-  return { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers: { onSubmit, onSecondarySubmit, onBack, onSubmitCallbacks }, loading }
+  return { notificationId, uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers: { onSubmit, onSecondarySubmit, onReset, onSubmitCallbacks }, loading }
 }
 
 export default useFRFlow

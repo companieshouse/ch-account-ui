@@ -11,8 +11,10 @@ import { generateQueryUrl } from '../../../services/queryString'
 import useFRAuth from '../../../services/useFRAuth'
 import WithQueryParams from '../../../components/providers/WithQueryParams'
 import Loading from '../../../components/application-specific/Loading'
+import { useRouter } from 'next/router'
 
 const AuthorisedPerson = ({ errors, lang, queryParams }) => {
+  const router = useRouter()
   const { companyNumber, userId } = queryParams
   const { companyData, loading } = useFRAuth({ fetchCompanyData: true, companySearch: companyNumber })
   const uiStage = 'HOME_AUTHORISED_PERSON'
@@ -34,6 +36,7 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={2}
+      onBack={() => { router.push('/account/your-companies/') }}
     >
       {loading
         ? <Loading/>

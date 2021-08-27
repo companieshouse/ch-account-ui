@@ -41,14 +41,14 @@ const Onboarding = ({ lang, queryParams }) => {
 
   const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading } = useFRFlow(FRFlowConfig)
   const { errors = [], ...restPageProps } = stepPageProps
-  const { onSubmit, onBack, ...restHandlers } = flowHandlers
+  const { onSubmit, onReset, ...restHandlers } = flowHandlers
 
   return (
     <FeatureDynamicView
       formRef={formRef}
       onSubmit={onSubmit}
       hasBackLink={uiStage !== 'ONBOARDING_PWD'}
-      onBack={onBack}
+      onBack={onReset}
     >
       {uiStage
         ? <Dynamic
