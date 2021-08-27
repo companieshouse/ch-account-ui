@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types'
-import React, { useCallback, useState, useMemo } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import { FORGEROCK_TREE_INVITE_USER } from '../../../services/environment'
-import { findCustomPageProps, findCustomStage, findNotificationId, forgerockFlow } from '../../../services/forgerock'
 import Router, { useRouter } from 'next/router'
-import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import WithLang from '../../../services/lang/WithLang'
 import HeadingCount from '../../../services/HeadingCount'
-import { serializeForm } from '../../../services/formData'
 import { generateQueryUrl } from '../../../services/queryString'
-import log from '../../../services/log'
+import useFRFlow from '../../../services/useFRFlow'
+import WithQueryParams from '../../../components/providers/WithQueryParams'
 
 export const getStaticPaths = async () => {
   return {
@@ -26,125 +24,69 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const InviteUser = ({ lang }) => {
+const InviteUser = ({ lang, queryParams }) => {
   const router = useRouter()
-  const [uiFeatures, setUiFeatures] = useState([])
-  const [uiElements, setUiElements] = useState([])
-  const [errors, setErrors] = useState([])
-  const [uiStage, setUiStage] = useState('')
-  const [customPageProps, setCustomPageProps] = useState({})
-  const [submitData, setSubmitData] = useState((formData, stepOptions) => {})
-
-  const { pageStep = '', service = '', token, overrideStage = '', companyNumber, action, userId } = router.query
-
+  const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
+  const { pageStep, token, companyNumber, action, userId } = queryParams
 
-  const getStepOptions = useCallback(() => {
-    const requestQuery = { companyNumber: companyNumber, token }
-    if (action) {
-      requestQuery.action = action
-    }
-    // Optional userId passed to journey to skip email entry
-    if (userId) {
-      requestQuery.userId = userId
-    }
-    return { query: requestQuery }
-  }, [companyNumber, token, action, userId])
-
-  React.useEffect(() => {
+  useEffect(() => {
     headingCount.reset()
+  })
 
-    const journeyName = FORGEROCK_TREE_INVITE_USER
-    const stepOptions = getStepOptions()
+  const FRFlowConfig = {
+    journeyName: FORGEROCK_TREE_INVITE_USER,
+    journeyNamespace: 'INVITE_USER',
+    defaultErrorStage: 'GENERIC_ERROR',
+    lang,
+    formRef,
+    pageStep,
+    stepQuery: {
+      companyNumber,
+      token,
+      action,
+      userId
+    },
+    handleSuccess: () => {
+      Router.push('/account/your-companies')
+    }
+  }
 
-    log.debug(`Staring FR with pageStep "${pageStep}", journey "${journeyName}", stepOptions:`, stepOptions)
+  const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading, notificationId } = useFRFlow(FRFlowConfig)
 
-    forgerockFlow({
-      journeyName,
-      journeyNamespace: 'INVITE_USER',
-      lang,
-      stepOptions,
-      onSuccess: () => {
-        Router.push('/account/your-companies')
-      },
-      onFailure: (errData, newErrors = []) => {
-        // We only get here if there was a fatal error signal from the forgerock client library
-        // all other errors are not considered a failure (such as incorrectly formatted inputs etc
-        // and are handled gracefully by the onUpdateUi function
-        setErrors(newErrors)
-        let stage = 'GENERIC_ERROR'
-        newErrors.forEach((error) => {
-          if (error.stage) {
-            stage = error.stage
-          }
-        })
-        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
-      },
-      onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
-        const stepCustomPageProps = findCustomPageProps(step)
-        const stage = step.payload.stage || findCustomStage(step)
-        step.payload.stage = stage
+  const { errors = [], ...restPageProps } = stepPageProps
+  const { onSubmit, ...restHandlers } = flowHandlers
 
-        // Setup success URL for step 2 redirect
-        if (stage === 'INVITE_USER_2') {
-          if (userId) {
-            stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/authorised-person/', {
-              notifyToken: 'resendSuccess',
-              notifyId: findNotificationId(step),
-              companyNumber,
-              userId
-            })
-          } else {
-            stepCustomPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
-              notifyToken: 'authSuccess',
-              notifyId: findNotificationId(step),
-              invitedUser: stepCustomPageProps.invitedUser,
-              companyName: stepCustomPageProps.company.name
-            })
-          }
-        }
+  // Setup success URL for step 2 redirect
+  if (uiStage === 'INVITE_USER_2') {
+    if (userId) {
+      stepPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/authorised-person/', {
+        notifyToken: 'resendSuccess',
+        notifyId: notificationId,
+        companyNumber,
+        userId
+      })
+    } else {
+      stepPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
+        notifyToken: 'authSuccess',
+        notifyId: notificationId,
+        invitedUser: stepPageProps.invitedUser,
+        companyName: stepPageProps.company.name
+      })
+    }
+  }
 
-        // Setup success URL for step 3 (accept) redirect
-        if (stage === 'INVITE_USER_3') {
-          stepCustomPageProps.acceptSuccessPath = generateQueryUrl('/account/your-companies/', {
-            notifyToken: `${action}Success`,
-            companyName: stepCustomPageProps.company.name
-          })
-        }
-
-        if (stepCustomPageProps?.apiError) {
-          // Transform the apiError structure to the app's errors array structure
-          const apiErrorsAsAppErrors = stepCustomPageProps.apiError.errors.map((errorItem) => ({
-            label: errorItem.message
-          }))
-
-          stepErrors.push(...apiErrorsAsAppErrors)
-        }
-
-        // // Update the errors for the page
-        setErrors((currentErrorsArray) => {
-          return [...currentErrorsArray, ...stepErrors]
-        })
-        setCustomPageProps(stepCustomPageProps)
-        setUiStage(stage)
-        setUiFeatures(getStageFeatures(lang, overrideStage || stage))
-        setUiElements(step.callbacks)
-        setSubmitData(() => submitDataFunc)
-      }
+  // Setup success URL for step 3 (accept) redirect
+  if (uiStage === 'INVITE_USER_3') {
+    stepPageProps.acceptSuccessPath = generateQueryUrl('/account/your-companies/', {
+      notifyToken: `${action}Success`,
+      companyName: stepPageProps.company.name
     })
-  }, [action, pageStep, overrideStage, service, token, getStepOptions, headingCount, lang, companyNumber, userId])
-
-  const onSubmit = (evt) => {
-    evt.preventDefault()
-    setErrors([])
-
-    const formData = serializeForm(evt.target)
-    const stepOptions = getStepOptions()
-    submitData(formData, stepOptions)
   }
 
   return (
     <FeatureDynamicView
+      formRef={formRef}
       width='two-thirds'
       onSubmit={onSubmit}
       hasBackLink={true}
@@ -153,16 +95,20 @@ const InviteUser = ({ lang }) => {
       hasLogoutLink={true}
       titleLinkHref="/account/home"
     >
-      <Dynamic
+      {uiStage
+        ? <Dynamic
         {...router.query}
-        {...customPageProps}
+        {...restPageProps}
         componentMap={componentMap}
+        handlers={restHandlers}
+        loading={loading}
         headingCount={headingCount}
         content={uiFeatures}
         uiElements={uiElements}
         uiStage={uiStage}
         errors={errors}
       />
+        : null }
     </FeatureDynamicView>
   )
 }
@@ -171,4 +117,4 @@ InviteUser.propTypes = {
   lang: PropTypes.string
 }
 
-export default WithLang(InviteUser)
+export default WithQueryParams(WithLang(InviteUser))
