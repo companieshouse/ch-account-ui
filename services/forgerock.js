@@ -68,6 +68,34 @@ const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = 
     })
   }
 
+  // Scan the step callbacks for failedPolicies data as well (legacy)
+  step.callbacks.forEach((callback) => {
+    const payload = callback?.payload
+    const inputs = payload?.input || []
+    const outputs = payload?.output || []
+
+    const fieldName = (outputs.find((output) => output.name === 'name') || {}).value || ''
+    const failedPolicies = outputs.find((output) => output.name === 'failedPolicies')
+
+    // Loop the failed policies
+    failedPolicies?.value?.forEach((failedPolicy) => {
+      try {
+        const json = JSON.parse(failedPolicy)
+        if (!json || !json.policyRequirement) return
+
+        errors.push({
+          errData: json,
+          tokenNoNamespace: json.policyRequirement,
+          token: `${journeyNamespace}_${json.policyRequirement}`,
+          anchor: (inputs && inputs[0] && inputs[0].name) || undefined,
+          fieldName
+        })
+      } catch (err) {
+        log.error('Unable to parse failed policy data in callbacks')
+      }
+    })
+  })
+
   return errors
 }
 
