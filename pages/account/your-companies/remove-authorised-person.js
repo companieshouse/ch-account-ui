@@ -1,147 +1,79 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useEffect, useRef } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { findCustomPageProps, findCustomStage, findNotificationId, forgerockFlow } from '../../../services/forgerock'
 import HeadingCount from '../../../services/HeadingCount'
-import { getStageFeatures } from '../../../services/translate'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
 import componentMap from '../../../services/componentMap'
 import Dynamic from '../.././../components/Dynamic'
 import withQueryParams from '../../../components/providers/WithQueryParams'
-import { serializeForm } from '../../../services/formData'
-import { translateErrors } from '../../../services/errors'
 import { FORGEROCK_TREE_REMOVE_AUTHORISED_USER } from '../../../services/environment'
 import { generateQueryUrl } from '../../../services/queryString'
+import useFRFlow from '../../../services/useFRFlow'
 
 const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
   const router = useRouter()
   const formRef = useRef()
-  const { push, asPath } = router
-  const [customPageProps, setCustomPageProps] = React.useState({})
-  const [errors, setErrors] = React.useState([])
-  const [uiStage, setUiStage] = React.useState('')
-  const [uiFeatures, setUiFeatures] = React.useState([])
-  const [uiElements, setUiElements] = React.useState([])
-  const [submitData, setSubmitData] = React.useState((formData) => {})
+  const { push } = router
   const headingCount = useMemo(() => new HeadingCount(), [])
-  const onSubmitCallbacks = []
-
   const { companyNumber, userId, pending } = queryParams
 
   useEffect(() => {
     headingCount.reset()
+  })
 
-    const stepOptions = {
-      query: {
-        companyNumber,
-        userId,
-        pending,
-        ForceAuth: true
-      }
+  const FRFlowConfig = {
+    journeyName: FORGEROCK_TREE_REMOVE_AUTHORISED_USER,
+    journeyNamespace: 'REMOVE_USER',
+    defaultErrorStage: 'REMOVE_USER_CONFIRM',
+    lang,
+    formRef,
+    stepQuery: {
+      companyNumber,
+      userId,
+      pending,
+      ForceAuth: true
+    },
+    handleSuccess: () => {
+      push('/account/your-companies/')
     }
+  }
 
-    forgerockFlow({
-      journeyName: FORGEROCK_TREE_REMOVE_AUTHORISED_USER,
-      journeyNamespace: 'REMOVE_USER',
-      lang,
-      stepOptions,
-      onSuccess: () => {
-        push('/account/your-companies/')
-      },
-      onFailure: (errData, newErrors = []) => {
-        setErrors(newErrors)
-        setUiFeatures(getStageFeatures(lang, 'REMOVE_USER_CONFIRM'))
-      },
-      onUpdateUi: (step, submitDataFunc, stepErrors = []) => {
-        const stepCustomPageProps = findCustomPageProps(step)
-        const stage = step.payload.stage || findCustomStage(step)
-        step.payload.stage = stage
+  const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading, notificationId } = useFRFlow(FRFlowConfig)
 
-        if (stepCustomPageProps) {
-          if (stepCustomPageProps.apiError) {
-            // Transform the apiError structure to the app's errors array structure
-            const apiErrorsAsAppErrors = stepCustomPageProps.apiError.errors.map((errorItem) => ({
-              label: errorItem.message
-            }))
+  stepPageProps.displayName = stepPageProps.invitedUser?.displayName
+  stepPageProps.links = {
+    removeUserSuccess: generateQueryUrl('/account/your-companies/', {
+      notifyToken: pending ? 'removePendingUserSuccess' : 'removeAuthorisedUserSuccess',
+      notifyId: notificationId,
+      userName: stepPageProps.user,
+      companyName: stepPageProps.company
 
-            stepErrors.push(...apiErrorsAsAppErrors)
-          }
-        }
-
-        stepCustomPageProps.displayName = stepCustomPageProps.invitedUser?.displayName
-        stepCustomPageProps.links = {
-          removeUserSuccess: generateQueryUrl('/account/your-companies/', {
-            notifyToken: pending ? 'removePendingUserSuccess' : 'removeAuthorisedUserSuccess',
-            notifyId: findNotificationId(step),
-            userName: stepCustomPageProps.user,
-            companyName: stepCustomPageProps.company
-
-          })
-        }
-
-        setErrors(stepErrors)
-        setCustomPageProps(stepCustomPageProps)
-        setUiStage(step.payload.stage)
-        setUiFeatures(getStageFeatures(lang, stage))
-        setUiElements(step.callbacks)
-        setSubmitData(() => submitDataFunc)
-      }
-    })
-  }, [companyNumber, userId, asPath, headingCount, lang, push, pending])
-
-  const onSubmit = (evt) => {
-    evt?.preventDefault()
-
-    // Clear existing errors
-    setErrors([])
-
-    // Get formData from the DOM with callback IDTokens as the key
-    const formData = serializeForm(formRef.current)
-
-    // Execute any submit callbacks defined in the child components and apply returned errors
-    for (const callback of onSubmitCallbacks) {
-      const errors = callback(formData)
-      if (errors.length) {
-        setErrors(translateErrors(errors, lang))
-        return
-      }
-    }
-
-    // Submit FR stage
-    submitData(formData, {
-      query: {
-        companyNumber,
-        userId,
-        ForceAuth: true
-      }
     })
   }
 
-  const onSecondarySubmit = (evt, params) => {
-    evt.preventDefault()
-    document.getElementsByName(params.target)[0].value = params.value
-    onSubmit()
-  }
+  const { onSubmit, ...restHandlers } = flowHandlers
+  const { errors = [], ...restPageProps } = stepPageProps
 
   return (
     <FeatureDynamicView
-      onSubmit={onSubmit}
+      accountLinksItem={2}
       formRef={formRef}
       hasAccountLinks
-      accountLinksItem={2}
       hasBackLink={false}
+      onSubmit={onSubmit}
     >
       <Dynamic
-        {...customPageProps}
+        {...restPageProps}
         {...queryParams}
         componentMap={componentMap}
-        headingCount={headingCount}
         content={uiFeatures}
         errors={errors}
+        handlers={restHandlers}
+        headingCount={headingCount}
+        loading={loading}
         uiElements={uiElements}
         uiStage={uiStage}
-        handlers={{ onSecondarySubmit, onSubmitCallbacks }}
       />
     </FeatureDynamicView>
   )
