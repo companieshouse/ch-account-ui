@@ -78,6 +78,7 @@ const Register = ({ lang }) => {
         errors={errors}
         handlers={restHandlers}
         headingCount={headingCount}
+        lang={lang}
         loading={loading}
         uiElements={uiElements}
         uiStage={uiStage}

@@ -86,6 +86,7 @@
     "eslint-plugin-unicorn": "^24.0.0"
   },
   "resolutions": {
-    "trim": "^0.0.3"
+    "trim": "^0.0.3",
+    "tar": "^6.1.11"
   }
 }

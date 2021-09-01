@@ -41,7 +41,7 @@
     },
     "CHANGE_NAME_1.[3].DisplayUiElements.enterNewFullName": {
         "en": "Enter your full name",
-        "cy": "Cofnodwch enw llawn newydd"
+        "cy": "Mewngofnodwch eich enw llawn"
     },
     "CHANGE_NAME_1.[4].ButtonGroup.changeName": {
         "en": "Update name",
@@ -121,7 +121,7 @@
     },
     "EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode": {
         "en": "will not need to re-enter the company's authentication code for most online filings",
-        "cy": "•\t ni fydd angen i chi ail-gofnodi cod dilysu'r cwmni ar gyfer y rhan fwyaf o ffeilio ar-lein"
+        "cy": "ni fydd angen i chi ail-gofnodi cod dilysu'r cwmni ar gyfer y rhan fwyaf o ffeilio ar-lein"
     },
     "EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail": {
         "en": "We've sent an email to ${emailAddress} which contains a security code.",
@@ -213,7 +213,7 @@
     },
     "HOME_MANAGE_ACCOUNT.[7].SummaryList.inTheFutureWedLikeToSendYouEmails": {
         "en": "In the future, we'd like to send you emails to let you know you've received a new message in your account",
-        "cy": "IYn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges newydd yn eich cyfrif"
+        "cy": "Yn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges newydd yn eich cyfrif"
     },
     "HOME_NOTIFICATIONS.[4].Fragment.youDoNotHaveAnyMessages": {
         "en": "You have not received any messages.",
@@ -273,7 +273,7 @@
             "view and manage authorised people"
         ],
         "cy": [
-            "tychwanegu gwmni i'ch cyfrif.",
+            "ychwanegu cwmni i'ch cyfrif.",
             "gweld, rheoli a ffeilio ar gyfer cwmnïau rydych chi wedi'u hychwanegu.",
             "awdurdodi pobl i ffeilio dogfennau ar gyfer eich cwmni ar-lein",
             "gweld a rheoli pobl awdurdodedig"
@@ -377,15 +377,15 @@
     },
     "INVITE_USER_1.[3].BodyText.tellUsTheDetailsOfThePersonYouWantTo": {
         "en": "Tell us the email address of the person you want to authorise to file online for this company.",
-        "cy": "Dywedwch wrthym fanylion y person rydych chi am ei awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn."
+        "cy": "Dywedwch wrthym gyfeiriad e-bost y person rydych am ei awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn."
     },
     "INVITE_USER_1.[4].InsetText.youCanChangeWhoIsAuthorisedToFileAtAny": {
         "en": "You can change who is authorised to file at any time.",
-        "cy": "Gallwch newid pwy sydd ag awdurdod i ffeilio ar unrhyw adeg."
+        "cy": "Gallwch newid pwy sydd wedi'i awdurdodi i ffeilio ar unrhyw adeg."
     },
     "INVITE_USER_1.[5].DisplayUiElements.wellSendAnEmailThatContainsARequest": {
         "en": "We'll send them an email that contains a link.",
-        "cy": "Byddwn yn anfon e-bost sy'n cynnwys dolen."
+        "cy": "Byddwn yn anfon e-bost atynt sy'n cynnwys dolen."
     },
     "INVITE_USER_ERROR.[3].PageHeading.youCannotAuthoriseSomeone": {
         "en": "You cannot authorise someone to file online for this company",
@@ -601,7 +601,7 @@
     },
     "RESET_PASSWORD_6.[3].InsetText.theLinkWillExpireIn6Hours": {
         "en": "The link will expire in 24 hours.",
-        "cy": "Daw'r ddolen hon i ben mewPassword reset link has expiredn 24 awr."
+        "cy": "Daw'r ddolen hon i ben mewn 24 awr."
     },
     "RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired": {
         "en": "Password reset link has expired",
@@ -617,7 +617,7 @@
     },
     "SHARED.aGoodWayToCreateASecureAndMemorablePassword": {
         "en": "A good way to create a secure and memorable password is to use 3 random words.",
-        "cy": "Ffordd dda o greu cyfrinair diogel a chofiadwy yw defnyddio 3 gair hap."
+        "cy": "Ffordd dda o greu cyfrinair diogel a chofiadwy yw defnyddio 3 gair ar hap."
     },
     "SHARED.accountDetails": {
         "en": "Account details",
@@ -645,7 +645,7 @@
     },
     "SHARED.askUsToSendYouAnotherEmail": {
         "en": "ask us to send you another email",
-        "cy": "gofynnwch inni anfon e-bost arall atoch"
+        "cy": "ofyn i ni anfon e-bost arall atoch"
     },
     "SHARED.askUsToSendYouAnotherTextMessage": {
         "en": "ask us to send you another text message",
@@ -693,7 +693,7 @@
     },
     "SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou": {
         "en": "Check your junk folder. If it still has not arrived, you can ",
-        "cy": "Gwiriwch eich ffolder sothach. Os nad yw wedi cyrraedd o hyd, gallwch chi "
+        "cy": "Gwiriwch eich ffolder sothach. Os nad yw wedi cyrraedd o hyd, gallwch "
     },
     "SHARED.checkYourPhone": {
         "en": "Check your phone",
@@ -757,7 +757,7 @@
     },
     "SHARED.emailAddress": {
         "en": "Email address",
-        "cy": "Cyfeiriad E-bost"
+        "cy": "Cyfeiriad e-bost"
     },
     "SHARED.emailAddressVerified": {
         "en": "Email address verified",
@@ -801,7 +801,7 @@
     },
     "SHARED.giveUsADifferentEmailAddress": {
         "en": "give us a different email address",
-        "cy": "rhowch gyfeiriad e-bost gwahanol i ni"
+        "cy": "roi cyfeiriad e-bost gwahanol i ni"
     },
     "SHARED.helpWithAuthenticationCode": {
         "en": "Help with authentication code",
@@ -809,7 +809,7 @@
     },
     "SHARED.helpWithCreatingYourPassword": {
         "en": "Help with creating your password",
-        "cy": "Help gyda chreu cyfrinair"
+        "cy": "Help gyda chreu eich cyfrinair"
     },
     "SHARED.helpWithMyCompanyNumber": {
         "en": "Help with company number",
@@ -841,7 +841,7 @@
     },
     "SHARED.ifYouDoNotProvideYourNameYourEmailAddress": {
         "en": "If you do not provide your name, your email address will be displayed instead. It will be partially hidden, for example jen*****@example.com.",
-        "cy": "Os nad ydych yn darparu eich enw, bydd eich cyfeiriad ebost yn cael ei arddangos yn lle hynny. Bydd yn cuddio'n rhannol, er enghraifft jen*****@enghraifft.com"
+        "cy": "Os nad ydych yn darparu eich enw, bydd eich cyfeiriad e-bost yn cael ei arddangos yn lle hynny. Bydd yn cuddio'n rhannol, er enghraifft jen*****@enghraifft.com"
     },
     "SHARED.ifYouHaveAnyQuestions": {
         "en": " if you have any questions.",
@@ -849,7 +849,7 @@
     },
     "SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou": {
         "en": "If you have given us the wrong email address, you can ",
-        "cy": "Os ydych chi wedi rhoi'r cyfeiriad e-bost anghywir i ni, gallwch chi "
+        "cy": "Os ydych wedi rhoi'r cyfeiriad e-bost anghywir i ni, gallwch "
     },
     "SHARED.ifYouPastedTheLinkCheckYouCopiedTheEntire": {
         "en": "If you pasted the link, check you copied the entire link.",
@@ -993,7 +993,7 @@
     },
     "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset": {
         "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: reset your password'.",
-        "cy": "Efallai y bydd yr e-bost yn cymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: ailosod eich cyfrinair'."
+        "cy": "Efallai y bydd yr e-bost yn cymryd ychydig o funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: gwiriwch eich cyfeiriad e-bost'."
     },
     "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectVerify": {
         "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: verify your email address'.",
@@ -1025,7 +1025,7 @@
     },
     "SHARED.thisMustBeAtLeast8CharactersLongAndHardTo": {
         "en": "This must be at least 8 characters long and hard to guess.",
-        "cy": "Rhaid i'r cyfrinair hwn fod o leiaf 8 cymeriad o hyd ac yn anodd i ddyfalu."
+        "cy": "Rhaid i hyn fod o leiaf 8 cymeriad o hyd ac yn anodd i ddyfalu."
     },
     "SHARED.toTryAgain": {
         "en": " to try again.",
@@ -1077,7 +1077,7 @@
     },
     "SHARED.whatIsTheAuthorisedPersonsEmailAddress": {
         "en": "What is the authorised person's email address?",
-        "cy": "Beth yw manylion yr unigolyn awdurdodedig?"
+        "cy": "Beth yw cyfeiriad e-bost y person awdurdodedig?"
     },
     "SHARED.whatIsTheCompanyNumber": {
         "en": "What is the company number?",
