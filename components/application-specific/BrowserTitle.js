@@ -1,10 +1,19 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 
 const BrowserTitle = ({ title }) => {
+  const suffix = ' - Companies House WebFiling account - GOV.UK'
   React.useEffect(() => {
-    window.document.title = title + ' - Companies House WebFiling account - GOV.UK'
-  })
+    const currentUrl = window.location.href
+    _paq.push(['setCustomUrl', currentUrl])
+    _paq.push(['setDocumentTitle', title + suffix])
+    const content = document.getElementById('content')
+    _paq.push(['FormAnalytics::scanForForms', content])
+    _paq.push(['enableLinkTracking'])
+
+    window.document.title = title + suffix
+  }, [title])
 
   return null
 }
