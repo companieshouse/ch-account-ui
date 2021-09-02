@@ -111,6 +111,25 @@ ONBOARDING_PWD.args = {
             value: 'stage'
           }
         ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"user": {"userName": "jill.edwards@example.com"}}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken6',
+            value: 'pagePropsJSON'
+          }
+        ]
       }
     ]
   }
