@@ -460,8 +460,12 @@
         "cy": "Creu cyfrinair"
     },
     "ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.thisIsBecause": {
-        "en": "This is because the email address ${user.userName}, which was provided by the person who authorised you, does not have an account.",
-        "cy": "Y rheswm am hyn yw nad oes gan y cyfeiriad e-bost ${user.userName} a ddarparwyd gan y person oedd wedi eich awdurdodi, gyfrif."
+        "en": "This is because the email address ",
+        "cy": "Y rheswm am hyn yw nad oes gan y cyfeiriad e-bost "
+    },
+    "ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.whichWasProvided": {
+        "en": ", which was provided by the person who authorised you, does not have an account.",
+        "cy": " a ddarparwyd gan y person oedd wedi eich awdurdodi, gyfrif."
     },
     "ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate": {
         "en": "You need to create a WebFiling account to be authorised to file online for ${company.name}",
