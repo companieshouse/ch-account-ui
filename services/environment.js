@@ -33,6 +33,6 @@ export const CH_EWF_AUTHENTICATED_ENTRY_URL = process.env.CH_EWF_AUTHENTICATED_E
 export const CH_EWF_RECENT_FILINGS_URL = process.env.CH_EWF_RECENT_FILINGS_URL || 'https://ewf-kermit.companieshouse.gov.uk/recent-filings'
 
 export const ANALYTICS_TRACKER_URL = process.env.ANALYTICS_TRACKER_URL || 'matomo.platform.aws.chdev.org'
-export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || '7'
+export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || ''
 
 console.log(`Running as environment: ${ENVIRONMENT}`)

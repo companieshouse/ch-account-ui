@@ -8,7 +8,8 @@ const BrowserTitle = ({ title }) => {
     const currentUrl = window.location.href
     _paq.push(['setCustomUrl', currentUrl])
     _paq.push(['setDocumentTitle', title + suffix])
-    const content = document.getElementById('content')
+    _paq.push(['trackPageView'])
+    const content = document.getElementById('__next')
     _paq.push(['FormAnalytics::scanForForms', content])
     _paq.push(['enableLinkTracking'])
 
