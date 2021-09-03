@@ -54,6 +54,7 @@ yarn-error.log*
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea/**/saveactions_settings.xml
 
 # Gradle
 .idea/**/gradle.xml
