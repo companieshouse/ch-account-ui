@@ -27,6 +27,10 @@
   float: right;
 }
 
+.wordBreakAll {
+  word-break: break-all;
+}
+
 .infoBlock {
   padding: 10px 10px 10px 0;
 
@@ -52,9 +56,9 @@
   padding: 2em;
 }
 
-.account-menu{
+.account-menu {
   //item in menu
-  &-item{
+  &-item {
     list-style-type: none;
     padding: 12px 0;
   }
