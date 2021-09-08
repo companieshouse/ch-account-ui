@@ -1,11 +1,18 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import LinkText from './interaction/LinkText'
 import Link from 'next/link'
 
 const Header = ({ hasLogoutLink, titleLinkHref }) => {
+  const headerRef = useRef()
+
+  useEffect(() => {
+    const Header = window.GOVUKFrontend.Header
+    new Header(headerRef.current).init()
+  }, [])
+
   return (
-    <header className="govuk-header " role="banner" data-module="govuk-header">
+    <header ref={headerRef} className="govuk-header " role="banner" data-module="govuk-header">
       <a href="#content" className="govuk-skip-link">Skip to main content</a>
       <div className="govuk-header__container govuk-width-container">
         <div className="govuk-header__logo">

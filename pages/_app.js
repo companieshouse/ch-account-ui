@@ -10,15 +10,13 @@ function MyApp ({ Component, pageProps }) {
   const BASE_PATH = process.env.BASE_PATH || ''
 
   React.useEffect(() => {
-    import('govuk-frontend').then(({ initAll }) => {
-      document.body.className = document.body.className ? document.body.className.replace('js-disabled', '') : ''
-      document.body.className = document.body.className ? document.body.className + ' js-enabled' : 'js-enabled'
-      initAll()
-    })
-  }, [])
+    document.body.className = document.body.className ? document.body.className.replace('js-disabled', '') : ''
+    document.body.className = document.body.className ? document.body.className + ' js-enabled' : 'js-enabled'
+  })
 
   return (
     <>
+      <Script src={`${BASE_PATH}/js/govuk-3.13.0.min.js`} strategy="beforeInteractive" onLoad={() => { window.GOVUKFrontend.initAll() }} />
       <Script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`} strategy="beforeInteractive" />
       {/* Analytics tracking code initialisation see BrowserTitle.js for SPA tracking implementation */}
       {/* <Script id="analytics-tag"> */}

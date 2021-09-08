@@ -1,13 +1,19 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Details = ({ className = '', children, label = '' }) => {
   const classes = [className]
+  const detailsRef = useRef()
 
   const finalClassName = classes.join(' ').trim()
 
+  useEffect(() => {
+    const Details = window.GOVUKFrontend.Details
+    new Details(detailsRef.current).init()
+  }, [])
+
   return (
-    <details className={`govuk-details ${finalClassName}`} data-module="govuk-details">
+    <details ref={detailsRef} className={`govuk-details ${finalClassName}`} data-module="govuk-details">
       <summary className="govuk-details__summary">
         <span className="govuk-details__summary-text">
           {label}
