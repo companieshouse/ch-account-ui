@@ -16,6 +16,15 @@ import { generateQueryUrl } from './queryString'
 
 export { CallbackType }
 
+/**
+ * Method to extract errors in multiple formats from the FR AM callbacks and normalise to a single error array.
+ * Errors can be returned in the pageProps JSON as an errors array, this may also include failedPolicies data.
+ * There is also a legacy response format with a specific policy callback.
+ * @param step
+ * @param journeyNamespace
+ * @param oneErrorPerField
+ * @returns {*[]}
+ */
 const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
   const errors = []
 
@@ -170,6 +179,19 @@ export const forgerockInit = (journeyName) => {
   }
 }
 
+/**
+ * Initialise the forgerock auth tree and recursively navigate the nodes/stages.
+ * @param onSuccess - Callback on loginSuccess
+ * @param onFailure - Callback in loginFailure
+ * @param onUpdateUi - Callback on handling a returned stage
+ * @param journeyName - FIDC AM Journey name
+ * @param journeyNamespace - UI Namespace for current journey as configured in the page
+ * @param stepOptions - Additional config to be passed to FRAuth.next()
+ * @param lang - Language selection on init
+ * @param getLang - Get the current language selection
+ * @param isAuthOnly - Do not retrieve tokens as per OIDC auth flow
+ * @returns {null}
+ */
 export const forgerockFlow = ({
   onSuccess,
   onFailure,
@@ -341,7 +363,13 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
     return
   }
 
-  const url = generateQueryUrl(FORGEROCK_IDM_COMPANY_ENDPOINT, { currentPage: 1, pageSize: 9999, maxPages: 10, searchTerm: companySearch, status: companyStatus })
+  const url = generateQueryUrl(FORGEROCK_IDM_COMPANY_ENDPOINT, {
+    currentPage: 1,
+    pageSize: 9999,
+    maxPages: 10,
+    searchTerm: companySearch,
+    status: companyStatus
+  })
 
   const res = await fetch(url, {
     headers: {
@@ -365,14 +393,31 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
       companies = companiesData.map((company) => {
         return {
           ...company,
-          authorisePath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name }),
-          filePath: generateQueryUrl(CH_EWF_AUTHENTICATED_ENTRY_URL, { companyNo: company.number, jurisdiction: company.jurisdiction }),
-          acceptPath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'accept' }),
-          declinePath: generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, action: 'decline' }),
+          authorisePath: generateQueryUrl('/account/authorise/_start/', {
+            companyNumber: company.number,
+            companyName: company.name
+          }),
+          filePath: generateQueryUrl(CH_EWF_AUTHENTICATED_ENTRY_URL, {
+            companyNo: company.number,
+            jurisdiction: company.jurisdiction
+          }),
+          acceptPath: generateQueryUrl('/account/authorise/_start/', {
+            companyNumber: company.number,
+            companyName: company.name,
+            action: 'accept'
+          }),
+          declinePath: generateQueryUrl('/account/authorise/_start/', {
+            companyNumber: company.number,
+            companyName: company.name,
+            action: 'decline'
+          }),
           members: company.members?.map((member) => ({
             ...member,
             currentUser: member._id === userId,
-            detailsPath: generateQueryUrl('/account/your-companies/authorised-person', { companyNumber: company.number, userId: member._id })
+            detailsPath: generateQueryUrl('/account/your-companies/authorised-person', {
+              companyNumber: company.number,
+              userId: member._id
+            })
           })
           )
         }

@@ -5,10 +5,13 @@ import { useRouter } from 'next/router'
 import log from '../services/log'
 
 /**
- * React hook to provide authentication parameters for pages outwith the regular FR flow.
- * Also validates an active session and authToken and handles the exceptions with redirect.
- *
- * @returns {{profile: object, accessToken: object}}
+ * React custom hook to provide authentication parameters for pages out with the regular FR flow.
+ * This also validates an active session and authToken and handles the exceptions with redirect.
+ * @param {Object} config - Config options
+ * @param {boolean=} config.fetchCompanyData - Get company data for the current user
+ * @param {string=} config.companySearch - Optional query on company number and name
+ * @param {string=} config.companyStatus - Optional filter on company status
+ * @returns {{profile: object, accessToken: string, companyData: {companies: *[], count: string}, loading: boolean, errors: *[]}}
  */
 const useFRAuth = (config = {}) => {
   const [errors, setErrors] = useState([])

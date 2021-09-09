@@ -5,6 +5,19 @@ import { serializeForm } from './formData'
 import { translateErrors } from './errors'
 import log from '../services/log'
 
+/**
+ * React custom hook which provides an interface with the Forgerock SDK in order to navigate authentication trees
+ * @param {Object} config - Static config used to initialise the flow
+ * @param {String} config.defaultErrorStage - Default stage to render if not specified in the error
+ * @param {String} config.lang - Current language selection
+ * @param {Function} config.handleSuccess - Callback on LoginSuccess response from FIDC
+ * @param {Boolean} config.isAuthOnly - Used in OIDC auth flow where we do not need to retrieve tokens, passed as param from IG
+ * @param {String} config.journeyName - The tree/flow name to initialise as configure in FIDC AM
+ * @param {String} config.journeyNamespace - Name spaces used when retrieving content tokens
+ * @param {Object} config.stepOptions - Optional params to be passed to the FRAuth.next() SDK call, includes query.
+ *
+ * @returns {{flowHandlers: {onSubmit: onSubmit, onSubmitCallbacks: *[], onSecondarySubmit: onSecondarySubmit, onReset: onReset}, uiElements: *[], stepPageProps: {}, uiStage: string, uiFeatures: *[], notificationId: string, loading: boolean}}
+ */
 const useFRFlow = (config) => {
   const [reset, setReset] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -30,7 +43,15 @@ const useFRFlow = (config) => {
   })
 
   useEffect(() => {
-    const { defaultErrorStage, isAuthOnly, journeyName, journeyNamespace, stepOptions, handleSuccess, getLang } = flowConfig.current
+    const {
+      defaultErrorStage,
+      isAuthOnly,
+      journeyName,
+      journeyNamespace,
+      stepOptions,
+      handleSuccess,
+      getLang
+    } = flowConfig.current
     log.debug(`Starting useFRFlow, journey "${journeyName}", stepOptions:`, stepOptions)
     forgerockFlow({
       journeyName,
@@ -120,7 +141,15 @@ const useFRFlow = (config) => {
     setReset(true)
   }
 
-  return { notificationId, uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers: { onSubmit, onSecondarySubmit, onReset, onSubmitCallbacks }, loading }
+  return {
+    notificationId,
+    uiFeatures,
+    uiElements,
+    uiStage,
+    stepPageProps,
+    flowHandlers: { onSubmit, onSecondarySubmit, onReset, onSubmitCallbacks },
+    loading
+  }
 }
 
 export default useFRFlow
