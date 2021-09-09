@@ -17,7 +17,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       type: 'success',
       title: tokens('SHARED.success'),
       testId: 'notification-banner-auth-success',
-      heading: 'Email sent'
+      heading: tokens('HOME_AUTHORISED_PERSON.[2].NotificationBanner.emailSent')
     },
     dynamicProps: {
       notifyId: '${notifyId}'
@@ -26,7 +26,7 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: 'We\'ve sent another email to '
+          children: tokens('HOME_AUTHORISED_PERSON.[2].NotificationBanner.weveSentAnotherEmailTo')
         }
       },
       {

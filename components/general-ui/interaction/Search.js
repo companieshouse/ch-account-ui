@@ -38,7 +38,7 @@ const Search = ({ label, hint, handlers, lang, loading }) => {
               <div className="search__inputs">
                 <ButtonGroup>
                 <Button testId="searchButton" secondary label={translate(lang, 'SEARCH')} className="govuk-!-margin-left-1" loading={loading} />
-                <LinkText testId="" href="" onClick={handleClear}>Clear search</LinkText>
+                <LinkText testId="" href="" onClick={handleClear}>{translate(lang, 'CLEAR_SEARCH')}</LinkText>
               </ButtonGroup>
               </div>
             </InputField>

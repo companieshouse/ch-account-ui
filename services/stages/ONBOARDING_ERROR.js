@@ -13,7 +13,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
       operator: 'in',
-      value: ['ONBOARDING_USER_LOOKUP_ERROR', 'ONBOARDING_ERROR_JWT_TYPE_UNKNOWN', 'ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH', 'ONBOARDING_TOKEN_ISSUED_IN_FUTURE', 'ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE', 'ACTIVE_SESSION_ERROR']
+      value: ['ONBOARDING_USER_LOOKUP_ERROR', 'ONBOARDING_ERROR_JWT_TYPE_UNKNOWN', 'ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH', 'ONBOARDING_TOKEN_ISSUED_IN_FUTURE', 'ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE']
     },
     component: 'Fragment',
     content: genericError(lang, tokens)
@@ -136,6 +136,53 @@ const ONBOARDING_ERROR = (lang, tokens) => [
             }
           }
         ]
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${errors.0.tokenNoNamespace}',
+      operator: 'in',
+      value: ['ACTIVE_SESSION_ERROR']
+    },
+    component: 'Fragment',
+    content: [
+      {
+        component: 'PageHeading',
+        props: {
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.linkRedirectedToWrongPage'),
+          showErrorSummary: false
+        }
+      },
+      {
+        component: 'BodyText',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('ONBOARDING_ERROR.[4].Fragment.toTryAgain')
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              href: '/account/logout/',
+              children: tokens('SHARED.signOut')
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('ONBOARDING_ERROR.[4].Fragment.ofTheService')
+            }
+          }
+        ]
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.thenReturnToTheEmailWeSent')
+        }
       }
     ]
   }
