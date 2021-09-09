@@ -355,7 +355,8 @@ const onBoardingErrors = {
   ONBOARDING_NO_INVITE_FOUND: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_NO_INVITE_FOUND"}]}',
   ONBOARDING_ERROR_JWT_TYPE_UNKNOWN: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_JWT_TYPE_UNKNOWN"}]}',
   ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH"}]}',
-  ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE"}]}'
+  ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE"}]}',
+  ACTIVE_SESSION_ERROR: '{"errors":[{"label":"An error has occurred! Please try again later.","token":"ACTIVE_SESSION_ERROR"}]}'
 }
 
 ONBOARDING_ERROR.argTypes = {
