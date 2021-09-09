@@ -2,9 +2,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const Th = (props) => {
-  const { children, scope = 'col', renderFeatures } = props
+  const { children, className, scope = 'col', renderFeatures } = props
+  const classes = ['govuk-table__header', className]
+  const finalClassName = classes.join(' ').trim()
   return (
-    <th scope={scope} className="govuk-table__header">{children}{renderFeatures(props)}</th>
+    <th scope={scope} className={finalClassName}>{children}{renderFeatures(props)}</th>
   )
 }
 
