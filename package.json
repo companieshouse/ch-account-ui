@@ -35,6 +35,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/eslint-plugin": "^7.14.5",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
@@ -87,6 +89,9 @@
   },
   "resolutions": {
     "trim": "^0.0.3",
-    "tar": "^6.1.11"
+    "tar": "^6.1.11",
+    "glob-parent": "^5.1.2",
+    "immer": "^9.0.6",
+    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz"
   }
 }

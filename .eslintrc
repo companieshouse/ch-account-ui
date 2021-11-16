@@ -1,9 +1,13 @@
 {
+	"plugins": [
+		"@babel"
+	],
 	"extends": [
 		"eslint-config-standard",
 		"eslint-config-next"
 	],
 	"globals": {
 		"fetch": false
-	}
+	},
+	"parser": "@babel/eslint-parser"
 }
