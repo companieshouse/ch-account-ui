@@ -527,6 +527,13 @@
     "en": "Select the verification link in the email.",
     "cy": "Dewiswch y ddolen gwirio yn yr e-bost."
   },
+  "REGISTRATION_RESEND.[0].PageHeading.sendANewEmail":{
+    "en": "Send a new email"
+  },
+  "REGISTRATION_RESEND.[2].BodyText.whichContainsAVerificationLink": {
+    "en": " which contains a verification link.",
+    "cy": " sy'n cynnwys dolen gwirio."
+  },
   "REGISTRATION_4.[0].PageHeading.createAPassword": {
     "en": "Create a password",
     "cy": "Creu cyfrinair"
@@ -678,6 +685,9 @@
   "SHARED.askUsToSendYouAnotherTextMessage": {
     "en": "ask us to send you another text message",
     "cy": "ofyn i ni anfon neges destun arall atoch"
+  },
+  "SHARED.useADifferentEmail": {
+    "en": "Use a different email address"
   },
   "SHARED.authorisationStatus": {
     "en": "Authorisation status",
@@ -1019,6 +1029,9 @@
     "en": "Text message",
     "cy": "Neges destun"
   },
+  "SHARED.sendEmail": {
+    "en": "Send Email"
+  },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House: security code'.",
     "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: cod diogelwch'."
@@ -1090,6 +1103,10 @@
   "SHARED.wellSendALinkToThisEmailAddressToVerifyYou": {
     "en": "We'll send a link to this email address to verify you have access to it.",
     "cy": "Byddwn yn anfon dolen i'r cyfeiriad e-bost hwn i wirio bod gennych fynediad iddo."
+  },
+  "SHARED.wellSendAnotherEmail":{
+    "en": "We'll send another email to ",
+    "cy": ""
   },
   "SHARED.weveSentATextMessageWithASecurityCode": {
     "en": "We've sent a text message with a security code to ",

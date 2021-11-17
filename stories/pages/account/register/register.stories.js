@@ -9,7 +9,7 @@ const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/
 export default {
   title: 'Pages/Account/Register',
   args: {
-    lang: 'cy'
+    lang: 'en'
   }
 }
 
@@ -455,6 +455,94 @@ REGISTRATION_4.args = {
     stage: 'REGISTRATION_4',
     header: 'Enter your password',
     description: 'Please enter your account password'
+  }
+}
+
+export const REGISTRATION_RESEND = Template.bind({})
+REGISTRATION_RESEND.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: 'resend' // this may require the _
+      }
+    }
+  }
+}
+REGISTRATION_RESEND.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: 'Please check your email to complete registration - oliver.evans@example.com'
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'REGISTRATION_RESEND'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{"email":"oliver.evans@example.com"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'pagePropsJSON'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '512f2ebf-c7cd-451e-a0b0-4c908b018782'
+          },
+          {
+            name: 'id',
+            value: 'notificationId'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'notificationId'
+          }
+        ]
+      }
+    ]
   }
 }
 

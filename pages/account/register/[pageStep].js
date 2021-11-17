@@ -14,7 +14,8 @@ export const getStaticPaths = async () => {
     paths: [
       { params: { pageStep: '_start' } },
       { params: { pageStep: '_restart' } },
-      { params: { pageStep: 'verify' } }
+      { params: { pageStep: 'verify' } },
+      { params: { pageStep: 'resend' } }
     ],
     fallback: false
   }
