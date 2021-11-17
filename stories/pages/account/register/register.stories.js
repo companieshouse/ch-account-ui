@@ -474,75 +474,90 @@ REGISTRATION_RESEND.args = {
     callbacks: [
       {
         type: 'TextOutputCallback',
-        output: [
-          {
-            name: 'message',
-            value: 'Please check your email to complete registration - oliver.evans@example.com'
-          },
-          {
-            name: 'messageType',
-            value: '0'
-          }
-        ]
+          output: [
+              {
+                  name: 'message',
+                  value: 'Do you want to resend the email to pspence@companieshouse.gov.uk?'
+              },
+              {
+                  name: 'messageType',
+                  value: '0'
+              }
+          ]
       },
       {
-        type: 'HiddenValueCallback',
-        output: [
-          {
-            name: 'value',
-            value: 'REGISTRATION_RESEND'
-          },
-          {
-            name: 'id',
-            value: 'stage'
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken2',
-            value: 'stage'
-          }
-        ]
+          type: 'ConfirmationCallback',
+          output: [
+              {
+                  name: 'prompt',
+                  value: 'Do you want to resend email or change address?'
+              },
+              {
+                  name: 'messageType',
+                  value: 0
+              },
+              {
+                  name: 'options',
+                  value: [
+                      'RESEND',
+                      'CHANGE_EMAIL'
+                  ]
+              },
+              {
+                  name: 'optionType',
+                  value: -1
+              },
+              {
+                  name: 'defaultOption',
+                  value: 0
+              }
+          ],
+          input: [
+              {
+                  name: 'IDToken2',
+                  value: 0
+              }
+          ]
       },
       {
-        type: 'HiddenValueCallback',
-        output: [
-          {
-            name: 'value',
-            value: '{"email":"oliver.evans@example.com"}'
-          },
-          {
-            name: 'id',
-            value: 'pagePropsJSON'
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken3',
-            value: 'pagePropsJSON'
-          }
-        ]
+          type: 'HiddenValueCallback',
+          output: [
+              {
+                  name: 'value',
+                  value: 'REGISTRATION_RESEND'
+              },
+              {
+                  name: 'id',
+                  value: 'stage'
+              }
+          ],
+          input: [
+              {
+                  name: 'IDToken3',
+                  value: 'stage'
+              }
+          ]
       },
       {
-        type: 'HiddenValueCallback',
-        output: [
-          {
-            name: 'value',
-            value: '512f2ebf-c7cd-451e-a0b0-4c908b018782'
-          },
-          {
-            name: 'id',
-            value: 'notificationId'
-          }
-        ],
-        input: [
-          {
-            name: 'IDToken4',
-            value: 'notificationId'
-          }
-        ]
+          type: 'HiddenValueCallback',
+          output: [
+              {
+                  name: 'value',
+                  value: '{"emailAddress":"pspence@companieshouse.gov.uk"}'
+              },
+              {
+                  name: 'id',
+                  value: 'pagePropsJSON'
+              }
+          ],
+          input: [
+              {
+                  name: 'IDToken4',
+                  value: 'pagePropsJSON'
+              }
+          ]
       }
-    ]
+  ]
   }
 }
 
