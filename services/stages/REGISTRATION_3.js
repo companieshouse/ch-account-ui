@@ -8,9 +8,8 @@ const REGISTRATION_3 = (lang, tokens) => [
   },
   {
     conditional: {
-      prop: '${notifyToken}',
-      operator: 'eeq',
-      value: 'resend'
+      prop: '${resend}',
+      operator: 'is'
     },
     component: 'NotificationBanner',
     props: {
@@ -31,7 +30,7 @@ const REGISTRATION_3 = (lang, tokens) => [
           weight: 'bold'
         },
         dynamicProps: {
-          children: '${email} '
+          children: '${email}'
         }
       },
       {
