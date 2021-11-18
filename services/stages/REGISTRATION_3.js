@@ -122,7 +122,7 @@ const REGISTRATION_3 = (lang, tokens) => [
               handler: {
                 name: 'onSecondarySubmit',
                 params: {
-                  target: 'IDToken2',
+                  target: 'IDToken5',
                   value: 0
                 }
               },
@@ -151,8 +151,15 @@ const REGISTRATION_3 = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.giveUsADifferentEmailAddress'),
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 1
+                }
+              },
+              href: '',
+              testId: 'changeEmail'
             }
           },
           {

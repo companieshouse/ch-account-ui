@@ -57,9 +57,16 @@ const REGISTRATION_RESEND = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens('SHARED.useADifferentEmail'),
-          href: '/password-recovery/_restart/', // this may need to change
-          testId: 'restartPasswordRecoveryLink'
+          children: tokens('SHARED.giveUsADifferentEmailAddress'),
+          handler: {
+            name: 'onSecondarySubmit',
+            params: {
+              target: 'IDToken2',
+              value: 1
+            }
+          },
+          href: '',
+          testId: 'changeEmail'
         }
       }
     ]
