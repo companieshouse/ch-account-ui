@@ -9,7 +9,7 @@ const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/
 export default {
   title: 'Pages/Account/Register',
   args: {
-    lang: 'cy'
+    lang: 'en'
   }
 }
 
@@ -455,6 +455,109 @@ REGISTRATION_4.args = {
     stage: 'REGISTRATION_4',
     header: 'Enter your password',
     description: 'Please enter your account password'
+  }
+}
+
+export const REGISTRATION_RESEND = Template.bind({})
+REGISTRATION_RESEND.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: 'resend' // this may require the _
+      }
+    }
+  }
+}
+REGISTRATION_RESEND.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+          output: [
+              {
+                  name: 'message',
+                  value: 'Do you want to resend the email to pspence@companieshouse.gov.uk?'
+              },
+              {
+                  name: 'messageType',
+                  value: '0'
+              }
+          ]
+      },
+      {
+          type: 'ConfirmationCallback',
+          output: [
+              {
+                  name: 'prompt',
+                  value: 'Do you want to resend email or change address?'
+              },
+              {
+                  name: 'messageType',
+                  value: 0
+              },
+              {
+                  name: 'options',
+                  value: [
+                      'RESEND',
+                      'CHANGE_EMAIL'
+                  ]
+              },
+              {
+                  name: 'optionType',
+                  value: -1
+              },
+              {
+                  name: 'defaultOption',
+                  value: 0
+              }
+          ],
+          input: [
+              {
+                  name: 'IDToken2',
+                  value: 0
+              }
+          ]
+      },
+      {
+          type: 'HiddenValueCallback',
+          output: [
+              {
+                  name: 'value',
+                  value: 'REGISTRATION_RESEND'
+              },
+              {
+                  name: 'id',
+                  value: 'stage'
+              }
+          ],
+          input: [
+              {
+                  name: 'IDToken3',
+                  value: 'stage'
+              }
+          ]
+      },
+      {
+          type: 'HiddenValueCallback',
+          output: [
+              {
+                  name: 'value',
+                  value: '{"emailAddress":"pspence@companieshouse.gov.uk"}'
+              },
+              {
+                  name: 'id',
+                  value: 'pagePropsJSON'
+              }
+          ],
+          input: [
+              {
+                  name: 'IDToken4',
+                  value: 'pagePropsJSON'
+              }
+          ]
+      }
+  ]
   }
 }
 
