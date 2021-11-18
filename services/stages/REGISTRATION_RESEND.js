@@ -7,7 +7,14 @@ const REGISTRATION_RESEND = (lang, tokens) => [
     }
   },
   {
-    component: 'DisplayUiElements'
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken2: {
+          _hidden: true
+        }
+      }
+    }
   },
   {
     component: 'BodyText',
@@ -21,7 +28,7 @@ const REGISTRATION_RESEND = (lang, tokens) => [
       {
         component: 'SpanText',
         dynamicProps: {
-          children: '${email}'
+          children: '${emailAddress}'
         },
         props: {
           weight: 'bold'

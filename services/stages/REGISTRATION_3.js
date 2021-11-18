@@ -7,7 +7,50 @@ const REGISTRATION_3 = (lang, tokens) => [
     }
   },
   {
-    component: 'DisplayUiElements'
+    conditional: {
+      prop: '${notifyToken}',
+      operator: 'eeq',
+      value: 'resend'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.emailSent'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherEmail')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${email} '
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken5: {
+          _hidden: true
+        }
+      }
+    }
   },
   {
     component: 'BodyText',
@@ -77,8 +120,15 @@ const REGISTRATION_3 = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherEmail'),
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken2',
+                  value: 0
+                }
+              },
+              href: '',
+              testId: 'resendEmailLink'
             }
           },
           {

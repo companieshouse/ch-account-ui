@@ -678,6 +678,12 @@
     "en": " and add the company to your account.",
     "cy": " ac ychwanegu'r cwmni at eich cyfrif."
   },
+  "SHARED.emailSent": {
+    "en": "Email sent"
+  },
+  "SHARED.WeveSentAnotherEmail": {
+    "en": "We've sent another email which contains a verification link to "
+  },
   "SHARED.askUsToSendYouAnotherEmail": {
     "en": "ask us to send you another email",
     "cy": "ofyn i ni anfon e-bost arall atoch"
@@ -918,7 +924,7 @@
     "cy": "Mater i chi yw sut y dangosir eich enw. Er enghraifft, 'Jen Smith' neu 'Jennifer Smith'."
   },
   "SHARED.itMayTakeAFewMinutesToArrive": {
-    "en": "It may take a few minutes to arrive.",
+    "en": ". It may take a few minutes to arrive.",
     "cy": "Efallai bydd yn cymryd ychydig funudau i gyrraedd."
   },
   "SHARED.iveForgottenMyPassword": {
