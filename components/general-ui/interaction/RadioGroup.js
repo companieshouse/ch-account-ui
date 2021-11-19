@@ -42,7 +42,7 @@ const RadioGroup = (props) => {
               id={`${id}_${index}`}
               name={id} type="radio"
               value={option.value}
-              defaultChecked={option.checked}
+              // defaultChecked={option.checked}
               aria-describedby={option.hint ? `${id}_${index}-hint` : null}
             />
             <label className="govuk-label govuk-radios__label" htmlFor={`${id}_${index}`}>
