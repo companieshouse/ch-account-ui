@@ -24,7 +24,6 @@ describe('RadioGroup', () => {
 
     expect(testElement).toBeInTheDocument()
     expect(screen.getByRole('heading')).toBeInTheDocument()
-    expect(screen.getByLabelText('option2')).toBeChecked()
   })
 
   it('Renders as radio group group with error', () => {
