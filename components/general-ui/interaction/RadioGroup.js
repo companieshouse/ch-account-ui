@@ -32,7 +32,7 @@ const RadioGroup = (props) => {
           {hint}
         </div>
 
-        {Boolean(error) && <span id={`${id}-error`} className="govuk-error-message">
+        {Boolean(error || groupError) && <span id={`${id}-error`} className="govuk-error-message">
           <span className="govuk-visually-hidden">Error:</span> {error.label}
         </span>}
         <div className="govuk-radios">
@@ -42,7 +42,6 @@ const RadioGroup = (props) => {
               id={`${id}_${index}`}
               name={id} type="radio"
               value={option.value}
-              // defaultChecked={option.checked}
               aria-describedby={option.hint ? `${id}_${index}-hint` : null}
             />
             <label className="govuk-label govuk-radios__label" htmlFor={`${id}_${index}`}>

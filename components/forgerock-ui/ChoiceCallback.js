@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import RadioGroup from '../general-ui/interaction/RadioGroup'
 
-const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefined }) => {
+const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefined, errors = [] }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
   const testId = (element && element.getName && element.getName()) || `${id}_testId`
@@ -30,6 +30,7 @@ const ChoiceCallback = ({ element, customElementProps = {}, groupError = undefin
       options={mergedOptions}
       defaultValue={defaultValue}
       groupError={groupError}
+      errors={errors}
       {...restCustomElementProps}
     />
   )
