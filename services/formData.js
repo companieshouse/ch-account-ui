@@ -28,7 +28,13 @@ const serializeForm = (formEl) => {
       }
       return
     }
-    if (['checkbox', 'radio'].indexOf(field.type) > -1 && !field.checked) return
+    if (['radio'].indexOf(field.type) > -1) {
+      if (!field.checked) {
+        obj[field.name] = ''
+        return
+      }
+    }
+    if (['checkbox'].indexOf(field.type) > -1 && !field.checked) return
     obj[field.name] = convertBool(field.value)
   })
   return obj
@@ -52,7 +58,6 @@ const validateField = (value, field, customValidationRules) => {
 
 const customValidation = (formData, id, validationProps) => {
   const value = formData[id]
-
   // check the field exists in the form data
   if (typeof value !== 'undefined') {
     return validateField(value, id, validationProps)
