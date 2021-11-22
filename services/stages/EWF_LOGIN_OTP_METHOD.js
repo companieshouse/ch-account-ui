@@ -23,7 +23,13 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
         IDToken1: {
           renderLabelAs: 'heading',
           label: tokens('SHARED.howDoYouWantToConfirmItsYou'),
-          hint: tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo')
+          hint: tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo'),
+          customValidation: [
+            {
+              name: 'required',
+              token: 'OTP_CHOICE_EMAIL_TEXT_REQUIRED'
+            }
+          ]
         }
       }
     }
