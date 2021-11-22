@@ -15,6 +15,7 @@ const serializeForm = (formEl) => {
     }
     return value
   }
+  const radioOptions = []
   Array.prototype.slice.call(formEl.elements).forEach(function (field) {
     if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].indexOf(field.type) > -1) return
     if (field.type === 'select-multiple') {
@@ -29,7 +30,9 @@ const serializeForm = (formEl) => {
       return
     }
     if (['radio'].indexOf(field.type) > -1) {
-      if (!field.checked) {
+      radioOptions.push(field.checked)
+      if (radioOptions.length > 1) {
+        if (radioOptions.indexOf(true) > -1) { obj[field.name] = radioOptions.indexOf(true); return }
         obj[field.name] = ''
         return
       }
@@ -37,6 +40,7 @@ const serializeForm = (formEl) => {
     if (['checkbox'].indexOf(field.type) > -1 && !field.checked) return
     obj[field.name] = convertBool(field.value)
   })
+
   return obj
 }
 
