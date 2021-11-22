@@ -319,7 +319,7 @@ REGISTRATION_3.args = {
         output: [
           {
             name: 'value',
-            value: '{"email":"oliver.evans@example.com"}'
+            value: '{"email":"oliver.evans@example.com", "resend":"true"}'
           },
           {
             name: 'id',

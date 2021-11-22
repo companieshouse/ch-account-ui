@@ -36,7 +36,7 @@ const REGISTRATION_3 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
         }
       }
     ]
