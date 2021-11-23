@@ -26,7 +26,7 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
           hint: tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo'),
           customValidation: [
             {
-              name: 'required',
+              name: 'radioRequired',
               token: 'OTP_CHOICE_EMAIL_TEXT_REQUIRED'
             }
           ]

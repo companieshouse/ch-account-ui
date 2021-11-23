@@ -79,6 +79,12 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
               value: 2,
               checked: false
             }
+          ],
+          customValidation: [
+            {
+              name: 'radioRequired',
+              token: 'COMPANY_NOT_FOUND'
+            }
           ]
         }
       }

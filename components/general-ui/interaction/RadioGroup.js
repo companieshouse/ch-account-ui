@@ -32,7 +32,7 @@ const RadioGroup = (props) => {
           {hint}
         </div>
 
-        {Boolean(error || groupError) && <span id={`${id}-error`} className="govuk-error-message">
+        {Boolean(error) && <span id={`${id}-error`} className="govuk-error-message">
           <span className="govuk-visually-hidden">Error:</span> {error.label}
         </span>}
         <div className="govuk-radios">

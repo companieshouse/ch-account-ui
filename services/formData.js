@@ -15,7 +15,6 @@ const serializeForm = (formEl) => {
     }
     return value
   }
-  const radioOptions = []
   Array.prototype.slice.call(formEl.elements).forEach(function (field) {
     if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].indexOf(field.type) > -1) return
     if (field.type === 'select-multiple') {
@@ -29,25 +28,18 @@ const serializeForm = (formEl) => {
       }
       return
     }
-    if (['radio'].indexOf(field.type) > -1) {
-      radioOptions.push(field.checked)
-      if (radioOptions.length > 1) {
-        if (radioOptions.indexOf(true) > -1) { obj[field.name] = radioOptions.indexOf(true); return }
-        obj[field.name] = ''
-        return
-      }
-    }
-    if (['checkbox'].indexOf(field.type) > -1 && !field.checked) return
+    if (['checkbox', 'radio'].indexOf(field.type) > -1 && !field.checked) return
     obj[field.name] = convertBool(field.value)
   })
-
   return obj
 }
 
 const validateField = (value, field, customValidationRules) => {
+  // log.debug("validateField ", value, field, customValidationRules)
   const results = []
   const rules = {
-    required: (value) => { return value !== '' ? '' : 'Enter your details' }
+    required: (value) => { return value !== '' ? '' : 'Enter your details' },
+    radioRequired: (value) => { return value !== undefined ? '' : 'Enter a selection' }
   }
 
   customValidationRules.forEach((rule) => {
@@ -61,11 +53,11 @@ const validateField = (value, field, customValidationRules) => {
 }
 
 const customValidation = (formData, id, validationProps) => {
+  // log.debug('customValidation: ', formData, id, validationProps)
   const value = formData[id]
-  // check the field exists in the form data
-  if (typeof value !== 'undefined') {
-    return validateField(value, id, validationProps)
-  }
+
+  // log.debug("validateField Return", validateField(value, id, validationProps))
+  return validateField(value, id, validationProps)
 }
 
 export { serializeForm, customValidation }
