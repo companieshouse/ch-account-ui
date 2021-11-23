@@ -51,6 +51,9 @@ const HOME_OVERVIEW = (lang, tokens) => [
             content: [
               {
                 component: 'InfoBlocks',
+                props: {
+                  className: 'flex'
+                },
                 content: [
                   {
                     component: 'InfoBlock',
@@ -60,7 +63,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     props: {
                       width: 'one-third',
                       testId: 'webFiling',
-                      header: tokens('HOME_OVERVIEW.[3].Row.webFiling')
+                      header: tokens('HOME_OVERVIEW.[3].Row.webFiling'),
+                      className: 'flex'
                     },
                     content: [
                       {
@@ -90,7 +94,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       width: 'one-third',
                       href: '/account/your-companies',
                       testId: 'yourCompanies',
-                      header: tokens('SHARED.yourCompanies')
+                      header: tokens('SHARED.yourCompanies'),
+                      className: 'flex'
                     },
                     content: [
                       {
@@ -120,7 +125,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       width: 'one-third',
                       href: '/account/notifications/',
                       testId: 'notifications',
-                      header: tokens('SHARED.messages')
+                      header: tokens('SHARED.messages'),
+                      className: 'flex'
                     },
                     content: [
                       {
