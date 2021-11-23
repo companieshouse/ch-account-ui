@@ -258,7 +258,7 @@ PHONE_OTP.args = {
         output: [
           {
             name: 'value',
-            value: '{"phoneNumber":"077777777777"}'
+            value: '{"phoneNumber":"**** **5 685"}'
           },
           {
             name: 'id',

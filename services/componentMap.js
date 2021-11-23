@@ -24,7 +24,7 @@ import Loading from '../components/application-specific/Loading'
 import Main from '../components/general-ui/layout/Main'
 import NlToBr from '../components/general-ui/layout/NlToBr'
 import NotificationBanner from '../components/general-ui/typeography/NotificationBanner'
-import ObfuscatePhoneNumber from '../components/application-specific/ObfuscatePhoneNumber'
+import PadPhoneNumber from '../components/application-specific/PadPhoneNumber'
 import PageHeading from '../components/general-ui/typeography/PageHeading'
 import RadioGroup from '../components/general-ui/interaction/RadioGroup'
 import Redirect from '../components/application-specific/Redirect'
@@ -72,7 +72,7 @@ const componentMap = {
   Main,
   NlToBr,
   NotificationBanner,
-  ObfuscatePhoneNumber,
+  PadPhoneNumber,
   PageHeading,
   RadioGroup,
   Redirect,

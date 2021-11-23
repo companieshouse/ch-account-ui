@@ -30,7 +30,7 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
         },
         content: [
           {
-            component: 'ObfuscatePhoneNumber',
+            component: 'PadPhoneNumber',
             dynamicProps: {
               phoneNumber: '${phoneNumber}'
             }

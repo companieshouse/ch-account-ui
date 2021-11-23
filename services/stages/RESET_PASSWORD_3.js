@@ -28,7 +28,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
         },
         content: [
           {
-            component: 'ObfuscatePhoneNumber',
+            component: 'PadPhoneNumber',
             dynamicProps: {
               phoneNumber: '${phoneNumber}'
             }

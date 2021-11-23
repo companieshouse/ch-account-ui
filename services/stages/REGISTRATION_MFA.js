@@ -28,7 +28,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
         },
         content: [
           {
-            component: 'ObfuscatePhoneNumber',
+            component: 'PadPhoneNumber',
             dynamicProps: {
               phoneNumber: '${phoneNumber}'
             }

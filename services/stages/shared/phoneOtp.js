@@ -22,7 +22,7 @@ const phoneOtp = (lang, tokens) => ([
         },
         content: [
           {
-            component: 'ObfuscatePhoneNumber',
+            component: 'PadPhoneNumber',
             dynamicProps: {
               phoneNumber: '${phoneNumber}'
             }
