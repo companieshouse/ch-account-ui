@@ -79,6 +79,12 @@ const EWF_LOGIN_2 = (lang, tokens) => [
               value: 2,
               checked: false
             }
+          ],
+          customValidation: [
+            {
+              name: 'radioRequired',
+              token: 'COMPANY_NOT_FOUND'
+            }
           ]
         }
       }

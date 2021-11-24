@@ -55,6 +55,12 @@ const EWF_LOGIN_5 = (lang, tokens) => [
             {
               label: tokens('SHARED.no')
             }
+          ],
+          customValidation: [
+            {
+              name: 'radioRequired',
+              token: 'SELECT_YES_NO'
+            }
           ]
         }
       }

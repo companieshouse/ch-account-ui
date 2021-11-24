@@ -25,6 +25,12 @@ const RESET_PASSWORD_2 = (lang, tokens) => [
             {
               label: tokens('SHARED.text')
             }
+          ],
+          customValidation: [
+            {
+              name: 'radioRequired',
+              token: 'SELECT_EMAIL_TEXT'
+            }
           ]
         }
       }

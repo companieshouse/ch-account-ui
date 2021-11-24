@@ -25,6 +25,12 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
             {
               label: tokens('SHARED.no')
             }
+          ],
+          customValidation: [
+            {
+              name: 'radioRequired',
+              token: 'SELECT_YES_NO'
+            }
           ]
         },
         IDToken4: {
