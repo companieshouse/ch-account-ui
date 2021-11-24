@@ -9,7 +9,7 @@ const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/
 export default {
   title: 'Pages/Account/Register',
   args: {
-    lang: 'en'
+    lang: 'cy'
   }
 }
 
