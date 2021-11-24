@@ -105,7 +105,12 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
     dynamicProps: {
       'listItems.0.value': '${profile.given_name}',
       'listItems.1.value': '${profile.email}',
-      'listItems.3.value': '${profile.phone_number}'
+      'listItems.3.value': {
+        component: 'PadPhoneNumber',
+        dynamicProps: {
+          phoneNumber: '${profile.phone_number}'
+        }
+      }
     },
     props: {
       listItems: [
