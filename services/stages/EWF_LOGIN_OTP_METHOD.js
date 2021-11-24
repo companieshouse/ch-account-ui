@@ -11,10 +11,12 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
     dynamicProps: {
       'elementProps.IDToken1.options': [
         {
-          label: tokens('SHARED.email')
+          label: tokens('SHARED.email'),
+          hint: '${emailAddress}'
         },
         {
-          label: tokens('SHARED.text')
+          label: tokens('SHARED.text'),
+          hint: '${phoneNumber}'
         }
       ]
     },
