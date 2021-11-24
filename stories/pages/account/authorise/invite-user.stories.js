@@ -116,3 +116,106 @@ INVITE_USER_ERROR.args = {
     ]
   }
 }
+
+export const INVITE_USER_CONFIRM = Template.bind({})
+INVITE_USER_CONFIRM.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        companyId: '12345678'
+      }
+    }
+  }
+}
+INVITE_USER_CONFIRM.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: 'TextOutputCallback',
+        output: [
+          {
+            name: 'message',
+            value: "Check the authorised person's email address before we send the email to a@b.com"
+          },
+          {
+            name: 'messageType',
+            value: '0'
+          }
+        ]
+      },
+      {
+        type: 'ConfirmationCallback',
+        output: [
+          {
+            name: 'prompt',
+            value: "Check the authorised person's email address before we send the email"
+          },
+          {
+            name: 'messageType',
+            value: 0
+          },
+          {
+            name: 'options',
+            value: [
+              'SEND',
+              'CHANGE_EMAIL'
+            ]
+          },
+          {
+            name: 'optionType',
+            value: -1
+          },
+          {
+            name: 'defaultOption',
+            value: 0
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken2',
+            value: 0
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: 'INVITE_USER_CONFIRM'
+          },
+          {
+            name: 'id',
+            value: 'stage'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken3',
+            value: 'stage'
+          }
+        ]
+      },
+      {
+        type: 'HiddenValueCallback',
+        output: [
+          {
+            name: 'value',
+            value: '{\"emailAddress\":\"a@b.com\"}'
+          },
+          {
+            name: 'id',
+            value: 'pagePropsJSON'
+          }
+        ],
+        input: [
+          {
+            name: 'IDToken4',
+            value: 'pagePropsJSON'
+          }
+        ]
+      }
+    ]
+  }
+}
