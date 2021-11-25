@@ -37,7 +37,13 @@ const RESET_PASSWORD_1 = (lang, tokens) => [
         IDToken1: {
           label: tokens('SHARED.emailAddress'),
           type: 'email',
-          autoComplete: 'email'
+          autoComplete: 'email',
+          customValidation: [
+            {
+              name: 'required',
+              token: 'RESET_PASSWORD_REQUIRED(mail)'
+            }
+          ]
         }
       }
     }
