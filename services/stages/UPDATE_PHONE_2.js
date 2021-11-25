@@ -67,6 +67,9 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
               token: 'OTP_REQUIRED'
             }
           ]
+        },
+        IDToken5: {
+          _hidden: true
         }
       }
     }
