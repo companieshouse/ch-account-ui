@@ -407,6 +407,10 @@
     "en": "Go back to 'Your companies'",
     "cy": "Ewch yn ôl i ‘Eich cwmnïau’"
   },
+  "INVITE_USER_CONFIRM.[0].pageHeading.checkTheAuthorisedPersonsEmail": {
+    "en": "Check the authorised person's email address before we send the email",
+    "cy": ""
+  },
   "LIMIT_EXCEEDED_ERROR.[2].BodyText.youHaveEnteredAnIncorrectCodeTooManyTimesFor": {
     "en": "You have entered an incorrect code too many times. For your security, we've signed you out.",
     "cy": "Rydych wedi rhoi cod anghywir i mewn gormod o weithiau. Er mwyn eich diogelwch, rydym wedi eich arwyddo allan."
@@ -767,6 +771,10 @@
   "SHARED.confirmAndContinue": {
     "en": "Confirm and continue",
     "cy": "Cadarnhau a pharhau"
+  },
+  "SHARED.confirmAndSendEmail": {
+    "en": "Confirm and send email",
+    "cy": "Cadarnhau ac anfon e-bost"
   },
   "SHARED.confirmThisIsTheCorrectCompany": {
     "en": "Confirm this is the correct company",
