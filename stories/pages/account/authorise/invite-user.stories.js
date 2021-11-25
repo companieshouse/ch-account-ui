@@ -51,7 +51,8 @@ INVITE_USER_1.story = {
   parameters: {
     nextRouter: {
       query: {
-        companyId: '12345678'
+        companyId: '12345678',
+        companyName: 'FLOWERS LTD'
       }
     }
   }
