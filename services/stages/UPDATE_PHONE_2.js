@@ -60,13 +60,7 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
           type: 'number',
           autoComplete: 'off',
           suffix: false,
-          fixedWidth: '10',
-          customValidation: [
-            {
-              name: 'required',
-              token: 'OTP_REQUIRED'
-            }
-          ]
+          fixedWidth: '10'
         },
         IDToken5: {
           _hidden: true
@@ -101,7 +95,14 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
-              href: '/account/manage/change-phone-number/_restart'
+              href: '',
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 0
+                }
+              }
             }
           },
           {
