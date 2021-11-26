@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useRef } from 'react'
 import LinkText from './interaction/LinkText'
 import Link from 'next/link'
+import { CH_EWF_IDAM_LOGOUT_URL } from '../../services/environment'
 
 const Header = ({ hasLogoutLink, titleLinkHref }) => {
   const headerRef = useRef()
@@ -47,7 +48,7 @@ const Header = ({ hasLogoutLink, titleLinkHref }) => {
             <nav className="floatRight">
               <ul id="navigation" className="govuk-header__navigation " aria-label="Navigation menu">
                 <li className="govuk-header__navigation-item">
-                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={'/account/logout'}>Sign out</LinkText>
+                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={ CH_EWF_IDAM_LOGOUT_URL }>Sign out</LinkText>
                 </li>
               </ul>
             </nav>
