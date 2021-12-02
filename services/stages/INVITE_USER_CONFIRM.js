@@ -40,7 +40,7 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
           action: {
             label: tokens('SHARED.change'),
             desc: 'email',
-            href: '/account/manage/change-email/_start'
+            href: ''
           }
         }
       ]
