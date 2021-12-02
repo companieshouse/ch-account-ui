@@ -59,11 +59,29 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
     }
   },
   {
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken2: {
+          _hidden: true
+        }
+      }
+    }
+  },
+  {
     component: 'Button',
     props: {
       children: tokens('SHARED.confirmAndSendEmail'),
       type: 'submit',
-      testId: 'submitButton'
+      secondary: false,
+      testId: 'submitButton',
+      handler: {
+        name: 'onSecondarySubmit',
+        params: {
+          target: 'IDToken2',
+          value: 0
+        }
+      }
     }
   }
 ]
