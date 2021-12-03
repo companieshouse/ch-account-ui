@@ -8,6 +8,41 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${resend}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.textSent'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherText')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${phoneNumber}'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourPhone'),
