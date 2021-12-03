@@ -7,6 +7,41 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${invalidPhone}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.error'),
+      heading: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)'),
+      type: 'error'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherEmail')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${email}'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.whatAreYourDetails')
