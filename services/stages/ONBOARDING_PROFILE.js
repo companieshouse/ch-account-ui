@@ -1,4 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
+import { translate } from '../translate'
+
 const ONBOARDING_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -11,32 +13,37 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       prop: '${invalidPhone}',
       operator: 'is'
     },
-    component: 'NotificationBanner',
+    component: 'ErrorSummary',
     props: {
-      title: tokens('SHARED.error'),
-      heading: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)'),
-      type: 'error'
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      type: 'error',
+      errors: ['invalid phone error']
     },
     content: [
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.WeveSentAnotherEmail')
+          children: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)')
         }
-      },
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${smsSendError}',
+      operator: 'is'
+    },
+    component: 'ErrorSummary',
+    props: {
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      type: 'error',
+      errors: ['invalid phone error']
+    },
+    content: [
       {
         component: 'SpanText',
         props: {
-          weight: 'bold'
-        },
-        dynamicProps: {
-          children: '${email}'
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+          children: tokens('REGISTRATION_GENERAL_ERROR')
         }
       }
     ]
