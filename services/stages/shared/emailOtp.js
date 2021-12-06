@@ -1,6 +1,41 @@
 /* eslint-disable no-template-curly-in-string */
 const emailOtp = (lang, tokens) => ([
   {
+    conditional: {
+      prop: '${resend}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.emailSent'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherEmailOTP')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${emailAddress}'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourEmail')
@@ -26,26 +61,17 @@ const emailOtp = (lang, tokens) => ([
           autoComplete: 'off',
           type: 'number',
           suffix: false,
-          fixedWidth: '10',
-          customValidation: [
-            {
-              name: 'required',
-              token: 'OTP_REQUIRED'
-            }
-          ]
+          fixedWidth: '10'
         },
         IDToken4: {
           label: tokens('SHARED.securityCode'),
           autoComplete: 'off',
           type: 'number',
           suffix: false,
-          fixedWidth: '10',
-          customValidation: [
-            {
-              name: 'required',
-              token: 'OTP_REQUIRED'
-            }
-          ]
+          fixedWidth: '10'
+        },
+        IDToken5: {
+          _hidden: true
         }
       }
     }
@@ -87,13 +113,17 @@ const emailOtp = (lang, tokens) => ([
           },
           {
             component: 'LinkText',
-            dynamicProps: {
-              href: '${links.resumePath}'
-            },
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherEmail'),
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 0
+                }
+              },
+              href: '',
+              testId: 'resendEmail'
             }
           },
           {
