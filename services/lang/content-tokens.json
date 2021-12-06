@@ -684,16 +684,24 @@
     "cy": " ac ychwanegu'r cwmni at eich cyfrif."
   },
   "SHARED.emailSent": {
-    "en": "Email sent"
+    "en": "Email sent",
+    "cy": ""
   },
   "SHARED.WeveSentAnotherEmail": {
-    "en": "We've sent another email which contains a verification link to "
+    "en": "We've sent another email which contains a verification link to ",
+    "cy": ""
+  },
+  "SHARED.WeveSentAnotherEmailOTP": {
+    "en": "We've sent another email which contains a security code to ",
+    "cy": ""
   },
   "SHARED.textSent": {
-    "en": "Text message sent"
+    "en": "Text message sent",
+    "cy": ""
   },
   "SHARED.WeveSentAnotherText": {
-    "en": "We've sent another text message which contains a security code to "
+    "en": "We've sent another text message which contains a security code to ",
+    "cy": ""
   },
   "SHARED.askUsToSendYouAnotherEmail": {
     "en": "ask us to send you another email",
