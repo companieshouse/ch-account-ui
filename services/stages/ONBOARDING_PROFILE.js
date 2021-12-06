@@ -1,4 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
+import { translate } from '../translate'
+
 const ONBOARDING_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -11,11 +13,12 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       prop: '${invalidPhone}',
       operator: 'is'
     },
-    component: 'NotificationBanner',
+    component: 'ErrorSummary',
     props: {
-      title: tokens('SHARED.error'),
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
       heading: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)'),
-      type: 'error'
+      type: 'error',
+      errors: ['invalid phone error']
     },
     content: [
       {
