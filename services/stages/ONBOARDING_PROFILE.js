@@ -16,7 +16,6 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
     component: 'ErrorSummary',
     props: {
       title: translate(lang, 'ERROR_SUMMARY_TITLE'),
-      heading: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)'),
       type: 'error',
       errors: ['invalid phone error']
     },
@@ -24,22 +23,27 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.WeveSentAnotherEmail')
+          children: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)')
         }
-      },
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${smsSendError}',
+      operator: 'is'
+    },
+    component: 'ErrorSummary',
+    props: {
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      type: 'error',
+      errors: ['invalid phone error']
+    },
+    content: [
       {
         component: 'SpanText',
         props: {
-          weight: 'bold'
-        },
-        dynamicProps: {
-          children: '${email}'
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+          children: tokens('REGISTRATION_GENERAL_ERROR')
         }
       }
     ]
