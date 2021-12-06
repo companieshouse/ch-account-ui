@@ -689,6 +689,12 @@
   "SHARED.WeveSentAnotherEmail": {
     "en": "We've sent another email which contains a verification link to "
   },
+  "SHARED.textSent": {
+    "en": "Text message sent"
+  },
+  "SHARED.WeveSentAnotherText": {
+    "en": "We've sent another text message which contains a security code to "
+  },
   "SHARED.askUsToSendYouAnotherEmail": {
     "en": "ask us to send you another email",
     "cy": "ofyn i ni anfon e-bost arall atoch"
