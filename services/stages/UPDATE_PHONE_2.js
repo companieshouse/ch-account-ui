@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { translate } from '../translate'
 // TODO: This stage should now be redundant, replaced by PHONE_OTP
 const UPDATE_PHONE_2 = (lang, tokens) => [
   {
@@ -38,6 +39,27 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
         component: 'SpanText',
         props: {
           children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${incorrect}',
+      operator: 'is'
+    },
+    component: 'ErrorSummary',
+    props: {
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      heading: tokens('SHARED.textSent'),
+      type: 'error',
+      errors: ['we have an error']
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: translate(lang, 'OTP_NOT_VALID_SMS')
         }
       }
     ]
