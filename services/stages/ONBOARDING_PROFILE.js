@@ -23,7 +23,7 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens('REGISTRATION_MATCH_REGEXP(telephoneNumber)')
+          children: translate(lang, 'REGISTRATION_MATCH_REGEXP(telephoneNumber)')
         }
       }
     ]
