@@ -1,10 +1,31 @@
 /* eslint-disable no-template-curly-in-string */
+import { translate } from '../translate'
 const EWF_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
       title: tokens('SHARED.updateYourPersonalDetails')
     }
+  },
+  {
+    conditional: {
+      prop: '${invalidPhone}',
+      operator: 'is'
+    },
+    component: 'ErrorSummary',
+    props: {
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      type: 'error',
+      errors: ['invalid phone error']
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: translate(lang, 'REGISTRATION_MATCH_REGEXP(telephoneNumber)')
+        }
+      }
+    ]
   },
   {
     component: 'PageHeading',
