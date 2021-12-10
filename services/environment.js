@@ -25,6 +25,7 @@ export const FORGEROCK_TREE_CHANGE_PASSWORD = process.env.FORGEROCK_TREE_CHANGE_
 export const FORGEROCK_TREE_CHANGE_PHONE_NUMBER = process.env.FORGEROCK_TREE_CHANGE_PHONE_NUMBER || 'CHChangePhoneNumber'
 export const FORGEROCK_TREE_CHANGE_NAME = process.env.FORGEROCK_TREE_CHANGE_NAME || 'CHChangeName'
 export const FORGEROCK_TREE_ONBOARDING = process.env.FORGEROCK_TREE_ONBOARDING || 'CHOnboarding'
+export const FORGEROCK_TREE_SCRS_ACTIVATION = process.env.FORGEROCK_TREE_SCRS_ACTIVATION || 'CHSCRSActivation'
 
 export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_URL || 'https://ewf-kermit.companieshouse.gov.uk/request-auth-code'
 export const CH_EWF_REQUEST_AUTH_CODE_HOME_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_HOME_URL || 'https://find-and-update.company-information.service.gov.uk/auth-code-requests/start'

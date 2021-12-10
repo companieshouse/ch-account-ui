@@ -8,12 +8,14 @@ import { getStageFeatures } from '../../services/translate'
 import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
+import WithQueryParams from '../../components/providers/WithQueryParams'
 import useFRAuth from '../../services/useFRAuth'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 import Loading from '../../components/application-specific/Loading'
 
-const Home = ({ errors, lang }) => {
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
+const Home = ({ errors, lang, queryParams }) => {
+  const { companyNo } = queryParams
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, companySearch: companyNo })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -21,6 +23,8 @@ const Home = ({ errors, lang }) => {
 
   const confirmedCompanies = companyData.companies.filter((company) => company.membershipStatus === 'confirmed')
   const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
+
+  const company = companyData.companies[0]
 
   React.useEffect(() => {
     headingCount.reset()
@@ -48,6 +52,7 @@ const Home = ({ errors, lang }) => {
         uiStage={uiStage}
         profile={profile}
         companyData={{ count: confirmedCompanies.length, pendingCount: pendingCompanies.length }}
+        company={company}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />}
@@ -57,7 +62,7 @@ const Home = ({ errors, lang }) => {
 
 export { Home }
 
-export default WithLang(Home)
+export default WithQueryParams(WithLang(Home))
 
 Home.propTypes = {
   companies: PropTypes.array,

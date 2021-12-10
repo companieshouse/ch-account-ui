@@ -243,6 +243,26 @@
     "en": "Awaiting confirmation",
     "cy": "Yn aros am gadarnhad"
   },
+  "HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded": {
+    "en": "${company.name} has been added to your account",
+    "cy": ""
+  },
+  "HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments": {
+    "en": "You can now file documents online and authorise other people to file online for this company",
+    "cy": ""
+  },
+  "HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink": {
+    "en": "View the company details",
+    "cy": ""
+  },
+  "HOME_OVERVIEW.[1].NotificationBanner.youveSetUpYourAccount": {
+    "en": "You've set up your WebFiling account",
+    "cy": ""
+  },
+  "HOME_OVERVIEW.[1].NotificationBanner.yoCanNowFileDocumentsCompany": {
+    "en": "You can now file documents online and authorise other people to file online for ${company.name}.",
+    "cy": ""
+  },
   "HOME_OVERVIEW.[1].Row.home": {
     "en": "Home",
     "cy": "Hafan"
@@ -1045,6 +1065,10 @@
   "SHARED.startAgainToRegisterANewAccount": {
     "en": "start again to register a new account",
     "cy": "ddechrau eto i gofrestru cyfrif newydd"
+  },
+  "SHARED.scrsThereIsAProblemWithEmailLink": {
+    "en": "There seems to be an issue with your email link, please try again",
+    "cy": ""
   },
   "SHARED.status": {
     "en": "Status",

@@ -7,6 +7,66 @@ const HOME_OVERVIEW = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${companyNo}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments')
+        }
+      },
+      {
+        component: 'LinkText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
+          href: ''
+        }
+      }
+    ]
+  },
+  {
+    conditional: {
+      prop: '${newAccount}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments')
+        }
+      },
+      {
+        component: 'LinkText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
+          href: ''
+        }
+      }
+    ]
+  },
+  {
     component: 'Row',
     content: [
       {
