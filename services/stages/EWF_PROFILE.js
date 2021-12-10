@@ -28,6 +28,26 @@ const EWF_PROFILE = (lang, tokens) => [
     ]
   },
   {
+    conditional: {
+      prop: '${smsSendError}',
+      operator: 'is'
+    },
+    component: 'ErrorSummary',
+    props: {
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      type: 'error',
+      errors: ['invalid phone error']
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('REGISTRATION_GENERAL_ERROR')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.updateYourPersonalDetails')
