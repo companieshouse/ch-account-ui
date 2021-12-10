@@ -59,11 +59,17 @@ const REGISTRATION_1 = (lang, tokens) => [
           label: tokens('SHARED.emailAddress'),
           type: 'email',
           autoComplete: 'email',
-          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou')
+          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou'),
+          customValidation: [
+            {
+              name: 'required',
+              token: 'RESET_PASSWORD_REQUIRED(mail)'
+            }
+          ]
         },
         IDToken3: {
           label: tokens('SHARED.mobileNumberOptional'),
-          type: 'text',
+          type: 'number',
           autoComplete: 'tel',
           hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore')
         }
