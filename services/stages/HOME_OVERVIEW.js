@@ -8,8 +8,9 @@ const HOME_OVERVIEW = (lang, tokens) => [
   },
   {
     conditional: {
-      prop: '${companyNo}',
-      operator: 'is'
+      prop: '${scrsUserType}',
+      operator: 'eq',
+      value: 'existing'
     },
     component: 'NotificationBanner',
     dynamicProps: {
@@ -30,9 +31,9 @@ const HOME_OVERVIEW = (lang, tokens) => [
   },
   {
     conditional: {
-      prop: '${type}',
+      prop: '${scrsUserType}',
       operator: 'eq',
-      value: 'news'
+      value: 'new'
     },
     component: 'NotificationBanner',
     dynamicProps: {
