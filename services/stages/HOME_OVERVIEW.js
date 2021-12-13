@@ -12,9 +12,11 @@ const HOME_OVERVIEW = (lang, tokens) => [
       operator: 'is'
     },
     component: 'NotificationBanner',
+    dynamicProps: {
+      heading: tokens('HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded')
+    },
     props: {
       title: tokens('SHARED.success'),
-      heading: tokens('HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded'),
       type: 'success'
     },
     content: [
@@ -22,47 +24,28 @@ const HOME_OVERVIEW = (lang, tokens) => [
         component: 'SpanText',
         props: {
           children: tokens('HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments')
-        }
-      },
-      {
-        component: 'LinkText',
-        props: {
-          weight: 'bold'
-        },
-        dynamicProps: {
-          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
-          href: ''
         }
       }
     ]
   },
   {
     conditional: {
-      prop: '${newAccount}',
-      operator: 'is'
+      prop: '${type}',
+      operator: 'eq',
+      value: 'news'
     },
     component: 'NotificationBanner',
+    dynamicProps: {
+      children: tokens('HOME_OVERVIEW.[1].NotificationBanner.youCanNowFileDocumentsCompany')
+    },
     props: {
       title: tokens('SHARED.success'),
-      heading: tokens('HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded'),
+      heading: tokens('HOME_OVERVIEW.[1].NotificationBanner.youveSetUpYourAccount'),
       type: 'success'
     },
     content: [
       {
-        component: 'SpanText',
-        props: {
-          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments')
-        }
-      },
-      {
-        component: 'LinkText',
-        props: {
-          weight: 'bold'
-        },
-        dynamicProps: {
-          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
-          href: ''
-        }
+        component: 'SpanText'
       }
     ]
   },
