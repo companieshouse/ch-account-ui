@@ -63,7 +63,7 @@ const REGISTRATION_1 = (lang, tokens) => [
           customValidation: [
             {
               name: 'required',
-              token: 'RESET_PASSWORD_REQUIRED(mail)'
+              token: 'REGISTRATION_REQUIRED(mail)'
             }
           ]
         },
