@@ -1086,6 +1086,10 @@
     "en": "Send Email",
     "cy": "Anfon e-bost"
   },
+  "SHARED.enterAnEmail": {
+    "en": "Enter an email address",
+    "cy": ""
+  },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House: security code'.",
     "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: cod diogelwch'."
