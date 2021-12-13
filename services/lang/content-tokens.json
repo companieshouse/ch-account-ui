@@ -244,7 +244,7 @@
     "cy": "Yn aros am gadarnhad"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded": {
-    "en": "${company.name} has been added to your account",
+    "en": " ${company.name} has been added to your account",
     "cy": ""
   },
   "HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments": {
@@ -259,7 +259,7 @@
     "en": "You've set up your WebFiling account",
     "cy": ""
   },
-  "HOME_OVERVIEW.[1].NotificationBanner.yoCanNowFileDocumentsCompany": {
+  "HOME_OVERVIEW.[1].NotificationBanner.youCanNowFileDocumentsCompany": {
     "en": "You can now file documents online and authorise other people to file online for ${company.name}.",
     "cy": ""
   },
