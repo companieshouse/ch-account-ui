@@ -15,7 +15,7 @@ import Loading from '../../components/application-specific/Loading'
 
 const Home = ({ errors, lang, queryParams }) => {
   const { companyNo } = queryParams
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, companySearch: companyNo })
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed' })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -24,7 +24,8 @@ const Home = ({ errors, lang, queryParams }) => {
   const confirmedCompanies = companyData.companies.filter((company) => company.membershipStatus === 'confirmed')
   const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
 
-  const company = companyData.companies[0]
+  const companyMatch = companyData.companies.filter((company) => company.number === companyNo ? company : false)
+  const company = companyMatch[0]
 
   React.useEffect(() => {
     headingCount.reset()
