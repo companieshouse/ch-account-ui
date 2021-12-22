@@ -7,6 +7,41 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${resend}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.textSent'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherText')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${phoneNumber}'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourPhone')
@@ -65,6 +100,9 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
               token: 'OTP_REQUIRED'
             }
           ]
+        },
+        IDToken5: {
+          _hidden: true
         }
       }
     }
@@ -96,8 +134,14 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
+              href: '',
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 0
+                }
+              }
             }
           },
           {
