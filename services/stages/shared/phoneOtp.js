@@ -134,7 +134,8 @@ const phoneOtp = (lang, tokens) => ([
                 name: 'onSecondarySubmit',
                 params: {
                   target: 'IDToken5',
-                  value: 0
+                  value: 0,
+                  noValidate: true
                 }
               }
             }

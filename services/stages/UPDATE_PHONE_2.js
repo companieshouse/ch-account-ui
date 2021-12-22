@@ -157,7 +157,8 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
                 name: 'onSecondarySubmit',
                 params: {
                   target: 'IDToken5',
-                  value: 0
+                  value: 0,
+                  noValidate: true
                 }
               }
             }

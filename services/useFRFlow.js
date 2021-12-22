@@ -104,7 +104,7 @@ const useFRFlow = (config) => {
     }
   }, [lang, uiStage])
 
-  const onSubmit = (evt, flag = false) => {
+  const onSubmit = (evt, noValidate = false) => {
     evt?.preventDefault()
     setLoading(true)
 
@@ -112,7 +112,7 @@ const useFRFlow = (config) => {
     const formData = serializeForm(formRef.current)
 
     // Execute any submit callbacks defined in the child components and apply returned errors
-    if (!flag) {
+    if (!noValidate) {
       for (const callback of onSubmitCallbacks) {
         const errors = callback(formData)
         console.log(errors)
@@ -133,10 +133,10 @@ const useFRFlow = (config) => {
 
   // Update callback values before submission
   const onSecondarySubmit = (evt, params) => {
-    params.flag = params.flag !== undefined ? params.flag : false
+    params.noValidate = params.noValidate !== undefined ? params.noValidate : false
     evt.preventDefault()
     document.getElementsByName(params.target)[0].value = params.value
-    onSubmit(null, params.flag)
+    onSubmit(null, params.noValidate)
   }
 
   // Restart the flow
