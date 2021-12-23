@@ -26,6 +26,22 @@ const HOME_OVERVIEW = (lang, tokens) => [
         props: {
           children: tokens('HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments')
         }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.') + ' '
+        }
+      },
+      {
+        component: 'LinkText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
+          href: '/account/your-companies/'
+        }
       }
     ]
   },
@@ -47,6 +63,22 @@ const HOME_OVERVIEW = (lang, tokens) => [
     content: [
       {
         component: 'SpanText'
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: ' '
+        }
+      },
+      {
+        component: 'LinkText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
+          href: '/account/your-companies/'
+        }
       }
     ]
   },
