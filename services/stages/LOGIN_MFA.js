@@ -51,6 +51,9 @@ const LOGIN_MFA = (lang, tokens) => [
           label: tokens('SHARED.securityCode'),
           type: 'number',
           autoComplete: 'off'
+        },
+        IDToken5: {
+          _hidden: true
         }
       }
     }
@@ -88,7 +91,15 @@ const LOGIN_MFA = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
-              href: '/account/login/'
+              href: '',
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 0,
+                  noValidate: true
+                }
+              }
             }
           },
           {

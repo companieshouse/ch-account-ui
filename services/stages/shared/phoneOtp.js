@@ -1,6 +1,41 @@
 /* eslint-disable no-template-curly-in-string */
 const phoneOtp = (lang, tokens) => ([
   {
+    conditional: {
+      prop: '${resend}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.textSent'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherText')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${phoneNumber}'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourPhone')
@@ -53,12 +88,16 @@ const phoneOtp = (lang, tokens) => ([
           autoComplete: 'off',
           suffix: false,
           fixedWidth: '10',
+          default: 0,
           customValidation: [
             {
               name: 'required',
               token: 'OTP_REQUIRED'
             }
           ]
+        },
+        IDToken5: {
+          _hidden: true
         }
       }
     }
@@ -90,7 +129,15 @@ const phoneOtp = (lang, tokens) => ([
             component: 'LinkText',
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherTextMessage'),
-              href: '/account/manage/change-phone-number/_restart'
+              href: '',
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 0,
+                  noValidate: true
+                }
+              }
             }
           },
           {
