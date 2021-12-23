@@ -115,7 +115,6 @@ const useFRFlow = (config) => {
     if (!noValidate) {
       for (const callback of onSubmitCallbacks) {
         const errors = callback(formData)
-        console.log(errors)
         if (errors?.length) {
           setStepPageProps((currentProps) => ({ ...currentProps, errors: translateErrors(errors, lang) }))
           setLoading(false)
