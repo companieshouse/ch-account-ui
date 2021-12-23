@@ -7,6 +7,41 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${resend}',
+      operator: 'is'
+    },
+    component: 'NotificationBanner',
+    props: {
+      title: tokens('SHARED.success'),
+      heading: tokens('SHARED.emailSent'),
+      type: 'success'
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.WeveSentAnotherEmailOTP')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          weight: 'bold'
+        },
+        dynamicProps: {
+          children: '${email}'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourEmail')
@@ -74,14 +109,16 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.askUsToSendYouAnotherEmail'),
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('SHARED.')
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 0,
+                  noValidate: true
+                }
+              },
+              href: '',
+              testId: 'resendEmailLink'
             }
           }
         ]
