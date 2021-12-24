@@ -36,9 +36,10 @@ export const getFieldError = (errors, fieldId) => {
  * @param {String} lang The language to use when replacing token with text.
  * @returns {Array} The processed errors array.
  */
-export const translateErrors = (errors, lang) => {
+export const translateErrors = (errors, lang, langSwitched = false) => {
   // Resolve errors with tokens to labels
   errors.forEach((error) => {
+    if (langSwitched) error.processed = false
     // Check if the error has already been processed / translated
     if (error.processed) return
 
