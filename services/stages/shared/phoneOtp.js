@@ -1,3 +1,5 @@
+import { translate } from '../../translate'
+
 /* eslint-disable no-template-curly-in-string */
 const phoneOtp = (lang, tokens) => ([
   {
@@ -92,7 +94,7 @@ const phoneOtp = (lang, tokens) => ([
           customValidation: [
             {
               name: 'required',
-              token: 'OTP_REQUIRED'
+              token: translate(lang, 'OTP_REQUIRED')
             }
           ]
         },

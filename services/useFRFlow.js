@@ -105,7 +105,7 @@ const useFRFlow = (config) => {
       setUiFeatures(getStageFeatures(lang, uiStage))
       translateErrors(errors, lang, true)
     }
-  }, [lang, uiStage])
+  }, [lang, uiStage, errors])
 
   const onSubmit = (evt, noValidate = false) => {
     evt?.preventDefault()

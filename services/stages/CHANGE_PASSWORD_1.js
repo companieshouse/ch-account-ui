@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { translate } from '../translate'
 const CHANGE_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -22,7 +23,7 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
           customValidation: [
             {
               name: 'required',
-              token: 'PASSWORD_REQUIRED'
+              token: translate(lang, 'PASSWORD_REQUIRED')
             }
           ]
         },

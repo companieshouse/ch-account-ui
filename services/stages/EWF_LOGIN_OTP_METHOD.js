@@ -1,3 +1,5 @@
+import { translate } from '../translate'
+
 /* eslint-disable no-template-curly-in-string */
 const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
   {
@@ -29,7 +31,7 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'OTP_CHOICE_EMAIL_TEXT_REQUIRED'
+              token: translate(lang, 'OTP_CHOICE_EMAIL_TEXT_REQUIRED')
             }
           ]
         }

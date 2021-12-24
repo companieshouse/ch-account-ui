@@ -1,3 +1,5 @@
+import { translate } from '../translate'
+
 /* eslint-disable no-template-curly-in-string */
 const REGISTRATION_MFA = (lang, tokens) => [
   {
@@ -91,7 +93,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
           customValidation: [
             {
               name: 'required',
-              token: 'OTP_REQUIRED'
+              token: translate(lang, 'OTP_REQUIRED')
             }
           ]
         },
