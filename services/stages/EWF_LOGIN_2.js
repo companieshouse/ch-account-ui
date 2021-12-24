@@ -1,3 +1,5 @@
+import { translate } from '../translate'
+
 /* eslint-disable no-template-curly-in-string */
 const EWF_LOGIN_2 = (lang, tokens) => [
   {
@@ -83,7 +85,7 @@ const EWF_LOGIN_2 = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'COMPANY_NOT_FOUND'
+              token: translate(lang, 'COMPANY_NOT_FOUND')
             }
           ]
         }

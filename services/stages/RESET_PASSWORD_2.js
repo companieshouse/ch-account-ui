@@ -1,3 +1,5 @@
+import { translate } from '../translate'
+
 /* eslint-disable no-template-curly-in-string */
 const RESET_PASSWORD_2 = (lang, tokens) => [
   {
@@ -29,7 +31,7 @@ const RESET_PASSWORD_2 = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'SELECT_EMAIL_TEXT'
+              token: translate(lang, 'SELECT_EMAIL_TEXT')
             }
           ]
         }

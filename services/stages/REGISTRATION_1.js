@@ -1,3 +1,5 @@
+import { translate } from '../translate'
+
 /* eslint-disable no-template-curly-in-string */
 const REGISTRATION_1 = (lang, tokens) => [
   {
@@ -63,7 +65,7 @@ const REGISTRATION_1 = (lang, tokens) => [
           customValidation: [
             {
               name: 'required',
-              token: 'REGISTRATION_REQUIRED(mail)'
+              token: translate(lang, 'REGISTRATION_REQUIRED(mail)')
             }
           ]
         },

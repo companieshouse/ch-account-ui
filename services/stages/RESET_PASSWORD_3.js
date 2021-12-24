@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { translate } from '../translate'
 const RESET_PASSWORD_3 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -97,7 +98,7 @@ const RESET_PASSWORD_3 = (lang, tokens) => [
           customValidation: [
             {
               name: 'required',
-              token: 'OTP_REQUIRED'
+              token: translate(lang, 'OTP_REQUIRED')
             }
           ]
         },
