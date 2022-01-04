@@ -70,6 +70,7 @@ import UPDATE_EMAIL_UPDATES_CONSENT_CONFIRMATION from './UPDATE_EMAIL_UPDATES_CO
 import UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION from './UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION.js'
 import SCRS_EXISTING_USER from './SCRS_EXISTING_USER.js'
 import SCRS_ERROR from './SCRS_ERROR.js'
+import OTP_RESEND from './OTP_RESEND.js'
 
 import contentTokens from '../lang/content-tokens.json'
 import log from '../log'
@@ -147,7 +148,8 @@ const getStage = (stage, lang) => {
     UPDATE_EMAIL_UPDATES_CONSENT_CONFIRMATION,
     UPDATE_EMAIL_MARKETING_CONSENT_CONFIRMATION,
     SCRS_EXISTING_USER,
-    SCRS_ERROR
+    SCRS_ERROR,
+    OTP_RESEND
   }
 
   const tokens = (key) => {
