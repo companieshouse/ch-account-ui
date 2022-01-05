@@ -1,34 +1,47 @@
 /* eslint-disable no-template-curly-in-string */
-const otpResend = (lang, tokens) => ([
+import otpResendEmail from './otpResendEmail.js'
+import otpResendPhone from './otpResendPhone.js'
+
+const otpResend = (lang, tokens) => [
   {
-    component: 'PageHeading',
-    children: 'GENERIC RESEND'
+    conditional: {
+      prop: '${type}',
+      operator: 'eeq',
+      value: 'sms'
+    },
+    component: 'BrowserTitle',
+    props: {
+      title: tokens('SHARED.checkYourPhone')
+    }
   },
   {
-    component: 'BodyText',
-    content: [
-      {
-        component: 'SpanText',
-        props: {
-          children: tokens('SHARED.wellSendAnotherEmail')
-        }
-      },
-      {
-        component: 'SpanText',
-        dynamicProps: {
-          children: '${emailAddress}'
-        },
-        props: {
-          weight: 'bold'
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          children: tokens('REGISTRATION_RESEND.[2].BodyText.whichContainsAVerificationLink')
-        }
-      }
-    ]
+    conditional: {
+      prop: '${type}',
+      operator: 'nee',
+      value: 'sms'
+    },
+    component: 'BrowserTitle',
+    props: {
+      title: tokens('SHARED.checkYourEmail')
+    }
+  },
+  {
+    conditional: {
+      prop: '${type}',
+      operator: 'eeq',
+      value: 'sms'
+    },
+    component: 'Fragment',
+    content: otpResendPhone(lang, tokens)
+  },
+  {
+    conditional: {
+      prop: '${type}',
+      operator: 'nee',
+      value: 'sms'
+    },
+    component: 'Fragment',
+    content: otpResendEmail(lang, tokens)
   }
-])
+]
 export default otpResend
