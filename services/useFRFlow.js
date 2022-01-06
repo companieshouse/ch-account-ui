@@ -4,7 +4,6 @@ import { getStageFeatures } from './translate'
 import { serializeForm } from './formData'
 import { translateErrors } from './errors'
 import log from '../services/log'
-import { useCookies } from 'react-cookie'
 
 /**
  * React custom hook which provides an interface with the Forgerock SDK in order to navigate authentication trees
@@ -29,7 +28,6 @@ const useFRFlow = (config) => {
   const [uiElements, setUiElements] = useState([])
   const [submitData, setSubmitData] = useState(() => {})
   const [errors, setErrors] = useState([])
-  const [cookies] = useCookies(['lang'])
   const onSubmitCallbacks = []
 
   const { formRef, lang, pageStep } = config
@@ -37,8 +35,7 @@ const useFRFlow = (config) => {
   // Initial config
   const flowConfig = useRef({
     defaultErrorStage: config.defaultErrorStage,
-    getLang: () => cookies || config.lang,
-    lang: config.lang !== undefined ? config.lang : cookies,
+    getLang: () => config.lang,
     handleSuccess: config.handleSuccess,
     isAuthOnly: config.isAuthOnly,
     journeyName: config.journeyName,
@@ -61,7 +58,6 @@ const useFRFlow = (config) => {
       journeyName,
       journeyNamespace,
       isAuthOnly,
-      lang,
       getLang,
       stepOptions,
       onSuccess: () => {
