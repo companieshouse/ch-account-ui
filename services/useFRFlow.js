@@ -128,7 +128,6 @@ const useFRFlow = (config) => {
 
     // Clear existing errors
     setStepPageProps((currentProps) => ({ ...currentProps, errors: [] }))
-
     // Submit FR stage
     submitData(formData)
   }

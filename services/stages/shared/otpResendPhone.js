@@ -7,6 +7,16 @@ const otpResendPhone = (lang, tokens) => ([
     }
   },
   {
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken2: {
+          _hidden: true
+        }
+      }
+    }
+  },
+  {
     component: 'BodyText',
     content: [
       {
@@ -48,29 +58,15 @@ const otpResendPhone = (lang, tokens) => ([
     props: {
       children: tokens('SHARED.sendText'),
       type: 'submit',
-      testId: 'submitButton'
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {},
-    content: [
-      {
-        component: 'LinkText',
-        props: {
-          children: tokens('SHARED.giveUsADifferentTextAddress'),
-          handler: {
-            name: 'onSecondarySubmit',
-            params: {
-              target: 'IDToken2',
-              value: 0
-            }
-          },
-          href: '',
-          testId: 'otpResendSMS'
+      handler: {
+        name: 'onSecondarySubmit',
+        params: {
+          target: 'IDToken2',
+          value: 0
         }
-      }
-    ]
+      },
+      testId: 'otpResendSMS'
+    }
   }
 ])
 
