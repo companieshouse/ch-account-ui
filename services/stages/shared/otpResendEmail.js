@@ -7,6 +7,16 @@ const otpResendEmail = (lang, tokens) => ([
     }
   },
   {
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken2: {
+          _hidden: true
+        }
+      }
+    }
+  },
+  {
     component: 'BodyText',
     content: [
       {
@@ -37,29 +47,15 @@ const otpResendEmail = (lang, tokens) => ([
     props: {
       children: tokens('SHARED.sendEmail'),
       type: 'submit',
-      testId: 'submitButton'
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {},
-    content: [
-      {
-        component: 'LinkText',
-        props: {
-          children: tokens('SHARED.giveUsADifferentEmailAddress'),
-          handler: {
-            name: 'onSecondarySubmit',
-            params: {
-              target: 'IDToken2',
-              value: 1
-            }
-          },
-          href: '',
-          testId: 'otpResendEmail'
+      handler: {
+        name: 'onSecondarySubmit',
+        params: {
+          target: 'IDToken2',
+          value: 0
         }
-      }
-    ]
+      },
+      testId: 'otpResendEmail'
+    }
   }
 ])
 

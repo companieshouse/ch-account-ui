@@ -1086,6 +1086,10 @@
     "en": "Send Email",
     "cy": "Anfon e-bost"
   },
+  "SHARED.sendText": {
+    "en": "Send Text",
+    "cy": ""
+  },
   "SHARED.enterAnEmail": {
     "en": "Enter an email address",
     "cy": ""
@@ -1168,6 +1172,10 @@
   },
   "SHARED.weveSentATextMessageWithASecurityCode": {
     "en": "We've sent a text message with a security code to ",
+    "cy": "Rydym wedi anfon neges destun gyda chod diogelwch i "
+  },
+  "SHARED.wellSendAnotherTextMessageWithASecurityCode": {
+    "en": "We'll send another text message with a security code to ",
     "cy": "Rydym wedi anfon neges destun gyda chod diogelwch i "
   },
   "SHARED.weveSentAnEmailTo": {
