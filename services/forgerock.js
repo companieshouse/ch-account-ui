@@ -161,6 +161,17 @@ export const findCustomPageProps = (step) => {
   }
 }
 
+export const readCookie = (name) => {
+  const nameEQ = name + '='
+  const ca = document.cookie.split(';')
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i]
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length)
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
+  }
+  return null
+}
+
 export const forgerockInit = (journeyName) => {
   try {
     Config.get()
@@ -217,7 +228,7 @@ export const forgerockFlow = ({
 
   const langMiddleware = (req, action, next) => {
     if (req.init.headers) {
-      req.init.headers['Chosen-Language'] = getLang() === 'cy' ? 'CY' : 'EN'
+      req.init.headers['Chosen-Language'] = readCookie('lang') === 'cy' ? 'CY' : 'EN'
     }
     next()
   }
