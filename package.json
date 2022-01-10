@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently -n next,storybook \"next dev -p 3000\"  \"npm:storybook\"",
     "next": "next dev -p 3000",
-    "build": "next build && next export && node update-static-asset-urls.js",
+    "build": "node -v && next build && next export && node update-static-asset-urls.js",
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",
     "test": "jest --coverage",
