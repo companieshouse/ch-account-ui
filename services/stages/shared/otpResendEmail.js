@@ -52,7 +52,7 @@ const otpResendEmail = (lang, tokens) => ([
             name: 'onSecondarySubmit',
             params: {
               target: 'IDToken2',
-              value: 1
+              value: 0
             }
           },
           href: '',
