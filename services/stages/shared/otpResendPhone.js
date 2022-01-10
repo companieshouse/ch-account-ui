@@ -12,7 +12,7 @@ const otpResendPhone = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.weveSentATextMessageWithASecurityCode')
+          children: tokens('SHARED.wellSendAnotherTextMessageWithASecurityCode')
         }
       },
       {
