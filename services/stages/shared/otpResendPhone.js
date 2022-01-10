@@ -12,25 +12,36 @@ const otpResendPhone = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.wellSendAnotherText')
+          children: tokens('SHARED.weveSentATextMessageWithASecurityCode')
         }
       },
       {
         component: 'SpanText',
-        dynamicProps: {
-          children: '${emailAddress}'
-        },
         props: {
           weight: 'bold'
-        }
+        },
+        content: [
+          {
+            component: 'PadPhoneNumber',
+            dynamicProps: {
+              phoneNumber: '${phoneNumber}'
+            }
+          }
+        ]
       },
       {
         component: 'SpanText',
         props: {
-          children: tokens('REGISTRATION_RESEND.[2].BodyText.whichContainsAVerificationLink')
+          children: tokens('SHARED.')
         }
       }
     ]
+  },
+  {
+    component: 'BodyText',
+    props: {
+      children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
+    }
   },
   {
     component: 'Button',
