@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types'
 import React, { useEffect, useMemo, useRef } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
-import { FORGEROCK_TREE_REGISTER } from '../../../services/environment'
+import { FORGEROCK_TREE_REGISTER, FORGEROCK_TREE_REGISTER_VERIFY } from '../../../services/environment'
 import { useRouter } from 'next/router'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
 import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import useFRFlow from '../../../services/useFRFlow'
+import withQueryParams from '../../../components/providers/WithQueryParams'
 
 export const getStaticPaths = async () => {
   return {
@@ -25,12 +26,13 @@ export const getStaticProps = async () => {
   return { props: {} }
 }
 
-const Register = ({ lang }) => {
+const Register = ({ lang, queryParams }) => {
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
   const { push, replace, query } = router
-  const { pageStep = '', service = '', token, goto } = query
+  const { pageStep = '', goto } = query
+  const { token } = queryParams
 
   useEffect(() => {
     headingCount.reset()
@@ -43,7 +45,7 @@ const Register = ({ lang }) => {
   }, [pageStep, replace])
 
   const FRFlowConfig = {
-    journeyName: pageStep === 'verify' && service && token ? service : FORGEROCK_TREE_REGISTER,
+    journeyName: pageStep === 'verify' && token ? FORGEROCK_TREE_REGISTER_VERIFY : FORGEROCK_TREE_REGISTER,
     journeyNamespace: 'REGISTRATION',
     defaultErrorStage: 'GENERIC_ERROR',
     lang,
@@ -90,7 +92,7 @@ const Register = ({ lang }) => {
 
 export { Register }
 
-export default WithLang(Register)
+export default withQueryParams(WithLang(Register))
 
 Register.propTypes = {
   lang: PropTypes.string
