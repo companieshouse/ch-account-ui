@@ -124,3 +124,4 @@ resource "aws_cloudfront_distribution" "website" {
 
   tags = local.common_tags
 }
+
