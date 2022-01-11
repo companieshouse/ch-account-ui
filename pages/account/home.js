@@ -15,7 +15,7 @@ import Loading from '../../components/application-specific/Loading'
 
 const Home = ({ errors, lang, queryParams }) => {
   const { companyNo } = queryParams
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed' })
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
