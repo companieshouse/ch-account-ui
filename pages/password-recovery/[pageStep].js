@@ -35,7 +35,6 @@ const ResetPassword = ({ lang, queryParams }) => {
 
   const {
     goto,
-    service = '',
     token
   } = queryParams
 
@@ -54,7 +53,7 @@ const ResetPassword = ({ lang, queryParams }) => {
   }, [pageStep, replace])
 
   const FRFlowConfig = {
-    journeyName: pageStep === 'verify' ? service : FORGEROCK_TREE_FMP,
+    journeyName: FORGEROCK_TREE_FMP,
     journeyNamespace: 'RESET_PASSWORD',
     defaultErrorStage: 'GENERIC_ERROR',
     lang,
