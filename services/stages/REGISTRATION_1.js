@@ -9,6 +9,26 @@ const REGISTRATION_1 = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${invalidPhone}',
+      operator: 'is'
+    },
+    component: 'ErrorSummary',
+    props: {
+      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      type: 'error',
+      errors: ['invalid phone error']
+    },
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: translate(lang, 'REGISTRATION_MATCH_REGEXP(telephoneNumber)')
+        }
+      }
+    ]
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.whatAreYourDetails')
@@ -61,13 +81,7 @@ const REGISTRATION_1 = (lang, tokens) => [
           label: tokens('SHARED.emailAddress'),
           type: 'email',
           autoComplete: 'email',
-          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou'),
-          customValidation: [
-            {
-              name: 'required',
-              token: translate(lang, 'REGISTRATION_REQUIRED(mail)')
-            }
-          ]
+          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou')
         },
         IDToken3: {
           label: tokens('SHARED.mobileNumberOptional'),
