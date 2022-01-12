@@ -4,9 +4,14 @@ import pageNotFoundError from './shared/pageNotFoundError.js'
 
 const REGISTRATION_ERROR = (lang, tokens) => [
   {
+    conditional: {
+      prop: '${errors.0.tokenNoNamespace}',
+      operator: 'eeq',
+      value: 'REGISTRATION_ERROR_USER_ALREADY_EXIST'
+    },
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
+      title: tokens('REGISTRATION_ERROR.[4].Fragment.userAlreadyExists')
     }
   },
   {
