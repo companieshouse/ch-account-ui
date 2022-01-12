@@ -68,7 +68,13 @@ const emailOtp = (lang, tokens) => ([
           autoComplete: 'off',
           type: 'number',
           suffix: false,
-          fixedWidth: '10'
+          fixedWidth: '10',
+          customValidation: [
+            {
+              name: 'required',
+              token: 'OTP_REQUIRED'
+            }
+          ]
         },
         IDToken5: {
           _hidden: true
