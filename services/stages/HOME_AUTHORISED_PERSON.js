@@ -169,15 +169,20 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       operator: 'eeq',
       value: 'confirmed'
     },
-    component: 'LinkText',
-    props: {
-      children: tokens('HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'),
-      href: '',
-      testId: 'removeAuthorisedUserRequestLink'
-    },
-    dynamicProps: {
-      href: '${company.removeAuthorisedPath}'
-    }
+    component: 'BodyText',
+    content: [
+      {
+        component: 'LinkText',
+        props: {
+          children: tokens('HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'),
+          href: '',
+          testId: 'removeAuthorisedUserRequestLink'
+        },
+        dynamicProps: {
+          href: '${company.removeAuthorisedPath}'
+        }
+      }
+    ]
   }
 ]
 export default HOME_AUTHORISED_PERSON
