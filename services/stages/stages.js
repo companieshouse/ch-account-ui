@@ -53,8 +53,6 @@ import LOGIN from './LOGIN.js'
 import LOGOUT_ERROR from './LOGOUT_ERROR.js'
 import GENERIC_ERROR from './GENERIC_ERROR.js'
 import GENERIC_404 from './GENERIC_404.js'
-import SEND_MFA_SMS_ERROR from './SEND_MFA_SMS_ERROR.js'
-import SEND_MFA_EMAIL_ERROR from './SEND_MFA_EMAIL_ERROR.js'
 import INVITE_USER_1 from './INVITE_USER_1.js'
 import INVITE_USER_2 from './INVITE_USER_2.js'
 import INVITE_USER_3 from './INVITE_USER_3.js'
@@ -136,8 +134,6 @@ const getStage = (stage, lang) => {
     ONBOARDING_PROFILE,
     GENERIC_ERROR,
     GENERIC_404,
-    SEND_MFA_SMS_ERROR,
-    SEND_MFA_EMAIL_ERROR,
     INVITE_USER_1,
     INVITE_USER_2,
     INVITE_USER_3,
