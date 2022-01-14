@@ -27,7 +27,7 @@ const useFRFlow = (config) => {
   const [uiFeatures, setUiFeatures] = useState([])
   const [uiElements, setUiElements] = useState([])
   const [submitData, setSubmitData] = useState(() => {})
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState(stepPageProps.errors)
   const onSubmitCallbacks = []
 
   const { formRef, lang, pageStep } = config
@@ -120,6 +120,7 @@ const useFRFlow = (config) => {
         const errors = callback(formData)
         if (errors?.length) {
           setStepPageProps((currentProps) => ({ ...currentProps, errors: translateErrors(errors, lang) }))
+          setErrors(errors)
           setLoading(false)
           return
         }
