@@ -38,7 +38,7 @@ const REGISTRATION_1 = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken1: {
+        IDToken2: {
           label: tokens('SHARED.fullNameOptional'),
           type: 'text',
           autoComplete: 'name',
@@ -77,13 +77,13 @@ const REGISTRATION_1 = (lang, tokens) => [
             }
           ]
         },
-        IDToken2: {
+        IDToken3: {
           label: tokens('SHARED.emailAddress'),
           type: 'email',
           autoComplete: 'email',
           hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou')
         },
-        IDToken3: {
+        IDToken4: {
           label: tokens('SHARED.mobileNumberOptional'),
           type: 'number',
           autoComplete: 'tel',
