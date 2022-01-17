@@ -74,6 +74,7 @@ const ChangeEmail = ({ lang }) => {
       titleLinkHref="/account/home"
       hasAccountLinks
       accountLinksItem={6}
+      hasLogoutLink={true}
       onSubmit={onSubmit}
     >
       {uiStage

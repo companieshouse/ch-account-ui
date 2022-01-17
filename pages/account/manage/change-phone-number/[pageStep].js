@@ -67,6 +67,7 @@ const ChangeNumber = ({ lang }) => {
       accountLinksItem={6}
       formRef={formRef}
       hasAccountLinks
+      hasLogoutLink={true}
       onSubmit={onSubmit}
       titleLinkHref="/account/home"
       width='two-thirds'

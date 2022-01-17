@@ -65,6 +65,7 @@ const ChangeName = ({ lang }) => {
       formRef={formRef}
       onSubmit={onSubmit}
       onBack={() => { push('/account/manage/') }}
+      hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={6}
     >
