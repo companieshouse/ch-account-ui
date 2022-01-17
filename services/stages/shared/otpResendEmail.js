@@ -22,7 +22,7 @@ const otpResendEmail = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.BodyText.weveSentYouAnEmailToWhichContainsASecurityCode')
+          children: tokens('SHARED.BodyText.wellSendYouAnotherEmailTo')
         }
       },
       {
@@ -37,7 +37,7 @@ const otpResendEmail = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('REGISTRATION_RESEND.[2].BodyText.whichContainsAVerificationLink')
+          children: tokens('SHARED.whichContainsASecurityCode')
         }
       }
     ]
