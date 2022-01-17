@@ -3,7 +3,7 @@ const otpResendEmail = (lang, tokens) => ([
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.checkYourEmail')
+      children: tokens('REGISTRATION_RESEND.[0].PageHeading.sendANewEmail')
     }
   },
   {
@@ -22,7 +22,7 @@ const otpResendEmail = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.wellSendAnotherEmail')
+          children: tokens('SHARED.BodyText.wellSendYouAnotherEmailTo')
         }
       },
       {
@@ -37,7 +37,7 @@ const otpResendEmail = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('REGISTRATION_RESEND.[2].BodyText.whichContainsAVerificationLink')
+          children: tokens('SHARED.whichContainsASecurityCode')
         }
       }
     ]

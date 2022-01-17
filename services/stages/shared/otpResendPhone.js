@@ -3,7 +3,7 @@ const otpResendPhone = (lang, tokens) => ([
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.checkYourPhone')
+      children: tokens('SHARED.sendANewTextMessage')
     }
   },
   {
@@ -22,7 +22,7 @@ const otpResendPhone = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.wellSendAnotherTextMessageWithASecurityCode')
+          children: tokens('SHARED.WellSendAnotherTextMessageTo')
         }
       },
       {
@@ -42,16 +42,10 @@ const otpResendPhone = (lang, tokens) => ([
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.')
+          children: tokens('SHARED.whichContainsASecurityCode')
         }
       }
     ]
-  },
-  {
-    component: 'BodyText',
-    props: {
-      children: tokens('SHARED.itMayTakeAFewMinutesToArrive')
-    }
   },
   {
     component: 'Button',

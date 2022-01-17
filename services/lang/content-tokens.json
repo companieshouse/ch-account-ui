@@ -723,6 +723,18 @@
     "en": "We've sent another text message which contains a security code to ",
     "cy": ""
   },
+  "SHARED.WellSendAnotherTextMessageTo": {
+    "en": "We'll send another text message to ",
+    "cy": ""
+  },
+  "SHARED.BodyText.wellSendYouAnotherEmailTo": {
+    "en": "We'll send another email to ",
+    "cy": "Byddwn yn anfon e-bost arall at"
+  },
+  "SHARED.whichContainsASecurityCode": {
+    "en": " which contains a security code.",
+    "cy": "sy'n cynnwys cod diogelwch."
+  },
   "SHARED.askUsToSendYouAnotherEmail": {
     "en": "ask us to send you another email",
     "cy": "ofyn i ni anfon e-bost arall atoch"
@@ -1083,11 +1095,19 @@
     "cy": "Neges destun"
   },
   "SHARED.sendEmail": {
-    "en": "Send Email",
+    "en": "Send email",
     "cy": "Anfon e-bost"
   },
   "SHARED.sendText": {
-    "en": "Send Text",
+    "en": "Send text message",
+    "cy": ""
+  },
+  "SHARED.sendANewTextMessage": {
+    "en": "Send a new text message",
+    "cy": ""
+  },
+  "SHARED.sendANewSecurityCode": {
+    "en": "Send a new security code",
     "cy": ""
   },
   "SHARED.enterAnEmail": {
