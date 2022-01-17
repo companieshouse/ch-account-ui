@@ -723,6 +723,11 @@
     "en": "We've sent another text message which contains a security code to ",
     "cy": ""
   },
+
+  "SHARED.BodyText.weveSentYouAnEmailToWhichContainsASecurityCode": {
+    "en": "We'll send another email to ${emailAddress} which contains a security code.",
+    "cy": "Byddwn yn anfon e-bost arall at ${emailAddress} sy'n cynnwys cod diogelwch."
+  },
   "SHARED.askUsToSendYouAnotherEmail": {
     "en": "ask us to send you another email",
     "cy": "ofyn i ni anfon e-bost arall atoch"
