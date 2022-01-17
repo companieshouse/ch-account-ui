@@ -12,6 +12,7 @@ import WithQueryParams from '../../components/providers/WithQueryParams'
 import useFRAuth from '../../services/useFRAuth'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 import Loading from '../../components/application-specific/Loading'
+import { mapCompanyData } from '../../services/mappings'
 
 const Home = ({ errors, lang, queryParams }) => {
   const { companyNo } = queryParams
@@ -53,7 +54,7 @@ const Home = ({ errors, lang, queryParams }) => {
         uiStage={uiStage}
         profile={profile}
         companyData={{ count: confirmedCompanies.length, pendingCount: pendingCompanies.length }}
-        company={company}
+        company={company ? mapCompanyData(company) : null}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />}
