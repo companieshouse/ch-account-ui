@@ -72,6 +72,7 @@ const ChangePreferences = ({ lang, queryParams }) => {
       titleLinkHref="/account/home"
       onSubmit={onSubmit}
       hasAccountLinks
+      hasLogoutLink={true}
       formRef={formRef}
       accountLinksItem={6}
     >

@@ -61,6 +61,7 @@ const ChangePassword = ({ lang }) => {
       onSubmit={onSubmit}
       onBack={() => { push('/account/manage') }}
       headingCount={headingCount}
+      hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={6}
     >
