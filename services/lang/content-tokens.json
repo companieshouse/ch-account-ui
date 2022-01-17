@@ -723,6 +723,10 @@
     "en": "We've sent another text message which contains a security code to ",
     "cy": ""
   },
+  "SHARED.WellSendAnotherTextMessageTo": {
+    "en": "We'll send another text message to ",
+    "cy": ""
+  },
   "SHARED.BodyText.wellSendYouAnotherEmailTo": {
     "en": "We'll send another email to ",
     "cy": "Byddwn yn anfon e-bost arall at"
@@ -1095,7 +1099,15 @@
     "cy": "Anfon e-bost"
   },
   "SHARED.sendText": {
-    "en": "Send Text",
+    "en": "Send text message",
+    "cy": ""
+  },
+  "SHARED.sendANewTextMessage": {
+    "en": "Send a new text message",
+    "cy": ""
+  },
+  "SHARED.sendANewSecurityCode": {
+    "en": "Send a new security code",
     "cy": ""
   },
   "SHARED.enterAnEmail": {
