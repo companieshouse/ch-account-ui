@@ -13,6 +13,7 @@ import Dynamic from '../../components/Dynamic'
 import withQueryParams from '../../components/providers/WithQueryParams'
 import useFRFlow from '../../services/useFRFlow'
 import { generateQueryUrl } from '../../services/queryString'
+import { mapCompanyData } from '../../services/mappings'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
@@ -72,7 +73,7 @@ const Login = ({ lang, queryParams }) => {
     resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
   }
 
-  const { errors = [], ...restPageProps } = stepPageProps
+  const { errors = [], company, ...restPageProps } = stepPageProps
 
   return (
     <FeatureDynamicView
@@ -89,6 +90,7 @@ const Login = ({ lang, queryParams }) => {
         {...queryParams}
         componentMap={componentMap}
         content={uiFeatures}
+        company={company ? mapCompanyData(company) : null}
         errors={errors}
         handlers={restHandlers}
         headingCount={headingCount}
