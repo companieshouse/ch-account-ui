@@ -72,6 +72,7 @@ const Register = ({ lang, queryParams }) => {
       formRef={formRef}
       headingCount={headingCount}
       onSubmit={onSubmit}
+      hasLogoutLink={uiStage === 'EMAIL_CONSENT'}
     >
       <Dynamic
         {...query}
