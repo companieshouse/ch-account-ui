@@ -81,7 +81,7 @@ const Login = ({ lang, queryParams }) => {
       formRef={formRef}
       onBack={onBack}
       hasBackLink={uiStage !== 'CH_LOGIN_1' && uiStage !== 'EWF_LOGIN_1'}
-      hasLogoutLink={isCompanySelection}
+      hasLogoutLink={isCompanySelection || uiStage === 'EWF_PROFILE'}
       hasAccountLinks={isCompanySelection}
     >
       {uiStage
