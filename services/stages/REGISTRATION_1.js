@@ -75,19 +75,22 @@ const REGISTRATION_1 = (lang, tokens) => [
                 }
               ]
             }
-          ]
+          ],
+          testId: 'userNameInputField'
         },
         IDToken3: {
           label: tokens('SHARED.emailAddress'),
           type: 'email',
           autoComplete: 'email',
-          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou')
+          hint: tokens('SHARED.wellSendALinkToThisEmailAddressToVerifyYou'),
+          testId: 'emailInputField'
         },
         IDToken4: {
           label: tokens('SHARED.mobileNumberOptional'),
           type: 'number',
           autoComplete: 'tel',
-          hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore')
+          hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore'),
+          testId: 'mobilePhoneInputField'
         }
       }
     }

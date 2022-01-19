@@ -44,11 +44,13 @@ const REGISTRATION_4 = (lang, tokens) => [
         IDToken2: {
           label: tokens('SHARED.enterPassword'),
           hint: tokens('SHARED.thisMustBeAtLeast8CharactersLongAndHardTo'),
-          formGroup: 'newPassword'
+          formGroup: 'newPassword',
+          testId: 'passwordInputField'
         },
         IDToken3: {
           label: tokens('SHARED.reEnterPassword'),
-          formGroup: 'newPassword'
+          formGroup: 'newPassword',
+          testId: 'reenterPasswordInputField'
         }
       }
     }
