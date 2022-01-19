@@ -38,7 +38,7 @@ const Scrs = ({ lang, queryParams }) => {
       if (goto) {
         return push(goto)
       }
-      push('/account/home')
+      push('/account/notifications')
     }
   }
 
