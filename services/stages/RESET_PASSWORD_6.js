@@ -48,7 +48,14 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
     }
   },
   {
-    component: 'DisplayUiElements'
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken2: {
+          _hidden: true
+        }
+      }
+    }
   },
   {
     component: 'BodyText',
@@ -112,7 +119,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
               handler: {
                 name: 'onSecondarySubmit',
                 params: {
-                  target: 'IDToken5',
+                  target: 'IDToken2',
                   value: 0,
                   noValidate: true
                 }
