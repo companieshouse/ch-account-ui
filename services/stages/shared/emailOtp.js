@@ -61,7 +61,8 @@ const emailOtp = (lang, tokens) => ([
           autoComplete: 'off',
           type: 'number',
           suffix: false,
-          fixedWidth: '10'
+          fixedWidth: '10',
+          testId: 'otpInputField'
         },
         IDToken4: {
           label: tokens('SHARED.securityCode'),
@@ -69,6 +70,7 @@ const emailOtp = (lang, tokens) => ([
           type: 'number',
           suffix: false,
           fixedWidth: '10',
+          testId: 'otpInputField',
           customValidation: [
             {
               name: 'required',
