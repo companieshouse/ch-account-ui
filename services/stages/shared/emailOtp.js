@@ -46,8 +46,23 @@ const emailOtp = (lang, tokens) => ([
     content: [
       {
         component: 'SpanText',
+        props: {
+          children: tokens('SHARED.weveSentAnEmailTo')
+        }
+      },
+      {
+        component: 'SpanText',
         dynamicProps: {
-          children: tokens('EWF_LOGIN_OTP.[3].BodyText.weveSentYouAnEmailWithASecurityCodeToEmail')
+          children: '${emailAddress}'
+        },
+        props: {
+          weight: 'bold'
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.whichContainsASecurityCode')
         }
       }
     ]
