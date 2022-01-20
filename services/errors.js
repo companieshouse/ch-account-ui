@@ -37,6 +37,7 @@ export const getFieldError = (errors, fieldId) => {
  * @returns {Array} The processed errors array.
  */
 export const translateErrors = (errors, lang, langSwitched = false) => {
+  if (!errors) return
   // Resolve errors with tokens to labels
   errors.forEach((error) => {
     if (langSwitched) error.processed = false
