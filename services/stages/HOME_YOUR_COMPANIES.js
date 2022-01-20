@@ -135,11 +135,16 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.yourCompanies'),
+      children: tokens('SHARED.yourCompanies') + '${noCompanies}',
       size: 'l'
     }
   },
   {
+    conditional: {
+      prop: '${noCompanies}',
+      operator: 'nee',
+      value: true
+    },
     component: 'Button',
     props: {
       renderAs: 'link',
@@ -152,6 +157,11 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'SectionBreak'
   },
   {
+    conditional: {
+      prop: '${noCompanies}',
+      operator: 'nee',
+      value: true
+    },
     component: 'Search',
     label: tokens('HOME_YOUR_COMPANIES.[3].Search.searchForACompany'),
     hint: tokens('HOME_YOUR_COMPANIES.[3].Search.enterNameOrCompanyNumber')
@@ -190,6 +200,11 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     ]
   },
   {
+    conditional: {
+      prop: '${noCompanies}',
+      operator: 'nee',
+      value: true
+    },
     component: 'SectionBreak'
   },
   {
