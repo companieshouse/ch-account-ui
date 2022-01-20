@@ -437,7 +437,7 @@
   },
   "LOGIN.[3].BodyText.inWebFilingYouCan": {
     "en": "In WebFiling, you can:",
-    "cy": "Yn Webfiling, gallwch:"
+    "cy": "Yn WebFiling, gallwch:"
   },
   "LOGIN.[4].List.inWebFilingYouCanFive": {
     "en": "authorise people to file documents for your company online",
@@ -473,7 +473,7 @@
   },
   "LOGIN.[7].BodyText.whoCanUseWebFiling": {
     "en": "Who can use WebFiling",
-    "cy": "Pwy sy'n gallu defnyddio Webfiling?"
+    "cy": "Pwy sy'n gallu defnyddio WebFiling?"
   },
   "NO_SESSION_ERROR.[2].BodyText.forYourSecurityWeveSignedYouOut": {
     "en": "For your security, we've signed you out.",
@@ -525,7 +525,7 @@
   },
   "ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling": {
     "en": "Guidance about online filing using WebFiling (opens in new tab)",
-    "cy": "Cyfarwyddyd ar ffeilio ar-lein gan ddefnyddio Webfiling (yn agor mewn tab newydd)"
+    "cy": "Cyfarwyddyd ar ffeilio ar-lein gan ddefnyddio WebFiling (yn agor mewn tab newydd)"
   },
   "REGISTRATION_2.[0].PageHeading.enterYourDetails": {
     "en": "Enter your details",
