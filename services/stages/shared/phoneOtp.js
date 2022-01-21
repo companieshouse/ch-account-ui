@@ -94,7 +94,8 @@ const phoneOtp = (lang, tokens) => ([
               name: 'required',
               token: 'OTP_REQUIRED'
             }
-          ]
+          ],
+          testId: 'otpInputField'
         },
         IDToken5: {
           _hidden: true
