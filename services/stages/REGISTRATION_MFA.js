@@ -90,6 +90,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
           autoComplete: 'off',
           suffix: false,
           fixedWidth: '10',
+          testId: 'otpInputField',
           customValidation: [
             {
               name: 'required',

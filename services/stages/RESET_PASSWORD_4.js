@@ -23,7 +23,8 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
         },
         IDToken3: {
           label: tokens('SHARED.reEnterTheNewPassword'),
-          formGroup: 'newPassword'
+          formGroup: 'newPassword',
+          testId: 'reenterPasswordInputField'
         }
       }
     }
