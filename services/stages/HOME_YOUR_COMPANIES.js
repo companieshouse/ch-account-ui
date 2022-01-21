@@ -135,7 +135,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.yourCompanies') + '${noCompanies}',
+      children: tokens('SHARED.yourCompanies'),
       size: 'l'
     }
   },
