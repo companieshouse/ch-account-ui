@@ -1,5 +1,4 @@
 /* eslint-disable no-template-curly-in-string */
-import { translate } from '../translate'
 const CHANGE_EMAIL_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -23,7 +22,7 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
           customValidation: [
             {
               name: 'required',
-              token: translate(lang, 'PASSWORD_REQUIRED')
+              token: 'PASSWORD_REQUIRED'
             }
           ]
         },
