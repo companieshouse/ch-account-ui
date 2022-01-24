@@ -1,5 +1,4 @@
 /* eslint-disable no-template-curly-in-string */
-import { translate } from '../translate'
 const EWF_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -14,7 +13,7 @@ const EWF_PROFILE = (lang, tokens) => [
     },
     component: 'ErrorSummary',
     props: {
-      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      title: 'ERROR_SUMMARY_TITLE',
       type: 'error',
       errors: ['invalid phone error']
     },
@@ -22,7 +21,7 @@ const EWF_PROFILE = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: translate(lang, 'REGISTRATION_MATCH_REGEXP(telephoneNumber)')
+          children: 'REGISTRATION_MATCH_REGEXP(telephoneNumber)'
         }
       }
     ]
@@ -34,7 +33,7 @@ const EWF_PROFILE = (lang, tokens) => [
     },
     component: 'ErrorSummary',
     props: {
-      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      title: 'ERROR_SUMMARY_TITLE',
       type: 'error',
       errors: ['invalid phone error']
     },

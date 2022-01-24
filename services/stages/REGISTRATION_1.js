@@ -1,5 +1,3 @@
-import { translate } from '../translate'
-
 /* eslint-disable no-template-curly-in-string */
 const REGISTRATION_1 = (lang, tokens) => [
   {
@@ -15,7 +13,7 @@ const REGISTRATION_1 = (lang, tokens) => [
     },
     component: 'ErrorSummary',
     props: {
-      title: translate(lang, 'ERROR_SUMMARY_TITLE'),
+      title: 'ERROR_SUMMARY_TITLE',
       type: 'error',
       errors: ['invalid phone error']
     },
@@ -23,7 +21,7 @@ const REGISTRATION_1 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: translate(lang, 'REGISTRATION_MATCH_REGEXP(telephoneNumber)')
+          children: 'REGISTRATION_MATCH_REGEXP(telephoneNumber)'
         }
       }
     ]

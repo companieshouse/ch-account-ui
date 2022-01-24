@@ -1,5 +1,4 @@
 /* eslint-disable no-template-curly-in-string */
-import { translate } from '../translate'
 const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -84,7 +83,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: translate(lang, 'COMPANY_NOT_FOUND')
+              token: 'COMPANY_NOT_FOUND'
             }
           ]
         }

@@ -1,5 +1,4 @@
 /* eslint-disable no-template-curly-in-string */
-import { translate } from '../translate'
 const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -30,7 +29,7 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: translate(lang, 'SELECT_YES_NO')
+              token: 'SELECT_YES_NO'
             }
           ]
         },
