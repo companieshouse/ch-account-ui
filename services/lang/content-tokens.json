@@ -1038,6 +1038,10 @@
     "en": "Reset password",
     "cy": "Diweddaru eich cyfrinair"
   },
+  "SHARED.updatePassword": {
+    "en": "Update password",
+    "cy": "Diweddaru eich cyfrinair"
+  },
   "SHARED.save": {
     "en": "Save",
     "cy": "Cadw"
