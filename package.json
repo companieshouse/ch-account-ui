@@ -92,6 +92,7 @@
     "tar": "^6.1.11",
     "glob-parent": "^5.1.2",
     "immer": "^9.0.6",
-    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz"
+    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz",
+    "node-fetch": "^2.6.7"
   }
 }
