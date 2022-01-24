@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { logoutFlow } from '../forgerock'
 const NO_SESSION_ERROR = (lang, tokens) => [
   {
     component: 'BrowserTitle',
@@ -55,6 +56,10 @@ const NO_SESSION_ERROR = (lang, tokens) => [
         }
       }
     ]
+  },
+  {
+    component: 'Fragment',
+    content: logoutFlow({})
   }
 ]
 export default NO_SESSION_ERROR
