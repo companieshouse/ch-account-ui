@@ -68,7 +68,7 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: tokens('SHARED.resetPassword'),
+          children: tokens('SHARED.updatePassword'),
           type: 'submit',
           testId: 'submitButton'
         }

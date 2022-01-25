@@ -82,7 +82,7 @@ const REGISTRATION_MFA = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken3: {
+        IDToken4: {
           label: tokens('SHARED.securityCode'),
           type: 'number',
           autoComplete: 'off',
