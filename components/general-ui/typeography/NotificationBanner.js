@@ -13,7 +13,7 @@ const NotificationBanner = (props) => {
   return (
     <div className={`govuk-notification-banner ${finalClassName}`} role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" data-testid={testId} data-notificationid={notifyId}>
       <div className="govuk-notification-banner__header">
-        <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__title">
+        <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__title" id="govuk-notification-banner-title">
           {title}
         </HeadingText>
       </div>

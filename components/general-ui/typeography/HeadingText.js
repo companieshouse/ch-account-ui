@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 
 const HeadingText = (props) => {
-  const { type, label, size, caption, children, className, headingCount, weight, renderFeatures, anchor } = props
+  const { type, label, size, caption, children, className, headingCount, weight, renderFeatures, anchor, id } = props
   const headingEl = useRef(null)
 
   const [tag, setTag] = React.useState(type)
@@ -41,7 +41,7 @@ const HeadingText = (props) => {
   return (
     <>
       {Boolean(caption) === true && <span className="govuk-caption-xl">{caption}</span>}
-      <HeadingTag ref={headingEl} className={`govuk-heading-${size} ${finalClassName}`}>{label}{children}{renderFeatures(props)}</HeadingTag>
+      <HeadingTag ref={headingEl} className={`govuk-heading-${size} ${finalClassName}`} id={id}>{label}{children}{renderFeatures(props)}</HeadingTag>
     </>
   )
 }
