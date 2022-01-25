@@ -164,7 +164,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     },
     component: 'Search',
     label: tokens('HOME_YOUR_COMPANIES.[3].Search.searchForACompany'),
-    hint: tokens('HOME_YOUR_COMPANIES.[3].Search.enterNameOrCompanyNumber')
+    hint: tokens('HOME_YOUR_COMPANIES.[3].Search.enterNameOrCompanyNumber'),
+    id: 'search'
   },
   {
     conditional: {
