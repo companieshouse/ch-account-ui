@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useRef } from 'react'
 import LinkText from './interaction/LinkText'
 import Link from 'next/link'
-import { CH_EWF_IDAM_LOGOUT_URL } from '../../services/environment'
+import { CH_EWF_IDAM_LOGOUT_URL, CH_GOVUK_LINK } from '../../services/environment'
 
-const Header = ({ hasLogoutLink, titleLinkHref }) => {
+const Header = ({ hasLogoutLink, titleLinkHref = CH_GOVUK_LINK }) => {
   const headerRef = useRef()
 
   useEffect(() => {
