@@ -90,7 +90,6 @@ const ResetPassword = ({ lang, queryParams }) => {
       hasAccountLinks={false}
       hasLogoutLink={false}
       hasBackLink={false}
-      titleLinkHref="/"
     >
       {uiStage
         ? <Dynamic
