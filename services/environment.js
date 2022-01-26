@@ -27,9 +27,11 @@ export const FORGEROCK_TREE_CHANGE_NAME = process.env.FORGEROCK_TREE_CHANGE_NAME
 export const FORGEROCK_TREE_ONBOARDING = process.env.FORGEROCK_TREE_ONBOARDING || 'CHOnboarding'
 export const FORGEROCK_TREE_SCRS_ACTIVATION = process.env.FORGEROCK_TREE_SCRS_ACTIVATION || 'CHSCRSActivation'
 
+export const CH_BASE_EWF_URL = process.env.CH_BASE_EWF_URL || 'https://ewf-kermit.companieshouse.gov.uk'
+
 export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_URL || 'https://ewf-kermit.companieshouse.gov.uk/request-auth-code'
 export const CH_EWF_REQUEST_AUTH_CODE_HOME_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_HOME_URL || 'https://find-and-update.company-information.service.gov.uk/auth-code-requests/start'
-export const CH_EWF_LEGACY_AUTH_URL = process.env.CH_EWF_LEGACY_AUTH_URL || 'https://ewf-kermit.companieshouse.gov.uk/legacy'
+export const CH_EWF_LEGACY_AUTH_URL = process.env.CH_EWF_LEGACY_AUTH_URL || 'https://ewf-kermit-legacy.companieshouse.gov.uk/'
 export const CH_EWF_AUTHENTICATED_ENTRY_URL = process.env.CH_EWF_AUTHENTICATED_ENTRY_URL || 'https://ewf-kermit.companieshouse.gov.uk/file-for-a-company'
 export const CH_EWF_RECENT_FILINGS_URL = process.env.CH_EWF_RECENT_FILINGS_URL || 'https://ewf-kermit.companieshouse.gov.uk/recent-filings'
 export const CH_EWF_IDAM_LOGOUT_URL = process.env.CH_EWF_IDAM_LOGOUT_URL || 'https://ewf-kermit.companieshouse.gov.uk/idam-logout'
