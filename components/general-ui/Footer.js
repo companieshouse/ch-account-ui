@@ -18,7 +18,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href="https://beta.companieshouse.gov.uk/help/cookies">
+                <a className="govuk-footer__link" href="https://ewf.companieshouse.gov.uk/cookies">
                   {translate(lang, 'FOOTER_COOKIES')}
                 </a>
               </li>
