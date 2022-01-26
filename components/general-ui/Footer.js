@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import WithLang from '../../services/lang/WithLang'
 import { translate } from '../../services/translate'
+import { CH_BASE_EWF_URL } from '../../services/environment'
 
 const Footer = ({ lang }) => {
   return (
@@ -18,7 +19,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href="https://ewf.companieshouse.gov.uk/cookies">
+                <a className="govuk-footer__link" href={`${CH_BASE_EWF_URL}/cookies`}>
                   {translate(lang, 'FOOTER_COOKIES')}
                 </a>
               </li>
