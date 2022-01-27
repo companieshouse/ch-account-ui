@@ -1,3 +1,4 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
@@ -16,7 +17,8 @@ const Button = ({
   testId,
   handler,
   handlers,
-  loading
+  loading,
+  matomo
 }) => {
   const classes = [className]
 
@@ -29,6 +31,10 @@ const Button = ({
 
   if (handler) {
     onClick = (evt) => {
+      // matomo tracking
+      if (matomo) {
+        _paq.push([matomo.id, matomo.value])
+      }
       handlers[handler.name](evt, handler.params)
     }
   }
