@@ -38,6 +38,6 @@ export const CH_EWF_IDAM_LOGOUT_URL = process.env.CH_EWF_IDAM_LOGOUT_URL || 'htt
 export const CH_GOVUK_LINK = process.env.CH_GOVUK_LINK || 'https://gov.uk'
 
 export const ANALYTICS_TRACKER_URL = process.env.ANALYTICS_TRACKER_URL || 'matomo.platform.aws.chdev.org'
-export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || ''
+export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || '23'
 
 console.log(`Running as environment: ${ENVIRONMENT}`)
