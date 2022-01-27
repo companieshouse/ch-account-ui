@@ -33,7 +33,8 @@ const Button = ({
     onClick = (evt) => {
       // matomo tracking
       if (matomo) {
-        _paq.push([matomo.id, matomo.value])
+        // should be in the same format as the api docs ['trackEvent', 'Menu', 'Freedom'] or ['trackGoal', 1]
+        _paq.push(matomo)
       }
       handlers[handler.name](evt, handler.params)
     }
