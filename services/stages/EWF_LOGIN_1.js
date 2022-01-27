@@ -45,7 +45,11 @@ const EWF_LOGIN_1 = (lang, tokens) => [
     props: {
       children: tokens('SHARED.signIn'),
       type: 'submit',
-      testId: 'submitButton'
+      testId: 'submitButton',
+      matomo: {
+        id: 'trackGoal',
+        value: '3'
+      }
     }
   },
   {
