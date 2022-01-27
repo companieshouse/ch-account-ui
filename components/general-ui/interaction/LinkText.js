@@ -1,15 +1,19 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 
 const LinkText = (props) => {
-  const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler } = props
+  const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo } = props
   let onClick = props.onClick
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
 
   if (handler) {
     onClick = (evt) => {
+      if (matomo) {
+        _paq.push([matomo.id, matomo.value])
+      }
       handlers[handler.name](evt, handler.params)
     }
   }

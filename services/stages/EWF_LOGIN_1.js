@@ -46,10 +46,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       children: tokens('SHARED.signIn'),
       type: 'submit',
       testId: 'submitButton',
-      matomo: {
-        id: 'trackGoal',
-        value: '3'
-      }
+      matomo: ['sign-in', 'sign-in', '[name]optional', '[value]optional']
     }
   },
   {
@@ -60,7 +57,8 @@ const EWF_LOGIN_1 = (lang, tokens) => [
         props: {
           children: tokens('EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount'),
           href: '/account/register/_start',
-          testId: 'registerNewAccountLink'
+          testId: 'registerNewAccountLink',
+          matomo: ['trackGoal', 2]
         }
       }
     ]
