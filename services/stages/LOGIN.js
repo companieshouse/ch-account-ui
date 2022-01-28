@@ -80,7 +80,8 @@ const LOGIN = (lang, tokens) => [
       renderAs: 'link',
       children: tokens('SHARED.signIn'),
       href: '/account/login/',
-      testId: 'loginLink'
+      testId: 'loginLink',
+      matomo: ['trackEvent', 'sign-in', 'sign-in', '[name]optional', '[value]optional']
     }
   },
   {
@@ -91,7 +92,8 @@ const LOGIN = (lang, tokens) => [
         props: {
           children: tokens('LOGIN.[6].BodyText.createANewAccount'),
           href: '/account/register/_start/',
-          testId: 'registerLink'
+          testId: 'registerLink',
+          matomo: ['trackGoal', 2]
         }
       }
     ]
