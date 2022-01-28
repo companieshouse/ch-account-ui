@@ -7,7 +7,6 @@ const SummaryList = (props) => {
   if (customLayout) classes.push('summary-list')
 
   const finalClassName = classes.join(' ').trim()
-
   return (
     <dl className={`govuk-summary-list ${finalClassName}`}>
       {listItems.map((listItem, index) => <div key={`${listItem.label}_${index}`} className="govuk-summary-list__row">
@@ -18,9 +17,6 @@ const SummaryList = (props) => {
         <dd className={`govuk-summary-list__value${customLayout ? ' summary-list__value' : ''}`}>
           {listItem.value}
         </dd>
-        {hasActions && !listItem.action &&
-        <span className={`govuk-summary-list__actions${customLayout ? ' summary-list__actions' : ''}`}/>
-        }
         {hasActions && listItem.action &&
         <dd className={`govuk-summary-list__actions${customLayout ? ' summary-list__actions' : ''}`}>
           {listItem.action}
