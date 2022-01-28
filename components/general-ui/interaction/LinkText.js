@@ -12,7 +12,7 @@ const LinkText = (props) => {
   if (handler) {
     onClick = (evt) => {
       if (matomo) {
-        _paq.push([matomo.id, matomo.value])
+        _paq.push(matomo)
       }
       handlers[handler.name](evt, handler.params)
     }
