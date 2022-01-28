@@ -46,7 +46,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       children: tokens('SHARED.signIn'),
       type: 'submit',
       testId: 'submitButton',
-      matomo: ['sign-in', 'sign-in', '[name]optional', '[value]optional']
+      matomo: ['trackEvent', 'sign-in', 'sign-in', '[name]optional', '[value]optional']
     }
   },
   {
@@ -71,7 +71,8 @@ const EWF_LOGIN_1 = (lang, tokens) => [
         props: {
           children: tokens('SHARED.iveForgottenMyPassword'),
           href: '/password-recovery/request',
-          testId: 'forgottenMyPasswordLink'
+          testId: 'forgottenMyPasswordLink',
+          matomo: ['trackEvent', 'forgotPassword', 'forgotPasswordAction']
         }
       }
     ]
