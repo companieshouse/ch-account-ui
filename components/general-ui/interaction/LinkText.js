@@ -9,12 +9,14 @@ const LinkText = (props) => {
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
 
-  onClick = (evt) => {
-    if (matomo) {
-      _paq.push(matomo)
-    }
-    if (handler) {
-      handlers[handler.name](evt, handler.params)
+  if (!onClick) {
+    onClick = (evt) => {
+      if (matomo) {
+        _paq.push(matomo)
+      }
+      if (handler) {
+        handlers[handler.name](evt, handler.params)
+      }
     }
   }
 
