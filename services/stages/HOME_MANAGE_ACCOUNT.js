@@ -186,8 +186,8 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
           }
         },
         {
-          label: tokens('HOME_MANAGE_ACCOUNT.[7].SummaryList.canWeSendYouEmailsAboutCompaniesHouse'),
-          hint: tokens('HOME_MANAGE_ACCOUNT.[7].SummaryList.forExampleMarketing'),
+          label: tokens('CONSENT_MARKETING.Heading.canWeSendEmails'),
+          hint: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.hint'),
           action: {
             label: tokens('SHARED.change'),
             desc: 'name',

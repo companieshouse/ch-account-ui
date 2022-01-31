@@ -83,6 +83,18 @@
     "en": "Your companies - Enter the company authentication code",
     "cy": "Eich cwmnïau - Cofnodwch god dilysu'r cwmni"
   },
+  "CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.Heading.EmailsToHelp": {
+    "en": "Emails to help you with running your company",
+    "cy": "E-byst i'ch helpu gyda rhedeg eich cwmni"
+  },
+  "CONSENT_MARKETING.Heading.canWeSendEmails": {
+    "en": "Can we send you emails to help you with running your company?",
+    "cy": "Allwn ni anfon negeseuon e-bost atoch i'ch helpu gyda rhedeg eich cwmni?"
+  },
+  "CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.hint": {
+    "en": "For example, filing reminders, changes to services or legislation, information from other government departments which may be crucial to the running of your company, or invitations to take part in research to help us improve our services.",
+    "cy": "Er enghraifft, ffeilio negeseuon atgoffa, newidiadau i wasanaethau neu ddeddfwriaeth, gwybodaeth gan adrannau eraill y llywodraeth a allai fod yn hanfodol i redeg eich cwmni, neu wahoddiadau i gymryd rhan mewn ymchwil i'n helpu i wella ein gwasanaethau."
+  },
   "EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount": {
     "en": "Create an account",
     "cy": "Creu cyfrif"
