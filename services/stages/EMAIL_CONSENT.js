@@ -24,8 +24,8 @@ const EMAIL_CONSENT = (lang, tokens) => [
           formGroupHint: 'Select all options that are relevant to you. You can update your preferences at any time.'
         },
         IDToken2: {
-          label: 'Emails about Companies House activities',
-          hint: 'For example, marketing, communications campaigns, or user research activities',
+          label: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.Heading.EmailsToHelp'),
+          hint: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.hint'),
           formGroup: 'emailPreferences'
         }
       }

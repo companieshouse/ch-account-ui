@@ -1,2 +1,15 @@
 <script src="/js/govuk-3.13.0.min.js"></script>
 <script>window.GOVUKFrontend.initAll()</script>
+<script>
+  if(!_paq){ 
+    var _paq = window._paq = window._paq || []; 
+    _paq.push(['enableLinkTracking']); 
+    (function() { 
+      var u="//${ANALYTICS_TRACKER_URL}/"; 
+      _paq.push(['setTrackerUrl', u+'matomo.php']); 
+      _paq.push(['setSiteId', '23']); 
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; 
+      g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s); 
+    })(); 
+  } 
+</script>
