@@ -16,8 +16,8 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
         IDToken2: {
           renderLabelAs: 'heading',
           captionPosition: 'above',
-          label: tokens('CHANGE_CONSENT_MARKETING.[1].DisplayUiElements.canWeSendYouEmailsAboutCompaniesHouse'),
-          hint: tokens('CHANGE_CONSENT_MARKETING.[1].DisplayUiElements.forExampleMarketingCommunicationsCampaignsOr'),
+          label: tokens('CONSENT_MARKETING.Heading.canWeSendEmails'),
+          hint: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.hint'),
           options: [
             {
               label: tokens('SHARED.yes')
