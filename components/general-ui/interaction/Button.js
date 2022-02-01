@@ -1,4 +1,4 @@
-/* global _paq */
+// /* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
@@ -31,7 +31,7 @@ const Button = ({
 
   onClick = (evt) => {
     if (matomo) {
-      _paq.push(matomo)
+      // _paq.push(matomo)
     }
     if (handler) {
       handlers[handler.name](evt, handler.params)
