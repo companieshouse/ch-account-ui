@@ -4,7 +4,7 @@ import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
 import '../css/global.scss'
 import Script from 'next/script'
-// import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL } from '../services/environment'
+import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL } from '../services/environment'
 
 function MyApp ({ Component, pageProps }) {
   const BASE_PATH = process.env.BASE_PATH || ''
