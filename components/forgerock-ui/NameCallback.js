@@ -16,6 +16,7 @@ const NameCallback = ({ errors, element, customElementProps, groupError, testId 
       errors={errors}
       testId={testId}
       groupError={groupError}
+      maxLength={12}
       {...customElementProps}
     />
   )
