@@ -951,8 +951,8 @@
     "cy": "Os yw'r ddolen yn gywir, rhaid i chi "
   },
   "SHARED.ifYouDoNotProvideYourNameYourEmailAddress": {
-    "en": "If you do not provide your name, your email address will be displayed instead. It will be partially hidden, for example jen*****@example.com.",
-    "cy": "Os nad ydych yn darparu eich enw, bydd eich cyfeiriad e-bost yn cael ei arddangos yn lle hynny. Bydd yn cuddio'n rhannol, er enghraifft jen*****@enghraifft.com"
+    "en": "If you do not provide your name, your email address will be displayed instead.",
+    "cy": "Os nad ydych yn darparu eich enw, bydd eich cyfeiriad e-bost yn cael ei arddangos yn lle hynny."
   },
   "SHARED.ifYouHaveAnyQuestions": {
     "en": " if you have any questions.",
