@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const BrowserTitle = ({ title }) => {
+const BrowserTitle = ({ title, errors }) => {
   const suffix = ' - Companies House WebFiling account - GOV.UK'
   React.useEffect(() => {
     const currentUrl = window.location.href
@@ -14,7 +14,11 @@ const BrowserTitle = ({ title }) => {
     _paq.push(['enableLinkTracking'])
 
     window.document.title = title + suffix
-  }, [title])
+
+    if (errors.length > 0) {
+      window.document.title = 'Error: ' + window.document.title
+    }
+  }, [title, errors])
 
   return null
 }
