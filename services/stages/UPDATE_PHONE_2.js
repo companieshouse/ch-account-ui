@@ -43,27 +43,6 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
     ]
   },
   {
-    conditional: {
-      prop: '${incorrect}',
-      operator: 'is'
-    },
-    component: 'ErrorSummary',
-    props: {
-      title: 'ERROR_SUMMARY_TITLE',
-      heading: tokens('SHARED.textSent'),
-      type: 'error',
-      errors: ['we have an error']
-    },
-    content: [
-      {
-        component: 'SpanText',
-        props: {
-          children: 'OTP_NOT_VALID_SMS'
-        }
-      }
-    ]
-  },
-  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourPhone'),
