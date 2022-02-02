@@ -19,6 +19,7 @@ const ValidatedCreatePasswordCallback = ({ lang, errors, element, customElementP
       autoComplete="current-password"
       label={label}
       errors={errors}
+      maxLength={124}
       testId="passwordInputField"
       groupError={groupError}
       suffix={hasShowPasswordSuffix === true && <LinkText

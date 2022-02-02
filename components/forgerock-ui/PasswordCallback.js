@@ -18,6 +18,7 @@ const PasswordCallback = ({ lang, errors, element, customElementProps, hasShowPa
       autoComplete="current-password"
       label={label}
       errors={errors}
+      maxLength={124}
       testId="passwordInputField"
       suffix={hasShowPasswordSuffix === true && <LinkText
         testId={`showHidePassword_${id}`}

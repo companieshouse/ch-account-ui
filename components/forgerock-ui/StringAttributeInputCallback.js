@@ -18,6 +18,7 @@ const StringAttributeInputCallback = ({ errors = [], element, customElementProps
       testId={testId}
       defaultValue={currentValue}
       groupError={groupError}
+      maxLength={124}
       {...customElementProps}
     />
   )
