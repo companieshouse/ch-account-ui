@@ -24,6 +24,7 @@ function MyApp ({ Component, pageProps }) {
           if(!_paq){ 
             var _paq = window._paq = window._paq || []; 
             _paq.push(['enableLinkTracking']); 
+            // setting a timer to ensure the FR flow has completed
             setTimeout(() => {(function() { 
               var u="//${ANALYTICS_TRACKER_URL}/"; 
               _paq.push(['setTrackerUrl', u+'matomo.php']); 
