@@ -14,23 +14,28 @@ const LOGIN = (lang, tokens) => [
     },
     content: [
       {
-        component: 'SpanText',
-        props: {
-          children: 'If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our '
-        }
-      },
-      {
-        component: 'LinkText',
-        props: {
-          children: ' new File a confirmation statement service',
-          href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement'
-        }
-      },
-      {
-        component: 'SpanText',
-        dynamicProps: {
-          children: '.'
-        }
+        component: 'BodyText',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: 'If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our '
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: ' new File a confirmation statement service',
+              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement'
+            }
+          },
+          {
+            component: 'SpanText',
+            dynamicProps: {
+              children: '.'
+            }
+          }
+        ]
       },
       {
         component: 'BodyText',
