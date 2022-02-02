@@ -83,6 +83,45 @@ const HOME_OVERVIEW = (lang, tokens) => [
     ]
   },
   {
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
+      heading: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading')
+    },
+    content: [
+      {
+        component: 'BodyText',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany')
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
+              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement'
+            }
+          },
+          {
+            component: 'SpanText',
+            dynamicProps: {
+              children: '.'
+            }
+          }
+        ]
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
+        }
+      }
+    ]
+  },
+  {
     component: 'Row',
     content: [
       {

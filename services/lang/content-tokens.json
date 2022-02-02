@@ -1286,6 +1286,26 @@
     "en": "Your companies",
     "cy": "Eich cwmnïau"
   },
+  "SHARED.NotificationBanner.CHConfimationJourney.title": {
+    "en": "For information",
+    "cy": ""
+  },
+  "SHARED.NotificationBanner.CHConfimationJourney.heading": {
+    "en": "Try our new File a confirmation statement service",
+    "cy": ""
+  },
+  "SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany": {
+    "en": "If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our ",
+    "cy": ""
+  },
+  "SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation": {
+    "en": " new File a confirmation statement service",
+    "cy": ""
+  },
+  "SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble": {
+    "en": "You will not be able to pay with a Companies House payment account.",
+    "cy": ""
+  },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
     "cy": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol"
