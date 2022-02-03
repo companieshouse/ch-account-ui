@@ -7,6 +7,9 @@ const COMPANY_ASSOCIATION_3 = (lang, tokens) => [
     }
   },
   {
+    component: 'PageHeading'
+  },
+  {
     component: 'DisplayUiElements',
     dynamicProps: {
       'elementProps.IDToken2.caption': '${company.name}'
