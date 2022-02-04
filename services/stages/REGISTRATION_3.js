@@ -7,12 +7,6 @@ const REGISTRATION_3 = (lang, tokens) => [
     }
   },
   {
-    component: 'PageHeading',
-    props: {
-      children: tokens('REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress')
-    }
-  },
-  {
     conditional: {
       prop: '${resend}',
       operator: 'is'
@@ -46,6 +40,12 @@ const REGISTRATION_3 = (lang, tokens) => [
         }
       }
     ]
+  },
+  {
+    component: 'PageHeading',
+    props: {
+      children: tokens('REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress')
+    }
   },
   {
     component: 'DisplayUiElements',
