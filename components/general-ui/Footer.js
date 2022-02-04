@@ -29,7 +29,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href={`https://ewf.companieshouse.gov.uk/sframe?name=accessibilityStatement&lang=${lang}`}>
+                <a className="govuk-footer__link" href={`${CH_BASE_EWF_URL}/sframe?name=accessibilityStatement&lang=${lang}`}>
                   {translate(lang, 'FOOTER_ACCESSIBILITY')}
                 </a>
               </li>
