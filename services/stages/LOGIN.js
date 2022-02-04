@@ -1,3 +1,4 @@
+import { CH_BASE_EWF_URL } from '../environment'
 /* eslint-disable no-template-curly-in-string */
 const LOGIN = (lang, tokens) => [
   {
@@ -144,7 +145,7 @@ const LOGIN = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('LOGIN.[7].BodyText.whoCanUseWebFiling'),
-          href: 'https://ewf.companieshouse.gov.uk/sframe?name=aboutWebFiling&lang=en',
+          href: `${CH_BASE_EWF_URL}/sframe?name=aboutWebFiling&lang=en`,
           testId: 'aboutWebFilingLink'
         }
       }
