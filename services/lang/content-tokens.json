@@ -914,6 +914,10 @@
     "en": "give us a different email address",
     "cy": "Defnyddiwch gyfeiriad e-bost gwahanol"
   },
+  "SHARED.giveUsADifferentEmailAddressStandalone": {
+    "en": "Give us a different email address",
+    "cy": "Defnyddiwch gyfeiriad e-bost gwahanol"
+  },
   "SHARED.helpWithAuthenticationCode": {
     "en": "Help with authentication code",
     "cy": "Help gyda chod dilysu"

@@ -57,7 +57,7 @@ const REGISTRATION_RESEND = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          children: tokens('SHARED.giveUsADifferentEmailAddress'),
+          children: tokens('SHARED.giveUsADifferentEmailAddressStandalone'),
           handler: {
             name: 'onSecondarySubmit',
             params: {
