@@ -17,11 +17,11 @@ const EMAIL_CONSENT = (lang, tokens) => [
     props: {
       elementProps: {
         IDToken1: {
-          label: 'Emails to tell you about a new message in your account',
-          hint: 'In the future, we\'d like to send you emails to let you know you\'ve received a new message in your account',
+          label: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.Heading.EmailsToTellYouAbout'),
+          hint: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.hint.inTheFuture'),
           formGroup: 'emailPreferences',
-          formGroupHeading: 'What type of additional email communication can we send you?',
-          formGroupHint: 'Select all options that are relevant to you. You can update your preferences at any time.'
+          formGroupHeading: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHeading'),
+          formGroupHint: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHint')
         },
         IDToken2: {
           label: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.Heading.EmailsToHelp'),
