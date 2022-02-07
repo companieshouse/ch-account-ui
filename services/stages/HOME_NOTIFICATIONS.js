@@ -195,7 +195,7 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                 }
                               },
                               {
-                                component: 'Th'
+                                component: 'Td'
                               }
                             ]
                           }
