@@ -37,6 +37,8 @@ export const CH_EWF_RECENT_FILINGS_URL = process.env.CH_EWF_RECENT_FILINGS_URL |
 export const CH_EWF_IDAM_LOGOUT_URL = process.env.CH_EWF_IDAM_LOGOUT_URL || 'https://ewf-kermit.companieshouse.gov.uk/idam-logout'
 export const CH_GOVUK_LINK = process.env.CH_GOVUK_LINK || 'https://gov.uk'
 
+export const CH_BASE_URL = process.env.CH_BASE_URL || 'companieshouse.gov.uk'
+
 export const ANALYTICS_TRACKER_URL = process.env.ANALYTICS_TRACKER_URL || 'matomo.platform.aws.chdev.org'
 export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || '23'
 

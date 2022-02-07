@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import WithLang from '../../services/lang/WithLang'
 import { translate } from '../../services/translate'
-import { CH_BASE_EWF_URL } from '../../services/environment'
+import { CH_BASE_URL, CH_BASE_EWF_URL } from '../../services/environment'
 
 const Footer = ({ lang }) => {
   return (
@@ -14,7 +14,7 @@ const Footer = ({ lang }) => {
             <ul className="govuk-footer__inline-list">
               <li className="govuk-footer__inline-list-item">
                 <a className="govuk-footer__link"
-                   href="http://resources.companieshouse.gov.uk/serviceInformation.shtml">
+                   href={`http://resources.${CH_BASE_URL}/serviceInformation.shtml`}>
                   {translate(lang, 'FOOTER_POLICIES')}
                 </a>
               </li>
@@ -24,7 +24,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href="https://beta.companieshouse.gov.uk/help/contact-us">
+                <a className="govuk-footer__link" href={`https://beta.${CH_BASE_URL}/help/contact-us`}>
                   {translate(lang, 'FOOTER_CONTACT_US')}
                 </a>
               </li>
@@ -34,7 +34,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href="https://developer.companieshouse.gov.uk/api/docs/">
+                <a className="govuk-footer__link" href={`https://developer.${CH_BASE_URL}/api/docs/`}>
                   {translate(lang, 'FOOTER_DEVELOPERS')}
                 </a>
               </li>
