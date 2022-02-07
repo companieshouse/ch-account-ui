@@ -37,7 +37,7 @@ const FeatureDynamicView = (props) => {
       </WidthContainer>
       <WidthContainer>
           {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'}><BackLink testId="backLink" onClick={onBack}/></Column>}
-          {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'}><LanguageSwitcher /></Column>}
+          {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'} utilClass='no-padd'><LanguageSwitcher /></Column>}
       </WidthContainer>
       <WidthContainer>
         <Main className="govuk-main-wrapper--auto-spacing">
