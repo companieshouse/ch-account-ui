@@ -912,10 +912,6 @@
   },
   "SHARED.giveUsADifferentEmailAddress": {
     "en": "give us a different email address",
-    "cy": "defnyddiwch gyfeiriad e-bost gwahanol"
-  },
-  "SHARED.giveUsADifferentEmailAddressStandalone": {
-    "en": "Give us a different email address",
     "cy": "Defnyddiwch gyfeiriad e-bost gwahanol"
   },
   "SHARED.helpWithAuthenticationCode": {
