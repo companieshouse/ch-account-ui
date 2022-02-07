@@ -7,6 +7,11 @@ const REGISTRATION_4 = (lang, tokens) => [
     }
   },
   {
+    conditional: {
+      prop: '${errors}',
+      operator: 'lt',
+      value: 1
+    },
     component: 'NotificationBanner',
     props: {
       title: tokens('SHARED.success'),
