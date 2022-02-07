@@ -95,6 +95,22 @@
     "en": "For example, filing reminders, changes to services or legislation, information from other government departments which may be crucial to the running of your company, or invitations to take part in research to help us improve our services.",
     "cy": "Er enghraifft, ffeilio negeseuon atgoffa, newidiadau i wasanaethau neu ddeddfwriaeth, gwybodaeth gan adrannau eraill y llywodraeth a allai fod yn hanfodol i redeg eich cwmni, neu wahoddiadau i gymryd rhan mewn ymchwil i'n helpu i wella ein gwasanaethau."
   },
+  "CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHeading": {
+    "en": "What type of additional email communication can we send you?",
+    "cy": "Pa fath o gyfathrebu e-bost ychwanegol y gallwn ei anfon atoch?"
+  },
+  "CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHint": {
+    "en": "Select all options that are relevant to you. You can update your preferences at any time.",
+    "cy": "Dewiswch bob opsiwn sy'n berthnasol i chi.  Gallwch ddiweddaru eich dewisiadau unrhyw bryd."
+  },
+  "CONSENT_PREFERENCES_1.DisplayUiElements.Heading.EmailsToTellYouAbout": {
+    "en": "Emails to tell you about a new message in your account",
+    "cy": "E-byst i ddweud wrthych am neges yn eich cyfrif"
+  },
+  "CONSENT_PREFERENCES_1.DisplayUiElements.hint.inTheFuture": {
+    "en": "In the future, we'd like to send you emails to let you know you've received a new message in your account",
+    "cy": "Yn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges yn eich cyfrif."
+  },
   "EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount": {
     "en": "Create an account",
     "cy": "Creu cyfrif"
@@ -912,10 +928,6 @@
   },
   "SHARED.giveUsADifferentEmailAddress": {
     "en": "give us a different email address",
-    "cy": "defnyddiwch gyfeiriad e-bost gwahanol"
-  },
-  "SHARED.giveUsADifferentEmailAddressStandalone": {
-    "en": "Give us a different email address",
     "cy": "Defnyddiwch gyfeiriad e-bost gwahanol"
   },
   "SHARED.helpWithAuthenticationCode": {
