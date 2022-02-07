@@ -20,7 +20,6 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
         IDToken2: {
           label: tokens('SHARED.mobileNumber'),
           hint: tokens('UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText'),
-          type: 'number',
           autoComplete: 'off'
         },
         IDToken3: {

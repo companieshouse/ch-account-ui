@@ -85,7 +85,6 @@ const REGISTRATION_1 = (lang, tokens) => [
         },
         IDToken4: {
           label: tokens('SHARED.mobileNumberOptional'),
-          type: 'number',
           autoComplete: 'tel',
           hint: tokens('SHARED.addYourMobileNumberToMakeYourAccountMore'),
           testId: 'mobilePhoneInputField'
