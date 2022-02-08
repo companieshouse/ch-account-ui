@@ -337,14 +337,14 @@
     "en": [
       "add a company to your WebFiling account",
       "view, manage and file for companies you’ve added",
-      "authorise people to file documents for your company online",
-      "view and manage authorised people"
+      "digitally authorise people to file for your company online",
+      "view and manage digitally authorised people"
     ],
     "cy": [
       "ychwanegu cwmni i'ch cyfrif.",
       "gweld, rheoli a ffeilio ar gyfer cwmnïau rydych chi wedi'u hychwanegu.",
-      "awdurdodi pobl i ffeilio dogfennau ar gyfer eich cwmni ar-lein",
-      "gweld a rheoli pobl awdurdodedig"
+      "awdurdodi pobl yn ddigidol i ffeilio ar gyfer eich cwmni ar-lein",
+      "gweld a rheoli pobl sydd wedi'u hawdurdodi'n ddigidol"
     ]
   },
   "HOME_OVERVIEW.[3].Row.services": {
