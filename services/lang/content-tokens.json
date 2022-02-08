@@ -416,16 +416,16 @@
     "cy": "Nid ydych wedi ychwanegu unrhyw gwmnïau at eich cyfrif WebFiling"
   },
   "HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis": {
-    "en": "Authorise a person to file online for this company",
-    "cy": "Awdurdodi person i ffeilio ar-lein ar gyfer y cwmni hwn"
+    "en": "Digitally authorise a person to file online for this company",
+    "cy": "Awdurdodi person yn ddigidol i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany": {
     "en": "File for this company",
     "cy": "Ffeilio ar gyfer y cwmni hwn"
   },
   "HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany": {
-    "en": "People authorised to file online for this company",
-    "cy": "Pobl sydd wedi'u hawdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn"
+    "en": "People digitally authorised to file online for this company",
+    "cy": "Pobl sydd wedi'u hawdurdodi yn ddigidol i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "HOME_YOUR_COMPANIES.[7].Fragment.view": {
     "en": "View",
