@@ -749,23 +749,23 @@
   },
   "SHARED.WeveSentAnotherEmail": {
     "en": "We've sent another email which contains a verification link to ",
-    "cy": ""
+    "cy": "Rydym wedi anfon e-bost arall sy'n cynnwys dolen ddilysu i"
   },
   "SHARED.WeveSentAnotherEmailOTP": {
     "en": "We've sent another email which contains a security code to ",
-    "cy": ""
+    "cy": "Rydym wedi anfon e-bost arall sy'n cynnwys cod diogelwch i"
   },
   "SHARED.textSent": {
     "en": "Text message sent",
-    "cy": ""
+    "cy": "Anfonwyd neges destun"
   },
   "SHARED.WeveSentAnotherText": {
     "en": "We've sent another text message which contains a security code to ",
-    "cy": ""
+    "cy": "Rydym wedi anfon neges destun arall sy'n cynnwys cod diogelwch i"
   },
   "SHARED.WellSendAnotherTextMessageTo": {
     "en": "We'll send another text message to ",
-    "cy": ""
+    "cy": "Byddwn yn anfon neges destun arall at"
   },
   "SHARED.BodyText.wellSendYouAnotherEmailTo": {
     "en": "We'll send another email to ",
@@ -1124,7 +1124,7 @@
   },
   "SHARED.scrsThereIsAProblemWithEmailLink": {
     "en": "There seems to be an issue with your email link, please try again",
-    "cy": ""
+    "cy": "Mae'n ymddangos bod problem gyda'ch dolen e-bost, rhowch gynnig arall arni"
   },
   "SHARED.status": {
     "en": "Status",
@@ -1144,19 +1144,19 @@
   },
   "SHARED.sendText": {
     "en": "Send text message",
-    "cy": ""
+    "cy": "Anfon neges destun"
   },
   "SHARED.sendANewTextMessage": {
     "en": "Send a new text message",
-    "cy": ""
+    "cy": "Anfon neges destun newydd"
   },
   "SHARED.sendANewSecurityCode": {
     "en": "Send a new security code",
-    "cy": ""
+    "cy": "Anfon cod diogelwch newydd"
   },
   "SHARED.enterAnEmail": {
     "en": "Enter an email address",
-    "cy": ""
+    "cy": "Cofnodwch gyfeiriad e-bost"
   },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House: security code'.",
