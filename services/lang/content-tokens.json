@@ -1099,8 +1099,8 @@
     "cy": "Mewngofnodwch"
   },
   "SHARED.signOut": {
-    "en": "sign out",
-    "cy": "allgofnodwch"
+    "en": "Sign out",
+    "cy": "Arwyddwch allan"
   },
   "SHARED.signInToWebFiling": {
     "en": "Sign in to WebFiling",
@@ -1316,23 +1316,23 @@
   },
   "SHARED.NotificationBanner.CHConfimationJourney.title": {
     "en": "For information",
-    "cy": ""
+    "cy": "Er gwybodaeth"
   },
   "SHARED.NotificationBanner.CHConfimationJourney.heading": {
     "en": "Try our new File a confirmation statement service",
-    "cy": ""
+    "cy": "Rhowch gynnig ar ein gwasanaeth newydd i ffeilio eich datganiad cadarnhau"
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany": {
     "en": "If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our ",
-    "cy": ""
+    "cy": "Os oes gennych gwmni preifat wedi ei gyfyngu drwy gyfrannau gydag 1 cyfarwyddwr, 1 person â rheolaeth arwyddocaol, 1 cyfranddaliwr, a dim ysgrifenyddion cwmni, gallwch ddefnyddio ein "
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation": {
     "en": " new File a confirmation statement service",
-    "cy": ""
+    "cy": "gwasanaeth newydd i Ffeilio eich datganiad cadarnhau"
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble": {
     "en": "You will not be able to pay with a Companies House payment account.",
-    "cy": ""
+    "cy": "Ni fyddwch yn gallu talu gyda chyfrif talu Tŷ'r Cwmnïau."
   },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
