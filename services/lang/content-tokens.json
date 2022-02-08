@@ -444,12 +444,12 @@
     "cy": "ffeilio ar gyfer y cwmni ar-lein"
   },
   "INVITE_USER_1.[3].BodyText.tellUsTheDetailsOfThePersonYouWantTo": {
-    "en": "Tell us the email address of the person you want to authorise to file online for this company.",
-    "cy": "Dywedwch wrthym gyfeiriad e-bost y person rydych am ei awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn."
+    "en": "Tell us the email address of the person you want to digitally authorise to file online for this company.",
+    "cy": "Dywedwch wrthym gyfeiriad e-bost y person rydych am ei awdurdodi yn ddigidol i ffeilio ar-lein ar gyfer y cwmni."
   },
   "INVITE_USER_1.[4].InsetText.youCanChangeWhoIsAuthorisedToFileAtAny": {
-    "en": "You can change who is authorised to file at any time.",
-    "cy": "Gallwch newid pwy sydd wedi'i awdurdodi i ffeilio ar unrhyw adeg."
+    "en": "You can change who is digitally authorised to file at any time.",
+    "cy": "Gallwch newid pwy sydd wedi'i awdurdodi i ffeilio yn ddigidol ar unrhyw adeg. "
   },
   "INVITE_USER_1.[5].DisplayUiElements.wellSendAnEmailThatContainsARequest": {
     "en": "We'll send them an email that contains a link.",
