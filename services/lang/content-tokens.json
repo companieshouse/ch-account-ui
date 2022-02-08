@@ -285,23 +285,23 @@
   },
   "HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded": {
     "en": " ${company.name} has been added to your account",
-    "cy": ""
+    "cy": "Mae ${company.name} wedi'i ychwanegu at eich cyfrif"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments": {
     "en": "You can now file documents online and authorise other people to file online for this company",
-    "cy": ""
+    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink": {
     "en": "View the company details",
-    "cy": ""
+    "cy": "Gweld manylion y cwmni"
   },
   "HOME_OVERVIEW.[1].NotificationBanner.youveSetUpYourAccount": {
     "en": "You've set up your WebFiling account",
-    "cy": ""
+    "cy": "Rydych wedi sefydlu eich cyfrif WebFiling"
   },
   "HOME_OVERVIEW.[1].NotificationBanner.youCanNowFileDocumentsCompany": {
     "en": "You can now file documents online and authorise other people to file online for ${company.name}.",
-    "cy": ""
+    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill i ffeilio ar-lein ar gyfer ${company.name}."
   },
   "HOME_OVERVIEW.[1].Row.home": {
     "en": "Home",
@@ -745,7 +745,7 @@
   },
   "SHARED.emailSent": {
     "en": "Email sent",
-    "cy": ""
+    "cy": "Anfonwyd e-bost"
   },
   "SHARED.WeveSentAnotherEmail": {
     "en": "We've sent another email which contains a verification link to ",
