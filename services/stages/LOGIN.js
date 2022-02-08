@@ -10,8 +10,8 @@ const LOGIN = (lang, tokens) => [
   {
     component: 'NotificationBanner',
     dynamicProps: {
-      title: 'For information',
-      heading: 'Try our new File a confirmation statement service'
+      title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
+      heading: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading')
     },
     content: [
       {
@@ -20,13 +20,13 @@ const LOGIN = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: 'If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our '
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: ' new File a confirmation statement service',
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
               href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement'
             }
           },
@@ -41,7 +41,7 @@ const LOGIN = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: 'You will not be able to pay with a Companies House payment account.'
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
         }
       }
     ]

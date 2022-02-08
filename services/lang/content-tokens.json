@@ -111,6 +111,18 @@
     "en": "In the future, we'd like to send you emails to let you know you've received a new message in your account",
     "cy": "Yn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges yn eich cyfrif."
   },
+  "CONSENT_PREFERENCES_3.InsetText.essentialEmails": {
+    "en": "Essential emails",
+    "cy": "E-byst hanfodol"
+  },
+  "CONSENT_PREFERENCES_3.InsetText.someTypesOfEmail": {
+    "en": "Some types of email are essential to manage your account. We need to send you essential emails from time to time.",
+    "cy": "Mae rhai mathau o e-byst yn hanfodol i reoli eich cyfrif. Mae angen i ni anfon negeseuon e-bost hanfodol atoch o bryd i'w gilydd."
+  },
+  "CONSENT_PREFERENCES_3.ButtonGroup.saveAndContinue": {
+    "en": "Save and continue",
+    "cy": "Cadw a Pharhau"
+  },
   "EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount": {
     "en": "Create an account",
     "cy": "Creu cyfrif"
@@ -273,23 +285,23 @@
   },
   "HOME_OVERVIEW.[0].NotificationBanner.companyHasBeenAdded": {
     "en": " ${company.name} has been added to your account",
-    "cy": ""
+    "cy": "Mae ${company.name} wedi'i ychwanegu at eich cyfrif"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments": {
     "en": "You can now file documents online and authorise other people to file online for this company",
-    "cy": ""
+    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink": {
     "en": "View the company details",
-    "cy": ""
+    "cy": "Gweld manylion y cwmni"
   },
   "HOME_OVERVIEW.[1].NotificationBanner.youveSetUpYourAccount": {
     "en": "You've set up your WebFiling account",
-    "cy": ""
+    "cy": "Rydych wedi sefydlu eich cyfrif WebFiling"
   },
   "HOME_OVERVIEW.[1].NotificationBanner.youCanNowFileDocumentsCompany": {
     "en": "You can now file documents online and authorise other people to file online for ${company.name}.",
-    "cy": ""
+    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill i ffeilio ar-lein ar gyfer ${company.name}."
   },
   "HOME_OVERVIEW.[1].Row.home": {
     "en": "Home",
@@ -733,27 +745,27 @@
   },
   "SHARED.emailSent": {
     "en": "Email sent",
-    "cy": ""
+    "cy": "Anfonwyd e-bost"
   },
   "SHARED.WeveSentAnotherEmail": {
     "en": "We've sent another email which contains a verification link to ",
-    "cy": ""
+    "cy": "Rydym wedi anfon e-bost arall sy'n cynnwys dolen ddilysu i"
   },
   "SHARED.WeveSentAnotherEmailOTP": {
     "en": "We've sent another email which contains a security code to ",
-    "cy": ""
+    "cy": "Rydym wedi anfon e-bost arall sy'n cynnwys cod diogelwch i"
   },
   "SHARED.textSent": {
     "en": "Text message sent",
-    "cy": ""
+    "cy": "Anfonwyd neges destun"
   },
   "SHARED.WeveSentAnotherText": {
     "en": "We've sent another text message which contains a security code to ",
-    "cy": ""
+    "cy": "Rydym wedi anfon neges destun arall sy'n cynnwys cod diogelwch i"
   },
   "SHARED.WellSendAnotherTextMessageTo": {
     "en": "We'll send another text message to ",
-    "cy": ""
+    "cy": "Byddwn yn anfon neges destun arall at"
   },
   "SHARED.BodyText.wellSendYouAnotherEmailTo": {
     "en": "We'll send another email to ",
@@ -1087,8 +1099,8 @@
     "cy": "Mewngofnodwch"
   },
   "SHARED.signOut": {
-    "en": "sign out",
-    "cy": "allgofnodwch"
+    "en": "Sign out",
+    "cy": "Arwyddwch allan"
   },
   "SHARED.signInToWebFiling": {
     "en": "Sign in to WebFiling",
@@ -1112,7 +1124,7 @@
   },
   "SHARED.scrsThereIsAProblemWithEmailLink": {
     "en": "There seems to be an issue with your email link, please try again",
-    "cy": ""
+    "cy": "Mae'n ymddangos bod problem gyda'ch dolen e-bost, rhowch gynnig arall arni"
   },
   "SHARED.status": {
     "en": "Status",
@@ -1132,19 +1144,19 @@
   },
   "SHARED.sendText": {
     "en": "Send text message",
-    "cy": ""
+    "cy": "Anfon neges destun"
   },
   "SHARED.sendANewTextMessage": {
     "en": "Send a new text message",
-    "cy": ""
+    "cy": "Anfon neges destun newydd"
   },
   "SHARED.sendANewSecurityCode": {
     "en": "Send a new security code",
-    "cy": ""
+    "cy": "Anfon cod diogelwch newydd"
   },
   "SHARED.enterAnEmail": {
     "en": "Enter an email address",
-    "cy": ""
+    "cy": "Cofnodwch gyfeiriad e-bost"
   },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House: security code'.",
@@ -1304,23 +1316,23 @@
   },
   "SHARED.NotificationBanner.CHConfimationJourney.title": {
     "en": "For information",
-    "cy": ""
+    "cy": "Er gwybodaeth"
   },
   "SHARED.NotificationBanner.CHConfimationJourney.heading": {
     "en": "Try our new File a confirmation statement service",
-    "cy": ""
+    "cy": "Rhowch gynnig ar ein gwasanaeth newydd i ffeilio eich datganiad cadarnhau"
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany": {
     "en": "If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our ",
-    "cy": ""
+    "cy": "Os oes gennych gwmni preifat wedi ei gyfyngu drwy gyfrannau gydag 1 cyfarwyddwr, 1 person â rheolaeth arwyddocaol, 1 cyfranddaliwr, a dim ysgrifenyddion cwmni, gallwch ddefnyddio ein "
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation": {
     "en": " new File a confirmation statement service",
-    "cy": ""
+    "cy": "gwasanaeth newydd i Ffeilio eich datganiad cadarnhau"
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble": {
     "en": "You will not be able to pay with a Companies House payment account.",
-    "cy": ""
+    "cy": "Ni fyddwch yn gallu talu gyda chyfrif talu Tŷ'r Cwmnïau."
   },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
