@@ -272,8 +272,8 @@
     "cy": "Derbyn"
   },
   "HOME_NOTIFICATIONS.[5].Fragment.companyInviterGivenNameWantsToGiveYou": {
-    "en": " ${company.inviter.displayName} wants to give you authorisation to file online for this company.",
-    "cy": "Mae ${company.inviter.displayName} eisiau rhoi caniatâd i chi ffeilio ar-lein ar gyfer y cwmni hwn."
+    "en": " ${company.inviter.displayName} wants to digitally authorise you to file online for this company.",
+    "cy": "Mae ${company.inviter.displayName} eisiau rhoi caniatâd yn ddigidol i chi ffeilio ar-lein ar gyfer y cwmni hwn."
   },
   "HOME_NOTIFICATIONS.[5].Fragment.declineRequest": {
     "en": "Decline",
