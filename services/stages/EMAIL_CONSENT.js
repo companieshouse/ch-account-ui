@@ -37,14 +37,14 @@ const EMAIL_CONSENT = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: 'Essential emails',
+          children: tokens('CONSENT_PREFERENCES_3.InsetText.essentialEmails'),
           weight: 'bold'
         }
       },
       {
         component: 'BodyText',
         props: {
-          children: 'Some types of email are essential to manage your account. We need to send you essential emails from time to time.'
+          children: tokens('CONSENT_PREFERENCES_3.InsetText.someTypesOfEmail')
         }
       }
     ]
@@ -55,7 +55,7 @@ const EMAIL_CONSENT = (lang, tokens) => [
       {
         component: 'Button',
         props: {
-          children: 'Save and continue',
+          children: tokens('CONSENT_PREFERENCES_3.ButtonGroup.saveAndContinue'),
           type: 'submit',
           testId: 'submitButton'
         }

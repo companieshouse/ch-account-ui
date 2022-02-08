@@ -111,6 +111,18 @@
     "en": "In the future, we'd like to send you emails to let you know you've received a new message in your account",
     "cy": "Yn y dyfodol, hoffem anfon negeseuon e-bost atoch i roi gwybod i chi eich bod wedi derbyn neges yn eich cyfrif."
   },
+  "CONSENT_PREFERENCES_3.InsetText.essentialEmails": {
+    "en": "Essential emails",
+    "cy": "E-byst hanfodol"
+  },
+  "CONSENT_PREFERENCES_3.InsetText.someTypesOfEmail": {
+    "en": "Some types of email are essential to manage your account. We need to send you essential emails from time to time.",
+    "cy": "Mae rhai mathau o e-byst yn hanfodol i reoli eich cyfrif. Mae angen i ni anfon negeseuon e-bost hanfodol atoch o bryd i'w gilydd."
+  },
+  "CONSENT_PREFERENCES_3.ButtonGroup.saveAndContinue": {
+    "en": "Save and continue",
+    "cy": "Cadw a Pharhau"
+  },
   "EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount": {
     "en": "Create an account",
     "cy": "Creu cyfrif"
