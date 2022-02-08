@@ -288,8 +288,8 @@
     "cy": "Mae ${company.name} wedi'i ychwanegu at eich cyfrif"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.youCanNowFileDocuments": {
-    "en": "You can now file documents online and authorise other people to file online for this company",
-    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni hwn"
+    "en": "You can now file online and digitally authorise other people to file online for this company",
+    "cy": "Gallwch nawr ffeilio ar-lein ac awdurdodi pobl eraill yn ddigidol i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink": {
     "en": "View the company details",
