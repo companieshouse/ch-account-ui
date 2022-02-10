@@ -121,7 +121,7 @@ const LOGIN = (lang, tokens) => [
       children: tokens('SHARED.signIn'),
       href: '/account/login/',
       testId: 'loginLink',
-      matomo: ['trackEvent', 'sign-in', 'sign-in', '[name]optional', '[value]optional']
+      matomo: ['trackGoal', 4]
     }
   },
   {
