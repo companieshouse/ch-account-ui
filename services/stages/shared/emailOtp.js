@@ -74,7 +74,7 @@ const emailOtp = (lang, tokens) => ([
         IDToken3: {
           label: tokens('SHARED.securityCode'),
           autoComplete: 'off',
-          type: 'number',
+          type: 'password',
           suffix: false,
           fixedWidth: '10',
           testId: 'otpInputField'
@@ -82,7 +82,7 @@ const emailOtp = (lang, tokens) => ([
         IDToken4: {
           label: tokens('SHARED.securityCode'),
           autoComplete: 'off',
-          type: 'number',
+          type: 'password',
           suffix: false,
           fixedWidth: '10',
           testId: 'otpInputField',

@@ -92,7 +92,7 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
       elementProps: {
         IDToken4: {
           label: tokens('SHARED.securityCode'),
-          type: 'number',
+          type: 'password',
           autoComplete: 'off',
           suffix: false,
           fixedWidth: '10'
