@@ -21,7 +21,8 @@ const COMPANY_ASSOCIATION_3 = (lang, tokens) => [
           caption: '',
           captionPosition: 'above',
           label: tokens('SHARED.enterTheCompanyAuthenticationCode'),
-          fixedWidth: '10'
+          fixedWidth: '10',
+          type: 'password'
         }
       }
     }
