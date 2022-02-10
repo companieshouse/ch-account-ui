@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 import NoScript from '../components/general-ui/NoScript'
+import { VERSION } from '../services/environment'
 
 class MyDocument extends Document {
   static async getInitialProps (ctx) {
@@ -31,6 +32,7 @@ class MyDocument extends Document {
           <NoScript />
           <Main/>
           <NextScript/>
+          <span className="govuk-visually-hidden">{VERSION}</span>
         </body>
       </Html>
     )
