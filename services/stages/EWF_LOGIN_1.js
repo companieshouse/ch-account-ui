@@ -46,7 +46,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       children: tokens('SHARED.signIn'),
       type: 'submit',
       testId: 'submitButton',
-      matomo: ['trackEvent', 'sign-in', 'sign-in', '[name]optional', '[value]optional']
+      matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.signIn')]
     }
   },
   {
@@ -58,7 +58,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
           children: tokens('EWF_LOGIN_1.[4].BodyText.createAWebFilingAccount'),
           href: '/account/register/_start',
           testId: 'registerNewAccountLink',
-          matomo: ['trackGoal', 2]
+          matomo: ['trackGoal', 3]
         }
       }
     ]
@@ -72,7 +72,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
           children: tokens('SHARED.iveForgottenMyPassword'),
           href: '/password-recovery/request',
           testId: 'forgottenMyPasswordLink',
-          matomo: ['trackEvent', 'forgotPassword', 'forgotPasswordAction']
+          matomo: ['trackEvent', 'forgotPassword', tokens('SHARED.iveForgottenMyPassword')]
         }
       }
     ]

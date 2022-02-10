@@ -89,8 +89,8 @@ export const processErrorMessageTemplateStrings = (errors, data) => {
   errors.forEach((error, index) => {
     const updatePath = `${index}.label`
     const newLabel = parseTemplateString(data, error.label, true, false)
-    _paq.push(['trackEvent', 'Error', newLabel])
     if (error.label === newLabel) return
+    _paq.push(['trackEvent', 'Error:', newLabel])
 
     newErrors = pathSetImmutable(errors, updatePath, newLabel)
   })
