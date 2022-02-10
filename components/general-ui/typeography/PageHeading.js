@@ -1,4 +1,3 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import HeadingText from './HeadingText'
@@ -10,10 +9,6 @@ import WithLang from '../../../services/lang/WithLang'
 
 const PageHeading = (props) => {
   const { lang, headingCount, errors, children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren, showErrorSummary, size } = props
-
-  React.useEffect(() => {
-    _paq.push(['trackPageView', children])
-  }, [children])
 
   if (errors.length === 0) {
     return (

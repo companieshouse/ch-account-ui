@@ -8,7 +8,7 @@ const BrowserTitle = ({ title, errors }) => {
     const currentUrl = window.location.href
     _paq.push(['setCustomUrl', currentUrl])
     _paq.push(['setDocumentTitle', title + suffix])
-    _paq.push(['trackPageView'])
+    // _paq.push(['trackPageView'])
     const content = document.getElementById('__next')
     _paq.push(['FormAnalytics::scanForForms', content])
     _paq.push(['enableLinkTracking'])
@@ -19,6 +19,10 @@ const BrowserTitle = ({ title, errors }) => {
       window.document.title = 'Error: ' + window.document.title
     }
   }, [title, errors])
+
+  React.useMemo(() => {
+    _paq.push(['trackPageView', title])
+  })
 
   return null
 }
