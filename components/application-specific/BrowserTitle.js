@@ -20,9 +20,9 @@ const BrowserTitle = ({ title, errors }) => {
     }
   }, [title, errors])
 
-  React.useMemo(() => {
+  React.useEffect(() => {
     _paq.push(['trackPageView', title])
-  })
+  }, [])
 
   return null
 }
