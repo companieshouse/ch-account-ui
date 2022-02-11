@@ -19,7 +19,7 @@ const BrowserTitle = ({ title, errors }) => {
       window.document.title = 'Error: ' + window.document.title
     }
   }, [title, errors])
-
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     _paq.push(['trackPageView', title])
   }, [])
