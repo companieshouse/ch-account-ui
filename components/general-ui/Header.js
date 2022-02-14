@@ -3,8 +3,10 @@ import React, { useEffect, useRef } from 'react'
 import LinkText from './interaction/LinkText'
 import Link from 'next/link'
 import { CH_EWF_IDAM_LOGOUT_URL, CH_GOVUK_LINK } from '../../services/environment'
+import { translate } from '../../services/translate'
+import WithLang from '../../services/lang/WithLang'
 
-const Header = ({ hasLogoutLink, titleLinkHref = CH_GOVUK_LINK }) => {
+const Header = ({ hasLogoutLink, titleLinkHref = CH_GOVUK_LINK, lang }) => {
   const headerRef = useRef()
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const Header = ({ hasLogoutLink, titleLinkHref = CH_GOVUK_LINK }) => {
             <nav className="floatRight">
               <ul id="navigation" className="govuk-header__navigation " aria-label="Navigation menu">
                 <li className="govuk-header__navigation-item">
-                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={ CH_EWF_IDAM_LOGOUT_URL }>Sign out</LinkText>
+                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={ CH_EWF_IDAM_LOGOUT_URL }>{translate(lang, 'SIGN_OUT')}</LinkText>
                 </li>
               </ul>
             </nav>
@@ -59,7 +61,7 @@ const Header = ({ hasLogoutLink, titleLinkHref = CH_GOVUK_LINK }) => {
   )
 }
 
-export default Header
+export default WithLang(Header)
 
 Header.propTypes = {
   hasLogoutLink: PropTypes.bool,

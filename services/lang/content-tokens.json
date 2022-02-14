@@ -392,8 +392,8 @@
     "cy": " i ffeilio ar-lein ar gyfer ${companyName} yn llwyddiannus."
   },
   "HOME_YOUR_COMPANIES.[3].Search.searchForACompany": {
-    "en": "Search for a company",
-    "cy": "Chwilio am gwmni"
+    "en": "Search for a company you’ve added",
+    "cy": "Chwiliwch am gwmni rydych chi wedi'i ychwanegu"
   },
   "HOME_YOUR_COMPANIES.[3].Search.enterNameOrCompanyNumber": {
     "en": "Enter the company name or number",
@@ -1333,6 +1333,10 @@
   "SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble": {
     "en": "You will not be able to pay with a Companies House payment account.",
     "cy": "Ni fyddwch yn gallu talu gyda chyfrif talu Tŷ'r Cwmnïau."
+  },
+  "SHARED.NotificationBanner.CHConfirmationJourney.welshOnly": {
+    "en": "",
+    "cy": "Mae'r gwasanaeth ffeilio eich datganiad cadarnhau ar gael yn Saesneg yn unig ar hyn o bryd."
   },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
