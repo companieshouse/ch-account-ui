@@ -51,7 +51,8 @@ const EWF_LOGIN_4 = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.requestAnAuthenticationCode'),
-          testId: 'requestAuthCodeLink'
+          testId: 'requestAuthCodeLink',
+          matomo: ['trackEvent', tokens('SHARED.enterTheCompanyAuthenticationCode'), tokens('SHARED.requestAnAuthenticationCode')]
         }
       }
     ]
@@ -66,7 +67,8 @@ const EWF_LOGIN_4 = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
-          testId: 'forgottenMyPasswordLink'
+          testId: 'forgottenMyPasswordLink',
+          matomo: ['trackEvent', tokens('SHARED.enterTheCompanyAuthenticationCode'), tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
         }
       }
     ]
