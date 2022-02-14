@@ -101,7 +101,8 @@ const LOGIN = (lang, tokens) => [
             component: 'LinkText',
             props: {
               href: 'https://www.gov.uk/guidance/register-for-email-reminders-from-companies-house',
-              children: tokens('LOGIN.[4].List.inWebFilingYouCanFourEmailReminders')
+              children: tokens('LOGIN.[4].List.inWebFilingYouCanFourEmailReminders'),
+              matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.[4].List.inWebFilingYouCanFourEmailReminders')]
             }
           },
           {
@@ -152,7 +153,8 @@ const LOGIN = (lang, tokens) => [
         props: {
           children: tokens('LOGIN.[7].BodyText.whoCanUseWebFiling'),
           href: `${CH_BASE_EWF_URL}/sframe?name=aboutWebFiling&lang=en`,
-          testId: 'aboutWebFilingLink'
+          testId: 'aboutWebFilingLink',
+          matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.[7].BodyText.whoCanUseWebFiling')]
         }
       }
     ]
@@ -167,7 +169,8 @@ const LOGIN = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
-          testId: 'lendersLink'
+          testId: 'lendersLink',
+          matomo: ['trackEvent', 'Landing Page', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
         }
       }
     ]

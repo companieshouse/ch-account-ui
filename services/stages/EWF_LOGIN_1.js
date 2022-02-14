@@ -72,7 +72,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
           children: tokens('SHARED.iveForgottenMyPassword'),
           href: '/password-recovery/request',
           testId: 'forgottenMyPasswordLink',
-          matomo: ['trackEvent', 'forgotPassword', tokens('SHARED.iveForgottenMyPassword')]
+          matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.iveForgottenMyPassword')]
         }
       }
     ]
@@ -88,7 +88,7 @@ const EWF_LOGIN_1 = (lang, tokens) => [
         props: {
           children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
           testId: 'forgottenMyPasswordLink',
-          matomo: ['trackEvent', 'Agent or Lender', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
+          matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
         }
       }
     ]
