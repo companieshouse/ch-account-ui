@@ -54,7 +54,8 @@ const COMPANY_ASSOCIATION_3 = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.idDoNotHaveAnAuthenticationCode'),
-          testId: 'requestAuthCodeLink'
+          testId: 'requestAuthCodeLink',
+          matomo: ['trackEvent', tokens('COMPANY_ASSOCIATION_3.[0].BrowserTitle.provideTheCompanyAuthCode'), tokens('SHARED.idDoNotHaveAnAuthenticationCode')]
         }
       }
     ]
