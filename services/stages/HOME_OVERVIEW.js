@@ -118,6 +118,12 @@ const HOME_OVERVIEW = (lang, tokens) => [
         props: {
           children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
         }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.welshOnly')
+        }
       }
     ]
   },

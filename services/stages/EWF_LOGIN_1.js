@@ -87,7 +87,8 @@ const EWF_LOGIN_1 = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
-          testId: 'forgottenMyPasswordLink'
+          testId: 'forgottenMyPasswordLink',
+          matomo: ['trackEvent', 'Agent or Lender', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
         }
       }
     ]
