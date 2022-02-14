@@ -1,4 +1,3 @@
-/* global _paq */
 import { translate } from './translate'
 import { parseTemplateString } from './template'
 import { setImmutable as pathSetImmutable } from '@irrelon/path'
@@ -90,7 +89,6 @@ export const processErrorMessageTemplateStrings = (errors, data) => {
     const updatePath = `${index}.label`
     const newLabel = parseTemplateString(data, error.label, true, false)
     if (error.label === newLabel) return
-    _paq.push(['trackEvent', 'Error:', newLabel])
 
     newErrors = pathSetImmutable(errors, updatePath, newLabel)
   })
