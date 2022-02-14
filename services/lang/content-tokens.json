@@ -1334,6 +1334,10 @@
     "en": "You will not be able to pay with a Companies House payment account.",
     "cy": "Ni fyddwch yn gallu talu gyda chyfrif talu Tŷ'r Cwmnïau."
   },
+  "SHARED.NotificationBanner.CHConfirmationJourney.welshOnly": {
+    "en": "",
+    "cy": "Mae'r gwasanaeth ffeilio eich datganiad cadarnhau ar gael yn Saesneg yn unig ar hyn o bryd."
+  },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
     "cy": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol"
