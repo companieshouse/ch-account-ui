@@ -1,4 +1,4 @@
-import errorSignedOut from './shared/errorSignedOut'
+/* eslint-disable no-template-curly-in-string */
 import { logoutFlow } from '../forgerock'
 
 const SUCCESS_SIGNED_OUT = (lang, tokens) => ([

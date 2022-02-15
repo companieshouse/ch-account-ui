@@ -1,3 +1,4 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
@@ -5,11 +6,18 @@ import HeadingText from '../typeography/HeadingText'
 import { errorsPropType } from '../../../services/propTypes'
 
 const RadioGroup = (props) => {
-  const { hint = '', label = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined, caption, captionPosition, captionSize, renderLabelAs } = props
+  const { hint = '', label = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined, caption, captionPosition, captionSize, renderLabelAs, matomo } = props
   const classes = [className]
 
   const finalClassName = classes.join(' ').trim()
   const error = getFieldError(errors, id)
+
+  const onClick = (evt) => {
+    if (matomo) {
+      matomo.push(options[evt.target.value].label)
+      _paq.push(matomo)
+    }
+  }
 
   return (
     <div className={`govuk-form-group ${Boolean(error || groupError) && 'govuk-form-group--error'} ${finalClassName}`}>
@@ -43,6 +51,7 @@ const RadioGroup = (props) => {
               name={id} type="radio"
               value={option.value}
               aria-describedby={option.hint ? `${id}_${index}-hint` : null}
+              onClick={onClick}
             />
             <label className="govuk-label govuk-radios__label" htmlFor={`${id}_${index}`}>
               {option.label}
