@@ -1,4 +1,4 @@
-const withTM = require('next-transpile-modules')(['@irrelon/path'])
+const withTM = require('next-transpile-modules')(['@irrelon/path', '_paq'])
 
 const BASE_PATH = process.env.BASE_PATH
 const ENVIRONMENT = process.env.ENVIRONMENT
