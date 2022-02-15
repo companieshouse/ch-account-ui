@@ -121,7 +121,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
         component: 'LinkText',
         props: {
           href: 'https://www.gov.uk/guidance/company-authentication-codes-for-online-filing#change-or-cancel-your-code',
-          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode')
+          children: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode'),
+          matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.changeTheAuthenticationCode')]
         }
       },
       {
@@ -150,7 +151,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
       renderAs: 'link',
       children: tokens('SHARED.addACompany'),
       href: '/account/associate/_start',
-      testId: 'accountAssociateCompanyLink'
+      testId: 'accountAssociateCompanyLink',
+      matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('SHARED.addACompany')]
     }
   },
   {
@@ -260,7 +262,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                   renderAs: 'link',
                   children: tokens('SHARED.addACompany'),
                   href: '/account/associate/_start',
-                  testId: 'accountAssociateCompanyLink'
+                  testId: 'accountAssociateCompanyLink',
+                  matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('SHARED.addACompany')]
                 }
               }
             ]
@@ -492,7 +495,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                                 },
                                                 props: {
                                                   children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'),
-                                                  className: 'govuk-link--no-visited-state'
+                                                  className: 'govuk-link--no-visited-state',
+                                                  matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails')]
                                                 }
                                               }
                                             ]
@@ -511,7 +515,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                     dynamicProps: {
                                       href: '${company.filePath}',
                                       children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'),
-                                      className: 'govuk-link--no-visited-state'
+                                      className: 'govuk-link--no-visited-state',
+                                      matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany')]
                                     }
                                   }
                                 ]
@@ -524,7 +529,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                     dynamicProps: {
                                       href: '${company.authorisePath}',
                                       children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis'),
-                                      className: 'govuk-link--no-visited-state'
+                                      className: 'govuk-link--no-visited-state',
+                                      matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('HOME_YOUR_COMPANIES.[7].Fragment.authoriseAPersonToFileOnlineForThis')]
                                     }
                                   }
                                 ]
