@@ -61,7 +61,8 @@ const EWF_LOGIN_5 = (lang, tokens) => [
               name: 'radioRequired',
               token: 'SELECT_YES_NO'
             }
-          ]
+          ],
+          matomo: ['trackEvent', tokens('SHARED.doYouWantUsToStoreTheCompanyDetailsFor')]
         }
       }
     }
