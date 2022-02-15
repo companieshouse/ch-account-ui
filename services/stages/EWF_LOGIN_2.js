@@ -45,7 +45,8 @@ const EWF_LOGIN_2 = (lang, tokens) => [
                         children: tokens('SHARED.companiesHouseRegisterOpensInANewTab'),
                         href: 'https://find-and-update.company-information.service.gov.uk',
                         target: '_blank',
-                        testId: 'companiesHouseRegisterLink'
+                        testId: 'companiesHouseRegisterLink',
+                        matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAccess'), tokens('SHARED.companiesHouseRegisterOpensInANewTab')]
                       }
                     },
                     {
@@ -85,7 +86,8 @@ const EWF_LOGIN_2 = (lang, tokens) => [
               name: 'radioRequired',
               token: 'COMPANY_NOT_FOUND'
             }
-          ]
+          ],
+          matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAccess'), tokens('EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered')]
         }
       }
     }
