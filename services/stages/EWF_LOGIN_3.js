@@ -75,7 +75,8 @@ const EWF_LOGIN_3 = (lang, tokens) => [
     props: {
       children: tokens('SHARED.confirmAndContinue'),
       type: 'submit',
-      testId: 'submitButton'
+      testId: 'submitButton',
+      matomo: ['trackEvent', tokens('SHARED.confirmThisIsTheCorrectCompany'), tokens('SHARED.confirmAndContinue')]
     }
   },
   {
@@ -93,7 +94,8 @@ const EWF_LOGIN_3 = (lang, tokens) => [
               target: 'IDToken4',
               value: 1
             }
-          }
+          },
+          matomo: ['trackEvent', tokens('SHARED.confirmThisIsTheCorrectCompany'), tokens('SHARED.chooseADifferentCompany')]
         },
         dynamicProps: {
           href: '${links.chooseCompanyPath}'
