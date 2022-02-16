@@ -75,7 +75,8 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
     props: {
       children: tokens('SHARED.confirmAndContinue'),
       type: 'submit',
-      testId: 'submitButton'
+      testId: 'submitButton',
+      matomo: ['trackEvent', tokens('SHARED.confirmThisIsTheCorrectCompany'), tokens('SHARED.confirmAndContinue')]
     }
   },
   {
@@ -85,7 +86,8 @@ const COMPANY_ASSOCIATION_2 = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.chooseADifferentCompany'),
-          href: '/account/associate/_restart'
+          href: '/account/associate/_restart',
+          matomo: ['trackEvent', tokens('SHARED.confirmThisIsTheCorrectCompany'), tokens('SHARED.chooseADifferentCompany')]
         }
       }
     ]
