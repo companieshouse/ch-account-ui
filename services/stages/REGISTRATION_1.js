@@ -97,7 +97,8 @@ const REGISTRATION_1 = (lang, tokens) => [
     props: {
       children: tokens('SHARED.continue'),
       type: 'submit',
-      testId: 'submitButton'
+      testId: 'submitButton',
+      matomo: ['trackEvent', tokens('SHARED.whatAreYourDetails'), tokens('SHARED.continue')]
     }
   }
 ]

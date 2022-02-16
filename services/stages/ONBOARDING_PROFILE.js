@@ -124,7 +124,8 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
       props: {
         children: tokens('SHARED.continue'),
         type: 'submit',
-        testId: 'submitButton'
+        testId: 'submitButton',
+        matomo: ['trackEvent', tokens('SHARED.whatAreYourDetails'), tokens('SHARED.continue')]
       }
     },
     {
@@ -140,7 +141,8 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
             target: 'IDToken6',
             value: 0
           }
-        }
+        },
+        matomo: ['trackEvent', tokens('SHARED.whatAreYourDetails'), tokens('SHARED.skip')]
       }
     }
     ]
