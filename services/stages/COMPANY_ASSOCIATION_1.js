@@ -80,6 +80,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
               checked: false
             }
           ],
+          matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd'), tokens('EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered')],
           customValidation: [
             {
               name: 'radioRequired',
