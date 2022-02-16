@@ -138,7 +138,8 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
                   value: 0,
                   noValidate: true
                 }
-              }
+              },
+              matomo: ['trackEvent', tokens('SHARED.checkYourPhone'), tokens('SHARED.askUsToSendYouAnotherTextMessage')]
             }
           },
           {
