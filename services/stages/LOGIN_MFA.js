@@ -99,7 +99,8 @@ const LOGIN_MFA = (lang, tokens) => [
                   value: 0,
                   noValidate: true
                 }
-              }
+              },
+              matomo: ['trackEvent', tokens('SHARED.checkYourPhone'), tokens('SHARED.askUsToSendYouAnotherTextMessage')]
             }
           },
           {
