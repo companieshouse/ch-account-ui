@@ -31,7 +31,8 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
               name: 'radioRequired',
               token: 'SELECT_YES_NO'
             }
-          ]
+          ],
+          matomo: ['trackEvent', tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail'), tokens('CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.canWeEmailYouToTellYouAboutANewMessageInYour')]
         },
         IDToken4: {
           _hidden: true
@@ -54,7 +55,8 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.cancel'),
-          href: '/account/manage'
+          href: '/account/manage',
+          matomo: ['trackEvent', tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail'), tokens('SHARED.cancel')]
         }
       }
     ]
