@@ -77,7 +77,8 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.cancel'),
-          href: '/account/manage'
+          href: '/account/manage',
+          matomo: ['trackEvent', tokens('SHARED.changeYourPassword'), tokens('SHARED.cancel')]
         }
       }
     ]

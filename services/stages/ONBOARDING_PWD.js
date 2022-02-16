@@ -98,7 +98,8 @@ const ONBOARDING_PWD = (lang, tokens) => [
         props: {
           children: tokens('ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling'),
           testId: 'guidanceLink',
-          href: 'https://www.gov.uk/guidance/filing-your-companies-house-information-online'
+          href: 'https://www.gov.uk/guidance/filing-your-companies-house-information-online',
+          matomo: ['trackEvent', tokens('ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling'), tokens('ONBOARDING_PWD_1.[6].LinkText.guidanceAboutOnlineFiling')]
         }
       }
     ]

@@ -120,7 +120,8 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail'),
-          testId: 'resendAuthorisedUserRequestLink'
+          testId: 'resendAuthorisedUserRequestLink',
+          matomo: ['trackEvent', tokens('SHARED.authorisedPersonsDetails'), tokens('HOME_AUTHORISED_PERSON.[3].SummaryList.resendEmail')]
         },
         dynamicProps: {
           href: '${company.resendPath}'
@@ -176,7 +177,8 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
         props: {
           children: tokens('HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis'),
           href: '',
-          testId: 'removeAuthorisedUserRequestLink'
+          testId: 'removeAuthorisedUserRequestLink',
+          matomo: ['trackEvent', tokens('SHARED.authorisedPersonsDetails'), tokens('HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis')]
         },
         dynamicProps: {
           href: '${company.removeAuthorisedPath}'

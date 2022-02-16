@@ -33,7 +33,8 @@ const pageNotFoundError = (lang, tokens) => [
         props: {
           children: tokens('SHARED.startAgainToRegisterANewAccount'),
           href: '/account/register/_start/',
-          testId: 'registrationLink'
+          testId: 'registrationLink',
+          matomo: ['trackEvent', tokens('SHARED.pageNotFound'), tokens('SHARED.startAgainToRegisterANewAccount')]
         }
       },
       {

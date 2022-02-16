@@ -57,7 +57,8 @@ const CH_LOGIN_1 = (lang, tokens) => [
         props: {
           children: tokens('CH_LOGIN_1.[4].BodyText.registerANewAccount'),
           href: '/account/register/_start',
-          testId: 'registerNewAccountLink'
+          testId: 'registerNewAccountLink',
+          matomo: ['trackEvent', tokens('CH_LOGIN_1.[1].PageHeading.signInToYourCompaniesHouseAccount'), tokens('CH_LOGIN_1.[4].BodyText.registerANewAccount')]
         }
       }
     ]
@@ -70,7 +71,8 @@ const CH_LOGIN_1 = (lang, tokens) => [
         props: {
           children: tokens('SHARED.iveForgottenMyPassword'),
           href: '/password-recovery/request',
-          testId: 'forgottenMyPasswordLink'
+          testId: 'forgottenMyPasswordLink',
+          matomo: ['trackEvent', tokens('CH_LOGIN_1.[1].PageHeading.signInToYourCompaniesHouseAccount'), tokens('SHARED.iveForgottenMyPassword')]
         }
       }
     ]

@@ -52,7 +52,8 @@ const REGISTRATION_ERROR = (lang, tokens) => [
             props: {
               children: tokens('SHARED.signBackInToYourAccount'),
               href: '/account/login/',
-              testId: 'contactCompaniesHouseLink'
+              testId: 'contactCompaniesHouseLink',
+              matomo: ['trackEvent', tokens('REGISTRATION_ERROR.[4].Fragment.userAlreadyExists'), tokens('SHARED.signBackInToYourAccount')]
             }
           },
           {
@@ -103,7 +104,8 @@ const REGISTRATION_ERROR = (lang, tokens) => [
             props: {
               children: tokens('REGISTRATION_ERROR.[4].Fragment.registerANewAccount'),
               href: '/account/register/_start/',
-              testId: 'registrationLink'
+              testId: 'registrationLink',
+              matomo: ['trackEvent', tokens('REGISTRATION_ERROR.[4].Fragment.userAlreadyExists'), tokens('REGISTRATION_ERROR.[4].Fragment.registerANewAccount')]
             }
           },
           {
@@ -145,7 +147,8 @@ const REGISTRATION_ERROR = (lang, tokens) => [
             props: {
               children: tokens('REGISTRATION_ERROR.[4].Fragment.registerANewAccount'),
               href: '/account/register/_start/',
-              testId: 'registrationLink'
+              testId: 'registrationLink',
+              matomo: ['trackEvent', tokens('REGISTRATION_ERROR.[4].Fragment.userAlreadyExists'), tokens('REGISTRATION_ERROR.[4].Fragment.registerANewAccount')]
             }
           },
           {

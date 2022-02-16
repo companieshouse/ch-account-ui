@@ -66,7 +66,8 @@ const REGISTRATION_RESEND = (lang, tokens) => [
             }
           },
           href: '',
-          testId: 'changeEmail'
+          testId: 'changeEmail',
+          matomo: ['trackEvent', tokens('REGISTRATION_RESEND.[0].PageHeading.sendANewEmail'), tokens('SHARED.giveUsADifferentEmailAddressStandalone')]
         }
       }
     ]

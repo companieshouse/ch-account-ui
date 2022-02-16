@@ -48,7 +48,8 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
             props: {
               children: tokens('RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword'),
               href: '/account/register/_restart/',
-              testId: 'startRegistrationAgainLink'
+              testId: 'startRegistrationAgainLink',
+              matomo: ['trackEvent', tokens('RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired'), tokens('RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword')]
             }
           }
         ]

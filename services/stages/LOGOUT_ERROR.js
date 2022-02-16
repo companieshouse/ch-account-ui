@@ -21,7 +21,8 @@ const LOGOUT_ERROR = (lang, tokens) => [
         props: {
           children: 'Contact Companies House',
           href: 'https://www.gov.uk/contact-companies-house',
-          testId: 'contactCompaniesHouseLink'
+          testId: 'contactCompaniesHouseLink',
+          matomo: ['trackEvent', 'Sorry, there is a problem with the service', 'Contact Companies House']
         }
       },
       {

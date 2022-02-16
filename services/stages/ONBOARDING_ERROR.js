@@ -70,7 +70,8 @@ const ONBOARDING_ERROR = (lang, tokens) => [
             },
             props: {
               children: tokens('SHARED.signInToWebFilingLink'),
-              testId: 'webFilingLink'
+              testId: 'webFilingLink',
+              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.linkRedirectedToWrongPage'), tokens('SHARED.signInToWebFilingLink')]
             }
           },
           {
@@ -126,7 +127,8 @@ const ONBOARDING_ERROR = (lang, tokens) => [
             },
             props: {
               children: tokens('SHARED.signInToWebFilingLink'),
-              testId: 'webFilingLink'
+              testId: 'webFilingLink',
+              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.linkRedirectedToWrongPage'), tokens('SHARED.signInToWebFilingLink')]
             }
           },
           {
@@ -167,7 +169,8 @@ const ONBOARDING_ERROR = (lang, tokens) => [
             component: 'LinkText',
             props: {
               href: '/account/logout/',
-              children: tokens('SHARED.signOut')
+              children: tokens('SHARED.signOut'),
+              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.linkRedirectedToWrongPage'), tokens('SHARED.signOut')]
             }
           },
           {

@@ -167,7 +167,8 @@ const REGISTRATION_3 = (lang, tokens) => [
                 }
               },
               href: '',
-              testId: 'changeEmail'
+              testId: 'changeEmail',
+              matomo: ['trackEvent', tokens('REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress'), tokens('SHARED.giveUsADifferentEmailAddress')]
             }
           },
           {
