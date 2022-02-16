@@ -134,7 +134,8 @@ const REGISTRATION_3 = (lang, tokens) => [
                 }
               },
               href: '',
-              testId: 'resendEmailLink'
+              testId: 'resendEmailLink',
+              matomo: ['trackEvent', tokens('REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress'), tokens('SHARED.askUsToSendYouAnotherEmail')]
             }
           },
           {
