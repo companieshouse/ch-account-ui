@@ -26,6 +26,7 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
               label: tokens('SHARED.no')
             }
           ],
+          matomo: ['trackEvent', tokens('CHANGE_CONSENT_MARKETING.[0].BrowserTitle.manageAccountChangeConsentForCompaniesHouse'), tokens('CONSENT_MARKETING.Heading.canWeSendEmails')],
           customValidation: [
             {
               name: 'radioRequired',
@@ -54,7 +55,8 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.cancel'),
-          href: '/account/manage'
+          href: '/account/manage',
+          matomo: ['trackEvent', tokens('CHANGE_CONSENT_MARKETING.[0].BrowserTitle.manageAccountChangeConsentForCompaniesHouse'), tokens('SHARED.cancel')]
         }
       }
     ]

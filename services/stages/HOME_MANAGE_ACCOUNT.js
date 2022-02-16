@@ -183,7 +183,8 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
             label: tokens('SHARED.change'),
             desc: 'name',
             href: '/account/manage/change-preferences/_start/?action=changeUpdates'
-          }
+          },
+          matomo: ['trackEvent', tokens('SHARED.manageAccount'), tokens('HOME_MANAGE_ACCOUNT.[7].SummaryList.canWeSendYouEmailsToTellYouAbout')]
         },
         {
           label: tokens('CONSENT_MARKETING.Heading.canWeSendEmails'),
@@ -192,7 +193,8 @@ const HOME_MANAGE_ACCOUNT = (lang, tokens) => [
             label: tokens('SHARED.change'),
             desc: 'name',
             href: '/account/manage/change-preferences/_start/?action=changeMarketing'
-          }
+          },
+          matomo: ['trackEvent', tokens('SHARED.manageAccount'), tokens('CONSENT_MARKETING.Heading.canWeSendEmails')]
         }
       ]
     }

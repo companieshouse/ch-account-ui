@@ -1,3 +1,4 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
@@ -12,10 +13,18 @@ const CheckboxGroup = (props) => {
     testId,
     formGroup,
     formGroupHeading,
-    formGroupHint
+    formGroupHint,
+    matomo
   } = props
 
   const error = getFieldError(errors, id)
+
+  const onClick = (evt) => {
+    if (matomo) {
+      matomo.push(options[evt.target.value].label)
+      _paq.push(matomo)
+    }
+  }
 
   return (
     <>
@@ -45,6 +54,7 @@ const CheckboxGroup = (props) => {
             value={option.value}
             defaultChecked={option.checked}
             aria-describedby={option.hint ? `${id}_${index}-hint` : null}
+            onClick={onClick}
           />
           <label className="govuk-label govuk-checkboxes__label" htmlFor={`${id}_${index}`}>
             {option.label}
