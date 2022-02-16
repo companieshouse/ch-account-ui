@@ -97,7 +97,7 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
           })
         }
 
-        const additionalContent = customProps?.content
+        const additionalContent = customProps?.content && element.payload?.type !== 'HiddenValueCallback'
           ? <Dynamic
             componentMap={componentMap}
             headingCount={headingCount}
@@ -107,7 +107,6 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
             uiStage={uiStage}
           />
           : null
-
         // Find out if we need to group these inputs together into a single input group
         if (customProps && customProps.formGroup) {
           // The element is part of a group... let's find all these elements
