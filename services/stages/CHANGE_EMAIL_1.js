@@ -50,7 +50,8 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.cancel'),
-          href: '/account/manage'
+          href: '/account/manage',
+          matomo: ['trackEvent', tokens('SHARED.updateYourEmailAddress'), tokens('SHARED.cancel')]
         }
       }
     ]

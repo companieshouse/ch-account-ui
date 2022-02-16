@@ -251,7 +251,8 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                         component: 'LinkText',
                                         props: {
                                           className: 'govuk-link--no-visited-state',
-                                          testId: 'declineRequestLink'
+                                          testId: 'declineRequestLink',
+                                          matomo: ['trackEvent', tokens('SHARED.messages'), tokens('HOME_NOTIFICATIONS.[5].Fragment.acceptRequest')]
                                         },
                                         dynamicProps: {
                                           href: '${company.acceptPath}',
@@ -268,7 +269,8 @@ const HOME_NOTIFICATIONS = (lang, tokens) => [
                                         component: 'LinkText',
                                         props: {
                                           className: 'govuk-link--no-visited-state',
-                                          testId: 'declineRequestLink'
+                                          testId: 'declineRequestLink',
+                                          matomo: ['trackEvent', tokens('SHARED.messages'), tokens('HOME_NOTIFICATIONS.[5].Fragment.declineRequest')]
                                         },
                                         dynamicProps: {
                                           href: '${company.declinePath}',

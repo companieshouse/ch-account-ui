@@ -35,7 +35,8 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.signBackInToYourAccount'),
-          testId: 'loginExistingAccountLink'
+          testId: 'loginExistingAccountLink',
+          matomo: ['trackEvent', tokens('SHARED.youAreNowSignedOut'), tokens('SHARED.signBackInToYourAccount')]
         }
       },
       {
@@ -47,7 +48,8 @@ const LIMIT_EXCEEDED_ERROR = (lang, tokens) => [
         props: {
           children: tokens('SHARED.signBackInToYourAccount'),
           href: '/account/login',
-          testId: 'loginExistingAccountLink'
+          testId: 'loginExistingAccountLink',
+          matomo: ['trackEvent', tokens('SHARED.youAreNowSignedOut'), tokens('SHARED.signBackInToYourAccount')]
         }
       },
       {

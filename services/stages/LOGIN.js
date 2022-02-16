@@ -27,7 +27,8 @@ const LOGIN = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
-              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement'
+              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
+              matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
             }
           },
           {

@@ -45,7 +45,8 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
                         children: tokens('SHARED.companiesHouseRegisterOpensInANewTab'),
                         href: 'https://find-and-update.company-information.service.gov.uk',
                         target: '_blank',
-                        testId: 'companiesHouseRegisterLink'
+                        testId: 'companiesHouseRegisterLink',
+                        matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd'), tokens('SHARED.companiesHouseRegisterOpensInANewTab')]
                       }
                     },
                     {

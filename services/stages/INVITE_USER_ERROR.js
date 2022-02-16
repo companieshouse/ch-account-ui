@@ -37,7 +37,8 @@ const INVITE_USER_ERROR = (lang, tokens) => [
             props: {
               children: tokens('INVITE_USER_ERROR.[5].LinkText.goBackToYourCompanies'),
               href: '/account/your-companies/',
-              testId: 'yourCompaniesLink'
+              testId: 'yourCompaniesLink',
+              matomo: ['trackEvent', tokens('INVITE_USER_ERROR.[3].PageHeading.youCannotAuthoriseSomeone'), tokens('INVITE_USER_ERROR.[5].LinkText.goBackToYourCompanies')]
             }
           }
         ]

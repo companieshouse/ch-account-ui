@@ -27,7 +27,8 @@ const errorSignedOut = (lang, tokens) => [
         },
         props: {
           children: tokens('SHARED.signBackInToYourAccount'),
-          testId: 'loginExistingAccountLink'
+          testId: 'loginExistingAccountLink',
+          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.signBackInToYourAccount')]
         }
       },
       {
@@ -39,7 +40,8 @@ const errorSignedOut = (lang, tokens) => [
         props: {
           children: tokens('SHARED.signBackInToYourAccount'),
           href: '/account/login',
-          testId: 'loginExistingAccountLink'
+          testId: 'loginExistingAccountLink',
+          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.signBackInToYourAccount')]
         }
       },
       {

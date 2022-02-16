@@ -125,7 +125,8 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
                 }
               },
               href: '',
-              testId: 'resendEmailLink'
+              testId: 'resendEmailLink',
+              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.askUsToSendYouAnotherEmail')]
             }
           }
         ]
@@ -144,7 +145,8 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
             props: {
               children: tokens('SHARED.giveUsADifferentEmailAddress'),
               href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink'
+              testId: 'restartPasswordRecoveryLink',
+              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.giveUsADifferentEmailAddress')]
             }
           },
           {

@@ -36,7 +36,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          weight: 'bold'
+          weight: 'bold',
+          matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink')]
         },
         dynamicProps: {
           children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
@@ -73,7 +74,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
       {
         component: 'LinkText',
         props: {
-          weight: 'bold'
+          weight: 'bold',
+          matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink')]
         },
         dynamicProps: {
           children: tokens('HOME_OVERVIEW.[0].NotificationBanner.viewCompanyDetailsLink'),
@@ -102,7 +104,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
-              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement'
+              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
+              matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
             }
           },
           {

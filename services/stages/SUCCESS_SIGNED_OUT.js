@@ -47,7 +47,8 @@ const SUCCESS_SIGNED_OUT = (lang, tokens) => ([
         },
         props: {
           children: tokens('SHARED.signBackInToYourAccount'),
-          testId: 'loginExistingAccountLink'
+          testId: 'loginExistingAccountLink',
+          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.signBackInToYourAccount')]
         }
       }
     ]
