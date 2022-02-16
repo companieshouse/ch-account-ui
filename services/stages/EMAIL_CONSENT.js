@@ -21,12 +21,14 @@ const EMAIL_CONSENT = (lang, tokens) => [
           hint: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.hint.inTheFuture'),
           formGroup: 'emailPreferences',
           formGroupHeading: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHeading'),
-          formGroupHint: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHint')
+          formGroupHint: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHint'),
+          matomo: ['trackEvent', tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHeading'), tokens('CONSENT_PREFERENCES_1.DisplayUiElements.Heading.EmailsToTellYouAbout')]
         },
         IDToken2: {
           label: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.Heading.EmailsToHelp'),
           hint: tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.hint'),
-          formGroup: 'emailPreferences'
+          formGroup: 'emailPreferences',
+          matomo: ['trackEvent', tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHeading'), tokens('CONSENT_PREFERENCES_2.CHECKBOX_OPTION_2.Heading.EmailsToHelp')]
         }
       }
     }
