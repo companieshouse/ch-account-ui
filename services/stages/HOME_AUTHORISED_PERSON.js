@@ -158,7 +158,8 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
       renderAs: 'link',
       children: tokens('HOME_AUTHORISED_PERSON.[4].Button.cancelRequest'),
       href: '',
-      testId: 'cancelPendingUserRequestLink'
+      testId: 'cancelPendingUserRequestLink',
+      matomo: ['trackEvent', tokens('SHARED.authorisedPersonsDetails'), tokens('HOME_AUTHORISED_PERSON.[4].Button.cancelRequest')]
     },
     dynamicProps: {
       href: '${company.removePendingdPath}'

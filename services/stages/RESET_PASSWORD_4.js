@@ -54,7 +54,8 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
     props: {
       children: tokens('SHARED.resetPassword'),
       type: 'submit',
-      testId: 'submitButton'
+      testId: 'submitButton',
+      matomo: ['trackEvent', tokens('RESET_PASSWORD_4.[0].PageHeading.resetYourPassword'), tokens('SHARED.resetPassword')]
     }
   }
 ]

@@ -54,7 +54,8 @@ const otpResendEmail = (lang, tokens) => ([
           value: 0
         }
       },
-      testId: 'otpResendEmail'
+      testId: 'otpResendEmail',
+      matomo: ['trackEvent', tokens('REGISTRATION_RESEND.[0].PageHeading.sendANewEmail'), tokens('SHARED.sendEmail')]
     }
   }
 ])
