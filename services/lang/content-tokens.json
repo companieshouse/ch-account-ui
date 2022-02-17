@@ -1323,12 +1323,12 @@
     "cy": "Rhowch gynnig ar ein gwasanaeth newydd i ffeilio eich datganiad cadarnhau"
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany": {
-    "en": "If you have a private company limited by shares with 1 director, 1 person of significant control, 1 shareholder, and no company secretaries, you can use our ",
-    "cy": "Os oes gennych gwmni preifat wedi ei gyfyngu drwy gyfrannau gydag 1 cyfarwyddwr, 1 person â rheolaeth arwyddocaol, 1 cyfranddaliwr, a dim ysgrifenyddion cwmni, gallwch ddefnyddio ein "
+    "en": "If you have a private company limited by shares, with 1 to 5 officers (including directors and secretaries), up to 5 people with significant control, and 1 shareholder, you can use our ",
+    "cy": "Os oes gennych gwmni preifat cyfyngedig, wedi ei gyfyngu drwy gyfrannau, gydag 1 i 5 swyddog (gan gynnwys cyfarwyddwyr ac ysgrifenyddion), hyd at 5 o bobl sydd â rheolaeth arwyddocaol, ac 1 cyfranddaliwr, gallwch ddefnyddio ein "
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation": {
     "en": " new File a confirmation statement service",
-    "cy": "gwasanaeth newydd i Ffeilio eich datganiad cadarnhau"
+    "cy": " gwasanaeth newydd i Ffeilio eich datganiad cadarnhau"
   },
   "SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble": {
     "en": "You will not be able to pay with a Companies House payment account.",
