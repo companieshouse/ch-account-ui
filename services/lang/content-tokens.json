@@ -1206,6 +1206,14 @@
     "en": "Try again later.",
     "cy": "Rhowch gynnig arall arni yn hwyrach."
   },
+  "SHARED.ifTheProblemContinues": {
+    "en": "If the problem continues, you can contact us",
+    "cy": "Os bydd y broblem yn parhau, gallwch gysylltu â ni."
+  },
+  "SHARED.signOutOfYourAccount": {
+    "en": "Sign out of your account and sign back in again.",
+    "cy": "Arwyddwch allan o'ch cyfrif a mewngofnodwch eto."
+  },
   "SHARED.update": {
     "en": "Update",
     "cy": "Diweddaru"
