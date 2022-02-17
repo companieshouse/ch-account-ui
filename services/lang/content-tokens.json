@@ -220,8 +220,8 @@
     "cy": "Rydych wedi diweddaru eich dewisiadau e-bost yn llwyddiannus."
   },
   "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourEmailTo": {
-    "en": "You've successfully changed your email address to ${profile.email}.",
-    "cy": "Rydych wedi newid eich cyfeiriad e-bost yn llwyddiannus i ${profile.email}."
+    "en": "You’ve successfully updated your email address.",
+    "cy": "Rydych wedi diweddaru eich cyfeiriad e-bost yn llwyddiannus."
   },
   "HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourName": {
     "en": "You've successfully updated your name.",

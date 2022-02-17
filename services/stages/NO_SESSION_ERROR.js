@@ -36,7 +36,7 @@ const NO_SESSION_ERROR = (lang, tokens) => [
         },
         component: 'LinkText',
         dynamicProps: {
-          href: '${links.resumePath}'
+          href: '/account/login'
         },
         props: {
           children: tokens('SHARED.signBackInToYourAccount'),
