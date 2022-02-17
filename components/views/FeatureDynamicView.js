@@ -91,7 +91,7 @@ FeatureDynamicView.defaultProps = {
   uiElements: [],
   uiFeatures: [],
   width: 'two-thirds',
-  hasBackLink: true,
+  hasBackLink: false,
   hasLanguageSwitcher: true,
   hasLogoutLink: false,
   hasAccountLinks: false,

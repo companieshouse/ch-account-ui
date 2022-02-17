@@ -89,7 +89,7 @@ const InviteUser = ({ lang, queryParams }) => {
       formRef={formRef}
       width='two-thirds'
       onSubmit={onSubmit}
-      hasBackLink={true}
+      hasBackLink={false}
       hasAccountLinks={true}
       accountLinksItem={2}
       hasLogoutLink={true}

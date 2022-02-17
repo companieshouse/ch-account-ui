@@ -80,7 +80,7 @@ const Login = ({ lang, queryParams }) => {
       onSubmit={onSubmit}
       formRef={formRef}
       onBack={onBack}
-      hasBackLink={uiStage !== 'CH_LOGIN_1' && uiStage !== 'EWF_LOGIN_1'}
+      hasBackLink={false}
       hasLogoutLink={isCompanySelection || uiStage === 'EWF_PROFILE'}
       hasAccountLinks={isCompanySelection}
     >

@@ -21,7 +21,7 @@ const RequestAuthCode = ({ lang, queryParams }) => {
 
   return (
     <FeatureDynamicView
-      hasBackLink={true}
+      hasBackLink={false}
       hasAccountLinks={true}
       hasLogoutLink={true}
     >
