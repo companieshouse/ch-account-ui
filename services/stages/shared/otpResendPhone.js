@@ -59,7 +59,8 @@ const otpResendPhone = (lang, tokens) => ([
           value: 0
         }
       },
-      testId: 'otpResendSMS'
+      testId: 'otpResendSMS',
+      matomo: ['trackEvent', tokens('SHARED.sendANewTextMessage'), tokens('SHARED.sendText')]
     }
   }
 ])

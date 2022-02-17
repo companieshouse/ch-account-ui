@@ -84,7 +84,8 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
           children: tokens('REMOVE_USER_CONFIRM.[8].ButtonGroup.removeAuthorisation'),
           type: 'submit',
           testId: 'submitButton',
-          warning: true
+          warning: true,
+          matomo: ['trackEvent', tokens('REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS'), tokens('REMOVE_USER_CONFIRM.[8].ButtonGroup.removeAuthorisation')]
         }
       },
       {
@@ -100,7 +101,8 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
               target: 'IDToken4',
               value: 1
             }
-          }
+          },
+          matomo: ['trackEvent', tokens('REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS'), tokens('SHARED.cancel')]
         }
       }
     ]

@@ -47,7 +47,8 @@ const REGISTRATION_RESEND = (lang, tokens) => [
     props: {
       children: tokens('SHARED.sendEmail'),
       type: 'submit',
-      testId: 'submitButton'
+      testId: 'submitButton',
+      matomo: ['trackEvent', tokens('REGISTRATION_RESEND.[0].PageHeading.sendANewEmail'), tokens('SHARED.sendEmail')]
     }
   },
   {

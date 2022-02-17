@@ -81,7 +81,8 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
           target: 'IDToken2',
           value: 0
         }
-      }
+      },
+      matomo: ['trackEvent', tokens('INVITE_USER_CONFIRM.[0].pageHeading.checkTheAuthorisedPersonsEmail'), tokens('SHARED.confirmAndSendEmail')]
     }
   }
 ]

@@ -61,7 +61,8 @@ const REQUEST_AUTH_CODE = (lang, tokens) => [
       children: tokens('REQUEST_AUTHENTICATION_CODE_1.[6].Button.returnToHomePage'),
       renderAs: 'link',
       href: '/account/home/',
-      testId: 'homeButton'
+      testId: 'homeButton',
+      matomo: ['trackEvent', tokens('REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.youNeedTheAuthenticationCode'), tokens('REQUEST_AUTHENTICATION_CODE_1.[6].Button.returnToHomePage')]
     }
   }
 ]
