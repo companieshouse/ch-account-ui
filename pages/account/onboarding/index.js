@@ -47,7 +47,7 @@ const Onboarding = ({ lang, queryParams }) => {
     <FeatureDynamicView
       formRef={formRef}
       onSubmit={onSubmit}
-      hasBackLink={uiStage !== 'ONBOARDING_PWD'}
+      hasBackLink={false}
       onBack={onReset}
     >
       {uiStage

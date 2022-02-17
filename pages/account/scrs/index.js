@@ -50,7 +50,7 @@ const Scrs = ({ lang, queryParams }) => {
     <FeatureDynamicView
       formRef={formRef}
       onSubmit={onSubmit}
-      hasBackLink={uiStage !== 'SCRS_ERROR'}
+      hasBackLink={false}
       onBack={onReset}
     >
       {uiStage
