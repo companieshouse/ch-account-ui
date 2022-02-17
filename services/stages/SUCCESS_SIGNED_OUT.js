@@ -3,9 +3,25 @@ import { logoutFlow } from '../forgerock'
 
 const SUCCESS_SIGNED_OUT = (lang, tokens) => ([
   {
+    conditional: {
+      prop: '${bannerName}',
+      operator: 'eeq',
+      value: 'changeEmail'
+    },
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.sorryThereIsAProblemWithTheService')
+      title: tokens('HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourEmailTo')
+    }
+  },
+  {
+    conditional: {
+      prop: '${bannerName}',
+      operator: 'eeq',
+      value: 'changePassword'
+    },
+    component: 'BrowserTitle',
+    props: {
+      title: tokens('HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourPassword')
     }
   },
   {
@@ -19,9 +35,6 @@ const SUCCESS_SIGNED_OUT = (lang, tokens) => ([
       type: 'success',
       title: tokens('SHARED.success'),
       heading: tokens('HOME_MANAGE_ACCOUNT.[2].NotificationBanner.youveSuccessfullyUpdatedYourEmailTo')
-    },
-    props: {
-      children: tokens('HOME_MANAGE_ACCOUNT.[2].NotificationBanner.ifYouReceiveEReminders')
     }
   },
   {
