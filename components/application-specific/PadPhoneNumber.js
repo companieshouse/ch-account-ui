@@ -2,17 +2,23 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const PadPhoneNumber = ({ phoneNumber = '' }) => {
-  if (!phoneNumber) return null
+  if (!phoneNumber) {
+    return phoneNumber
+  }
 
   phoneNumber = phoneNumber.replace(/\s/g, '')
 
-  if (phoneNumber.length > 5) {
-    phoneNumber = phoneNumber.substring(0, 5).concat(' ') + phoneNumber.substring(5)
+  phoneNumber = phoneNumber.split('').reverse().join('')
+
+  if (phoneNumber.length > 6) {
+    phoneNumber = phoneNumber.substring(0, 6).concat(' ') + phoneNumber.substring(6)
   }
 
-  if (phoneNumber.length > 9) {
-    phoneNumber = phoneNumber.substring(0, 9).concat(' ') + phoneNumber.substring(9)
+  if (phoneNumber.length > 3) {
+    phoneNumber = phoneNumber.substring(0, 3).concat(' ') + phoneNumber.substring(3)
   }
+
+  phoneNumber = phoneNumber.split('').reverse().join('')
 
   return (
     <>{phoneNumber}</>
