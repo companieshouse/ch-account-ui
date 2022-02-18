@@ -26,7 +26,7 @@ const genericError = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.contactCompaniesHouse'),
-          href: 'https://www.gov.uk/contact-companies-house',
+          href: 'https://www.find-and-update.company-information.service.gov.uk/help/contact-us',
           testId: 'contactCompaniesHouseLink',
           matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactCompaniesHouse')]
         }
