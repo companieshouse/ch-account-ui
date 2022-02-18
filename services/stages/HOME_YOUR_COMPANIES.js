@@ -392,13 +392,11 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           {
                                             component: 'Th',
                                             props: {
-                                              className: 'wordBreakAll',
                                               children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
                                             }
                                           },
                                           {
                                             component: 'Th',
-                                            className: 'wordBreakAll',
                                             props: {
                                               children: tokens('SHARED.authorisationStatus')
                                             }
@@ -430,7 +428,6 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                               children: '${member.displayName}'
                                             },
                                             props: {
-                                              className: 'wordBreakAll'
                                             },
                                             content: [
                                               {
@@ -453,7 +450,6 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             },
                                             component: 'Td',
                                             props: {
-                                              className: 'wordBreakAll'
                                             },
                                             content: [
                                               {
@@ -473,7 +469,6 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             },
                                             component: 'Td',
                                             props: {
-                                              className: 'wordBreakAll'
                                             },
                                             content: [
                                               {
