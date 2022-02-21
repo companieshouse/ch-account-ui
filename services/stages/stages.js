@@ -48,6 +48,7 @@ import HOME_YOUR_COMPANIES from './HOME_YOUR_COMPANIES.js'
 import HOME_NOTIFICATIONS from './HOME_NOTIFICATIONS.js'
 import HOME_AUTHORISED_PERSON from './HOME_AUTHORISED_PERSON.js'
 import NO_SESSION_ERROR from './NO_SESSION_ERROR.js'
+import NO_SESSION from './NO_SESSION.js'
 import ERROR_SIGNED_OUT from './ERROR_SIGNED_OUT.js'
 import LIMIT_EXCEEDED_ERROR from './LIMIT_EXCEEDED_ERROR.js'
 import LOGIN from './LOGIN.js'
@@ -71,6 +72,7 @@ import SCRS_EXISTING_USER from './SCRS_EXISTING_USER.js'
 import SCRS_ERROR from './SCRS_ERROR.js'
 import OTP_RESEND from './OTP_RESEND.js'
 import SUCCESS_SIGNED_OUT from './SUCCESS_SIGNED_OUT.js'
+import LIMIT_EXCEEDED from './LIMIT_EXCEEDED.js'
 
 import contentTokens from '../lang/content-tokens.json'
 import log from '../log'
@@ -128,6 +130,7 @@ const getStage = (stage, lang) => {
     HOME_NOTIFICATIONS,
     HOME_AUTHORISED_PERSON,
     NO_SESSION_ERROR,
+    NO_SESSION,
     ERROR_SIGNED_OUT,
     LIMIT_EXCEEDED_ERROR,
     LOGOUT_ERROR,
@@ -149,7 +152,8 @@ const getStage = (stage, lang) => {
     SCRS_EXISTING_USER,
     SCRS_ERROR,
     OTP_RESEND,
-    SUCCESS_SIGNED_OUT
+    SUCCESS_SIGNED_OUT,
+    LIMIT_EXCEEDED
   }
 
   const tokens = (key) => {
