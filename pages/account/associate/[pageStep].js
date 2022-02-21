@@ -71,7 +71,7 @@ const AssociateUserAndCompany = ({ lang }) => {
       accountLinksItem={2}
       formRef={formRef}
       hasAccountLinks={true}
-      hasBackLink={true}
+      hasBackLink={false}
       hasLogoutLink={true}
       onSubmit={onSubmit}
       titleLinkHref="/account/home"
