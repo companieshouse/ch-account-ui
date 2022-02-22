@@ -3,7 +3,7 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('CHANGE_CONSENT_MARKETING.[0].BrowserTitle.manageAccountChangeConsentForCompaniesHouse')
+      title: tokens('CONSENT_MARKETING.Heading.canWeSendEmails')
     }
   },
   {
