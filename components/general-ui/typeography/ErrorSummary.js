@@ -1,3 +1,4 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
@@ -11,10 +12,18 @@ const ErrorSummary = (props) => {
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (headingCount) {
       headingCount.use()
       setTag(`h${headingCount.count}`)
+    }
+
+    if (errors.length > 0) {
+      errors.forEach(error => {
+        console.log(error.label)
+        _paq.push(['trackEvent', 'Error:', error.label])
+      })
     }
   }, [headingCount])
 
