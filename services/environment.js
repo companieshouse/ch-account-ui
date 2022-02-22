@@ -42,6 +42,6 @@ export const CH_BASE_URL = process.env.CH_BASE_URL || 'companieshouse.gov.uk'
 export const ANALYTICS_TRACKER_URL = process.env.ANALYTICS_TRACKER_URL || 'matomo.platform.aws.chdev.org'
 export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || '23'
 
-export const VERSION = process.env.VERSION || 'xx.xx.xx'
+export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
 console.log(`Running as environment: ${ENVIRONMENT}`)
