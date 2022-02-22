@@ -1,0 +1,50 @@
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+
+import HeadingCount from '../../services/HeadingCount'
+import WithLang from '../../services/lang/WithLang'
+import { getStageFeatures } from '../../services/translate'
+import FeatureDynamicView from '../../components/views/FeatureDynamicView'
+import Dynamic from '../../components/Dynamic'
+import componentMap from '../../services/componentMap'
+import { useRouter } from 'next/router'
+import { convertStageName } from '../../scripts/convert-stage-name'
+
+const Unauthorised = ({ lang }) => {
+  const [errors] = useState([])
+  const headingCount = new HeadingCount()
+  const router = useRouter()
+  const [uiStage, setUiStage] = useState('NO_SESSION')
+  const [content, setContent] = useState({})
+
+  React.useEffect(() => {
+    if (router.query.pageStep) {
+      setUiStage('UNAUTHORISED_' + convertStageName(router.query.pageStep))
+      setContent(getStageFeatures(lang, 'UNAUTHORISED_' + convertStageName(router.query.pageStep)))
+    }
+  }, [router.query.pageStep, lang])
+
+  return (
+    <FeatureDynamicView
+      width="full"
+      titleLinkHref="/account/home"
+      hasBackLink={false}
+      hasLanguageSwitcher={true}
+    >
+      <Dynamic
+        componentMap={componentMap}
+        headingCount={headingCount}
+        content={content}
+        errors={errors}
+        uiElements={[]}
+        uiStage={uiStage}
+      />
+    </FeatureDynamicView>
+  )
+}
+export { Unauthorised }
+export default WithLang(Unauthorised)
+
+Unauthorised.propTypes = {
+  lang: PropTypes.string
+}
