@@ -1,4 +1,3 @@
-/* global _paq */
 import React from 'react'
 import { processErrorMessageTemplateStrings } from '../../services/errors'
 
@@ -12,14 +11,6 @@ import { processErrorMessageTemplateStrings } from '../../services/errors'
 const WithTransformedErrors = (WrappedComponent) => function WithTransformedErrors (props) {
   // eslint-disable-next-line react/prop-types
   const errors = processErrorMessageTemplateStrings(props.errors, props)
-
-  React.useEffect(() => {
-    if (errors.length > 0) {
-      errors.forEach(error => {
-        _paq.push(['trackEvent', 'Error:', error.label])
-      })
-    }
-  }, [errors])
 
   return <WrappedComponent {...props} errors={errors} />
 }
