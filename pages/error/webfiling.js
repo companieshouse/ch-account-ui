@@ -30,6 +30,7 @@ const ErrorWebfiling = ({ lang }) => {
       width="full"
       titleLinkHref="/account/home"
       hasAccountLinks
+      hasLogoutLink={true}
       hasLanguageSwitcher={true}
     >
       <Dynamic
