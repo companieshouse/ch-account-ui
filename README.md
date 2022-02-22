@@ -313,7 +313,7 @@ ${token}
 ```
 <!-- prettier-ignore-end -->
 This structure allows for the most flexibility while still being relatively simple to maintain. It should also make the
-extraction of the content to a CMS at later date trivial. 
+extraction of the content to a CMS at later date trivial....
 
 
 
