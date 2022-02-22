@@ -1,6 +1,12 @@
 /* eslint-disable no-template-curly-in-string */
 const RESET_PASSWORD_2 = (lang, tokens) => [
   {
+    component: 'BrowserTitle',
+    props: {
+      children: tokens('SHARED.howDoYouWantToConfirmItsYou')
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.howDoYouWantToConfirmItsYou')
