@@ -74,6 +74,8 @@ import OTP_RESEND from './OTP_RESEND.js'
 import SUCCESS_SIGNED_OUT from './SUCCESS_SIGNED_OUT.js'
 import LIMIT_EXCEEDED from './LIMIT_EXCEEDED.js'
 import WEBFILING from './WEBFILING.js'
+import UNAUTHORISED_CHANGE_EMAIL from './UNAUTHORISED_CHANGE_EMAIL.js'
+import UNAUTHORISED_CHANGE_PASSWORD from './UNAUTHORISED_CHANGE_PASSWORD.js'
 
 import contentTokens from '../lang/content-tokens.json'
 import log from '../log'
@@ -155,7 +157,9 @@ const getStage = (stage, lang) => {
     OTP_RESEND,
     SUCCESS_SIGNED_OUT,
     LIMIT_EXCEEDED,
-    WEBFILING
+    WEBFILING,
+    UNAUTHORISED_CHANGE_EMAIL,
+    UNAUTHORISED_CHANGE_PASSWORD
   }
 
   const tokens = (key) => {
