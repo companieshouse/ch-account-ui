@@ -73,6 +73,7 @@ import SCRS_ERROR from './SCRS_ERROR.js'
 import OTP_RESEND from './OTP_RESEND.js'
 import SUCCESS_SIGNED_OUT from './SUCCESS_SIGNED_OUT.js'
 import LIMIT_EXCEEDED from './LIMIT_EXCEEDED.js'
+import WEBFILING from './WEBFILING.js'
 
 import contentTokens from '../lang/content-tokens.json'
 import log from '../log'
@@ -153,7 +154,8 @@ const getStage = (stage, lang) => {
     SCRS_ERROR,
     OTP_RESEND,
     SUCCESS_SIGNED_OUT,
-    LIMIT_EXCEEDED
+    LIMIT_EXCEEDED,
+    WEBFILING
   }
 
   const tokens = (key) => {
