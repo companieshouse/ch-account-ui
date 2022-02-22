@@ -14,7 +14,7 @@ const ErrorWebfiling = ({ lang }) => {
   const headingCount = new HeadingCount()
   const router = useRouter()
   const [uiStage] = useState('WEBFILING')
-  const [content] = useState(getStageFeatures(lang, 'WEBFILING'))
+  const content = getStageFeatures(lang, 'WEBFILING')
 
   const { query } = router
   const { context, companyNo, authCodeRequest } = query

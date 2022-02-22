@@ -1364,27 +1364,27 @@
   },
   "WEBFILING.authcodeTrue.NotificationBanner.heading": {
     "en": "Your authentication code request has been received",
-    "cy": "Your authentication code request has been received"
+    "cy": "Derbyniwyd eich cais am god dilysu"
   },
   "WEBFILING.authcodeTrue.NotificationBanner.text": {
-    "en": "Your authentication code will be posted to you as requested",
-    "cy": "Your authentication code will be posted to you as requested"
+    "en": "Your authentication code will be posted to you as requested.",
+    "cy": "Mi fydd eich cod dilysu yn cael ei bostio atoch yn unol â’ch cais."
   },
   "WEBFILING.authcodeTrue.please": {
     "en": "Please ",
-    "cy": "Please "
+    "cy": ""
   },
   "WEBFILING.authcodeTrue.needAdditionalInfo": {
     "en": " if you need additional help or information.",
-    "cy": " if you need additional help or information."
+    "cy": " os oes angen help neu wybodaeth ychwanegol arnoch."
   },
   "WEBFILING.authcodeFalse.youllNeedTo": {
-    "en": "You'll need to ",
-    "cy": "You'll need to "
+    "en": "You need to ",
+    "cy": "Mae angen i chi "
   },
   "WEBFILING.authcodeFalse.soThatWeCanHelp": {
     "en": " so that we can help you with this issue.",
-    "cy": " so that we can help you with this issue."
+    "cy": " fel y gallwn eich helpu gyda'r mater hwn."
   },
   "SHARED.contactUs": {
     "en": "contact us",
