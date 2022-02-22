@@ -36,6 +36,12 @@ const phoneOtp = (lang, tokens) => ([
     ]
   },
   {
+    component: 'BrowserTitle',
+    props: {
+      title: tokens('SHARED.checkYourPhone')
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.checkYourPhone')
