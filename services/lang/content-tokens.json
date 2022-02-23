@@ -736,8 +736,8 @@
     "cy": "Fel arall, os oes gennych fynediad i'r cod dilysu cyfredol, gallwch "
   },
   "SHARED.anEmailRequestHasBeenSentToInvitedUserToBe": {
-    "en": "An email request has been sent to ${invitedUser} to be authorised to file online for ${companyName}",
-    "cy": "Mae cais e-bost wedi'i anfon at ${invitedUser} i'w awdurdodi i ffeilio ar-lein ar gyfer ${companyName}."
+    "en": "An email request has been sent to ${invitedUser} to be digitally authorised to file online for ${companyName}",
+    "cy": "Mae cais e-bost wedi'i anfon at ${invitedUser} i'w awdurdodi yn ddigidol i ffeilio ar-lein ar gyfer ${companyName}."
   },
   "SHARED.andAddTheCompanyToYourAccount": {
     "en": " and add the company to your account.",
