@@ -44,7 +44,8 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
             href: ' '
           }
         }
-      ]
+      ],
+      matomo: ['trackEvent', tokens('INVITE_USER_CONFIRM.[0].pageHeading.checkTheAuthorisedPersonsEmail'), tokens('SHARED.change')]
     }
   },
   {

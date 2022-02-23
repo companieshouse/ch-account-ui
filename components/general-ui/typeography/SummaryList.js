@@ -1,10 +1,17 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 
 const SummaryList = (props) => {
-  const { children, className, customLayout, renderFeatures, listItems, hasActions } = props
+  const { children, className, customLayout, renderFeatures, listItems, hasActions, matomo } = props
   const classes = [className]
   if (customLayout) classes.push('summary-list')
+
+  const onClick = () => {
+    if (matomo) {
+      _paq.push(matomo)
+    }
+  }
 
   const finalClassName = classes.join(' ').trim()
   return (
@@ -23,7 +30,7 @@ const SummaryList = (props) => {
         </dd>
         }
         {listItem.action?.href && <dd className="govuk-summary-list__actions">
-          <a className="govuk-link" href={`${listItem.action.href}`}>
+          <a className="govuk-link" href={`${listItem.action.href}`} onClick={onClick}>
             {listItem.action.label}<span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
           </a>
         </dd>}
