@@ -552,12 +552,12 @@
     "cy": "Y rheswm am hyn yw nad oes gan y cyfeiriad e-bost "
   },
   "ONBOARDING_PWD_1.[0].NotificationBanner.SpanText.whichWasProvided": {
-    "en": ", which was provided by the person who authorised you, does not have an account.",
-    "cy": " a ddarparwyd gan y person oedd wedi eich awdurdodi, gyfrif."
+    "en": ", which was provided by the person who digitally authorised you, does not have an account.",
+    "cy": " a ddarparwyd gan y person oedd wedi eich awdurdodi yn ddigidol, gyfrif."
   },
   "ONBOARDING_PWD_1.[0].NotificationBanner.youNeedToCreate": {
-    "en": "You need to create a WebFiling account to be authorised to file online for ${company.name}",
-    "cy": "Mae angen i chi greu cyfrif WebFiling er mwyn cael eich awdurdodi i ffeilio ar-lein ar gyfer ${company.name}"
+    "en": "You need to create a WebFiling account to be digitally authorised to file online for ${company.name}",
+    "cy": "Mae angen i chi greu cyfrif WebFiling er mwyn cael eich awdurdodi yn ddigidol i ffeilio ar-lein ar gyfer ${company.name}"
   },
   "ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling": {
     "en": "Create a password for your WebFiling account",
