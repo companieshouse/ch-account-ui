@@ -636,20 +636,20 @@
     "cy": "Tynnu awdurdodiad ${userDisplayName}'s i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "REMOVE_USER_CONFIRM.[3].BodyText.ifYouRemoveUserDisplayNameSAuthorisationThey": {
-    "en": "If you remove ${userDisplayName}'s authorisation, this means they will no longer be able to file online for ${company.name} without a current authentication code. We'll email ${userDisplayName} to let them know you have removed their authorisation.",
-    "cy": "Os byddwch yn tynnu awdurdodiad ${userDisplayName}, mae hyn yn golygu na fyddant bellach yn gallu ffeilio ar-lein ar gyfer ${company.name} heb god dilysu cyfredol. Byddwn yn e-bostio ${userDisplayName} i roi gwybod iddynt eich bod wedi dileu eu hawdurdodaeth."
+    "en": "If you remove ${userDisplayName}'s digital authorisation, this means they will no longer be able to file online for ${company.name} without a current authentication code. We'll email ${userDisplayName} to let them know you have removed their digital authorisation.",
+    "cy": "Os byddwch yn tynnu awdurdodiad digidol ${userDisplayName}, mae hyn yn golygu na fyddant bellach yn gallu ffeilio ar-lein ar gyfer ${company.name} heb god dilysu cyfredol. Byddwn yn e-bostio ${userDisplayName} i roi gwybod iddynt eich bod wedi dileu eu hawdurdodaeth ddigidol."
   },
   "REMOVE_USER_CONFIRM.[4].WarningText.userDisplayNameWillStillBeAbleToFileOnline": {
     "en": " ${userDisplayName} will still be able to file online for this company if they have access to the current authentication code.",
     "cy": "Bydd ${userDisplayName} dal yn gallu ffeilio ar-lein ar gyfer y cwmni hwn os oes ganddi fynediad i'r cod dilysu cyfredol."
   },
   "REMOVE_USER_CONFIRM.[4].WarningText.youShouldChangeTheAuthenticationCodeForThis": {
-    "en": "You may wish to change the authentication code for this company as soon as possible after you have removed ${userDisplayName}'s authorisation.",
-    "cy": "Efallai y byddwch yn dymuno newid y cod dilysu ar gyfer y cwmni hwn cyn gynted â phosibl ar ôl i chi tynnu awdurdodiad ${userDisplayName}."
+    "en": "You may wish to change the authentication code for this company as soon as possible after you have removed ${userDisplayName}'s digital authorisation.",
+    "cy": "Efallai y byddwch yn dymuno newid y cod dilysu ar gyfer y cwmni hwn cyn gynted â phosibl ar ôl i chi tynnu awdurdodiad ddigidol ${userDisplayName}."
   },
   "REMOVE_USER_CONFIRM.[6].BodyText.ifUserDisplayNameIsAppointedAsAnOfficerOfThe": {
-    "en": "If ${userDisplayName} is appointed as an officer of the company, such as a director or secretary, removing their authorisation to file online does not remove their appointment.",
-    "cy": "Os penodir ${userDisplayName} yn swyddog i'r cwmni, fel cyfarwyddwr neu ysgrifennydd, nid yw dileu eu hawdurdodiad i ffeilio ar-lein yn dileu eu penodiad."
+    "en": "If ${userDisplayName} is appointed as an officer of the company, such as a director or secretary, removing their digital authorisation to file online does not remove their appointment.",
+    "cy": "Os penodir ${userDisplayName} yn swyddog i'r cwmni, fel cyfarwyddwr neu ysgrifennydd, nid yw dileu eu hawdurdodiad ddigidol i ffeilio ar-lein yn dileu eu penodiad."
   },
   "REMOVE_USER_CONFIRM.[7].DisplayUiElements.iConfirmThatIHaveReadAndUnderstoodThis": {
     "en": "I confirm that I have read and understood this information.",
