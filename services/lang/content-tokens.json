@@ -368,8 +368,8 @@
     "cy": " ar gyfer y cwmni hwn os oes gan ${userName} fynediad iddo o hyd."
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.isNoLongerAuthorisedToFileOnline": {
-    "en": "${userName} is no longer authorised to file online for ${companyName}.",
-    "cy": "Nid yw ${userName} bellach wedi'i hawdurdodi i ffeilio ar-lein ar gyfer ${companyName}."
+    "en": "${userName} is no longer digitally authorised to file online for ${companyName}.",
+    "cy": "Nid yw ${userName} bellach wedi'i hawdurdodi yn ddigidol i ffeilio ar-lein ar gyfer ${companyName}."
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.youHaveDeclinedTheRequestToHaveAuthorisation": {
     "en": "You have declined the request to have authorisation to file online for ${companyName}",
