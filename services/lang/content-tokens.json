@@ -156,8 +156,8 @@
     "cy": "Mae hyn yn golygu:"
   },
   "EWF_LOGIN_5.[4].List.canAuthoriseOtherPeople": {
-    "en": "can authorise other people to file online for the company",
-    "cy": "gallwch awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni"
+    "en": "can digitally authorise other people to file online for the company",
+    "cy": "gallwch awdurdodi yn ddigidol pobl eraill i ffeilio ar-lein ar gyfer y cwmni"
   },
   "EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode": {
     "en": "will not need to re-enter the company's authentication code for most online filings",
@@ -436,8 +436,8 @@
     "cy": "Cadarnhawyd Gweld y manylion"
   },
   "HOME_YOUR_COMPANIES.[7].List.authorisePeopleToFile": {
-    "en": "authorise other people to file online for the company",
-    "cy": "awdurdodi pobl eraill i ffeilio ar-lein ar gyfer y cwmni hwn"
+    "en": "digitally authorise other people to file online for the company",
+    "cy": "awdurdodi yn ddigidol pobl eraill i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
   "HOME_YOUR_COMPANIES.[7].List.fileForTheCompanyOnline": {
     "en": "file for the company online",
