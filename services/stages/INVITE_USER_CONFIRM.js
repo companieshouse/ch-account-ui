@@ -31,7 +31,8 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
           label: '',
           value: '',
           action: {
-            label: ''
+            label: '',
+            href: ' '
           }
         },
         {
@@ -40,7 +41,7 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
           action: {
             label: tokens('SHARED.change'),
             desc: 'email',
-            href: ''
+            href: ' '
           }
         }
       ]
