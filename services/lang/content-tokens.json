@@ -380,12 +380,12 @@
     "cy": "Efallai yr hoffech "
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.requestCancelled": {
-    "en": "Authorisation cancelled",
-    "cy": "Awdurdodiad wedi'i ganslo"
+    "en": "Digital authorisation cancelled",
+    "cy": "Awdurdodiad digidol wedi'i ganslo"
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.theRequestFor": {
-    "en": "You have successfully cancelled authorisation for ",
-    "cy": "Rydych wedi canslo awdurdodiad "
+    "en": "You have successfully cancelled digital authorisation for ",
+    "cy": "Rydych wedi canslo awdurdodiad digidol "
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.toBeAddedAsAnAuthorised": {
     "en": " to file online for ${companyName}.",
