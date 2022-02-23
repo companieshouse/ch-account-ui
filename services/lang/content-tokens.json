@@ -1175,8 +1175,8 @@
     "cy": "Mae'r ddolen i dderbyn neu wrthod awdurdodiad i ffeilio ar-lein ar gyfer y cwmni hwn wedi dod i ben."
   },
   "SHARED.thePersonWhoGaveYouAuthorisationWouldNeedTo": {
-    "en": "The person who gave you authorisation would need to do this again if you want to be authorised to file online for this company.",
-    "cy": "Os ydych am gael eich awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn, bydd angen i'r person a roddodd awdurdodiad i chi, wneud hyn eto."
+    "en": "The person who gave you authorisation would need to do this again if you want to be digitally authorised to file online for this company.",
+    "cy": "Os ydych am gael eich awdurdodi i ffeilio ar-lein ar gyfer y cwmni hwn, bydd angen i'r person a roddodd awdurdodiad yn ddigidol i chi, wneud hyn eto."
   },
   "SHARED.theTextMessageMayTakeAFewMinutesTo": {
     "en": "The text message may take a few minutes to arrive.",
