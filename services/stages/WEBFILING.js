@@ -22,12 +22,6 @@ const WEBFILING = (lang, tokens) => [
         props: {
           children: tokens('WEBFILING.authcodeTrue.NotificationBanner.text')
         }
-      },
-      {
-        component: 'SpanText',
-        dynamicProps: {
-          children: '.'
-        }
       }
     ]
   },
