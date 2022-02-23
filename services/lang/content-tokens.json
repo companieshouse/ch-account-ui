@@ -1363,12 +1363,12 @@
     "cy": "Rheoli eich cyfrif - Gwiriwch eich ffôn"
   },
   "WEBFILING.authcodeTrue.NotificationBanner.heading": {
-    "en": "Your authentication code request has been received",
+    "en": "Authentication code request received",
     "cy": "Derbyniwyd eich cais am god dilysu"
   },
   "WEBFILING.authcodeTrue.NotificationBanner.text": {
-    "en": "Your authentication code will be posted to you as requested.",
-    "cy": "Mi fydd eich cod dilysu yn cael ei bostio atoch yn unol â’ch cais."
+    "en": "We’ll send the code to the company’s registered office address by post. It can take up to 5 days to arrive.",
+    "cy": "Byddwn yn anfon y cod i gyfeiriad swyddfa gofrestredig y cwmni drwy'r post. Gall gymryd hyd at 5 diwrnod i gyrraedd."
   },
   "WEBFILING.authcodeTrue.please": {
     "en": "Please ",
