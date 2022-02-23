@@ -196,8 +196,8 @@
     "cy": "Anfon e-bost arall"
   },
   "HOME_AUTHORISED_PERSON.[3].SummaryList.weHaveSentAnEmailToUserMailThisPersonMust": {
-    "en": "We have sent an email to ${user.email}. This person must select the request link in the email so that they can file online for ${company.name}.",
-    "cy": "Rydym wedi anfon e-bost at ${user.email}. Rhaid iddynt ddewis y ddolen hon yn yr e-bost i'w hawdurdodi i ffeilio ar-lein ar gyfer ${company.name}."
+    "en": "We have sent an email to ${user.email}. They must select the link in the email to be digitally authorised to file online for ${company.name}.",
+    "cy": "Rydym wedi anfon e-bost at ${user.email}. Rhaid iddynt ddewis y ddolen hon yn yr e-bost i'w hawdurdodi yn ddigidol i ffeilio ar-lein ar gyfer ${company.name}."
   },
   "HOME_AUTHORISED_PERSON.[4].Button.cancelRequest": {
     "en": "Cancel request",
