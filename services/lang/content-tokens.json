@@ -300,8 +300,8 @@
     "cy": "Rydych wedi sefydlu eich cyfrif WebFiling"
   },
   "HOME_OVERVIEW.[1].NotificationBanner.youCanNowFileDocumentsCompany": {
-    "en": "You can now file documents online and authorise other people to file online for ${company.name}.",
-    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill i ffeilio ar-lein ar gyfer ${company.name}."
+    "en": "You can now file documents online and digitally authorise other people to file online for ${company.name}.",
+    "cy": "Gallwch nawr ffeilio dogfennau ar-lein ac awdurdodi pobl eraill yn ddigidol i ffeilio ar-lein ar gyfer ${company.name}."
   },
   "HOME_OVERVIEW.[1].Row.home": {
     "en": "Home",
