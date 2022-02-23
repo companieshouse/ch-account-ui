@@ -204,8 +204,8 @@
     "cy": "Canslo y cais"
   },
   "HOME_AUTHORISED_PERSON.[5].LinkText.removeAuthorisationToFileOnlineForThis": {
-    "en": "Remove authorisation to file online for this company",
-    "cy": "Dileu'r awdurdodiad i ffeilio ar gyfer y cwmni hwn"
+    "en": "Remove digital authorisation to file online for this company",
+    "cy": "Dileu'r awdurdodiad digidol i ffeilio ar gyfer y cwmni hwn"
   },
   "HOME_MANAGE_ACCOUNT.[1].NotificationBanner.youveSuccessfullyUpdatedYourMobile": {
     "en": "You've successfully updated your mobile number.",
