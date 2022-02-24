@@ -157,7 +157,7 @@
   },
   "EWF_LOGIN_5.[4].List.canAuthoriseOtherPeople": {
     "en": "can digitally authorise other people to file online for the company",
-    "cy": "gallwch awdurdodi yn ddigidol pobl eraill i ffeilio ar-lein ar gyfer y cwmni"
+    "cy": "gallwch awdurdodi pobl eraill yn ddigidol i ffeilio ar-lein ar gyfer y cwmni"
   },
   "EWF_LOGIN_5.[4].List.willNotNeedToReenterTheCompanyAuthenticationCode": {
     "en": "will not need to re-enter the company's authentication code for most online filings",
@@ -355,7 +355,7 @@
     "en": "WebFiling",
     "cy": "WebFiling"
   },
-  "HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany": {
+  "HOME_YOUR_COMPANIES.[2].NotificationBanner.companyHasBeenAdded": {
     "en": " ${companyName} has been added to your account.",
     "cy": "Mae ${companyName} wedi'i ychwanegu at eich cyfrif."
   },
@@ -390,6 +390,10 @@
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.toBeAddedAsAnAuthorised": {
     "en": " to file online for ${companyName}.",
     "cy": " i ffeilio ar-lein ar gyfer ${companyName} yn llwyddiannus."
+  },
+  "HOME_YOUR_COMPANIES.[3].NotificationBanner.youAreNowAuthorised": {
+    "en": "You are now digitally authorised to file online for ${companyName}.",
+    "cy": "Rydych nawr wedi'ch awdurdodi'n ddigidol i ffeilio ar-lein ar gyfer ${companyName}."
   },
   "HOME_YOUR_COMPANIES.[3].Search.searchForACompany": {
     "en": "Search for a company you’ve added",
