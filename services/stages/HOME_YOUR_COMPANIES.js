@@ -33,7 +33,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     dynamicProps: {
       type: 'success',
       title: tokens('SHARED.success'),
-      heading: tokens('HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany')
+      heading: tokens('HOME_YOUR_COMPANIES.[2].NotificationBanner.companyHasBeenAdded')
     }
   },
   {
@@ -46,7 +46,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     dynamicProps: {
       type: 'success',
       title: tokens('SHARED.success'),
-      heading: tokens('HOME_YOUR_COMPANIES.[2].NotificationBanner.youAreNowAuthorisedToFileOnlineForCompany')
+      heading: tokens('HOME_YOUR_COMPANIES.[3].NotificationBanner.youAreNowAuthorised')
     }
   },
   {
