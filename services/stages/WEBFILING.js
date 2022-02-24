@@ -42,37 +42,6 @@ const WEBFILING = (lang, tokens) => [
       {
         conditional: {
           prop: '${paths.authCodeRequest}',
-          operator: 'eq',
-          value: 'true'
-        },
-        component: 'Fragment',
-        content: [
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('WEBFILING.authcodeTrue.please')
-            }
-          },
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens('SHARED.contactUs'),
-              href: 'https://www.find-and-update.company-information.service.gov.uk/help/contact-us',
-              testId: 'contactCompaniesHouseLink',
-              matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactUs')]
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('WEBFILING.authcodeTrue.needAdditionalInfo')
-            }
-          }
-        ]
-      },
-      {
-        conditional: {
-          prop: '${paths.authCodeRequest}',
           operator: 'ne',
           value: 'true'
         },
