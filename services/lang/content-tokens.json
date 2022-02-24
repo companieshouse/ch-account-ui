@@ -484,8 +484,8 @@
     "cy": "Yn WebFiling, gallwch:"
   },
   "LOGIN.[4].List.inWebFilingYouCanFive": {
-    "en": "authorise people to file documents for your company online",
-    "cy": "awdurdodi pobl i ffeilio dogfennau ar gyfer eich cwmni ar-lein"
+    "en": "digitally authorise people to file for your company online",
+    "cy": "awdurdodi pobl yn ddigidol i ffeilio ar gyfer eich cwmni ar-lein"
   },
   "LOGIN.[4].List.inWebFilingYouCanFourEmailReminders": {
     "en": "email reminders",
