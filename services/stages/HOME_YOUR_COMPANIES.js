@@ -471,7 +471,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             },
                                             component: 'Td',
                                             props: {
-                                              className: 'wordBreakAll'
+                                              className: 'wordBreakWord'
                                             },
                                             content: [
                                               {
