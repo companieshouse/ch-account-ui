@@ -1,6 +1,15 @@
 export const cleanAnalytics = (matomo) => {
 
-  const patterns = ['company.name', 'emailAddress', 'userDisplayName', 'user.email', 'company.inviter.displayName', 'companyName', 'invitedUser', 'userName']
+  const patterns = [
+    'company.name', 
+    'emailAddress', 
+    'userDisplayName', 
+    'user.email', 
+    'company.inviter.displayName', 
+    'companyName', 
+    'invitedUser', 
+    'userName',
+    '\\?.+[0-9]']
 
   const hashMap = {
     ['company.name']: '<company>',
@@ -10,15 +19,21 @@ export const cleanAnalytics = (matomo) => {
     ['company.inviter.displayName']: '<user>',
     ['companyName']: '<company>', 
     ['invitedUser']: '<invitedUser>', 
-    ['userName']: '<user>'
+    ['userName']: '<user>',
+    ['\\?.+[0-9]']: '<companyNumber>'
   }
 
   let updated = matomo.map((string) => {
+    let newString = string
     let match = patterns.filter(pattern => {
       const re = new RegExp(pattern)
+      if (re.test(string)) {
+        newString = string.replace(re, hashMap[pattern])
+      }
       return re.test(string)
     });
-    return string.replace(/(\${.+})/, hashMap[match])
+    newString.replace(/(\${<.+>})/, hashMap[match])
+    return newString
   })
 
   return updated
