@@ -1,6 +1,7 @@
 /* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
+import { cleanAnalytics } from '../../scripts/cleanAnalytics'
 
 const BrowserTitle = ({ title, errors }) => {
   const suffix = ' - Companies House WebFiling account - GOV.UK'
@@ -15,6 +16,7 @@ const BrowserTitle = ({ title, errors }) => {
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     const currentUrl = window.location.href
+    console.log(cleanAnalytics([currentUrl]))
     _paq.push(['setCustomUrl', currentUrl])
     _paq.push(['setDocumentTitle', title + suffix])
     _paq.push(['trackPageView', title])
