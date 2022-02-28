@@ -1,0 +1,17 @@
+path = path.replace(/company\/[^/]*\//, "company/_number/");
+path = path.replace(/transaction\/[^/]*\//,"transaction/_id/");
+path = path.replace(/company-accounts\/[^/]*\//, "company-accounts/_id/");
+path = path.replace(/protect-your-details\/.+?\//, "protect-your-details/_id/");
+path = path.replace(/protect-your-details\/.+?\/remove-evidence\/.+/, "protect-your-details/_id/remove-evidence/_fileId");
+path = path.replace(/efs-submission\/.+?\/company\/[^/]*\//, "efs-submission/_id/company/_number/");
+path = path.replace(/efs-submission\/.+?\/company\/[^/]*\/remove-document\/.+/, "efs-submission/_id/company/_number/remove-document/_fileId");
+path = path.replace(/\/penalty\/.+?\/(?!confirmation)/, "/penalty/_penaltyReference/");
+path = path.replace(/\/penalty\/.+?\/confirmation/, "/penalty/_referenceNumber/confirmation");
+path = path.replace(/\/auth-code-requests\/requests\/[^/]*\//, "/auth-code-requests/requests/_requestId/");
+path = path.replace(/orderable\/certificates\/.+?\//, "orderable/certificates/_certificateId/");
+path = path.replace(/orderable\/certified-copies\/.+?\//, "orderable/certified-copies/_certifiedCopiesId/");
+path = path.replace(/orderable\/missing-image-deliveries\/.+?\//, "orderable/missing-image-deliveries/_missingImageDeliveryId/");
+path = path.replace(/orderable\/dissolved-certificates\/.+?\//, "orderable/dissolved-certificates/_dissolvedCertificateId/");
+path = path.replace(/company\/_number\/orderable\/missing-image-deliveries\/.+/, "company/_number/orderable/missing-image-deliveries/_missingImageDeliveryId/");
+path = path.replace(/orders\/.+?\//, "orders/_orderId/");
+path = path.replace(/submit-abridged-accounts\/.*\/.*\//,"abridged_accounts/accounts_id/abridged_id/");

@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
+import { cleanAnalytics } from '../../../scripts/cleanAnalytics.js'
 
 const Button = ({
   warning = false,
@@ -31,7 +32,7 @@ const Button = ({
 
   onClick = (evt) => {
     if (matomo) {
-      _paq.push(matomo)
+      _paq.push(cleanAnalytics(matomo))
     }
     if (handler) {
       handlers[handler.name](evt, handler.params)

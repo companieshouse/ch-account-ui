@@ -36,6 +36,7 @@ function MyApp ({ Component, pageProps }) {
           } 
         `}
       </Script>
+      <Script src={`${BASE_PATH}/js/pikwik-enable.js`} strategy="beforeInteractive" />
       <CookieBanners />
       <Component {...pageProps} />
     </>

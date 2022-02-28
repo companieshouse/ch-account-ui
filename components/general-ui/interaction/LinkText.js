@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
+import { cleanAnalytics } from '../../../scripts/cleanAnalytics.js'
 
 const LinkText = (props) => {
   const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo } = props
@@ -12,7 +13,7 @@ const LinkText = (props) => {
   if (!onClick) {
     onClick = (evt) => {
       if (matomo) {
-        _paq.push(matomo)
+        _paq.push(cleanAnalytics(matomo))
       }
       if (handler) {
         handlers[handler.name](evt, handler.params)
