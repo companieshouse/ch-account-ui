@@ -511,7 +511,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                   {
                                     component: 'LinkText',
                                     dynamicProps: {
-                                      href: '${company.filePath}',
+                                      href: '${company.filePath}?lang=' + lang,
                                       children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany'),
                                       className: 'govuk-link--no-visited-state',
                                       matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('HOME_YOUR_COMPANIES.[7].Fragment.fileForThisCompany')]
