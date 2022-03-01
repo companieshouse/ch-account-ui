@@ -11,6 +11,8 @@ import WithQueryParams from '../../../components/providers/WithQueryParams'
 import useFRAuth from '../../../services/useFRAuth'
 import { translateErrors } from '../../../services/errors'
 import { formatNumber } from '../../../services/formatting'
+import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie'
 
 const YourCompanies = ({ lang, queryParams }) => {
   const [search, setSearch] = useState()
@@ -18,10 +20,22 @@ const YourCompanies = ({ lang, queryParams }) => {
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
+  const router = useRouter()
+  const { query } = router
+  const [cookies, setCookie] = useCookies(['lang'])
 
   useEffect(() => {
     headingCount.reset()
   })
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (query?.lang !== undefined) {
+      setCookie('lang', query?.lang, { path: '/' })
+    } else {
+      setCookie('lang', lang, { path: '/' })
+    }
+  }, [lang, query, cookies])
 
   const onSearch = (search) => {
     setSearch(search)
