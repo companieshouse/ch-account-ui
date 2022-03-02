@@ -17,14 +17,14 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
+        IDToken3: {
+          label: tokens('SHARED.password'),
+          hint: tokens('UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword')
+        },
         IDToken2: {
           label: tokens('SHARED.mobileNumber'),
           hint: tokens('UPDATE_PHONE_1.[3].DisplayUiElements.wellSendASecurityCodeToThisNumberByText'),
           autoComplete: 'off'
-        },
-        IDToken3: {
-          label: tokens('SHARED.password'),
-          hint: tokens('UPDATE_PHONE_1.[3].DisplayUiElements.enterYourCompaniesHouseAccountPassword')
         }
       }
     }
