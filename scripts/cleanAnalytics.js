@@ -9,7 +9,10 @@ export const cleanAnalytics = (matomo) => {
     'companyName', 
     'invitedUser', 
     'userName',
-    '\\?.+[0-9]']
+    '\\?.+[0-9]',
+    '\\&.+[0-9][a-z|A-Z]+',
+    '\\&companyName.+[0-9][a-z|A-Z]+'
+  ]
 
   const hashMap = {
     ['company.name']: '<company>',
@@ -20,7 +23,9 @@ export const cleanAnalytics = (matomo) => {
     ['companyName']: '<company>', 
     ['invitedUser']: '<invitedUser>', 
     ['userName']: '<user>',
-    ['\\?.+[0-9]']: '<companyNumber>'
+    ['\\?.+[0-9]']: '<companyNumber>',
+    ['\\&.+[0-9][a-z|A-Z]+']: '<companyNumber>',
+    ['\\&companyName.+[0-9][a-z|A-Z]+']: '<companyName>'
   }
 
   let updated = matomo.map((string) => {
