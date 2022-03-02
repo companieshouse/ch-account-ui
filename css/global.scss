@@ -35,13 +35,22 @@
   word-break: break-word;
 }
 
+.govuk-grid-row.flex {
+  flex-wrap: wrap;
+}
+
 .infoBlock {
   padding: 10px 10px 10px 0;
 
   &__wrapper {
-    min-height: 390px;
+    width: 100%;
     padding: 2em;
     background-color: govuk-colour("light-grey");
+
+    @include govuk-media-query($from: tablet) {
+      min-height: 390px;
+      
+    }
   }
 
   &__count {
