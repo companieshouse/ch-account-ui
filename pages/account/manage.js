@@ -10,7 +10,6 @@ import componentMap from '../../services/componentMap'
 import WithLang from '../../services/lang/WithLang'
 import useFRAuth from '../../services/useFRAuth'
 import { getUserFields } from '../../services/forgerock'
-import { useCookies } from 'react-cookie'
 
 const ManageAccount = ({ errors, lang }) => {
   const { profile, accessToken } = useFRAuth()
@@ -21,16 +20,6 @@ const ManageAccount = ({ errors, lang }) => {
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
   const { notifyType, notifyHeading, notifyTitle, notifyChildren } = router.query
-  const [cookies, setCookie] = useCookies(['lang'])
-
-  /* eslint-disable react-hooks/exhaustive-deps */
-  React.useEffect(() => {
-    if (router.query?.lang !== undefined) {
-      setCookie('lang', router.query?.lang, { path: '/' })
-    } else {
-      setCookie('lang', lang, { path: '/' })
-    }
-  }, [lang, router.query?.lang, cookies])
 
   React.useEffect(() => {
     headingCount.reset()

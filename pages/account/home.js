@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
-import { useCookies } from 'react-cookie'
 import WithLang from '../../services/lang/WithLang'
 import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import { getStageFeatures } from '../../services/translate'
@@ -22,8 +21,6 @@ const Home = ({ errors, lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
-  const { query } = router
-  const [cookies, setCookie] = useCookies(['lang'])
 
   const confirmedCompanies = companyData.companies.filter((company) => company.membershipStatus === 'confirmed')
   const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
@@ -34,15 +31,6 @@ const Home = ({ errors, lang, queryParams }) => {
   React.useEffect(() => {
     headingCount.reset()
   })
-
-  /* eslint-disable react-hooks/exhaustive-deps */
-  React.useEffect(() => {
-    if (query?.lang !== undefined) {
-      setCookie('lang', query?.lang, { path: '/' })
-    } else {
-      setCookie('lang', lang, { path: '/' })
-    }
-  }, [lang, query, cookies])
 
   return (
     <FeatureDynamicView
