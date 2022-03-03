@@ -14,14 +14,12 @@ import withQueryParams from '../../components/providers/WithQueryParams'
 import useFRFlow from '../../services/useFRFlow'
 import { generateQueryUrl } from '../../services/queryString'
 import { mapCompanyData } from '../../services/mappings'
-import { useCookies } from 'react-cookie'
 
 const Login = ({ lang, queryParams }) => {
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
-  const { asPath, push, query } = router
-  const [cookies, setCookie] = useCookies(['lang'])
+  const { asPath, push } = router
 
   const {
     goto,
@@ -35,15 +33,6 @@ const Login = ({ lang, queryParams }) => {
   useEffect(() => {
     headingCount.reset()
   })
-
-  /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    if (query?.lang !== undefined) {
-      setCookie('lang', query?.lang, { path: '/' })
-    } else {
-      setCookie('lang', lang, { path: '/' })
-    }
-  }, [lang, query, cookies])
 
   const FRFlowConfig = {
     journeyName: authIndexValue || FORGEROCK_TREE_WF_LOGIN,

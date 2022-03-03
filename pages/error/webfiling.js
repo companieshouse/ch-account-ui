@@ -8,7 +8,6 @@ import FeatureDynamicView from '../../components/views/FeatureDynamicView'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import { useRouter } from 'next/router'
-import { useCookies } from 'react-cookie'
 
 const ErrorWebfiling = ({ lang }) => {
   const [errors] = useState([])
@@ -16,7 +15,6 @@ const ErrorWebfiling = ({ lang }) => {
   const router = useRouter()
   const [uiStage] = useState('WEBFILING')
   const content = getStageFeatures(lang, 'WEBFILING')
-  const [cookies, setCookie] = useCookies(['lang'])
 
   const { query } = router
   const { context, companyNo, authCodeRequest } = query
@@ -26,15 +24,6 @@ const ErrorWebfiling = ({ lang }) => {
     companyNo: companyNo,
     authCodeRequest: authCodeRequest
   }
-
-  /* eslint-disable react-hooks/exhaustive-deps */
-  React.useEffect(() => {
-    if (query?.lang !== undefined) {
-      setCookie('lang', query?.lang, { path: '/' })
-    } else {
-      setCookie('lang', lang, { path: '/' })
-    }
-  }, [lang, query, cookies])
 
   return (
     <FeatureDynamicView

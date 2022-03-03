@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import InputField from './InputField'
 
+import { useRouter } from 'next/router'
+
 const defaultProps = {
   label: 'Input field',
   lang: 'EN',
