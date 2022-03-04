@@ -8,23 +8,20 @@ const WithLang = (WrappedComponent, options = { withSetter: false }) => function
   const router = useRouter()
   const query = router?.query
   const [override, setOverride] = useState(false)
-  const [currentLang = 'en', setCurrentLang] = useState(cookies)
 
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     if (!override) {
-      if (query?.lang !== undefined) {
-        setCookie('lang', query?.lang, { path: '/' })
-        setCurrentLang(query.lang)
+      const queryLang = query?.lang || props?.queryParams?.lang
+      if (queryLang !== undefined) {
+        setCookie('lang', queryLang, { path: '/' })
       } else {
-        setCurrentLang(lang)
+        setCookie('lang', lang, { path: '/' })
       }
     }
-    console.log(currentLang)
-  }, [override])
+  }, [override, query])
 
   const setLang = (newLang) => {
-    setCurrentLang(newLang)
     setCookie('lang', newLang, { path: '/' })
     setOverride(true)
   }
