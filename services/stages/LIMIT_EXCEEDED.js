@@ -1,3 +1,4 @@
+import { logoutFlow } from '../forgerock'
 /* eslint-disable no-template-curly-in-string */
 const LIMIT_EXCEEDED = (lang, tokens) => [
   {
@@ -57,6 +58,10 @@ const LIMIT_EXCEEDED = (lang, tokens) => [
         }
       }
     ]
+  },
+  {
+    component: 'Fragment',
+    content: logoutFlow({})
   }
 ]
 
