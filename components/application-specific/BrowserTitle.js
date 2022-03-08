@@ -24,7 +24,6 @@ const BrowserTitle = ({ title, errors }) => {
     const content = document.getElementById('__next')
     _paq.push(['FormAnalytics::scanForForms', content])
     _paq.push(['enableLinkTracking'])
-    console.log(title)
   }, [title])
 
   return null
