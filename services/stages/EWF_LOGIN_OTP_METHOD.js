@@ -7,12 +7,6 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
     }
   },
   {
-    component: 'PageHeading',
-    props: {
-      children: tokens('SHARED.howDoYouWantToConfirmItsYou')
-    }
-  },
-  {
     component: 'DisplayUiElements',
     dynamicProps: {
       'elementProps.IDToken1.options': [
@@ -37,7 +31,8 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
               name: 'radioRequired',
               token: 'OTP_CHOICE_EMAIL_TEXT_REQUIRED'
             }
-          ]
+          ],
+          matomo: ['trackEvent', tokens('SHARED.howDoYouWantToConfirmItsYou'), tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo')]
         }
       }
     }
