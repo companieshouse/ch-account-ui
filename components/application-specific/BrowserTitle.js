@@ -12,13 +12,14 @@ const BrowserTitle = ({ title, errors }) => {
     if (errors.length > 0) {
       window.document.title = 'Error: ' + window.document.title
     }
+    _paq.push(['trackPageView', title])
   }, [title, errors])
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     const currentUrl = window.location.href
     _paq.push(['setCustomUrl', cleanAnalytics([currentUrl])[0]])
     _paq.push(['setDocumentTitle', title + suffix])
-    _paq.push(['trackPageView', title])
+    // _paq.push(['trackPageView', title])
     const content = document.getElementById('__next')
     _paq.push(['FormAnalytics::scanForForms', content])
     _paq.push(['enableLinkTracking'])
