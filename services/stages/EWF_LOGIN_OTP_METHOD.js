@@ -31,7 +31,8 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
               name: 'radioRequired',
               token: 'OTP_CHOICE_EMAIL_TEXT_REQUIRED'
             }
-          ]
+          ],
+          matomo: ['trackEvent', tokens('SHARED.howDoYouWantToConfirmItsYou'), tokens('SHARED.beforeYouCanMakeChangesToYourAccountWeNeedTo')]
         }
       }
     }
