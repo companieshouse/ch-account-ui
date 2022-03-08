@@ -22,6 +22,16 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           autoComplete: 'off',
           testId: 'companyNumberInputField',
           formGroup: 'companyDetails',
+          customValidation: [
+            {
+              name: 'required',
+              token: 'COMPANY_NUMBER_REQUIRED'
+            },
+            {
+              name: 'radioRequired',
+              token: 'COMPANY_NOT_FOUND'
+            }
+          ],
           content: [
             {
               component: 'Details',
@@ -63,7 +73,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
         },
         IDToken3: {
           label: tokens('EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered'),
-          formGroup: 'companyDetails',
+          formGroup: 'companyDetails1',
           options: [
             {
               label: tokens('EWF_LOGIN_2.[2].DisplayUiElements.englandWales'),
@@ -85,7 +95,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'COMPANY_NOT_FOUND'
+              token: 'COMPANY_REGISTERED_LOCATION_REQUIRED'
             }
           ]
         }
