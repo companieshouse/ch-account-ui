@@ -7,12 +7,6 @@ const EWF_LOGIN_OTP_METHOD = (lang, tokens) => [
     }
   },
   {
-    component: 'PageHeading',
-    props: {
-      children: tokens('SHARED.howDoYouWantToConfirmItsYou')
-    }
-  },
-  {
     component: 'DisplayUiElements',
     dynamicProps: {
       'elementProps.IDToken1.options': [
