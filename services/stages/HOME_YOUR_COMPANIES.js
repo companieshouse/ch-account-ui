@@ -489,7 +489,9 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                               {
                                                 component: 'LinkText',
                                                 dynamicProps: {
-                                                  href: '${member.detailsPath}'
+                                                  href: '${member.detailsPath}',
+                                                  name: '${member.displayName}',
+                                                  companyName: '${company.name}'
                                                 },
                                                 props: {
                                                   children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.viewDetails'),
