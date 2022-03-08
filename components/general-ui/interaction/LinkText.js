@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { cleanAnalytics } from '../../../scripts/cleanAnalytics.js'
 
 const LinkText = (props) => {
-  const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo } = props
+  const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo, name, companyName } = props
   let onClick = props.onClick
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
@@ -20,11 +20,15 @@ const LinkText = (props) => {
       }
     }
   }
+  if (name) {
+    console.log(name)
+  }
+  // console.log(visuallyHidden)
 
   return (
     <Link href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <a style={style} onClick={onClick} target={target} className={`govuk-link ${finalClassName}`} data-testid={testId}>{children}{renderFeatures(props)}</a>
+      <a style={style} onClick={onClick} target={target} className={`govuk-link ${finalClassName}`} data-testid={testId}>{children}{renderFeatures(props)}<span className="govuk-visually-hidden">{name + ' - ' + companyName}</span></a>
     </Link>
   )
 }
@@ -41,10 +45,14 @@ LinkText.propTypes = {
   testId: PropTypes.string.isRequired,
   renderFeatures: PropTypes.func,
   onClick: PropTypes.func,
-  style: PropTypes.object
+  style: PropTypes.object,
+  name: PropTypes.string,
+  companyName: PropTypes.string
 }
 
 LinkText.defaultProps = {
   className: '',
-  renderFeatures: () => { return null }
+  renderFeatures: () => { return null },
+  companyName: '',
+  name: ''
 }
