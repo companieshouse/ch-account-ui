@@ -3,7 +3,7 @@ const EMAIL_CONSENT = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: 'Sign in to WebFiling'
+      title: tokens('CONSENT_PREFERENCES_1.DisplayUiElements.formGroupHeading')
     }
   },
   {
