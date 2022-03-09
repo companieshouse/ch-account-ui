@@ -7,15 +7,17 @@ const EWF_LOGIN_5 = (lang, tokens) => [
     }
   },
   {
-    component: 'Caption',
-    dynamicProps: {
-      children: '${company.name}'
-    }
-  },
-  {
     component: 'PageHeading',
     props: {
-      children: tokens('EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline')
+      children: tokens('EWF_LOGIN_5.[2].PageHeading.storeCompanyDetailsForFutureOnline'),
+      showCaption: true,
+      caption: {
+        children: '${company.name}',
+        size: 'l',
+        style: {
+          paddingBottom: '0.5em'
+        }
+      }
     }
   },
   {

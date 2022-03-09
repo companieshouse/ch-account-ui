@@ -20,15 +20,12 @@ const LinkText = (props) => {
       }
     }
   }
-  if (name) {
-    console.log(name)
-  }
-  // console.log(visuallyHidden)
-
   return (
     <Link href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <a style={style} onClick={onClick} target={target} className={`govuk-link ${finalClassName}`} data-testid={testId}>{children}{renderFeatures(props)}<span className="govuk-visually-hidden">{name + ' - ' + companyName}</span></a>
+      <a style={style} onClick={onClick} target={target} className={`govuk-link ${finalClassName}`} data-testid={testId}>{children}{renderFeatures(props)}
+        <span className="govuk-visually-hidden">{name + ' - ' + companyName}</span>
+      </a>
     </Link>
   )
 }

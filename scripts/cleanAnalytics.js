@@ -32,12 +32,12 @@ export const cleanAnalytics = (matomo) => {
     let newString = string
     let match = patterns.filter(pattern => {
       const re = new RegExp(pattern)
-      if (re.test(string)) {
+      if (re.test(string) && typeof string == "string") {
         newString = string.replace(re, hashMap[pattern])
       }
       return re.test(string)
     });
-    let formatted = newString.replace(/(\${.+})/, hashMap[match])
+    let formatted = typeof string == "string" ? newString.replace(/(\${.+})/, hashMap[match]) : string
     return formatted
   })
   return updated
