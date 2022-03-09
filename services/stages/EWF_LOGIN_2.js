@@ -22,6 +22,12 @@ const EWF_LOGIN_2 = (lang, tokens) => [
           formGroup: 'companyDetails',
           autoComplete: 'off',
           testId: 'companyNumberInputField',
+          customValidation: [
+            {
+              name: 'required',
+              token: 'COMPANY_NUMBER_REQUIRED'
+            }
+          ],
           content: [
             {
               component: 'Details',
@@ -84,7 +90,7 @@ const EWF_LOGIN_2 = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'COMPANY_NOT_FOUND'
+              token: 'COMPANY_REGISTERED_LOCATION_REQUIRED'
             }
           ],
           matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAccess'), tokens('EWF_LOGIN_2.[2].DisplayUiElements.whereWasTheCompanyRegistered')]
