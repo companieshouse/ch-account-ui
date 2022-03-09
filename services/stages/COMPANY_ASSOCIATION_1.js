@@ -26,10 +26,6 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
             {
               name: 'required',
               token: 'COMPANY_NUMBER_REQUIRED'
-            },
-            {
-              name: 'radioRequired',
-              token: 'COMPANY_NOT_FOUND'
             }
           ],
           content: [
