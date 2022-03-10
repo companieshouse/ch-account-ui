@@ -8,6 +8,9 @@ const INVITE_USER_1 = (lang, tokens) => [
   },
   {
     component: 'Caption',
+    props: {
+      showErrorSummary: true
+    },
     dynamicProps: {
       children: '${companyName}'
     }
@@ -15,7 +18,8 @@ const INVITE_USER_1 = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.whatIsTheAuthorisedPersonsEmailAddress')
+      children: tokens('SHARED.whatIsTheAuthorisedPersonsEmailAddress'),
+      showErrorSummary: false
     }
   },
   {

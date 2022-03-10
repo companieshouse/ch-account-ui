@@ -48,6 +48,9 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   },
   {
     component: 'Caption',
+    props: {
+      showErrorSummary: true
+    },
     dynamicProps: {
       children: '${company.name}'
     }
@@ -55,7 +58,8 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.authorisedPersonsDetails')
+      children: tokens('SHARED.authorisedPersonsDetails'),
+      showErrorSummary: false
     }
   },
   {

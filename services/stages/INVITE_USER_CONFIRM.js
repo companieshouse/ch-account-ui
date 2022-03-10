@@ -9,6 +9,9 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
   },
   {
     component: 'Caption',
+    props: {
+      showErrorSummary: true
+    },
     dynamicProps: {
       children: '${companyName}'
     }
@@ -16,7 +19,8 @@ const INVITE_USER_CONFIRM = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('INVITE_USER_CONFIRM.[0].pageHeading.checkTheAuthorisedPersonsEmail')
+      children: tokens('INVITE_USER_CONFIRM.[0].pageHeading.checkTheAuthorisedPersonsEmail'),
+      showErrorSummary: false
     }
   },
   {

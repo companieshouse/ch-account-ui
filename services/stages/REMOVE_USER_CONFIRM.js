@@ -14,6 +14,9 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
   },
   {
     component: 'Caption',
+    props: {
+      showErrorSummary: true
+    },
     dynamicProps: {
       children: '${company.name}'
     }
