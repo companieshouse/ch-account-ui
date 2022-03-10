@@ -377,7 +377,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                           {
                             component: 'Column',
                             props: {
-                              width: 'full'
+                              width: 'full',
+                              utilClass: 'overflow-mobile'
                             },
                             content: [
                               {
@@ -392,7 +393,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           {
                                             component: 'Th',
                                             props: {
-                                              className: 'wordBreakWord',
+                                              className: 'wordBreaknne',
                                               children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
                                             }
                                           },
@@ -429,7 +430,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                               children: '${member.displayName}'
                                             },
                                             props: {
-                                              className: 'wordBreakWord'
+                                              className: 'wordBreaknone'
                                             },
                                             content: [
                                               {
@@ -485,6 +486,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           },
                                           {
                                             component: 'Td',
+                                            className: 'min-width-100px',
                                             content: [
                                               {
                                                 component: 'LinkText',

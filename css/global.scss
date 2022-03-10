@@ -145,3 +145,14 @@
 .no-padd {
   padding: 0;
 }
+
+.overflow-mobile {
+  overflow: scroll;
+  @include govuk-media-query($from: tablet) {
+    overflow: unset;
+  }
+}
+
+.min-width-100px {
+  min-width: 100px;
+}

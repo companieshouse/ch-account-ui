@@ -2,10 +2,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const Td = (props) => {
-  const { children, className, renderFeatures, width } = props
+  const { children, className, renderFeatures, width, utilClass = '' } = props
   const classes = ['govuk-table__cell', className]
   width && classes.push(`govuk-table__cell govuk-!-width-${width}`)
   const finalClassName = classes.join(' ').trim()
+  if (utilClass) classes.push(utilClass)
 
   return (
     <td className={finalClassName}>{children}{renderFeatures(props)}</td>
