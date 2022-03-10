@@ -160,9 +160,9 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   },
   {
     conditional: {
-      prop: '${noCompanies}',
-      operator: 'nee',
-      value: true
+      prop: '${searchCount}',
+      operator: 'gt',
+      value: '2'
     },
     component: 'Search',
     label: tokens('HOME_YOUR_COMPANIES.[3].Search.searchForACompany'),
@@ -204,9 +204,9 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
   },
   {
     conditional: {
-      prop: '${noCompanies}',
-      operator: 'nee',
-      value: true
+      prop: '${searchCount}',
+      operator: 'gt',
+      value: '2'
     },
     component: 'SectionBreak'
   },
