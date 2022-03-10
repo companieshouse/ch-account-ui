@@ -372,7 +372,7 @@
     "cy": "Nid yw ${userName} bellach wedi'i hawdurdodi yn ddigidol i ffeilio ar-lein ar gyfer ${companyName}."
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.youHaveDeclinedTheRequestToHaveAuthorisation": {
-    "en": "You have declined the request to have authorisation to file online for ${companyName}",
+    "en": "You have declined the request to have authorisation to file online for ${companyName}.",
     "cy": "Rydych wedi gwrthod y cais i gael caniatâd i ffeilio ar-lein ar gyfer ${companyName}."
   },
   "HOME_YOUR_COMPANIES.[3].NotificationBanner.youShould": {
@@ -1163,8 +1163,8 @@
     "cy": "Cofnodwch gyfeiriad e-bost"
   },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectOTP": {
-    "en": "The email may take a few minutes to arrive. Its subject line is 'Your Companies House: security code'.",
-    "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: cod diogelwch'."
+    "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House WebFiling account: security code'.",
+    "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell pwnc yw 'Cyfrif WebFiling Tŷ'r Cwmnïau: cod diogelwch'."
   },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: reset your password'.",
@@ -1300,7 +1300,7 @@
   },
   "SHARED.youAreNowSignedOut": {
     "en": "You are now signed out",
-    "cy": "Rydych bellach wedi arwyddo allan."
+    "cy": "Rydych bellach wedi arwyddo allan"
   },
   "SHARED.youCan": {
     "en": "You can:",
