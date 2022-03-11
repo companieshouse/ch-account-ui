@@ -18,7 +18,6 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
       elementProps: {
         IDToken2: {
           label: tokens('CHANGE_PASSWORD_1.[2].DisplayUiElements.enterYourCurrentPassword'),
-          suffix: null,
           customValidation: [
             {
               name: 'required',
