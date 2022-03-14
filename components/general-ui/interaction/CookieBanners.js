@@ -2,6 +2,8 @@
 /* global CookieConsent */
 import PropTypes from 'prop-types'
 import React from 'react'
+import WithLang from '../../../services/lang/WithLang'
+import { translate } from '../../../services/translate'
 
 const CookieBanners = (props) => {
   const {
@@ -9,7 +11,8 @@ const CookieBanners = (props) => {
     onStop = () => {},
     onAcceptCookies = () => {},
     onRejectCookies = () => {},
-    onHideCookieBanners = () => {}
+    onHideCookieBanners = () => {},
+    lang
   } = props
 
   const acceptCookies = () => {
@@ -34,7 +37,7 @@ const CookieBanners = (props) => {
     }
     if (!cookieConsentAvailable) return
     start()
-  }, [onStart, onStop, cookieConsentAvailable])
+  }, [onStart, onStop, cookieConsentAvailable, lang])
 
   return (
     <div id="cookie-banner" hidden>
@@ -44,24 +47,23 @@ const CookieBanners = (props) => {
 
             <div className="govuk-grid-row">
               <div className="govuk-grid-column-two-thirds">
-                <h2 className="govuk-cookie-banner__heading govuk-heading-m">Cookies on Companies House services</h2>
+                <h2 className="govuk-cookie-banner__heading govuk-heading-m">{translate(lang, 'COOKIE_BANNER_HEADING')}</h2>
 
                 <div className="govuk-cookie-banner__content">
-                  <p>We use some essential cookies to make this service work.</p>
-                  <p>We’d like to set additional cookies so we can remember your settings, understand how people use the
-                    service and make improvements.</p>
+                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT')}</p>
+                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_2')}</p>
                 </div>
               </div>
             </div>
 
             <div className="govuk-button-group">
               <button value="accept" type="button" name="cookies" className="govuk-button" data-module="govuk-button" onClick={acceptCookies}>
-                Accept additional cookies
+              {translate(lang, 'COOKIE_BANNER_BUTTON_ACCEPT')}
               </button>
               <button value="reject" type="button" name="cookies" className="govuk-button" data-module="govuk-button" onClick={rejectCookies}>
-                Reject additional cookies
+              {translate(lang, 'COOKIE_BANNER_BUTTON_REJECT')}
               </button>
-              <a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">View cookies</a>
+              <a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">{translate(lang, 'COOKIE_BANNER_BUTTON_VIEW')}</a>
             </div>
           </div>
         </div>
@@ -74,15 +76,14 @@ const CookieBanners = (props) => {
               <div className="govuk-grid-column-two-thirds">
 
                 <div className="govuk-cookie-banner__content">
-                  <p>You’ve accepted analytics cookies. You can <a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">change your cookie
-                    settings</a> at any time.</p>
+                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT')}<a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT_LINK')}</a>{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT_2')}</p>
                 </div>
               </div>
             </div>
 
             <div className="govuk-button-group">
               <button className="govuk-button" data-module="govuk-button" onClick={hideCookieBanners}>
-                Hide this message
+              {translate(lang, 'COOKIE_BANNER_BUTTON_HIDE')}
               </button>
             </div>
           </div>
@@ -96,15 +97,14 @@ const CookieBanners = (props) => {
               <div className="govuk-grid-column-two-thirds">
 
                 <div className="govuk-cookie-banner__content">
-                  <p>You’ve rejected analytics cookies. You can <a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">change your cookie
-                    settings</a> at any time.</p>
+                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT')}<a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT_LINK')}</a>{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT_2')}</p>
                 </div>
               </div>
             </div>
 
             <div className="govuk-button-group">
               <button className="govuk-button" data-module="govuk-button" onClick={hideCookieBanners}>
-                Hide this message
+              {translate(lang, 'COOKIE_BANNER_BUTTON_HIDE')}
               </button>
             </div>
           </div>
@@ -114,7 +114,7 @@ const CookieBanners = (props) => {
   )
 }
 
-export default CookieBanners
+export default WithLang(CookieBanners)
 
 CookieBanners.propTypes = {
   onAcceptCookies: PropTypes.func,

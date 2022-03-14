@@ -15,8 +15,8 @@ describe('CookieBanners', () => {
 
   it('Renders cookie banner markup', () => {
     render(<CookieBanners testId="CookieBanners"/>)
-    expect(screen.getByText('Accept additional cookies')).toBeInTheDocument()
-    expect(screen.getByText('Reject additional cookies')).toBeInTheDocument()
+    expect(screen.getByText('Accept analytics cookies')).toBeInTheDocument()
+    expect(screen.getByText('Reject analytics cookies')).toBeInTheDocument()
     expect(screen.getByText('View cookies')).toBeInTheDocument()
   })
 
