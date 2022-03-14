@@ -6,7 +6,7 @@ import WithLang from '../../../services/lang/WithLang'
 import { errorsPropType } from '../../../services/propTypes'
 
 const ErrorSummary = (props) => {
-  const { type, title, errors, children, className, headingCount, renderFeatures } = props
+  const { type, title, errors, children, className, headingCount, renderFeatures, parentPage } = props
 
   const [tag, setTag] = useState(type)
   const classes = [className]
@@ -21,8 +21,7 @@ const ErrorSummary = (props) => {
 
     if (errors.length > 0) {
       errors.forEach(error => {
-        console.log(error.label)
-        _paq.push(['trackEvent', 'Error:', error.label])
+        _paq.push(['trackEvent', parentPage[0], 'Error:' + error.label])
       })
     }
   }, [headingCount])
