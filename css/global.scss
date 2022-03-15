@@ -154,18 +154,22 @@
 }
 
 .min-width-100px {
-  // min-width: 100px;
+  @include govuk-media-query($from: tablet) {
+    min-width: 100px;
+  }
 }
 
 .table-from-mobile {
   display: inline-block;
+
+  .govuk-table__cell {
+    padding: 10px 10px 10px 0;
+  }
   @include govuk-media-query($from: tablet) {
     display: table;
-  }
-}
 
-.table-head {
-  // mobile
-  width: 100%;
-  display: block;
+    .govuk-table__cell {
+      padding: 10px 20px 10px 0;
+    }
+  }
 }
