@@ -383,7 +383,9 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                             content: [
                               {
                                 component: 'Table',
-                                className: 'table-from-mobile',
+                                props: {
+                                  className: 'table-from-mobile'
+                                },
                                 content: [
                                   {
                                     component: 'THead',
@@ -394,7 +396,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           {
                                             component: 'Th',
                                             props: {
-                                              className: 'wordBreakAll',
+                                              className: 'wordBreak',
                                               children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
                                             }
                                           },
@@ -431,7 +433,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                               children: '${member.displayName}'
                                             },
                                             props: {
-                                              className: 'wordBreakAll'
+                                              className: 'wordBreakWord'
                                             },
                                             content: [
                                               {
@@ -473,7 +475,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             },
                                             component: 'Td',
                                             props: {
-                                              className: 'wordBreakWord'
+                                              className: 'wordBreak'
                                             },
                                             content: [
                                               {

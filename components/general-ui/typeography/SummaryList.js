@@ -30,9 +30,9 @@ const SummaryList = (props) => {
         </dd>
         }
         {listItem.action?.href && <dd className="govuk-summary-list__actions">
-          <a className="govuk-link" href={`${listItem.action.href}`} onClick={onClick}>
+          {listItem.action.label && <a className="govuk-link" href={`${listItem.action.href}`} onClick={onClick}>
             {listItem.action.label}<span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
-          </a>
+          </a>}
         </dd>}
       </div>)}
       {children}
