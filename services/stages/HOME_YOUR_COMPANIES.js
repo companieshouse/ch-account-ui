@@ -383,6 +383,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                             content: [
                               {
                                 component: 'Table',
+                                className: 'table-from-mobile',
                                 content: [
                                   {
                                     component: 'THead',
@@ -393,7 +394,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           {
                                             component: 'Th',
                                             props: {
-                                              className: 'wordBreaknne',
+                                              className: 'wordBreakAll',
                                               children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
                                             }
                                           },
@@ -430,7 +431,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                               children: '${member.displayName}'
                                             },
                                             props: {
-                                              className: 'wordBreaknone'
+                                              className: 'wordBreakAll'
                                             },
                                             content: [
                                               {

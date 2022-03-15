@@ -147,12 +147,25 @@
 }
 
 .overflow-mobile {
-  overflow: scroll;
+  // overflow: scroll;
   @include govuk-media-query($from: tablet) {
     overflow: unset;
   }
 }
 
 .min-width-100px {
-  min-width: 100px;
+  // min-width: 100px;
+}
+
+.table-from-mobile {
+  display: inline-block;
+  @include govuk-media-query($from: tablet) {
+    display: table;
+  }
+}
+
+.table-head {
+  // mobile
+  width: 100%;
+  display: block;
 }
