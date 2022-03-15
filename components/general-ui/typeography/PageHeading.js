@@ -27,7 +27,7 @@ const PageHeading = (props) => {
 
   return (
     <>
-      {showErrorSummary && <ErrorSummary headingCount={headingCount} title={translate(lang, 'ERROR_SUMMARY_TITLE')} errors={errors} />}
+      {showErrorSummary && <ErrorSummary headingCount={headingCount} title={translate(lang, 'ERROR_SUMMARY_TITLE')} errors={errors} parentPage={children} />}
       <HeadingText headingCount={headingCount} size={size}>{children}{renderFeatures(props)}</HeadingText>
     </>
   )
