@@ -188,7 +188,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       width: 'one-third',
                       testId: 'webFiling',
                       header: tokens('HOME_OVERVIEW.[3].Row.webFiling'),
-                      className: 'flex'
+                      className: 'flex',
+                      matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('HOME_OVERVIEW.[3].Row.webFiling')]
                     },
                     content: [
                       {
@@ -219,7 +220,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       href: '/account/your-companies',
                       testId: 'yourCompanies',
                       header: tokens('SHARED.yourCompanies'),
-                      className: 'flex'
+                      className: 'flex',
+                      matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('SHARED.yourCompanies')]
                     },
                     content: [
                       {
@@ -250,7 +252,8 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       href: '/account/notifications/',
                       testId: 'notifications',
                       header: tokens('SHARED.messages'),
-                      className: 'flex'
+                      className: 'flex',
+                      matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('SHARED.messages')]
                     },
                     content: [
                       {

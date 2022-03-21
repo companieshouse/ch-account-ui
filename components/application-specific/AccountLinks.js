@@ -1,3 +1,4 @@
+/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import Row from '../general-ui/layout/Row'
@@ -7,7 +8,11 @@ import { translate } from '../../services/translate'
 import WithLang from '../../services/lang/WithLang'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL, CH_EWF_RECENT_FILINGS_URL } from '../../services/environment'
 
-const AccountLinkItem = ({ current, text, href }) => <a href={href} className={`account-menu-link govuk-link govuk-link--no-visited-state${current ? ' account-menu__item--current' : ''}`}>{text}</a>
+const sendToMatomo = (text) => {
+  _paq.push(['trackEvent', 'Home - Dashboard', text])
+}
+
+const AccountLinkItem = ({ current, text, href }) => <a href={href} onClick={(event) => sendToMatomo(text)}className={`account-menu-link govuk-link govuk-link--no-visited-state${current ? ' account-menu__item--current' : ''}`}>{text}</a>
 
 const AccountLinks = (props) => {
   const { lang, currentItem } = props
