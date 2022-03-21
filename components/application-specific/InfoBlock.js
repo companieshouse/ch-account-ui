@@ -12,7 +12,7 @@ import LinkText from '../general-ui/interaction/LinkText'
  */
 
 const InfoBlock = (props) => {
-  const { count, countLabel, children, className, width, testId, header, href, headingCount } = props
+  const { count, countLabel, children, className, width, testId, header, href, headingCount, matomo } = props
   const classes = [className]
 
   const finalClassName = classes.join(' ').trim()
@@ -21,7 +21,7 @@ const InfoBlock = (props) => {
     <Column width={width} className={`infoBlock ${finalClassName}`}>
       <div id={testId} className="infoBlock__wrapper">
         <HeadingText headingCount={headingCount} size="m">
-          <LinkText testId={`${testId}Link`} href={href}>{header}</LinkText>
+          <LinkText testId={`${testId}Link`} href={href} matomo={matomo}>{header}</LinkText>
         </HeadingText>
         {count !== undefined ? <BodyText className="infoBlock__count">{`${count} ${countLabel}`}</BodyText> : null}
         {children}

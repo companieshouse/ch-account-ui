@@ -1,3 +1,4 @@
+/* global _paq */
 import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import InputField from './InputField'
@@ -9,7 +10,7 @@ import log from '../../../services/log'
 import ButtonGroup from './ButtonGroup'
 import LinkText from './LinkText'
 
-const Search = ({ label, hint, handlers, lang, loading, id }) => {
+const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
   const [search, setSearch] = useState()
   const onSearch = handlers?.onSearch
   const inputRef = useRef()
@@ -21,12 +22,20 @@ const Search = ({ label, hint, handlers, lang, loading, id }) => {
       return
     }
     onSearch(search)
+    if (matomo) {
+      matomo.push(search)
+      _paq.push(matomo)
+    }
   }
 
   const handleClear = (evt) => {
     evt.preventDefault()
     onSearch('')
     setSearch('')
+    if (matomo) {
+      matomo.push('clear search')
+      _paq.push(matomo)
+    }
   }
 
   return (

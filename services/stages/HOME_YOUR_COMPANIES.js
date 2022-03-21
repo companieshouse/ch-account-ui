@@ -167,7 +167,8 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
     component: 'Search',
     label: tokens('HOME_YOUR_COMPANIES.[3].Search.searchForACompany'),
     hint: tokens('HOME_YOUR_COMPANIES.[3].Search.enterNameOrCompanyNumber'),
-    id: 'search'
+    id: 'search',
+    matomo: ['trackEvent', tokens('SHARED.yourCompanies'), tokens('HOME_YOUR_COMPANIES.[3].Search.searchForACompany')]
   },
   {
     conditional: {
