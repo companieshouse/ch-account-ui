@@ -102,7 +102,8 @@ const REGISTRATION_3 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.iHaveNotReceivedAnEmail')
+      summary: tokens('SHARED.iHaveNotReceivedAnEmail'),
+      matomo: ['trackEvent', tokens('REGISTRATION_3.[0].PageHeading.verifyYourEmailAddress'), tokens('SHARED.iHaveNotReceivedAnEmail')]
     },
     content: [
       {

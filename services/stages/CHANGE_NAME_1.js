@@ -27,7 +27,8 @@ const CHANGE_NAME_1 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.whereYourNameWillBeShown')
+      summary: tokens('SHARED.whereYourNameWillBeShown'),
+      matomo: ['trackEvent', tokens('SHARED.updateYourName'), tokens('SHARED.whereYourNameWillBeShown')]
     },
     content: [
       {

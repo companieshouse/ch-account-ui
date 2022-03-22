@@ -75,7 +75,8 @@ const ONBOARDING_PROFILE = (lang, tokens) => [
             {
               component: 'Details',
               props: {
-                summary: tokens('SHARED.whereYourNameWillBeShown')
+                summary: tokens('SHARED.whereYourNameWillBeShown'),
+                matomo: ['trackEvent', tokens('SHARED.whatAreYourDetails'), tokens('SHARED.whereYourNameWillBeShown')]
               },
               content: [
                 {

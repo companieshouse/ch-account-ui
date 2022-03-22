@@ -93,7 +93,8 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.iHaveNotReceivedAnEmail')
+      summary: tokens('SHARED.iHaveNotReceivedAnEmail'),
+      matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.iHaveNotReceivedAnEmail')]
     },
     content: [
       {

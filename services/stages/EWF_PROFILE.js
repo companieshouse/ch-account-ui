@@ -75,7 +75,8 @@ const EWF_PROFILE = (lang, tokens) => [
             {
               component: 'Details',
               props: {
-                summary: tokens('SHARED.whereYourNameWillBeShown')
+                summary: tokens('SHARED.whereYourNameWillBeShown'),
+                matomo: ['trackEvent', tokens('SHARED.updateYourPersonalDetails'), tokens('SHARED.whereYourNameWillBeShown')]
               },
               content: [
                 {

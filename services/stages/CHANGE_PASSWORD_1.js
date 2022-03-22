@@ -40,7 +40,8 @@ const CHANGE_PASSWORD_1 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.helpWithCreatingYourPassword')
+      summary: tokens('SHARED.helpWithCreatingYourPassword'),
+      matomo: ['trackEvent', tokens('SHARED.changeYourPassword'), tokens('SHARED.helpWithCreatingYourPassword')]
     },
     content: [
       {

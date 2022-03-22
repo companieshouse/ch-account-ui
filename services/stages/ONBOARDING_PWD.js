@@ -61,7 +61,8 @@ const ONBOARDING_PWD = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.helpWithCreatingYourPassword')
+      summary: tokens('SHARED.helpWithCreatingYourPassword'),
+      matomo: ['trackEvent', tokens('ONBOARDING_PWD_1.[1].PageHeading.createAPasswordForYourWebFiling'), tokens('SHARED.helpWithCreatingYourPassword')]
     },
     content: [
       {
