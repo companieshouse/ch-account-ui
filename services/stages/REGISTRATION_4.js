@@ -63,7 +63,8 @@ const REGISTRATION_4 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('REGISTRATION_4.[2].Details.helpWithCreatingAPassword')
+      summary: tokens('REGISTRATION_4.[2].Details.helpWithCreatingAPassword'),
+      matomo: ['trackEvent', tokens('REGISTRATION_4.[0].PageHeading.createAPassword'), tokens('REGISTRATION_4.[2].Details.helpWithCreatingAPassword')]
     },
     content: [{
       component: 'BodyText',

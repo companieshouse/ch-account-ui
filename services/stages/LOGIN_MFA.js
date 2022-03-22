@@ -69,7 +69,8 @@ const LOGIN_MFA = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.iHaveNotReceivedATextMessage')
+      summary: tokens('SHARED.iHaveNotReceivedATextMessage'),
+      matomo: ['trackEvent', tokens('SHARED.checkYourPhone'), tokens('SHARED.iHaveNotReceivedATextMessage')]
     },
     content: [
       {

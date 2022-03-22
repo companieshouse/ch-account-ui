@@ -32,7 +32,8 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
             {
               component: 'Details',
               props: {
-                summary: tokens('SHARED.helpWithMyCompanyNumber')
+                summary: tokens('SHARED.helpWithMyCompanyNumber'),
+                matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd'), tokens('SHARED.helpWithMyCompanyNumber')]
               },
               content: [
                 {

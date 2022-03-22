@@ -38,7 +38,8 @@ const COMPANY_ASSOCIATION_3 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.helpWithAuthenticationCode')
+      summary: tokens('SHARED.helpWithAuthenticationCode'),
+      matomo: ['trackEvent', tokens('COMPANY_ASSOCIATION_3.[0].BrowserTitle.provideTheCompanyAuthCode'), tokens('SHARED.helpWithAuthenticationCode')]
     },
     content: [
       {

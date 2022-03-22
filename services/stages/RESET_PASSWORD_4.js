@@ -32,7 +32,8 @@ const RESET_PASSWORD_4 = (lang, tokens) => [
   {
     component: 'Details',
     props: {
-      summary: tokens('SHARED.helpWithCreatingYourPassword')
+      summary: tokens('SHARED.helpWithCreatingYourPassword'),
+      matomo: ['trackEvent', tokens('RESET_PASSWORD_4.[0].PageHeading.resetYourPassword'), tokens('SHARED.helpWithCreatingYourPassword')]
     },
     content: [
       {

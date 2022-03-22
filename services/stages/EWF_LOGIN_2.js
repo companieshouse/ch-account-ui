@@ -32,7 +32,8 @@ const EWF_LOGIN_2 = (lang, tokens) => [
             {
               component: 'Details',
               props: {
-                summary: tokens('SHARED.helpWithMyCompanyNumber')
+                summary: tokens('SHARED.helpWithMyCompanyNumber'),
+                matomo: ['trackEvent', tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAccess'), tokens('SHARED.helpWithMyCompanyNumber')]
               },
               content: [
                 {
