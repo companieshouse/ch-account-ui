@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
-import { cleanAnalytics } from '../../../scripts/cleanAnalytics.js'
+import { matomoHelper } from '../../../scripts/cleanAnalytics.js'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 const Button = ({
@@ -33,17 +33,11 @@ const Button = ({
 
   onClick = (evt) => {
     if (matomo) {
-      const eventKeys = ['type', 'category', 'action', 'name', 'value']
+      const cleanData = matomoHelper(matomo)
 
-      const finalMatomoData = cleanAnalytics(matomo).reduce((finalMatomoData, field, index) => {
-        console.log(field, index)
-        finalMatomoData[eventKeys[index]] = field
-        return finalMatomoData
-      }, {})
-
-      if (finalMatomoData.type === 'trackEvent') {
-        trackEvent(finalMatomoData)
-      } else if (finalMatomoData.type === 'trackGoal') {
+      if (cleanData.type === 'trackEvent') {
+        trackEvent(cleanData)
+      } else if (cleanData.type === 'trackGoal') {
         pushInstruction('trackGoal', [matomo[1]])
       }
     }

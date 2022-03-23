@@ -1,8 +1,9 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import { errorsPropType } from '../../../services/propTypes'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
 const CheckboxGroup = (props) => {
   const {
@@ -16,13 +17,20 @@ const CheckboxGroup = (props) => {
     formGroupHint,
     matomo
   } = props
+  const { trackEvent, pushInstruction } = useMatomo()
 
   const error = getFieldError(errors, id)
 
   const onClick = (evt) => {
     if (matomo) {
       matomo.push(options[evt.target.value].label)
-      _paq.push(matomo)
+      const cleanData = matomoHelper(matomo)
+
+      if (cleanData.type === 'trackEvent') {
+        trackEvent(cleanData)
+      } else if (cleanData.type === 'trackGoal') {
+        pushInstruction('trackGoal', [matomo[1]])
+      }
     }
   }
 

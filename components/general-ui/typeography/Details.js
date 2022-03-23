@@ -1,9 +1,11 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React, { useEffect, useRef } from 'react'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
 const Details = (props) => {
   const detailsRef = useRef()
+  const { trackEvent, pushInstruction } = useMatomo()
   const { className = '', children, summary = '', renderFeatures, matomo } = props
   const classes = [className]
 
@@ -16,7 +18,13 @@ const Details = (props) => {
 
   const onClick = (evt) => {
     if (matomo) {
-      _paq.push(matomo)
+      const cleanData = matomoHelper(matomo)
+
+      if (cleanData.type === 'trackEvent') {
+        trackEvent(cleanData)
+      } else if (cleanData.type === 'trackGoal') {
+        pushInstruction('trackGoal', [matomo[1]])
+      }
     }
   }
 

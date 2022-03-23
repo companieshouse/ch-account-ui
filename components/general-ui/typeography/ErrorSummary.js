@@ -1,11 +1,12 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import HeadingCount from '../../../services/HeadingCount'
 import WithLang from '../../../services/lang/WithLang'
 import { errorsPropType } from '../../../services/propTypes'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 const ErrorSummary = (props) => {
+  const { pushInstruction } = useMatomo()
   const { type, title, errors, children, className, headingCount, renderFeatures, parentPage } = props
 
   const [tag, setTag] = useState(type)
@@ -21,7 +22,7 @@ const ErrorSummary = (props) => {
 
     if (errors.length > 0) {
       errors.forEach(error => {
-        _paq.push(['trackEvent', parentPage[0], 'Error:' + error.label])
+        pushInstruction('trackEvent', [parentPage[0], 'Error:' + error.label])
       })
     }
   }, [headingCount])
