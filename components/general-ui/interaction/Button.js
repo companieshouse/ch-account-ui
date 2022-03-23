@@ -1,8 +1,8 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 import { cleanAnalytics } from '../../../scripts/cleanAnalytics.js'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 const Button = ({
   warning = false,
@@ -21,6 +21,7 @@ const Button = ({
   loading,
   matomo
 }) => {
+  const { trackEvent, pushInstruction } = useMatomo()
   const classes = [className]
 
   if (warning === true) classes.push('govuk-button--warning')
@@ -32,7 +33,19 @@ const Button = ({
 
   onClick = (evt) => {
     if (matomo) {
-      _paq.push(cleanAnalytics(matomo))
+      const eventKeys = ['type', 'category', 'action', 'name', 'value']
+
+      const finalMatomoData = cleanAnalytics(matomo).reduce((finalMatomoData, field, index) => {
+        console.log(field, index)
+        finalMatomoData[eventKeys[index]] = field
+        return finalMatomoData
+      }, {})
+
+      if (finalMatomoData.type === 'trackEvent') {
+        trackEvent(finalMatomoData)
+      } else if (finalMatomoData.type === 'trackGoal') {
+        pushInstruction('trackGoal', [matomo[1]])
+      }
     }
     if (handler) {
       handlers[handler.name](evt, handler.params)
