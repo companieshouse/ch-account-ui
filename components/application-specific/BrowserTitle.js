@@ -1,9 +1,10 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { cleanAnalytics } from '../../scripts/cleanAnalytics'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 const BrowserTitle = ({ title, errors }) => {
+  const { trackPageView, pushInstruction, enableLinkTracking } = useMatomo()
   const suffix = ' - Companies House WebFiling account - GOV.UK'
 
   React.useEffect(() => {
@@ -18,12 +19,14 @@ const BrowserTitle = ({ title, errors }) => {
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     const currentUrl = window.location.href
-    _paq.push(['setCustomUrl', cleanAnalytics([currentUrl])[0]])
-    _paq.push(['setDocumentTitle', title + suffix])
-    _paq.push(['trackPageView', title])
+    pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
+    pushInstruction('setDocumentTitle', [title + suffix])
+    trackPageView({
+      documentTitle: title
+    })
     const content = document.getElementById('__next')
-    _paq.push(['FormAnalytics::scanForForms', content])
-    _paq.push(['enableLinkTracking'])
+    pushInstruction('FormAnalytics::scanForForms', [content])
+    enableLinkTracking()
   }, [title])
 
   return null
