@@ -16,11 +16,18 @@ function MyApp ({ Component, pageProps }) {
     document.body.className = document.body.className ? document.body.className + ' js-enabled' : 'js-enabled'
   })
 
+  // const instance = createInstance({
+  //   urlBase: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`,
+  //   siteId: ANALYTICS_SITE_ID,
+  //   trackerUrl: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`
+  // })
+
   const instance = createInstance({
     urlBase: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`,
-    siteId: ANALYTICS_SITE_ID,
-    trackerUrl: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`
+    siteId: ANALYTICS_SITE_ID
   })
+
+  console.log(instance, ANALYTICS_TRACKER_URL, ANALYTICS_SITE_ID)
 
   return (
     <>
