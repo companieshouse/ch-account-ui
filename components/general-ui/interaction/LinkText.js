@@ -1,19 +1,26 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
-import { cleanAnalytics } from '../../../scripts/cleanAnalytics.js'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
 const LinkText = (props) => {
   const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo, name, companyName } = props
   let onClick = props.onClick
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
+  const { trackEvent, pushInstruction } = useMatomo()
 
   if (!onClick) {
     onClick = (evt) => {
       if (matomo) {
-        _paq.push(cleanAnalytics(matomo))
+        const cleanData = matomoHelper(matomo)
+
+        if (cleanData.type === 'trackEvent') {
+          trackEvent(cleanData)
+        } else if (cleanData.type === 'trackGoal') {
+          pushInstruction('trackGoal', [matomo[1]])
+        }
       }
       if (handler) {
         handlers[handler.name](evt, handler.params)

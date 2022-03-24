@@ -1,3 +1,15 @@
+export const matomoHelper = (data) => {
+  const eventKeys = ['type', 'category', 'action', 'name', 'value']
+
+  const finalMatomoData = cleanAnalytics(data).reduce((finalMatomoData, field, index) => {
+    console.log(field, index)
+    finalMatomoData[eventKeys[index]] = field
+    return finalMatomoData
+  }, {})
+
+  return finalMatomoData
+}
+
 export const cleanAnalytics = (matomo) => {
 
   const patterns = [

@@ -1,4 +1,3 @@
-/* global _paq */
 import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import InputField from './InputField'
@@ -9,11 +8,14 @@ import Button from './Button'
 import log from '../../../services/log'
 import ButtonGroup from './ButtonGroup'
 import LinkText from './LinkText'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
 const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
   const [search, setSearch] = useState()
   const onSearch = handlers?.onSearch
   const inputRef = useRef()
+  const { trackEvent, pushInstruction } = useMatomo()
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
@@ -22,9 +24,16 @@ const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
       return
     }
     onSearch(search)
+
     if (matomo) {
       matomo.push(search)
-      _paq.push(matomo)
+      const cleanData = matomoHelper(matomo)
+
+      if (cleanData.type === 'trackEvent') {
+        trackEvent(cleanData)
+      } else if (cleanData.type === 'trackGoal') {
+        pushInstruction('trackGoal', [matomo[1]])
+      }
     }
   }
 
@@ -34,7 +43,13 @@ const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
     setSearch('')
     if (matomo) {
       matomo.push('clear search')
-      _paq.push(matomo)
+      const cleanData = matomoHelper(matomo)
+
+      if (cleanData.type === 'trackEvent') {
+        trackEvent(cleanData)
+      } else if (cleanData.type === 'trackGoal') {
+        pushInstruction('trackGoal', [matomo[1]])
+      }
     }
   }
 

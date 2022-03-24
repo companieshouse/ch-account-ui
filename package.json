@@ -17,6 +17,7 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
+    "@datapunt/matomo-tracker-react": "^0.5.1",
     "@forgerock/javascript-sdk": "^3.0.0",
     "@irrelon/path": "^5.0.0",
     "core-js": "^3.15.2",

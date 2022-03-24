@@ -1,13 +1,15 @@
-/* global _paq */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getFieldError } from '../../../services/errors'
 import HeadingText from '../typeography/HeadingText'
 import { errorsPropType } from '../../../services/propTypes'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
 const RadioGroup = (props) => {
   const { hint = '', label = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined, caption, captionPosition, captionSize, renderLabelAs, matomo } = props
   const classes = [className]
+  const { trackEvent, pushInstruction } = useMatomo()
 
   const finalClassName = classes.join(' ').trim()
   const error = getFieldError(errors, id)
@@ -15,7 +17,13 @@ const RadioGroup = (props) => {
   const onClick = (evt) => {
     if (matomo) {
       matomo.push(options[evt.target.value].label)
-      _paq.push(matomo)
+      const cleanData = matomoHelper(matomo)
+
+      if (cleanData.type === 'trackEvent') {
+        trackEvent(cleanData)
+      } else if (cleanData.type === 'trackGoal') {
+        pushInstruction('trackGoal', [matomo[1]])
+      }
     }
   }
 
