@@ -7,6 +7,8 @@ const BrowserTitle = ({ title, errors }) => {
   const { trackPageView, pushInstruction, enableLinkTracking } = useMatomo()
   const suffix = ' - Companies House WebFiling account - GOV.UK'
 
+  enableLinkTracking()
+
   React.useEffect(() => {
     // _paq.push(['trackPageView'])
     window.document.title = title + suffix
@@ -26,7 +28,6 @@ const BrowserTitle = ({ title, errors }) => {
     })
     const content = document.getElementById('__next')
     pushInstruction('FormAnalytics::scanForForms', [content])
-    enableLinkTracking()
   }, [title])
 
   return null
