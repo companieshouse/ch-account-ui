@@ -70,5 +70,15 @@ describe('Button', () => {
 
     expect(testElement).toHaveClass('govuk-button--disabled')
   })
+
+  // it('has a handler prop passed', () => {
+  //   const handler = {name: jest.fn()}
+  //   const handlers = {handler}
+  //   render(<Button testId='button' handler={handler} handlers={handlers}>handler example</Button>)
+  //   const testElement = screen.getByTestId('button')
+
+  //   expect(testElement).toBeInTheDocument()
+  //   fireEvent.click(testElement)
+  // })
   
 })

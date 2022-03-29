@@ -23,9 +23,8 @@ const CheckboxGroup = (props) => {
 
   const onClick = (evt) => {
     if (matomo) {
-      matomo.push(options[evt.target.value].label)
+      matomo.push(evt.target.labels[0].textContent)
       const cleanData = matomoHelper(matomo)
-
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {

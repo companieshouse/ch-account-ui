@@ -25,7 +25,7 @@ export { CallbackType }
  * @param oneErrorPerField
  * @returns {*[]}
  */
-const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
+export const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerField = true) => {
   const errors = []
 
   if (!step) return errors
@@ -130,7 +130,6 @@ export const findCallback = (step, callbackId) => {
     if (callback.type !== 'HiddenValueCallback') continue
 
     if (!callback.output.find((output) => output.name === 'id' && output.value === callbackId)) continue
-
     return callback.output.find((output) => output.name === 'value')?.value || ''
   }
 }
@@ -142,7 +141,6 @@ export const findNotificationId = (step) => {
 export const findCustomPageProps = (step) => {
   try {
     const jsonString = findCallback(step, 'pagePropsJSON')
-
     if (!jsonString) {
       log.warn('Developer warning: pagePropsJSON was sent back in the callback data from the API but it was a blank string.')
       return {}
@@ -370,7 +368,7 @@ export const getUserFields = async (accessToken, userId, fields) => {
 
 export const getCompaniesAssociatedWithUser = async (accessToken, userId, companySearch, companyStatus) => {
   if (!userId) {
-    log.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
+    // log.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
 
