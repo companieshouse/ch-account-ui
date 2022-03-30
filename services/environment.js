@@ -44,4 +44,4 @@ export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || '23'
 
 export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
-console.log(`Running as environment: ${ENVIRONMENT}`)
+// console.log(`Running as environment: ${ENVIRONMENT}`)
