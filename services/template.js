@@ -94,7 +94,6 @@ export const parseTemplateString = (data, templateString, forceString = false, r
 
 export const processDynamicProps = (obj, props, visited = []) => {
   const finalObj = obj instanceof Array ? [] : {}
-
   for (const i in obj) {
     if (!Object.hasOwnProperty.call(obj, i)) continue
     const fieldValue = obj[i]
