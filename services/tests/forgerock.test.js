@@ -265,7 +265,6 @@ describe('normaliseErrors', () => {
           }
         ]
     }
-    console.log('step has callbacks and policy errors')
     expect(normaliseErrors(step2)).toStrictEqual([
       {
         anchor: "IDToken3",
