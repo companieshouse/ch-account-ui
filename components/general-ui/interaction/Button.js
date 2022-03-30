@@ -9,7 +9,7 @@ const Button = ({
   secondary = false,
   renderAs = 'button',
   type,
-  onClick,
+  // onClick,
   label = '',
   href = '#',
   children,
@@ -31,10 +31,9 @@ const Button = ({
 
   const finalClassName = classes.join(' ').trim()
 
-  onClick = (evt) => {
+  const onClick = (evt) => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
-
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
@@ -69,7 +68,7 @@ const Button = ({
 
   if (renderAs === 'button') {
     return (
-      <button disabled={loading && 'disabled'} aria-disabled={loading && 'true'} type={type} onClick={onClick} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
+      <button disabled={loading && 'disabled'} aria-disabled={loading && 'true'} type={type} onClick={(e) => onClick(e)} className={`govuk-button ${finalClassName}`} data-module="govuk-button" data-testid={testId}>
         {label}
         {children}
       </button>
