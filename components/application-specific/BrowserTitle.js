@@ -22,10 +22,11 @@ const BrowserTitle = ({ title, errors }) => {
   React.useEffect(() => {
     const currentUrl = window.location.href
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
+    // console.log(cleanAnalytics([currentUrl])[0])
     pushInstruction('setDocumentTitle', [title + suffix])
     trackPageView({
       documentTitle: title,
-      href: cleanAnalytics([currentUrl][0])
+      href: cleanAnalytics([currentUrl])[0]
     })
     const content = document.getElementById('__next')
     pushInstruction('FormAnalytics::scanForForms', [content])
