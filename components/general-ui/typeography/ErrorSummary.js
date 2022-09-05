@@ -22,11 +22,10 @@ const ErrorSummary = (props) => {
 
     if (errors.length > 0) {
       errors.forEach(error => {
-        pushInstruction('trackEvent', [parentPage[0], 'Error:' + error.label])
+        pushInstruction('trackEvent', [parentPage !== undefined ? parentPage[0] : 'Unknown Error: ', 'Error:' + error.label])
       })
     }
   }, [headingCount])
-
   if (errors.length === 0) return null
 
   if (!tag) return null
