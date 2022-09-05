@@ -48,7 +48,16 @@ const INVITE_USER_ERROR = (lang, tokens) => [
   {
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
-      operator: 'nee',
+      operator: 'eeq',
+      value: 'INVITE_USER_INVITED_USER_ALREADY_ASSOCIATED_ERROR'
+    },
+    component: 'Fragment',
+    content: tokens('INVITE_USER_INVITED_USER_ALREADY_ASSOCIATED_ERROR')
+  },
+  {
+    conditional: {
+      prop: '${errors.0.tokenNoNamespace}',
+      operator: 'eeq',
       value: 'INVITE_USER_COMPANY_LOOKUP_ERROR'
     },
     component: 'Fragment',

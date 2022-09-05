@@ -30,6 +30,7 @@ function MyApp ({ Component, pageProps }) {
       <Script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`} strategy="beforeInteractive" />
 
       <CookieBanners />
+
       <MatomoProvider value={instance}>
         <Component {...pageProps} />
       </MatomoProvider>
