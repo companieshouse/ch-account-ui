@@ -4,7 +4,7 @@ import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
 import '../css/global.scss'
 import Script from 'next/script'
-import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL, ENVIRONMENT } from '../services/environment'
+import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL } from '../services/environment'
 
 import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
 import log from '../services/log'
@@ -17,21 +17,12 @@ function MyApp ({ Component, pageProps }) {
     document.body.className = document.body.className ? document.body.className + ' js-enabled' : 'js-enabled'
   })
 
-  // let instance = createInstance({
-  //   urlBase: 'devInstance',
-  //   siteId: ANALYTICS_SITE_ID
-  // })
+  let instance = createInstance({
+    urlBase: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`,
+    siteId: ANALYTICS_SITE_ID
+  })
 
-  let instance = ''
-
-  if (ENVIRONMENT === 'production') {
-    instance = createInstance({
-      urlBase: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`,
-      siteId: ANALYTICS_SITE_ID
-    })
-
-    log.debug(instance, ANALYTICS_TRACKER_URL, ANALYTICS_SITE_ID)
-  }
+  log.debug(instance, ANALYTICS_TRACKER_URL, ANALYTICS_SITE_ID)
 
   return (
     <>
@@ -39,17 +30,10 @@ function MyApp ({ Component, pageProps }) {
       <Script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`} strategy="beforeInteractive" />
 
       <CookieBanners />
-
-      {ENVIRONMENT === 'production'
-        ? <>
-          <MatomoProvider value={instance}>
-            <Component {...pageProps} />
-          </MatomoProvider>
-        </>
-        : <>
-          <Component {...pageProps} />
-        </>
-      }
+      
+      <MatomoProvider value={instance}>
+        <Component {...pageProps} />
+      </MatomoProvider>
     </>
   )
 }
