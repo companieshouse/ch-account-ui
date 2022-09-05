@@ -21,6 +21,7 @@ const BrowserTitle = ({ title, errors }) => {
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     const currentUrl = window.location.href
+    console.log('currentUrl: ', cleanAnalytics([currentUrl]))
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
     pushInstruction('setDocumentTitle', [title + suffix])
     trackPageView({

@@ -17,7 +17,7 @@ function MyApp ({ Component, pageProps }) {
     document.body.className = document.body.className ? document.body.className + ' js-enabled' : 'js-enabled'
   })
 
-  let instance = createInstance({
+  const instance = createInstance({
     urlBase: ANALYTICS_TRACKER_URL.includes('http') ? ANALYTICS_TRACKER_URL : `https://${ANALYTICS_TRACKER_URL}`,
     siteId: ANALYTICS_SITE_ID
   })
@@ -30,7 +30,7 @@ function MyApp ({ Component, pageProps }) {
       <Script src={`${BASE_PATH}/js/cookie-consent-1.0.0.js`} strategy="beforeInteractive" />
 
       <CookieBanners />
-      
+
       <MatomoProvider value={instance}>
         <Component {...pageProps} />
       </MatomoProvider>
