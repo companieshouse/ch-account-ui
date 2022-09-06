@@ -8,13 +8,17 @@ const BrowserTitle = ({ title, errors }) => {
   const suffix = ' - Companies House WebFiling account - GOV.UK'
 
   enableLinkTracking()
-
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     // _paq.push(['trackPageView'])
     window.document.title = title + suffix
 
     if (errors.length > 0) {
       window.document.title = 'Error: ' + window.document.title
+      trackPageView({
+        documentTitle: window.document.title,
+        href: cleanAnalytics([window.location.href])[0]
+      })
     }
   }, [title, errors])
 
