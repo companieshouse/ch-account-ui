@@ -6,7 +6,7 @@ import { errorsPropType } from '../../../services/propTypes'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 const ErrorSummary = (props) => {
-  const { pushInstruction } = useMatomo()
+  const { trackEvent } = useMatomo()
   const { type, title, errors, children, className, headingCount, renderFeatures, parentPage } = props
 
   const [tag, setTag] = useState(type)
@@ -22,7 +22,15 @@ const ErrorSummary = (props) => {
 
     if (errors.length > 0) {
       errors.forEach(error => {
-        pushInstruction('trackEvent', [parentPage !== undefined ? parentPage[0] : 'Unknown Error: ', 'Error:' + error.label])
+        // pushInstruction('trackEvent', [parentPage !== undefined ? parentPage[0] : 'Unknown Error: ', 'Error:' + error.label])
+        const errData = {
+          type: 'trackEvent',
+          category: 'Error',
+          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + error.label : 'Unknown Error: ' + error.label
+        }
+        trackEvent(errData)
+        // console.error('Error:' + error.label)
+        // console.error('parentPage: ', parentPage[0])
       })
     }
   }, [headingCount])
