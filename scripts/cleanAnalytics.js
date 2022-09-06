@@ -52,7 +52,6 @@ export const cleanAnalytics = (matomo) => {
       return re.test(string)
     });
     let formatted = typeof string == "string" ? newString.replace(/(\${.+})/, hashMap[match]) : string
-    console.log("FORMATTED: ", formatted)
     return formatted
   })
   return updated
