@@ -21,7 +21,7 @@ export const cleanAnalytics = (matomo) => {
     'invitedUser', 
     'userName',
     'companyNumber=[0-9A-Z]+',
-    'companyName=[0-9a-zA-Z\s%]+',
+    'companyName=[0-9a-zA-Z\s()%]+',
     'userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]',
     'invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]'
 
@@ -37,7 +37,7 @@ export const cleanAnalytics = (matomo) => {
     ['invitedUser']: '<invitedUser>',
     ['userName']: '<user>',
     ['companyNumber=[0-9A-Z]+']: '<companyNumber>',
-    ['companyName=[0-9a-zA-Z\s%]+']: '<companyName>',
+    ['companyName=[0-9a-zA-Z\s()%]+']: '<companyName>',
     ['userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<userEmail>',
     ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>'
   }
