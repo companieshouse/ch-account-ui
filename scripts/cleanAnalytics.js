@@ -1,7 +1,8 @@
-// import log from '../services/log'
+import log from '../services/log'
 
 export const matomoHelper = (data) => {
-  const eventKeys = ['type', 'category', 'action', 'name', 'value']
+  log.debug("PS: helper: ", data )
+  const eventKeys = ['type', 'category', 'action', 'name', 'value', 'href']
 
   const finalMatomoData = cleanAnalytics(data).reduce((finalMatomoData, field, index) => {
     finalMatomoData[eventKeys[index]] = field
@@ -13,6 +14,8 @@ export const matomoHelper = (data) => {
 
 export const cleanAnalytics = (matomo) => {
 
+  log.debug("PS: Matomo data IN: ", matomo)
+
   const patterns = [
     'company.name', 
     'emailAddress', 
@@ -22,7 +25,7 @@ export const cleanAnalytics = (matomo) => {
     'companyNumber=[0-9A-Z]+',
     'companyName=[0-9a-zA-Z\s()%]+',
     'userName=[a-zA-Z\.]+%40[a-zA-Z\.]+[^%0-9]',
-    'userName=[a-zA-Z\.].',
+    'userName=[a-zA-Z\.\%0-9]+',
     'invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]',
     'notifyId=[0-9a-zA-Z\-]+',
     'userId=[0-9a-zA-Z\-]+'
@@ -36,7 +39,7 @@ export const cleanAnalytics = (matomo) => {
     ['company.inviter.displayName']: '<user>',
     ['companyNumber=[0-9A-Z]+']: '<companyNumber>',
     ['companyName=[0-9a-zA-Z\s()%]+']: '<companyName>',
-    ['userName=[a-zA-Z\.].']: '<user>',
+    ['userName=[a-zA-Z\.\%0-9]+']: '<user>',
     ['userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<user>',
     ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>',
     ['notifyId=[0-9a-zA-Z\-]+']: '<notifyId>',
@@ -52,7 +55,7 @@ export const cleanAnalytics = (matomo) => {
 
     let formatted = string
 
-    // log.debug("FORMATTED: ", match)
+    log.debug("PS: ", match)
 
     if (match.length) {
       // we have more than one match
@@ -62,7 +65,9 @@ export const cleanAnalytics = (matomo) => {
       });
     }
     
-    // log.debug("FORMATTED: ", formatted)
+
+    log.debug("PS: ", formatted)
+
     return formatted
   })
   return updated
