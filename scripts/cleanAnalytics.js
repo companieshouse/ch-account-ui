@@ -65,7 +65,9 @@ export const cleanAnalytics = (matomo) => {
       });
     }
     
+
     log.debug("PS: ", formatted)
+
     return formatted
   })
   return updated
