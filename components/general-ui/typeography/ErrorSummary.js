@@ -26,7 +26,8 @@ const ErrorSummary = (props) => {
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + error.label : 'Unknown Error: ' + error.label
+          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + error.label : 'Unknown Error: ' + error.label,
+          href: ''
         }
         trackEvent(errData)
         // console.error('Error:' + error.label)
