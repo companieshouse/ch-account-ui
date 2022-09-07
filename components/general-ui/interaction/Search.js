@@ -28,6 +28,7 @@ const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
     if (matomo) {
       matomo.push(search)
       const cleanData = matomoHelper(matomo)
+      cleanData.href = '' // ensure the href is blank
 
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
