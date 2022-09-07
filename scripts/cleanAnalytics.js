@@ -1,3 +1,5 @@
+import log from '../services/log'
+
 export const matomoHelper = (data) => {
   const eventKeys = ['type', 'category', 'action', 'name', 'value']
 
@@ -17,11 +19,14 @@ export const cleanAnalytics = (matomo) => {
     'userDisplayName', 
     'user.email', 
     'company.inviter.displayName', 
-    'userName',
     'companyNumber=[0-9A-Z]+',
     'companyName=[0-9a-zA-Z\s()%]+',
-    'userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]',
-    'invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]'
+    'userName=[a-zA-Z\.]+%40[a-zA-Z\.]+[^%0-9]',
+    'userName=[a-zA-Z\.].',
+    'invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]',
+    'notifyId=[0-9a-zA-Z\-]+',
+    'userId=[0-9a-zA-Z\-]+'
+
   ]
 
   const hashMap = {
@@ -29,12 +34,13 @@ export const cleanAnalytics = (matomo) => {
     ['userDisplayName']: '<user>',
     ['user.email']: '<emailAddress>',
     ['company.inviter.displayName']: '<user>',
-    ['companyName']: '<company>',
-    ['userName']: '<user>',
     ['companyNumber=[0-9A-Z]+']: '<companyNumber>',
     ['companyName=[0-9a-zA-Z\s()%]+']: '<companyName>',
-    ['userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<userEmail>',
-    ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>'
+    ['userName=[a-zA-Z\.].']: '<user>',
+    ['userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<user>',
+    ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>',
+    ['notifyId=[0-9a-zA-Z\-]+']: '<notifyId>',
+    ['userId=[0-9a-zA-Z\-]+']: '<userId>'
   }
 
   let updated = matomo.map((string) => {
@@ -46,6 +52,8 @@ export const cleanAnalytics = (matomo) => {
 
     let formatted = string
 
+    log.debug("FORMATTED: ", match)
+
     if (match.length) {
       // we have more than one match
       match.forEach(currentMatch => {
@@ -53,7 +61,8 @@ export const cleanAnalytics = (matomo) => {
         formatted = typeof string == "string" ? formatted.replace(re, hashMap[currentMatch]) : string
       });
     }
-   
+    
+    log.debug("FORMATTED: ", formatted)
     return formatted
   })
   return updated
