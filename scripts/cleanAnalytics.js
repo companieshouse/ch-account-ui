@@ -1,4 +1,4 @@
-import log from '../services/log'
+// import log from '../services/log'
 
 export const matomoHelper = (data) => {
   const eventKeys = ['type', 'category', 'action', 'name', 'value']
@@ -52,7 +52,7 @@ export const cleanAnalytics = (matomo) => {
 
     let formatted = string
 
-    log.debug("FORMATTED: ", match)
+    // log.debug("FORMATTED: ", match)
 
     if (match.length) {
       // we have more than one match
@@ -62,7 +62,7 @@ export const cleanAnalytics = (matomo) => {
       });
     }
     
-    log.debug("FORMATTED: ", formatted)
+    // log.debug("FORMATTED: ", formatted)
     return formatted
   })
   return updated
