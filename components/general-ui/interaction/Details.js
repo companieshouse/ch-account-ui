@@ -18,6 +18,7 @@ const Details = ({ className = '', children, label = '', matomo }) => {
   const onClick = (evt) => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
+      cleanData.href = '' // ensure the href is blank
 
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)

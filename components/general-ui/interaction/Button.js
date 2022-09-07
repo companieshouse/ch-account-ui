@@ -36,7 +36,7 @@ const Button = ({
     if (matomo) {
       const cleanData = matomoHelper(matomo)
       cleanData.href = '' // ensure the href is blank
-      log.debug('PS: Button: ', cleanData)
+      log.debug('Button: ', cleanData)
 
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)

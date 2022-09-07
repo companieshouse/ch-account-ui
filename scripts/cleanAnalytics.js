@@ -1,7 +1,7 @@
 import log from '../services/log'
 
 export const matomoHelper = (data) => {
-  log.debug("PS: helper: ", data )
+  log.debug("helper: ", data )
   const eventKeys = ['type', 'category', 'action', 'name', 'value', 'href']
 
   const finalMatomoData = cleanAnalytics(data).reduce((finalMatomoData, field, index) => {
@@ -14,7 +14,7 @@ export const matomoHelper = (data) => {
 
 export const cleanAnalytics = (matomo) => {
 
-  log.debug("PS: Matomo data IN: ", matomo)
+  log.debug("Matomo data IN: ", matomo)
 
   const patterns = [
     'company.name', 
@@ -55,7 +55,7 @@ export const cleanAnalytics = (matomo) => {
 
     let formatted = string
 
-    log.debug("PS: ", match)
+    // log.debug("", match)
 
     if (match.length) {
       // we have more than one match
@@ -66,7 +66,7 @@ export const cleanAnalytics = (matomo) => {
     }
     
 
-    log.debug("PS: ", formatted)
+    // log.debug("", formatted)
 
     return formatted
   })

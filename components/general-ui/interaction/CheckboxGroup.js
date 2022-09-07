@@ -25,6 +25,7 @@ const CheckboxGroup = (props) => {
     if (matomo) {
       matomo.push(evt.target.labels[0].textContent)
       const cleanData = matomoHelper(matomo)
+      cleanData.href = '' // ensure the href is blank
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
