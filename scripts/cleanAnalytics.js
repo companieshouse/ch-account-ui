@@ -66,7 +66,7 @@ export const cleanAnalytics = (matomo) => {
     }
     
 
-    // log.debug("", formatted)
+    log.debug("", formatted)
 
     return formatted
   })
