@@ -50,7 +50,7 @@ const Header = ({ hasLogoutLink, titleLinkHref = CH_GOVUK_LINK, lang }) => {
             <nav className="floatRight">
               <ul id="navigation" className="govuk-header__navigation " aria-label="Navigation menu">
                 <li className="govuk-header__navigation-item">
-                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={ CH_EWF_IDAM_LOGOUT_URL }>{translate(lang, 'SIGN_OUT')}</LinkText>
+                  <LinkText className="govuk-header__link" testId={'accountLogoutLink'} href={ CH_EWF_IDAM_LOGOUT_URL } matomo={['trackEvent', translate(lang, 'SIGN_OUT'), translate(lang, 'SIGN_OUT')]}>{translate(lang, 'SIGN_OUT')}</LinkText>
                 </li>
               </ul>
             </nav>
