@@ -4,6 +4,7 @@ import HeadingCount from '../../../services/HeadingCount'
 import WithLang from '../../../services/lang/WithLang'
 import { errorsPropType } from '../../../services/propTypes'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { cleanAnalytics } from '../../../scripts/cleanAnalytics'
 
 const ErrorSummary = (props) => {
   const { trackEvent } = useMatomo()
@@ -26,11 +27,11 @@ const ErrorSummary = (props) => {
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + error.label : 'Unknown Error: ' + error.label,
+          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + cleanAnalytics([error.label]) : 'Unknown Error: ' + cleanAnalytics([error.label]),
           href: ''
         }
         trackEvent(errData)
-        // console.error('Error:' + error.label)
+        // console.error('PS Error:' + cleanAnalytics([error.label]))
         // console.error('parentPage: ', parentPage[0])
       })
     }
