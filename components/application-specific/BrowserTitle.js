@@ -27,7 +27,7 @@ const BrowserTitle = ({ title, errors }) => {
     const currentUrl = window.location.href
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
     // console.log(cleanAnalytics([currentUrl])[0])
-    pushInstruction('setDocumentTitle', [title + suffix])
+    pushInstruction('setDocumentTitle', cleanAnalytics([title + suffix]))
     trackPageView({
       documentTitle: cleanAnalytics([title]),
       href: cleanAnalytics([currentUrl])[0]
