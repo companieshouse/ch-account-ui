@@ -16,7 +16,7 @@ const BrowserTitle = ({ title, errors }) => {
     if (errors.length > 0) {
       window.document.title = 'Error: ' + window.document.title
       trackPageView({
-        // documentTitle: cleanAnalytics([window.document.title]),
+        documentTitle: cleanAnalytics([window.document.title]),
         href: cleanAnalytics([window.location.href])[0]
       })
     }
@@ -29,7 +29,7 @@ const BrowserTitle = ({ title, errors }) => {
     // console.log(cleanAnalytics([currentUrl])[0])
     pushInstruction('setDocumentTitle', [title + suffix])
     trackPageView({
-      // documentTitle: cleanAnalytics([title]),
+      documentTitle: cleanAnalytics([title]),
       href: cleanAnalytics([currentUrl])[0]
     })
     const content = document.getElementById('__next')

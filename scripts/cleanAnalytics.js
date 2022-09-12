@@ -29,7 +29,8 @@ export const cleanAnalytics = (matomo) => {
     'userName=[a-zA-Z\.\%0-9]+',
     'invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]',
     'notifyId=[0-9a-zA-Z\-]+',
-    'userId=[0-9a-zA-Z\-]+'
+    'userId=[0-9a-zA-Z\-]+',
+    ' [A-Z 0-9]+'
 
   ]
 
@@ -45,7 +46,8 @@ export const cleanAnalytics = (matomo) => {
     ['userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<user>',
     ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>',
     ['notifyId=[0-9a-zA-Z\-]+']: '<notifyId>',
-    ['userId=[0-9a-zA-Z\-]+']: '<userId>'
+    ['userId=[0-9a-zA-Z\-]+']: '<userId>',
+    [' [A-Z 0-9]+']: '<companyName>',
   }
 
   let updated = matomo.map((string) => {
