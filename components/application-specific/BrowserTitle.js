@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { cleanAnalytics } from '../../scripts/cleanAnalytics'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
+import log from '../../services/log'
 
 const BrowserTitle = ({ title, errors }) => {
   const { trackPageView, pushInstruction, enableLinkTracking } = useMatomo()
@@ -18,15 +19,19 @@ const BrowserTitle = ({ title, errors }) => {
       trackPageView({
         documentTitle: cleanAnalytics([window.document.title]),
         href: cleanAnalytics([window.location.href])[0]
+
       })
     }
   }, [title, errors])
 
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
+    // window.document.title = title + suffix
+    log.debug('window.document.title: ', window.document.title)
+    log.debug('clean title suffix', cleanAnalytics([title + suffix]))
     const currentUrl = window.location.href
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
-    pushInstruction('setDocumentTitle', [cleanAnalytics([title + suffix])])
+    // pushInstruction('setDocumentTitle', [cleanAnalytics([title + suffix])])
 
     trackPageView({
       documentTitle: cleanAnalytics([title]),
