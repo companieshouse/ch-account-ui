@@ -26,15 +26,18 @@ const BrowserTitle = ({ title, errors }) => {
 
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
-    // window.document.title = title + suffix
-    log.debug('window.document.title: ', window.document.title)
-    log.debug('clean title suffix', cleanAnalytics([title + suffix]))
+    const currentTitle = window.document.title = title + suffix
+    log.debug('before matomo trackPageView: ', window.document.title)
     const currentUrl = window.location.href
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
-    // pushInstruction('setDocumentTitle', [cleanAnalytics([title + suffix])])
+    log.debug('TEST: Matomo')
+    trackPageView({
+      documentTitle: cleanAnalytics([window.document.title + ' ! TEST']),
+      href: cleanAnalytics([currentUrl])[0]
+    })
 
     trackPageView({
-      documentTitle: cleanAnalytics([title]),
+      documentTitle: cleanAnalytics([currentTitle])[0],
       href: cleanAnalytics([currentUrl])[0]
     })
     const content = document.getElementById('__next')
