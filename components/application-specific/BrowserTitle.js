@@ -17,7 +17,7 @@ const BrowserTitle = ({ title, errors }) => {
     if (errors.length > 0) {
       window.document.title = 'Error: ' + window.document.title
       trackPageView({
-        documentTitle: cleanAnalytics([window.document.title]),
+        documentTitle: cleanAnalytics([window.document.title])[0],
         href: cleanAnalytics([window.location.href])[0]
 
       })
@@ -30,11 +30,6 @@ const BrowserTitle = ({ title, errors }) => {
     log.debug('before matomo trackPageView: ', window.document.title)
     const currentUrl = window.location.href
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
-    log.debug('TEST: Matomo')
-    trackPageView({
-      documentTitle: cleanAnalytics([window.document.title + ' ! TEST']),
-      href: cleanAnalytics([currentUrl])[0]
-    })
 
     trackPageView({
       documentTitle: cleanAnalytics([currentTitle])[0],
