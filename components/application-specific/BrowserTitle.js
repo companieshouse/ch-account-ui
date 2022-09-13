@@ -5,10 +5,11 @@ import { useMatomo } from '@datapunt/matomo-tracker-react'
 import log from '../../services/log'
 
 const BrowserTitle = ({ title, errors }) => {
-  const { trackPageView, pushInstruction, enableLinkTracking } = useMatomo()
+  // const { trackPageView, pushInstruction, enableLinkTracking } = useMatomo()
+  const { trackPageView, pushInstruction } = useMatomo()
   const suffix = ' - Companies House WebFiling account - GOV.UK'
 
-  enableLinkTracking()
+  // enableLinkTracking()
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     window.document.title = title + suffix
