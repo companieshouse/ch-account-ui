@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { cleanAnalytics } from '../../scripts/cleanAnalytics'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
-import log from '../../services/log'
+// import log from '../../services/log'
 
 const BrowserTitle = ({ title, errors }) => {
   const { trackPageView, pushInstruction, enableLinkTracking } = useMatomo()
@@ -11,8 +11,8 @@ const BrowserTitle = ({ title, errors }) => {
   enableLinkTracking()
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
-    // _paq.push(['trackPageView'])
-    let currentTitle = window.document.title = title + suffix
+    window.document.title = title + suffix
+    let currentTitle = title
 
     if (errors.length > 0) {
       currentTitle = 'Error: ' + currentTitle
@@ -25,8 +25,9 @@ const BrowserTitle = ({ title, errors }) => {
 
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
-    const currentTitle = window.document.title = title + suffix
-    log.debug('before matomo trackPageView: ', window.document.title)
+    window.document.title = title + suffix
+    const currentTitle = title
+    // log.debug('before matomo trackPageView: ', window.document.title)
     const currentUrl = window.location.href
     pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl])[0]])
 
