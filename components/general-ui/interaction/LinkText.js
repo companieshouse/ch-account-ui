@@ -2,14 +2,14 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
-import { matomoHelper } from '../../../scripts/cleanAnalytics'
+import { cleanAnalytics, matomoHelper } from '../../../scripts/cleanAnalytics'
 
 const LinkText = (props) => {
   const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo, name, companyName } = props
   let onClick = props.onClick
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
-  const { trackEvent, pushInstruction } = useMatomo()
+  const { trackEvent, pushInstruction, trackLink } = useMatomo()
 
   if (!onClick) {
     onClick = (evt) => {
@@ -21,6 +21,10 @@ const LinkText = (props) => {
         } else if (cleanData.type === 'trackGoal') {
           pushInstruction('trackGoal', [matomo[1]])
         }
+
+        trackLink({
+          href: cleanAnalytics(evt.target.href)
+        })
       }
       if (handler) {
         handlers[handler.name](evt, handler.params)
