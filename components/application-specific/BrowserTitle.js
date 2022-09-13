@@ -29,15 +29,15 @@ const BrowserTitle = ({ title, errors }) => {
     const currentTitle = title
     // log.debug('before matomo trackPageView: ', window.document.title)
     const currentUrl = window.location.href
-    pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]])
+    // pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]])
     log.debug('MATOMO: Tracking: ', {
       documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
     })
-    trackPageView({
-      documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
-      href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
-    })
+    // trackPageView({
+    //   documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
+    //   href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
+    // })
     const content = document.getElementById('__next')
     pushInstruction('FormAnalytics::scanForForms', [content])
   }, [title])
