@@ -21,9 +21,9 @@ const LinkText = (props) => {
         } else if (cleanData.type === 'trackGoal') {
           pushInstruction('trackGoal', [matomo[1]])
         }
-
+        console.log(cleanAnalytics([window.location.href])[0])
         trackLink({
-          href: cleanAnalytics(evt.target.href)
+          href: cleanAnalytics([evt.target.href], false, 'LinkText')[0]
         })
       }
       if (handler) {

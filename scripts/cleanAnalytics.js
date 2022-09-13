@@ -12,11 +12,11 @@ export const matomoHelper = (data) => {
   return finalMatomoData
 }
 
-export const cleanAnalytics = (matomo) => {
+export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
 
-  log.debug("Matomo data IN: ", matomo)
+  log.debug("Matomo data IN: ", matomo, title, id)
 
-  const patterns = [
+  let patterns = [
     'company.name', 
     'emailAddress', 
     'userDisplayName', 
@@ -29,10 +29,11 @@ export const cleanAnalytics = (matomo) => {
     'userName=[a-zA-Z\.\%0-9]+',
     'invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]',
     'notifyId=[0-9a-zA-Z\-]+',
-    'userId=[0-9a-zA-Z\-]+',
-    // ' [A-Z 0-9():.!@£$%^&*ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ\-]+'
-    '([A-Z0-9():.!@£$%^&*:ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ\-]+[A-Z0-9()!@£$%^&*: \-])+'
+    'userId=[0-9a-zA-Z\-]+'
+  ]
 
+  const titlePatterns = [
+    '[A-Z0-9ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ]+[A-Z0-9:!@£$%^&*() \-]+[^ a-z\t\n\r]+'
   ]
 
   const hashMap = {
@@ -48,8 +49,13 @@ export const cleanAnalytics = (matomo) => {
     ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>',
     ['notifyId=[0-9a-zA-Z\-]+']: '<notifyId>',
     ['userId=[0-9a-zA-Z\-]+']: '<userId>',
-    // [' [A-Z 0-9():.!@£$%^&*ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ\-]+']: '<companyName>',
-    ['([A-Z0-9()!@£$%^&*:ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ\-\.]+[A-Z0-9()!@£$%^&*: \-\.])+']: '<companyName>'
+    ['[A-Z0-9]+[A-Z0-9\W]+']: '<companyName>',
+    ['[A-Z0-9]+[A-Z0-9:!@£$%^&*() \-]+']: '<companyName>',
+    ['[A-Z0-9ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ]+[A-Z0-9:!@£$%^&*() \-]+[^ a-z\t\n\r]+']: '<COMPANYNAME>'
+  }
+
+  if (title) {
+    patterns = titlePatterns
   }
 
   let updated = matomo.map((string) => {

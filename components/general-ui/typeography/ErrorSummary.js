@@ -27,7 +27,7 @@ const ErrorSummary = (props) => {
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + cleanAnalytics([error.label]) : 'Unknown Error: ' + cleanAnalytics([error.label]),
+          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + cleanAnalytics([error.label], true, 'ErrorSummary')[0] : 'Unknown Error: ' + cleanAnalytics([error.label], true, 'Error Summary')[0],
           href: ''
         }
         trackEvent(errData)
