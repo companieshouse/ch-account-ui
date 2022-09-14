@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
-// import { useMatomo } from '@datapunt/matomo-tracker-react'
-// import { cleanAnalytics, matomoHelper } from '../../../scripts/cleanAnalytics'
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { cleanAnalytics } from '../../../scripts/cleanAnalytics'
 
 import log from '../../../services/log'
 
@@ -12,11 +12,18 @@ const LinkText = (props) => {
   const classes = [className]
   const finalClassName = classes.join(' ').trim()
   // const { trackEvent, pushInstruction, trackLink } = useMatomo()
+  const { trackLink } = useMatomo()
 
   log.debug('Matomo: ', matomo)
 
   if (!onClick) {
     onClick = (evt) => {
+      if (matomo) {
+        log.debug('track link')
+        trackLink({
+          href: cleanAnalytics([evt.target.href], false, 'LinkText')[0]
+        })
+      }
       // if (matomo) {
       //   const cleanData = matomoHelper(matomo)
       //   cleanData.href = '' // ensure the href is blank

@@ -39,10 +39,10 @@ const BrowserTitle = ({ title, errors }) => {
       documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
     })
-    // trackPageView({
-    //   documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
-    //   href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
-    // })
+    trackPageView({
+      documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
+      href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
+    })
     const content = document.getElementById('__next')
     pushInstruction('FormAnalytics::scanForForms', [content])
   }, [title])
