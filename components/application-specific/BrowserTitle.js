@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { cleanAnalytics } from '../../scripts/cleanAnalytics'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
+import { CH_BASE_URL } from '../../services/environment'
 import log from '../../services/log'
 
 const BrowserTitle = ({ title, errors }) => {
@@ -9,7 +10,10 @@ const BrowserTitle = ({ title, errors }) => {
   const { trackPageView, pushInstruction } = useMatomo()
   const suffix = ' - Companies House WebFiling account - GOV.UK'
 
+  const baseUrl = '*.' + CH_BASE_URL
+
   // enableLinkTracking()
+  pushInstruction('setDomains', [baseUrl])
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     window.document.title = title + suffix
