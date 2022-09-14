@@ -16,6 +16,8 @@ const LinkText = (props) => {
 
   log.debug('Matomo: ', matomo)
 
+  log.debug('LINK: ', href)
+
   if (!onClick) {
     onClick = (evt) => {
       if (matomo) {

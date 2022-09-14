@@ -11,6 +11,57 @@ const LOGIN = (lang, tokens) => [
     component: 'NotificationBanner',
     dynamicProps: {
       title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
+      heading: tokens('SHARED.ServiceMaintenance')
+    },
+    content: [
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.duringThisPeriod')
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.weAppologiseForAnyInconvenience')
+        }
+      },
+
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.weWillbeQueueing')
+        }
+      }
+    ]
+  },
+  {
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
+      heading: tokens('SHARED.InformationMessage')
+    },
+    content: [
+      {
+        component: 'LinkText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.WebFiling.accountChanging'),
+          href: tokens('SHARED.Notification.WebFiling.accountChanging.link'),
+          matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.accountChanging'), tokens('SHARED.NotificationBanner.WebFiling.accountChanging')]
+        }
+      }
+    ]
+  },
+  {
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
       heading: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading')
     },
     content: [

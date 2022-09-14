@@ -1350,6 +1350,38 @@
     "en": "",
     "cy": "Mae'r gwasanaeth ffeilio eich datganiad cadarnhau ar gael yn Saesneg yn unig ar hyn o bryd."
   },
+  "SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance": {
+    "en": "Due to essential maintenance this service will be unavailable Saturday 17th September 6am - Monday 19th September 6am.",
+    "cy": "Neges Wybodaeth: Bydd gwaith cynnal a chadw yn digwydd ar Ddydd Sadwrn 17eg o Fedi 6yh tan Ddydd Llun y 19eg o Fedi am 6yh."
+  },
+  "SHARED.NotificationBanner.Maintenance.duringThisPeriod": {
+    "en": "During this time customers using the WebFiling service may experience some disruption.",
+    "cy": "Yn ystod y cyfnod hwn bydd yr holl wasanaethau ar-lein ar gael, ond efallai y bydd cwsmeriaid sy’n defnyddio’r gwasanaeth WebFiling yn profi rhywfaint o aflonyddwch."
+  },
+  "SHARED.NotificationBanner.Maintenance.weAppologiseForAnyInconvenience": {
+    "en": "We apologise for any inconvenience this may cause.",
+    "cy": "Neges Wybodaeth: Bydd gwaith cynnal a chadw yn digwydd ar Ddydd Sadwrn 17eg o Fedi 6yh tan Ddydd Llun y 19eg o Fedi am 6yh."
+  },
+  "SHARED.NotificationBanner.Maintenance.weWillbeQueueing": {
+    "en": "We will be queueing docs from 6am Monday - 7am Tuesday.",
+    "cy": "Byddwn yn rhoi dogfennau mewn ciw o 6yb ar Ddydd Llun – 7yb ar Ddydd Mawrth"
+  },
+  "SHARED.NotificationBanner.WebFiling.accountChanging": {
+    "en": "Your WebFiling account is changing. Visit GOV.UK for more information.",
+    "cy": "Mae eich cyfrif WebFiling yn newid. Ewch i GOV.UK am fwy o wybodaeth."
+  },
+  "SHARED.Notification.WebFiling.accountChanging.link": {
+    "en": "https://www.gov.uk/government/news/companies-house-will-soon-be-introducing-a-new-webfiling-account",
+    "cy": "https://www.gov.uk/government/news/companies-house-will-soon-be-introducing-a-new-webfiling-account.cy"
+  },
+  "SHARED.InformationMessage": {
+    "en": "Information Message",
+    "cy": "Neges Wybodaeth"
+  },
+  "SHARED.ServiceMaintenance": {
+    "en": "Service Maintenance",
+    "cy": "Cynnal a Chadw Gwasanaeth"
+  },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
     "cy": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol"
