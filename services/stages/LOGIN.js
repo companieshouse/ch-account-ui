@@ -161,12 +161,18 @@ const LOGIN = (lang, tokens) => [
             }
           },
           {
-            component: 'BodyText',
-            props: {
+            component: 'SpanText',
+            dynamicProps: {
               children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
             }
           }
         ]
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: ''
+        }
       },
       {
         component: 'BodyText',
@@ -222,7 +228,7 @@ const LOGIN = (lang, tokens) => [
         props: {
           children: tokens('LOGIN.BodyText.readWebfilingGuidance'),
           href: `${CH_BASE_EWF_URL}/help/en/stdwf/glossaryHelp.html`,
-          testId: 'whoCanReadWebfiling',
+          testId: 'webfilingGuidance',
           matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.BodyText.readWebfilingGuidance')]
         }
       }
@@ -232,15 +238,20 @@ const LOGIN = (lang, tokens) => [
     component: 'BodyText',
     content: [
       {
-        component: 'LinkText',
-        dynamicProps: {
-          href: '${links.legacyAuthURL}'
-        },
-        props: {
-          children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
-          testId: 'lendersLink',
-          matomo: ['trackEvent', 'Landing Page', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
-        }
+        component: 'BodyText',
+        content: [
+          {
+            component: 'LinkText',
+            dynamicProps: {
+              href: '${links.legacyAuthURL}'
+            },
+            props: {
+              children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
+              testId: 'lendersLink',
+              matomo: ['trackEvent', 'Landing Page', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
+            }
+          }
+        ]
       }
     ]
   }

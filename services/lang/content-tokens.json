@@ -519,6 +519,10 @@
     "en": "Who can use WebFiling",
     "cy": "Pwy sy'n gallu defnyddio WebFiling?"
   },
+  "LOGIN.BodyText.readWebfilingGuidance": {
+    "en": "Read the WebFiling guidance",
+    "cy": "Darllenwch y cyfarwyddyd WebFiling"
+  },
   "NO_SESSION_ERROR.[2].BodyText.forYourSecurityWeveSignedYouOut": {
     "en": "For your security, we've signed you out.",
     "cy": "Er mwyn eich diogelwch, rydym wedi eich arwyddo allan."
