@@ -3,7 +3,7 @@ import React from 'react'
 import { cleanAnalytics } from '../../scripts/cleanAnalytics'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { CH_BASE_URL } from '../../services/environment'
-// import log from '../../services/log'
+import log from '../../services/log'
 
 const BrowserTitle = ({ title, errors }) => {
   const { trackPageView, pushInstruction } = useMatomo()
@@ -20,6 +20,7 @@ const BrowserTitle = ({ title, errors }) => {
 
     if (errors.length > 0) {
       currentTitle = 'Error: ' + currentTitle
+      log.debug('Tracking Error - Page View: ', currentTitle)
       trackPageView({
         documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
         href: cleanAnalytics([window.location.href], false, 'BrowserTitle')[0]
@@ -31,10 +32,8 @@ const BrowserTitle = ({ title, errors }) => {
   React.useEffect(() => {
     window.document.title = title + suffix
     const currentTitle = title
-    // log.debug('before matomo trackPageView: ', window.document.title)
     const currentUrl = window.location.href
-    // pushInstruction('setCustomUrl', [cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]])
-
+    log.debug('Matomo: tracking page view')
     trackPageView({
       documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
