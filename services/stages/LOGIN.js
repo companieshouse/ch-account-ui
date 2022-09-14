@@ -134,7 +134,7 @@ const LOGIN = (lang, tokens) => [
         component: 'HeadingText',
         props: {
           children: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading'),
-          size: 'h2'
+          size: 'm'
         }
       },
       {
@@ -159,14 +159,14 @@ const LOGIN = (lang, tokens) => [
             dynamicProps: {
               children: '.'
             }
+          },
+          {
+            component: 'BodyText',
+            props: {
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
+            }
           }
         ]
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
-        }
       },
       {
         component: 'BodyText',
@@ -210,6 +210,20 @@ const LOGIN = (lang, tokens) => [
           href: `${CH_BASE_EWF_URL}/sframe?name=aboutWebFiling&lang=en`,
           testId: 'aboutWebFilingLink',
           matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.[7].BodyText.whoCanUseWebFiling')]
+        }
+      }
+    ]
+  },
+  {
+    component: 'BodyText',
+    content: [
+      {
+        component: 'LinkText',
+        props: {
+          children: tokens('LOGIN.BodyText.readWebfilingGuidance'),
+          href: `${CH_BASE_EWF_URL}/help/en/stdwf/glossaryHelp.html`,
+          testId: 'whoCanReadWebfiling',
+          matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.BodyText.readWebfilingGuidance')]
         }
       }
     ]
