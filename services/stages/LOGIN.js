@@ -52,7 +52,7 @@ const LOGIN = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.NotificationBanner.WebFiling.accountChanging'),
-          href: 'https://www.gov.uk/government/news/companies-house-will-soon-be-introducing-a-new-webfiling-account',
+          href: tokens('SHARED.Notification.WebFiling.accountChanging.link'),
           matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.accountChanging'), tokens('SHARED.NotificationBanner.WebFiling.accountChanging')]
         }
       }

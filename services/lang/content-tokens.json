@@ -1364,11 +1364,15 @@
   },
   "SHARED.NotificationBanner.Maintenance.weWillbeQueueing": {
     "en": "We will be queueing docs from 6am Monday - 7am Tuesday.",
-    "cy": ""
+    "cy": "Byddwn yn rhoi dogfennau mewn ciw o 6yb ar Ddydd Llun – 7yb ar Ddydd Mawrth"
   },
   "SHARED.NotificationBanner.WebFiling.accountChanging": {
     "en": "Your WebFiling account is changing. Visit GOV.UK for more information.",
     "cy": "Mae eich cyfrif WebFiling yn newid. Ewch i GOV.UK am fwy o wybodaeth."
+  },
+  "SHARED.Notification.WebFiling.accountChanging.link": {
+    "en": "https://www.gov.uk/government/news/companies-house-will-soon-be-introducing-a-new-webfiling-account",
+    "cy": "https://www.gov.uk/government/news/companies-house-will-soon-be-introducing-a-new-webfiling-account.cy"
   },
   "SHARED.InformationMessage": {
     "en": "Information Message",
