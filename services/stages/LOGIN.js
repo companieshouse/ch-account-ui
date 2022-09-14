@@ -42,7 +42,13 @@ const LOGIN = (lang, tokens) => [
     ]
   },
   {
-    component: 'NotificationBanner',
+    component: 'PageHeading',
+    props: {
+      children: tokens('SHARED.signInToWebFiling')
+    }
+  },
+  {
+    component: 'InsetText',
     dynamicProps: {
       title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
       heading: tokens('SHARED.InformationMessage')
@@ -57,58 +63,6 @@ const LOGIN = (lang, tokens) => [
         }
       }
     ]
-  },
-  {
-    component: 'NotificationBanner',
-    dynamicProps: {
-      title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
-      heading: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading')
-    },
-    content: [
-      {
-        component: 'BodyText',
-        content: [
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany')
-            }
-          },
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
-              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
-              matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
-            }
-          },
-          {
-            component: 'SpanText',
-            dynamicProps: {
-              children: '.'
-            }
-          }
-        ]
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.welshOnly')
-        }
-      }
-    ]
-  },
-  {
-    component: 'PageHeading',
-    props: {
-      children: tokens('SHARED.signInToWebFiling')
-    }
   },
   {
     component: 'BodyText',
@@ -169,6 +123,55 @@ const LOGIN = (lang, tokens) => [
         component: 'ListItem',
         props: {
           children: tokens('LOGIN.[4].List.inWebFilingYouCanFive')
+        }
+      }
+    ]
+  },
+  {
+    component: 'BodyText',
+    content: [
+      {
+        component: 'HeadingText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading'),
+          size: 'h2'
+        }
+      },
+      {
+        component: 'BodyText',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany')
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
+              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
+              matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
+            }
+          },
+          {
+            component: 'SpanText',
+            dynamicProps: {
+              children: '.'
+            }
+          }
+        ]
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.welshOnly')
         }
       }
     ]
