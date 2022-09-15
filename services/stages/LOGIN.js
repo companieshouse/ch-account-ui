@@ -127,60 +127,55 @@ const LOGIN = (lang, tokens) => [
     ]
   },
   {
+    component: 'HeadingText',
+    props: {
+      children: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading'),
+      size: 'm'
+    }
+  },
+  {
     component: 'BodyText',
     content: [
       {
-        component: 'HeadingText',
+        component: 'SpanText',
         props: {
-          children: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading'),
-          size: 'm'
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany')
         }
       },
       {
-        component: 'BodyText',
-        content: [
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.ifYouHaveAPrivateCompany')
-            }
-          },
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
-              href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
-              target: '_blank',
-              matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: '. '
-            }
-          },
-          {
-            component: 'SpanText',
-            dynamicProps: {
-              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
-            }
-          }
-        ]
-      },
-      {
-        component: 'BodyText',
+        component: 'LinkText',
         props: {
-          children: ''
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
+          href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
+          target: '_blank',
+          matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
         }
       },
       {
-        component: 'BodyText',
+        component: 'SpanText',
         props: {
-          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.welshOnly')
+          children: '. '
+        }
+      },
+      {
+        component: 'SpanText',
+        dynamicProps: {
+          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
         }
       }
     ]
+  },
+  {
+    component: 'BodyText',
+    props: {
+      children: ''
+    }
+  },
+  {
+    component: 'BodyText',
+    props: {
+      children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.welshOnly')
+    }
   },
   {
     component: 'Button',
