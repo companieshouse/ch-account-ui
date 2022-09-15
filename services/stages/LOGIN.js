@@ -4,7 +4,7 @@ const LOGIN = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.signInToWebFiling')
+      title: tokens('SHARED.signInToWebFilingAccount')
     }
   },
   {
@@ -19,32 +19,13 @@ const LOGIN = (lang, tokens) => [
         props: {
           children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
         }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.duringThisPeriod')
-        }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.weAppologiseForAnyInconvenience')
-        }
-      },
-
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.weWillbeQueueing')
-        }
       }
     ]
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.signInToWebFiling')
+      children: tokens('SHARED.signInToWebFilingAccount')
     }
   },
   {
@@ -55,11 +36,23 @@ const LOGIN = (lang, tokens) => [
     },
     content: [
       {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.WebFiling.accountChanging')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: ' '
+        }
+      },
+      {
         component: 'LinkText',
         props: {
-          children: tokens('SHARED.NotificationBanner.WebFiling.accountChanging'),
+          children: tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction'),
           href: tokens('SHARED.Notification.WebFiling.accountChanging.link'),
-          matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.accountChanging'), tokens('SHARED.NotificationBanner.WebFiling.accountChanging')]
+          matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction'), tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction')]
         }
       }
     ]
@@ -134,7 +127,7 @@ const LOGIN = (lang, tokens) => [
         component: 'HeadingText',
         props: {
           children: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading'),
-          size: 'h2'
+          size: 'm'
         }
       },
       {
@@ -151,13 +144,20 @@ const LOGIN = (lang, tokens) => [
             props: {
               children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
               href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
+              target: '_blank',
               matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
             }
           },
           {
             component: 'SpanText',
-            dynamicProps: {
+            props: {
               children: '.'
+            }
+          },
+          {
+            component: 'SpanText',
+            dynamicProps: {
+              children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
             }
           }
         ]
@@ -165,7 +165,7 @@ const LOGIN = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.youWillNotBeAble')
+          children: ''
         }
       },
       {
@@ -219,14 +219,33 @@ const LOGIN = (lang, tokens) => [
     content: [
       {
         component: 'LinkText',
-        dynamicProps: {
-          href: '${links.legacyAuthURL}'
-        },
         props: {
-          children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
-          testId: 'lendersLink',
-          matomo: ['trackEvent', 'Landing Page', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
+          children: tokens('LOGIN.BodyText.readWebfilingGuidance'),
+          href: `${CH_BASE_EWF_URL}/help/en/stdwf/glossaryHelp.html`,
+          testId: 'webfilingGuidance',
+          matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.BodyText.readWebfilingGuidance')]
         }
+      }
+    ]
+  },
+  {
+    component: 'BodyText',
+    content: [
+      {
+        component: 'BodyText',
+        content: [
+          {
+            component: 'LinkText',
+            dynamicProps: {
+              href: '${links.legacyAuthURL}'
+            },
+            props: {
+              children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
+              testId: 'lendersLink',
+              matomo: ['trackEvent', 'Landing Page', tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge')]
+            }
+          }
+        ]
       }
     ]
   }
