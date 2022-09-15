@@ -25,19 +25,6 @@ const LOGIN = (lang, tokens) => [
         props: {
           children: tokens('SHARED.NotificationBanner.Maintenance.duringThisPeriod')
         }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.weAppologiseForAnyInconvenience')
-        }
-      },
-
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.weWillbeQueueing')
-        }
       }
     ]
   },
@@ -55,11 +42,23 @@ const LOGIN = (lang, tokens) => [
     },
     content: [
       {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.WebFiling.accountChanging')
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: ' '
+        }
+      },
+      {
         component: 'LinkText',
         props: {
-          children: tokens('SHARED.NotificationBanner.WebFiling.accountChanging'),
+          children: tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction'),
           href: tokens('SHARED.Notification.WebFiling.accountChanging.link'),
-          matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.accountChanging'), tokens('SHARED.NotificationBanner.WebFiling.accountChanging')]
+          matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction'), tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction')]
         }
       }
     ]
@@ -156,7 +155,7 @@ const LOGIN = (lang, tokens) => [
           },
           {
             component: 'SpanText',
-            dynamicProps: {
+            props: {
               children: '.'
             }
           },
