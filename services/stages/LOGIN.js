@@ -4,7 +4,7 @@ const LOGIN = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.signInToWebFiling')
+      title: tokens('SHARED.signInToWebFilingAccount')
     }
   },
   {
@@ -19,19 +19,13 @@ const LOGIN = (lang, tokens) => [
         props: {
           children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
         }
-      },
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.duringThisPeriod')
-        }
       }
     ]
   },
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.signInToWebFiling')
+      children: tokens('SHARED.signInToWebFilingAccount')
     }
   },
   {
@@ -150,6 +144,7 @@ const LOGIN = (lang, tokens) => [
             props: {
               children: tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation'),
               href: 'https://find-and-update.company-information.service.gov.uk/confirmation-statement',
+              target: '_blank',
               matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.NotificationBanner.CHConfirmationJourney.newFileAConfirmation')]
             }
           },
