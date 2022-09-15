@@ -54,6 +54,12 @@ const LOGIN = (lang, tokens) => [
           href: tokens('SHARED.Notification.WebFiling.accountChanging.link'),
           matomo: ['trackEvent', tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction'), tokens('SHARED.NotificationBanner.WebFiling.readAboutTheIntroduction')]
         }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: '.'
+        }
       }
     ]
   },
@@ -151,7 +157,7 @@ const LOGIN = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: '.'
+              children: '. '
             }
           },
           {
