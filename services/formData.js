@@ -39,10 +39,21 @@ const validateField = (value, field, customValidationRules) => {
   const results = []
   const rules = {
     required: (value) => { return value !== '' ? '' : 'Enter your details' },
-    radioRequired: (value) => { return value !== undefined ? '' : 'Enter a selection' }
+    radioRequired: (value) => { return value !== undefined ? '' : 'Enter a selection' },
+    validCompanyNumber: (value) => {
+      console.log('VALIDATION VALUE IN: ', value)
+      const patterns = ['[ ]+']
+      const match = patterns.filter(pattern => {
+        const re = new RegExp(pattern)
+        return re.test(value)
+      })
+      console.log('VALIDATION MATCH: ', match)
+      return !match ? '' : 'Enter a Valid Company number'
+    }
   }
 
   customValidationRules.forEach((rule) => {
+    console.log(rule)
     const result = rules[rule.name](value)
     if (result.length) {
       results.push({ token: rule.token, fieldName: field, anchor: field, label: result })
