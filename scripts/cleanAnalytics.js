@@ -1,10 +1,10 @@
 import log from '../services/log'
 
-export const matomoHelper = (data) => {
+export const matomoHelper = (data, title = false, id = "NONE") => {
   log.debug("helper: ", data )
   const eventKeys = ['type', 'category', 'action', 'name', 'value', 'href']
 
-  const finalMatomoData = cleanAnalytics(data).reduce((finalMatomoData, field, index) => {
+  const finalMatomoData = cleanAnalytics(data, title, id).reduce((finalMatomoData, field, index) => {
     finalMatomoData[eventKeys[index]] = field
     return finalMatomoData
   }, {})
@@ -43,7 +43,7 @@ export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
     ['company.inviter.displayName']: '<user>',
     ['companyNumber=[0-9A-Z]+']: '<companyNumber>',
     ['companyNo=[0-9A-Z]+']: '<companyNumber>',
-    ['companyName=[0-9a-zA-Z\s()%]+']: '<companyName>',
+    ['companyName=[0-9a-zA-Z\s()%\-]+']: '<companyName>',
     ['userName=[a-zA-Z\.\%0-9]+']: '<user>',
     ['userName=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<user>',
     ['invitedUser=[a-zA-z\.]+%40[a-zA-z\.]+[^%0-9]']: '<invitedUser>',
@@ -51,7 +51,7 @@ export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
     ['userId=[0-9a-zA-Z\-]+']: '<userId>',
     ['[A-Z0-9]+[A-Z0-9\W]+']: '<companyName>',
     ['[A-Z0-9]+[A-Z0-9:!@£$%^&*() \-]+']: '<companyName>',
-    ['[A-Z0-9ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ]+[A-Z0-9:!@£$%^&*() \-]+[^ a-z\t\n\r]+']: '<COMPANYNAME>'
+    ['[A-Z0-9ÀÁÂÄÃÅĀĂĄÆǼÇĆĈĊČÐĎÞÈÉÊËĒĔĖĘĚĜĞĠĢĤĦÌÍÎÏĨĪĬĮİĴĶĹĻĽĿŁÑŃŅŇŊÒÓÔÕÖØŌŎŐǾŒŔŖŘŚŜŞŠŢŤŦÙÚÛÜŨŪŬŮŰŲŴẀẂẄỲÝŶŸŹŻŽ:._!@£$%^&*()"]+[A-Z0-9:._!@£$%^&*()" \-]+[^ a-z\t\n\r]+']: '<COMPANYNAME>'
   }
 
   if (title) {
