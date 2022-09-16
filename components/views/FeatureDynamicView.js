@@ -12,6 +12,7 @@ import Header from '../general-ui/Header'
 import AccountLinks from '../application-specific/AccountLinks'
 import Footer from '../general-ui/Footer'
 import { CH_GOVUK_LINK } from '../../services/environment'
+import PhaseBanner from '../general-ui/interaction/PhaseBanner'
 
 const FeatureDynamicView = (props) => {
   const {
@@ -32,6 +33,9 @@ const FeatureDynamicView = (props) => {
   return (
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={CH_GOVUK_LINK} />
+      <WidthContainer>
+        <PhaseBanner phase={'ALPHA'} testId='feedBackLink' />
+      </WidthContainer>
       <WidthContainer style={{ paddingTop: '2ex' }}>
         {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} />}
       </WidthContainer>
