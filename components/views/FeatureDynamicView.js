@@ -34,7 +34,7 @@ const FeatureDynamicView = (props) => {
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={CH_GOVUK_LINK} />
       <WidthContainer>
-        <PhaseBanner phase={'ALPHA'} testId='feedBackLink' />
+        <PhaseBanner testId='feedBackLink' />
       </WidthContainer>
       <WidthContainer style={{ paddingTop: '2ex' }}>
         {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} />}
