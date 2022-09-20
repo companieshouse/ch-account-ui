@@ -22,10 +22,15 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           autoComplete: 'off',
           testId: 'companyNumberInputField',
           formGroup: 'companyDetails',
+          maxLength: 8,
           customValidation: [
             {
               name: 'required',
               token: 'COMPANY_NUMBER_REQUIRED'
+            },
+            {
+              name: 'validCompanyNumber',
+              token: 'COMPANY_NUMBER_INVALID'
             }
           ],
           content: [
