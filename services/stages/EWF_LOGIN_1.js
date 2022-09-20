@@ -20,21 +20,6 @@ const EWF_LOGIN_1 = (lang, tokens) => [
     }
   },
   {
-    component: 'NotificationBanner',
-    dynamicProps: {
-      title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
-      heading: tokens('SHARED.ServiceMaintenance')
-    },
-    content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
-        }
-      }
-    ]
-  },
-  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.signInToWebFiling')
