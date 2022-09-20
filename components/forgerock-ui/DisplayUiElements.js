@@ -16,7 +16,7 @@ import { customValidation } from '../../services/formData'
 import Dynamic from '../Dynamic'
 import componentMap from '../../services/componentMap'
 
-const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, groupError = undefined) => {
+const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, groupError = undefined, maxLength) => {
   // log.debug('DisplayUiElements (getElement()): Rendering element with type', element.payload.type)
   const uid = `${uiStage}-${id}-${index}`
 
@@ -25,7 +25,7 @@ const getElement = ({ element, id, index, customProps = {}, uiStage }, errors, g
       return <HiddenValueCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
 
     case CallbackType.NameCallback:
-      return <NameCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />
+      return <NameCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} maxLength={maxLength} />
 
     case CallbackType.PasswordCallback:
       return <PasswordCallback key={uid} id={id} element={element} errors={errors} customElementProps={customProps} groupError={groupError} />

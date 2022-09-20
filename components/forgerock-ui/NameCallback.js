@@ -3,7 +3,7 @@ import React from 'react'
 import InputField from '../general-ui/interaction/InputField'
 import { errorsPropType } from '../../services/propTypes'
 
-const NameCallback = ({ errors, element, customElementProps, groupError, testId }) => {
+const NameCallback = ({ errors, element, customElementProps, groupError, testId, maxLength = 124 }) => {
   const id = element.payload.input[0].name
   const label = customElementProps.prompt || element.getPrompt()
 
@@ -16,7 +16,7 @@ const NameCallback = ({ errors, element, customElementProps, groupError, testId 
       errors={errors}
       testId={testId}
       groupError={groupError}
-      maxLength={124}
+      maxLength={maxLength}
       {...customElementProps}
     />
   )
