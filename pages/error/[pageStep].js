@@ -14,7 +14,7 @@ const ErrorGeneral = ({ lang }) => {
   const [errors] = useState([])
   const headingCount = new HeadingCount()
   const router = useRouter()
-  const [uiStage, setUiStage] = useState('NO_SESSION')
+  const [uiStage, setUiStage] = useState('NO_SESSION_ERROR')
   const [content, setContent] = useState({})
 
   React.useEffect(() => {
