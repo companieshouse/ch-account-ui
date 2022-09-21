@@ -10,13 +10,7 @@ const genericError = (lang, tokens) => [
   {
     component: 'BodyText',
     props: {
-      children: tokens('SHARED.signOutOfYourAccount')
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {
-      children: tokens('SHARED.ifTheProblemContinues')
+      children: tokens('SHARED.tryAgainLater')
     }
   },
   {
