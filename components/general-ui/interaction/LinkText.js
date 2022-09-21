@@ -20,13 +20,13 @@ const LinkText = (props) => {
         cleanData.href = '' // ensure the href is blank
 
         if (cleanData.type === 'trackEvent') {
-          log.debug('track event: ', cleanData)
+          log.debug('Matomo - Tracking - Event - LinkText: ', cleanData)
           trackEvent(cleanData)
         } else if (cleanData.type === 'trackGoal') {
-          log.debug('track goal: ', cleanData)
+          log.debug('Matomo - Tracking - Goal - LinkText: ', matomo[1])
           pushInstruction('trackGoal', [matomo[1]])
         } else {
-          log.debug('track link')
+          log.debug('Matomo - Tracking - Link - LinkText: ')
           trackLink({
             href: cleanAnalytics([evt.target.href], false, 'LinkText')[0]
           })

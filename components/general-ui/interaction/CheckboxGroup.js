@@ -5,6 +5,8 @@ import { errorsPropType } from '../../../services/propTypes'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
+import log from '../../../services/log'
+
 const CheckboxGroup = (props) => {
   const {
     options,
@@ -26,6 +28,7 @@ const CheckboxGroup = (props) => {
       matomo.push(evt.target.labels[0].textContent)
       const cleanData = matomoHelper(matomo)
       cleanData.href = '' // ensure the href is blank
+      log.debug('Matomo - Tracking CheckBox: ', cleanData)
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {

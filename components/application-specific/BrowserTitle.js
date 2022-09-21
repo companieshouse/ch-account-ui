@@ -16,15 +16,14 @@ const BrowserTitle = ({ title, errors }) => {
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     window.document.title = title + suffix
-    let currentTitle = title
 
     if (errors.length > 0) {
-      currentTitle = 'Error: ' + currentTitle
-      log.debug('Tracking Error - Page View: ', currentTitle)
-      trackPageView({
-        documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
-        href: cleanAnalytics([window.location.href], false, 'BrowserTitle')[0]
-      })
+      window.document.title = 'Error: ' + window.document.title
+      // log.debug('Tracking Error - Page View: ', currentTitle)
+      // trackPageView({
+      //   documentTitle: cleanAnalytics([currentTitle], false, 'BrowserTitle')[0],
+      //   href: cleanAnalytics([window.location.href], false, 'BrowserTitle')[0]
+      // })
     }
   }, [title, errors])
 
@@ -33,11 +32,13 @@ const BrowserTitle = ({ title, errors }) => {
     window.document.title = title + suffix
     const currentTitle = title
     const currentUrl = window.location.href
-    log.debug('Matomo: tracking page view')
-    trackPageView({
+
+    const dataSenttoMatomo = {
       documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
-    })
+    }
+    log.debug('Matomo - Tracking page view', dataSenttoMatomo)
+    trackPageView(dataSenttoMatomo)
     const content = document.getElementById('__next')
     pushInstruction('FormAnalytics::scanForForms', [content])
   }, [title])

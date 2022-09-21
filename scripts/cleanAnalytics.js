@@ -1,7 +1,7 @@
 import log from '../services/log'
 
 export const matomoHelper = (data, title = false, id = "NONE") => {
-  log.debug("helper: ", data )
+  // log.debug("helper: ", data )
   const eventKeys = ['type', 'category', 'action', 'name', 'value', 'href']
 
   const finalMatomoData = cleanAnalytics(data, title, id).reduce((finalMatomoData, field, index) => {
@@ -67,18 +67,18 @@ export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
 
     let formatted = string
 
-    log.debug("PS MATOMO MATCH:", match)
-
     if (match.length) {
+      log.debug("Matomo - Match: ", match)
       // we have more than one match
       match.forEach(currentMatch => {
         const re = new RegExp(currentMatch)
         formatted = typeof string == "string" ? formatted.replace(re, hashMap[currentMatch]) : string
       });
+      log.debug("Matomo - Match - Clean: ", formatted)
     }
     
 
-    log.debug("PS MATOMO CLEAN", formatted)
+   
 
     return formatted
   })
