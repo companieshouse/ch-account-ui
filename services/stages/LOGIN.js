@@ -10,7 +10,7 @@ const LOGIN = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.signInToWebFilingAccount')
+      children: tokens('SHARED.signInToWebFiling')
     }
   },
   {
