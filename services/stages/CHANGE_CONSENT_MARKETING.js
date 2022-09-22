@@ -7,6 +7,12 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
     }
   },
   {
+    component: 'ErrorSummary',
+    props: {
+      title: tokens('SHARED.thereIsAProblem')
+    }
+  },
+  {
     component: 'DisplayUiElements',
     dynamicProps: {
       'elementProps.IDToken2.caption': '${company.name}'
@@ -30,7 +36,7 @@ const CHANGE_CONSENT_MARKETING = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'SELECT_YES_NO'
+              token: 'SELECT_YES_NO_CONSENT_MARKETING'
             }
           ]
         },
