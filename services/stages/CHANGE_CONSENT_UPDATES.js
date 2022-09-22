@@ -3,7 +3,14 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail')
+      title: tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail'),
+      showErrorSummary: true
+    }
+  },
+  {
+    component: 'ErrorSummary',
+    props: {
+      title: tokens('SHARED.thereIsAProblem')
     }
   },
   {
@@ -29,7 +36,7 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
           customValidation: [
             {
               name: 'radioRequired',
-              token: 'SELECT_YES_NO'
+              token: 'SELECT_YES_NO_EMAIL_NEW_MESSAGES'
             }
           ],
           matomo: ['trackEvent', tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail'), tokens('CHANGE_CONSENT_UPDATES.[1].DisplayUiElements.canWeEmailYouToTellYouAboutANewMessageInYour')]
