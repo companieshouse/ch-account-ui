@@ -207,7 +207,7 @@ const LOGIN = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('LOGIN.BodyText.readWebfilingGuidance'),
-          href: `${CH_BASE_EWF_URL}/help/en/stdwf/glossaryHelp.html`,
+          href: `${CH_BASE_EWF_URL}/help/en/stdwf/faqHelp.html`,
           testId: 'webfilingGuidance',
           matomo: ['trackEvent', 'Landing Page', tokens('LOGIN.BodyText.readWebfilingGuidance')]
         }
