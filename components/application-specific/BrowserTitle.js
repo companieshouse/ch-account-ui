@@ -5,7 +5,7 @@ import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { CH_BASE_URL } from '../../services/environment'
 import log from '../../services/log'
 
-const BrowserTitle = ({ title, errors }) => {
+const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
   const { trackPageView, pushInstruction } = useMatomo()
   const suffix = ' - Companies House WebFiling account - GOV.UK'
 
@@ -33,8 +33,10 @@ const BrowserTitle = ({ title, errors }) => {
     const currentTitle = title
     const currentUrl = window.location.href
 
+    console.log('Matomo - cleanTitle: ', cleanTitle)
+
     const dataSenttoMatomo = {
-      documentTitle: cleanAnalytics([currentTitle], true, 'BrowserTitle')[0],
+      documentTitle: cleanAnalytics([currentTitle], cleanTitle, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
     }
     log.debug('Matomo - Tracking page view', dataSenttoMatomo)

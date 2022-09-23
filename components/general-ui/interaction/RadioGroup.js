@@ -19,6 +19,7 @@ const RadioGroup = (props) => {
     if (matomo) {
       matomo.push(options[evt.target.value].label)
       const cleanData = matomoHelper(matomo)
+      cleanData.action = options[evt.target.value].label
       cleanData.href = '' // ensure the href is blank
 
       if (cleanData.type === 'trackEvent') {
