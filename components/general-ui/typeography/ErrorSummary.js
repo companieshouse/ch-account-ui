@@ -28,11 +28,12 @@ const ErrorSummary = (props) => {
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: 'Error: ' + cleanAnalytics([error.label], false, 'ErrorSummary')[0],
+          action: parentPage[0] + ': ' + cleanAnalytics([error.label], false, 'ErrorSummary')[0],
           href: ''
         }
         trackEvent(errData)
-        log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData, parentPage)
+        log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData)
+        log.debug('Matomo - Tracking - Error - parentPage: ', parentPage[0])
       })
     }
   }, [headingCount])

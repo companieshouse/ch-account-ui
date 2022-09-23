@@ -3,11 +3,16 @@ const COMPANY_ASSOCIATION_3 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('COMPANY_ASSOCIATION_3.[0].BrowserTitle.provideTheCompanyAuthCode')
+      title: tokens('COMPANY_ASSOCIATION_3.[0].BrowserTitle.provideTheCompanyAuthCode'),
+      cleanTitle: false
     }
   },
   {
-    component: 'PageHeading'
+    component: 'PageHeading',
+    props: {
+      children: tokens('COMPANY_ASSOCIATION_3.[0].BrowserTitle.provideTheCompanyAuthCode'),
+      display: false
+    }
   },
   {
     component: 'DisplayUiElements',
