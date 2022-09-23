@@ -57,7 +57,7 @@ const WEBFILING = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('SHARED.contactUs'),
-              href: 'https://www.find-and-update.company-information.service.gov.uk/help/contact-us',
+              href: 'https://find-and-update.company-information.service.gov.uk/help/contact-us',
               testId: 'contactCompaniesHouseLink',
               matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactUs')]
             }
