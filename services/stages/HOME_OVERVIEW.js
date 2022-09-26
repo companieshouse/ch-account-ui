@@ -88,8 +88,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
     component: 'NotificationBanner',
     dynamicProps: {
       title: tokens('SHARED.NotificationBanner.CHConfimationJourney.title'),
-      heading: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading'),
-      lang: lang
+      heading: tokens('SHARED.NotificationBanner.CHConfimationJourney.heading')
     },
     content: [
       {
