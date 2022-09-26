@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import HeadingText from './HeadingText'
-import { translate } from '../../../services/translate'
 
 const NotificationBanner = (props) => {
-  const { type, title, heading, children, className, headingCount, testId, notifyId, lang } = props
+  const { type, title, heading, children, className, headingCount, testId, notifyId } = props
   const classes = [className]
 
   const [hidden, setHidden] = useState(false)
@@ -21,7 +20,7 @@ const NotificationBanner = (props) => {
         <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__title" id="govuk-notification-banner-title">
           {title}
         </HeadingText>
-        <button className="ch-show-hide-button" onClick={onClick}>{hidden ? translate(lang, 'SHOW_MESSAGE') : translate(lang, 'HIDE_MESSAGE')}</button>
+        <button className="ch-show-hide-button" onClick={onClick}>{hidden ? 'Show message' : 'Hide message'}</button>
       </div>
       {
         <div className={hidden ? 'govuk-visually-hidden' : 'govuk-notification-banner__content'}>
