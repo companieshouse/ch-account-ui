@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import HeadingText from './HeadingText'
+import { translate } from '../../../services/translate'
 
 const NotificationBanner = (props) => {
-  const { type, title, heading, children, className, headingCount, testId, notifyId } = props
+  const { type, title, heading, children, className, headingCount, testId, notifyId, lang } = props
   const classes = [className]
+
+  const [hidden, setHidden] = useState(false)
+
+  const onClick = () => setHidden(!hidden)
 
   if (type === 'success') classes.push('govuk-notification-banner--success')
 
@@ -12,15 +17,18 @@ const NotificationBanner = (props) => {
 
   return (
     <div className={`govuk-notification-banner ${finalClassName}`} role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" data-testid={testId} data-notificationid={notifyId}>
-      <div className="govuk-notification-banner__header">
+      <div className={`govuk-notification-banner__header ${hidden ? 'govuk-notification-banner__hidden' : ''}`}>
         <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__title" id="govuk-notification-banner-title">
           {title}
         </HeadingText>
+        <button className="ch-show-hide-button" onClick={onClick}>{hidden ? translate(lang, 'SHOW_MESSAGE') : translate(lang, 'HIDE_MESSAGE')}</button>
       </div>
-      <div className="govuk-notification-banner__content">
-        <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__heading">{heading}</HeadingText>
-        {children && <p className="govuk-body">{children}</p>}
-      </div>
+      {
+        <div className={hidden ? 'govuk-visually-hidden' : 'govuk-notification-banner__content'}>
+          <HeadingText headingCount={headingCount} size="l" className="govuk-notification-banner__heading">{heading}</HeadingText>
+          {children && <p className="govuk-body">{children}</p>}
+        </div>
+      }
     </div>
   )
 }
