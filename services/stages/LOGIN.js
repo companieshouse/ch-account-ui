@@ -8,6 +8,13 @@ const LOGIN = (lang, tokens) => [
     }
   },
   {
+    component: 'NotificationBanner',
+    props: {
+      title: 'TEST',
+      heading: 'TEST HEADING'
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.signInToWebFiling')
