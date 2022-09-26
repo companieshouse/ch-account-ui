@@ -70,15 +70,18 @@
 }
 
 .account-menu {
+  float: left;
   //item in menu
   &-item {
     list-style-type: none;
     padding: 12px 0;
+    
+    
   }
 
   //current item in menu
   &__item--current {
-    padding-bottom: 18px;
+    
 
     @include govuk-media-query($from: tablet) {
       border-bottom: 4px solid #1d70b8;
@@ -91,6 +94,8 @@
     line-height: 1.25;
     text-decoration: none;
     margin-right: 3ex;
+    float: left;
+    padding-bottom: 18px;
   }
 
 
@@ -172,4 +177,8 @@
       padding: 10px 20px 10px 0;
     }
   }
+}
+
+.govuk-section-break--m {
+  margin-top: 0
 }
