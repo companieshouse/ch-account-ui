@@ -33,8 +33,6 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
     const currentTitle = title
     const currentUrl = window.location.href
 
-    console.log('Matomo - cleanTitle: ', cleanTitle)
-
     const dataSenttoMatomo = {
       documentTitle: cleanAnalytics([currentTitle], cleanTitle, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]

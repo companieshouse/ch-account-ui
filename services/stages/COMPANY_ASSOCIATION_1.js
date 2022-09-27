@@ -7,9 +7,17 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
     }
   },
   {
+    component: 'ErrorSummary',
+    props: {
+      title: tokens('SHARED.thereIsAProblem'),
+      cleanTitle: true
+    }
+  },
+  {
     component: 'PageHeading',
     props: {
-      children: tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd')
+      children: tokens('SHARED.enterTheDetailsOfTheCompanyYouWantToAdd'),
+      showErrorSummary: false
     }
   },
   {
