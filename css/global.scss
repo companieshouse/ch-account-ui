@@ -215,3 +215,27 @@
   background: #d4351c;
   color: #ffffff;
 }
+
+.js-enabled .govuk-header__navigation {
+  display: unset;
+}
+
+.govuk-header {
+  &__container {
+    display: flex;
+  }
+
+  &__logo {
+    flex: 1 100%;
+  }
+
+  &__content {
+    flex: 1 100%;
+    justify-content: end;
+    display: flex;
+  }
+
+  &__navigation-item {
+    padding: 5px 0 5px
+  }
+}
