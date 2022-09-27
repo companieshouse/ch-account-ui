@@ -8,7 +8,8 @@ import { translate } from '../../../services/translate'
 import WithLang from '../../../services/lang/WithLang'
 
 const PageHeading = (props) => {
-  const { lang, headingCount, errors, children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren, showErrorSummary, size } = props
+  const { lang, headingCount, errors, children, renderFeatures, notifyType, notifyHeading, notifyTitle, notifyChildren, showErrorSummary, size, display = true } = props
+
   if (errors.length === 0) {
     return (
       <>
@@ -20,7 +21,7 @@ const PageHeading = (props) => {
         >
           {notifyChildren}
         </NotificationBanner>}
-        <HeadingText headingCount={headingCount} size={size}>{children}</HeadingText>
+        {display && <HeadingText headingCount={headingCount} size={size}>{children}</HeadingText>}
       </>
     )
   }
@@ -28,7 +29,7 @@ const PageHeading = (props) => {
   return (
     <>
       {showErrorSummary && <ErrorSummary headingCount={headingCount} title={translate(lang, 'ERROR_SUMMARY_TITLE')} errors={errors} parentPage={children} />}
-      <HeadingText headingCount={headingCount} size={size}>{children}{renderFeatures(props)}</HeadingText>
+      {display && <HeadingText headingCount={headingCount} size={size}>{children}{renderFeatures(props)}</HeadingText>}
     </>
   )
 }

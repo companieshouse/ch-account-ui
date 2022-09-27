@@ -3,6 +3,8 @@ import React from 'react'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
+import log from '../../../services/log'
+
 const SummaryList = (props) => {
   const { children, className, customLayout, renderFeatures, listItems, hasActions, matomo } = props
   const classes = [className]
@@ -16,6 +18,7 @@ const SummaryList = (props) => {
       cleanData.href = '' // ensure the href is blank
 
       if (cleanData.type === 'trackEvent') {
+        log.debug('Matomo - Tracking - Event - SummaryList: ', cleanData)
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
         pushInstruction('trackGoal', [matomo[1]])

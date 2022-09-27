@@ -27,7 +27,8 @@ const FeatureDynamicView = (props) => {
     onSubmit,
     onBack,
     renderFeatures,
-    children
+    children,
+    messages
   } = props
 
   return (
@@ -37,7 +38,7 @@ const FeatureDynamicView = (props) => {
         <PhaseBanner testId='feedBackLink' />
       </WidthContainer>
       <WidthContainer style={{ paddingTop: '2ex' }}>
-        {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} />}
+        {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} messages={messages} />}
       </WidthContainer>
       <WidthContainer>
           {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'} utilClass='no-padd'><BackLink testId="backLink" onClick={onBack}/></Column>}

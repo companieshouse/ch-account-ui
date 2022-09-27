@@ -3,7 +3,8 @@ const HOME_AUTHORISED_PERSON = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('HOME_AUTHORISED_PERSON.[0].BrowserTitle.authorisedPersonsDetails')
+      title: tokens('HOME_AUTHORISED_PERSON.[0].BrowserTitle.authorisedPersonsDetails'),
+      cleanTitle: false
     }
   },
   {

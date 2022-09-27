@@ -6,9 +6,11 @@ import { errorsPropType } from '../../../services/propTypes'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { cleanAnalytics } from '../../../scripts/cleanAnalytics'
 
+import log from '../../../services/log'
+
 const ErrorSummary = (props) => {
   const { trackEvent } = useMatomo()
-  const { type, title, errors, children, className, headingCount, renderFeatures, parentPage } = props
+  const { type, title, errors, children, className, headingCount, renderFeatures, parentPage, cleanTitle = false } = props
 
   const [tag, setTag] = useState(type)
   const classes = [className]
@@ -23,16 +25,17 @@ const ErrorSummary = (props) => {
 
     if (errors.length > 0) {
       errors.forEach(error => {
-        // pushInstruction('trackEvent', [parentPage !== undefined ? parentPage[0] : 'Unknown Error: ', 'Error:' + error.label])
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage !== undefined ? parentPage[0] + ': Error: ' + cleanAnalytics([error.label], true, 'ErrorSummary')[0] : 'Unknown Error: ' + cleanAnalytics([error.label], true, 'Error Summary')[0],
+          action: parentPage !== undefined ? parentPage[0] + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0] : parentPage + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0],
           href: ''
         }
         trackEvent(errData)
-        // console.error('PS Error:' + cleanAnalytics([error.label]))
-        // console.error('parentPage: ', parentPage[0])
+        log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData)
+        if (parentPage !== undefined) {
+          log.debug('Matomo - Tracking - Error - parentPage: ', parentPage[0])
+        }
       })
     }
   }, [headingCount])

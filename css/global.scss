@@ -70,15 +70,18 @@
 }
 
 .account-menu {
+  float: left;
   //item in menu
   &-item {
     list-style-type: none;
     padding: 12px 0;
+    
+    
   }
 
   //current item in menu
   &__item--current {
-    padding-bottom: 18px;
+    
 
     @include govuk-media-query($from: tablet) {
       border-bottom: 4px solid #1d70b8;
@@ -91,6 +94,8 @@
     line-height: 1.25;
     text-decoration: none;
     margin-right: 3ex;
+    float: left;
+    padding-bottom: 18px;
   }
 
 
@@ -171,5 +176,66 @@
     .govuk-table__cell {
       padding: 10px 20px 10px 0;
     }
+  }
+}
+
+.govuk-section-break--m {
+  margin-top: 0
+}
+
+.govuk-notification-banner {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ch-show-hide-button {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: right;
+    text-decoration: underline solid white;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  &__hidden {
+    padding: 2px 20px 0px
+  }
+}
+
+.badge {
+  top: -10px;
+  right: -10px;
+  padding: 3px 7px;
+  border-radius: 50%;
+  background: #d4351c;
+  color: #ffffff;
+}
+
+.js-enabled .govuk-header__navigation {
+  display: unset;
+}
+
+.govuk-header {
+  &__container {
+    display: flex;
+  }
+
+  &__logo {
+    flex: 1 100%;
+  }
+
+  &__content {
+    flex: 1 100%;
+    justify-content: end;
+    display: flex;
+  }
+
+  &__navigation-item {
+    padding: 5px 0 5px
   }
 }

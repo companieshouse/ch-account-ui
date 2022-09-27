@@ -5,7 +5,8 @@ const CHANGE_EMAIL_INPUT = (lang, tokens) => ([
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.checkYourEmail')
+      title: tokens('SHARED.checkYourEmail'),
+      cleanTitle: false
     }
   },
   {
