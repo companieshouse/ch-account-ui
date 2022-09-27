@@ -3,7 +3,8 @@ const CHANGE_NAME_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('CHANGE_NAME_1.[0].BrowserTitle.updateYourName')
+      title: tokens('CHANGE_NAME_1.[0].BrowserTitle.updateYourName'),
+      cleanTitle: false
     }
   },
   {

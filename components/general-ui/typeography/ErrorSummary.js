@@ -10,7 +10,7 @@ import log from '../../../services/log'
 
 const ErrorSummary = (props) => {
   const { trackEvent } = useMatomo()
-  const { type, title, errors, children, className, headingCount, renderFeatures, parentPage } = props
+  const { type, title, errors, children, className, headingCount, renderFeatures, parentPage, cleanTitle = false } = props
 
   const [tag, setTag] = useState(type)
   const classes = [className]
@@ -28,12 +28,14 @@ const ErrorSummary = (props) => {
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage[0] + ': ' + cleanAnalytics([error.label], false, 'ErrorSummary')[0],
+          action: parentPage !== undefined ? parentPage[0] + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0] : parentPage + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0],
           href: ''
         }
         trackEvent(errData)
         log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData)
-        log.debug('Matomo - Tracking - Error - parentPage: ', parentPage[0])
+        if (parentPage !== undefined) {
+          log.debug('Matomo - Tracking - Error - parentPage: ', parentPage[0])
+        }
       })
     }
   }, [headingCount])

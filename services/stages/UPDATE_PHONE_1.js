@@ -3,7 +3,8 @@ const UPDATE_PHONE_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber')
+      title: tokens('UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber'),
+      cleanTitle: false
     }
   },
   {

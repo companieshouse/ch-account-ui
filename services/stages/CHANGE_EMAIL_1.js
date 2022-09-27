@@ -3,7 +3,8 @@ const CHANGE_EMAIL_1 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.updateYourEmailAddress')
+      title: tokens('SHARED.updateYourEmailAddress'),
+      cleanTitle: false
     }
   },
   {

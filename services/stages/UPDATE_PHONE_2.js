@@ -4,7 +4,8 @@ const UPDATE_PHONE_2 = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('UPDATE_PHONE_2.[0].BrowserTitle.checkYourPhone')
+      title: tokens('UPDATE_PHONE_2.[0].BrowserTitle.checkYourPhone'),
+      cleanTitle: false
     }
   },
   {
