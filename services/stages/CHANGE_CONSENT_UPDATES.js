@@ -4,7 +4,8 @@ const CHANGE_CONSENT_UPDATES = (lang, tokens) => [
     component: 'BrowserTitle',
     props: {
       title: tokens('CHANGE_CONSENT_UPDATES.[0].BrowserTitle.manageAccountChangeConsentForEmail'),
-      showErrorSummary: true
+      showErrorSummary: true,
+      cleanTitle: false
     }
   },
   {

@@ -3,7 +3,8 @@ const EWF_PROFILE = (lang, tokens) => [
   {
     component: 'BrowserTitle',
     props: {
-      title: tokens('SHARED.updateYourPersonalDetails')
+      title: tokens('SHARED.updateYourPersonalDetails'),
+      cleanTitle: false
     }
   },
   {
