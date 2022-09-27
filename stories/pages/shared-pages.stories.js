@@ -201,6 +201,15 @@ NO_SESSION_ERROR.args = {
     }]
   }
 }
+NO_SESSION_ERROR.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
 
 export const SEND_MFA_SMS_ERROR = Template.bind({})
 
