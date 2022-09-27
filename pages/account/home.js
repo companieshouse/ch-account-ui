@@ -41,6 +41,7 @@ const Home = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks={true}
       accountLinksItem={1}
+      messages={pendingCompanies.length}
     >
 
       {loading

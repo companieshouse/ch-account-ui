@@ -182,3 +182,35 @@
 .govuk-section-break--m {
   margin-top: 0
 }
+
+.govuk-notification-banner {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ch-show-hide-button {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: right;
+    text-decoration: underline solid white;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  &__hidden {
+    padding: 2px 20px 0px
+  }
+
+.badge {
+  top: -10px;
+  right: -10px;
+  padding: 3px 7px;
+  border-radius: 50%;
+  background: #d4351c;
+  color: #ffffff;
+}
