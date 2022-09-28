@@ -38,7 +38,7 @@ const Login = ({ lang, queryParams }) => {
     journeyName: authIndexValue || FORGEROCK_TREE_WF_LOGIN,
     journeyNamespace: 'LOGIN',
     isAuthOnly: mode === 'AUTHN_ONLY',
-    defaultErrorStage: 'NO_SESSION_ERROR',
+    defaultErrorStage: 'EWF_LOGIN_1',
     lang,
     formRef,
     stepQuery: {
