@@ -57,7 +57,6 @@ const Notifications = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={5}
-      messages={pendingCompanies.length}
     >
       {loading
         ? <Loading/>

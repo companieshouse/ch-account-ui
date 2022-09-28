@@ -19,9 +19,6 @@ const YourCompanies = ({ lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
 
-  const { companies } = companyData
-  const pendingCompanies = companies.filter((company) => company.membershipStatus === 'pending')
-
   useEffect(() => {
     headingCount.reset()
   })
@@ -40,7 +37,6 @@ const YourCompanies = ({ lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={2}
-      messages={pendingCompanies.length}
     >
       <Dynamic
         companies={companyData.companies}
