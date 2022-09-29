@@ -5,6 +5,7 @@ import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { cleanAnalytics, matomoHelper } from '../../../scripts/cleanAnalytics'
 
 import log from '../../../services/log'
+import { MATOMO_LOGGING } from '../../../services/environment'
 
 const LinkText = (props) => {
   const { children, href, style, className = '', target, testId, renderFeatures, handlers, handler, matomo, name, companyName } = props
@@ -20,13 +21,13 @@ const LinkText = (props) => {
         cleanData.href = '' // ensure the href is blank
 
         if (cleanData.type === 'trackEvent') {
-          log.debug('Matomo - Tracking - Event - LinkText: ', cleanData)
+          MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - LinkText: ', cleanData)
           trackEvent(cleanData)
         } else if (cleanData.type === 'trackGoal') {
-          log.debug('Matomo - Tracking - Goal - LinkText: ', matomo[1])
+          MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - LinkText: ', matomo[1])
           pushInstruction('trackGoal', [matomo[1]])
         } else {
-          log.debug('Matomo - Tracking - Link - LinkText: ')
+          MATOMO_LOGGING && log.debug('Matomo - Tracking - Link - LinkText: ')
           trackLink({
             href: cleanAnalytics([evt.target.href], false, 'LinkText')[0]
           })

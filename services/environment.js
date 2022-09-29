@@ -46,4 +46,6 @@ export const CH_FEEDBACK_URL = process.env.CH_FEEDBACK_URL || 'https://www.smart
 
 export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
+export const MATOMO_LOGGING = false
+
 // console.log(`Running as environment: ${ENVIRONMENT}`)

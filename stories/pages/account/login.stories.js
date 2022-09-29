@@ -676,7 +676,7 @@ EWF_LOGIN_4.args = {
 
 export const EWF_LOGIN_5 = Template.bind({})
 EWF_LOGIN_5.args = {
-  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?ForceAuth=true&authIndexType=service&authIndexValue=CHWebFiling',
+  path: 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling',
   queryParams: WFOIDCParams,
   responseData: {
     authId: mockAuthId,

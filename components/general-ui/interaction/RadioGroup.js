@@ -6,6 +6,7 @@ import { errorsPropType } from '../../../services/propTypes'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { matomoHelper } from '../../../scripts/cleanAnalytics'
 import log from '../../../services/log'
+import { MATOMO_LOGGING } from '../../../services/environment'
 
 const RadioGroup = (props) => {
   const { hint = '', label = '', options = [], children, id, className = '', headingCount, errors, testId, groupError = undefined, caption, captionPosition, captionSize, renderLabelAs, matomo } = props
@@ -23,10 +24,10 @@ const RadioGroup = (props) => {
       cleanData.href = '' // ensure the href is blank
 
       if (cleanData.type === 'trackEvent') {
-        log.debug('Matomo - Tracking - Event - RadioGroup: ', cleanData)
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - RadioGroup: ', cleanData)
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
-        log.debug('Matomo - Tracking - Goal - RadioGroup: ', matomo[1])
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - RadioGroup: ', matomo[1])
         pushInstruction('trackGoal', [matomo[1]])
       }
     }
