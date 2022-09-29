@@ -118,7 +118,7 @@ const renderIterator = (contentItem, iterator, data) => {
  * @constructor
  */
 const Dynamic = (props) => {
-  const { content = [], componentMap = {}, children, ...otherProps } = props
+  const { content = [], componentMap = {}, children, fromError, uiStage, ...otherProps } = props
   // log.debug('<Dynamic>: Rendering with props', props)
   if (!content.length) {
     return <>{children}</>
@@ -186,8 +186,8 @@ const Dynamic = (props) => {
           })
         }
 
-        // log.debug('Dynamic: Rendering component', component, 'with props', props)
-        // log.debug('Dynamic: --- End', component)
+        log.debug('Dynamic: Rendering component', component, 'with props', props)
+        log.debug('PS DYNAMIC: STAGE', uiStage)
 
         return <ComponentClass key={`${component}_${index}`} {...otherProps} {...otherItemProps} {...props}>
           {props.children}
