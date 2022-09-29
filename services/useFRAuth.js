@@ -31,7 +31,7 @@ const useFRAuth = (config = {}) => {
       setLoading(true)
       const accessTokens = await TokenManager.getTokens({ forceRenew: false, support: 'modern' }).catch((err) => {
         log.debug('FR Auth: Failed to get tokens: ' + err)
-        push('/account/login/')
+        push('/error/no-session') // Redirect the user on time out
       })
       if (!accessTokens) {
         return
