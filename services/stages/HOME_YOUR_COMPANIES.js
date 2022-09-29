@@ -552,7 +552,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
             ]
           },
           {
-            component: 'SectionBreak'
+            component: 'Br'
           }
         ]
       }
