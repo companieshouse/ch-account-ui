@@ -10,15 +10,20 @@ import componentMap from '../../services/componentMap'
 import { useRouter } from 'next/router'
 import { convertStageName } from '../../scripts/convert-stage-name'
 
+import log from '../../services/log'
+
 const ErrorGeneral = ({ lang }) => {
   const [errors] = useState([])
   const headingCount = new HeadingCount()
   const router = useRouter()
-  const [uiStage, setUiStage] = useState('NO_SESSION_ERROR')
+  const [uiStage, setUiStage] = useState('NO_SESSIONSSSSS')
   const [content, setContent] = useState({})
+
+  log.debug('PS ERROR GENERAL: STATE STAGE: ', uiStage)
 
   React.useEffect(() => {
     if (router.query.pageStep) {
+      log.debug('PS ERROR GENERAL: STAGE: ', convertStageName(router.query.pageStep))
       setUiStage(convertStageName(router.query.pageStep))
       setContent(getStageFeatures(lang, convertStageName(router.query.pageStep)))
     }
@@ -38,6 +43,7 @@ const ErrorGeneral = ({ lang }) => {
         errors={errors}
         uiElements={[]}
         uiStage={uiStage}
+        fromError={true}
       />
     </FeatureDynamicView>
   )
