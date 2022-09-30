@@ -187,7 +187,7 @@ const Dynamic = (props) => {
         }
 
         fromError && log.debug('Dynamic: Rendering component', component, 'with props', props)
-        fromError && log.debug('PS DYNAMIC: STAGE', uiStage)
+        fromError && log.debug('DYNAMIC: STAGE', uiStage)
 
         return <ComponentClass key={`${component}_${index}`} {...otherProps} {...otherItemProps} {...props}>
           {props.children}
