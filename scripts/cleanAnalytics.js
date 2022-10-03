@@ -78,9 +78,6 @@ export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
       log.debug("Matomo - Match - Clean: ", formatted)
     }
     
-
-   
-
     return formatted
   })
   return updated
