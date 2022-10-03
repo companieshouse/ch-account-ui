@@ -19,6 +19,8 @@ const ErrorGeneral = ({ lang }) => {
   const [uiStage, setUiStage] = useState('NO_SESSIONSSSSS')
   const [content, setContent] = useState({})
 
+  log.debug('PS ERROR GENERAL: STATE STAGE: ', uiStage)
+
   React.useEffect(() => {
     if (router.query.pageStep) {
       log.debug('PS ERROR GENERAL: STATE STAGE: ', uiStage)
