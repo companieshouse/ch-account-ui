@@ -4,6 +4,7 @@ import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { matomoHelper } from '../../../scripts/cleanAnalytics'
 
 import log from '../../../services/log'
+import { MATOMO_LOGGING } from '../../../services/environment'
 
 const Details = ({ className = '', children, label = '', matomo }) => {
   const classes = [className]
@@ -21,7 +22,7 @@ const Details = ({ className = '', children, label = '', matomo }) => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
       cleanData.href = '' // ensure the href is blank
-      log.debug('Matomo - Tracking - Details: ', cleanData)
+      MATOMO_LOGGING && log.debug('Matomo - Tracking - Details: ', cleanData)
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {

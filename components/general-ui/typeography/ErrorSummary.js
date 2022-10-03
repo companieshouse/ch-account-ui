@@ -7,6 +7,7 @@ import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { cleanAnalytics } from '../../../scripts/cleanAnalytics'
 
 import log from '../../../services/log'
+import { MATOMO_LOGGING } from '../../../services/environment'
 
 const ErrorSummary = (props) => {
   const { trackEvent } = useMatomo()
@@ -32,9 +33,9 @@ const ErrorSummary = (props) => {
           href: ''
         }
         trackEvent(errData)
-        log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData)
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData)
         if (parentPage !== undefined) {
-          log.debug('Matomo - Tracking - Error - parentPage: ', parentPage[0])
+          MATOMO_LOGGING && log.debug('Matomo - Tracking - Error - parentPage: ', parentPage[0])
         }
       })
     }

@@ -112,3 +112,6 @@ fabric.properties
 *tfplan
 local.auto.tfvars
 terraform/**/*.zip
+
+# Local MD files
+*.md

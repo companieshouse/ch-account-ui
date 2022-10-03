@@ -16,7 +16,7 @@ const isConditionalSatisfied = (conditional, data) => {
 
   // Get the conditional prop data
   const propData = getTemplateDataValue(data, prop)
-  log.debug('Running conditional', conditional, propData)
+  // log.debug('Running conditional', conditional, propData)
   switch (operator) {
     case 'gt':
       if (propData > value) return true
@@ -119,7 +119,7 @@ const renderIterator = (contentItem, iterator, data) => {
  */
 const Dynamic = (props) => {
   const { content = [], componentMap = {}, children, fromError, uiStage, ...otherProps } = props
-  // log.debug('<Dynamic>: Rendering with props', props)
+  fromError && log.debug('<Dynamic>: Rendering with props', props)
   if (!content.length) {
     return <>{children}</>
   }
@@ -186,8 +186,8 @@ const Dynamic = (props) => {
           })
         }
 
-        log.debug('Dynamic: Rendering component', component, 'with props', props)
-        log.debug('PS DYNAMIC: STAGE', uiStage)
+        fromError && log.debug('Dynamic: Rendering component', component, 'with props', props)
+        fromError && log.debug('DYNAMIC: STAGE', uiStage)
 
         return <ComponentClass key={`${component}_${index}`} {...otherProps} {...otherItemProps} {...props}>
           {props.children}

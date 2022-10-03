@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { cleanAnalytics } from '../../scripts/cleanAnalytics'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
-import { CH_BASE_URL } from '../../services/environment'
+import { CH_BASE_URL, MATOMO_LOGGING } from '../../services/environment'
 import log from '../../services/log'
 
 const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
@@ -19,11 +19,6 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
 
     if (errors.length > 0) {
       window.document.title = 'Error: ' + window.document.title
-      // log.debug('Tracking Error - Page View: ', currentTitle)
-      // trackPageView({
-      //   documentTitle: cleanAnalytics([currentTitle], false, 'BrowserTitle')[0],
-      //   href: cleanAnalytics([window.location.href], false, 'BrowserTitle')[0]
-      // })
     }
   }, [title, errors])
 
@@ -37,7 +32,7 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
       documentTitle: cleanAnalytics([currentTitle], cleanTitle, 'BrowserTitle')[0],
       href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
     }
-    log.debug('Matomo - Tracking page view', dataSenttoMatomo)
+    MATOMO_LOGGING && log.debug('Matomo - Tracking page view', dataSenttoMatomo)
     trackPageView(dataSenttoMatomo)
     const content = document.getElementById('__next')
     pushInstruction('FormAnalytics::scanForForms', [content])

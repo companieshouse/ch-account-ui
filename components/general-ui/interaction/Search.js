@@ -10,6 +10,7 @@ import ButtonGroup from './ButtonGroup'
 import LinkText from './LinkText'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { matomoHelper } from '../../../scripts/cleanAnalytics'
+import { MATOMO_LOGGING } from '../../../services/environment'
 
 const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
   const [search, setSearch] = useState()
@@ -30,10 +31,10 @@ const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
       const cleanData = matomoHelper(matomo, true, 'Search.js')
       cleanData.href = '' // ensure the href is blank
       if (cleanData.type === 'trackEvent') {
-        log.debug('Matomo - Tracking - Event - Search: ', cleanData)
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - Search: ', cleanData)
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
-        log.debug('Matomo - Tracking - Goal - Search: ', matomo[1])
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - Search: ', matomo[1])
         pushInstruction('trackGoal', [matomo[1]])
       }
     }
@@ -48,10 +49,10 @@ const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
       const cleanData = matomoHelper(matomo)
 
       if (cleanData.type === 'trackEvent') {
-        log.debug('Matomo - Tracking - Event - Search: ', cleanData)
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - Search: ', cleanData)
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
-        log.debug('Matomo - Tracking - Goal - Search: ', matomo[1])
+        MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - Search: ', matomo[1])
         pushInstruction('trackGoal', [matomo[1]])
       }
     }

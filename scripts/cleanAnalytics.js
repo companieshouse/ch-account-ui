@@ -1,4 +1,5 @@
 import log from '../services/log'
+import { MATOMO_LOGGING } from '../services/environment'
 
 export const matomoHelper = (data, title = false, id = "NONE") => {
   // log.debug("helper: ", data )
@@ -14,7 +15,7 @@ export const matomoHelper = (data, title = false, id = "NONE") => {
 
 export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
 
-  log.debug("Matomo data IN: ", matomo, title, id)
+  MATOMO_LOGGING && log.debug('Matomo - DATA - IN: ', matomo, title, id)
 
   let patterns = [
     'company.name', 
@@ -69,13 +70,13 @@ export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
     let formatted = string
 
     if (match.length) {
-      log.debug("Matomo - Match: ", match)
+      MATOMO_LOGGING && log.debug("Matomo - Data - Match: ", match)
       // we have more than one match
       match.forEach(currentMatch => {
         const re = new RegExp(currentMatch)
         formatted = typeof string == "string" ? formatted.replace(re, hashMap[currentMatch]) : string
       });
-      log.debug("Matomo - Match - Clean: ", formatted)
+      MATOMO_LOGGING && log.debug("Matomo - Data - Match - Clean: ", formatted)
     }
     
 

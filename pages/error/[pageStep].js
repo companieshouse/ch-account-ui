@@ -23,6 +23,7 @@ const ErrorGeneral = ({ lang }) => {
 
   React.useEffect(() => {
     if (router.query.pageStep) {
+      log.debug('PS ERROR GENERAL: STATE STAGE: ', uiStage)
       log.debug('PS ERROR GENERAL: STAGE: ', convertStageName(router.query.pageStep))
       setUiStage(convertStageName(router.query.pageStep))
       setContent(getStageFeatures(lang, convertStageName(router.query.pageStep)))
