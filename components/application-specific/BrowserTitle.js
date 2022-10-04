@@ -43,7 +43,7 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
 
     const dataSenttoMatomo = {
       documentTitle: cleanAnalytics([currentTitle], cleanTitle, 'BrowserTitle')[0],
-      href: cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]
+      href: stripUrlParams(cleanAnalytics([currentUrl], false, 'BrowserTitle')[0])
     }
     MATOMO_LOGGING && log.debug('Matomo - Tracking page view', dataSenttoMatomo)
     trackPageView(dataSenttoMatomo)
