@@ -16,7 +16,7 @@ const ErrorGeneral = ({ lang }) => {
   const [errors] = useState([])
   const headingCount = new HeadingCount()
   const router = useRouter()
-  const [uiStage, setUiStage] = useState('NO_SESSIONSSSSS')
+  const [uiStage, setUiStage] = useState('NO_SESSION')
   const [content, setContent] = useState({})
 
   log.debug('PS ERROR GENERAL: STATE STAGE: ', uiStage)
