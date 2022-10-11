@@ -1362,6 +1362,18 @@
     "en": "This service will be unavailable from 6am on Saturday 17 September until 6am on Monday 19 September while we carry out essential maintenance. You can submit filings after this time. We will put submissions on hold and process them from 7am on Tuesday 20 September.",
     "cy": "Ni fydd y gwasanaeth ar gael o 6yb ar ddydd Sadwrn 17 Medi tan 6yb ar ddydd Llun 19 Medi wrth i ni gynnal gwaith cynnal a chadw hanfodol. Gallwch gyflwyno eich ffeilio ar ôl yr amser hwn. Byddwn yn oedi cyflwyniadau ac yn eu prosesu o 7yb ar ddydd Mawrth 20 Medi."
   },
+  "SHARED.NotificationBanner.Maintenance.dueToPowerDownL1": {
+    "en": "This service is having essential maintenance from 6pm on Friday 14 October until 6am on Monday 17 October.",
+    "cy": "Mae'r gwasanaeth hwn yn cael gwaith cynnal a chadw hanfodol o 6yp ddydd Gwener 14 Hydref tan 6yb ddydd Llun 17 Hydref."
+  },
+  "SHARED.NotificationBanner.Maintenance.dueToPowerDownL2": {
+    "en": "You can submit filings during this time, but there may be some disruption to the service.",
+    "cy": "Gallwch gyflwyno eich ffeilio yn ystod y cyfnod hwn, ond efallai y bydd rhywfaint o darfu ar y gwasanaeth."
+  },
+  "SHARED.NotificationBanner.Maintenance.dueToPowerDownL3": {
+    "en": "We will put submissions on hold and process them from 6am on Monday 17 October.",
+    "cy": "Byddwn yn oedi cyflwyniadau ac yn eu prosesu o 6yb ddydd Llun 17 Hydref."
+  },
   "SHARED.NotificationBanner.Maintenance.duringThisPeriod": {
     "en": "Following the maintenance window, all submissions will be queued until Tuesday 20 September at 7am.",
     "cy": ""
