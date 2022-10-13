@@ -9,7 +9,7 @@ const PhaseBanner = (props) => {
 
   return (
     <div className="govuk-phase-banner">
-        <p className="govuk-phase-banner__content" testId={testId}>
+        <p className="govuk-phase-banner__content" data-testid={testId}>
           {
             phase !== '' && <strong className="govuk-tag govuk-phase-banner__content__tag">{phase}</strong>
           }
