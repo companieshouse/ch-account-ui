@@ -20,6 +20,7 @@ const Details = (props) => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
       cleanData.href = '' // ensure the href is blank
+      cleanData.url = '' // ensure url is blank
 
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)

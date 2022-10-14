@@ -30,6 +30,7 @@ const Search = ({ label, hint, handlers, lang, loading, id, matomo }) => {
       matomo.push(search)
       const cleanData = matomoHelper(matomo, true, 'Search.js')
       cleanData.href = '' // ensure the href is blank
+      cleanData.url = '' // ensure url is blank
       if (cleanData.type === 'trackEvent') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - Search: ', cleanData)
         trackEvent(cleanData)
