@@ -22,6 +22,7 @@ const Details = ({ className = '', children, label = '', matomo }) => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
       cleanData.href = '' // ensure the href is blank
+      cleanData.url = '' // ensure url is blank
       MATOMO_LOGGING && log.debug('Matomo - Tracking - Details: ', cleanData)
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)

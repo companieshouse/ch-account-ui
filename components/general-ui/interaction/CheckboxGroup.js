@@ -29,6 +29,7 @@ const CheckboxGroup = (props) => {
       matomo.push(evt.target.labels[0].textContent)
       const cleanData = matomoHelper(matomo)
       cleanData.href = '' // ensure the href is blank
+      cleanData.url = '' // ensure url is blank
       MATOMO_LOGGING && log.debug('Matomo - Tracking CheckBox: ', cleanData)
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)

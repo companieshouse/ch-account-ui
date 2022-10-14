@@ -39,7 +39,7 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
     const currentTitle = title
     const currentUrl = window.location.href
 
-    console.log(window.location.href)
+    MATOMO_LOGGING && log.debug('Matomo - URL - location.href: ', window.location.href)
 
     MATOMO_LOGGING && log.debug('Matomo - tracking - URL: ', stripUrlParams(cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]))
 
