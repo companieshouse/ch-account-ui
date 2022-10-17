@@ -10,12 +10,14 @@ export const matomoHelper = (data, title = false, id = "NONE") => {
     return finalMatomoData
   }, {})
 
+  MATOMO_LOGGING && log.debug('Matomo - DATA - matomoHelper: ', data, finalMatomoData, title, id)
+
   return finalMatomoData
 }
 
 export const cleanAnalytics = (matomo, title = false, id = "NONE") => {
 
-  MATOMO_LOGGING && log.debug('Matomo - DATA - IN: ', matomo, title, id)
+  MATOMO_LOGGING && log.debug('Matomo - DATA - cleanAnalytics: ', matomo, title, id)
 
   let patterns = [
     'company.name', 
