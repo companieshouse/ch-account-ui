@@ -31,11 +31,13 @@ const CHSLogin = ({ lang, queryParams }) => {
     jurisdiction
   } = queryParams
 
+  log.debug('CHS queryParams: ', queryParams)
+
   useEffect(() => {
     headingCount.reset()
   })
 
-  log.debug('ForceAuth: ', ForceAuth)
+  log.debug('CHS ForceAuth: ', ForceAuth)
 
   const FRFlowConfig = {
     journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
@@ -46,13 +48,16 @@ const CHSLogin = ({ lang, queryParams }) => {
     formRef,
     stepQuery: {
       companyNo,
-      ForceAuth: true,
+      ForceAuth: ForceAuth !== undefined ? ForceAuth : undefined,
       jurisdiction
     },
     handleSuccess: () => {
+      log.debug('CHS handleSuccess: ')
       if (goto) {
+        log.debug('CHS goto: ', goto)
         return push(goto)
       }
+      log.debug('CHS handleSuccess: NO goto: ')
       push('/account/home/')
     }
   }
