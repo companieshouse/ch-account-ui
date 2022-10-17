@@ -41,24 +41,23 @@ const CHSLogin = ({ lang, queryParams }) => {
 
   const FRFlowConfig = {
     journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
-    journeyNamespace: 'LOGIN',
+    journeyNamespace: 'CHS LOGIN',
     isAuthOnly: mode === 'AUTHN_ONLY',
     defaultErrorStage: 'NO_SESSION_ERROR',
     lang,
     formRef,
     stepQuery: {
       companyNo,
-      ForceAuth: ForceAuth !== undefined ? ForceAuth : undefined,
+      ForceAuth,
       jurisdiction
     },
     handleSuccess: () => {
       log.debug('CHS handleSuccess: ')
       if (goto) {
         log.debug('CHS goto: ', goto)
-        return push(goto)
+        log.debug('CHS mode: ', mode)
+        return push('localhost:8090/redirect')
       }
-      log.debug('CHS handleSuccess: NO goto: ')
-      push('/account/home/')
     }
   }
 
@@ -89,8 +88,6 @@ const CHSLogin = ({ lang, queryParams }) => {
       formRef={formRef}
       onBack={onBack}
       hasBackLink={false}
-      hasLogoutLink={isCompanySelection || uiStage === 'EWF_PROFILE'}
-      hasAccountLinks={isCompanySelection}
     >
       {uiStage
         ? <Dynamic
