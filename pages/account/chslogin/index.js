@@ -4,13 +4,13 @@ import { useRouter } from 'next/router'
 import HeadingCount from '../../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
-  FORGEROCK_TREE_WF_LOGIN
+  FORGEROCK_TREE_LOGIN
 } from '../../../services/environment'
-import FeatureDynamicView from '../../components/views/FeatureDynamicView'
+import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
 import componentMap from '../../../services/componentMap'
-import Dynamic from '../../components/Dynamic'
-import withQueryParams from '../../components/providers/WithQueryParams'
+import Dynamic from '../../../components/Dynamic'
+import withQueryParams from '../../../components/providers/WithQueryParams'
 import useFRFlow from '../../../services/useFRFlow'
 import { generateQueryUrl } from '../../../services/queryString'
 import { mapCompanyData } from '../../../services/mappings'
@@ -38,7 +38,7 @@ const CHSLogin = ({ lang, queryParams }) => {
   log.debug('ForceAuth: ', ForceAuth)
 
   const FRFlowConfig = {
-    journeyName: authIndexValue || FORGEROCK_TREE_WF_LOGIN,
+    journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
     journeyNamespace: 'LOGIN',
     isAuthOnly: mode === 'AUTHN_ONLY',
     defaultErrorStage: 'NO_SESSION_ERROR',
@@ -46,7 +46,7 @@ const CHSLogin = ({ lang, queryParams }) => {
     formRef,
     stepQuery: {
       companyNo,
-      ForceAuth,
+      ForceAuth: true,
       jurisdiction
     },
     handleSuccess: () => {
@@ -65,15 +65,15 @@ const CHSLogin = ({ lang, queryParams }) => {
 
   const onBack = (evt) => {
     evt.preventDefault()
-    const home = isCompanySelection ? '/account/home/' : '/account/login/'
-    window.location.assign(authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : home)
+    const home = isCompanySelection ? '/account/home/' : '/account/chslogin/'
+    window.location.assign(authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : home)
   }
 
   const links = {
     chooseCompanyPath: `${asPath}`,
     requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
     ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === FORGEROCK_TREE_WF_LOGIN ? asPath : '/account/login/'
+    resumePath: authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : '/account/chslogin/'
   }
 
   const { errors = [], company, ...restPageProps } = stepPageProps
