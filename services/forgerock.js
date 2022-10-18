@@ -279,6 +279,15 @@ export const forgerockFlow = ({
         const user = await UserManager.getCurrentUser()
         return onSuccess(tokens, user)
       }
+
+      if (step.payload.successUrl) {
+        let branch = ''
+
+        log.debug('ForgeRock login successUrl', step.payload.successUrl)
+        branch = step.payload.successUrl
+
+        return onSuccess(branch)
+      }
       return onSuccess()
     }
 

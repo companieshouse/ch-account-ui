@@ -60,7 +60,11 @@ const useFRFlow = (config) => {
       isAuthOnly,
       getLang,
       stepOptions,
-      onSuccess: () => {
+      onSuccess: (branch) => {
+        if (branch !== undefined) {
+          log.debug('FR FLOW: ', branch)
+          handleSuccess(branch)
+        }
         handleSuccess()
       },
       onFailure: (errData, newErrors = []) => {
