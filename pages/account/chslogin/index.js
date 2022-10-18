@@ -48,15 +48,43 @@ const CHSLogin = ({ lang, queryParams }) => {
     formRef,
     stepQuery: {
       companyNo,
-      ForceAuth,
+      ForceAuth: true,
       jurisdiction
     },
-    handleSuccess: () => {
+    handleSuccess: (branch) => {
       log.debug('CHS handleSuccess: ')
+      if (branch) {
+        log.debug('CHS BRANCH', branch)
+      }
       if (goto) {
         log.debug('CHS goto: ', goto)
         log.debug('CHS mode: ', mode)
-        return push('localhost:8090/redirect')
+
+        if (branch === '/hassession') {
+          // let promptValue = 'login'
+
+          const params = goto.split('&')
+
+          let backToApp = ''
+
+          params.map(param => {
+            const split = param.split('=')
+            if (split[0] === 'redirect_uri') {
+              log.debug('push to ', split[1])
+              backToApp = split[1]
+            }
+
+            return split.join('=')
+          })
+
+          log.debug('CHS redirect_uri: ', backToApp)
+
+          if (backToApp) {
+            return push(backToApp)
+          }
+        } else {
+          return push(goto)
+        }
       }
     }
   }
