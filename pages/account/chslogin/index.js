@@ -52,20 +52,12 @@ const CHSLogin = ({ lang, queryParams }) => {
       jurisdiction
     },
     handleSuccess: (branch) => {
-      log.debug('CHS handleSuccess: ')
-      if (branch) {
-        log.debug('CHS BRANCH', branch)
-      }
       if (goto) {
-        log.debug('CHS goto: ', goto)
-        log.debug('CHS mode: ', mode)
-
+        // CHLogin journey ONLY
+        // does the user have a session, if so send them to the redirect_uri
         if (branch === '/hassession') {
-          // let promptValue = 'login'
-
-          const params = goto.split('&')
-
           let backToApp = ''
+          const params = goto.split('&')
 
           params.map(param => {
             const split = param.split('=')
@@ -77,9 +69,7 @@ const CHSLogin = ({ lang, queryParams }) => {
             return split.join('=')
           })
 
-          log.debug('CHS redirect_uri: ', backToApp)
-
-          if (backToApp) {
+          if (backToApp !== '') {
             return push(backToApp)
           }
         } else {
