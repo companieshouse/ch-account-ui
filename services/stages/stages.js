@@ -76,6 +76,7 @@ import LIMIT_EXCEEDED from './LIMIT_EXCEEDED.js'
 import WEBFILING from './WEBFILING.js'
 import UNAUTHORISED_CHANGE_EMAIL from './UNAUTHORISED_CHANGE_EMAIL.js'
 import UNAUTHORISED_CHANGE_PASSWORD from './UNAUTHORISED_CHANGE_PASSWORD.js'
+import GET_CONSENT from './GET_CONSENT.js'
 
 import contentTokens from '../lang/content-tokens.json'
 import log from '../log'
@@ -159,7 +160,8 @@ const getStage = (stage, lang) => {
     LIMIT_EXCEEDED,
     WEBFILING,
     UNAUTHORISED_CHANGE_EMAIL,
-    UNAUTHORISED_CHANGE_PASSWORD
+    UNAUTHORISED_CHANGE_PASSWORD,
+    GET_CONSENT
   }
 
   const tokens = (key) => {

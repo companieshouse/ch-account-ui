@@ -127,8 +127,6 @@ const CHSLogin = ({ lang, queryParams }) => {
   )
 }
 
-export { CHSLogin }
-
 export default withQueryParams(WithLang(CHSLogin))
 
 CHSLogin.propTypes = {
