@@ -1449,5 +1449,27 @@
   "SHARED.contactUs": {
     "en": "contact us",
     "cy": "cysylltwch â ni"
+  },
+  "CONSENT.pageHeading.heading": {
+    "en": "You are about to give FLOWERS LIMITED access",
+    "cy": ""
+  },
+  "CONSENT.bodyText.software": {
+    "en": "Software provided by *SAGE Software*"
+  },
+  "CONSENT.bodyText.permissions": {
+    "en": "This will allow them to:"
+  },
+  "CONSENT.list.item.1": {
+    "en": "view your email address"
+  },
+  "CONSENT.list.item.2": {
+    "en": "file for FLOWERS LIMITED"
+  },
+  "CONSENT.button.submit.allow": {
+    "en": "Allow access"
+  },
+  "CONSENT.button.cancel": {
+    "en": "Cancel"
   }
 }
