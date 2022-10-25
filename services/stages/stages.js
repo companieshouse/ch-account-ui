@@ -77,6 +77,7 @@ import WEBFILING from './WEBFILING.js'
 import UNAUTHORISED_CHANGE_EMAIL from './UNAUTHORISED_CHANGE_EMAIL.js'
 import UNAUTHORISED_CHANGE_PASSWORD from './UNAUTHORISED_CHANGE_PASSWORD.js'
 import GET_CONSENT from './GET_CONSENT.js'
+import REGISTRATION_CONFIRMATION from './REGISTRATION_CONFIRMATION.js'
 
 import contentTokens from '../lang/content-tokens.json'
 import log from '../log'
@@ -161,7 +162,8 @@ const getStage = (stage, lang) => {
     WEBFILING,
     UNAUTHORISED_CHANGE_EMAIL,
     UNAUTHORISED_CHANGE_PASSWORD,
-    GET_CONSENT
+    GET_CONSENT,
+    REGISTRATION_CONFIRMATION
   }
 
   const tokens = (key) => {

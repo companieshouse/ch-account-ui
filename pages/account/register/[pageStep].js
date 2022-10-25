@@ -27,6 +27,7 @@ export const getStaticProps = async () => {
 }
 
 const Register = ({ lang, queryParams }) => {
+  console.log(queryParams)
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
