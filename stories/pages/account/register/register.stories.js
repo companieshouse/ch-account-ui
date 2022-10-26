@@ -9,7 +9,8 @@ const path = 'https://idam.amido.aws.chdev.org/am/json/realms/root/realms/alpha/
 export default {
   title: 'Pages/Account/Register',
   args: {
-    lang: 'cy'
+    lang: 'en',
+    queryParams: {}
   }
 }
 
@@ -22,6 +23,7 @@ const Template = ({ pageProps, responseData, ...rest }) => {
   fetchMock.restore().mock(path, responseData, {
     delay: 100 // fake a slow network
   })
+
   return <Register {...rest} />
 }
 
@@ -38,6 +40,7 @@ REGISTRATION_1.story = {
 REGISTRATION_1.args = {
   responseData: {
     authId: mockAuthId,
+    queryParams: {},
     callbacks: [
       {
         type: 'StringAttributeInputCallback',
@@ -267,6 +270,110 @@ REGISTRATION_1.args = {
     description: "Signing up is fast and easy.<br>Already have an account? <a href='#/service/Login'>Sign In</a>"
   }
 }
+
+export const REGISTRATION_CONFIRMATION = Template.bind({})
+REGISTRATION_CONFIRMATION.story = {
+  parameters: {
+    nextRouter: {
+      query: {
+        pageStep: '_start'
+      }
+    }
+  }
+}
+REGISTRATION_CONFIRMATION.args = {
+  responseData: {
+    authId: mockAuthId,
+    callbacks: [
+      {
+        type: "HiddenValueCallback",
+        output: [
+            {
+                name: "value",
+                value: "REGISTRATION_CONFIRMATION"
+            },
+            {
+                name: "id",
+                value: "stage"
+            }
+        ],
+        input: [
+            {
+                name: "IDToken1",
+                value: "stage"
+            }
+        ]
+    },
+    {
+        type: "TextOutputCallback",
+        output: [
+            {
+                name: "message",
+                value: '{"userName": "paul-test@gmail.com", "givenName": "Test Test", "telephoneNumber":"", "mail":"paul-test@gmail.com"}'
+            },
+            {
+                name: "messageType",
+                value: "0"
+            }
+        ]
+    },
+    {
+        type: "ConfirmationCallback",
+        output: [
+            {
+                name: "prompt",
+                value: "Do you want to continue or change these details?"
+            },
+            {
+                name: "messageType",
+                value: 0
+            },
+            {
+                name: "options",
+                value: [
+                    "CONTINUE",
+                    "CHANGE"
+                ]
+            },
+            {
+                name: "optionType",
+                value: -1
+            },
+            {
+                name: "defaultOption",
+                value: 0
+            }
+        ],
+        input: [
+            {
+                name: "IDToken3",
+                value: 0
+            }
+        ]
+    },
+    {
+        type: "HiddenValueCallback",
+        output: [
+            {
+                name: "value",
+                value: '{"userName": "paul-test@gmail.com", "givenName": "Test Test", "telephoneNumber":"", "mail":"paul-test@gmail.com"}'
+            },
+            {
+                name: "id",
+                value: "pagePropsJSON"
+            }
+        ],
+        input: [
+            {
+                name: "IDToken4",
+                value: "pagePropsJSON"
+            }
+        ]
+    }
+    ]
+  }
+}
+
 
 export const REGISTRATION_3 = Template.bind({})
 REGISTRATION_3.story = {

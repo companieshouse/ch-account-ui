@@ -5,6 +5,8 @@ import NlToBr from '../layout/NlToBr'
 const SummaryListItem = (props) => {
   const { renderFeatures, label, value, action } = props
 
+  console.log(props)
+
   return (
     <div className="govuk-summary-list__row">
       <dt className="govuk-summary-list__key">
@@ -30,4 +32,8 @@ SummaryListItem.propTypes = {
   label: PropTypes.node,
   renderFeatures: PropTypes.func,
   value: PropTypes.node
+}
+
+SummaryListItem.defaultProps = {
+  renderFeatures: () => { return null }
 }
