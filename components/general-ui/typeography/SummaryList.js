@@ -7,7 +7,9 @@ import log from '../../../services/log'
 import { MATOMO_LOGGING } from '../../../services/environment'
 
 const SummaryList = (props) => {
-  const { children, className, customLayout, renderFeatures, listItems, hasActions, matomo } = props
+  const { children, className, customLayout, renderFeatures, listItems, hasActions, isDynamicItemList, matomo } = props
+
+  console.log('PS: props', props)
   const classes = [className]
   const { trackEvent, pushInstruction } = useMatomo()
 
@@ -29,27 +31,37 @@ const SummaryList = (props) => {
   }
 
   const finalClassName = classes.join(' ').trim()
+
+  if (isDynamicItemList) {
+    return (
+      <dl className={`govuk-summary-list ${finalClassName}`}>
+        {children}
+      </dl>
+    )
+  }
+
   return (
     <dl className={`govuk-summary-list ${finalClassName}`}>
       {listItems.map((listItem, index) => <div key={`${listItem.label}_${index}`} className="govuk-summary-list__row">
-        <dt className={`govuk-summary-list__key${customLayout ? ' summary-list__key' : ''}`}>
-          {listItem.label}
-          {listItem.hint && <span className="govuk-body govuk-hint">{listItem.hint}</span>}
-        </dt>
-        <dd className={`govuk-summary-list__value${customLayout ? ' summary-list__value' : ''}`}>
-          {listItem.value}
-        </dd>
-        {hasActions && listItem.action &&
-        <dd className={`govuk-summary-list__actions${customLayout ? ' summary-list__actions' : ''}`}>
-          {listItem.action}
-        </dd>
-        }
-        {listItem.action?.href && <dd className="govuk-summary-list__actions">
-          {listItem.action.label && <a className="govuk-link" href={`${listItem.action.href}`} onClick={onClick}>
-            {listItem.action.label}<span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
-          </a>}
-        </dd>}
-      </div>)}
+          <dt className={`govuk-summary-list__key${customLayout ? ' summary-list__key' : ''}`}>
+            {listItem.label}
+            {listItem.hint && <span className="govuk-body govuk-hint">{listItem.hint}</span>}
+          </dt>
+          <dd className={`govuk-summary-list__value${customLayout ? ' summary-list__value' : ''}`}>
+            {listItem.value}
+          </dd>
+          {hasActions && listItem.action &&
+          <dd className={`govuk-summary-list__actions${customLayout ? ' summary-list__actions' : ''}`}>
+            {listItem.action}
+          </dd>
+          }
+          {listItem.action?.href && <dd className="govuk-summary-list__actions">
+            {listItem.action.label && <a className="govuk-link" href={`${listItem.action.href}`} onClick={onClick}>
+              {listItem.action.label}<span className="govuk-visually-hidden"> {listItem.action.desc || ''}</span>
+            </a>}
+          </dd>}
+        </div>
+      )}
       {children}
       {renderFeatures(props)}
     </dl>

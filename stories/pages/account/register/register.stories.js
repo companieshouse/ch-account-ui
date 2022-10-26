@@ -24,7 +24,6 @@ const Template = ({ pageProps, responseData, ...rest }) => {
     delay: 100 // fake a slow network
   })
 
-  console.log("REGISTRATION", rest)
   return <Register {...rest} />
 }
 

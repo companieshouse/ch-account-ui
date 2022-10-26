@@ -7,7 +7,7 @@ const SummaryListItem = (props) => {
 
   return (
     <div className="govuk-summary-list__row">
-      <dt className="govuk-summary-list__key">
+      <dt className="summary-list__key">
         <NlToBr content={label} />
       </dt>
       <dd className="govuk-summary-list__value">
@@ -30,4 +30,8 @@ SummaryListItem.propTypes = {
   label: PropTypes.node,
   renderFeatures: PropTypes.func,
   value: PropTypes.node
+}
+
+SummaryListItem.defaultProps = {
+  renderFeatures: () => { return null }
 }
