@@ -29,7 +29,8 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             },
             label: 'Full name',
             action: {
-              component: 'linkText'
+              label: 'Change',
+              href: '/account/register/_start/'
             },
             dynamicProps: {
               value: '${givenName}'
@@ -43,7 +44,8 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             },
             label: 'Email address',
             action: {
-              component: 'linkText'
+              label: 'Change',
+              href: '/account/register/_start/'
             },
             dynamicProps: {
               value: '${userName}'
@@ -57,7 +59,8 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             },
             label: 'Mobile Number',
             action: {
-              component: 'linkText'
+              label: 'Change',
+              href: '/account/register/_start/'
             },
             dynamicProps: {
               value: '${telephoneNumber}'

@@ -9,7 +9,6 @@ import { MATOMO_LOGGING } from '../../../services/environment'
 const SummaryList = (props) => {
   const { children, className, customLayout, renderFeatures, listItems, hasActions, isDynamicItemList, matomo } = props
 
-  console.log('PS: props', props)
   const classes = [className]
   const { trackEvent, pushInstruction } = useMatomo()
 
