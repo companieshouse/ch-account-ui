@@ -31,7 +31,10 @@ const CHSLogin = ({ lang, queryParams }) => {
     jurisdiction
   } = queryParams
 
-  log.debug('CHS queryParams: ', queryParams)
+  debugger
+
+  log.debug('CHS queryParams 123: ', queryParams)
+
 
   useEffect(() => {
     headingCount.reset()
@@ -48,11 +51,12 @@ const CHSLogin = ({ lang, queryParams }) => {
     formRef,
     stepQuery: {
       companyNo,
-      ForceAuth: true,
+      ForceAuth,
       jurisdiction
     },
     handleSuccess: (branch) => {
       if (goto) {
+        debugger
         // CHLogin journey ONLY
         // does the user have a session, if so send them to the redirect_uri
         if (branch === '/hassession') {
@@ -69,11 +73,14 @@ const CHSLogin = ({ lang, queryParams }) => {
             return split.join('=')
           })
 
+          debugger
+
           if (backToApp !== '') {
-            return push(backToApp)
+            debugger
+            // return push(backToApp)
           }
         } else {
-          return push(goto)
+          // return push(goto)
         }
       }
     }
@@ -87,7 +94,7 @@ const CHSLogin = ({ lang, queryParams }) => {
 
   const onBack = (evt) => {
     evt.preventDefault()
-    const home = isCompanySelection ? '/account/home/' : '/account/chslogin/'
+    const home = isCompanySelection ? '/account/home/' : '/account/chslogin/sdfsafasdfas'
     window.location.assign(authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : home)
   }
 
@@ -95,7 +102,7 @@ const CHSLogin = ({ lang, queryParams }) => {
     chooseCompanyPath: `${asPath}`,
     requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
     ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : '/account/chslogin/'
+    resumePath: authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : '/account/chslogin/sdfasdfasdfasd'
   }
 
   const { errors = [], company, ...restPageProps } = stepPageProps
