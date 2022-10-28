@@ -24,7 +24,7 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
           {
             component: 'SummaryListItem',
             conditional: {
-              prop: '${givenName}',
+              prop: '${fullName}',
               operator: 'is'
             },
             label: 'Full name',
@@ -33,13 +33,13 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
               href: '/account/register/_start/'
             },
             dynamicProps: {
-              value: '${givenName}'
+              value: '${fullName}'
             }
           },
           {
             component: 'SummaryListItem',
             conditional: {
-              prop: '${userName}',
+              prop: '${emailAddress}',
               operator: 'is'
             },
             label: 'Email address',
@@ -48,13 +48,13 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
               href: '/account/register/_start/'
             },
             dynamicProps: {
-              value: '${userName}'
+              value: '${emailAddress}'
             }
           },
           {
             component: 'SummaryListItem',
             conditional: {
-              prop: '${telephoneNumber}',
+              prop: '${mobileNumber}',
               operator: 'is'
             },
             label: 'Mobile Number',
@@ -63,7 +63,7 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
               href: '/account/register/_start/'
             },
             dynamicProps: {
-              value: '${telephoneNumber}'
+              value: '${mobileNumber}'
             }
           }
         ]

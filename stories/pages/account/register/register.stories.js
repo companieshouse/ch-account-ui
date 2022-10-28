@@ -356,7 +356,7 @@ REGISTRATION_CONFIRMATION.args = {
         output: [
             {
                 name: "value",
-                value: '{"userName": "paul-test@gmail.com", "givenName": "Test Test", "telephoneNumber":"", "mail":"paul-test@gmail.com"}'
+                value: '{\"fullName\":\"Paul Spence\",\"emailAddress\":\"paul--test@gmail.com\",\"mobileNumber\":\"07525067793\"}'
             },
             {
                 name: "id",
