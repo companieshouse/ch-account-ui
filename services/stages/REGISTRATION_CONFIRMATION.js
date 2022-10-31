@@ -71,6 +71,22 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
     }
   },
   {
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken2: {
+          _hidden: true
+        },
+        IDToken3: {
+          _hidden: true
+        },
+        IDToken4: {
+          _hidden: true
+        }
+      }
+    }
+  },
+  {
     component: 'Button',
     props: {
       children: tokens('SHARED.continue'),

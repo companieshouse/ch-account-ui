@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import HeadingCount from '../../../services/HeadingCount'
+import HeadingCount from '../../../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
   CH_CONSENT
-} from '../../../services/environment'
-import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
-import WithLang from '../../../services/lang/WithLang'
-import componentMap from '../../../services/componentMap'
-import Dynamic from '../../../components/Dynamic'
-import withQueryParams from '../../../components/providers/WithQueryParams'
-import useFRFlow from '../../../services/useFRFlow'
-import { generateQueryUrl } from '../../../services/queryString'
-import { mapCompanyData } from '../../../services/mappings'
-import log from '../../../services/log'
+} from '../../../../services/environment'
+import FeatureDynamicView from '../../../../components/views/FeatureDynamicView'
+import WithLang from '../../../../services/lang/WithLang'
+import componentMap from '../../../../services/componentMap'
+import Dynamic from '../../../../components/Dynamic'
+import withQueryParams from '../../../../components/providers/WithQueryParams'
+import useFRFlow from '../../../../services/useFRFlow'
+import { generateQueryUrl } from '../../../../services/queryString'
+import { mapCompanyData } from '../../../../services/mappings'
+import log from '../../../../services/log'
 
 const CHConsent = ({ lang, queryParams }) => {
   const router = useRouter()
