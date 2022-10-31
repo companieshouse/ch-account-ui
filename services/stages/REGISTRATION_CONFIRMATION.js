@@ -69,6 +69,14 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
         ]
       }
     }
+  },
+  {
+    component: 'Button',
+    props: {
+      children: tokens('SHARED.continue'),
+      type: 'submit',
+      testId: 'submitButton'
+    }
   }
 ]
 

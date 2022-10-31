@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import HeadingCount from '../../../services/HeadingCount'
 import {
   CH_EWF_LEGACY_AUTH_URL,
-  FORGEROCK_TREE_LOGIN
+  CH_CONSENT
 } from '../../../services/environment'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
 import WithLang from '../../../services/lang/WithLang'
@@ -31,13 +31,17 @@ const CHSLogin = ({ lang, queryParams }) => {
     jurisdiction
   } = queryParams
 
+  log.debug('CHS queryParams 123: ', queryParams)
+
   useEffect(() => {
     headingCount.reset()
   })
 
+  log.debug('CHS ForceAuth: ', ForceAuth)
+
   const FRFlowConfig = {
-    journeyName: authIndexValue || FORGEROCK_TREE_LOGIN,
-    journeyNamespace: 'CHS LOGIN',
+    journeyName: authIndexValue || CH_CONSENT,
+    journeyNamespace: 'CHS CONSENT',
     isAuthOnly: mode === 'AUTHN_ONLY',
     defaultErrorStage: 'NO_SESSION_ERROR',
     lang,
@@ -84,14 +88,14 @@ const CHSLogin = ({ lang, queryParams }) => {
   const onBack = (evt) => {
     evt.preventDefault()
     const home = isCompanySelection ? '/account/home/' : '/account/chslogin/'
-    window.location.assign(authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : home)
+    window.location.assign(authIndexValue === CH_CONSENT ? asPath : home)
   }
 
   const links = {
     chooseCompanyPath: `${asPath}`,
     requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
     ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === FORGEROCK_TREE_LOGIN ? asPath : '/account/chslogin/'
+    resumePath: authIndexValue === CH_CONSENT ? asPath : '/account/chslogin/sdfasdfasdfasd'
   }
 
   const { errors = [], company, ...restPageProps } = stepPageProps
