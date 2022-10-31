@@ -43,6 +43,7 @@ export const ANALYTICS_TRACKER_URL = process.env.ANALYTICS_TRACKER_URL || 'matom
 export const ANALYTICS_SITE_ID = process.env.ANALYTICS_SITE_ID || '23'
 
 export const CH_FEEDBACK_URL = process.env.CH_FEEDBACK_URL || 'https://www.smartsurvey.co.uk/s/chaccount'
+export const CH_CONSENT = process.env.CH_CONSENT || 'CHConsent'
 
 export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
