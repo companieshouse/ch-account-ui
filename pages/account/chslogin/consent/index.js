@@ -16,7 +16,7 @@ import { generateQueryUrl } from '../../../services/queryString'
 import { mapCompanyData } from '../../../services/mappings'
 import log from '../../../services/log'
 
-const CHSLogin = ({ lang, queryParams }) => {
+const CHConsent = ({ lang, queryParams }) => {
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
@@ -87,7 +87,7 @@ const CHSLogin = ({ lang, queryParams }) => {
 
   const onBack = (evt) => {
     evt.preventDefault()
-    const home = isCompanySelection ? '/account/home/' : '/account/chslogin/'
+    const home = isCompanySelection ? '/account/home/' : '/account/CHConsent/'
     window.location.assign(authIndexValue === CH_CONSENT ? asPath : home)
   }
 
@@ -95,7 +95,7 @@ const CHSLogin = ({ lang, queryParams }) => {
     chooseCompanyPath: `${asPath}`,
     requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
     ewfLegacyAuthUrl: CH_EWF_LEGACY_AUTH_URL,
-    resumePath: authIndexValue === CH_CONSENT ? asPath : '/account/chslogin/sdfasdfasdfasd'
+    resumePath: authIndexValue === CH_CONSENT ? asPath : '/account/CHConsent/sdfasdfasdfasd'
   }
 
   const { errors = [], company, ...restPageProps } = stepPageProps
@@ -127,9 +127,9 @@ const CHSLogin = ({ lang, queryParams }) => {
   )
 }
 
-export default withQueryParams(WithLang(CHSLogin))
+export default withQueryParams(WithLang(CHConsent))
 
-CHSLogin.propTypes = {
+CHConsent.propTypes = {
   lang: PropTypes.string,
   queryParams: PropTypes.object
 }
