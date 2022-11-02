@@ -1483,5 +1483,9 @@
   },
   "CONSENT.button.cancel": {
     "en": "Cancel"
+  },
+  "REGISTRATION_CONFIRM.heading.title": {
+    "en": "Check your answers before we verify your details",
+    "cy": "Gwiriwch eich atebion cyn i ni ddilysu eich manylion"
   }
 }

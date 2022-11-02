@@ -9,7 +9,7 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: 'Check your answers before we verify your details'
+      children: tokens('REGISTRATION_CONFIRM.heading.title')
     }
   },
   {
@@ -74,22 +74,6 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
                 }
               }
             ]
-            // content: [
-            //   {
-            //     component: 'SpanText',
-            //     props: {
-            //       renderLabel: false
-            //     },
-            //     content: [
-            //       {
-            //         component: 'PadPhoneNumber',
-            //         dynamicProps: {
-            //           phoneNumber: '${mobileNumber}'
-            //         }
-            //       }
-            //     ]
-            //   }
-            // ]
           }
         ]
       }
