@@ -68,20 +68,28 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             isNested: true,
             content: [
               {
-                component: 'SpanText',
-                props: {
-                  renderLabel: false
-                },
-                content: [
-                  {
-                    component: 'PadPhoneNumber',
-                    dynamicProps: {
-                      phoneNumber: '${mobileNumber}'
-                    }
-                  }
-                ]
+                component: 'PadPhoneNumber',
+                dynamicProps: {
+                  phoneNumber: '${mobileNumber}'
+                }
               }
             ]
+            // content: [
+            //   {
+            //     component: 'SpanText',
+            //     props: {
+            //       renderLabel: false
+            //     },
+            //     content: [
+            //       {
+            //         component: 'PadPhoneNumber',
+            //         dynamicProps: {
+            //           phoneNumber: '${mobileNumber}'
+            //         }
+            //       }
+            //     ]
+            //   }
+            // ]
           }
         ]
       }
