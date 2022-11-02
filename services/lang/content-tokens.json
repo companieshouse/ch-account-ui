@@ -431,6 +431,14 @@
     "en": "People digitally authorised to file online for this company",
     "cy": "Pobl sydd wedi'u hawdurdodi yn ddigidol i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
+  "HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompanyHint": {
+    "en": "Anyone with access to the current authentication code can also file online for this company",
+    "cy": "Gall unrhyw un sydd â mynediad at y cod dilysu cyfredol hefyd ffeilio ar-lein ar gyfer y cwmni hwn"
+  },
+  "HOME_YOUR_COMPANIES.[7].Fragment.nameTableColumn": {
+    "en": "Name",
+    "cy": "Enw"
+  },
   "HOME_YOUR_COMPANIES.[7].Fragment.view": {
     "en": "View",
     "cy": "Gweld"

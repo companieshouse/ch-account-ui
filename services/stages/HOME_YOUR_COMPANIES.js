@@ -300,7 +300,18 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                 },
                 props: {
                   size: 'm'
-                }
+                },
+                content: [
+                  {
+                    component: 'Caption',
+                    dynamicProps: {
+                      children: '${company.number}'
+                    },
+                    props: {
+                      size: 'm'
+                    }
+                  }
+                ]
               },
               {
                 component: 'Row',
@@ -320,34 +331,9 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                           {
                             component: 'SpanText',
                             props: {
-                              children: tokens('SHARED.companyNumber')
-                            }
-                          },
-                          {
-                            component: 'Br'
-                          },
-                          {
-                            component: 'Fragment',
-                            dynamicProps: {
-                              children: '${company.number}'
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        component: 'BodyText',
-                        props: {
-                          weight: 'bold'
-                        },
-                        content: [
-                          {
-                            component: 'SpanText',
-                            props: {
+                              className: 'govuk-!-display-block govuk-!-margin-bottom-0',
                               children: tokens('SHARED.correspondenceAddress')
                             }
-                          },
-                          {
-                            component: 'Br'
                           },
                           {
                             component: 'Fragment',
@@ -385,7 +371,11 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                               {
                                 component: 'Table',
                                 props: {
-                                  className: 'table-from-mobile'
+                                  className: 'table-from-mobile',
+                                  caption: <>
+                                    {tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')}
+                                    <p className="govuk-hint govuk-!-margin-bottom-0 govuk-!-margin-top-1">{tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompanyHint')}</p>
+                                  </>
                                 },
                                 content: [
                                   {
@@ -398,7 +388,7 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                             component: 'Th',
                                             props: {
                                               className: 'wordBreak',
-                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.peopleAuthorisedToFileForThisCompany')
+                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.nameTableColumn')
                                             }
                                           },
                                           {
@@ -409,9 +399,13 @@ const HOME_YOUR_COMPANIES = (lang, tokens) => [
                                           },
                                           {
                                             component: 'Th',
-                                            props: {
-                                              children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.view')
-                                            }
+                                            content: [{
+                                              component: 'SpanText',
+                                              props: {
+                                                className: 'govuk-visually-hidden',
+                                                children: tokens('HOME_YOUR_COMPANIES.[7].Fragment.view')
+                                              }
+                                            }]
                                           }
                                         ]
                                       }
