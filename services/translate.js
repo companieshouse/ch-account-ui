@@ -56,6 +56,6 @@ export const translate = (lang, token, defaultErrorValue = undefined, params) =>
  * @returns {String} the converted url
  */
 export const convertUrl = (lang, url) => {
-  const regex = /\/en\//g;
+  const regex = /\/en\//g
   return lang ? url.replace(regex, `/${lang}/`) : url
 }

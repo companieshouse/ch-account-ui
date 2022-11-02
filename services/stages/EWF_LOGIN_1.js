@@ -1,5 +1,5 @@
-import { CH_EWF_HELP_SIGNIN_URL} from '../environment'
-import { convertUrl} from '../translate'
+import { CH_EWF_HELP_SIGNIN_URL } from '../environment'
+import { convertUrl } from '../translate'
 /* eslint-disable no-template-curly-in-string */
 const EWF_LOGIN_1 = (lang, tokens) => [
   {
