@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import WithLang from '../../services/lang/WithLang'
 import { translate } from '../../services/translate'
-import { CH_BASE_URL, CH_BASE_EWF_URL } from '../../services/environment'
+import { CH_BASE_URL, CH_EWF_LIVE_URL } from '../../services/environment'
 
 const Footer = ({ lang }) => {
   return (
@@ -19,7 +19,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href={`${CH_BASE_EWF_URL}/cookies`}>
+                <a className="govuk-footer__link" href={`${CH_EWF_LIVE_URL}/cookies`}>
                   {translate(lang, 'FOOTER_COOKIES')}
                 </a>
               </li>
@@ -29,7 +29,7 @@ const Footer = ({ lang }) => {
                 </a>
               </li>
               <li className="govuk-footer__inline-list-item">
-                <a className="govuk-footer__link" href={`${CH_BASE_EWF_URL}/sframe?name=accessibilityStatement&lang=${lang}`}>
+                <a className="govuk-footer__link" href={`${CH_EWF_LIVE_URL}/sframe?name=accessibilityStatement&lang=${lang}`}>
                   {translate(lang, 'FOOTER_ACCESSIBILITY')}
                 </a>
               </li>

@@ -31,6 +31,7 @@ export const FORGEROCK_TREE_ONBOARDING = process.env.FORGEROCK_TREE_ONBOARDING |
 export const FORGEROCK_TREE_SCRS_ACTIVATION = process.env.FORGEROCK_TREE_SCRS_ACTIVATION || 'CHSCRSActivation'
 
 export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_URL || _setEWFBaseUrls('request-auth-code')
+export const CH_EWF_LIVE_URL = process.env.CH_EWF_LIVE_URL || 'https://ewf.companieshouse.gov.uk'
 export const CH_EWF_REQUEST_AUTH_CODE_HOME_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_HOME_URL || 'https://find-and-update.company-information.service.gov.uk/auth-code-requests/start'
 export const CH_EWF_LEGACY_AUTH_URL = process.env.CH_EWF_LEGACY_AUTH_URL || 'https://ewf-kermit-legacy.companieshouse.gov.uk/'
 export const CH_EWF_AUTHENTICATED_ENTRY_URL = process.env.CH_EWF_AUTHENTICATED_ENTRY_URL || _setEWFBaseUrls('file-for-a-company')
