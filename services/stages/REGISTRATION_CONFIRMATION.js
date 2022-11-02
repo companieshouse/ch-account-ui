@@ -27,10 +27,11 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
               prop: '${fullName}',
               operator: 'is'
             },
-            label: 'Full name',
+            label: tokens('SHARED.fullName'),
             action: {
-              label: 'Change',
-              href: '/account/register/_start/'
+              label: tokens('SHARED.change'),
+              href: '/account/register/_start/',
+              desc: tokens('SHARED.change') + ' ' + tokens('SHARED.fullName')
             },
             dynamicProps: {
               value: '${fullName}'
@@ -42,10 +43,11 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
               prop: '${emailAddress}',
               operator: 'is'
             },
-            label: 'Email address',
+            label: tokens('SHARED.emailAddress'),
             action: {
-              label: 'Change',
-              href: '/account/register/_start/'
+              label: tokens('SHARED.change'),
+              href: '/account/register/_start/',
+              desc: tokens('SHARED.change') + ' ' + tokens('SHARED.emailAddress')
             },
             dynamicProps: {
               value: '${emailAddress}'
@@ -57,14 +59,29 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
               prop: '${mobileNumber}',
               operator: 'is'
             },
-            label: 'Mobile Number',
+            label: tokens('SHARED.mobileNumber'),
             action: {
-              label: 'Change',
-              href: '/account/register/_start/'
+              label: tokens('SHARED.change'),
+              href: '/account/register/_start/',
+              desc: tokens('SHARED.change') + ' ' + tokens('SHARED.mobileNumber')
             },
-            dynamicProps: {
-              value: '${mobileNumber}'
-            }
+            isNested: true,
+            content: [
+              {
+                component: 'SpanText',
+                props: {
+                  renderLabel: false
+                },
+                content: [
+                  {
+                    component: 'PadPhoneNumber',
+                    dynamicProps: {
+                      phoneNumber: '${mobileNumber}'
+                    }
+                  }
+                ]
+              }
+            ]
           }
         ]
       }

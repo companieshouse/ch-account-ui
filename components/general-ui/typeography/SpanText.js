@@ -2,8 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const SpanText = (props) => {
-  const { label = '', children, hint = false, className = '', weight = 'regular', renderFeatures } = props
+  const { label = '', children, hint = false, className = '', weight = 'regular', renderFeatures, renderLabel = true } = props
   const classes = [className]
+
+  console.log('SPAN TEXT: ', props)
 
   if (hint === true) classes.push('govuk-hint')
   if (weight === 'bold') classes.push('govuk-!-font-weight-bold')
@@ -11,7 +13,7 @@ const SpanText = (props) => {
   const finalClassName = classes.join(' ').trim()
 
   return (
-    <span className={`govuk-body ${finalClassName}`}>{label}{children}{renderFeatures(props)}</span>
+    <span className={`govuk-body ${finalClassName}`}>{renderLabel && label}{children}{renderFeatures(props)}</span>
   )
 }
 
