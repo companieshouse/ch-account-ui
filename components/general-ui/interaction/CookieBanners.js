@@ -63,7 +63,7 @@ const CookieBanners = (props) => {
               <button value="reject" type="button" name="cookies" className="govuk-button" data-module="govuk-button" onClick={rejectCookies}>
               {translate(lang, 'COOKIE_BANNER_BUTTON_REJECT')}
               </button>
-              <a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">{translate(lang, 'COOKIE_BANNER_BUTTON_VIEW')}</a>
+              <a className="govuk-link" href="https://ewf.companieshouse.gov.uk/cookies">{translate(lang, 'COOKIE_BANNER_BUTTON_VIEW')}</a>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ const CookieBanners = (props) => {
               <div className="govuk-grid-column-two-thirds">
 
                 <div className="govuk-cookie-banner__content">
-                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT')}<a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT_LINK')}</a>{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT_2')}</p>
+                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT')}<a className="govuk-link" href="https://ewf.companieshouse.gov.uk/cookies">{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT_LINK')}</a>{translate(lang, 'COOKIE_BANNER_CONTENT_ACCEPT_2')}</p>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const CookieBanners = (props) => {
               <div className="govuk-grid-column-two-thirds">
 
                 <div className="govuk-cookie-banner__content">
-                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT')}<a className="govuk-link" href="https://find-and-update.company-information.service.gov.uk/help/cookies">{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT_LINK')}</a>{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT_2')}</p>
+                  <p>{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT')}<a className="govuk-link" href="https://ewf.companieshouse.gov.uk/cookies">{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT_LINK')}</a>{translate(lang, 'COOKIE_BANNER_CONTENT_REJECT_2')}</p>
                 </div>
               </div>
             </div>
