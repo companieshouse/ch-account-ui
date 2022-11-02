@@ -1034,6 +1034,10 @@
     "en": "I've forgotten my password",
     "cy": "Rydw i wedi anghofio fy nghyfrinair"
   },
+  "SHARED.helpWithSigningIn": {
+    "en": "Help with signing in",
+    "cy": "Cymorth i fewngofnodi"
+  },
   "SHARED.manageAccount": {
     "en": "Manage account",
     "cy": "Rheoli eich cyfrif"
