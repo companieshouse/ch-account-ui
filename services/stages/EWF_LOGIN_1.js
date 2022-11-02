@@ -1,3 +1,5 @@
+import { CH_EWF_HELP_SIGNIN_URL } from '../environment'
+import { convertUrl } from '../translate'
 /* eslint-disable no-template-curly-in-string */
 const EWF_LOGIN_1 = (lang, tokens) => [
   {
@@ -73,6 +75,20 @@ const EWF_LOGIN_1 = (lang, tokens) => [
           href: '/password-recovery/request',
           testId: 'forgottenMyPasswordLink',
           matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.iveForgottenMyPassword')]
+        }
+      }
+    ]
+  },
+  {
+    component: 'BodyText',
+    content: [
+      {
+        component: 'LinkText',
+        props: {
+          children: tokens('SHARED.helpWithSigningIn'),
+          href: convertUrl(lang, CH_EWF_HELP_SIGNIN_URL),
+          testId: 'helpWithSigningInLink',
+          matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.helpWithSigningIn')]
         }
       }
     ]

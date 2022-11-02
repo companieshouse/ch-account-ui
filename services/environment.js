@@ -1,4 +1,7 @@
 // These settings default to dev environment values if no value is present
+export const CH_BASE_EWF_URL = process.env.CH_BASE_EWF_URL || 'https://ewf-kermit.companieshouse.gov.uk'
+function _setEWFBaseUrls (endpoint) { return `${CH_BASE_EWF_URL}/${endpoint}` }
+
 export const ENVIRONMENT = process.env.ENVIRONMENT || 'dev'
 export const FORGEROCK_AM = process.env.FORGEROCK_AM || 'https://idam.amido.aws.chdev.org/am/'
 export const FORGEROCK_USER_ENDPOINT = process.env.FORGEROCK_USER_ENDPOINT || 'https://idam.amido.aws.chdev.org/openidm/managed/alpha_user/'
@@ -27,15 +30,14 @@ export const FORGEROCK_TREE_CHANGE_NAME = process.env.FORGEROCK_TREE_CHANGE_NAME
 export const FORGEROCK_TREE_ONBOARDING = process.env.FORGEROCK_TREE_ONBOARDING || 'CHOnboarding'
 export const FORGEROCK_TREE_SCRS_ACTIVATION = process.env.FORGEROCK_TREE_SCRS_ACTIVATION || 'CHSCRSActivation'
 
-export const CH_BASE_EWF_URL = process.env.CH_BASE_EWF_URL || 'https://ewf-kermit.companieshouse.gov.uk'
+export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_URL || _setEWFBaseUrls('request-auth-code')
 export const CH_EWF_LIVE_URL = process.env.CH_EWF_LIVE_URL || 'https://ewf.companieshouse.gov.uk'
-
-export const CH_EWF_REQUEST_AUTH_CODE_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_URL || 'https://ewf-kermit.companieshouse.gov.uk/request-auth-code'
 export const CH_EWF_REQUEST_AUTH_CODE_HOME_URL = process.env.CH_EWF_REQUEST_AUTH_CODE_HOME_URL || 'https://find-and-update.company-information.service.gov.uk/auth-code-requests/start'
 export const CH_EWF_LEGACY_AUTH_URL = process.env.CH_EWF_LEGACY_AUTH_URL || 'https://ewf-kermit-legacy.companieshouse.gov.uk/'
-export const CH_EWF_AUTHENTICATED_ENTRY_URL = process.env.CH_EWF_AUTHENTICATED_ENTRY_URL || 'https://ewf-kermit.companieshouse.gov.uk/file-for-a-company'
-export const CH_EWF_RECENT_FILINGS_URL = process.env.CH_EWF_RECENT_FILINGS_URL || 'https://ewf-kermit.companieshouse.gov.uk/recent-filings'
-export const CH_EWF_IDAM_LOGOUT_URL = process.env.CH_EWF_IDAM_LOGOUT_URL || 'https://ewf-kermit.companieshouse.gov.uk/idam-logout'
+export const CH_EWF_AUTHENTICATED_ENTRY_URL = process.env.CH_EWF_AUTHENTICATED_ENTRY_URL || _setEWFBaseUrls('file-for-a-company')
+export const CH_EWF_RECENT_FILINGS_URL = process.env.CH_EWF_RECENT_FILINGS_URL || _setEWFBaseUrls('recent-filings')
+export const CH_EWF_IDAM_LOGOUT_URL = process.env.CH_EWF_IDAM_LOGOUT_URL || _setEWFBaseUrls('idam-logout')
+export const CH_EWF_HELP_SIGNIN_URL = process.env.CH_EWF_HELP_SIGNIN_URL || _setEWFBaseUrls('help/en/stdwf/faqHelp.html#registrationSignIn')
 export const CH_GOVUK_LINK = process.env.CH_GOVUK_LINK || 'https://gov.uk'
 
 export const CH_BASE_URL = process.env.CH_BASE_URL || 'companieshouse.gov.uk'

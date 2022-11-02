@@ -48,3 +48,14 @@ export const translate = (lang, token, defaultErrorValue = undefined, params) =>
 
   return tokens[token][lang]
 }
+
+/**
+ * Converts a url ../en/.. into the given language (ex ../cy/..)
+ * @param {String} lang The language to use when converting
+ * @param {String} url The url to convert
+ * @returns {String} the converted url
+ */
+export const convertUrl = (lang, url) => {
+  const regex = /\/en\//g
+  return lang ? url.replace(regex, `/${lang}/`) : url
+}
