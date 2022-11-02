@@ -5,6 +5,8 @@ const SpanText = (props) => {
   const { label = '', children, hint = false, className = '', weight = 'regular', renderFeatures } = props
   const classes = [className]
 
+  console.log('SPAN TEXT: ', props)
+
   if (hint === true) classes.push('govuk-hint')
   if (weight === 'bold') classes.push('govuk-!-font-weight-bold')
 
