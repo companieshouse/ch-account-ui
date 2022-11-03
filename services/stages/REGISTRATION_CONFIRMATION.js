@@ -31,7 +31,7 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             action: {
               label: tokens('SHARED.change'),
               href: '/account/register/_start/',
-              desc: tokens('SHARED.change') + ' ' + tokens('SHARED.fullName')
+              desc: tokens('SHARED.fullName')
             },
             dynamicProps: {
               value: '${fullName}'
@@ -47,7 +47,7 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             action: {
               label: tokens('SHARED.change'),
               href: '/account/register/_start/',
-              desc: tokens('SHARED.change') + ' ' + tokens('SHARED.emailAddress')
+              desc: tokens('SHARED.emailAddress')
             },
             dynamicProps: {
               value: '${emailAddress}'
@@ -63,7 +63,7 @@ const REGISTRATION_CONFIRMATION = (lang, tokens) => [
             action: {
               label: tokens('SHARED.change'),
               href: '/account/register/_start/',
-              desc: tokens('SHARED.change') + ' ' + tokens('SHARED.mobileNumber')
+              desc: tokens('SHARED.mobileNumber')
             },
             isNested: true,
             content: [
