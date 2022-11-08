@@ -1,5 +1,5 @@
 // These settings default to dev environment values if no value is present
-export const CH_BASE_EWF_URL = process.env.CH_BASE_EWF_URL || 'https://ewf-kermit.companieshouse.gov.uk'
+export const CH_BASE_EWF_URL = process.env.CH_BASE_EWF_URL || 'https://ewf.companieshouse.gov.uk'
 function _setEWFBaseUrls (endpoint) { return `${CH_BASE_EWF_URL}/${endpoint}` }
 
 export const ENVIRONMENT = process.env.ENVIRONMENT || 'dev'
