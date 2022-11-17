@@ -1371,8 +1371,8 @@
     "cy": "Mae'r gwasanaeth ffeilio eich datganiad cadarnhau ar gael yn Saesneg yn unig ar hyn o bryd."
   },
   "SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance": {
-    "en": "This service will be unavailable from 6am on Saturday 17 September until 6am on Monday 19 September while we carry out essential maintenance. You can submit filings after this time. We will put submissions on hold and process them from 7am on Tuesday 20 September.",
-    "cy": "Ni fydd y gwasanaeth ar gael o 6yb ar ddydd Sadwrn 17 Medi tan 6yb ar ddydd Llun 19 Medi wrth i ni gynnal gwaith cynnal a chadw hanfodol. Gallwch gyflwyno eich ffeilio ar ôl yr amser hwn. Byddwn yn oedi cyflwyniadau ac yn eu prosesu o 7yb ar ddydd Mawrth 20 Medi."
+    "en": "There may be some disruption on this service from 8am until 10am on Saturday 19 November and from 9am on Sunday 20 November until 6am on Monday 21 November while we carry out essential maintenance.",
+    "cy": "Mae'n bosib y bydd rhywfaint o darfu ar y gwasanaeth hwn o 8yb tan 10yb ar Ddydd Sadwrn 19 Tachwedd a o 9yb ar Ddydd Sul 20 Tachwedd tan 6yb ar Ddydd Llun 21 Tachwedd tra ein bod yn cynnal gwaith cynnal a chadw hanfodol."
   },
   "SHARED.NotificationBanner.Maintenance.dueToPowerDownL1": {
     "en": "This service is having essential maintenance from 6pm on Friday 14 October until 6am on Monday 17 October.",

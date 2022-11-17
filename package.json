@@ -93,6 +93,7 @@
     "minimist": "^1.2.6",
     "trim-newlines": "^4.x.x",
     "got": "^12.x.x",
-    "download": ">=4.x.x"
+    "download": ">=4.x.x",
+    "loader-utils": ">3.2.1"
   }
 }
