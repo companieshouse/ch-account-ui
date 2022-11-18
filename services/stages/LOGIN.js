@@ -7,7 +7,21 @@ const LOGIN = (lang, tokens) => [
       title: tokens('SHARED.signInToWebFilingAccount')
     }
   },
-
+  {
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens('SHARED.InformationMessage'),
+      heading: tokens('SHARED.ServiceMaintenance')
+    },
+    content: [
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
+        }
+      }
+    ]
+  },
   {
     component: 'PageHeading',
     props: {

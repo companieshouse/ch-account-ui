@@ -39,6 +39,8 @@ const SummaryList = (props) => {
     )
   }
 
+  // amend the below
+
   return (
     <dl className={`govuk-summary-list ${finalClassName}`}>
       {listItems.map((listItem, index) => <div key={`${listItem.label}_${index}`} className="govuk-summary-list__row">

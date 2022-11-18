@@ -143,6 +143,7 @@
     margin: 0;
     width: 50%;
     padding-right: 0;
+    min-width: 190px;
   }
 
   &__actions {
@@ -150,6 +151,7 @@
     flex-grow: 0;
     flex-shrink: 0;
     margin: 0;
+    width: 16%;
   }
 }
 
