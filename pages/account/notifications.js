@@ -19,7 +19,7 @@ const Notifications = ({ errors, lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
-  const { companies } = companyData
+  const [companies, setCompanies] = useState([])
   const { companyNumber } = queryParams
 
   const pendingCompanies = companies.filter((company) => company.membershipStatus === 'pending')
@@ -30,6 +30,7 @@ const Notifications = ({ errors, lang, queryParams }) => {
 
   // Handle companyNumber URL query
   React.useEffect(() => {
+    setCompanies(companyData)
     if (companyNumber && companies.length) {
       const anchorCompany = pendingCompanies.find((company) => company.number === companyNumber)
 

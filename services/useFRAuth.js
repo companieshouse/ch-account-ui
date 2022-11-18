@@ -62,25 +62,19 @@ const useFRAuth = (config = {}) => {
   }, [fetchCompanyData, push, accessToken, profile])
 
   useEffect(() => {
-    // console.log("useEffect2")
-    // console.log(sub, accessToken, fetchCompanyData)
     if (sub && accessToken && fetchCompanyData) {
-      // console.log("loading is true, getCompaniesAssociatedWithUser")
       setLoading(true)
       setErrors([])
-      console.log(sessionStorage.getItem('companyData'), !sessionStorage.getItem('companyData'))
       // check the session for company data
       if (sessionStorage.getItem('companyData')) {
-        console.log('We have company data in the session')
+        log.debug('We have company data in the session')
         setCompanyData(JSON.parse(sessionStorage.getItem('companyData')))
         setLoading(false)
       } else {
         // if no session data - call the endpoint
-        console.log('calling endpoint')
+        log.debug('calling endpoint to retrieve company data')
         getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
-          setCompanyData({
-            companies: data.companies
-          })
+          setCompanyData(data.companies)
           sessionStorage.setItem('companyData', JSON.stringify(data.companies))
           setLoading(false)
         }).catch((err) => {
@@ -96,7 +90,6 @@ const useFRAuth = (config = {}) => {
       setLoading(false)
     }
   }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
-  // console.log("returning from useFRAuth")
   return { accessToken, profile, companyData, loading, errors }
 }
 

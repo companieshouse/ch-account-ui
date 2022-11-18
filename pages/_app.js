@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { Profiler } from 'react'
+import React from 'react'
 import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
 import '../css/global.scss'
@@ -32,20 +32,6 @@ function MyApp ({ Component, pageProps }) {
       <CookieBanners />
 
       <MatomoProvider value={instance}>
-        {/* <Profiler 
-          id="test1" 
-          onRender={(...args) => {
-            //const { phase, actualDuration } = args
-
-            console.log({args})
-          }}> */}
-        {/* {
-          React.memo(<Component {...pageProps} />, (prev, next) => {
-            console.log(prev, next)
-            return false
-          })
-        } */}
-        {/* </Profiler> */}
         <Component {...pageProps} />
       </MatomoProvider>
     </>

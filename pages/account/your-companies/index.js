@@ -29,8 +29,6 @@ const YourCompanies = ({ lang, queryParams }) => {
 
   const showCount = loading ? false : !!search
 
-  console.log("loading: ", loading)
-
   return (
     <FeatureDynamicView
       width="full"
