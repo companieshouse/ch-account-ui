@@ -62,7 +62,6 @@ const useFRFlow = (config) => {
       stepOptions,
       onSuccess: (branch) => {
         if (branch !== undefined) {
-          log.debug('FR FLOW: ', branch)
           handleSuccess(branch)
         }
         handleSuccess()

@@ -22,10 +22,10 @@ const Home = ({ errors, lang, queryParams }) => {
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
 
-  const confirmedCompanies = companyData.companies.filter((company) => company.membershipStatus === 'confirmed')
-  const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
+  const confirmedCompanies = companyData.filter((company) => company.membershipStatus === 'confirmed')
+  const pendingCompanies = companyData.filter((company) => company.membershipStatus === 'pending')
 
-  const companyMatch = companyData.companies.filter((company) => company.number === companyNo ? company : false)
+  const companyMatch = companyData.filter((company) => company.number === companyNo ? company : false)
   const company = companyMatch[0]
 
   React.useEffect(() => {

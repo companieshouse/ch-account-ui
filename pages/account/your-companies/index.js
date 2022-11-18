@@ -39,16 +39,16 @@ const YourCompanies = ({ lang, queryParams }) => {
       accountLinksItem={2}
     >
       <Dynamic
-        companies={companyData.companies}
+        companies={companyData}
         componentMap={componentMap}
         content={content}
         errors={translateErrors(errors, lang)}
         handlers={{ onSearch }}
         headingCount={headingCount}
         loading={loading}
-        noCompanies={!search && companyData.companies.length === 0}
+        noCompanies={!search && companyData.length === 0}
         profile={profile}
-        searchCount={companyData?.companies ? formatNumber(companyData.companies.length) : null}
+        searchCount={companyData?.companies ? formatNumber(companyData.length) : null}
         showCount={showCount}
         uiElements={[]}
         uiStage={uiStage}

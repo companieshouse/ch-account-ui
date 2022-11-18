@@ -19,6 +19,8 @@ const Logout = ({ lang }) => {
   const doLogout = () => {
     logoutFlow({
       onSuccess: () => {
+        sessionStorage.removeItem('companyData')
+        sessionStorage.removeItem('profile')
         Router.push('/account/login')
       },
       onFailure: (err) => {
