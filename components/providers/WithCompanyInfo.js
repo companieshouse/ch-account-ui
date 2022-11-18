@@ -4,14 +4,15 @@ import useFRAuth from '../../services/useFRAuth'
 const WithCompanyInfo = (WrappedComponent) => function WithCompanyInfo (props) {
   const [messageCount, setMessageCount] = useState()
 
-  const { companyData } = useFRAuth({ fetchCompanyData: true })
+  const { companyData, profile } = useFRAuth({ fetchCompanyData: true })
 
   useEffect(() => {
-    const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
-    setMessageCount(pendingCompanies.length)
-  }, [companyData.companies])
+    // const pendingCompanies = companyData.filter((company) => company.membershipStatus === 'pending')
+    // setMessageCount(pendingCompanies.length)
+    setMessageCount(2)
+  }, [companyData])
 
-  return <WrappedComponent {...props} messageCount={messageCount} />
+  return <WrappedComponent {...props} messageCount={messageCount} profile={profile}/>
 }
 
 export default WithCompanyInfo

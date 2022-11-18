@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
 import WithLang from '../../services/lang/WithLang'
@@ -9,24 +9,53 @@ import { errorsPropType } from '../../services/propTypes'
 import Dynamic from '../../components/Dynamic'
 import componentMap from '../../services/componentMap'
 import WithQueryParams from '../../components/providers/WithQueryParams'
+import WithCompanyInfo from '../../components/providers/WithCompanyInfo'
 import useFRAuth from '../../services/useFRAuth'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 import Loading from '../../components/application-specific/Loading'
 import { mapCompanyData } from '../../services/mappings'
 
-const Home = ({ errors, lang, queryParams }) => {
+import WithSessionData from '../../components/providers/WithSessionData'
+
+const Home = ({ errors, lang, queryParams, sessionCompanyData, sessionProfile, loading }) => {
   const { companyNo } = queryParams
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
+  
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
+  const [companyData, setCompanyData] = useState()
+  const [profile, setProfile] = useState()
+  const [confirmedCompanies, setConfirmedCompanies] = useState()
+  const [pendingCompanies, setPendingCompanies] = useState()
 
-  const confirmedCompanies = companyData.companies.filter((company) => company.membershipStatus === 'confirmed')
-  const pendingCompanies = companyData.companies.filter((company) => company.membershipStatus === 'pending')
+  React.useEffect(() => {
+    if (sessionCompanyData !== undefined ) {
+      setCompanyData(JSON.parse(sessionCompanyData))
+    }
+    if (sessionProfile !== undefined ) {
+      setProfile(JSON.parse(sessionProfile))
+    }
+  }, [sessionCompanyData, sessionProfile])
 
-  const companyMatch = companyData.companies.filter((company) => company.number === companyNo ? company : false)
-  const company = companyMatch[0]
+
+  // React.useEffect(() => {
+  //   setConfirmedCompanies(  )
+  //   setPendingCompanies( companyData.companies.filter((company) => company.membershipStatus === 'pending') )
+  // }, [companyData])
+
+  
+
+  // const companyMatch = companyData.companies.filter((company) => company.number === companyNo ? company : false)
+  // const company = companyMatch[0]
+
+  if (companyData !== undefined) {
+    const confirmedCompanies = companyData.filter((company) => company.membershipStatus === 'confirmed')
+    console.log(confirmedCompanies)
+    console.log(companyData)
+  }
+
+  
 
   React.useEffect(() => {
     headingCount.reset()
@@ -53,8 +82,8 @@ const Home = ({ errors, lang, queryParams }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
-        companyData={{ count: confirmedCompanies.length, pendingCount: pendingCompanies.length }}
-        company={company ? mapCompanyData(company) : null}
+        // companyData={{ count: confirmedCompanies.length, pendingCount: pendingCompanies.length }}
+        // company={company ? mapCompanyData(company) : null}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />}
@@ -64,7 +93,7 @@ const Home = ({ errors, lang, queryParams }) => {
 
 export { Home }
 
-export default WithQueryParams(WithLang(Home))
+export default WithSessionData(WithQueryParams(WithLang(Home)))
 
 Home.propTypes = {
   companies: PropTypes.array,

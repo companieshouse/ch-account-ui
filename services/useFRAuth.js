@@ -20,7 +20,7 @@ const useFRAuth = (config = {}) => {
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
   const [profile, setProfile] = useState()
-  const [companyData, setCompanyData] = useState({ count: '0', companies: [] })
+  const [companyData, setCompanyData] = useState([])
 
   const extendProfile = (profile) => ({ ...profile, display_name: profile?.given_name || profile?.email })
   const sub = profile?.sub
@@ -29,49 +29,74 @@ const useFRAuth = (config = {}) => {
     forgerockInit()
     const getAuth = async () => {
       setLoading(true)
-      const accessTokens = await TokenManager.getTokens({ forceRenew: false, support: 'modern' }).catch((err) => {
-        log.debug('FR Auth: Failed to get tokens: ' + err)
-        push('/error/no-session') // Redirect the user on time out
-      })
-      if (!accessTokens) {
-        return
-      }
-      setAccessToken(accessTokens.accessToken)
 
-      const user = await UserManager.getCurrentUser().catch((err) => {
-        log.debug('FR Auth: Failed to get user details: ' + err)
-        push('/account/login/')
-      })
-      setProfile(extendProfile(user))
+      if (!accessToken) {
+        const accessTokens = await TokenManager.getTokens({ forceRenew: false, support: 'modern' }).catch((err) => {
+          log.debug('FR Auth: Failed to get tokens: ' + err)
+          push('/error/no-session') // Redirect the user on time out
+        })
+        if (!accessTokens) {
+          return
+        }
+        setAccessToken(accessTokens.accessToken)
+        // add it to a session here
+        sessionStorage.setItem('token', JSON.stringify(accessToken))
+      }
+
+      if (!profile) {
+        const user = await UserManager.getCurrentUser().catch((err) => {
+          log.debug('FR Auth: Failed to get user details: ' + err)
+          push('/account/login/')
+        })
+        setProfile(extendProfile(user))
+        sessionStorage.setItem('profile', JSON.stringify(extendProfile(user)))
+      }
 
       if (!fetchCompanyData) {
         setLoading(false)
       }
+
+      setLoading(false)
     }
     getAuth()
-  }, [fetchCompanyData, push])
+  }, [fetchCompanyData, push, accessToken, profile])
 
   useEffect(() => {
+    // console.log("useEffect2")
+    // console.log(sub, accessToken, fetchCompanyData)
     if (sub && accessToken && fetchCompanyData) {
+      // console.log("loading is true, getCompaniesAssociatedWithUser")
       setLoading(true)
       setErrors([])
-      getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
-        setCompanyData({
-          companies: data.companies
-        })
+      console.log(sessionStorage.getItem('companyData'), !sessionStorage.getItem('companyData'))
+      // check the session for company data
+      if (sessionStorage.getItem('companyData')) {
+        console.log('We have company data in the session')
+        setCompanyData(JSON.parse(sessionStorage.getItem('companyData')))
         setLoading(false)
-      }).catch((err) => {
-        setErrors([{
-          errData: err, // Add the errData key to pass along the original error info
-          token: 'ERROR_UNKNOWN', // We don't know the error
-          stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
-        }])
-        setLoading(false)
+      } else {
+        // if no session data - call the endpoint
+        console.log('calling endpoint')
+        getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
+          setCompanyData({
+            companies: data.companies
+          })
+          sessionStorage.setItem('companyData', JSON.stringify(data.companies))
+          setLoading(false)
+        }).catch((err) => {
+          setErrors([{
+            errData: err, // Add the errData key to pass along the original error info
+            token: 'ERROR_UNKNOWN', // We don't know the error
+            stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
+          }])
+          setLoading(false)
+        }
+        )
       }
-      )
+      setLoading(false)
     }
   }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
-
+  // console.log("returning from useFRAuth")
   return { accessToken, profile, companyData, loading, errors }
 }
 
