@@ -15,7 +15,7 @@ import log from '../services/log'
  */
 const useFRAuth = (config = {}) => {
   const [errors, setErrors] = useState([])
-  const { fetchCompanyData, companySearch, companyStatus } = config
+  const { fetchCompanyData, companySearch, companyStatus, refresh = false } = config
   const [loading, setLoading] = useState(true)
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
@@ -66,7 +66,7 @@ const useFRAuth = (config = {}) => {
       setLoading(true)
       setErrors([])
       // check the session for company data
-      if (sessionStorage.getItem('companyData')) {
+      if (sessionStorage.getItem('companyData') && refresh === false) {
         log.debug('We have company data in the session')
         setCompanyData(JSON.parse(sessionStorage.getItem('companyData')))
         setLoading(false)

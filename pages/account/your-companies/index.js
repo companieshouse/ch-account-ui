@@ -14,7 +14,8 @@ import { formatNumber } from '../../../services/formatting'
 
 const YourCompanies = ({ lang, queryParams }) => {
   const [search, setSearch] = useState()
-  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed', companySearch: search })
+  const [refresh, setRefresh] = useState(false)
+  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed', companySearch: search, refresh: refresh })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -22,6 +23,12 @@ const YourCompanies = ({ lang, queryParams }) => {
   useEffect(() => {
     headingCount.reset()
   })
+
+  useEffect(() => {
+    if (queryParams?.notifyToken) {
+      setRefresh(true)
+    }
+  }, [queryParams])
 
   const onSearch = (search) => {
     setSearch(search)
