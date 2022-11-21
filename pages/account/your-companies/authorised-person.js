@@ -21,7 +21,7 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
 
-  const company = companyData.companies[0]
+  const company = companyData[0]
   const user = company?.members?.filter((member) => (userId === member._id))[0]
 
   if (!loading && company) {
