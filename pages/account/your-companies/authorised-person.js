@@ -16,7 +16,7 @@ import { useRouter } from 'next/router'
 const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   const router = useRouter()
   const { companyNumber, userId } = queryParams
-  const { companyData, loading } = useFRAuth({ fetchCompanyData: true, companySearch: companyNumber })
+  const { companyData, loading } = useFRAuth({ fetchCompanyData: true, companySearch: companyNumber, refresh: true })
   const uiStage = 'HOME_AUTHORISED_PERSON'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
