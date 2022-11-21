@@ -48,7 +48,7 @@ const YourCompanies = ({ lang, queryParams }) => {
         loading={loading}
         noCompanies={!search && companyData.length === 0}
         profile={profile}
-        searchCount={companyData?.companies ? formatNumber(companyData.length) : null}
+        searchCount={companyData ? formatNumber(companyData.length) : null}
         showCount={showCount}
         uiElements={[]}
         uiStage={uiStage}
