@@ -8,7 +8,6 @@ import { translate } from '../../services/translate'
 import WithLang from '../../services/lang/WithLang'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL, CH_EWF_RECENT_FILINGS_URL } from '../../services/environment'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
-import useSessionData from '../../services/useSessionData'
 
 const AccountLinkItem = ({ current, text, href, messageCount }) => {
   const { pushInstruction } = useMatomo()
@@ -16,8 +15,7 @@ const AccountLinkItem = ({ current, text, href, messageCount }) => {
 }
 
 const AccountLinks = (props) => {
-  const { lang, currentItem } = props
-  const { pendingCompanies } = useSessionData()
+  const { lang, currentItem, messages } = props
 
   return (
     <>
@@ -28,7 +26,7 @@ const AccountLinks = (props) => {
             <AccountLinkItem current={currentItem === 2} href="/account/your-companies" text={translate(lang, 'ACCOUNT_LINKS_YOUR_COMPANIES')}/>
             <AccountLinkItem current={currentItem === 3} href={CH_EWF_RECENT_FILINGS_URL} text={translate(lang, 'ACCOUNT_LINKS_YOUR_FILINGS')}/>
             <AccountLinkItem current={currentItem === 4} href={CH_EWF_AUTHENTICATED_ENTRY_URL} text={translate(lang, 'ACCOUNT_LINKS_FILE_FOR_A_COMPANY')}/>
-            <AccountLinkItem current={currentItem === 5} href="/account/notifications" text={translate(lang, 'ACCOUNT_LINKS_MESSAGES')} messageCount={pendingCompanies.length}/>
+            <AccountLinkItem current={currentItem === 5} href="/account/notifications" text={translate(lang, 'ACCOUNT_LINKS_MESSAGES')} messageCount={messages}/>
             <AccountLinkItem current={currentItem === 6} href="/account/manage" text={translate(lang, 'ACCOUNT_LINKS_MANAGE_ACCOUNT')}/>
           </div>
           </Column>

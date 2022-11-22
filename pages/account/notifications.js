@@ -13,7 +13,7 @@ import WithLang from '../../services/lang/WithLang'
 import Loading from '../../components/application-specific/Loading'
 
 const Notifications = ({ errors, lang, queryParams }) => {
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
+  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true, refresh: false })
   const [pageNotification, setPageNotification] = useState()
   const uiStage = 'HOME_NOTIFICATIONS'
   const headingCount = useMemo(() => new HeadingCount(), [])
@@ -58,6 +58,7 @@ const Notifications = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={5}
+      messages={pendingCompanies.length}
     >
       {loading
         ? <Loading/>

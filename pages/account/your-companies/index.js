@@ -15,10 +15,11 @@ import { formatNumber } from '../../../services/formatting'
 const YourCompanies = ({ lang, queryParams }) => {
   const [search, setSearch] = useState()
   const [refresh, setRefresh] = useState(false)
-  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companyStatus: 'confirmed', companySearch: search, refresh: refresh })
+  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: refresh })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
+  const [companies, setCompanies] = useState([])
 
   useEffect(() => {
     headingCount.reset()
@@ -30,10 +31,17 @@ const YourCompanies = ({ lang, queryParams }) => {
     }
   }, [queryParams])
 
+  useEffect(() => {
+    if (companyData.length > 0) {
+      setCompanies(companyData.filter((company) => company.membershipStatus === 'confirmed'))
+    }
+  }, [companyData])
+
   const onSearch = (search) => {
     setSearch(search)
   }
 
+  const pendingCompanies = companyData.filter((company) => company.membershipStatus === 'pending')
   const showCount = loading ? false : !!search
 
   return (
@@ -44,9 +52,10 @@ const YourCompanies = ({ lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={2}
+      messages={pendingCompanies.length}
     >
       <Dynamic
-        companies={companyData}
+        companies={companies}
         componentMap={componentMap}
         content={content}
         errors={translateErrors(errors, lang)}
