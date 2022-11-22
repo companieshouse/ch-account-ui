@@ -9,6 +9,7 @@ import Dynamic from '../../../components/Dynamic'
 import componentMap from '../../../services/componentMap'
 import { generateQueryUrl } from '../../../services/queryString'
 import useFRFlow from '../../../services/useFRFlow'
+import useFRAuth from '../../../services/useFRAuth'
 import { mapCompanyData } from '../../../services/mappings'
 
 export const getStaticPaths = async () => {
@@ -29,6 +30,7 @@ const AssociateUserAndCompany = ({ lang }) => {
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
+  const { companyData } = useFRAuth({ fetchCompanyData: true })
 
   const { replace, query } = router
   const { pageStep = '' } = query
@@ -76,6 +78,7 @@ const AssociateUserAndCompany = ({ lang }) => {
       onSubmit={onSubmit}
       titleLinkHref="/account/home"
       width='two-thirds'
+      messages={companyData.filter((company) => company.membershipStatus === 'pending').length}
     >
       {uiStage
         ? <Dynamic

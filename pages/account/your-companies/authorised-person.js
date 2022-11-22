@@ -16,12 +16,11 @@ import { useRouter } from 'next/router'
 const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   const router = useRouter()
   const { companyNumber, userId } = queryParams
-  const { companyData, loading } = useFRAuth({ fetchCompanyData: true, companySearch: companyNumber, refresh: true })
+  const { companyData, loading } = useFRAuth({ fetchCompanyData: true, refresh: true })
   const uiStage = 'HOME_AUTHORISED_PERSON'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
-
-  const company = companyData[0]
+  const company = companyData.filter((company) => company.number === companyNumber)[0]
   const user = company?.members?.filter((member) => (userId === member._id))[0]
 
   if (!loading && company) {
