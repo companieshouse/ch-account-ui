@@ -68,8 +68,17 @@ const useFRAuth = (config = {}) => {
       // check the session for company data
       if (sessionStorage.getItem('companyData') && refresh === false) {
         log.debug('We have company data in the session')
+        const companiesSessionData = JSON.parse(sessionStorage.getItem('companyData'))
         setCompanyData(JSON.parse(sessionStorage.getItem('companyData')))
         setLoading(false)
+        if (companySearch) {
+          const searchResults = companiesSessionData.filter((company) => {
+            const searchTerm = companySearch.toUpperCase()
+            const name = company.name
+            return company.membershipStatus === 'confirmed' && name.includes(searchTerm)
+          })
+          setCompanyData(searchResults)
+        }
       } else {
         // if no session data - call the endpoint
         log.debug('calling endpoint to retrieve company data')
