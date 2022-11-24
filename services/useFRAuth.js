@@ -75,7 +75,16 @@ const useFRAuth = (config = {}) => {
           const searchResults = companiesSessionData.filter((company) => {
             const searchTerm = companySearch.toUpperCase()
             const name = company.name
-            return company.membershipStatus === 'confirmed' && name.includes(searchTerm)
+            const number = company.number
+            if (name.includes(searchTerm)) {
+              return true
+            }
+
+            if (number.includes(searchTerm)) {
+              return true
+            }
+
+            return false
           })
           setCompanyData(searchResults)
         }
