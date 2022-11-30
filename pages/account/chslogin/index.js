@@ -45,7 +45,8 @@ const CHSLogin = ({ lang, queryParams }) => {
     stepQuery: {
       companyNo,
       ForceAuth,
-      jurisdiction
+      jurisdiction,
+      ...queryParams
     },
     handleSuccess: (branch) => {
       if (goto) {
@@ -66,11 +67,14 @@ const CHSLogin = ({ lang, queryParams }) => {
           })
 
           if (backToApp !== '') {
-            return push(backToApp)
+            push(backToApp)
           }
+          log.debug('/hassession branch backToApp: ', backToApp)
         } else {
+          log.debug('NO SESSION branch: ', branch)
           return push(goto)
         }
+        log.debug('GOTO: ', goto)
       }
     }
   }
