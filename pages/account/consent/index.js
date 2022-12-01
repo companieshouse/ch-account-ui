@@ -41,14 +41,16 @@ const CHConsent = ({ lang, queryParams }) => {
       goto,
       authIndexValue,
       ForceAuth,
-      mode
+      mode,
+      ...queryParams
     },
     handleSuccess: (branch) => {
-      if (goto) {
-        return push(goto)
-      }
+      // if (goto) {
+      //   return push(goto)
+      // }
       log.debug('CONSENT JOURNEY COMPLETE AND SUCCESSFULL')
       log.debug('branch: consent: ', branch)
+      log.debug(push)
     }
   }
 
