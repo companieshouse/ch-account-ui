@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useEffect, useRef } from 'react'
-import HeadingCount from '../../../services/HeadingCount'
+import React, { useRef } from 'react'
 import {
   CH_CONSENT
 } from '../../../services/environment'
@@ -14,7 +13,6 @@ import log from '../../../services/log'
 
 const CHConsent = ({ lang, queryParams }) => {
   const formRef = useRef()
-  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const {
     goto,
@@ -22,12 +20,6 @@ const CHConsent = ({ lang, queryParams }) => {
     ForceAuth,
     mode
   } = queryParams
-
-  log.debug('queryParams: ', queryParams)
-
-  useEffect(() => {
-    headingCount.reset()
-  })
 
   const FRFlowConfig = {
     journeyName: authIndexValue || CH_CONSENT,
@@ -60,6 +52,9 @@ const CHConsent = ({ lang, queryParams }) => {
 
   const { errors = [], ...restPageProps } = stepPageProps
 
+  /* eslint-disable no-debugger */
+  debugger
+
   return (
     <FeatureDynamicView
       onSubmit={onSubmit}
@@ -74,7 +69,6 @@ const CHConsent = ({ lang, queryParams }) => {
         content={uiFeatures}
         errors={errors}
         handlers={restHandlers}
-        headingCount={headingCount}
         loading={loading}
         uiElements={uiElements}
         uiStage={uiStage}
