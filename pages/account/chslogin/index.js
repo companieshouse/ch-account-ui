@@ -50,31 +50,36 @@ const CHSLogin = ({ lang, queryParams }) => {
     },
     handleSuccess: (branch) => {
       if (goto) {
+        log.debug('GOTO: ', goto)
         // CHLogin journey ONLY
         // does the user have a session, if so send them to the redirect_uri
-        if (branch === '/hassession') {
-          let backToApp = ''
-          const params = goto.split('&')
+        if (branch) {
+          if (branch === '/hassession') {
+            let backToApp = ''
+            const params = goto.split('&')
 
-          params.map(param => {
-            const split = param.split('=')
-            if (split[0] === 'redirect_uri') {
-              log.debug('push to ', split[1])
-              backToApp = split[1]
+            params.map(param => {
+              const split = param.split('=')
+              if (split[0] === 'redirect_uri') {
+                log.debug('push to ', split[1])
+                backToApp = split[1]
+              }
+
+              return split.join('=')
+            })
+
+            if (backToApp !== '') {
+              push(backToApp)
             }
-
-            return split.join('=')
-          })
-
-          if (backToApp !== '') {
-            push(backToApp)
+            log.debug('/hassession branch backToApp: ', backToApp)
+          } else {
+            log.debug('NO SESSION: branch is defined: ', branch)
+            // if (branch) {
+            return push(goto)
+            // }
           }
-          log.debug('/hassession branch backToApp: ', backToApp)
-        } else {
-          log.debug('NO SESSION branch: ', branch)
-          return push(goto)
         }
-        log.debug('GOTO: ', goto)
+        log.debug('NO SESSION: branch is undefined, do nothing...')
       }
     }
   }
