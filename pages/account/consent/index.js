@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
 import HeadingCount from '../../../services/HeadingCount'
 import {
   CH_CONSENT
@@ -14,10 +13,8 @@ import useFRFlow from '../../../services/useFRFlow'
 import log from '../../../services/log'
 
 const CHConsent = ({ lang, queryParams }) => {
-  const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
-  const { push } = router
 
   const {
     goto,
@@ -25,6 +22,8 @@ const CHConsent = ({ lang, queryParams }) => {
     ForceAuth,
     mode
   } = queryParams
+
+  log.debug('queryParams: ', queryParams)
 
   useEffect(() => {
     headingCount.reset()
@@ -50,7 +49,6 @@ const CHConsent = ({ lang, queryParams }) => {
       // }
       log.debug('CONSENT JOURNEY COMPLETE AND SUCCESSFULL')
       log.debug('branch: consent: ', branch)
-      log.debug(push)
     }
   }
 
