@@ -52,9 +52,6 @@ const CHConsent = ({ lang, queryParams }) => {
 
   const { errors = [], ...restPageProps } = stepPageProps
 
-  /* eslint-disable no-debugger */
-  debugger
-
   return (
     <FeatureDynamicView
       onSubmit={onSubmit}

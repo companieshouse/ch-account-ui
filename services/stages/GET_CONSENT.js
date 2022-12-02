@@ -25,6 +25,40 @@ const GET_CONSENT = (lang, tokens) => [
       children: tokens('CONSENT.bodyText.permissions')
     }
   },
+  // {
+  //   component: 'DisplayUiElements',
+  //   dynamicProps: {
+  //     'elementProps.IDToken7.message': '${company.name}'
+  //   },
+  //   props: {
+  //     elementProps: {
+  //       IDToken2: {
+  //         renderLabelAs: 'heading',
+  //         caption: '',
+  //         captionPosition: 'above',
+  //         label: tokens('SHARED.enterTheCompanyAuthenticationCode'),
+  //         fixedWidth: '10',
+  //         type: 'password'
+  //       }
+  //     }
+  //   }
+  // },
+  // {
+  //   component: 'DisplayUiElements',
+  //   props: {
+  //     elementProps: {
+  //       IDToken7: {
+  //         formGroup: 'permissions',
+  //         label: tokens('SHARED.emailAddress'),
+  //         hint: tokens('CH_LOGIN_1.[2].DisplayUiElements.youCannotUseYourWebFilingDetailsToSignInYou')
+  //       },
+  //       IDToken2: {
+  //         formGroup: 'usernameAndPassword',
+  //         label: tokens('SHARED.password')
+  //       }
+  //     }
+  //   }
+  // },
   {
     component: 'List',
     content: [
