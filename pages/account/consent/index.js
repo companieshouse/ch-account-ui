@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useRef } from 'react'
+import React, { useRef, useMemo, useEffect } from 'react'
 import {
   CH_CONSENT
 } from '../../../services/environment'
@@ -9,10 +9,12 @@ import componentMap from '../../../services/componentMap'
 import Dynamic from '../../../components/Dynamic'
 import withQueryParams from '../../../components/providers/WithQueryParams'
 import useFRFlow from '../../../services/useFRFlow'
+import HeadingCount from '../../../services/HeadingCount'
 import log from '../../../services/log'
 
 const CHConsent = ({ lang, queryParams }) => {
   const formRef = useRef()
+  const headingCount = useMemo(() => new HeadingCount(), [])
 
   const {
     goto,
@@ -20,6 +22,10 @@ const CHConsent = ({ lang, queryParams }) => {
     ForceAuth,
     mode
   } = queryParams
+
+  useEffect(() => {
+    headingCount.reset()
+  })
 
   const FRFlowConfig = {
     journeyName: authIndexValue || CH_CONSENT,
@@ -66,6 +72,7 @@ const CHConsent = ({ lang, queryParams }) => {
         content={uiFeatures}
         errors={errors}
         handlers={restHandlers}
+        headingCount={headingCount}
         loading={loading}
         uiElements={uiElements}
         uiStage={uiStage}

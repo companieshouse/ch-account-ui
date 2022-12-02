@@ -37,123 +37,123 @@ GET_CONSENT.args = {
     authId: mockAuthId,
     callbacks: [
         {
-            type: "TextOutputCallback",
+            type: 'TextOutputCallback',
             output: [
                 {
-                    name: "message",
-                    value: "Allow ApiFilingWebClient to do the following:"
+                    name: 'message',
+                    value: 'Allow ApiFilingWebClient to do the following:'
                 },
                 {
-                    name: "messageType",
-                    value: "0"
+                    name: 'messageType',
+                    value: '0'
                 }
             ]
         },
         {
-            type: "TextOutputCallback",
+            type: 'TextOutputCallback',
             output: [
                 {
-                    name: "message",
-                    value: "- https://api.companieshouse.gov.uk/company/registered-office-address.update"
+                    name: 'message',
+                    value: '- https://api.companieshouse.gov.uk/company/registered-office-address.update'
                 },
                 {
-                    name: "messageType",
-                    value: "0"
+                    name: 'messageType',
+                    value: '0'
                 }
             ]
         },
         {
-            type: "TextOutputCallback",
+            type: 'TextOutputCallback',
             output: [
                 {
-                    name: "message",
-                    value: "Info"
+                    name: 'message',
+                    value: 'Info'
                 },
                 {
-                    name: "messageType",
-                    value: "0"
+                    name: 'messageType',
+                    value: '0'
                 }
             ]
         },
         {
-            type: "TextOutputCallback",
+            type: 'TextOutputCallback',
             output: [
                 {
-                    name: "message",
-                    value: "- company: 00102498"
+                    name: 'message',
+                    value: '- company: 00102498'
                 },
                 {
-                    name: "messageType",
-                    value: "0"
+                    name: 'messageType',
+                    value: '0'
                 }
             ]
         },
         {
-            type: "HiddenValueCallback",
+            type: 'HiddenValueCallback',
             output: [
                 {
-                    name: "value",
-                    value: "{\"id_token\":\"null\",\"userinfo\":\"null\"}"
+                    name: 'value',
+                    value: '{\"company\":\"00102498\",\"scopes\":[\"https://api.companieshouse.gov.uk/company/registered-office-address.update\",\"https://api.companieshouse.gov.uk/company/registered-office-address.update123\"]}'
                 },
                 {
-                    name: "id",
-                    value: "pagePropsJSON"
+                    name: 'id',
+                    value: 'pagePropsJSON'
                 }
             ],
             input: [
                 {
-                    name: "IDToken5"
+                    name: 'IDToken5'
                 }
             ]
         },
         {
-            type: "HiddenValueCallback",
+            type: 'HiddenValueCallback',
             output: [
                 {
-                    name: "value",
-                    value: "GET_CONSENT"
+                    name: 'value',
+                    value: 'GET_CONSENT'
                 },
                 {
-                    name: "id",
-                    value: "stage"
+                    name: 'id',
+                    value: 'stage'
                 }
             ],
             input: [
                 {
-                    name: "IDToken6"
+                    name: 'IDToken6'
                 }
             ]
         },
         {
-            type: "ConfirmationCallback",
+            type: 'ConfirmationCallback',
             output: [
                 {
-                    name: "prompt",
-                    value: ""
+                    name: 'prompt',
+                    value: ''
                 },
                 {
-                    name: "messageType",
+                    name: 'messageType',
                     value: 0
                 },
                 {
-                    name: "options",
+                    name: 'options',
                     value: [
-                        "Yes",
-                        "No"
+                        'Yes',
+                        'No'
                     ]
                 },
                 {
-                    name: "optionType",
+                    name: 'optionType',
                     value: -1
                 },
                 {
-                    name: "defaultOption",
+                    name: 'defaultOption',
                     value: 1
                 }
             ],
             input: [
                 {
-                    name: "IDToken7"
+                    name: 'IDToken7'
                 }
             ]
         }
@@ -164,48 +164,63 @@ GET_CONSENT.args = {
 }
 }
 
-export const CHS_LOGIN = Template.bind({})
-CHS_LOGIN.args = {
-    consent: false,
-    queryParams: {
-        authId: 'sldkjfsl'
-    },
-    responseData: {
-        authId: mockAuthId,
-        callbacks: [
-            {
-                type: 'NameCallback',
-                output: [
-                {
-                    name: 'prompt',
-                    value: 'User Name'
-                }
-                ],
-                input: [
-                {
-                    name: 'IDToken1',
-                    value: ''
-                }
-                ],
-                _id: 0
-            },
-            {
-                type: 'PasswordCallback',
-                output: [
-                {
-                    name: 'prompt',
-                    value: 'Password'
-                }
-                ],
-                input: [
-                {
-                    name: 'IDToken2',
-                    value: ''
-                }
-                ],
-                _id: 1
-            }
-        ],
-        stage: 'CH_LOGIN_1',
-    }
+export const CONSENT_FINISH = Template.bind({})
+CONSENT_FINISH.args = {
+  queryParams: COIDCParams,
+  responseData: {
+      authId: mockAuthId,
+      callbacks: [
+          {
+              type: "TextOutputCallback",
+              output: [
+                  {
+                      name: "message",
+                      value: "{\"successUrl\":\"https://idam-ui.amido.aws.chdev.org/account/chslogin/?goto=https%3A%2F%2Fidam.amido.aws.chdev.org%3A443%2Fam%2Foauth2%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3DApiFilingWebClient%26redirect_uri%3Dhttp%3A%2F%2Flocalhost%3A8090%2Fredirect%26scope%3Dhttps%3A%2F%2Fapi.companieshouse.gov.uk%2Fcompany%2Fregistered-office-address.update%26claims%3D%257B%2522userinfo%2522%3A%257B%2522company%2522%3A%257B%2522value%2522%3A%252200102498%2522%257D%257D%2C%2522id_token%2522%3A%257B%2522company%2522%3A%257B%2522value%2522%3A%252200102498%2522%257D%257D%257D%26acr%3Dchs%26acr_sig%3D-GLbSR4PMwnA6W2zFMYpw7C291edgF76IdBzN3s3xCE%26prompt%3D&realm=/alpha&service=CHLogin&authIndexType=service&authIndexValue=CHLogin&mode=AUTHN_ONLY\"}"
+                  },
+                  {
+                      name: "messageType",
+                      value: "0"
+                  }
+              ]
+          },
+          {
+              type: "HiddenValueCallback",
+              output: [
+                  {
+                      name: "value",
+                      value: "CONSENT_FINISH"
+                  },
+                  {
+                      name: "id",
+                      value: "stage"
+                  }
+              ],
+              input: [
+                  {
+                      name: "IDToken2",
+                      value: "stage"
+                  }
+              ]
+          },
+          {
+              type: "HiddenValueCallback",
+              output: [
+                  {
+                      name: "value",
+                      value: "{\"successUrl\":\"https://idam-ui.amido.aws.chdev.org/account/chslogin/?goto=https%3A%2F%2Fidam.amido.aws.chdev.org%3A443%2Fam%2Foauth2%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3DApiFilingWebClient%26redirect_uri%3Dhttp%3A%2F%2Flocalhost%3A8090%2Fredirect%26scope%3Dhttps%3A%2F%2Fapi.companieshouse.gov.uk%2Fcompany%2Fregistered-office-address.update%26claims%3D%257B%2522userinfo%2522%3A%257B%2522company%2522%3A%257B%2522value%2522%3A%252200102498%2522%257D%257D%2C%2522id_token%2522%3A%257B%2522company%2522%3A%257B%2522value%2522%3A%252200102498%2522%257D%257D%257D%26acr%3Dchs%26acr_sig%3D-GLbSR4PMwnA6W2zFMYpw7C291edgF76IdBzN3s3xCE%26prompt%3D&realm=/alpha&service=CHLogin&authIndexType=service&authIndexValue=CHLogin&mode=AUTHN_ONLY\"}"
+                  },
+                  {
+                      name: "id",
+                      value: "pagePropsJSON"
+                  }
+              ],
+              input: [
+                  {
+                      name: "IDToken3",
+                      value: "pagePropsJSON"
+                  }
+              ]
+          }
+      ]
+  }
 }
