@@ -293,6 +293,11 @@ export const forgerockFlow = ({
 
     if (step.type === StepType.LoginFailure) {
       log.debug(`ForgeRock login failure: Retrying ${retry}`, step)
+
+      log.debug('Retry: ', retry)
+      log.debug('isSessionTimedOut:', isSessionTimedOut(step.payload))
+      log.debug('step.payload: ', step.payload)
+
       // Try getting a new auth token before failing
       if (retry && isSessionTimedOut(step.payload)) {
         FRAuth.next(undefined, stepOptions).then((retryStep) => {

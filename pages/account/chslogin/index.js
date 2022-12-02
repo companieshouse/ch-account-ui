@@ -50,39 +50,35 @@ const CHSLogin = ({ lang, queryParams }) => {
       ...queryParams
     },
     handleSuccess: (branch) => {
-      // if (goto) {
-      //   log.debug('GOTO: ', goto)
-      //   // CHLogin journey ONLY
-      //   // does the user have a session, if so send them to the redirect_uri
-      //   if (branch === '/hassession') {
-      //     let backToApp = ''
-      //     const params = goto.split('&')
+      if (goto) {
+        log.debug('GOTO: ', goto)
+        // CHLogin journey ONLY
+        // does the user have a session, if so send them to the redirect_uri
+        if (branch === '/hassession') {
+          let backToApp = ''
+          const params = goto.split('&')
 
-      //     params.map(param => {
-      //       const split = param.split('=')
-      //       if (split[0] === 'redirect_uri') {
-      //         log.debug('push to ', split[1])
-      //         backToApp = split[1]
-      //       }
+          params.map(param => {
+            const split = param.split('=')
+            if (split[0] === 'redirect_uri') {
+              log.debug('push to ', split[1])
+              backToApp = split[1]
+            }
 
-      //       return split.join('=')
-      //     })
+            return split.join('=')
+          })
 
-      //     if (backToApp !== '') {
-      //       push(backToApp)
-      //     }
-      //     log.debug('/hassession branch backToApp: ', backToApp)
-      //   } else {
-      //     if (branch) {
-      //       log.debug('NO SESSION: branch is defined: ', branch)
-      //       return push(goto)
-      //     }
-      //   }
-      // }
-      log.debug(goto)
-      // if (goto) {
-      //   push(goto)
-      // }
+          if (backToApp !== '') {
+            push(backToApp)
+          }
+          log.debug('/hassession branch backToApp: ', backToApp)
+        } else {
+          if (branch) {
+            log.debug('NO SESSION: branch is defined: ', branch)
+            return push(goto)
+          }
+        }
+      }
     }
   }
 

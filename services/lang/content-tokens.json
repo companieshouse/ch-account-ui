@@ -1463,11 +1463,15 @@
     "cy": "cysylltwch â ni"
   },
   "CONSENT.pageHeading.heading": {
-    "en": "You are about to give FLOWERS LIMITED access",
+    "en": "You are about to give ${company} access",
+    "cy": ""
+  },
+  "CONSENT.pageHeading.heading.access": {
+    "en": "access",
     "cy": ""
   },
   "CONSENT.bodyText.software": {
-    "en": "Software provided by *SAGE Software*"
+    "en": "Software provided by: "
   },
   "CONSENT.bodyText.permissions": {
     "en": "This will allow them to:"

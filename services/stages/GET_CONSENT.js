@@ -8,16 +8,33 @@ const GET_CONSENT = (lang, tokens) => [
   },
   {
     component: 'PageHeading',
+    dynamicProps: {
+      children: tokens('CONSENT.pageHeading.heading')
+    },
     props: {
-      children: tokens('CONSENT.pageHeading.heading'),
-      size: 'l'
+      showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
-    props: {
-      children: tokens('CONSENT.bodyText.software')
-    }
+    props: {},
+    content: [
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('CONSENT.bodyText.software')
+        }
+      },
+      {
+        component: 'SpanText',
+        dynamicProps: {
+          children: '${company}'
+        },
+        props: {
+          weight: 'bold'
+        }
+      }
+    ]
   },
   {
     component: 'BodyText',
@@ -26,19 +43,39 @@ const GET_CONSENT = (lang, tokens) => [
     }
   },
   {
-    component: 'List',
+    component: 'DisplayUiElements',
+    props: {
+      elementProps: {
+        IDToken7: {
+          _hidden: true
+        }
+      }
+    }
+  },
+  {
+    component: 'BodyText',
     content: [
       {
-        component: 'ListItem',
-        props: {
-          children: tokens('CONSENT.list.item.1')
-        }
-      },
-      {
-        component: 'ListItem',
-        props: {
-          children: tokens('CONSENT.list.item.2')
-        }
+        iterator: {
+          prop: '${scopes}',
+          name: 'scope',
+          index: 'index'
+        },
+        component: 'Fragment',
+        dynamicProps: {
+          key: '${scope}'
+        },
+        content: [
+          {
+            component: 'ListItem',
+            dynamicProps: {
+              children: '${scope}'
+            }
+          },
+          {
+            component: 'NlToBr'
+          }
+        ]
       }
     ]
   },
@@ -50,7 +87,14 @@ const GET_CONSENT = (lang, tokens) => [
         props: {
           children: tokens('CONSENT.button.submit.allow'),
           type: 'submit',
-          testId: 'allowAccess'
+          testId: 'allowAccess',
+          handler: {
+            name: 'onSecondarySubmit',
+            params: {
+              target: 'IDToken7',
+              value: 0
+            }
+          }
         }
       },
       {
