@@ -16,9 +16,9 @@ export default {
 }
 
 const OIDC = {
-    service: 'CHWebFiling',
+    service: 'CHLogin',
     authIndexType: 'service',
-    authIndexValue: 'CHWebFiling'
+    authIndexValue: 'CHLogin'
 }
 
 const uiStage = 'CH_LOGIN_1'
@@ -44,9 +44,7 @@ const Template = (args) => {
 export const CHS_LOGIN = Template.bind({})
 CHS_LOGIN.args = {
     consent: false,
-    queryParams: {
-        authId: 'sldkjfsl'
-    },
+    queryParams: OIDC,
     responseData: {
         authId: mockAuthId,
         callbacks: [
