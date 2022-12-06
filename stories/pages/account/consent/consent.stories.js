@@ -153,7 +153,7 @@ GET_CONSENT.args = {
             ],
             input: [
                 {
-                    name: 'IDToken7'
+                    name: 'IDToken3'
                 }
             ]
         }
