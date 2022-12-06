@@ -101,8 +101,15 @@ const GET_CONSENT = (lang, tokens) => [
         component: 'Button',
         props: {
           children: tokens('CONSENT.button.cancel'),
-          type: 'button',
-          testId: 'cancelButton'
+          testId: 'cancelButton',
+          type: 'submit',
+          handler: {
+            name: 'onSecondarySubmit',
+            params: {
+              target: 'IDToken3',
+              value: 1
+            }
+          }
         }
       }
     ]
