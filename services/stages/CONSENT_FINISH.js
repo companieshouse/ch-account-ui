@@ -5,27 +5,6 @@ const CONSENT_FINISH = (lang, tokens) => [
     dynamicProps: {
       url: '${successUrl}'
     }
-  },
-  {
-    component: 'BodyText',
-    props: {},
-    content: [
-      {
-        component: 'SpanText',
-        props: {
-          children: 'The success URL: '
-        }
-      },
-      {
-        component: 'SpanText',
-        dynamicProps: {
-          children: '${successUrl}'
-        },
-        props: {
-          weight: 'bold'
-        }
-      }
-    ]
   }
 ]
 export default CONSENT_FINISH
