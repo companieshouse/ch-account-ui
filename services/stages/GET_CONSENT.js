@@ -46,7 +46,7 @@ const GET_CONSENT = (lang, tokens) => [
     component: 'DisplayUiElements',
     props: {
       elementProps: {
-        IDToken7: {
+        IDToken3: {
           _hidden: true
         }
       }
@@ -91,7 +91,7 @@ const GET_CONSENT = (lang, tokens) => [
           handler: {
             name: 'onSecondarySubmit',
             params: {
-              target: 'IDToken7',
+              target: 'IDToken3',
               value: 0
             }
           }
