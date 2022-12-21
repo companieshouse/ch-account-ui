@@ -50,6 +50,6 @@ export const CH_CONSENT = process.env.CH_CONSENT || 'CHConsent'
 
 export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
-export const MATOMO_LOGGING = false
+export const MATOMO_LOGGING = true
 
 // console.log(`Running as environment: ${ENVIRONMENT}`)
