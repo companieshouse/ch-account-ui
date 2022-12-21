@@ -233,7 +233,7 @@ export const forgerockFlow = ({
 
   Config.set({
     clientId: FORGEROCK_CLIENT_ID,
-    middleware: [langMiddleware],
+    // middleware: [langMiddleware], // TODO: this needs to work with SSR
     realmPath: FORGEROCK_REALM,
     redirectUri: FORGEROCK_REDIRECT,
     scope: FORGEROCK_SCOPE,
@@ -250,11 +250,12 @@ export const forgerockFlow = ({
 
   const handleFatalError = (err) => {
     log.debug('ForgeRock fatal error', err)
-    onFailure(err, [{
-      errData: err, // Add the errData key to pass along the original error info
-      token: 'ERROR_UNKNOWN', // We don't know the error
-      stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
-    }])
+    // TODO: This needs a check and reinstated 
+    // onFailure(err, [{
+    //   errData: err, // Add the errData key to pass along the original error info
+    //   token: 'ERROR_UNKNOWN', // We don't know the error
+    //   stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
+    // }])
   }
 
   const nextStep = (step, nextStepOptions) => {

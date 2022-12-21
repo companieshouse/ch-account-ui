@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n next,storybook \"next dev -p 3000\"  \"npm:storybook\"",
-    "next": "next dev -p 3000",
+    "dev": "concurrently -n next,storybook \"NODE_OPTIONS='--inspect' next dev -p 3000\"  \"npm:storybook\"",
+    "next": "NODE_OPTIONS='--inspect' next dev -p 3000",
     "build": "node -v && next build && next export && node update-static-asset-urls.js",
     "start": "next start",
     "serve": "http-server ./out -c1 -p 8443 --ssl --cert ./example.com+5.pem --key ./example.com+5-key.pem",

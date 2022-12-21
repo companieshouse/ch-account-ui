@@ -86,7 +86,8 @@ const EWF_LOGIN_1 = (lang, tokens) => [
         component: 'LinkText',
         props: {
           children: tokens('SHARED.helpWithSigningIn'),
-          href: convertUrl(lang, CH_EWF_HELP_SIGNIN_URL),
+          // href: convertUrl(lang, CH_EWF_HELP_SIGNIN_URL), // convertUrl not available during SSR
+          href: CH_EWF_HELP_SIGNIN_URL,
           testId: 'helpWithSigningInLink',
           matomo: ['trackEvent', tokens('SHARED.signInToWebFiling'), tokens('SHARED.helpWithSigningIn')]
         }
@@ -99,7 +100,8 @@ const EWF_LOGIN_1 = (lang, tokens) => [
       {
         component: 'LinkText',
         dynamicProps: {
-          href: '${links.ewfLegacyAuthUrl}'
+          // href: '${links.ewfLegacyAuthUrl}' // links. not available during SSR
+          href: 'https://test.com'
         },
         props: {
           children: tokens('SHARED.imAnAgentOrLenderAndIWantToFileACharge'),
