@@ -17,7 +17,7 @@ const Caption = (props) => {
   if (showErrorSummary && errors.length > 0) {
     return (
       <>
-          <ErrorSummary headingCount={headingCount} title={translate(lang, 'ERROR_SUMMARY_TITLE')} errors={errors} />
+          <ErrorSummary headingCount={headingCount} title={translate(lang, 'ERROR_SUMMARY_TITLE')} errors={errors} cleanTitle={true} />
           <span className={`${finalClassName}`} style={style}>
             {children}
             {renderFeatures(props)}
