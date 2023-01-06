@@ -226,7 +226,8 @@ export const forgerockFlow = ({
 
   const langMiddleware = (req, action, next) => {
     if (req.init.headers) {
-      req.init.headers['Chosen-Language'] = readCookie('lang') === 'cy' ? 'CY' : 'EN'
+      const cookie = readCookie('lang') === 'cy' ? 'CY' : 'EN'
+      req.init.headers.set('Chosen-Language', cookie)
     }
     next()
   }

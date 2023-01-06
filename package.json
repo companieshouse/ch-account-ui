@@ -94,6 +94,8 @@
     "trim-newlines": "^4.x.x",
     "got": "^12.x.x",
     "download": ">=4.x.x",
-    "loader-utils": "3.2.1"
+    "loader-utils": "3.2.1",
+    "decode-uri-component": "0.4.1",
+    "json5": "2.2.3"
   }
 }
