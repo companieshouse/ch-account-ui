@@ -96,6 +96,7 @@
     "download": ">=4.x.x",
     "loader-utils": "3.2.1",
     "decode-uri-component": "0.4.1",
-    "json5": "2.2.3"
+    "json5": "2.2.3",
+    "micromatch": "^4.0.5"
   }
 }
