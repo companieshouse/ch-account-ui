@@ -108,6 +108,8 @@ resource "aws_cloudfront_distribution" "website" {
         include_body = true
       }
     }
+
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   restrictions {
@@ -121,8 +123,6 @@ resource "aws_cloudfront_distribution" "website" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }
-
-  response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
 
   tags = local.common_tags
 }
