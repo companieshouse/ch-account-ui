@@ -122,6 +122,18 @@ resource "aws_cloudfront_distribution" "website" {
     minimum_protocol_version = "TLSv1.2_2019"
   }
 
+  response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
+
   tags = local.common_tags
 }
 
+resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
+  name = "${local.fqdn}-security-headers-policy"
+
+  security_headers_config {
+    frame_options {
+      frame_option = "SAMEORIGIN"
+      override     = true
+    }
+  }
+}
