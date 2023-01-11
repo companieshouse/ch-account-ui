@@ -128,7 +128,7 @@ resource "aws_cloudfront_distribution" "website" {
 }
 
 resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
-  name = "${local.fqdn}-security-headers-policy"
+  name = replace(local.fqdn, ".", "-") + "-security-headers-policy"
 
   security_headers_config {
     frame_options {
