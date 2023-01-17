@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Link from 'next/link'
+// import Link from 'next/link'
 import { matomoHelper } from '../../../scripts/cleanAnalytics.js'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import log from '../../../services/log'
 import { MATOMO_LOGGING } from '../../../services/environment.js'
+import { useRouter } from 'next/router.js'
 
 const Button = ({
   warning = false,
@@ -24,6 +25,7 @@ const Button = ({
   matomo
 }) => {
   const { trackEvent, pushInstruction } = useMatomo()
+  const router = useRouter()
   const classes = [className]
 
   if (warning === true) classes.push('govuk-button--warning')
@@ -43,22 +45,29 @@ const Button = ({
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
+        console.log('cleanData: ', cleanData)
+        console.log('matomo: ', matomo)
         pushInstruction('trackGoal', [matomo[1]])
       }
     }
     if (handler) {
       handlers[handler.name](evt, handler.params)
     }
+    if (renderAs === 'link') {
+      router.push(href)
+    }
   }
 
   if (renderAs === 'link') {
     return (
-      <Link href={href}>
+      // <Link href={href}>
+      <>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/interactive-supports-focus */}
         <a role="button" draggable="false" onClick={onClick} onKeyUp={(evt) => evt.key === 'enter' && onClick(evt)}
            className={`govuk-button ${finalClassName}`}
            data-module="govuk-button"
            data-testid={testId}
+           href=""
         >
           {label}
           {children}
@@ -68,7 +77,8 @@ const Button = ({
             <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
           </svg>}
         </a>
-      </Link>
+      </>
+      // </Link>
     )
   }
 
