@@ -67,7 +67,6 @@ const Button = ({
            className={`govuk-button ${finalClassName}`}
            data-module="govuk-button"
            data-testid={testId}
-           href=""
         >
           {label}
           {children}
