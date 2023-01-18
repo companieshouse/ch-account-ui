@@ -20,48 +20,14 @@ const RadioGroup = (props) => {
     if (matomo) {
       matomo.push(options[evt.target.value].label)
 
-      console.log(matomo)
       const cleanData = matomoHelper(matomo)
-
-      console.log('CLEAN DATA - ', cleanData)
       cleanData.action = options[evt.target.value].label
       cleanData.href = 'http://' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
 
-      const eventData1 = {
-        type: 'trackEvent',
-        category: 'test Category',
-        action: 'test action',
-        href: 'customn.com/href',
-        url: 'custom.com/url'
-      }
-
-      const eventData2 = {
-        type: 'trackEvent',
-        category: 'test Category 2',
-        action: 'test action 2',
-        href: 'http://customn.com/href',
-        url: 'http://custom.com/url'
-      }
-
-      const eventData3 = {
-        type: 'trackEvent',
-        category: 'test Category 3',
-        action: 'test action 3',
-        href: 'http://'
-      }
-
-      console.log('ADDITIONAL DATA - ', eventData1)
-
       if (cleanData.type === 'trackEvent') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - RadioGroup: ', cleanData)
-        trackEvent(eventData1)
-        trackEvent(eventData2)
-        trackEvent(eventData3)
-
-        // pushInstruction('trackEvent', [eventData1[1], eventData1[2], eventData1[3], eventData1[4]])
-        // pushInstruction('trackEvent', [eventData2[1], eventData2[2], eventData2[3], eventData2[4]])
-        // pushInstruction('trackEvent', [eventData3[1], eventData3[2], eventData3[3], eventData3[4]])
+        trackEvent(cleanData)
       } else if (cleanData.type === 'trackGoal') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - RadioGroup: ', matomo[1])
         pushInstruction('trackGoal', [matomo[1]])
