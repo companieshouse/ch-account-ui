@@ -32,7 +32,7 @@ const RadioGroup = (props) => {
 
       if (cleanData.type === 'trackEvent') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - RadioGroup: ', cleanData)
-        trackEvent(cleanData)
+        trackEvent(additionalEventData)
         pushInstruction('trackEvent', [additionalEventData])
       } else if (cleanData.type === 'trackGoal') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - RadioGroup: ', matomo[1])
