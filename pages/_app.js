@@ -7,7 +7,7 @@ import Script from 'next/script'
 import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL } from '../services/environment'
 
 import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
-import log from '../services/log'
+// import log from '../services/log'
 
 function MyApp ({ Component, pageProps }) {
   const BASE_PATH = process.env.BASE_PATH || ''
@@ -23,8 +23,6 @@ function MyApp ({ Component, pageProps }) {
   })
 
   // log.debug(instance, ANALYTICS_TRACKER_URL, ANALYTICS_SITE_ID)
-
-  log.debug('_APP js', instance)
 
   return (
     <>
