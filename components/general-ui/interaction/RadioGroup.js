@@ -25,7 +25,7 @@ const RadioGroup = (props) => {
 
       console.log('CLEAN DATA - ', cleanData)
       cleanData.action = options[evt.target.value].label
-      cleanData.href = '' // ensure the href is blank
+      cleanData.href = 'http://' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
 
       const eventData1 = {
@@ -47,7 +47,8 @@ const RadioGroup = (props) => {
       const eventData3 = {
         type: 'trackEvent',
         category: 'test Category 3',
-        action: 'test action 3'
+        action: 'test action 3',
+        href: 'http://'
       }
 
       console.log('ADDITIONAL DATA - ', eventData1)
@@ -58,9 +59,9 @@ const RadioGroup = (props) => {
         trackEvent(eventData2)
         trackEvent(eventData3)
 
-        pushInstruction('trackEvent', [eventData1[1], eventData1[2], eventData1[3], eventData1[4]])
-        pushInstruction('trackEvent', [eventData2[1], eventData2[2], eventData2[3], eventData2[4]])
-        pushInstruction('trackEvent', [eventData3[1], eventData3[2], eventData3[3], eventData3[4]])
+        // pushInstruction('trackEvent', [eventData1[1], eventData1[2], eventData1[3], eventData1[4]])
+        // pushInstruction('trackEvent', [eventData2[1], eventData2[2], eventData2[3], eventData2[4]])
+        // pushInstruction('trackEvent', [eventData3[1], eventData3[2], eventData3[3], eventData3[4]])
       } else if (cleanData.type === 'trackGoal') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - RadioGroup: ', matomo[1])
         pushInstruction('trackGoal', [matomo[1]])
