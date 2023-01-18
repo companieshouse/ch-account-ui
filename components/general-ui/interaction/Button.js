@@ -44,9 +44,8 @@ const Button = ({
 
       if (cleanData.type === 'trackEvent') {
         trackEvent(cleanData)
+        pushInstruction(cleanData)
       } else if (cleanData.type === 'trackGoal') {
-        console.log('cleanData: ', cleanData)
-        console.log('matomo: ', matomo)
         pushInstruction('trackGoal', [matomo[1]])
       }
     }

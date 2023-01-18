@@ -13,7 +13,7 @@ const stripUrlParams = (string) => {
     striped = typeof string === 'string' ? striped.replace(re, '') : string
     return striped
   }
-  return string
+  return string + '/?params=removed'
 }
 
 const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
@@ -37,7 +37,7 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
   React.useEffect(() => {
     window.document.title = title + suffix
     const currentTitle = title
-    const currentUrl = window.location.href
+    const currentUrl = window.location.href + 'testCurrentUrl'
 
     MATOMO_LOGGING && log.debug('Matomo - URL - location.href: ', window.location.href)
 

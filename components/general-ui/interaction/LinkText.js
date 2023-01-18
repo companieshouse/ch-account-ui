@@ -17,7 +17,6 @@ const LinkText = (props) => {
   if (!onClick) {
     onClick = (evt) => {
       if (matomo) {
-        console.log(matomo)
         const cleanData = matomoHelper(matomo)
         cleanData.href = '' // ensure the href is blank
         cleanData.url = '' // ensure url is blank
