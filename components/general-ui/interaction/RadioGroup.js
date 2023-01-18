@@ -24,9 +24,16 @@ const RadioGroup = (props) => {
       cleanData.href = '' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
 
+      const additionalEventData = {
+        action: 'test action',
+        href: 'customn.com/href',
+        url: 'custom.com/url'
+      }
+
       if (cleanData.type === 'trackEvent') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - RadioGroup: ', cleanData)
         trackEvent(cleanData)
+        pushInstruction('trackEvent', [additionalEventData])
       } else if (cleanData.type === 'trackGoal') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Goal - RadioGroup: ', matomo[1])
         pushInstruction('trackGoal', [matomo[1]])
