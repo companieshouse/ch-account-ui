@@ -19,16 +19,24 @@ const RadioGroup = (props) => {
   const onClick = (evt) => {
     if (matomo) {
       matomo.push(options[evt.target.value].label)
+
+      console.log(matomo)
       const cleanData = matomoHelper(matomo)
+
+      console.log('CLEAN DATA - ', cleanData )
       cleanData.action = options[evt.target.value].label
       cleanData.href = '' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
 
       const additionalEventData = {
+        type: 'trackEvent',
+        category: 'test Category',
         action: 'test action',
         href: 'customn.com/href',
         url: 'custom.com/url'
       }
+
+      console.log('ADDITIONAL DATA - ', additionalEventData)
 
       if (cleanData.type === 'trackEvent') {
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - RadioGroup: ', cleanData)
