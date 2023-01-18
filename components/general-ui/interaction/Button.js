@@ -38,7 +38,7 @@ const Button = ({
   const onClick = (evt) => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
-      cleanData.href = '' // ensure the href is blank
+      cleanData.href = 'http://' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
       MATOMO_LOGGING && log.debug('Matomo - Tracking Button: ', cleanData)
 

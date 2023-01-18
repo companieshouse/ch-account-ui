@@ -4,7 +4,7 @@ import NlToBr from '../layout/NlToBr'
 
 const SummaryListItem = (props) => {
   const { renderFeatures, label, value, action, isNested = false, children } = props
-  isNested && console.log(props.children.mobileNumber)
+  // isNested && console.log(props.children.mobileNumber)
   return (
     <div className="govuk-summary-list__row">
       <dt className="govuk-summary-list__key">

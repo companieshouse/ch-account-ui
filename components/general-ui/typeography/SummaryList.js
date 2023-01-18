@@ -17,7 +17,7 @@ const SummaryList = (props) => {
   const onClick = () => {
     if (matomo) {
       const cleanData = matomoHelper(matomo)
-      cleanData.href = '' // ensure the href is blank
+      cleanData.href = 'http://' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
 
       if (cleanData.type === 'trackEvent') {
