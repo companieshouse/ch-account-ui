@@ -13,7 +13,7 @@ const stripUrlParams = (string) => {
     striped = typeof string === 'string' ? striped.replace(re, '') : string
     return striped
   }
-  return string + '/?params=removed'
+  return string
 }
 
 const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
@@ -37,7 +37,7 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
   React.useEffect(() => {
     window.document.title = title + suffix
     const currentTitle = title
-    const currentUrl = window.location.href + 'testCurrentUrl'
+    const currentUrl = window.location.href
 
     MATOMO_LOGGING && log.debug('Matomo - URL - location.href: ', window.location.href)
 
@@ -45,7 +45,7 @@ const BrowserTitle = ({ title, errors, cleanTitle = true }) => {
 
     const dataSenttoMatomo = {
       documentTitle: cleanAnalytics([currentTitle], cleanTitle, 'BrowserTitle')[0],
-      href: stripUrlParams(cleanAnalytics([currentUrl], false, 'BrowserTitle')[0]) + 'test'
+      href: stripUrlParams(cleanAnalytics([currentUrl], false, 'BrowserTitle')[0])
     }
     MATOMO_LOGGING && log.debug('Matomo - Tracking page view', dataSenttoMatomo)
     trackPageView(dataSenttoMatomo)
