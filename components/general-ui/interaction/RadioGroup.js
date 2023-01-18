@@ -23,7 +23,7 @@ const RadioGroup = (props) => {
       console.log(matomo)
       const cleanData = matomoHelper(matomo)
 
-      console.log('CLEAN DATA - ', cleanData )
+      console.log('CLEAN DATA - ', cleanData)
       cleanData.action = options[evt.target.value].label
       cleanData.href = '' // ensure the href is blank
       cleanData.url = '' // ensure url is blank
