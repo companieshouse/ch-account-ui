@@ -49,7 +49,8 @@ const LOGIN_MFA = (lang, tokens) => [
       elementProps: {
         IDToken1: {
           label: tokens('SHARED.securityCode'),
-          type: 'number',
+          type: 'text',
+          inputMode: 'numeric',
           autoComplete: 'off'
         },
         IDToken5: {
