@@ -86,7 +86,8 @@ const REGISTRATION_3 = (lang, tokens) => [
   {
     component: 'List',
     props: {
-      type: 'number',
+      type: 'text',
+      inputMode: 'numeric',
       items: [
         tokens('REGISTRATION_3.[6].List.openTheEmail'),
         tokens('REGISTRATION_3.[6].List.selectTheVerificationLink')

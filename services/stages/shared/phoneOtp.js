@@ -90,7 +90,8 @@ const phoneOtp = (lang, tokens) => ([
       elementProps: {
         IDToken4: {
           label: tokens('SHARED.securityCode'),
-          type: 'number',
+          type: 'text',
+          inputMode: 'numeric',
           autoComplete: 'off',
           suffix: false,
           fixedWidth: '10',
