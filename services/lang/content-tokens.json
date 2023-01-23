@@ -719,6 +719,12 @@
     "en": "The link will expire in 24 hours.",
     "cy": "Daw'r ddolen hon i ben mewn 24 awr."
   },
+  "RESET_PASSWORD_6.[1].BodyText.ifThereIsAnAccount": {
+    "en": "If there is an account associated with "
+  },
+  "RESET_PASSWORD_6.[2].SpanText.youllGetAnEmailWithALink": {
+    "en": "you’ll get an email with a link to reset your password."
+  },
   "RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired": {
     "en": "Password reset link has expired",
     "cy": "Dolen ailosod cyfrinair wedi dod i ben"
@@ -726,6 +732,22 @@
   "RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword": {
     "en": "Start again to reset your password",
     "cy": "Dechreuwch eto i ailosod eich cyfrinair"
+  },
+  "SHARED.checkTheEmailAddress": {
+    "en": "Check the email address you’ve entered is correct. If you’ve made an error, you can ",
+    "cy": ""
+  },
+  "SHARED.reEnterYourEmailAddress": {
+    "en": "re-enter your email address",
+    "cy": ""
+  },
+  "SHARED.ifTheEmailAddressNotAssociated": {
+    "en": "If the email address you’ve entered is not associated with a Companies House WebFiling account, you’ll need to ",
+    "cy": ""
+  },
+  "SHARED.registerANewAccount": {
+    "en": "register a new account",
+    "cy": "ddechrau eto i gofrestru cyfrif newydd"
   },
   "SHARED.": {
     "en": ".",

@@ -65,7 +65,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens('SHARED.weveSentAnEmailTo')
+          children: tokens('RESET_PASSWORD_6.[1].BodyText.ifThereIsAnAccount')
         }
       },
       {
@@ -80,7 +80,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       {
         component: 'SpanText',
         props: {
-          children: tokens('RESET_PASSWORD_6.[2].BodyText.whichContainsLinkToResetYourPassword')
+          children: tokens('RESET_PASSWORD_6.[2].SpanText.youllGetAnEmailWithALink')
         }
       }
     ]
@@ -103,6 +103,27 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
         props: {
           children: tokens('SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset')
         }
+      },
+      {
+        component: 'BodyText',
+        props: {},
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('SHARED.checkTheEmailAddress')
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens('SHARED.reEnterYourEmailAddress'),
+              href: '/password-recovery/_restart/',
+              testId: 'reEnterEmailAddressLink',
+              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.reEnterYourEmailAddress')]
+            }
+          }
+        ]
       },
       {
         component: 'BodyText',
@@ -135,26 +156,21 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
       },
       {
         component: 'BodyText',
+        props: {},
         content: [
           {
             component: 'SpanText',
             props: {
-              children: tokens('SHARED.ifYouHaveGivenUsTheWrongEmailAddressYou')
+              children: ('SHARED.ifTheEmailAddressNotAssociated')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens('SHARED.giveUsADifferentEmailAddress'),
-              href: '/password-recovery/_restart/',
-              testId: 'restartPasswordRecoveryLink',
-              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.giveUsADifferentEmailAddress')]
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('SHARED.')
+              children: tokens('SHARED.registerANewAccount'),
+              href: '/register/_start',
+              testId: 'registerNewAccountResetPassword',
+              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), 'Email not associated']
             }
           }
         ]
