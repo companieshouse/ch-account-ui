@@ -138,7 +138,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'LinkText',
             props: {
-              children: tokens('SHARED.askUsToSendYouAnotherEmail'),
+              children: tokens('RESET_PASSWORD_6.askUsToSendYouAnotherEmail'),
               handler: {
                 name: 'onSecondarySubmit',
                 params: {
@@ -161,13 +161,13 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: ('SHARED.ifTheEmailAddressNotAssociated')
+              children: tokens('SHARED.ifTheEmailAddressNotAssociated')
             }
           },
           {
             component: 'LinkText',
             props: {
-              children: tokens('SHARED.registerANewAccount'),
+              children: tokens('RESET_PASSWORD_6.registerANewAccount'),
               href: '/register/_start',
               testId: 'registerNewAccountResetPassword',
               matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), 'Email not associated']

@@ -717,17 +717,27 @@
   },
   "RESET_PASSWORD_6.[3].InsetText.theLinkWillExpireIn6Hours": {
     "en": "The link will expire in 24 hours.",
-    "cy": "Daw'r ddolen hon i ben mewn 24 awr."
+    "cy": "Bydd y ddolen yn dod i ben mewn 24 awr."
   },
   "RESET_PASSWORD_6.[1].BodyText.ifThereIsAnAccount": {
-    "en": "If there is an account associated with "
+    "en": "If there is an account associated with ",
+    "cy": "Os oes cyfrif sy'n gysylltiedig â "
   },
   "RESET_PASSWORD_6.[2].SpanText.youllGetAnEmailWithALink": {
-    "en": "you’ll get an email with a link to reset your password."
+    "en": " you’ll get an email with a link to reset your password.",
+    "cy": " fe gewch e-bost gyda dolen i ailosod eich cyfrinair."
   },
   "RESET_PASSWORD_ERROR.[1].PageHeading.passwordResetLinkHasExpired": {
     "en": "Password reset link has expired",
     "cy": "Dolen ailosod cyfrinair wedi dod i ben"
+  },
+  "RESET_PASSWORD_6.askUsToSendYouAnotherEmail": {
+    "en": "ask us to send you another email",
+    "cy": "anfon e-bost arall atoch"
+  },
+  "RESET_PASSWORD_6.registerANewAccount": {
+    "en": "register a new account",
+    "cy": "gofrestru cyfrif newydd."
   },
   "RESET_PASSWORD_ERROR.[3].ErrorPageSummary.startAgainToResetYourPassword": {
     "en": "Start again to reset your password",
@@ -735,15 +745,15 @@
   },
   "SHARED.checkTheEmailAddress": {
     "en": "Check the email address you’ve entered is correct. If you’ve made an error, you can ",
-    "cy": ""
+    "cy": "Gwiriwch fod y cyfeiriad e-bost rydych chi wedi'i gofnodi yn gywir. Os ydych wedi gwneud gwall, gallwch "
   },
   "SHARED.reEnterYourEmailAddress": {
     "en": "re-enter your email address",
-    "cy": ""
+    "cy": "gofnodi eich cyfeiriad e-bost eto"
   },
   "SHARED.ifTheEmailAddressNotAssociated": {
     "en": "If the email address you’ve entered is not associated with a Companies House WebFiling account, you’ll need to ",
-    "cy": ""
+    "cy": "Os nad yw'r cyfeiriad e-bost rydych chi wedi'i gofnodi yn gysylltiedig â chyfrif WebFiling Tŷ'r Cwmnïau, bydd angen i chi "
   },
   "SHARED.registerANewAccount": {
     "en": "register a new account",
@@ -865,8 +875,8 @@
     "cy": "Gwiriwch eich negeseuon e-bost"
   },
   "SHARED.checkYourJunkFolderIfItStillHasNotArrivedYou": {
-    "en": "Check your junk folder. If it still has not arrived, you can ",
-    "cy": "Gwiriwch eich ffolder sothach. Os nad yw wedi cyrraedd o hyd, gallwch "
+    "en": "Check your junk folder. If it has not arrived, you can ",
+    "cy": "Gwiriwch eich ffolder sothach. Os nad yw wedi cyrraedd, gallwch ofyn i ni "
   },
   "SHARED.checkYourPhone": {
     "en": "Check your phone",
@@ -1164,6 +1174,10 @@
     "en": "Sorry, there is a problem with the service",
     "cy": "Ymddiheuriadau, mae yna broblem gyda'r gwasanaeth"
   },
+  "SHARED.sorryThereIsAProblem": {
+    "en": "Sorry, there is a problem",
+    "cy": "Ymddiheuriadau, mae yna broblem"
+  },
   "SHARED.startAgainToRegisterANewAccount": {
     "en": "start again to register a new account",
     "cy": "ddechrau eto i gofrestru cyfrif newydd"
@@ -1210,7 +1224,7 @@
   },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectReset": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: reset your password'.",
-    "cy": "Efallai y bydd yr e-bost yn cymryd ychydig o funudau i gyrraedd. Ei linell pwnc yw 'Tŷ'r Cwmnïau: gwiriwch eich cyfeiriad e-bost'."
+    "cy": "Gall yr e-bost gymryd ychydig funudau i gyrraedd. Ei linell bwnc yw 'Tŷ'r Cwmnïau: ailosod eich cyfrinair'."
   },
   "SHARED.theEmailMayTakeAFewMinutesToArriveItsSubjectVerify": {
     "en": "The email may take a few minutes to arrive. Its subject line is 'Companies House: verify your email address'.",
