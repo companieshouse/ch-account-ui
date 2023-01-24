@@ -23,6 +23,50 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
       operator: 'eeq',
+      value: 'USER_EMAIL_NOT_FOUND'
+    },
+    component: 'Fragment',
+    content: [
+      {
+        component: 'BrowserTitle',
+        props: {
+          title: tokens('SHARED.sorryThereIsAProblemWithTheService')
+        }
+      },
+      {
+        component: 'PageHeading',
+        props: {
+          showErrorSummary: false,
+          children: tokens('SHARED.sorryThereIsAProblemWithTheService')
+        }
+      },
+      {
+        component: 'ErrorPageSummary',
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: ('SHARED.ifTheEmailAddressNotAssociated')
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens('SHARED.registerANewAccount'),
+              href: '/register/_start',
+              testId: 'registerNewAccountResetPassword',
+              matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblem'), 'Email not associated']
+            }
+          }
+        ]
+      }
+    ]
+
+  },
+  {
+    conditional: {
+      prop: '${errors.0.tokenNoNamespace}',
+      operator: 'eeq',
       value: 'RESET_PASSWORD_ERROR_TOKEN_EXPIRED'
     },
     component: 'Fragment',
