@@ -161,7 +161,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: ('SHARED.ifTheEmailAddressNotAssociated')
+              children: tokens('SHARED.ifTheEmailAddressNotAssociated')
             }
           },
           {
