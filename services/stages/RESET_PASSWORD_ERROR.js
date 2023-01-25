@@ -6,7 +6,7 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
     conditional: {
       prop: '${errors.0.tokenNoNamespace}',
       operator: 'in',
-      value: ['RESET_PASSWORD_GENERAL_ERROR', 'RESET_PASSWORD_EMAIL_SEND_ERROR', 'RESET_PASSWORD_TOKEN_PARSING_ERROR', 'USER_EMAIL_NOT_FOUND']
+      value: ['RESET_PASSWORD_GENERAL_ERROR', 'RESET_PASSWORD_EMAIL_SEND_ERROR', 'RESET_PASSWORD_TOKEN_PARSING_ERROR']
     },
     component: 'Fragment',
     content: [
@@ -41,12 +41,12 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
         }
       },
       {
-        component: 'ErrorPageSummary',
+        component: 'BodyText',
         content: [
           {
             component: 'SpanText',
             props: {
-              children: ('SHARED.ifTheEmailAddressNotAssociated')
+              children: tokens('SHARED.ifTheEmailAddressNotAssociated')
             }
           },
           {

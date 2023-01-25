@@ -29,8 +29,8 @@ const ErrorSummary = (props) => {
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage !== undefined ? parentPage[0] + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0] : parentPage + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0],
-          href: ''
+          action: parentPage !== undefined ? parentPage[0] + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0] : 'Error: ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0],
+          href: 'http://'
         }
         trackEvent(errData)
         MATOMO_LOGGING && log.debug('Matomo - Tracking - Event - ErrorSummary: ', errData)
