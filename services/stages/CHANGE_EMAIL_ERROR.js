@@ -10,7 +10,7 @@ const CHANGE_EMAIL_ERROR = (lang, tokens) => [
   },
   {
     component: 'Fragment',
-    content: genericError(lang, tokens)
+    content: genericError(lang, tokens, 'CHANGE_EMAIL_ERROR')
   }
 ]
 export default CHANGE_EMAIL_ERROR

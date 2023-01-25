@@ -16,7 +16,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       value: ['ONBOARDING_USER_LOOKUP_ERROR', 'ONBOARDING_ERROR_JWT_TYPE_UNKNOWN', 'ONBOARDING_ERROR_TOKEN_ISSUER_MISMATCH', 'ONBOARDING_TOKEN_ISSUED_IN_FUTURE', 'ONBOARDING_ERROR_TOKEN_ISSUED_IN_FUTURE']
     },
     component: 'Fragment',
-    content: genericError(lang, tokens)
+    content: genericError(lang, tokens, '${errors.0.tokenNoNamespace}')
   },
   {
     conditional: {

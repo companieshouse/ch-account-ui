@@ -61,7 +61,7 @@ const INVITE_USER_ERROR = (lang, tokens) => [
       value: 'INVITE_USER_COMPANY_LOOKUP_ERROR'
     },
     component: 'Fragment',
-    content: genericError(lang, tokens)
+    content: genericError(lang, tokens, '${errors.0.tokenNoNamespace}')
   }
 ]
 export default INVITE_USER_ERROR

@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-const genericError = (lang, tokens) => [
+const genericError = (lang, tokens, info = 'generic') => [
   {
     component: 'PageHeading',
     props: {
@@ -22,7 +22,7 @@ const genericError = (lang, tokens) => [
           children: tokens('SHARED.contactCompaniesHouse'),
           href: 'https://find-and-update.company-information.service.gov.uk/help/contact-us',
           testId: 'contactCompaniesHouseLink',
-          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactCompaniesHouse')]
+          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), info]
         }
       },
       {

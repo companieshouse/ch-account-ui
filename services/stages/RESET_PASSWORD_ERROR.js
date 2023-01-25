@@ -16,7 +16,7 @@ const RESET_PASSWORD_ERROR = (lang, tokens) => [
           title: tokens('SHARED.sorryThereIsAProblemWithTheService')
         }
       },
-      ...genericError(lang, tokens)
+      ...genericError(lang, tokens, '${errors.0.tokenNoNamespace}')
     ]
   },
   {
