@@ -21,7 +21,7 @@ const REGISTRATION_ERROR = (lang, tokens) => [
       value: ['REGISTRATION_GENERAL_ERROR', 'REGISTRATION_ERROR_JWT_TYPE_UNKNOWN', 'REGISTRATION_TOKEN_ISSUED_IN_FUTURE', 'REGISTRATION_ERROR_TOKEN_ISSUER_MISMATCH']
     },
     component: 'Fragment',
-    content: genericError(lang, tokens)
+    content: genericError(lang, tokens, '${errors.0.tokenNoNamespace}')
   },
   {
     conditional: {

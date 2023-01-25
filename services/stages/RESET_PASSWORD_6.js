@@ -168,7 +168,7 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
             component: 'LinkText',
             props: {
               children: tokens('RESET_PASSWORD_6.registerANewAccount'),
-              href: '/register/_start',
+              href: '/account/register/_start',
               testId: 'registerNewAccountResetPassword',
               matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), 'Email not associated']
             }
