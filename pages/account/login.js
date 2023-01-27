@@ -47,8 +47,6 @@ const Login = ({ lang, queryParams }) => {
       jurisdiction
     },
     handleSuccess: () => {
-      sessionStorage.removeItem('companyData')
-      sessionStorage.removeItem('profile')
       if (goto) {
         return push(goto)
       }

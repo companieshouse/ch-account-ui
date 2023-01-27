@@ -277,7 +277,10 @@ export const forgerockFlow = ({
       log.debug('ForgeRock login success', step)
       if (!isAuthOnly) {
         const tokens = await TokenManager.getTokens({ forceRenew: true })
-        const user = await UserManager.getCurrentUser()
+        const user = await UserManager.getCurrentUser().then((user) => {
+          const extendProfile = (profile) => ({ ...profile, display_name: profile?.given_name || profile?.email })
+          sessionStorage.setItem('profile', JSON.stringify(extendProfile(user)))
+        })
         return onSuccess(tokens, user)
       }
 

@@ -20,7 +20,6 @@ const useFRAuth = (config = {}) => {
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
   const [profile, setProfile] = useState()
-  const [profileChecked, setProfileChecked] = useState(false)
   const [companyData, setCompanyData] = useState([])
 
   const extendProfile = (profile) => ({ ...profile, display_name: profile?.given_name || profile?.email })
@@ -29,6 +28,7 @@ const useFRAuth = (config = {}) => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     forgerockInit()
+
     const getAuth = async () => {
       setLoading(true)
 
@@ -49,8 +49,7 @@ const useFRAuth = (config = {}) => {
         // check the session for a profile
         if (sessionStorage.getItem('profile')) {
           setProfile(extendProfile(JSON.parse(sessionStorage.getItem('profile'))))
-        } else if (!profile && !sessionStorage.getItem('profile') && !profileChecked) {
-          setProfileChecked(true)
+        } else {
           await UserManager.getCurrentUser().then((user) => {
             setProfile(extendProfile(user))
             sessionStorage.setItem('profile', JSON.stringify(extendProfile(user)))
