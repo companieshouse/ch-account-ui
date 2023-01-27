@@ -20,11 +20,13 @@ const useFRAuth = (config = {}) => {
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
   const [profile, setProfile] = useState()
+  const [profileChecked, setProfileChecked] = useState(false)
   const [companyData, setCompanyData] = useState([])
 
   const extendProfile = (profile) => ({ ...profile, display_name: profile?.given_name || profile?.email })
   const sub = profile?.sub
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     forgerockInit()
     const getAuth = async () => {
@@ -44,23 +46,33 @@ const useFRAuth = (config = {}) => {
       }
 
       if (!profile) {
-        const user = await UserManager.getCurrentUser().catch((err) => {
-          log.debug('FR Auth: Failed to get user details: ' + err)
-          push('/account/login/')
-        })
-        setProfile(extendProfile(user))
-        sessionStorage.setItem('profile', JSON.stringify(extendProfile(user)))
+        // check the session for a profile
+        if (sessionStorage.getItem('profile')) {
+          setProfile(extendProfile(JSON.parse(sessionStorage.getItem('profile'))))
+        } else if (!profile && !sessionStorage.getItem('profile') && !profileChecked) {
+          setProfileChecked(true)
+          await UserManager.getCurrentUser().then((user) => {
+            setProfile(extendProfile(user))
+            sessionStorage.setItem('profile', JSON.stringify(extendProfile(user)))
+          }).catch((err) => {
+            log.debug(err)
+            push('/account/login/')
+          })
+        }
       }
 
-      if (!fetchCompanyData) {
-        setLoading(false)
-      }
+      // if (!fetchCompanyData) {
+      //   setLoading(false)
+      // }
 
       setLoading(false)
     }
-    getAuth()
-  }, [fetchCompanyData, push, accessToken, profile])
+    if (!accessToken) {
+      getAuth()
+    }
+  }, [])
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (sub && accessToken && fetchCompanyData) {
       setLoading(true)
@@ -107,7 +119,7 @@ const useFRAuth = (config = {}) => {
       }
       setLoading(false)
     }
-  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus])
+  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, profile])
   return { accessToken, profile, companyData, loading, errors }
 }
 
