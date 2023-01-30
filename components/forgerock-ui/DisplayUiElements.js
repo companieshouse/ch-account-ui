@@ -97,6 +97,20 @@ const DisplayUiElements = ({ uiElements, elementProps, errors, headingCount, uiS
           })
         }
 
+        if (customProps?.checkPadding && handlers?.onSubmitCallbacks) {
+          handlers.onSubmitCallbacks.push((formData) => {
+            const delta = formData[customProps.checkPadding].length
+            let padding = ''
+            if (delta < 8) {
+              for (let index = delta; index < 8; index++) {
+                padding += '0'
+              }
+
+              formData[customProps.checkPadding] = padding + formData[customProps.checkPadding]
+            }
+          })
+        }
+
         const additionalContent = customProps?.content && element.payload?.type !== 'HiddenValueCallback'
           ? <Dynamic
             componentMap={componentMap}

@@ -31,6 +31,7 @@ const COMPANY_ASSOCIATION_1 = (lang, tokens) => [
           testId: 'companyNumberInputField',
           formGroup: 'companyDetails',
           maxLength: 8,
+          checkPadding: 'IDToken2',
           customValidation: [
             {
               name: 'required',
