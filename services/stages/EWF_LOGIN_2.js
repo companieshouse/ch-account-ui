@@ -21,6 +21,7 @@ const EWF_LOGIN_2 = (lang, tokens) => [
           fixedWidth: '10',
           formGroup: 'companyDetails',
           autoComplete: 'off',
+          checkPadding: 'IDToken2',
           testId: 'companyNumberInputField',
           customValidation: [
             {
