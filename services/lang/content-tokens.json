@@ -1407,8 +1407,8 @@
     "cy": "Mae'r gwasanaeth ffeilio eich datganiad cadarnhau ar gael yn Saesneg yn unig ar hyn o bryd."
   },
   "SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance": {
-    "en": "There may be some disruption on this service from 8pm until 10pm on Thursday 15 December while we carry out essential maintenance.",
-    "cy": "Mae'n bosib bydd rhywfaint o darfu ar y gwasanaeth hwn o 8yp tan 10yp ddydd Iau 15 Rhagfyr wrth i ni wneud gwaith cynnal a chadw hanfodol."
+    "en": "There may be some disruption on this service from 8am until 4pm on Saturday 11 February while we carry out essential maintenance.",
+    "cy": "Efallai y bydd rhywfaint o darfu ar y gwasanaeth hwn rhwng 8yb a 4yp ar ddydd Sadwrn 11 Chwefror wrth i ni wneud gwaith cynnal a chadw hanfodol."
   },
   "SHARED.NotificationBanner.Maintenance.dueToPowerDownL1": {
     "en": "This service is having essential maintenance from 6pm on Friday 14 October until 6am on Monday 17 October.",
@@ -1419,8 +1419,8 @@
     "cy": "Gallwch gyflwyno eich ffeilio yn ystod y cyfnod hwn, ond efallai y bydd rhywfaint o darfu ar y gwasanaeth."
   },
   "SHARED.NotificationBanner.Maintenance.dueToPowerDownL3": {
-    "en": "We will put submissions on hold and process them from 6am on Monday 17 October.",
-    "cy": "Byddwn yn oedi cyflwyniadau ac yn eu prosesu o 6yb ddydd Llun 17 Hydref."
+    "en": "We will put filings submitted during this time on hold and process them from 4pm on Saturday 11 February.",
+    "cy": "Byddwn yn oedi unrhyw ffeilio a gyflwynwyd yn ystod y cyfnod hwn ac yn eu prosesu o 4yp ar ddydd Sadwrn 11 Chwefror."
   },
   "SHARED.NotificationBanner.Maintenance.duringThisPeriod": {
     "en": "Following the maintenance window, all submissions will be queued until Tuesday 20 September at 7am.",
