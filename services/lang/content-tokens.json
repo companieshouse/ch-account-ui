@@ -1406,6 +1406,10 @@
     "en": "",
     "cy": "Mae'r gwasanaeth ffeilio eich datganiad cadarnhau ar gael yn Saesneg yn unig ar hyn o bryd."
   },
+  "SHARED.NotificationBanner.Industrial.dueToIndustrialAction": {
+    "en": "There may be some disruption on this service on Wednesday 15 March 2023 due to industrial action.",
+    "cy": "Mae'n bosib y bydd rhywfaint o darfu ar y gwasanaeth hwn ar ddydd Mercher, 15 Mawrth 2023 oherwydd gweithredu diwydiannol."
+  },
   "SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance": {
     "en": "There may be some disruption on this service from 8pm on Friday 3 March until 6am on Monday 6 March while we carry out essential maintenance.",
     "cy": "Efallai y bydd rhywfaint o darfu ar y gwasanaeth hwn o 8yh ar ddydd Gwener 3 Mawrth tan 6yb ar ddydd Llun 6 Mawrth wrth i ni gynnal gwaith cynnal a chadw hanfodol."
