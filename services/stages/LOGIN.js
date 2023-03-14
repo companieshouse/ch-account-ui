@@ -11,7 +11,7 @@ const LOGIN = (lang, tokens) => [
     component: 'NotificationBanner',
     dynamicProps: {
       title: tokens('SHARED.InformationMessage'),
-      heading: tokens('SHARED.ServiceMaintenance')
+      heading: tokens('SHARED.IndustrialAction')
     },
     content: [
       {

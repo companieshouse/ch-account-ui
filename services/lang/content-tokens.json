@@ -1458,6 +1458,10 @@
     "en": "Essential service maintenance",
     "cy": "Cynnal a chadw hanfodol ar ein gwasanaethau"
   },
+  "SHARED.IndustrialAction": {
+    "en": "Industrial action - disruption possible",
+    "cy": "Gweithredu diwydiannol - tarfu posib"
+  },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
     "cy": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol"
