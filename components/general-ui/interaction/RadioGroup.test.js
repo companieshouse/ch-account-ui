@@ -32,6 +32,8 @@ describe('RadioGroup', () => {
   })
 
   it('Should have no common accessibility issues', async () => {
+    HTMLCanvasElement.prototype.getContext = jest.fn();
+    
     const { container } = render(<RadioGroup {...defaultProps} errors={[{ anchor: 'RadioGroup', label: 'Test error' }]}/>)
     const results = await axe(container)
     expect(results).toHaveNoViolations()

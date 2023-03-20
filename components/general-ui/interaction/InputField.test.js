@@ -30,6 +30,8 @@ describe('InputField', () => {
   })
 
   it('Should have no common accessibility issues', async () => {
+    HTMLCanvasElement.prototype.getContext = jest.fn();
+
     const { container } = render(<InputField {...defaultProps}
        errors={[{ anchor: 'InputField', label: 'Test error' }]}
        hint="Test hint"

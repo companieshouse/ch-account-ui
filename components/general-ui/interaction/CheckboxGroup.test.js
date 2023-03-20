@@ -2,7 +2,6 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import CheckboxGroup from './CheckboxGroup'
 import HeadingCount from '../../../services/HeadingCount'
-import InputField from './InputField'
 import { axe } from 'jest-axe'
 import { matomoHelper } from '../../../scripts/cleanAnalytics.js'
 
@@ -40,7 +39,9 @@ describe('CheckboxGroup', () => {
   })
 
   it('Should have no common accessibility issues', async () => {
-    const { container, debug } = render(<CheckboxGroup
+    HTMLCanvasElement.prototype.getContext = jest.fn();
+
+    const { container } = render(<CheckboxGroup
       {...defaultProps}
       errors={[{ anchor: 'CheckboxGroup', label: 'Test error' }]}
     />)
