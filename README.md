@@ -20,10 +20,21 @@ with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/
 
 ## Getting Started
 
-First, install the dependencies.
+Ensure you are running the correct verions of Node (v18.8.0) via Node Version Manager
+
+```
+nvm install
+```
+
+Next, install the dependencies.
 
 ```
 npm install
+```
+
+If you get a peer dependency issue delete the package-lock.json and run:
+```
+npm install --legacy-peer-deps
 ```
 
 Then, run the development server:
