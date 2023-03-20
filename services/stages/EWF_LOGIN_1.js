@@ -9,6 +9,27 @@ const EWF_LOGIN_1 = (lang, tokens) => [
     }
   },
   {
+    component: 'NotificationBanner',
+    dynamicProps: {
+      title: tokens('SHARED.InformationMessage'),
+      heading: tokens('SHARED.ServiceMaintenance')
+    },
+    content: [
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.NotificationBanner.Maintenance.dueToPowerDownL3')
+        }
+      }
+    ]
+  },
+  {
     conditional: {
       prop: '${notifyToken}',
       operator: 'eeq',

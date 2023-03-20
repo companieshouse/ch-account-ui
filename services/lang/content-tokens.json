@@ -1411,8 +1411,8 @@
     "cy": "Mae'n bosib y bydd rhywfaint o darfu ar y gwasanaeth hwn ar ddydd Mercher, 15 Mawrth 2023 oherwydd gweithredu diwydiannol."
   },
   "SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance": {
-    "en": "There may be some disruption on this service from 8pm on Friday 3 March until 6am on Monday 6 March while we carry out essential maintenance.",
-    "cy": "Efallai y bydd rhywfaint o darfu ar y gwasanaeth hwn o 8yh ar ddydd Gwener 3 Mawrth tan 6yb ar ddydd Llun 6 Mawrth wrth i ni gynnal gwaith cynnal a chadw hanfodol."
+    "en": "There may be some disruption on this service from 8pm until midnight on Wednesday 22 March while we carry out essential maintenance.",
+    "cy": " Efallai y bydd rhywfaint o darfu ar y gwasanaeth hwn o 8yh tan hanner nos ar ddydd Mercher 22ain o  Fawrth tan wrth i ni gynnal gwaith cynnal a chadw hanfodol."
   },
   "SHARED.NotificationBanner.Maintenance.dueToPowerDownL1": {
     "en": "This service is having essential maintenance from 6pm on Friday 14 October until 6am on Monday 17 October.",
@@ -1423,8 +1423,8 @@
     "cy": "Gallwch gyflwyno eich ffeilio yn ystod y cyfnod hwn, ond efallai y bydd rhywfaint o darfu ar y gwasanaeth."
   },
   "SHARED.NotificationBanner.Maintenance.dueToPowerDownL3": {
-    "en": "We will put filings submitted during this time on hold and process them from 6am on Monday 6 March.",
-    "cy": "Byddwn yn oedi unrhyw ffeilio a gyflwynwyd yn ystod y cyfnod hwn ac yn eu prosesu o 6yb ar ddydd Llun 6 Mawrth."
+    "en": "We will put filings submitted during this time on hold and process them from 12:10am on Thursday 23 March.",
+    "cy": "Byddwn yn oedi unrhyw ffeilio a gyflwynwyd yn ystod y cyfnod hwn ac yn eu prosesu o 12:10yb ar  ddydd Iau 23 o Fawrth."
   },
   "SHARED.NotificationBanner.Maintenance.duringThisPeriod": {
     "en": "Following the maintenance window, all submissions will be queued until Tuesday 20 September at 7am.",
