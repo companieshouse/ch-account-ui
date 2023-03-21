@@ -755,6 +755,10 @@
     "en": "If the email address you’ve entered is not associated with a Companies House WebFiling account, you’ll need to ",
     "cy": "Os nad yw'r cyfeiriad e-bost rydych chi wedi'i gofnodi yn gysylltiedig â chyfrif WebFiling Tŷ'r Cwmnïau, bydd angen i chi "
   },
+  "SHARED.ifTheEmailAddressNotAssociatedGeneric": {
+    "en": "If the email address you've entered is not associated with an account, you'll need to ",
+    "cy": "Os nad yw'r cyfeiriad e-bost rydych chi wedi'i nodi yn gysylltiedig â chyfrif, bydd angen i chi "
+  },
   "SHARED.registerANewAccount": {
     "en": "register a new account",
     "cy": "ddechrau eto i gofrestru cyfrif newydd"
@@ -1050,6 +1054,10 @@
     "en": "If you typed the link, check it is correct.",
     "cy": "Os gwnaethoch deipio'r ddolen, gwiriwch ei bod yn gywir"
   },
+  "SHARED.ifYouHaveAccountAssociatedWith": {
+    "en": "If there is a Companies House WebFiling account associated with ",
+    "cy": "Os oes cyfrif WebFiling Tŷ'r Cwmnïau sy'n gysylltiedig â "
+  },
   "SHARED.imAnAgentOrLenderAndIWantToFileACharge": {
     "en": "I need to file a charge (mortgage) document using a lender authentication code",
     "cy": "Mae angen i mi ffeilio dogfen arwystl (morgais) gan ddefnyddio cod dilysu benthyciwr"
@@ -1130,6 +1138,10 @@
     "en": "Reset password",
     "cy": "Diweddaru eich cyfrinair"
   },
+  "SHARED.emailResetPasswordLink": {
+    "en": " you'll get an email with a link to reset your password.",
+    "cy": " byddwch yn derbyn e-bost gyda dolen i ailosod eich cyfrinair."
+  },
   "SHARED.updatePassword": {
     "en": "Update password",
     "cy": "Diweddaru eich cyfrinair"
@@ -1193,6 +1205,10 @@
   "SHARED.success": {
     "en": "Success",
     "cy": "Llwyddiant"
+  },
+  "SHARED.emailRequested": {
+    "en": "Email requested",
+    "cy": "Cais am e-bost"
   },
   "SHARED.text": {
     "en": "Text message",
