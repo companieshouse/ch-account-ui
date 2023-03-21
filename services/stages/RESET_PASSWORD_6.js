@@ -14,31 +14,53 @@ const RESET_PASSWORD_6 = (lang, tokens) => [
     },
     component: 'NotificationBanner',
     props: {
-      title: tokens('SHARED.success'),
-      heading: tokens('SHARED.emailSent'),
+      title: tokens('SHARED.emailRequested'),
       type: 'success'
     },
     content: [
       {
-        component: 'SpanText',
-        props: {
-          children: tokens('SHARED.WeveSentAnotherEmailOTP')
-        }
-      },
-      {
-        component: 'SpanText',
-        props: {
-          weight: 'bold'
+        component: 'BodyText',
+        props: {},
+        content: [{
+          component: 'SpanText',
+          props: {
+            children: tokens('SHARED.ifYouHaveAccountAssociatedWith')
+          }
         },
-        dynamicProps: {
-          children: '${email}'
-        }
+        {
+          component: 'SpanText',
+          props: {
+            weight: 'bold'
+          },
+          dynamicProps: {
+            children: '${email}'
+          }
+        },
+        {
+          component: 'SpanText',
+          props: {
+            children: ' ' + tokens('SHARED.emailResetPasswordLink')
+          }
+        }]
       },
       {
-        component: 'SpanText',
-        props: {
-          children: '. ' + tokens('SHARED.itMayTakeAFewMinutesToArrive')
-        }
+        component: 'BodyText',
+        props: {},
+        content: [{
+          component: 'SpanText',
+          props: {
+            children: tokens('SHARED.ifTheEmailAddressNotAssociatedGeneric')
+          }
+        },
+        {
+          component: 'LinkText',
+          props: {
+            children: tokens('RESET_PASSWORD_6.registerANewAccount'),
+            href: '/account/register/_start',
+            testId: 'registerNewAccountResetPassword',
+            matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), 'Email not associated']
+          }
+        }]
       }
     ]
   },
