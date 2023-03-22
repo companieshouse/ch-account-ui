@@ -84,7 +84,8 @@
     "storybook-addon-next-router": "3.1.1"
   },
   "resolutions": {
-    "trim": "0.0.1",
+    "trim": "0.0.3",
+    "trim-newlines": "3.0.1",
     "tar": "6.1.13",
     "glob-parent": "5.1.2",
     "ansi-html-community": "0.0.8",
