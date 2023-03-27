@@ -14,8 +14,7 @@
     "prepare": "husky install",
     "storybook-config": "NODE_OPTIONS=--openssl-legacy-provider BROWSER=none",
     "storybook": "npm run storybook-config start-storybook -s ./public -p 3001",
-    "build-storybook": "npm run storybook-config build-storybook",
-    "preinstall": "npx npm-force-resolutions"
+    "build-storybook": "npm run storybook-config build-storybook"
   },
   "engines": {
     "node": "18.8.0",
@@ -84,7 +83,7 @@
     "sonarqube-scanner": "2.9.1",
     "storybook-addon-next-router": "3.1.1"
   },
-  "resolutions": {
+  "overrides": {
     "trim": "0.0.3",
     "trim-newlines": "3.0.1",
     "tar": "6.1.13",
