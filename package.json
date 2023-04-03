@@ -13,7 +13,7 @@
     "lint": "next lint --dir pages --dir components --dir services",
     "prepare": "husky install",
     "storybook-config": "NODE_OPTIONS=--openssl-legacy-provider BROWSER=none",
-    "storybook": "npm run storybook-config start-storybook -s ./public -p 3001",
+    "storybook": "npm run storybook-config start-storybook -p 3001",
     "build-storybook": "npm run storybook-config build-storybook"
   },
   "engines": {
