@@ -28,7 +28,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_total_request_latency" {
   evaluation_periods  = 2
   metric_name         = "TotalRequestLatency"
   namespace           = "AWS/S3"
-  period              = 2
+  period              = 60
   statistic           = "Average"
   threshold           = 3000
   treat_missing_data  = "notBreaching"
