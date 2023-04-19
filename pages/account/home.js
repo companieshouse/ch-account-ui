@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState,useEffect } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
 import WithLang from '../../services/lang/WithLang'
@@ -56,13 +56,13 @@ const Home = ({ errors, lang, queryParams }) => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     headingCount.reset()
   })
 
-  React.useEffect(() => {
-    setLoading(false)
+  useEffect(() => {
     setCompanyDataAndProfile()
+    setLoading(false)
   }, [])
 
   return (
