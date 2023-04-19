@@ -59,11 +59,6 @@ const useFRAuth = (config = {}) => {
           })
         }
       }
-
-      // if (!fetchCompanyData) {
-      //   setLoading(false)
-      // }
-
       setLoading(false)
     }
     if (!accessToken) {
