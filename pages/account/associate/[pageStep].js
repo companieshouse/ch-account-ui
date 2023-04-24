@@ -60,7 +60,7 @@ const AssociateUserAndCompany = ({ lang }) => {
 
   const links = {
     requestAuthCodePath: generateQueryUrl('/account/request-auth-code', { companyName: stepPageProps.company?.name }),
-    associateSuccessPath: generateQueryUrl('/account/your-companies/', {
+    associateSuccessPath: generateQueryUrl('/account/your-companies/?refreshData=true', {
       notifyToken: 'associateSuccess',
       companyName: stepPageProps.company?.name
     })

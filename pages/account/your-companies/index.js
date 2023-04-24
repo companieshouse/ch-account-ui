@@ -26,7 +26,7 @@ const YourCompanies = ({ lang, queryParams }) => {
   })
 
   useEffect(() => {
-    if (queryParams?.notifyToken) {
+    if (queryParams?.notifyToken || queryParams?.refreshData) {
       setRefresh(true)
     }
   }, [queryParams])
