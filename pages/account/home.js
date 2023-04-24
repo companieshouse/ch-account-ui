@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import HeadingCount from '../../services/HeadingCount'
 import { useRouter } from 'next/router'
 import WithLang from '../../services/lang/WithLang'
@@ -12,23 +12,15 @@ import WithQueryParams from '../../components/providers/WithQueryParams'
 import useFRAuth from '../../services/useFRAuth'
 import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 import Loading from '../../components/application-specific/Loading'
-import { mapCompanyData } from '../../services/mappings'
 
 const Home = ({ errors, lang, queryParams }) => {
-  const { companyNo } = queryParams
-  const { profile, companyData, loading } = useFRAuth({ fetchCompanyData: true })
+  const { profile, loading } = useFRAuth({ fetchCompanyData: false })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
 
-  const confirmedCompanies = companyData.filter((company) => company.membershipStatus === 'confirmed')
-  const pendingCompanies = companyData.filter((company) => company.membershipStatus === 'pending')
-
-  const companyMatch = companyData.filter((company) => company.number === companyNo ? company : false)
-  const company = companyMatch[0]
-
-  React.useEffect(() => {
+  useEffect(() => {
     headingCount.reset()
   })
 
@@ -41,7 +33,7 @@ const Home = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks={true}
       accountLinksItem={1}
-      messages={pendingCompanies.length}
+      messages={null}
     >
 
       {loading
@@ -54,8 +46,8 @@ const Home = ({ errors, lang, queryParams }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
-        companyData={{ count: confirmedCompanies.length, pendingCount: pendingCompanies.length }}
-        company={company ? mapCompanyData(company) : null}
+        companyData={{ count: null, pendingCount: null }}
+        company={null}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />}
