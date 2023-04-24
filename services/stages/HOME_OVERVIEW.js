@@ -185,7 +185,7 @@ const HOME_OVERVIEW = (lang, tokens) => [
                       href: '${links.ewfAuthenticatedEntry}'
                     },
                     props: {
-                      width: 'one-third',
+                      width: 'one-half',
                       testId: 'webFiling',
                       header: tokens('HOME_OVERVIEW.[3].Row.webFiling'),
                       className: 'flex',
@@ -216,11 +216,11 @@ const HOME_OVERVIEW = (lang, tokens) => [
                     props: {
                       count: 0,
                       countLabel: tokens('HOME_OVERVIEW.[2].InfoBlock.companies'),
-                      width: 'one-third',
+                      width: 'one-half',
                       href: '/account/your-companies',
                       testId: 'yourCompanies',
                       header: tokens('SHARED.yourCompanies'),
-                      className: 'flex',
+                      className: 'noPaddingRight flex',
                       matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('SHARED.yourCompanies')]
                     },
                     content: [
@@ -236,31 +236,6 @@ const HOME_OVERVIEW = (lang, tokens) => [
                         props: {
                           size: 16,
                           items: tokens('HOME_OVERVIEW.[3].List.yourCompanies')
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    component: 'InfoBlock',
-                    dynamicProps: {
-                      count: '${companyData.pendingCount}'
-                    },
-                    props: {
-                      count: 0,
-                      countLabel: tokens('HOME_OVERVIEW.[2].InfoBlock.newMessages'),
-                      width: 'one-third',
-                      href: '/account/notifications/',
-                      testId: 'notifications',
-                      header: tokens('SHARED.messages'),
-                      className: 'flex',
-                      matomo: ['trackEvent', tokens('HOME_OVERVIEW.[1].Row.home'), tokens('SHARED.messages')]
-                    },
-                    content: [
-                      {
-                        component: 'BodyText',
-                        size: 16,
-                        props: {
-                          children: tokens('HOME_OVERVIEW.[2].InfoBlock.viewMessagesRelatedToYourAccount')
                         }
                       }
                     ]
