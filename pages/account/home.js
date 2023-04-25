@@ -46,8 +46,6 @@ const Home = ({ errors, lang, queryParams }) => {
         uiElements={[]}
         uiStage={uiStage}
         profile={profile}
-        companyData={{ count: null, pendingCount: null }}
-        company={null}
         links={{ ewfAuthenticatedEntry: CH_EWF_AUTHENTICATED_ENTRY_URL }}
         {...router.query}
       />}
