@@ -13,9 +13,9 @@ import { translateErrors } from '../../../services/errors'
 import { formatNumber } from '../../../services/formatting'
 
 const YourCompanies = ({ lang, queryParams }) => {
+  const shouldRefresh = queryParams?.notifyToken || queryParams?.refreshData
   const [search, setSearch] = useState()
-  const [refresh, setRefresh] = useState(false)
-  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: refresh })
+  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: shouldRefresh })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -24,12 +24,6 @@ const YourCompanies = ({ lang, queryParams }) => {
   useEffect(() => {
     headingCount.reset()
   })
-
-  useEffect(() => {
-    if (queryParams?.notifyToken || queryParams?.refreshData) {
-      setRefresh(true)
-    }
-  }, [queryParams])
 
   useEffect(() => {
     if (companyData.length > 0) {
