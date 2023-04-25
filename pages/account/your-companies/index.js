@@ -13,7 +13,7 @@ import { translateErrors } from '../../../services/errors'
 import { formatNumber } from '../../../services/formatting'
 
 const YourCompanies = ({ lang, queryParams }) => {
-  const shouldRefresh = queryParams?.notifyToken || queryParams?.refreshData
+  const shouldRefresh = !!queryParams?.notifyToken || !!queryParams?.refreshData
   const [search, setSearch] = useState()
   const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: shouldRefresh })
   const uiStage = 'HOME_YOUR_COMPANIES'
