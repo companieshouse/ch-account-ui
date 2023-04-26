@@ -1427,8 +1427,8 @@
     "cy": "Mae'n bosib y bydd rhywfaint o darfu ar y gwasanaeth hwn ar ddydd Mercher, 15 Mawrth 2023 oherwydd gweithredu diwydiannol."
   },
   "SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance": {
-    "en": "There may be some disruption on this service from 9am until midnight on Wednesday 22 March while we carry out essential maintenance.",
-    "cy": "Efallai y bydd rhywfaint o darfu ar y gwasanaeth hwn o 8yh tan hanner nos ar ddydd Mercher 22ain o  Fawrth tan wrth i ni gynnal gwaith cynnal a chadw hanfodol."
+    "en": "We're investigating a minor issue when some users sign in to our WebFiling service. This issue is intermittent and the service is available - you should keep trying to sign in. Thank you for your patience.",
+    "cy": "Rydym yn ymchwilio i fân fater pan fydd rhai defnyddwyr yn mewngofnodi i'n gwasanaeth WebFiling. Mae'r mater hwn yn ysbeidiol ac mae'r gwasanaeth ar gael - dylech barhau i geisio mewngofnodi. Diolch am eich amynedd."
   },
   "SHARED.NotificationBanner.Maintenance.dueToPowerDownL1": {
     "en": "This service is having essential maintenance from 6pm on Friday 14 October until 6am on Monday 17 October.",
