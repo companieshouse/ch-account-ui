@@ -12,7 +12,7 @@ import useFRAuth from '../../services/useFRAuth'
 import { getUserFields } from '../../services/forgerock'
 
 const ManageAccount = ({ errors, lang }) => {
-  const { profile, accessToken, companyData } = useFRAuth({ fetchCompanyData: true })
+  const { profile, accessToken } = useFRAuth()
   const [preferences, setPreferences] = useState({})
   const sub = profile?.sub
   const uiStage = 'HOME_MANAGE_ACCOUNT'
@@ -45,7 +45,6 @@ const ManageAccount = ({ errors, lang }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={6}
-      messages={companyData.filter((company) => company.membershipStatus === 'pending').length}
     >
       <Dynamic
         componentMap={componentMap}
