@@ -21,7 +21,7 @@ const YourCompanies = ({ lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const [companies, setCompanies] = useState([])
- 
+
   useEffect(() => {
     headingCount.reset()
   })
