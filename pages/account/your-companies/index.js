@@ -11,6 +11,7 @@ import WithQueryParams from '../../../components/providers/WithQueryParams'
 import useFRAuth from '../../../services/useFRAuth'
 import { translateErrors } from '../../../services/errors'
 import { formatNumber } from '../../../services/formatting'
+import Loading from '../../../components/application-specific/Loading'
 
 const YourCompanies = ({ lang, queryParams }) => {
   const shouldRefresh = !!queryParams?.notifyToken || !!queryParams?.refreshData
@@ -48,7 +49,9 @@ const YourCompanies = ({ lang, queryParams }) => {
       accountLinksItem={2}
       messages={pendingCompanies.length}
     >
-      <Dynamic
+      {loading
+        ? <Loading/>
+        : <Dynamic
         companies={companies}
         componentMap={componentMap}
         content={content}
@@ -64,8 +67,7 @@ const YourCompanies = ({ lang, queryParams }) => {
         uiStage={uiStage}
         lang={lang}
         {...queryParams}
-      />
-
+      />}
     </FeatureDynamicView>
   )
 }

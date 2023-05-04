@@ -12,7 +12,7 @@ const Loading = () => {
     return () => clearTimeout(timeOut)
   })
 
-  return display ? <BodyText>Page loading...</BodyText> : null
+  return display ? <BodyText>Page loading<div className="loading-spinner"><div></div><div></div><div></div><div></div></div></BodyText> : null
 }
 
 export default Loading
