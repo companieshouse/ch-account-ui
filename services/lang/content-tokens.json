@@ -679,6 +679,10 @@
     "en": "You need the authentication code to add ${companyName} to your account",
     "cy": "Mae angen y cod dilysu arnoch i ychwanegu ${companyName} at eich cyfrif"
   },
+  "REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.youNeedTheAuthenticationCode.analytics": {
+    "en": "You need the authentication code to add <companyName> to your account",
+    "cy": "Mae angen y cod dilysu arnoch i ychwanegu <companyName> at eich cyfrif"
+  },
   "REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.youCanRequestToHaveYourAuthenticationCode": {
     "en": "You can request to have your authentication code sent to the registered office address or your home address. It can take up to 5 working days to arrive.",
     "cy": "Gallwch ofyn i'ch cod dilysu gael ei anfon i gyfeiriad y swyddfa gofrestredig neu i'ch cyfeiriad cartref. Gall gymryd hyd at 5 diwrnod gwaith i gyrraedd."
