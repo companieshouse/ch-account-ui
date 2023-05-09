@@ -116,7 +116,6 @@ const useFRAuth = (config = {}) => {
         }
         )
       }
-      setLoading(false)
     }
   }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, profile])
   return { accessToken, profile, companyData, loading, errors }
