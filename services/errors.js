@@ -63,11 +63,10 @@ export const translateErrors = (errors, lang, langSwitched = false) => {
 
       return label
     }, '')
-
+    error.labelForMatomo = translate(lang, error?.tokenForMatomo, '', error.params)
     if (!error.label) {
       error.label = `No token data for lang "${lang}" and tokens ${JSON.stringify(tokensToTry)}. Please check /services/lang/${lang}/tokens.json to ensure you have defined a token with one of these names!`
     }
-
     error.processed = true
   })
 

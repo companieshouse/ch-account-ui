@@ -26,10 +26,11 @@ const ErrorSummary = (props) => {
 
     if (errors.length > 0) {
       errors.forEach(error => {
+        const errorLabel = error.labelForMatomo ? error.labelForMatomo : error.label
         const errData = {
           type: 'trackEvent',
           category: 'Error',
-          action: parentPage !== undefined ? parentPage[0] + ': ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0] : 'Error: ' + cleanAnalytics([error.label], cleanTitle, 'ErrorSummary')[0],
+          action: parentPage !== undefined ? parentPage[0] + ': ' + cleanAnalytics([errorLabel], cleanTitle, 'ErrorSummary')[0] : 'Error: ' + cleanAnalytics([errorLabel], cleanTitle, 'ErrorSummary')[0],
           href: 'http://'
         }
         trackEvent(errData)

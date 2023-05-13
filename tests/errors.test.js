@@ -24,6 +24,7 @@ describe('translateErrors', () => {
     expect(translateErrors(errorData, 'en')).toStrictEqual(
       [{
         label: 'Enter an email address in the correct format, like name@example.com',
+        labelForMatomo: "",
         token: 'LOGIN_CREDENTIALS_MISSING_USERNAME',
         fieldName: 'IDToken1',
         anchor: 'IDToken1',
@@ -56,6 +57,7 @@ const newErrorData = [
   {
     token: 'LOGIN_CREDENTIALS_MISSING_USERNAME',
     label: 'Enter an email address in the correct format, like name@example.com',
+    labelForMatomo: "",
     anchor: 'IDToken1',
     fieldName: 'IDToken1',
     processed: true
