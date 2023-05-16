@@ -69,6 +69,7 @@ export const normaliseErrors = (step, journeyNamespace = 'UNKNOWN', oneErrorPerF
       errors.push({
         errData: error,
         tokenNoNamespace: error.token,
+        tokenForMatomo: `${error.token}_WITHOUT_COMPANY_NAME`,
         token: `${journeyNamespace}_${error.token}`,
         label: !error.token ? error.label : undefined,
         anchor: error.anchor || undefined,
