@@ -45,6 +45,7 @@ const ManageAccount = ({ errors, lang }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={6}
+      token={accessToken}
     >
       <Dynamic
         componentMap={componentMap}

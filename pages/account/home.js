@@ -14,12 +14,11 @@ import { CH_EWF_AUTHENTICATED_ENTRY_URL } from '../../services/environment'
 import Loading from '../../components/application-specific/Loading'
 
 const Home = ({ errors, lang, queryParams }) => {
-  const { profile, loading } = useFRAuth({ fetchCompanyData: false })
+  const { accessToken, profile, loading } = useFRAuth({ fetchCompanyData: false })
   const uiStage = 'HOME_OVERVIEW'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const router = useRouter()
-
   useEffect(() => {
     headingCount.reset()
   })
@@ -33,6 +32,7 @@ const Home = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks={true}
       accountLinksItem={1}
+      token={accessToken}
     >
 
       {loading

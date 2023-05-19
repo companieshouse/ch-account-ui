@@ -16,7 +16,7 @@ import Loading from '../../../components/application-specific/Loading'
 const YourCompanies = ({ lang, queryParams }) => {
   const shouldRefresh = !!queryParams?.notifyToken || !!queryParams?.refreshData
   const [search, setSearch] = useState()
-  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: shouldRefresh })
+  const { profile, companyData, loading, errors, accessToken } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: shouldRefresh })
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
@@ -48,6 +48,7 @@ const YourCompanies = ({ lang, queryParams }) => {
       hasAccountLinks
       accountLinksItem={2}
       messages={pendingCompanies.length}
+      token={accessToken}
     >
       {loading
         ? <Loading/>

@@ -30,7 +30,7 @@ const AssociateUserAndCompany = ({ lang }) => {
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
-  const { companyData } = useFRAuth({ fetchCompanyData: true })
+  const { companyData, accessToken } = useFRAuth({ fetchCompanyData: true })
 
   const { replace, query } = router
   const { pageStep = '' } = query
@@ -79,6 +79,7 @@ const AssociateUserAndCompany = ({ lang }) => {
       titleLinkHref="/account/home"
       width='two-thirds'
       messages={companyData.filter((company) => company.membershipStatus === 'pending').length}
+      token={accessToken}
     >
       {uiStage
         ? <Dynamic

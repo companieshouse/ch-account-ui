@@ -28,9 +28,9 @@ const FeatureDynamicView = (props) => {
     onBack,
     renderFeatures,
     children,
-    messages
+    messages,
+    token
   } = props
-
   return (
     <>
       <Header hasLogoutLink={hasLogoutLink} titleLinkHref={CH_GOVUK_LINK} />
@@ -51,6 +51,7 @@ const FeatureDynamicView = (props) => {
               <Column width={width}>
                 {Boolean(formAction || onSubmit) === true &&
                 <form action={formAction} onSubmit={onSubmit} method="post" noValidate={true} ref={formRef}>
+                  <input name="csrf" type="hidden" value={token}/>
                   {renderFeatures(props)}
                   {children}
                 </form>}
