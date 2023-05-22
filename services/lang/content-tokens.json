@@ -651,6 +651,10 @@
     "en": "Remove ${userDisplayName}'s authorisation to file online for this company",
     "cy": "Tynnu awdurdodiad ${userDisplayName}'s i ffeilio ar-lein ar gyfer y cwmni hwn"
   },
+  "REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS.analytics": {
+    "en": "Remove <user>'s authorisation to file online for this company",
+    "cy": "Tynnu awdurdodiad <user>'s i ffeilio ar-lein ar gyfer y cwmni hwn"
+  },
   "REMOVE_USER_CONFIRM.[3].BodyText.ifYouRemoveUserDisplayNameSAuthorisationThey": {
     "en": "If you remove ${userDisplayName}'s digital authorisation, this means they will no longer be able to file online for ${company.name} without a current authentication code. We'll email ${userDisplayName} to let them know you have removed their digital authorisation.",
     "cy": "Os byddwch yn tynnu awdurdodiad digidol ${userDisplayName}, mae hyn yn golygu na fyddant bellach yn gallu ffeilio ar-lein ar gyfer ${company.name} heb god dilysu cyfredol. Byddwn yn e-bostio ${userDisplayName} i roi gwybod iddynt eich bod wedi dileu eu hawdurdodaeth ddigidol."
@@ -945,6 +949,10 @@
   "SHARED.doYouWantUsToStoreTheCompanyDetailsFor": {
     "en": "Do you want us to store the company details for ${company.name}?",
     "cy": "Ydych chi am i ni storio manylion y cwmni ar gyfer ${company.name}?"
+  },
+  "SHARED.doYouWantUsToStoreTheCompanyDetailsFor.analytics": {
+    "en": "Do you want us to store the company details for <companyName>?",
+    "cy": "Ydych chi am i ni storio manylion y cwmni ar gyfer <companyName>?"
   },
   "SHARED.email": {
     "en": "Email",
