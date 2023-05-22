@@ -66,7 +66,7 @@ const EWF_LOGIN_5 = (lang, tokens) => [
               token: 'SELECT_YES_NO'
             }
           ],
-          matomo: ['trackEvent', tokens('SHARED.doYouWantUsToStoreTheCompanyDetailsFor')]
+          matomo: ['trackEvent', tokens('SHARED.doYouWantUsToStoreTheCompanyDetailsFor.analytics')]
         }
       }
     }
