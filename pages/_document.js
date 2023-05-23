@@ -19,6 +19,13 @@ class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
           <meta name="theme-color" content="#0b0c0c"/>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+          <meta
+           httpEquiv="Content-Security-Policy"
+           content="default-src https: http: 'self';
+                    style-src 'unsafe-inline';
+                    script-src 'self' https: 'unsafe-inline' 'unsafe-eval';
+                    img-src 'self' data: https:"/>
+
           <link rel="shortcut icon" sizes="16x16 32x32 48x48" href={`${BASE_PATH}/assets/images/favicon.ico`} type="image/x-icon"/>
           <link rel="mask-icon" href={`${BASE_PATH}/assets/images/govuk-mask-icon.svg`} color="#0b0c0c"/>
           <link rel="apple-touch-icon" sizes="180x180" href={`${BASE_PATH}/assets/images/govuk-apple-touch-icon-180x180.png`}/>
