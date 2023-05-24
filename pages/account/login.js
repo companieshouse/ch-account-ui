@@ -75,6 +75,10 @@ const Login = ({ lang, queryParams }) => {
 
   const { errors = [], company, ...restPageProps } = stepPageProps
 
+  if (uiStage === 'EWF_LOGIN_5') {
+    sessionStorage.setItem('refresh', 'true')
+  }
+
   return (
     <FeatureDynamicView
       onSubmit={onSubmit}
