@@ -77,7 +77,7 @@ const useFRAuth = (config = {}) => {
       setLoading(true)
       setErrors([])
       // check the session for company data
-      if (sessionStorage.getItem('companyData') && refresh === false) {
+      if (sessionStorage.getItem('companyData') && refresh === false && !sessionStorage.getItem('refresh')) {
         log.debug('We have company data in the session')
         const companiesSessionData = JSON.parse(sessionStorage.getItem('companyData'))
         setCompanyData(JSON.parse(sessionStorage.getItem('companyData')))
@@ -105,14 +105,15 @@ const useFRAuth = (config = {}) => {
         getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
           setCompanyData(data.companies)
           sessionStorage.setItem('companyData', JSON.stringify(data.companies))
-          setLoading(false)
+          sessionStorage.setItem('refresh', false)
         }).catch((err) => {
           setErrors([{
             errData: err, // Add the errData key to pass along the original error info
             token: 'ERROR_UNKNOWN', // We don't know the error
             stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
-          }])
-          setLoading(false)
+          }]).finally(() => {
+            setLoading(false)
+          })
         }
         )
       }
