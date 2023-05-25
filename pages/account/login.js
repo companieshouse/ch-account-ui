@@ -77,7 +77,7 @@ const Login = ({ lang, queryParams }) => {
 
   useEffect(() => {
     if (uiStage === 'EWF_LOGIN_5') {
-      sessionStorage.setItem('refresh', 'true')
+      sessionStorage.setItem('refresh', true)
     }
   }, [uiStage])
 

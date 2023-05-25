@@ -77,7 +77,7 @@ const useFRAuth = (config = {}) => {
       setLoading(true)
       setErrors([])
       // check the session for company data
-      if (sessionStorage.getItem('companyData') && refresh === false && sessionStorage.getItem('refresh') !== 'true') {
+      if (sessionStorage.getItem('companyData') && refresh === false && !sessionStorage.getItem('refresh')) {
         log.debug('We have company data in the session')
         const companiesSessionData = JSON.parse(sessionStorage.getItem('companyData'))
         setCompanyData(JSON.parse(sessionStorage.getItem('companyData')))
@@ -105,7 +105,7 @@ const useFRAuth = (config = {}) => {
         getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
           setCompanyData(data.companies)
           sessionStorage.setItem('companyData', JSON.stringify(data.companies))
-          sessionStorage.setItem('refresh', 'false')
+          sessionStorage.setItem('refresh', false)
         }).catch((err) => {
           setErrors([{
             errData: err, // Add the errData key to pass along the original error info
