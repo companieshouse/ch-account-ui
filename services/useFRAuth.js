@@ -102,20 +102,22 @@ const useFRAuth = (config = {}) => {
       } else {
         // if no session data - call the endpoint
         log.debug('calling endpoint to retrieve company data')
-        getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus).then((data) => {
-          setCompanyData(data.companies)
-          sessionStorage.setItem('companyData', JSON.stringify(data.companies))
-          sessionStorage.setItem('refresh', false)
-        }).catch((err) => {
-          setErrors([{
-            errData: err, // Add the errData key to pass along the original error info
-            token: 'ERROR_UNKNOWN', // We don't know the error
-            stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
-          }]).finally(() => {
+        getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus)
+          .then((data) => {
+            setCompanyData(data.companies)
+            sessionStorage.setItem('companyData', JSON.stringify(data.companies))
+            sessionStorage.setItem('refresh', false)
+          })
+          .catch((err) => {
+            setErrors([{
+              errData: err, // Add the errData key to pass along the original error info
+              token: 'ERROR_UNKNOWN', // We don't know the error
+              stage: 'GENERIC_ERROR' // Switch the UI to show the GENERIC_ERROR stage features
+            }])
+          })
+          .finally(() => {
             setLoading(false)
           })
-        }
-        )
       }
     }
   }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, profile])
