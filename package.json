@@ -27,7 +27,7 @@
     "core-js": "3.29.1",
     "cross-env": "7.0.3",
     "fast-text-encoding": "1.0.6",
-    "govuk-frontend": "3.14.0",
+    "govuk-frontend": "4.6.0",
     "loglevel": "1.8.1",
     "moment": "2.29.4",
     "next": "12.3.4",
