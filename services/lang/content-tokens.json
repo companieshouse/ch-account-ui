@@ -1490,6 +1490,18 @@
     "en": "Industrial action - disruption possible",
     "cy": "Gweithredu diwydiannol - tarfu posib"
   },
+  "SHARED.ifNotRecievedEmail": {
+    "en": "If you still have not recieved the email, we can ",
+    "cy": "If you still have not recieved the email, we can "
+  },
+  "SHARED.sendSecurityCodeToMobile": {
+    "en": "send the security code to your mobile phone ",
+    "cy": "send the security code to your mobile phone instead "
+  },
+  "SHARED.instead": {
+    "en": "instead.",
+    "cy": "instead."
+  },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
     "cy": "Rheoli eich cyfrif - Diweddaru eich rhif ffôn symudol"
