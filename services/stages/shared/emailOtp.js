@@ -161,6 +161,45 @@ const emailOtp = (lang, tokens) => ([
             }
           }
         ]
+      },
+      {
+        conditional: {
+          prop: '${phoneNumber}',
+          operator: 'is'
+        },
+        component: 'BodyText',
+        props: {},
+        content: [
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('SHARED.ifNotRecievedEmail')
+            }
+          },
+          {
+            component: 'LinkText',
+            props: {
+              children: tokens('SHARED.sendSecurityCodeToMobile'),
+              handler: {
+                name: 'onSecondarySubmit',
+                params: {
+                  target: 'IDToken5',
+                  value: 2,
+                  noValidate: true
+                }
+              },
+              href: '',
+              testId: 'resendEmail',
+              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.askUsToSendYouAnotherEmail')]
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('SHARED.instead')
+            }
+          }
+        ]
       }
     ]
   }
