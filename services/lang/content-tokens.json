@@ -1492,15 +1492,15 @@
   },
   "SHARED.ifNotRecievedEmail": {
     "en": "If you still have not recieved the email, we can ",
-    "cy": "If you still have not recieved the email, we can "
+    "cy": "Os nad ydych wedi derbyn yr e-bost o hyd, gallwn "
   },
   "SHARED.sendSecurityCodeToMobile": {
     "en": "send the security code to your mobile phone ",
-    "cy": "send the security code to your mobile phone instead "
+    "cy": "anfon y cod diogelwch i'ch ffôn symudol "
   },
   "SHARED.instead": {
     "en": "instead.",
-    "cy": "instead."
+    "cy": "yn lle hynny."
   },
   "UPDATE_PHONE_1.[0].BrowserTitle.changeYourMobileNumber": {
     "en": "Manage account - Update your mobile number",
