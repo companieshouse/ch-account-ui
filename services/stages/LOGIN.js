@@ -8,21 +8,6 @@ const LOGIN = (lang, tokens) => [
     }
   },
   {
-    component: 'NotificationBanner',
-    dynamicProps: {
-      title: tokens('SHARED.InformationMessage'),
-      heading: tokens('SHARED.InformationMessage')
-    },
-    content: [
-      {
-        component: 'BodyText',
-        props: {
-          children: tokens('SHARED.NotificationBanner.Maintenance.dueToEssentialMaintenance')
-        }
-      }
-    ]
-  },
-  {
     component: 'PageHeading',
     props: {
       children: tokens('SHARED.signInToWebFiling')
