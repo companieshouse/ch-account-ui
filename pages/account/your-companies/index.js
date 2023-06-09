@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
 import HeadingCount from '../../../services/HeadingCount'
 import WithLang from '../../../services/lang/WithLang'
 import FeatureDynamicView from '../../../components/views/FeatureDynamicView'
@@ -12,15 +13,42 @@ import useFRAuth from '../../../services/useFRAuth'
 import { translateErrors } from '../../../services/errors'
 import { formatNumber } from '../../../services/formatting'
 import Loading from '../../../components/application-specific/Loading'
+import Pagination from '../../../components/general-ui/interaction/Pagination'
 
 const YourCompanies = ({ lang, queryParams }) => {
-  const shouldRefresh = !!queryParams?.notifyToken || !!queryParams?.refreshData
-  const [search, setSearch] = useState()
-  const { profile, companyData, loading, errors } = useFRAuth({ fetchCompanyData: true, companySearch: search, refresh: shouldRefresh })
+  const currentPage = Number(queryParams?.page) || 1
+  const [search, setSearch] = useState('')
+
+  const { profile, pagination, errors, loading, companyData } = useFRAuth({
+    fetchCompanyData: true,
+    companySearch: search,
+    refresh: true,
+    currentPage
+  })
+
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
+  const { push } = useRouter()
   const content = getStageFeatures(lang, uiStage)
+  const [isSearchLoading, setSearchLoading] = useState(loading)
   const [companies, setCompanies] = useState([])
+
+  const clickNext = async () => {
+    if (currentPage < pagination.totalPages) {
+      push(`/account/your-companies?page=${currentPage + 1}`)
+    }
+  }
+
+  const clickPrevious = async () => {
+    if (currentPage > 1) {
+      push(`/account/your-companies?page=${currentPage - 1}`)
+    }
+  }
+
+  const clickToSelectPage = async (e) => {
+    const selectedPage = Number.parseInt(e.currentTarget.getAttribute('value'))
+    push(`/account/your-companies?page=${selectedPage}`)
+  }
 
   useEffect(() => {
     headingCount.reset()
@@ -33,42 +61,65 @@ const YourCompanies = ({ lang, queryParams }) => {
   }, [companyData])
 
   const onSearch = (search) => {
+    setSearchLoading(true)
     setSearch(search)
   }
 
-  const pendingCompanies = companyData.filter((company) => company.membershipStatus === 'pending')
-  const showCount = loading ? false : !!search
+  const pendingCompanies = companies?.filter(
+    (company) => company.membershipStatus === 'pending'
+  )
+  const showCount = (loading && isSearchLoading) ? false : !!search
+  const paginationComponent = (
+    <Pagination
+      pages={pagination.pages}
+      currentPage={currentPage}
+      startPage={pagination.startPage}
+      displayPrev={true}
+      displayNext={true}
+      display={pagination.totalPages > 1}
+      clickNext={() => clickNext()}
+      clickPrevious={() => clickPrevious()}
+      clickToSelectPage={(e) => clickToSelectPage(e)}
+    />
+  )
+
+  const pager = pagination.totalPages && pagination.startPage && pagination.totalPages > 1 ? paginationComponent : null
+
+  const dynamicComponent = (
+    <Dynamic
+      companies={companies}
+      componentMap={componentMap}
+      content={content}
+      errors={translateErrors(errors, lang)}
+      handlers={{ onSearch }}
+      headingCount={headingCount}
+      loading={loading && isSearchLoading}
+      noCompanies={!search && companies?.length === 0}
+      profile={profile}
+      searchCount={companies ? formatNumber(companies?.length) : null}
+      showCount={showCount}
+      uiElements={[]}
+      uiStage={uiStage}
+      lang={lang}
+      {...queryParams}
+    />
+  )
 
   return (
-    <FeatureDynamicView
-      width="full"
-      titleLinkHref="/account/home"
-      hasBackLink={false}
-      hasLogoutLink={true}
-      hasAccountLinks
-      accountLinksItem={2}
-      messages={pendingCompanies.length}
-    >
-      {loading
-        ? <Loading/>
-        : <Dynamic
-        companies={companies}
-        componentMap={componentMap}
-        content={content}
-        errors={translateErrors(errors, lang)}
-        handlers={{ onSearch }}
-        headingCount={headingCount}
-        loading={loading}
-        noCompanies={!search && companyData.length === 0}
-        profile={profile}
-        searchCount={companyData ? formatNumber(companyData.length) : null}
-        showCount={showCount}
-        uiElements={[]}
-        uiStage={uiStage}
-        lang={lang}
-        {...queryParams}
-      />}
-    </FeatureDynamicView>
+    <>
+      <FeatureDynamicView
+        width='full'
+        titleLinkHref='/account/home'
+        hasBackLink={false}
+        hasLogoutLink={true}
+        hasAccountLinks
+        accountLinksItem={2}
+        messages={pendingCompanies.length}
+        pagination={pager}
+      >
+        {loading && isSearchLoading ? <Loading /> : dynamicComponent}
+      </FeatureDynamicView>
+    </>
   )
 }
 
