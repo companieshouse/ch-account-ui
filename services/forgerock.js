@@ -385,16 +385,15 @@ export const getUserFields = async (accessToken, userId, fields) => {
   return res
 }
 
-export const getCompaniesAssociatedWithUser = async (accessToken, userId, companySearch, companyStatus) => {
+export const getCompaniesAssociatedWithUser = async (accessToken, userId, companySearch, companyStatus, currentPage) => {
   if (!userId) {
     // log.error('getCompaniesAssociatedWithUser(accessToken, userId): No userId provided!')
     return
   }
-
   const url = generateQueryUrl(FORGEROCK_IDM_COMPANY_ENDPOINT, {
-    currentPage: 1,
-    pageSize: 9999,
-    maxPages: 10,
+    currentPage: currentPage,
+    pageSize: 10,
+    maxPages: 9999,
     searchTerm: companySearch,
     status: companyStatus
   })
@@ -417,7 +416,6 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
     if (status === 200) {
       const companiesData = body.results || []
       count = companiesData.count
-
       companies = companiesData.map((company) => {
         return {
           ...company,
