@@ -40,3 +40,9 @@ variable "auth_password" {
   description = "Basic Auth password"
   default     = "N/A"
 }
+
+variable "pipeline_iam_user_name_prefix" {
+  type        = string
+  description = "AWS IAM user name prefix that is used in the pipeline"
+  default     = "concourse-server-"
+}
