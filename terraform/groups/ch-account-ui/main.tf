@@ -1,7 +1,7 @@
 locals {
   fqdn = "${var.service_name}.${var.domain_name}"
   
-  pipeline_environment_specific_usernames = var.environment == "development" ? [var.environment, "devops", "platform"] : [var.environment]
+  pipeline_environment_specific_usernames = var.environment == "development" ? ["devops", "platform"] : [var.environment]
 }
 
 data "aws_caller_identity" "current" {}
