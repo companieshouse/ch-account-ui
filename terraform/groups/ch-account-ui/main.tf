@@ -45,7 +45,7 @@ data "aws_iam_policy_document" "website" {
       "s3:*"
     ]
     principals {
-      identifiers = [format("arn:aws:iam::%s:user/%s%s", data.aws_caller_identity.current.account_id, var.pipeline_iam_user_name_prefix, var.environment]
+      identifiers = formatlist("arn:aws:iam::%s:user/%s%s", data.aws_caller_identity.current.account_id, var.pipeline_iam_user_name_prefix, [var.environment, "devops", "platform"])
       type        = "AWS"
     }
     resources = [
