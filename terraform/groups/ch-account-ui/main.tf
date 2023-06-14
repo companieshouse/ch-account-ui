@@ -2,6 +2,8 @@ locals {
   fqdn = "${var.service_name}.${var.domain_name}"
 }
 
+data "aws_caller_identity" "current" {}
+
 # CloudFront certificates must be in us-east-1
 resource "aws_acm_certificate" "domain" {
   provider                  = aws.us_east_1
@@ -31,11 +33,24 @@ data "aws_iam_policy_document" "website" {
       "s3:GetObject"
     ]
     principals {
-      identifiers = ["*"]
+      identifiers = [data.aws_caller_identity.current.account_id]
       type        = "AWS"
     }
     resources = [
       "arn:aws:s3:::${local.fqdn}/*"
+    ]
+  }
+  statement {
+    actions = [
+      "s3:*"
+    ]
+    principals {
+      identifiers = [format("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current.account_id, var.pipeline_iam_user]
+      type        = "AWS"
+    }
+    resources = [
+      "arn:aws:s3:::${local.fqdn}/*",
+      "arn:aws:s3:::${local.fqdn}",
     ]
   }
 }
