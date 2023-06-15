@@ -51,7 +51,7 @@ data "aws_iam_policy_document" "website" {
       "s3:GetObject"
     ]
     principals {
-      identifiers = "cloudfront.amazonaws.com"
+      identifiers = ["cloudfront.amazonaws.com"]
       type        = "Service"
     }
     condition {
