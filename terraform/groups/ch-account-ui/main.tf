@@ -1,7 +1,5 @@
 locals {
   fqdn = "${var.service_name}.${var.domain_name}"
-  
-  pipeline_environment_specific_usernames = var.environment == "development" ? ["devops", "platform"] : [var.environment]
 }
 
 data "aws_caller_identity" "current" {}
@@ -68,7 +66,7 @@ data "aws_iam_policy_document" "website" {
       "s3:*",
     ]
     principals {
-      identifiers = formatlist("arn:aws:iam::%s:user/%s%s", data.aws_caller_identity.current.account_id, var.pipeline_iam_user_name_prefix, local.pipeline_environment_specific_usernames)
+      identifiers = formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current.account_id, var.pipeline_usernames)
       type        = "AWS"
     }
     resources = [
