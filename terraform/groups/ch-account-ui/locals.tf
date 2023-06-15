@@ -7,4 +7,7 @@ locals {
     ManagedBy      = "terraform"
     Team           = "amido"
   }
+
+  secrets            = data.vault_generic_secret.secrets.data
+  concourse_role_arn = local.secrets.concourse_role_arn
 }
