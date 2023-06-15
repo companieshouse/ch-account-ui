@@ -15,13 +15,12 @@ import log from '../services/log'
  */
 const useFRAuth = (config = {}) => {
   const [errors, setErrors] = useState([])
-  const { fetchCompanyData, companySearch, companyStatus, refresh = false, currentPage } = config
+  const { fetchCompanyData, companySearch, companyStatus, refresh = false } = config
   const [loading, setLoading] = useState(true)
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
   const [profile, setProfile] = useState()
   const [companyData, setCompanyData] = useState([])
-  const [pagination, setPaginationData] = useState({})
 
   const extendProfile = (profile) => ({ ...profile, display_name: profile?.given_name || profile?.email })
   const sub = profile?.sub
@@ -60,6 +59,11 @@ const useFRAuth = (config = {}) => {
           })
         }
       }
+
+      // if (!fetchCompanyData) {
+      //   setLoading(false)
+      // }
+
       setLoading(false)
     }
     if (!accessToken) {
@@ -98,10 +102,9 @@ const useFRAuth = (config = {}) => {
       } else {
         // if no session data - call the endpoint
         log.debug('calling endpoint to retrieve company data')
-        getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus, currentPage)
+        getCompaniesAssociatedWithUser(accessToken, sub, companySearch, companyStatus)
           .then((data) => {
             setCompanyData(data.companies)
-            setPaginationData({ ...data.body.pagination })
             sessionStorage.setItem('companyData', JSON.stringify(data.companies))
             sessionStorage.setItem('refresh', false)
           })
@@ -117,8 +120,8 @@ const useFRAuth = (config = {}) => {
           })
       }
     }
-  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, profile, currentPage])
-  return { accessToken, profile, companyData, pagination, loading, errors }
+  }, [sub, accessToken, fetchCompanyData, companySearch, companyStatus, profile])
+  return { accessToken, profile, companyData, loading, errors }
 }
 
 export default useFRAuth
