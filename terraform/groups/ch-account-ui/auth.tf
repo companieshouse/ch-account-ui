@@ -25,7 +25,6 @@ resource "aws_iam_role" "auth_lambda" {
 }
 EOF
 
-  tags = local.common_tags
 }
 
 resource "aws_iam_role_policy" "auth_lambda" {
@@ -75,8 +74,6 @@ resource "aws_lambda_function" "auth" {
   publish          = true
   filename         = data.archive_file.auth.output_path
   source_code_hash = filebase64sha256(data.archive_file.auth.output_path)
-
-  tags = local.common_tags
 }
 
 resource "aws_ssm_parameter" "password" {
@@ -86,6 +83,4 @@ resource "aws_ssm_parameter" "password" {
   description = "Basic Auth Password"
   type        = "SecureString"
   value       = var.auth_password
-
-  tags = local.common_tags
 }

@@ -12,21 +12,33 @@ resource "aws_acm_certificate" "domain" {
   domain_name               = var.domain_name
   subject_alternative_names = ["*.${var.domain_name}"]
   validation_method         = "DNS"
-
-  tags = local.common_tags
 }
 
 resource "aws_s3_bucket" "website" {
   bucket        = local.fqdn
-  acl           = "public-read"
   policy        = data.aws_iam_policy_document.website.json
-  force_destroy = true
+}
 
-  website {
-    index_document = "index.html"
+resource "aws_s3_bucket_acl" "website" {
+  bucket = aws_s3_bucket.website.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_versioning" "website" {
+  bucket = aws_s3_bucket.website.id
+
+  versioning_configuration {
+    status = "Enabled"
   }
+}
 
-  tags = local.common_tags
+resource "aws_s3_bucket_public_access_block" "website" {
+  bucket = aws_s3_bucket.website.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 data "aws_iam_policy_document" "website" {
@@ -35,8 +47,13 @@ data "aws_iam_policy_document" "website" {
       "s3:GetObject"
     ]
     principals {
-      identifiers = [data.aws_caller_identity.current.account_id]
-      type        = "AWS"
+      identifiers = "cloudfront.amazonaws.com"
+      type        = "Service"
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.website.arn]
     }
     resources = [
       "arn:aws:s3:::${local.fqdn}/*"
@@ -75,20 +92,30 @@ resource "aws_route53_record" "website" {
   }
 }
 
+resource "aws_cloudfront_origin_access_identity" "website" {
+  comment = var.service_name
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_cloudfront_origin_access_control" "website" {
+  name                              = var.service_name
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
 resource "aws_cloudfront_distribution" "website" {
   enabled             = true
   default_root_object = "index.html"
   aliases             = [local.fqdn]
 
   origin {
-    custom_origin_config {
-      http_port              = "80"
-      https_port             = "443"
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
-    }
-    domain_name = aws_s3_bucket.website.website_endpoint
-    origin_id   = var.service_name
+    domain_name              = aws_s3_bucket.website.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.website.id
+    origin_id                = var.service_name
   }
 
   custom_error_response {
@@ -125,6 +152,10 @@ resource "aws_cloudfront_distribution" "website" {
     }
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
+
+    depends_on = [
+      aws_s3_bucket.website
+    ]
   }
 
   restrictions {
@@ -136,10 +167,8 @@ resource "aws_cloudfront_distribution" "website" {
   viewer_certificate {
     acm_certificate_arn      = aws_acm_certificate.domain.arn
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2019"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
-
-  tags = local.common_tags
 }
 
 resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
