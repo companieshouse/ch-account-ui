@@ -16,7 +16,6 @@ resource "aws_acm_certificate" "domain" {
 
 resource "aws_s3_bucket" "website" {
   bucket        = local.fqdn
-  policy        = data.aws_iam_policy_document.website.json
 }
 
 resource "aws_s3_bucket_policy" "website" {
