@@ -19,6 +19,11 @@ resource "aws_s3_bucket" "website" {
   policy        = data.aws_iam_policy_document.website.json
 }
 
+resource "aws_s3_bucket_policy" "website" {
+  bucket = aws_s3_bucket.website.id
+  policy = data.aws_iam_policy_document.website.json
+}
+
 resource "aws_s3_bucket_acl" "website" {
   bucket = aws_s3_bucket.website.id
   acl    = "private"
@@ -61,7 +66,7 @@ data "aws_iam_policy_document" "website" {
   }
   statement {
     actions = [
-      "s3:*"
+      "s3:*",
     ]
     principals {
       identifiers = formatlist("arn:aws:iam::%s:user/%s%s", data.aws_caller_identity.current.account_id, var.pipeline_iam_user_name_prefix, local.pipeline_environment_specific_usernames)
