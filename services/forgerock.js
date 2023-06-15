@@ -442,8 +442,7 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
             currentUser: member._id === userId,
             detailsPath: generateQueryUrl('/account/your-companies/authorised-person', {
               companyNumber: company.number,
-              userId: member._id,
-              page: currentPage
+              userId: member._id
             })
           })
           )
