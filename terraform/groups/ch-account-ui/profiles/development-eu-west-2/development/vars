@@ -6,6 +6,6 @@ enable_auth = false
 pipeline_usernames = [
     "concourse-server-devops",
     "concourse-server-platform",
-    "data-reconciliation-cidev-iam",
+    "applications/datarecon/cidev/data-reconciliation-cidev-iam",
     "dev_env_s3_access",
 ]
