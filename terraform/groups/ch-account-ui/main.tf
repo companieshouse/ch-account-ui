@@ -156,10 +156,6 @@ resource "aws_cloudfront_distribution" "website" {
     }
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-
-    depends_on = [
-      aws_s3_bucket.website
-    ]
   }
 
   restrictions {
@@ -173,6 +169,9 @@ resource "aws_cloudfront_distribution" "website" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
   }
+  depends_on = [
+      aws_s3_bucket.website
+    ]
 }
 
 resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
