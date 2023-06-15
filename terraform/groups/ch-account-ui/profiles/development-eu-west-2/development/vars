@@ -4,8 +4,6 @@ create_route53_record = true
 route53_zone = "aws.chdev.org"
 enable_auth = false
 pipeline_usernames = [
-    "concourse-server-devops",
-    "concourse-server-platform",
     "applications/datarecon/cidev/data-reconciliation-cidev-iam",
     "dev_env_s3_access",
 ]
