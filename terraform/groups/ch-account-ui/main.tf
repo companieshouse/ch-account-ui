@@ -2,8 +2,6 @@ locals {
   fqdn = "${var.service_name}.${var.domain_name}"
 }
 
-data "aws_caller_identity" "current" {}
-
 data "vault_generic_secret" "secrets" {
   path = "applications/${var.environment}-${var.region}/${var.service_name}"
 }
