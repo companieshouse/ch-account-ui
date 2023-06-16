@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "website" {
       "s3:*",
     ]
     principals {
-      identifiers = concat(formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current.account_id, var.pipeline_usernames), [local.concourse_role_arn])
+      identifiers = local.website_iam_policy_identifiers
       type        = "AWS"
     }
     resources = [
