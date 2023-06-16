@@ -96,14 +96,6 @@ resource "aws_route53_record" "website" {
   }
 }
 
-resource "aws_cloudfront_origin_access_identity" "website" {
-  comment = var.service_name
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_cloudfront_origin_access_control" "website" {
   name                              = var.service_name
   origin_access_control_origin_type = "s3"
@@ -120,6 +112,13 @@ resource "aws_cloudfront_distribution" "website" {
     domain_name              = aws_s3_bucket.website.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.website.id
     origin_id                = var.service_name
+  }
+
+  custom_error_response {
+    error_caching_min_ttl = 0
+    error_code            = 403
+    response_code         = 200
+    response_page_path    = "/index.html"
   }
 
   custom_error_response {
