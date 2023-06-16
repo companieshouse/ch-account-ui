@@ -1,6 +1,7 @@
 variable "region" {
   type        = string
   description = "AWS region for deployment"
+  default     = "eu-west-2"
 }
 
 variable "environment" {
@@ -39,10 +40,4 @@ variable "auth_password" {
   type        = string
   description = "Basic Auth password"
   default     = "N/A"
-}
-
-variable "pipeline_usernames" {
-  type        = list(string)
-  description = "AWS IAM usernames that is used in the pipeline"
-  default     = []
 }

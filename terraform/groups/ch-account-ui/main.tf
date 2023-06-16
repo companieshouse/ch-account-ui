@@ -2,7 +2,9 @@ locals {
   fqdn = "${var.service_name}.${var.domain_name}"
 }
 
-data "aws_caller_identity" "current" {}
+data "vault_generic_secret" "secrets" {
+  path = "applications/${var.environment}-${var.region}/${var.service_name}"
+}
 
 # CloudFront certificates must be in us-east-1
 resource "aws_acm_certificate" "domain" {
@@ -66,7 +68,7 @@ data "aws_iam_policy_document" "website" {
       "s3:*",
     ]
     principals {
-      identifiers = formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current.account_id, var.pipeline_usernames)
+      identifiers = local.website_iam_policy_identifiers
       type        = "AWS"
     }
     resources = [
