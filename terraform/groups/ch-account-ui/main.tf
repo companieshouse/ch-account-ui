@@ -116,13 +116,6 @@ resource "aws_cloudfront_distribution" "website" {
 
   custom_error_response {
     error_caching_min_ttl = 0
-    error_code            = 403
-    response_code         = 200
-    response_page_path    = "/index.html"
-  }
-
-  custom_error_response {
-    error_caching_min_ttl = 0
     error_code            = 404
     response_code         = 404
     response_page_path    = "/404/index.html"
@@ -143,6 +136,11 @@ resource "aws_cloudfront_distribution" "website" {
       cookies {
         forward = "all"
       }
+    }
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.website.arn
     }
 
     dynamic "lambda_function_association" {
@@ -171,6 +169,14 @@ resource "aws_cloudfront_distribution" "website" {
   depends_on = [
       aws_s3_bucket.website
     ]
+}
+
+# See: https://github.com/aws-samples/amazon-cloudfront-functions/tree/main/url-rewrite-single-page-apps
+resource "aws_cloudfront_function" "website" {
+  name    = "${var.service_name}-url-rewrite-single-page-apps"
+  runtime = "cloudfront-js-1.0"
+  publish = true
+  code    = file("${path.module}/cf_function/index.js")
 }
 
 resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
