@@ -6,7 +6,7 @@ const ssm = new aws.SSM({
 exports.handler = async (event, context, callback) => {
   try {
     const { request } = event.Records[0].cf
-    const { headers } = request
+    const { headers, uri } = request
 
     const username = 'ch-account-ui'
     const passwordParams = {
@@ -36,6 +36,15 @@ exports.handler = async (event, context, callback) => {
         }
       }
       return callback(null, response)
+    }
+
+    // Check whether the URI is missing a file name.
+    if (uri.endsWith('/')) {
+      request.uri += 'index.html'
+    }
+    // Check whether the URI is missing a file extension.
+    else if (!uri.includes('.')) {
+      request.uri += '/index.html'
     }
 
     callback(null, request)

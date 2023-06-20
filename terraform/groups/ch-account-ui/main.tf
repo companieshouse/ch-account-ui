@@ -145,9 +145,12 @@ resource "aws_cloudfront_distribution" "website" {
       }
     }
 
-    function_association {
-      event_type   = "viewer-request"
-      function_arn = aws_cloudfront_function.website.arn
+    dynamic "function_association" {
+      for_each = var.enable_auth ? [] : [1]
+      content {
+        event_type   = "viewer-request"
+        function_arn = aws_cloudfront_function.website.arn
+      }
     }
 
     dynamic "lambda_function_association" {
