@@ -3,14 +3,14 @@ const LOGOUT_ERROR = (lang, tokens) => [
   {
     component: 'PageHeading',
     props: {
-      children: 'Sorry, there is a problem with the service',
+      children: tokens('SHARED.sorryThereIsAProblemWithTheService'),
       showErrorSummary: false
     }
   },
   {
     component: 'BodyText',
     props: {
-      children: 'Try again later.'
+      children: tokens('SHARED.tryAgainLater')
     }
   },
   {
@@ -22,13 +22,13 @@ const LOGOUT_ERROR = (lang, tokens) => [
           children: 'Contact Companies House',
           href: 'https://www.gov.uk/contact-companies-house',
           testId: 'contactCompaniesHouseLink',
-          matomo: ['trackEvent', 'Sorry, there is a problem with the service', 'Contact Companies House']
+          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactCompaniesHouse')]
         }
       },
       {
         component: 'SpanText',
         props: {
-          children: ' if you have any questions.'
+          children: tokens('SHARED.ifYouHaveAnyQuestions')
         }
       }
     ]
