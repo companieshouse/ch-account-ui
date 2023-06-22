@@ -13,8 +13,9 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@master
+
       - name: tfsec
-        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+        uses: tfsec/tfsec-pr-commenter-action@main
         with:
           tfsec_args: --include-ignored
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
