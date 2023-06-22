@@ -7,34 +7,51 @@ import log from '../../../services/log'
 import { MATOMO_LOGGING } from '../../../services/environment'
 
 const Pagination = (props) => {
-  const { currentPage, startPage, totalPages, matomo } = props
-
+  const {
+    pages,
+    currentPage,
+    startPage,
+    clickNext,
+    clickPrevious,
+    clickToSelectPage,
+    displayPrev,
+    displayNext,
+    display,
+    matomo
+  } = props
   const { trackEvent, pushInstruction } = useMatomo()
-
-  const [display, setDisplay] = useState(true)
-  const [displayPrev, setDisplayPrev] = useState(true)
-  const [displayNext, setDisplayNext] = useState(true)
-  const [curPage, setCurrentPage] = useState(currentPage)
-  const [firstPage] = useState(startPage)
-  const [totPages] = useState(totalPages)
-  const [pages, setPages] = useState([])
-
+  const [pageElements, setPageElements] = useState([])
   const listItems = []
+  const pageList = () => {
+    for (let i = startPage; i <= pages?.length; i++) {
+      let classStyle = 'govuk-pagination__item'
+      let ariaCurrent = ''
+      if (i === currentPage) {
+        classStyle = 'govuk-pagination__item govuk-pagination__item--current'
+        ariaCurrent = 'page'
+      }
+      const listItem = (
+        <li key={i} className={classStyle}>
+          <a
+            className='govuk-link govuk-pagination__link'
+            aria-label={`Page ${i}`}
+            aria-current={ariaCurrent}
+            value={i}
+            tabIndex='0'
+            onClick={(e) => clickToSelectPage(e)}
+          >
+            {i}
+          </a>
+        </li>
+      )
+      listItems.push(listItem)
+    }
+    setPageElements(listItems)
+  }
 
   useEffect(() => {
-    if (totPages <= 1) {
-      setDisplay(false)
-    }
-    if (curPage < 1) {
-      setDisplayPrev(false)
-      setCurrentPage(curPage + 1)
-    }
-    if (curPage > totPages) {
-      setDisplayNext(false)
-      setCurrentPage(curPage - 1)
-    }
     pageList()
-  }, [totPages, curPage])
+  }, [pages, currentPage])
 
   const matomoTracking = (e) => {
     if (matomo) {
@@ -65,45 +82,20 @@ const Pagination = (props) => {
 
   const onClickPrevious = (e) => {
     matomoTracking(e)
-    setDisplayNext(true)
-    setCurrentPage(curPage - 1)
+    clickPrevious()
   }
 
   const onClickNext = (e) => {
     matomoTracking(e)
-    setDisplayPrev(true)
-    setCurrentPage(curPage + 1)
+    clickNext()
   }
 
-  const pageList = () => {
-    for (let i = firstPage; i <= totPages; i++) {
-      let classStyle = 'govuk-pagination__item'
-      let ariaCurrent = ''
-      if (i === curPage) {
-        classStyle = 'govuk-pagination__item govuk-pagination__item--current'
-        ariaCurrent = 'page'
-      }
-      const listItem = (
-        <li key={i} className={classStyle}>
-          <a
-            className='govuk-link govuk-pagination__link'
-            href='#'
-            aria-label={`Page ${i}`}
-            aria-current={ariaCurrent}
-          >
-            {i}
-          </a>
-        </li>
-      )
-      listItems.push(listItem)
-    }
-    setPages(listItems)
-  }
   const previousHtml = (
-    <div className='govuk-pagination__prev'>
+    <div className='govuk-pagination__prev' data-testid='previous-id'>
       <a
         className='govuk-link govuk-pagination__link'
         rel='prev'
+        tabIndex='0'
         onClick={() => onClickPrevious()}
       >
         <svg
@@ -123,10 +115,11 @@ const Pagination = (props) => {
   )
 
   const nextHtml = (
-    <div className='govuk-pagination__next'>
+    <div className='govuk-pagination__next' data-testid='next-id'>
       <a
         className='govuk-link govuk-pagination__link'
         rel='next'
+        tabIndex='0'
         onClick={() => onClickNext()}
       >
         {' '}
@@ -146,30 +139,34 @@ const Pagination = (props) => {
     </div>
   )
 
-  const previous = displayPrev ? previousHtml : ''
-  const next = displayNext ? nextHtml : ''
+  const previous = displayPrev ? (previousHtml) : (<div className='govuk-pagination__prev'></div>)
+  const next = displayNext ? (nextHtml) : (<div className='govuk-pagination__next'></div>)
 
   const paginationHtml = (
     <nav
       className='govuk-pagination'
       role='navigation'
       aria-label='results'
-      data-testid={'nav-id'}
+      data-testid='nav-id'
     >
       {previous}
-      <ul className='govuk-pagination__list'>{pages}</ul>
+      <ul className='govuk-pagination__list'>{pageElements}</ul>
       {next}
     </nav>
   )
-  return display ? paginationHtml : ''
+  return display ? paginationHtml : <div data-testid='div-id'></div>
 }
 
 export default Pagination
 
 Pagination.propTypes = {
-  totalPages: PropTypes.number,
+  pages: PropTypes.array,
   currentPage: PropTypes.number,
   startPage: PropTypes.number,
-  next: PropTypes.func,
-  previous: PropTypes.func
+  displayPrev: PropTypes.bool,
+  displayNext: PropTypes.bool,
+  display: PropTypes.bool,
+  clickNext: PropTypes.func,
+  clickPrevious: PropTypes.func,
+  clickToSelectPage: PropTypes.func
 }
