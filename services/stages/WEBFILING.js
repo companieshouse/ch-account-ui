@@ -38,37 +38,27 @@ const WEBFILING = (lang, tokens) => [
   },
   {
     component: 'BodyText',
+    props: {
+      children: tokens('SHARED.tryAgainLater')
+    }
+  },
+  {
+    component: 'BodyText',
     content: [
       {
-        conditional: {
-          prop: '${paths.authCodeRequest}',
-          operator: 'ne',
-          value: 'true'
-        },
-        component: 'Fragment',
-        content: [
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('WEBFILING.authcodeFalse.youllNeedTo')
-            }
-          },
-          {
-            component: 'LinkText',
-            props: {
-              children: tokens('SHARED.contactUs'),
-              href: 'https://find-and-update.company-information.service.gov.uk/help/contact-us',
-              testId: 'contactCompaniesHouseLink',
-              matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactUs')]
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('WEBFILING.authcodeFalse.soThatWeCanHelp')
-            }
-          }
-        ]
+        component: 'LinkText',
+        props: {
+          children: 'Contact Companies House',
+          href: 'https://www.gov.uk/contact-companies-house',
+          testId: 'contactCompaniesHouseLink',
+          matomo: ['trackEvent', tokens('SHARED.sorryThereIsAProblemWithTheService'), tokens('SHARED.contactCompaniesHouse')]
+        }
+      },
+      {
+        component: 'SpanText',
+        props: {
+          children: tokens('SHARED.ifYouHaveAnyQuestions')
+        }
       }
     ]
   }
