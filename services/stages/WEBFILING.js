@@ -43,11 +43,6 @@ const WEBFILING = (lang, tokens) => [
     }
   },
   {
-    conditional: {
-      prop: '${paths.authCodeRequest}',
-      operator: 'ne',
-      value: 'true'
-    },
     component: 'BodyText',
     content: [
       {
