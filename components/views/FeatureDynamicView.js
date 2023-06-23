@@ -28,7 +28,8 @@ const FeatureDynamicView = (props) => {
     onBack,
     renderFeatures,
     children,
-    messages
+    messages,
+    pagination
   } = props
 
   return (
@@ -38,30 +39,56 @@ const FeatureDynamicView = (props) => {
         <PhaseBanner testId='feedBackLink' />
       </WidthContainer>
       <WidthContainer style={{ paddingTop: '2ex' }}>
-        {hasAccountLinks === true && <AccountLinks currentItem={accountLinksItem} messages={messages} />}
+        {hasAccountLinks === true && (
+          <AccountLinks currentItem={accountLinksItem} messages={messages} />
+        )}
       </WidthContainer>
       <WidthContainer>
-          {hasBackLink === true && <Column width={hasLanguageSwitcher ? 'two-thirds' : 'full'} utilClass='no-padd'><BackLink testId="backLink" onClick={onBack}/></Column>}
-          {hasLanguageSwitcher === true && <Column width={hasBackLink ? 'one-third' : 'full'} utilClass='no-padd'><LanguageSwitcher /></Column>}
+        {hasBackLink === true && (
+          <Column
+            width={hasLanguageSwitcher ? 'two-thirds' : 'full'}
+            utilClass='no-padd'
+          >
+            <BackLink testId='backLink' onClick={onBack} />
+          </Column>
+        )}
+        {hasLanguageSwitcher === true && (
+          <Column
+            width={hasBackLink ? 'one-third' : 'full'}
+            utilClass='no-padd'
+          >
+            <LanguageSwitcher />
+          </Column>
+        )}
       </WidthContainer>
       <WidthContainer>
-        <Main className="govuk-main-wrapper--auto-spacing">
+        <Main className='govuk-main-wrapper--auto-spacing'>
           <WidthContainer>
             <Row>
               <Column width={width}>
-                {Boolean(formAction || onSubmit) === true &&
-                <form action={formAction} onSubmit={onSubmit} method="post" noValidate={true} ref={formRef}>
-                  {renderFeatures(props)}
-                  {children}
-                </form>}
-                {Boolean(formAction || onSubmit) === false && <>
-                  {renderFeatures(props)}
-                  {children}
-                </>}
+                {Boolean(formAction || onSubmit) === true && (
+                  <form
+                    action={formAction}
+                    onSubmit={onSubmit}
+                    method='post'
+                    noValidate={true}
+                    ref={formRef}
+                  >
+                    {renderFeatures(props)}
+                    {children}
+                  </form>
+                )}
+                {Boolean(formAction || onSubmit) === false && (
+                  <>
+                    {renderFeatures(props)}
+                    {children}
+                  </>
+                )}
               </Column>
             </Row>
           </WidthContainer>
         </Main>
+       <div className='pagination'> {pagination}</div>
       </WidthContainer>
       <Footer />
     </>
@@ -100,5 +127,7 @@ FeatureDynamicView.defaultProps = {
   hasLanguageSwitcher: true,
   hasLogoutLink: false,
   hasAccountLinks: false,
-  renderFeatures: () => { return null }
+  renderFeatures: () => {
+    return null
+  }
 }
