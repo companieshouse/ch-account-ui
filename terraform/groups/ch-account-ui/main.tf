@@ -198,4 +198,10 @@ resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
       override     = true
     }
   }
+
+  remove_headers_config {
+     items {
+        header = "Server"
+     }
+  }
 }
