@@ -29,6 +29,7 @@ const InviteUser = ({ lang, queryParams }) => {
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
   const { pageStep, token, companyNumber, action, userId } = queryParams
+  const currentPage = Number(queryParams?.page) || 1
 
   useEffect(() => {
     headingCount.reset()
@@ -64,14 +65,16 @@ const InviteUser = ({ lang, queryParams }) => {
         notifyToken: 'resendSuccess',
         notifyId: notificationId,
         companyNumber,
-        userId
+        userId,
+        page: currentPage
       })
     } else {
       stepPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
         notifyToken: 'authSuccess',
         notifyId: notificationId,
         invitedUser: stepPageProps.invitedUser,
-        companyName: stepPageProps.company.name
+        companyName: stepPageProps.company.name,
+        page: currentPage
       })
     }
   }
@@ -80,7 +83,8 @@ const InviteUser = ({ lang, queryParams }) => {
   if (uiStage === 'INVITE_USER_3') {
     stepPageProps.acceptSuccessPath = generateQueryUrl('/account/your-companies/', {
       notifyToken: `${action}Success`,
-      companyName: stepPageProps.company.name
+      companyName: stepPageProps.company.name,
+      page: currentPage
     })
   }
 
