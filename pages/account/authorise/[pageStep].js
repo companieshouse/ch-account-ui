@@ -67,8 +67,7 @@ const InviteUser = ({ lang, queryParams }) => {
         companyNumber,
         userId,
         page: currentPage,
-        ...(search && { search }),
-        test: true
+        ...(search && { search })
       })
     } else {
       stepPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
