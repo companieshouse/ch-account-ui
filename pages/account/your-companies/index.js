@@ -15,6 +15,11 @@ import { formatNumber } from '../../../services/formatting'
 import Loading from '../../../components/application-specific/Loading'
 import Pagination from '../../../components/general-ui/interaction/Pagination'
 
+function createSearchParams (page, search) {
+  const searchParams = new URLSearchParams({ page, ...(search && { search }) })
+  return searchParams.toString()
+}
+
 const YourCompanies = ({ lang, queryParams }) => {
   const currentPage = Number(queryParams?.page) || 1
   const companySearch = queryParams?.search || null
@@ -34,19 +39,19 @@ const YourCompanies = ({ lang, queryParams }) => {
 
   const clickNext = async () => {
     if (currentPage < pagination.totalPages) {
-      push(`/account/your-companies?page=${currentPage + 1}`)
+      push(`/account/your-companies?${createSearchParams(currentPage + 1, companySearch)}`)
     }
   }
 
   const clickPrevious = async () => {
     if (currentPage > 1) {
-      push(`/account/your-companies?page=${currentPage - 1}`)
+      push(`/account/your-companies?${createSearchParams(currentPage - 1, companySearch)}`)
     }
   }
 
   const clickToSelectPage = async (e) => {
     const selectedPage = Number.parseInt(e.currentTarget.getAttribute('value'))
-    push(`/account/your-companies?page=${selectedPage}`)
+    push(`/account/your-companies?${createSearchParams(selectedPage, companySearch)}`)
   }
 
   useEffect(() => {
@@ -94,7 +99,7 @@ const YourCompanies = ({ lang, queryParams }) => {
       loading={loading}
       noCompanies={!companySearch && companies?.length === 0}
       profile={profile}
-      searchCount={companies ? formatNumber(companies?.length) : null}
+      searchCount={companies ? formatNumber(pagination?.totalItems) : null}
       showCount={showCount}
       uiElements={[]}
       uiStage={uiStage}
