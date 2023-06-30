@@ -28,7 +28,7 @@ const InviteUser = ({ lang, queryParams }) => {
   const router = useRouter()
   const formRef = useRef()
   const headingCount = useMemo(() => new HeadingCount(), [])
-  const { pageStep, token, companyNumber, action, userId } = queryParams
+  const { pageStep, token, companyNumber, action, userId, search } = queryParams
   const currentPage = Number(queryParams?.page) || 1
 
   useEffect(() => {
@@ -66,7 +66,9 @@ const InviteUser = ({ lang, queryParams }) => {
         notifyId: notificationId,
         companyNumber,
         userId,
-        page: currentPage
+        page: currentPage,
+        ...(search && { search }),
+        test: true
       })
     } else {
       stepPageProps.authoriseSuccessPath = generateQueryUrl('/account/your-companies/', {
@@ -74,7 +76,8 @@ const InviteUser = ({ lang, queryParams }) => {
         notifyId: notificationId,
         invitedUser: stepPageProps.invitedUser,
         companyName: stepPageProps.company.name,
-        page: currentPage
+        page: currentPage,
+        ...(search && { search })
       })
     }
   }
@@ -84,7 +87,8 @@ const InviteUser = ({ lang, queryParams }) => {
     stepPageProps.acceptSuccessPath = generateQueryUrl('/account/your-companies/', {
       notifyToken: `${action}Success`,
       companyName: stepPageProps.company.name,
-      page: currentPage
+      page: currentPage,
+      ...(search && { search })
     })
   }
 

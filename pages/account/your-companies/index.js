@@ -17,11 +17,11 @@ import Pagination from '../../../components/general-ui/interaction/Pagination'
 
 const YourCompanies = ({ lang, queryParams }) => {
   const currentPage = Number(queryParams?.page) || 1
-  const [search, setSearch] = useState('')
+  const companySearch = queryParams?.search || null
 
   const { profile, pagination, errors, loading, companyData } = useFRAuth({
     fetchCompanyData: true,
-    companySearch: search,
+    companySearch,
     refresh: true,
     currentPage
   })
@@ -30,7 +30,6 @@ const YourCompanies = ({ lang, queryParams }) => {
   const headingCount = useMemo(() => new HeadingCount(), [])
   const { push } = useRouter()
   const content = getStageFeatures(lang, uiStage)
-  const [isSearchLoading, setSearchLoading] = useState(loading)
   const [companies, setCompanies] = useState([])
 
   const clickNext = async () => {
@@ -61,14 +60,13 @@ const YourCompanies = ({ lang, queryParams }) => {
   }, [companyData])
 
   const onSearch = (search) => {
-    setSearchLoading(true)
-    setSearch(search)
+    push(`/account/your-companies?search=${search}`)
   }
 
   const pendingCompanies = companies?.filter(
     (company) => company.membershipStatus === 'pending'
   )
-  const showCount = (loading && isSearchLoading) ? false : !!search
+  const showCount = loading ? false : !!companySearch
   const paginationComponent = (
     <Pagination
       pages={pagination.pages}
@@ -93,8 +91,8 @@ const YourCompanies = ({ lang, queryParams }) => {
       errors={translateErrors(errors, lang)}
       handlers={{ onSearch }}
       headingCount={headingCount}
-      loading={loading && isSearchLoading}
-      noCompanies={!search && companies?.length === 0}
+      loading={loading}
+      noCompanies={!companySearch && companies?.length === 0}
       profile={profile}
       searchCount={companies ? formatNumber(companies?.length) : null}
       showCount={showCount}
@@ -117,7 +115,7 @@ const YourCompanies = ({ lang, queryParams }) => {
         messages={pendingCompanies.length}
         pagination={pager}
       >
-        {loading && isSearchLoading ? <Loading /> : dynamicComponent}
+        {loading ? <Loading /> : dynamicComponent}
       </FeatureDynamicView>
     </>
   )

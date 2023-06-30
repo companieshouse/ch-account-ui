@@ -15,18 +15,19 @@ import { useRouter } from 'next/router'
 
 const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   const router = useRouter()
-  const { companyNumber, userId, page } = queryParams
-  const { companyData, loading } = useFRAuth({ fetchCompanyData: true, refresh: true, currentPage: Number(page) || 1 })
+  const { companyNumber, userId, page, search } = queryParams
+  const { companyData, loading } = useFRAuth({ fetchCompanyData: true, refresh: false, currentPage: Number(page) || 1, companySearch: search || null })
   const uiStage = 'HOME_AUTHORISED_PERSON'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const content = getStageFeatures(lang, uiStage)
   const company = companyData.filter((company) => company.number === companyNumber)[0]
   const user = company?.members?.filter((member) => (userId === member._id))[0]
+  const searchParams = new URLSearchParams({ currentPage: Number(page) || 1, ...(search && { companySearch: search }) })
 
   if (!loading && company) {
-    company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, userId, page })
-    company.removeAuthorisedPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId })
-    company.removePendingdPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, pending: true })
+    company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, userId, page, ...(search && { companySearch: search }) })
+    company.removeAuthorisedPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, page, ...(search && { companySearch: search }) })
+    company.removePendingdPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, page, pending: true, ...(search && { companySearch: search }) })
   }
 
   return (
@@ -35,7 +36,7 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
       hasLogoutLink={true}
       hasAccountLinks
       accountLinksItem={2}
-      onBack={() => { router.push('/account/your-companies/') }}
+      onBack={() => { router.push(`/account/your-companies${searchParams.toString()}`) }}
     >
       {loading
         ? <Loading/>
