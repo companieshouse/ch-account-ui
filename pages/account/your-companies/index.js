@@ -99,7 +99,7 @@ const YourCompanies = ({ lang, queryParams }) => {
       loading={loading}
       noCompanies={!companySearch && companies?.length === 0}
       profile={profile}
-      searchCount={companies ? formatNumber(pagination?.totalItems) : null}
+      searchCount={companies ? pagination?.totalItems : null}
       showCount={showCount}
       uiElements={[]}
       uiStage={uiStage}
