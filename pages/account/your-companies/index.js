@@ -11,7 +11,6 @@ import componentMap from '../../../services/componentMap'
 import WithQueryParams from '../../../components/providers/WithQueryParams'
 import useFRAuth from '../../../services/useFRAuth'
 import { translateErrors } from '../../../services/errors'
-import { formatNumber } from '../../../services/formatting'
 import Loading from '../../../components/application-specific/Loading'
 import Pagination from '../../../components/general-ui/interaction/Pagination'
 
