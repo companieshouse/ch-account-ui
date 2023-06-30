@@ -421,21 +421,29 @@ export const getCompaniesAssociatedWithUser = async (accessToken, userId, compan
           ...company,
           authorisePath: generateQueryUrl('/account/authorise/_start/', {
             companyNumber: company.number,
-            companyName: company.name
+            companyName: company.name,
+            page: currentPage,
+            ...(companySearch && { search: companySearch })
           }),
           filePath: generateQueryUrl(CH_EWF_AUTHENTICATED_ENTRY_URL, {
             companyNo: company.number,
-            jurisdiction: company.jurisdiction
+            jurisdiction: company.jurisdiction,
+            page: currentPage,
+            ...(companySearch && { search: companySearch })
           }),
           acceptPath: generateQueryUrl('/account/authorise/_start/', {
             companyNumber: company.number,
             companyName: company.name,
-            action: 'accept'
+            action: 'accept',
+            page: currentPage,
+            ...(companySearch && { search: companySearch })
           }),
           declinePath: generateQueryUrl('/account/authorise/_start/', {
             companyNumber: company.number,
             companyName: company.name,
-            action: 'decline'
+            action: 'decline',
+            page: currentPage,
+            ...(companySearch && { search: companySearch })
           }),
           members: company.members?.map((member) => ({
             ...member,
