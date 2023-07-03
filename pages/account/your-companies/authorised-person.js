@@ -22,12 +22,12 @@ const AuthorisedPerson = ({ errors, lang, queryParams }) => {
   const content = getStageFeatures(lang, uiStage)
   const company = companyData.filter((company) => company.number === companyNumber)[0]
   const user = company?.members?.filter((member) => (userId === member._id))[0]
-  const searchParams = new URLSearchParams({ currentPage: Number(page) || 1, ...(search && { companySearch: search }) })
+  const searchParams = new URLSearchParams({ currentPage: Number(page) || 1, ...(search && { search }) })
 
   if (!loading && company) {
-    company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, userId, page, ...(search && { companySearch: search }) })
-    company.removeAuthorisedPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, page, ...(search && { companySearch: search }) })
-    company.removePendingdPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, page, pending: true, ...(search && { companySearch: search }) })
+    company.resendPath = generateQueryUrl('/account/authorise/_start/', { companyNumber: company.number, companyName: company.name, userId, page, ...(search && { search }) })
+    company.removeAuthorisedPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, page, ...(search && { search }) })
+    company.removePendingdPath = generateQueryUrl('/account/your-companies/remove-authorised-person/', { companyNumber: company.number, userId, page, pending: true, ...(search && { search }) })
   }
 
   return (
