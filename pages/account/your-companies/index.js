@@ -76,8 +76,8 @@ const YourCompanies = ({ lang, queryParams }) => {
       pages={pagination.pages}
       currentPage={currentPage}
       startPage={pagination.startPage}
-      displayPrev={true}
-      displayNext={true}
+      displayPrev={currentPage > 1}
+      displayNext={currentPage < pagination.totalPages}
       display={pagination.totalPages > 1}
       clickNext={() => clickNext()}
       clickPrevious={() => clickPrevious()}
