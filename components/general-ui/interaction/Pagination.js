@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { useMatomo } from '@datapunt/matomo-tracker-react'
 import { matomoHelper } from '../../../scripts/cleanAnalytics'
 import log from '../../../services/log'
+import generateEllipsisBreaks from '../../../services/pagination'
 import { MATOMO_LOGGING } from '../../../services/environment'
 
 const Pagination = (props) => {
@@ -23,6 +24,7 @@ const Pagination = (props) => {
   const [pageElements, setPageElements] = useState([])
   const listItems = []
   const pageList = () => {
+    const ellipses = generateEllipsisBreaks(pages, currentPage)
     for (let i = startPage; i <= pages?.length; i++) {
       let classStyle = 'govuk-pagination__item'
       let ariaCurrent = ''
@@ -30,27 +32,43 @@ const Pagination = (props) => {
         classStyle = 'govuk-pagination__item govuk-pagination__item--current'
         ariaCurrent = 'page'
       }
-      const listItem = (
-        <li key={i} className={classStyle}>
-          <a
-            className='govuk-link govuk-pagination__link'
-            aria-label={`Page ${i}`}
-            aria-current={ariaCurrent}
-            value={i}
-            tabIndex='0'
-            onClick={(e) => clickToSelectPage(e)}
-          >
-            {i}
-          </a>
-        </li>
-      )
-      listItems.push(listItem)
+      if (
+        ellipses?.isQualifiedForEllipsis &&
+        ellipses?.pageEllipsis.includes(i)
+      ) {
+        listItems.push(
+          <li className='govuk-pagination__item govuk-pagination__item--ellipses'>
+            ...
+          </li>
+        )
+      }
+      if (
+        !ellipses?.pageEllipsis.includes(i) &&
+        ellipses?.displayedPages.includes(i)
+      ) {
+        const listItem = (
+          <li key={i} className={classStyle}>
+            <a
+              className='govuk-link govuk-pagination__link'
+              aria-label={`Page ${i}`}
+              aria-current={ariaCurrent}
+              value={i}
+              tabIndex='0'
+              onClick={(e) => clickToSelectPage(e)}
+            >
+              {i}
+            </a>
+          </li>
+        )
+        listItems.push(listItem)
+      }
     }
-    setPageElements(listItems)
+
+    return listItems
   }
 
   useEffect(() => {
-    pageList()
+    setPageElements(pageList())
   }, [pages, currentPage])
 
   const matomoTracking = (e) => {
@@ -138,10 +156,8 @@ const Pagination = (props) => {
       </a>
     </div>
   )
-
   const previous = displayPrev ? (previousHtml) : (<div className='govuk-pagination__prev'></div>)
   const next = displayNext ? (nextHtml) : (<div className='govuk-pagination__next'></div>)
-
   const paginationHtml = (
     <nav
       className='govuk-pagination'
