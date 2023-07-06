@@ -3,7 +3,10 @@ const generateEllipsisBreaks = (pages, currentPage) => {
   let right = []
   let displayedPages = pages
   left = pages?.filter((x) => x < currentPage + 2)
-  let pageEllipsis = pages?.filter((x) => x === left.length + 1)
+  let pageEllipsis =
+    currentPage + 2 !== pages?.length
+      ? pages?.filter((x) => x === currentPage + 2)
+      : []
   right = pages?.filter((x) => x >= pages[pages.length - 1])
   if (left?.length > 5) {
     pageEllipsis.unshift(2)
