@@ -29,7 +29,6 @@ const YourCompanies = ({ lang, queryParams }) => {
     refresh: true,
     currentPage
   })
-
   const uiStage = 'HOME_YOUR_COMPANIES'
   const headingCount = useMemo(() => new HeadingCount(), [])
   const { push } = useRouter()
@@ -78,7 +77,7 @@ const YourCompanies = ({ lang, queryParams }) => {
       startPage={pagination.startPage}
       displayPrev={currentPage > 1}
       displayNext={currentPage < pagination.totalPages}
-      display={pagination.totalPages > 1}
+      display={pagination.totalPages > 1 && !loading}
       clickNext={() => clickNext()}
       clickPrevious={() => clickPrevious()}
       clickToSelectPage={(e) => clickToSelectPage(e)}
