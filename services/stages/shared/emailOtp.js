@@ -190,7 +190,7 @@ const emailOtp = (lang, tokens) => ([
               },
               href: '',
               testId: 'resendEmail',
-              matomo: ['trackEvent', tokens('SHARED.sendSecurityCodeToMobile')]
+              matomo: ['trackEvent', tokens('SHARED.checkYourEmail'), tokens('SHARED.askUsToSendYouAnotherEmail')]
             }
           },
           {
