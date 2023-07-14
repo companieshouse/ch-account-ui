@@ -15,7 +15,7 @@ import log from '../services/log'
  */
 const useFRAuth = (config = {}) => {
   const [errors, setErrors] = useState([])
-  const { fetchCompanyData, companySearch, companyStatus, refresh = false, currentPage } = config
+  const { fetchCompanyData, companySearch, companyStatus, refresh = false, currentPage, fetchProfile = false } = config
   const [loading, setLoading] = useState(true)
   const { push } = useRouter()
   const [accessToken, setAccessToken] = useState()
@@ -46,9 +46,9 @@ const useFRAuth = (config = {}) => {
         sessionStorage.setItem('token', JSON.stringify(accessToken))
       }
 
-      if (!profile) {
+      if (!profile || fetchProfile) {
         // check the session for a profile
-        if (sessionStorage.getItem('profile')) {
+        if (sessionStorage.getItem('profile') && !fetchProfile) {
           setProfile(extendProfile(JSON.parse(sessionStorage.getItem('profile'))))
         } else {
           await UserManager.getCurrentUser().then((user) => {
