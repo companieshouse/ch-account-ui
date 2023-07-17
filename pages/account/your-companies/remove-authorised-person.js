@@ -60,6 +60,7 @@ const RemoveAuthorisedPerson = ({ lang, queryParams }) => {
       accountLinksItem={2}
       formRef={formRef}
       hasAccountLinks
+      hasLogoutLink={true}
       hasBackLink={false}
       onSubmit={onSubmit}
     >
