@@ -24,7 +24,7 @@ const AccountLinks = (props) => {
           <div className="account-menu">
             <AccountLinkItem current={currentItem === 1} href="/account/home" text={translate(lang, 'ACCOUNT_LINKS_HOME')}/>
             <AccountLinkItem current={currentItem === 2} href="/account/your-companies" text={translate(lang, 'ACCOUNT_LINKS_YOUR_COMPANIES')}/>
-            <AccountLinkItem current={currentItem === 3} href={CH_EWF_RECENT_FILINGS_URL} text={translate(lang, 'ACCOUNT_LINKS_YOUR_FILINGS')}/>
+            <AccountLinkItem current={currentItem === 3} href={`${CH_EWF_RECENT_FILINGS_URL}?lang=${lang}`} text={translate(lang, 'ACCOUNT_LINKS_YOUR_FILINGS')}/>
             <AccountLinkItem current={currentItem === 4} href={CH_EWF_AUTHENTICATED_ENTRY_URL} text={translate(lang, 'ACCOUNT_LINKS_FILE_FOR_A_COMPANY')}/>
             <AccountLinkItem current={currentItem === 6} href="/account/manage" text={translate(lang, 'ACCOUNT_LINKS_MANAGE_ACCOUNT')}/>
           </div>
