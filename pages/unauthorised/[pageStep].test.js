@@ -2,6 +2,9 @@ import React from "react";
 import { render, act } from "@testing-library/react";
 import { Unauthorised } from "./[pageStep]";
 import { useRouter } from "next/router";
+import {setupWindowMock} from "../../mocks/jest/setupWindowMock"
+
+setupWindowMock()
 
 // Mock the useRouter hook
 jest.mock("next/router", () => ({
