@@ -53,4 +53,6 @@ export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
 export const MATOMO_LOGGING = true
 
+export const ENABLE_MSW = process.env.ENABLE_MSW || 'false'
+
 // console.log(`Running as environment: ${ENVIRONMENT}`)

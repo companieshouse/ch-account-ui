@@ -4,15 +4,16 @@ import CookieBanners from '../components/general-ui/interaction/CookieBanners'
 
 import '../css/global.scss'
 import Script from 'next/script'
-import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL, NODE_ENV } from '../services/environment'
+import { ANALYTICS_SITE_ID, ANALYTICS_TRACKER_URL, ENABLE_MSW } from '../services/environment'
 
 import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
 // import log from '../services/log'
 
 // Instantiate MSW for testing environments
-if (NODE_ENV === 'test') {
+if (ENABLE_MSW === 'true') {
   require('../mocks')
 }
+
 function MyApp ({ Component, pageProps }) {
   const BASE_PATH = process.env.BASE_PATH || ''
 
