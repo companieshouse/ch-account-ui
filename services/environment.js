@@ -3,6 +3,7 @@ export const CH_BASE_EWF_URL = process.env.CH_BASE_EWF_URL || 'https://ewf.compa
 function _setEWFBaseUrls (endpoint) { return `${CH_BASE_EWF_URL}/${endpoint}` }
 
 export const ENVIRONMENT = process.env.ENVIRONMENT || 'dev'
+export const NODE_ENV = process.env.NODE_ENV
 export const FORGEROCK_AM = process.env.FORGEROCK_AM || 'https://idam.amido.aws.chdev.org/am/'
 export const FORGEROCK_USER_ENDPOINT = process.env.FORGEROCK_USER_ENDPOINT || 'https://idam.amido.aws.chdev.org/openidm/managed/alpha_user/'
 export const FORGEROCK_IDM_COMPANY_ENDPOINT = process.env.FORGEROCK_IDM_COMPANY_ENDPOINT || 'https://openam-companieshouse-uk-dev.id.forgerock.io/openidm/endpoint/companies'
@@ -50,6 +51,6 @@ export const CH_CONSENT = process.env.CH_CONSENT || 'CHConsent'
 
 export const VERSION = process.env.VERSION || 'xx.xx.xx.xx'
 
-export const MATOMO_LOGGING = process.env.NODE_ENV !== 'test'
+export const MATOMO_LOGGING = true
 
 // console.log(`Running as environment: ${ENVIRONMENT}`)

@@ -76,6 +76,7 @@
     "jest-dom": "4.0.0",
     "lodash.camelcase": "4.3.0",
     "lodash.set": "4.3.2",
+    "msw": "^1.2.2",
     "prop-types": "15.8.1",
     "replace-in-files": "3.0.0",
     "sass": "1.59.3",
@@ -94,5 +95,8 @@
     "minimist": "1.2.8",
     "json5": "2.2.3",
     "micromatch": "4.0.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
