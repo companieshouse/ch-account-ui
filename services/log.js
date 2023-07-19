@@ -1,6 +1,11 @@
 import log from 'loglevel'
-import { ENVIRONMENT } from './environment'
+import { ENVIRONMENT, MATOMO_LOGGING } from './environment'
 
-log.setLevel(ENVIRONMENT !== 'dev' ? 'silent' : 'trace')
+if (!MATOMO_LOGGING) {
+  // silence log for running tests
+  log.setLevel('silent')
+} else {
+  log.setLevel(ENVIRONMENT !== 'dev' ? 'silent' : 'trace')
+}
 
 export default log
