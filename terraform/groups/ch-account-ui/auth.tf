@@ -38,15 +38,6 @@ resource "aws_iam_role_policy" "auth_lambda" {
   "Statement": [
     {
       "Action": [
-        "logs:CreateLogStream",
-        "logs:PutLogEvents",
-        "logs:CreateLogGroup"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    },
-    {
-      "Action": [
         "ssm:GetParameter"
       ],
       "Effect": "Allow",
