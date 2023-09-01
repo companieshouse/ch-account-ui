@@ -152,8 +152,14 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       {
         component: 'PageHeading',
         props: {
-          children: tokens('ONBOARDING_ERROR.[4].Fragment.linkRedirectedToWrongPage'),
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.youNeedToSignOut'),
           showErrorSummary: false
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.forSecurityReasons')
         }
       },
       {
@@ -162,7 +168,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens('ONBOARDING_ERROR.[4].Fragment.toTryAgain')
+              children: tokens('ONBOARDING_ERROR.[4].numberOneInList')
             }
           },
           {
@@ -170,13 +176,7 @@ const ONBOARDING_ERROR = (lang, tokens) => [
             props: {
               href: '/account/logout/',
               children: tokens('SHARED.signOut'),
-              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.linkRedirectedToWrongPage'), tokens('SHARED.signOut')]
-            }
-          },
-          {
-            component: 'SpanText',
-            props: {
-              children: tokens('ONBOARDING_ERROR.[4].Fragment.ofTheService')
+              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.youNeedToSignOut'), tokens('SHARED.signOut')]
             }
           }
         ]
@@ -184,7 +184,13 @@ const ONBOARDING_ERROR = (lang, tokens) => [
       {
         component: 'BodyText',
         props: {
-          children: tokens('ONBOARDING_ERROR.[4].Fragment.thenReturnToTheEmailWeSent')
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.twoGoBackToEmail')
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('ONBOARDING_ERROR.[4].Fragment.threeSignBackIn')
         }
       }
     ]

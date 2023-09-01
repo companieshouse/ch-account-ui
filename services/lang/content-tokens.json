@@ -547,17 +547,25 @@
     "en": "Link redirected to wrong page",
     "cy": "Dolen wedi'i ailgyfeirio i'r dudalen anghywir"
   },
-  "ONBOARDING_ERROR.[4].Fragment.toTryAgain": {
-    "en": "To try again, ",
-    "cy": "I roi cynnig arall arni, "
+  "ONBOARDING_ERROR.[4].Fragment.youNeedToSignOut": {
+    "en": "You need to sign out",
+    "cy": "Mae angen i chi allgofnodi" 
   },
-  "ONBOARDING_ERROR.[4].Fragment.ofTheService": {
-    "en": " of the service.",
-    "cy": " o’r gwasanaeth. "
+  "ONBOARDING_ERROR.[4].Fragment.forSecurityReasons": {
+    "en": "For security reasons, the email link will only work if you are not signed in to your account.",
+    "cy": "Am resymau diogelwch, bydd y ddolen e-bost dim ond yn gweithio  os nad ydych wedi mewngofnodi i'ch cyfrif."
   },
-  "ONBOARDING_ERROR.[4].Fragment.thenReturnToTheEmailWeSent": {
-    "en": "Then return to the email we sent you and select the link again.",
-    "cy": "Yna dychwelwch i'r e-bost a anfonwyd atoch a dewiswch y ddolen eto."
+  "ONBOARDING_ERROR.[4].Fragment.numberOneInList": {
+    "en": "    1.  ",
+    "cy": "    1.  "
+  },
+  "ONBOARDING_ERROR.[4].Fragment.twoGoBackToEmail": {
+    "en": "    2.  Go back to the email we sent you and select the link again.",
+    "cy": "    2.  Ewch yn ôl i'r e-bost rydym wedi anfon atoch a dewiswch y ddolen eto."
+  },
+  "ONBOARDING_ERROR.[4].Fragment.threeSignBackIn": {
+    "en": "    3.  Sign back in to your account.",
+    "cy": "    3.  Mewngofnodi yn ôl i'ch cyfrif."
   },
   "ONBOARDING_PWD.[0].BrowserTitle.createAPassword": {
     "en": "Create a password",
