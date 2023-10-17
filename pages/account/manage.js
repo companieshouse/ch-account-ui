@@ -10,9 +10,13 @@ import componentMap from '../../services/componentMap'
 import WithLang from '../../services/lang/WithLang'
 import useFRAuth from '../../services/useFRAuth'
 import { getUserFields } from '../../services/forgerock'
+import WithQueryParams from '../../components/providers/WithQueryParams'
 
-const ManageAccount = ({ errors, lang }) => {
-  const { profile, accessToken } = useFRAuth()
+const ManageAccount = ({ errors, lang, queryParams }) => {
+  const fetchProfile = queryParams?.fetchProfile || null
+  const { profile, accessToken } = useFRAuth({
+    fetchProfile
+  })
   const [preferences, setPreferences] = useState({})
   const sub = profile?.sub
   const uiStage = 'HOME_MANAGE_ACCOUNT'
@@ -61,7 +65,7 @@ const ManageAccount = ({ errors, lang }) => {
   )
 }
 
-export default (WithLang(ManageAccount))
+export default WithQueryParams(WithLang(ManageAccount))
 
 ManageAccount.propTypes = {
   companies: PropTypes.array,

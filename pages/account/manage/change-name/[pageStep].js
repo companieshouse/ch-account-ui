@@ -52,7 +52,8 @@ const ChangeName = ({ lang }) => {
   const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading } = useFRFlow(FRFlowConfig)
 
   stepPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
-    notifyToken: 'changeNameSuccess'
+    notifyToken: 'changeNameSuccess',
+    fetchProfile: true
   })
 
   const { onSubmit, ...restHandlers } = flowHandlers
