@@ -168,15 +168,21 @@ const ONBOARDING_ERROR = (lang, tokens) => [
           {
             component: 'SpanText',
             props: {
-              children: tokens('ONBOARDING_ERROR.[4].numberOneInList')
+              children: tokens('ONBOARDING_ERROR.[4].Fragment.numberOneInList')
             }
           },
           {
             component: 'LinkText',
             props: {
               href: '/account/logout/',
-              children: tokens('SHARED.signOut'),
-              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.youNeedToSignOut'), tokens('SHARED.signOut')]
+              children: tokens('SHARED.signOutVersionTwo'),
+              matomo: ['trackEvent', tokens('ONBOARDING_ERROR.[4].Fragment.youNeedToSignOut'), tokens('SHARED.signOutVersionTwo')]
+            }
+          },
+          {
+            component: 'SpanText',
+            props: {
+              children: tokens('ONBOARDING_ERROR.[4].Fragment.ofYourAccount')
             }
           }
         ]
