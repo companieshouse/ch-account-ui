@@ -567,6 +567,10 @@
     "en": "    3.  Sign back in to your account.",
     "cy": "    3.  Mewngofnodi yn ôl i'ch cyfrif."
   },
+  "ONBOARDING_ERROR.[4].Fragment.ofYourAccount": {
+    "en": " of your account.",
+    "cy": " o'ch cyfrif." 
+  },
   "ONBOARDING_PWD.[0].BrowserTitle.createAPassword": {
     "en": "Create a password",
     "cy": "Creu cyfrinair"
@@ -1185,6 +1189,10 @@
   "SHARED.signOut": {
     "en": "Sign out",
     "cy": "Arwyddwch allan"
+  },
+  "SHARED.signOutVersionTwo": {
+    "en": "Sign out",
+    "cy": "Allgofnodi"
   },
   "SHARED.signInToWebFiling": {
     "en": "Sign in to WebFiling",
