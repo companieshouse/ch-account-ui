@@ -1506,8 +1506,8 @@
     "en": "Industrial action - disruption possible",
     "cy": "Gweithredu diwydiannol - tarfu posib"
   },
-  "SHARED.ifNotRecievedEmail": {
-    "en": "If you still have not recieved the email, we can ",
+  "SHARED.ifNotReceivedEmail": {
+    "en": "If you still have not received the email, we can ",
     "cy": "Os nad ydych wedi derbyn yr e-bost o hyd, gallwn "
   },
   "SHARED.sendSecurityCodeToMobile": {
