@@ -173,7 +173,7 @@ const emailOtp = (lang, tokens) => ([
           {
             component: 'SpanText',
             props: {
-              children: tokens('SHARED.ifNotRecievedEmail')
+              children: tokens('SHARED.ifNotReceivedEmail')
             }
           },
           {
