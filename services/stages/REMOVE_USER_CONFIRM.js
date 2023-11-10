@@ -104,8 +104,8 @@ const REMOVE_USER_CONFIRM = (lang, tokens) => [
               target: 'IDToken4',
               value: 1
             }
-          },
-          matomo: ['trackEvent', tokens('REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS.analytics'), tokens('SHARED.cancel')]
+          }
+          // matomo: ['trackEvent', tokens('REMOVE_USER_CONFIRM.[2].PageHeading.doYouWantToRemoveUserDisplayNameS.analytics'), tokens('SHARED.cancel')]
         }
       }
     ]
