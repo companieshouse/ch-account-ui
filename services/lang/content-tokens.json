@@ -692,12 +692,12 @@
     "cy": "Tynnu awdurdodiad"
   },
   "REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.youNeedTheAuthenticationCode": {
-    "en": "You need the authentication code to add ${companyName} to your account",
-    "cy": "Mae angen y cod dilysu arnoch i ychwanegu ${companyName} at eich cyfrif"
+    "en": "You need the authentication code to add this company to your account",
+    "cy": "Mae angen y cod dilysu arnoch i ychwanegu y cwmni hwn at eich cyfrif"
   },
   "REQUEST_AUTHENTICATION_CODE_1.[1].PageHeading.youNeedTheAuthenticationCode.analytics": {
-    "en": "You need the authentication code to add <companyName> to your account",
-    "cy": "Mae angen y cod dilysu arnoch i ychwanegu <companyName> at eich cyfrif"
+    "en": "You need the authentication code to add this company to your account",
+    "cy": "Mae angen y cod dilysu arnoch i ychwanegu y cwmni hwn at eich cyfrif"
   },
   "REQUEST_AUTHENTICATION_CODE_1.[3].BodyText.youCanRequestToHaveYourAuthenticationCode": {
     "en": "You can request to have your authentication code sent to the registered office address or your home address. It can take up to 5 working days to arrive.",
