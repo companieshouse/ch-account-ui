@@ -56,7 +56,8 @@ const ChangeNumber = ({ lang }) => {
   const { uiFeatures, uiElements, uiStage, stepPageProps, flowHandlers, loading } = useFRFlow(FRFlowConfig)
 
   stepPageProps.changeSuccessPath = generateQueryUrl('/account/manage/', {
-    notifyToken: 'changeNumberSuccess'
+    notifyToken: 'changeNumberSuccess',
+    fetchProfile: true
   })
 
   const { onSubmit, ...restHandlers } = flowHandlers
