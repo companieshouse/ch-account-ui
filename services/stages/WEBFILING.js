@@ -31,20 +31,19 @@ const WEBFILING = (lang, tokens) => [
       operator: 'ne',
       value: 'true'
     },
-    component: 'PageHeading',
-    props: {
-      children: tokens('SHARED.sorryThereIsAProblemWithTheService')
-    }
-  },
-  {
-    component: 'BodyText',
-    props: {
-      children: tokens('SHARED.tryAgainLater')
-    }
-  },
-  {
-    component: 'BodyText',
     content: [
+      {
+        component: 'PageHeading',
+        props: {
+          children: tokens('SHARED.sorryThereIsAProblemWithTheService')
+        }
+      },
+      {
+        component: 'BodyText',
+        props: {
+          children: tokens('SHARED.tryAgainLater')
+        }
+      },
       {
         component: 'LinkText',
         props: {
