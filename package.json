@@ -75,7 +75,6 @@
     "jest-axe": "4.1.0",
     "jest-dom": "4.0.0",
     "lodash.camelcase": "4.3.0",
-    "lodash.set": "4.3.2",
     "prop-types": "15.8.1",
     "replace-in-files": "3.0.0",
     "sass": "1.59.3",

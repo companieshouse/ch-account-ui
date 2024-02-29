@@ -5,7 +5,7 @@
 // node --experimental-json-modules extract-copy-nodes.js
 
 import getStages from '../services/stages/stages.js'
-import set from 'lodash.set'
+import set from 'lodash/set'
 import camelCase from 'lodash.camelcase'
 import fs from 'fs'
 import currentTokens from '../services/lang/en/content-tokens.json'
