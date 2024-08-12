@@ -108,6 +108,8 @@ resource "aws_cloudfront_distribution" "website" {
   default_root_object = "index.html"
   aliases             = [local.fqdn]
 
+  comment = "Forgerock UI"
+
   origin {
     domain_name              = aws_s3_bucket.website.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.website.id
@@ -177,8 +179,8 @@ resource "aws_cloudfront_distribution" "website" {
     minimum_protocol_version = "TLSv1.2_2021"
   }
   depends_on = [
-      aws_s3_bucket.website
-    ]
+    aws_s3_bucket.website
+  ]
 }
 
 # See: https://github.com/aws-samples/amazon-cloudfront-functions/tree/main/url-rewrite-single-page-apps
