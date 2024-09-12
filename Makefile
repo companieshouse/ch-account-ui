@@ -27,6 +27,7 @@ test-unit:
 
 .PHONY: security-check
 security-check:
+	npm install
 	npm audit --audit-level=high
 
 .PHONY: sonar
