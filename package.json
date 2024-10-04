@@ -73,14 +73,13 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "26.6.3",
     "jest-axe": "4.1.0",
-    "jest-dom": "4.0.0",
     "lodash.camelcase": "4.3.0",
     "prop-types": "15.8.1",
     "replace-in-files": "3.0.0",
     "sass": "1.59.3",
     "sass-loader": "10.4.1",
     "sonarqube-scanner": "2.9.1",
-    "storybook-addon-next-router": "3.1.1"
+    "storybook-addon-next-router": "4.0.2"
   },
   "overrides": {
     "braces": "3.0.3",
